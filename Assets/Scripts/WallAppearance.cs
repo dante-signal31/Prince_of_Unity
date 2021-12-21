@@ -63,7 +63,7 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
         {
             groundSpriteRenderer.sprite = groundNoBorderSprite;
         }
-        groundSpriteRenderer.enabled = _hasGround;
+        SetEnabledSpriteRenderer(groundSpriteRenderer, _hasGround);
         groundOccluderSpriteRenderer.enabled = _hasGround;
         
     }
@@ -73,7 +73,7 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     /// </summary>
     private void SetCutwall()
     {
-        cutWallSpriteRenderer.enabled =  _hasCutWall;
+        SetEnabledSpriteRenderer(cutWallSpriteRenderer, _hasCutWall);
     }
     
     public void PlaceThingsOverGround(ThingsOverGround thing)
@@ -122,6 +122,17 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
         Random rnd = new Random();
         int selected_index = rnd.Next(0, frontWallOptions.Length);
         frontWallSpriteRenderer.sprite = frontWallOptions[selected_index];
+    }
+
+    /// <summary>
+    /// Use this method to enable or disable sprite renderers with collider associated.
+    /// </summary>
+    /// <param name="spriteRenderer"></param>
+    private void SetEnabledSpriteRenderer(SpriteRenderer spriteRenderer, bool enabled)
+    {
+        spriteRenderer.enabled = enabled;
+        EdgeCollider2D collider = spriteRenderer.transform.GetComponent<EdgeCollider2D>();
+        if (collider != null) collider.enabled = enabled;
     }
 
     private void Start()

@@ -331,7 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6686920097513890789}
   - component: {fileID: 1250940669434652566}
-  - component: {fileID: 4386881200682181774}
+  - component: {fileID: 4780909458490632449}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -407,8 +407,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4386881200682181774
-PolygonCollider2D:
+--- !u!68 &4780909458490632449
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -421,23 +421,19 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 1.92, y: 0.53}
-    newSize: {x: 1.92, y: 0.53}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_EdgeRadius: 0
   m_Points:
-    m_Paths:
-    - - {x: 1.6324967, y: 0.33095902}
-      - {x: 0.44815522, y: 0.3312658}
-      - {x: 0.44891664, y: 0}
-      - {x: 0.9999049, y: 0}
-      - {x: 0.9987517, y: 0.08788348}
-      - {x: 1.1488466, y: 0.14422873}
+  - {x: 0.4481047, y: -0.00032520294}
+  - {x: 0.44877124, y: -0.001868844}
+  - {x: 0.44984847, y: 0.3298571}
+  - {x: 1.626873, y: 0.33086658}
+  - {x: 0.9978188, y: 0.09113598}
+  - {x: 0.99675584, y: -0.0021852255}
+  - {x: 0.44830334, y: -0.0020411015}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &6219180758998187057
 GameObject:
   m_ObjectHideFlags: 0
