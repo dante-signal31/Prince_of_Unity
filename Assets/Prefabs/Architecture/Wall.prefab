@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5292452158492671550}
   - component: {fileID: 7148407595793790095}
+  - component: {fileID: 8004976159240256741}
   m_Layer: 0
   m_Name: Cutwall
   m_TagString: Untagged
@@ -211,6 +212,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &8004976159240256741
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449021391147043279}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.0054579973, y: 1.9959583}
+  - {x: 0.00608778, y: -0.020643253}
+  - {x: 0.45285022, y: 0.20958489}
+  - {x: 0.45153403, y: 2.2439518}
+  - {x: 0.0043255687, y: 1.9965434}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &3034360135258585480
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6686920097513890789}
   - component: {fileID: 1250940669434652566}
+  - component: {fileID: 4386881200682181774}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -380,6 +407,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &4386881200682181774
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3217531289263043682}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 1.92, y: 0.53}
+    newSize: {x: 1.92, y: 0.53}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.6324967, y: 0.33095902}
+      - {x: 0.44815522, y: 0.3312658}
+      - {x: 0.44891664, y: 0}
+      - {x: 0.9999049, y: 0}
+      - {x: 0.9987517, y: 0.08788348}
+      - {x: 1.1488466, y: 0.14422873}
 --- !u!1 &6219180758998187057
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6349492511631128051}
   - component: {fileID: 8907298694516889907}
+  - component: {fileID: 5341838756407484614}
   m_Layer: 0
   m_Name: FrontWall
   m_TagString: Untagged
@@ -653,7 +712,7 @@ SpriteRenderer:
   m_SortingLayerID: 1808101567
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d1aad5477c78d5649989a46518d2e72f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f6ce71e5fe876744823032b352f853d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -664,3 +723,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &5341838756407484614
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645012223098242288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5, y: 1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2}
+  m_EdgeRadius: 0
