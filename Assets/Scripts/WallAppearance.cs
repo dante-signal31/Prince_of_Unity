@@ -1,6 +1,8 @@
 ﻿using System;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using Random = System.Random;
 
 /// <summary>
 /// Set up a wall brick to have desired behaviour.
@@ -11,8 +13,10 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     [SerializeField] private bool _hasCutWall;
     [SerializeField] private bool _hasGround;
     [SerializeField] private bool _hasBorder;
+    [SerializeField] private bool randomizeFrontWall = true;
     [SerializeField] private ThingsOverGround _thingsOverGround;
 
+    [SerializeField] private SpriteRenderer frontWallSpriteRenderer;
     [SerializeField] private SpriteRenderer groundSpriteRenderer;
     [SerializeField] private SpriteRenderer groundOccluderSpriteRenderer;
     [SerializeField] private SpriteRenderer cutWallSpriteRenderer;
@@ -21,6 +25,8 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     [SerializeField] private Sprite groundNoBorderSprite;
     [SerializeField] private Sprite groundBorderSprite;
     [SerializeField] private ThingsOverGroundSprites placeableThingsSprites;
+    
+    [SerializeField] private Sprite[] frontWallOptions;
     
     public bool IsBorderShown()
     {
@@ -32,11 +38,16 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
         _hasBorder = showIt;
     }
     
-    private void UpdateAppearance()
+    /// <summary>
+    /// Update this prefab sprites according to given fields.
+    /// </summary>
+    /// <param name="randomize">If true front wall is a random sprite from frontWallOptions. If false default sprite is used.</param>
+    private void UpdateAppearance(bool randomize=false)
     {
         SetGround();
         SetCutwall();
         PlaceThingsOverGround(_thingsOverGround);
+        if (randomize) RandomizeFrontWall();
     }
 
     /// <summary>
@@ -103,9 +114,19 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
         }
     }
 
+    /// <summary>
+    /// Set a random front wall.
+    /// </summary>
+    private void RandomizeFrontWall()
+    {
+        Random rnd = new Random();
+        int selected_index = rnd.Next(0, frontWallOptions.Length);
+        frontWallSpriteRenderer.sprite = frontWallOptions[selected_index];
+    }
+
     private void Start()
     {
-        UpdateAppearance();
+        UpdateAppearance(randomizeFrontWall);
     }
 
     /// <summary>
@@ -113,6 +134,6 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     /// </summary>
     private void OnValidate()
     {
-        UpdateAppearance();
+        UpdateAppearance(randomizeFrontWall);
     }
 }
