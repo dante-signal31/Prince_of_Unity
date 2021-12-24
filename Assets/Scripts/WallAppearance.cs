@@ -28,6 +28,8 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     
     [SerializeField] private Sprite[] frontWallOptions;
     
+    private bool _appearanceUpdatedNeeded = false;
+    
     public bool IsBorderShown()
     {
         return _hasBorder;
@@ -141,10 +143,24 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     }
 
     /// <summary>
-    /// When a value changes on Inspector, update brick appearance.
+    /// When a value changes on Inspector, mark brick to update appearance.
     /// </summary>
     private void OnValidate()
     {
-        UpdateAppearance(randomizeFrontWall);
+        _appearanceUpdatedNeeded = true;
+    }
+
+    /// <summary>
+    /// When a value changes on Inspector, update brick appearance.
+    /// </summary>
+    private void LateUpdate()
+    {
+        #if UNITY_EDITOR
+        if (_appearanceUpdatedNeeded)
+        {
+            UpdateAppearance(randomizeFrontWall);
+            _appearanceUpdatedNeeded = false;
+        }
+        #endif
     }
 }
