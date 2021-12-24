@@ -8,7 +8,7 @@ using Random = System.Random;
 /// Set up a wall brick to have desired behaviour.
 /// </summary>
 [ExecuteAlways]
-public class WallAppearance : MonoBehaviour, IBorder, IGround
+public class WallAppearance : MonoBehaviour, IBorder
 {
     [SerializeField] private bool _hasCutWall;
     [SerializeField] private bool _hasGround;
@@ -20,16 +20,19 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     [SerializeField] private SpriteRenderer groundSpriteRenderer;
     [SerializeField] private SpriteRenderer groundOccluderSpriteRenderer;
     [SerializeField] private SpriteRenderer cutWallSpriteRenderer;
-    [SerializeField] private SpriteRenderer thingsOverGroundSpriteRenderer;
-    [SerializeField] private SpriteRenderer thingsOverGroundOccluderSpriteRenderer;
     [SerializeField] private Sprite groundNoBorderSprite;
     [SerializeField] private Sprite groundBorderSprite;
-    [SerializeField] private ThingsOverGroundSprites placeableThingsSprites;
-    
+
     [SerializeField] private Sprite[] frontWallOptions;
     
+    private GroundRubbishAppearance _rubbishAppearance;
     private bool _appearanceUpdatedNeeded = false;
-    
+
+    private void Awake()
+    {
+        _rubbishAppearance = gameObject.GetComponentInChildren<GroundRubbishAppearance>();
+    }
+
     public bool IsBorderShown()
     {
         return _hasBorder;
@@ -48,7 +51,7 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     {
         SetGround();
         SetCutwall();
-        PlaceThingsOverGround(_thingsOverGround);
+        _rubbishAppearance.PlaceThingsOverGround(_thingsOverGround);
         if (randomize) RandomizeFrontWall();
     }
 
@@ -76,44 +79,6 @@ public class WallAppearance : MonoBehaviour, IBorder, IGround
     private void SetCutwall()
     {
         SetEnabledSpriteRenderer(cutWallSpriteRenderer, _hasCutWall);
-    }
-    
-    public void PlaceThingsOverGround(ThingsOverGround thing)
-    {
-        if (_hasGround)
-        {
-            OccludedSprite occludedThingSprite = thing switch
-            {
-                ThingsOverGround.Nothing => placeableThingsSprites["Nothing"],
-                ThingsOverGround.Bones => placeableThingsSprites["Bones"],
-                ThingsOverGround.Garbage => placeableThingsSprites["Garbage"],
-                _ => throw new ArgumentOutOfRangeException(nameof(thing), thing, null)
-            };
-            if (occludedThingSprite.main != null)
-            {
-                thingsOverGroundSpriteRenderer.sprite = occludedThingSprite.main;
-                thingsOverGroundSpriteRenderer.enabled = true;
-            }
-            else
-            {
-                thingsOverGroundSpriteRenderer.enabled = false;
-            }
-
-            if (occludedThingSprite.occluder != null)
-            {
-                thingsOverGroundOccluderSpriteRenderer.sprite = occludedThingSprite.occluder;
-                thingsOverGroundOccluderSpriteRenderer.enabled = true;
-            }
-            else
-            {
-                thingsOverGroundOccluderSpriteRenderer.enabled = false;
-            }
-        }
-        else
-        {
-            thingsOverGroundSpriteRenderer.enabled = false;
-            thingsOverGroundOccluderSpriteRenderer.enabled = false;
-        }
     }
 
     /// <summary>

@@ -51,7 +51,7 @@ public class PillarsAppearance : MonoBehaviour, IBorder
     }
     
     /// <summary>
-    /// Show ground if this brick has one.
+    /// Show ground border if this brick has one.
     /// </summary>
     private void SetGround()
     {
