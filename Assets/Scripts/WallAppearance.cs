@@ -51,7 +51,7 @@ public class WallAppearance : MonoBehaviour, IBorder
     {
         SetGround();
         SetCutwall();
-        _rubbishAppearance.PlaceThingsOverGround(_thingsOverGround);
+        if (_hasGround) _rubbishAppearance.PlaceThingsOverGround(_thingsOverGround);
         if (randomize) RandomizeFrontWall();
     }
 
@@ -69,8 +69,8 @@ public class WallAppearance : MonoBehaviour, IBorder
             groundSpriteRenderer.sprite = groundNoBorderSprite;
         }
         SetEnabledSpriteRenderer(groundSpriteRenderer, _hasGround);
+        _rubbishAppearance.ShowRubbish = _hasGround;
         groundOccluderSpriteRenderer.enabled = _hasGround;
-        
     }
 
     /// <summary>

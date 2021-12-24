@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[ExecuteAlways]
 public class GroundRubbishAppearance : MonoBehaviour
 {
 
@@ -10,6 +11,28 @@ public class GroundRubbishAppearance : MonoBehaviour
     [SerializeField] private SpriteRenderer thingsOverGroundSpriteRenderer;
     [SerializeField] private SpriteRenderer thingsOverGroundOccluderSpriteRenderer;
 
+    [SerializeField] private bool _shown;
+
+    public bool ShowRubbish
+    {
+        get => _shown;
+        set
+        {
+            ShowSprites(value);
+            _shown = value;
+        }
+    }
+
+    /// <summary>
+    /// Show (or not) rubbish sprites.
+    /// </summary>
+    /// <param name="show">True to shown them, false if not.</param>
+    private void ShowSprites(bool show)
+    {
+        thingsOverGroundSpriteRenderer.enabled = show;
+        thingsOverGroundOccluderSpriteRenderer.enabled = show;
+    }
+    
     /// <summary>
     /// Show rubbish (or nothing) over parent ground parent.
     /// </summary>
