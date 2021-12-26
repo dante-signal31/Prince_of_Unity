@@ -1,5 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+// Some bricks can be climbed, so they have to points (right and left) where they can be climbed.
+// This component allow main character get those climbing points.
+
 using UnityEngine;
 
 /// <summary>

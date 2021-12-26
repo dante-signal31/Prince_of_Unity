@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Customize wall cracks appearance.
+
+using System;
 using UnityEngine;
 
 [ExecuteAlways]

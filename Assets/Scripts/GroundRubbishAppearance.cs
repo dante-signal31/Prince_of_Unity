@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Customize if any rubbish should appear over ground and its appearance.
+
+using System;
 using UnityEngine;
 
 [ExecuteAlways]

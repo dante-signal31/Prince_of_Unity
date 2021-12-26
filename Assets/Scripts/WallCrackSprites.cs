@@ -1,4 +1,6 @@
-﻿using System;
+﻿// // Scriptable object to pack every possible wall crack name, and its respective sprite.
+
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 

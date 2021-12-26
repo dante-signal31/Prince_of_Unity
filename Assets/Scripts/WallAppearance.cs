@@ -1,6 +1,5 @@
-﻿using System;
-using Unity.VisualScripting;
-using UnityEditor;
+﻿// Customize wall bricks appearance.
+
 using UnityEngine;
 using Random = System.Random;
 
