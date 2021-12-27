@@ -24,7 +24,7 @@ namespace Prince
 
         private bool _isRecording;
         private float _startTime;
-        private CommandSequence _recordedCommandSequence;
+        private CommandSequence _recordedCommandSequence = new CommandSequence();
 
         private void Start()
         {
@@ -75,14 +75,15 @@ namespace Prince
         {
             float waitingTime = (_isRecording) ? GetElapsedTime() : 0;
             Command command = new Command(waitingTime, commandType);
-            StartCoroutine(commandController.ExecuteCommand(command));
             if (_isRecording) _recordedCommandSequence.PushCommand(command);
+            StartCoroutine(commandController.ExecuteCommand(command));
         }
 
         private void OnApplicationQuit()
         {
             if (_isRecording)
             {
+                Debug.Log("(InputController) Saving commands.");
                 SaveRecordedCommands();
             }
         }

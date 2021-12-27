@@ -11,7 +11,7 @@ namespace Prince
     /// </summary>
     public class CommandController : MonoBehaviour
     {
-        private CommandSequence _commandQueue;
+        private CommandSequence _commandQueue = new CommandSequence();
 
         /// <summary>
         /// Add a command to pending commands to execute queue.
