@@ -260,6 +260,14 @@ PrefabInstance:
       propertyPath: placeableThingsSprites
       value: 
       objectReference: {fileID: 11400000, guid: 3ebdc36cce514384ba297379d2f16277, type: 2}
+    - target: {fileID: 2487476484284732391, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
+      propertyPath: thingsOverGroundSpriteRenderer
+      value: 
+      objectReference: {fileID: 7970152513544781911}
+    - target: {fileID: 2487476484284732391, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
+      propertyPath: thingsOverGroundOccluderSpriteRenderer
+      value: 
+      objectReference: {fileID: 1359106780916892630}
     - target: {fileID: 3158546719077371896, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
       propertyPath: m_Size.x
       value: 0.7
@@ -346,9 +354,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
+--- !u!212 &1359106780916892630 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3158546719077371896, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
+  m_PrefabInstance: {fileID: 4110077728616959022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4929291625181435562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9034697451542026884, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
+  m_PrefabInstance: {fileID: 4110077728616959022}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7970152513544781911 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6310183615325228153, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
   m_PrefabInstance: {fileID: 4110077728616959022}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8765486235213618368
@@ -358,6 +376,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1825764673919355825}
     m_Modifications:
+    - target: {fileID: 5097506770158315525, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+      propertyPath: GrabbingPointLeft
+      value: 
+      objectReference: {fileID: 1692755380887460120}
+    - target: {fileID: 5097506770158315525, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+      propertyPath: GrabbingPointRight
+      value: 
+      objectReference: {fileID: 2828904969617846887}
     - target: {fileID: 5664962019649350186, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: m_Name
       value: Climbable
@@ -427,5 +453,15 @@ PrefabInstance:
 --- !u!4 &420061525959757438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8966975758112658110, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+  m_PrefabInstance: {fileID: 8765486235213618368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1692755380887460120 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7987313464279713240, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+  m_PrefabInstance: {fileID: 8765486235213618368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2828904969617846887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6838444862746095271, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
   m_PrefabInstance: {fileID: 8765486235213618368}
   m_PrefabAsset: {fileID: 0}
