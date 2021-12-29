@@ -7,11 +7,11 @@
             "actions": [
                 {
                     "name": "Run right",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "56d218e9-d27d-4c51-bb2c-1e5b33ff3e14",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 },
                 {
@@ -20,7 +20,7 @@
                     "id": "3174ad10-feb1-41e9-93b1-a45512c07ac2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 },
                 {
@@ -29,7 +29,7 @@
                     "id": "1fa27bce-12f9-40a1-9248-9c225ca7cfdb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 },
                 {
@@ -38,7 +38,7 @@
                     "id": "5653c332-24db-4135-8423-a9f4871a4b77",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 },
                 {
@@ -47,7 +47,7 @@
                     "id": "01c59154-333c-4e42-9424-790c976932f2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 },
                 {
@@ -56,7 +56,7 @@
                     "id": "24061bfb-27da-4d15-a8f4-d04128365d7a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 },
                 {
@@ -65,25 +65,7 @@
                     "id": "5da81084-de00-4d9f-b73c-a466adbd4a24",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Stop",
-                    "type": "PassThrough",
-                    "id": "9ead251d-e8b4-4778-ab39-5a94d936ef14",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "StopAction",
-                    "type": "PassThrough",
-                    "id": "9cb255ee-66e6-4e64-9eea-1757de8680d0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -316,105 +298,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d27f4b05-8b9d-44fb-820c-f570fce52c05",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Stop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "624f20d7-5502-4798-b78d-edddf2d6e771",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Stop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "98b482ef-3e1c-4bfa-9757-e2c8249911ec",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Stop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fef812f3-e5be-48cb-b1da-639906b1fea8",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Stop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f8f0e5b9-3a35-49e7-8bfa-3f7510ba736b",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Stop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bfee7ef0-8a2b-4a16-8e27-3c218d9c8483",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Stop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "68ead638-049d-4c81-ad0e-54715c1bd406",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Stop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ef5c492c-56d8-4725-ae92-58b788f6e9e1",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Stop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "562733e8-4141-4ab5-a3f9-5b194aa6d275",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "StopAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
