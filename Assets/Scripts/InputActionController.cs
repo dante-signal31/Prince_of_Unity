@@ -13,127 +13,56 @@ namespace Prince
 
         public void RunRight(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.RunRight();
-            }
-
-            if (context.canceled)
-            {
-                inputController.Stop();
-            }
-            
+            if (context.performed) inputController.RunRight();
+            if (context.canceled) inputController.Stop();
         }
         
         public void RunLeft(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.RunLeft();
-            }
-            if (context.canceled)
-            {
-                inputController.Stop();
-            }
+            if (context.performed) inputController.RunLeft();
+            if (context.canceled) inputController.Stop();
         }
 
         public void WalkRight(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.WalkRight();
-            }
-            if (context.canceled)
-            {
-                inputController.Stop();
-            }
+            if (context.performed) inputController.WalkRight();
+            if (context.canceled) inputController.Stop();
         }
 
         public void WalkLeft(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.WalkLeft();
-            }
-            if (context.canceled)
-            {
-                inputController.Stop();
-            }
+            if (context.performed) inputController.WalkLeft();
+            if (context.canceled) inputController.Stop();
         }
-
-        // public void Stop(InputAction.CallbackContext context)
-        // {
-        //     if (context.performed)
-        //     {
-        //         inputController.Stop();
-        //     }
-        // }
-        //
-        // public void StopAction(InputAction.CallbackContext context)
-        // {
-        //     inputController.StopAction();
-        // }
 
         public void Duck(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.Duck();
-            }
-            if (context.canceled)
-            {
-                inputController.Stop();
-            }
+            if (context.performed) inputController.Duck();
+            if (context.canceled) inputController.Stop();
         }
 
         public void Action(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.Action();
-            }
-            if (context.canceled)
-            {
-                inputController.StopAction();
-            }
-            
+            if (context.performed) inputController.Action();
+            if (context.canceled) inputController.StopAction();
         }
 
         public void Jump(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.Jump();
-            }
-            if (context.canceled)
-            {
-                inputController.Stop();
-            }
+            if (context.performed) inputController.Jump();
+            if (context.canceled) inputController.Stop();
         }
 
         public void Block(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.Block();
-            }
-            if (context.canceled)
-            {
-                inputController.Stop();
-            }
+            if (context.performed) inputController.Block();
+            if (context.canceled) inputController.Stop();
         }
 
         public void Sheathe(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                inputController.Sheathe();
-            }
-            if (context.canceled)
-            {
-                inputController.Stop();
-            }
+            if (context.performed) inputController.Sheathe();
+            if (context.canceled) inputController.Stop();
         }
-
     }
 }
