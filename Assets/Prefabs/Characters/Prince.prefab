@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: maximumLife
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 82222986682491871, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: lookingRightWards
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 88322598493374997, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Controller
       value: 
@@ -29,11 +33,19 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 73194478d806bc44b90e435f116d4592, type: 2}
     - target: {fileID: 286802353711401723, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -0.165
       objectReference: {fileID: 0}
     - target: {fileID: 286802353711401723, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.507
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797249012726017869, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797249012726017869, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5539811472104328280, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_RootOrder
@@ -117,7 +129,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
         m_MethodName: RunRight
         m_Mode: 0
@@ -133,7 +145,7 @@ MonoBehaviour:
     m_ActionName: PrinceActionMap/Run right[/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
         m_MethodName: RunLeft
         m_Mode: 0
@@ -149,7 +161,7 @@ MonoBehaviour:
     m_ActionName: PrinceActionMap/Run left[/Keyboard/a,/Keyboard/leftArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
         m_MethodName: WalkRight
         m_Mode: 0
@@ -165,9 +177,9 @@ MonoBehaviour:
     m_ActionName: PrinceActionMap/Walk right[/Keyboard/shift,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
-        m_MethodName: WalkLeft
+        m_MethodName: WalkRight
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -181,7 +193,7 @@ MonoBehaviour:
     m_ActionName: PrinceActionMap/Walk left[/Keyboard/shift,/Keyboard/a,/Keyboard/leftArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
         m_MethodName: Duck
         m_Mode: 0
@@ -197,7 +209,7 @@ MonoBehaviour:
     m_ActionName: PrinceActionMap/Duck[/Keyboard/s,/Keyboard/downArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
         m_MethodName: Jump
         m_Mode: 0
@@ -213,7 +225,7 @@ MonoBehaviour:
     m_ActionName: PrinceActionMap/Jump[/Keyboard/w,/Keyboard/upArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
         m_MethodName: Action
         m_Mode: 0
@@ -229,9 +241,9 @@ MonoBehaviour:
     m_ActionName: PrinceActionMap/Action[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
-        m_MethodName: Action
+        m_MethodName: Strike
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -245,7 +257,7 @@ MonoBehaviour:
     m_ActionName: FightingActionMap/Strike[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
         m_MethodName: Block
         m_Mode: 0
@@ -261,7 +273,7 @@ MonoBehaviour:
     m_ActionName: FightingActionMap/Block[/Keyboard/w,/Keyboard/upArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
         m_MethodName: Sheathe
         m_Mode: 0
@@ -277,9 +289,9 @@ MonoBehaviour:
     m_ActionName: FightingActionMap/Sheathe[/Keyboard/s,/Keyboard/downArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
-        m_MethodName: WalkRight
+        m_MethodName: WalkRightWithSword
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -293,9 +305,9 @@ MonoBehaviour:
     m_ActionName: FightingActionMap/Right[/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
-        m_MethodName: WalkLeft
+        m_MethodName: WalkLeftWithSword
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -324,7 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f60f89ae864fe0b6de86b6d6087fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 1452170724144168538}
   inputController: {fileID: 2642550848936503470}
+  sensors: {fileID: 2277665498250821118}
 --- !u!1 &1429522996310157924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2759692437259027073, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
@@ -371,15 +385,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1bfbac320042ca145bb801ca0695c26b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.3125, y: 1.15625}
+  m_Size: {x: 0.375, y: 1.28125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2642550848936503470 stripped
@@ -393,3 +407,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a99124d0cf44ee8c2ac2354efb21e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &3792878465186783984 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 88322598493374997, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 3862621942988777701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7343980867783333236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5796631354318011793, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 3862621942988777701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2277665498250821118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343980867783333236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f572a8810d2438791aeb9a4be2ee533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 3792878465186783984}
