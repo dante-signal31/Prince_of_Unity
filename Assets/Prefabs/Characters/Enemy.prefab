@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 82222986682491871, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: life
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 82222986682491871, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: hasSword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82222986682491871, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: maximumLife
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5539811472104328280, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8774815387925293592, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}

@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5539811472104328280}
   - component: {fileID: 1240446814125932619}
+  - component: {fileID: 82222986682491871}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -231,3 +232,19 @@ MonoBehaviour:
   commandController: {fileID: 5250694692991532468}
   recordCommandAction: 0
   recordedCommandsFile: 
+--- !u!114 &82222986682491871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8774815387925293592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4317807658ac49349a0c58422d69ebbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0
+  maximumLife: 0
+  hasSword: 0
+  stateMachine: {fileID: 88322598493374997}
