@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Prince
 {
+    /// <summary>
+    /// To make control interactions repeatable, they are encapsulated in Commands instances. Those commands
+    /// are serializable and can be file stored to be reused later at tests.
+    /// </summary>
     [Serializable]
     public class Command: IEquatable<Command>
     {
@@ -19,7 +23,10 @@ namespace Prince
             Action,
             StopAction,
             Block,
-            Sheathe
+            Sheathe,
+            Strike,
+            WalkRightWithSword,
+            WalkLeftWithSword
         }
 
         [SerializeField] private float _delay;

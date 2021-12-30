@@ -1,67 +1,83 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
-public class CharacterStatus : MonoBehaviour
+namespace Prince
 {
-    [SerializeField] private int life;
-
-    [SerializeField] private int maximumLife;
-
-    [SerializeField] private bool hasSword;
-
-    [SerializeField] private Animator stateMachine;
-
-    public int Life
-    {
-        get => life;
-        set
-        {
-            life = Math.Clamp(value, 0, maximumLife);
-            stateMachine.SetBool("isDead", IsDead);
-        }
-    }
-
-    public int MaximumLife
-    {
-        get => maximumLife;
-        set
-        {
-            if (value > 0)
-            {
-                maximumLife = value;
-                life = Math.Clamp(life, 0, maximumLife);
-            }
-            
-        }
-    }
-
-    public bool HasSword
-    {
-        get => hasSword;
-        set
-        {
-            hasSword = value;
-            stateMachine.SetBool("hasSword", value);
-        }
-    }
-
-    public bool IsDead => (Life == 0);
-
     /// <summary>
-    /// UpdateAnimator flags that depend on character status.
+    /// This component keeps every variable about Character general state.
     /// </summary>
-    private void UpdateStateMachineFlags()
+    [ExecuteAlways]
+    public class CharacterStatus : MonoBehaviour
     {
-        stateMachine.SetBool("hasSword", HasSword);
-        stateMachine.SetBool("isDead", IsDead);
-    }
+        [SerializeField] private int life;
     
-    private void Awake()
-    {
-        UpdateStateMachineFlags();
-    }
+        [SerializeField] private int maximumLife;
     
+        [SerializeField] private bool hasSword;
+    
+        [SerializeField] private Animator stateMachine;
+    
+        [SerializeField] private bool lookingRightWards;
+    
+        public int Life
+        {
+            get => life;
+            set
+            {
+                life = Math.Clamp(value, 0, maximumLife);
+                stateMachine.SetBool("isDead", IsDead);
+            }
+        }
+    
+        public int MaximumLife
+        {
+            get => maximumLife;
+            set
+            {
+                if (value > 0)
+                {
+                    maximumLife = value;
+                    life = Math.Clamp(life, 0, maximumLife);
+                }
+                
+            }
+        }
+    
+        public bool HasSword
+        {
+            get => hasSword;
+            set
+            {
+                hasSword = value;
+                stateMachine.SetBool("hasSword", value);
+            }
+        }
+    
+        public bool IsDead => (Life == 0);
+    
+        public bool LookingRightWards
+        {
+            get => lookingRightWards;
+            set
+            {
+                lookingRightWards = value;
+                stateMachine.SetBool("lookingRightWards", lookingRightWards);
+            }
+        }
+        /// <summary>
+        /// UpdateAnimator flags that depend on character status.
+        /// </summary>
+        private void UpdateStateMachineFlags()
+        {
+            stateMachine.SetBool("hasSword", HasSword);
+            stateMachine.SetBool("isDead", IsDead);
+            stateMachine.SetBool("lookingRightWards", LookingRightWards);
+        }
+        
+        private void Awake()
+        {
+            UpdateStateMachineFlags();
+        }
+        
+    }
 }

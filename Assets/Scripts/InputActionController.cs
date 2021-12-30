@@ -6,10 +6,17 @@ namespace Prince
     /// <summary>
     /// This component translates Input events received from a Player Input to commands.
     /// Those commands are sent to character InputController.
+    ///
+    /// Action map switching is done from here.
     /// </summary>
     public class InputActionController : MonoBehaviour
     {
+        [Tooltip("Needed to switch action map between fighting and normal mode.")]
+        [SerializeField] private PlayerInput playerInput;
+        [Tooltip("Needed to convert actions into commands.")]
         [SerializeField] private InputController inputController;
+        [Tooltip("Needed to give context. Some actions depends on sensors lectures to be converted to a command or another.")]
+        [SerializeField] private CharacterSensors sensors;
 
         public void RunRight(InputAction.CallbackContext context)
         {
@@ -43,7 +50,11 @@ namespace Prince
 
         public void Action(InputAction.CallbackContext context)
         {
-            if (context.performed) inputController.Action();
+            if (context.performed)
+            {
+                if (sensors.EnemySeen) playerInput.SwitchCurrentActionMap("FightingActionMap");
+                inputController.Action();
+            }
             if (context.canceled) inputController.StopAction();
         }
 
@@ -56,13 +67,33 @@ namespace Prince
         public void Block(InputAction.CallbackContext context)
         {
             if (context.performed) inputController.Block();
-            if (context.canceled) inputController.Stop();
         }
 
         public void Sheathe(InputAction.CallbackContext context)
         {
-            if (context.performed) inputController.Sheathe();
+            if (context.performed)
+            {
+                inputController.Sheathe();
+                playerInput.SwitchCurrentActionMap("PrinceActionMap");
+            }
+        }
+
+        public void Strike(InputAction.CallbackContext context)
+        {
+            if (context.performed) inputController.Strike();
+        }
+
+        public void WalkRightWithSword(InputAction.CallbackContext context)
+        {
+            if (context.performed) inputController.WalkRightWithSword();
             if (context.canceled) inputController.Stop();
         }
+        
+        public void WalkLeftWithSword(InputAction.CallbackContext context)
+        {
+            if (context.performed) inputController.WalkLeftWithSword();
+            if (context.canceled) inputController.Stop();
+        }
+        
     }
 }

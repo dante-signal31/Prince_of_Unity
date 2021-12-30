@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Prince
 {
@@ -141,6 +140,21 @@ namespace Prince
         public void Sheathe()
         {
             ExecuteCommand(Command.CommandType.Sheathe);
+        }
+
+        public void Strike()
+        {
+            ExecuteCommand(Command.CommandType.Strike);
+        }
+        
+        public void WalkRightWithSword()
+        {
+            ExecuteCommand(Command.CommandType.WalkRightWithSword);
+        }
+        
+        public void WalkLeftWithSword()
+        {
+            ExecuteCommand(Command.CommandType.WalkLeftWithSword);
         }
     }
 }

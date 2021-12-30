@@ -313,7 +313,7 @@
                     "id": "d537a400-ac3f-437c-b536-049d8b772dec",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -322,7 +322,7 @@
                     "id": "38c7d361-c4be-4892-a3e5-f2b64a8f0caf",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -335,21 +335,21 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Right",
+                    "name": "WalkRightWithSword",
                     "type": "Button",
                     "id": "1f38aac2-d1e8-4edd-ae10-dd666f396b64",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Left",
+                    "name": "WalkLeftWithSword",
                     "type": "Button",
                     "id": "bff49b8c-fced-45f4-94c7-4ef9a932b146",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -416,7 +416,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Right",
+                    "action": "WalkRightWithSword",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -427,7 +427,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Right",
+                    "action": "WalkRightWithSword",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -438,7 +438,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Left",
+                    "action": "WalkLeftWithSword",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -449,7 +449,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Left",
+                    "action": "WalkLeftWithSword",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
