@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteAlways]
 public class Status : MonoBehaviour
 {
     [SerializeField] private int life;
@@ -48,4 +49,19 @@ public class Status : MonoBehaviour
     }
 
     public bool IsDead => (Life == 0);
+
+    /// <summary>
+    /// UpdateAnimator flags that depend on character status.
+    /// </summary>
+    private void UpdateStateMachineFlags()
+    {
+        stateMachine.SetBool("hasSword", HasSword);
+        stateMachine.SetBool("isDead", IsDead);
+    }
+    
+    private void Awake()
+    {
+        UpdateStateMachineFlags();
+    }
+    
 }
