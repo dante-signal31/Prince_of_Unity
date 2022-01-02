@@ -17,7 +17,7 @@ namespace Prince
     
         [SerializeField] private Animator stateMachine;
     
-        [SerializeField] private bool lookingRightWards;
+        [SerializeField] private bool lookingRightWards = true;
     
         public int Life
         {
@@ -64,6 +64,15 @@ namespace Prince
                 stateMachine.SetBool("lookingRightWards", lookingRightWards);
             }
         }
+
+        public Vector2 ForwardVector
+        {
+            get
+            {
+                return (LookingRightWards) ? Vector2.right : Vector2.left;
+            }
+        }
+        
         /// <summary>
         /// UpdateAnimator flags that depend on character status.
         /// </summary>
@@ -73,9 +82,23 @@ namespace Prince
             stateMachine.SetBool("isDead", IsDead);
             stateMachine.SetBool("lookingRightWards", LookingRightWards);
         }
+
+        /// <summary>
+        /// Create references to CharacterStatus in StateMachineBehaviours.
+        ///
+        /// Unlike MonoBehaviours I've not been able to reference CharacterStatus in StateMachineBehaviours
+        /// using inspector nor calling gameObject from StateMachineBehaviour itself. So I must link it
+        /// from outside.
+        /// </summary>
+        private void LinkWithStateMachine()
+        {
+            TurnBackState turnBackState = stateMachine.GetBehaviour<TurnBackState>();
+            turnBackState.characterStatus = this;
+        }
         
         private void Awake()
         {
+            LinkWithStateMachine();
             UpdateStateMachineFlags();
         }
         

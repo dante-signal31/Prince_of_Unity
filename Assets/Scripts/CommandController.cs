@@ -62,15 +62,19 @@ namespace Prince
                     break;
                 case Command.CommandType.RunLeft:
                     Debug.Log($"(CommandController) Executed RunLeft at {Time.time}");
+                    stateMachine.SetTrigger("RunLeft");
                     break;
                 case Command.CommandType.RunRight:
                     Debug.Log($"(CommandController) Executed RunRight at {Time.time}");
+                    stateMachine.SetTrigger("RunRight");
                     break;
                 case Command.CommandType.WalkLeft:
                     Debug.Log($"(CommandController) Executed WalkLeft at {Time.time}");
+                    stateMachine.SetTrigger("WalkLeft");
                     break;
                 case Command.CommandType.WalkRight:
                     Debug.Log($"(CommandController) Executed WalkRight at {Time.time}");
+                    stateMachine.SetTrigger("WalkRight");
                     break;
             }
         }
