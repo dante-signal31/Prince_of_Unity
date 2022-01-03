@@ -9,6 +9,21 @@ namespace Prince
     [ExecuteAlways]
     public class CharacterStatus : MonoBehaviour
     {
+        public enum States
+        {
+            Idle,
+            TurnBack,
+            Unsheathe,
+            IdleSword,
+            Sheathe,
+            AdvanceSword,
+            AttackWithSword,
+            BlockSword,
+            Retreat,
+            HitBySword,
+            KilledBySword
+        }
+        
         [SerializeField] private int life;
     
         [SerializeField] private int maximumLife;
@@ -18,6 +33,8 @@ namespace Prince
         [SerializeField] private Animator stateMachine;
     
         [SerializeField] private bool lookingRightWards = true;
+        
+        public States CurrentState { get; set;} 
     
         public int Life
         {
@@ -92,8 +109,15 @@ namespace Prince
         /// </summary>
         private void LinkWithStateMachine()
         {
+            // TurnBackState set this.lookingRightWards when turn back animation has ended.
             TurnBackState turnBackState = stateMachine.GetBehaviour<TurnBackState>();
             turnBackState.characterStatus = this;
+            // StateUpdaters set CurrentState when every state at Animator is started.
+            StateUpdater[] stateUpdaters = stateMachine.GetBehaviours<StateUpdater>();
+            foreach (StateUpdater state in stateUpdaters)
+            {
+                state.characterStatus = this;
+            }
         }
         
         private void Awake()

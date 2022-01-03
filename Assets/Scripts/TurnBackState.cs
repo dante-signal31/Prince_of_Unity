@@ -9,6 +9,7 @@ namespace Prince
     {
         // I was not able to set this field through inspector nor from this class. So it is initialized
         // from CharacterStatus LinkWithStateMachine().
+        [HideInInspector]
         public CharacterStatus characterStatus;
     
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

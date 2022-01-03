@@ -101,7 +101,7 @@ namespace Prince
             // Unity built-in serialization cannot serialize Queues so we must convert that field in something Unity can
             // work with, like an array.
             WrappedArray<Command> wrappedCommandArray = WrapCommandQueue();
-            string jsonString = JsonUtility.ToJson(wrappedCommandArray);
+            string jsonString = JsonUtility.ToJson(wrappedCommandArray, true);
             string filePathnameWithExtension = Path.ChangeExtension(filePathname, FileExtension);
             Debug.Log($"(CommandSequence) Saving commands at {filePathnameWithExtension}");
             File.WriteAllText(filePathnameWithExtension, jsonString);
