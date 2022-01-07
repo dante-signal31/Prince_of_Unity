@@ -32,7 +32,7 @@ namespace Prince
     
         [SerializeField] private Animator stateMachine;
     
-        [SerializeField] private bool lookingRightWards = true;
+        [SerializeField] private bool lookingRightWards;
         
         public States CurrentState { get; set;} 
     
@@ -125,6 +125,19 @@ namespace Prince
             LinkWithStateMachine();
             UpdateStateMachineFlags();
         }
-        
+
+        private void FixedUpdate()
+        {
+            UpdateStateMachineFlags();
+        }
+
+        private void OnValidate()
+        {
+            // Inspector can change only fields. So we update properties in case of field change.
+            Life = life;
+            MaximumLife = maximumLife;
+            HasSword = hasSword;
+            LookingRightWards = lookingRightWards;
+        }
     }
 }

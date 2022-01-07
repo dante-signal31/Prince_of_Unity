@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 82222986682491871, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: hasSword
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 82222986682491871, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: maximumLife
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2967687920717457963, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
+      value: 0.166
       objectReference: {fileID: 0}
     - target: {fileID: 2967687920717457963, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.y
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1452170724144168538}
   inputController: {fileID: 2642550848936503470}
-  sensors: {fileID: 0}
+  sensors: {fileID: 7338974255637909718}
 --- !u!114 &2642550848936503470 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1240446814125932619, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
@@ -416,5 +416,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a99124d0cf44ee8c2ac2354efb21e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7338974255637909718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5783620289349908531, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 3862621942988777701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f572a8810d2438791aeb9a4be2ee533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Prince
 {
@@ -16,13 +15,8 @@ namespace Prince
         [SerializeField] private Transform rearSensorEnd;
 
 
-        private bool _isGuard;
-        private Vector2 _forwardSensorStartPosition;
-        private Vector2 _forwardSensorEndPosition;
-        private float _forwardSensorDistance;
-        private Vector2 _rearSensorStartPosition;
-        private Vector2 _rearSensorEndPosition;
-        private float _rearSensorDistance;
+        public bool _isGuard;
+        private int _opponentMask;
 
         private GameObject _forwardEnemy;
         private GameObject _rearEnemy;
@@ -88,13 +82,9 @@ namespace Prince
         
         private void Awake()
         {
-            _isGuard = gameObject.CompareTag("Guard");
-            _forwardSensorStartPosition = forwardSensorStart.position;
-            _forwardSensorEndPosition = forwardSensorEnd.position;
-            _forwardSensorDistance = Vector2.Distance(_forwardSensorStartPosition, _forwardSensorEndPosition);
-            _rearSensorStartPosition = rearSensorStart.position;
-            _rearSensorEndPosition = rearSensorEnd.position;
-            _rearSensorDistance = Vector2.Distance(_rearSensorStartPosition, _rearSensorEndPosition);
+            // This component is at Sensors subtransform so we must go to its parent to get current tag. 
+            _isGuard = gameObject.transform.parent.transform.parent.CompareTag("Guard");
+            _opponentMask = _isGuard ? LayerMask.GetMask("Player") : LayerMask.GetMask("Guards");
             UpdateStateMachineFlags();
         }
 
@@ -104,11 +94,12 @@ namespace Prince
         /// <returns>Opponent detected or null otherwise.</returns>
         private GameObject DetectForward()
         {
-            Vector2 rayDirection = _forwardSensorEndPosition - _forwardSensorStartPosition;
-            RaycastHit2D hit = Physics2D.Raycast(_forwardSensorStartPosition, 
+            Vector2 rayDirection = forwardSensorEnd.position - forwardSensorStart.position;
+            float forwardSensorDistance = Vector2.Distance(forwardSensorStart.position, forwardSensorEnd.position);
+            RaycastHit2D hit = Physics2D.Raycast(forwardSensorStart.position, 
                                                 rayDirection, 
-                                                _forwardSensorDistance, 
-                                                LayerMask.GetMask("Characters"));
+                                                forwardSensorDistance, 
+                                                _opponentMask);
             return DetectOpponent(hit.collider);
         }
 
@@ -118,11 +109,12 @@ namespace Prince
         /// <returns>Opponent detected or null otherwise.</returns>
         private GameObject DetectRear()
         {
-            Vector2 rayDirection = _rearSensorEndPosition - _rearSensorStartPosition;
-            RaycastHit2D hit = Physics2D.Raycast(_rearSensorStartPosition, 
+            Vector2 rayDirection = rearSensorEnd.position - rearSensorStart.position;
+            float rearSensorDistance = Vector2.Distance(rearSensorStart.position, rearSensorEnd.position);
+            RaycastHit2D hit = Physics2D.Raycast(rearSensorStart.position, 
                 rayDirection, 
-                _rearSensorDistance, 
-                LayerMask.GetMask("Characters"));
+                rearSensorDistance, 
+                _opponentMask);
             return DetectOpponent(hit.collider);
         }
 
@@ -137,14 +129,17 @@ namespace Prince
         {
             if (otherCollider != null)
             {
-                string otherTag = otherCollider.gameObject.tag;
+                // Collider is at Physics subtransform so we must go upwards to get parent tag.
+                string otherTag = otherCollider.transform.parent.tag;
                 if (((_isGuard) && (otherTag.Equals("Player"))) ||
                     ((!_isGuard) && (otherTag.Equals("Guard"))))
                 {
+                    Debug.Log($"(EnemySensor - {gameObject.transform.parent.transform.parent.name}) Detected {otherTag}");
                     return otherCollider.gameObject;
                 }
                 else
                 {
+                    Debug.Log($"(EnemySensor - {gameObject.transform.parent.transform.parent.name}) Am I guard? {_isGuard} and other is {otherTag}");
                     return null;
                 }
             }
@@ -193,12 +188,13 @@ namespace Prince
             }
         }
         
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
-            #if UNITY_EDITOR
+            
             DrawSensor(SensorType.Forward);
             DrawSensor(SensorType.Rear);
-            #endif
         }
+#endif
     }
 }

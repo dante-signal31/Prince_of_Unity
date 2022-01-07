@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Prince
 {
@@ -16,10 +17,11 @@ namespace Prince
 
         private bool _currentFacingIsRightWards = true;
 
-        private void FlipCharacter()
+        private void FlipCharacter(bool rightWards)
         {
-            var currentScale = character.localScale;
-            currentScale = new Vector3(currentScale.x * -1,
+            Vector3 currentScale = character.localScale;
+            float x = rightWards ? Math.Abs(currentScale.x) : Math.Abs(currentScale.x) * -1;
+            currentScale = new Vector3( x,
                                         currentScale.y,
                                         currentScale.z);
             character.localScale = currentScale;
@@ -28,7 +30,7 @@ namespace Prince
         private void Awake()
         {
             _currentFacingIsRightWards = characterStatus.LookingRightWards;
-            if (!_currentFacingIsRightWards) FlipCharacter();
+            FlipCharacter(_currentFacingIsRightWards);
         }
 
         private void Update()
@@ -37,7 +39,7 @@ namespace Prince
             if (_currentFacingIsRightWards != newFacing)
             {
                 _currentFacingIsRightWards = newFacing;
-                FlipCharacter();
+                FlipCharacter(_currentFacingIsRightWards);
             }
         }
     }

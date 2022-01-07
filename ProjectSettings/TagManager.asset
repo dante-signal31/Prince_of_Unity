@@ -9,10 +9,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Characters
+  - Player
   - Water
   - UI
-  - 
+  - Guards
   - 
   - 
   - 

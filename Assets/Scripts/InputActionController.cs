@@ -16,7 +16,7 @@ namespace Prince
         [Tooltip("Needed to convert actions into commands.")]
         [SerializeField] private InputController inputController;
         [Tooltip("Needed to give context. Some actions depends on sensors lectures to be converted to a command or another.")]
-        [SerializeField] private CharacterSensors sensors;
+        [SerializeField] private EnemySensors sensors;
 
         public void RunRight(InputAction.CallbackContext context)
         {
