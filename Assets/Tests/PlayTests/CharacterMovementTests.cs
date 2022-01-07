@@ -42,7 +42,7 @@ namespace Tests.PlayTests
         public IEnumerator PrinceAdvanceWithSwordTest()
         {
             // Setup test.
-            _enemy.SetActive(false);
+            _enemy.SetActive(true);
             _prince.SetActive(true);
             float expected_distance = 0.4161f;
             string commandFile = @"Assets\Tests\TestResources\advanceWithSword";
@@ -55,17 +55,17 @@ namespace Tests.PlayTests
             Vector2 endPosition = _prince.transform.position;
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
-            Assert.True(Math.Abs(error) < 0.01);
+            Assert.True(Math.Abs(error) < 0.02);
         }
         
         [UnityTest]
         public IEnumerator GuardAdvanceWithSwordTest()
         {
             // Setup test.
-            _prince.SetActive(false);
+            _prince.SetActive(true);
             _enemy.SetActive(true);
             float expected_distance = 0.4295f;
-            string commandFile = @"Assets\Tests\TestResources\advanceWithSword";
+            string commandFile = @"Assets\Tests\TestResources\advanceWithSwordGuard";
             Vector2 startPosition = _enemy.transform.position;
             InputController inputController = _enemy.GetComponent<InputController>();
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
@@ -75,7 +75,7 @@ namespace Tests.PlayTests
             Vector2 endPosition = _enemy.transform.position;
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
-            Assert.True(Math.Abs(error) < 0.01);
+            Assert.True(Math.Abs(error) < 0.02);
         }
     }
 }
