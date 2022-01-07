@@ -134,12 +134,10 @@ namespace Prince
                 if (((_isGuard) && (otherTag.Equals("Player"))) ||
                     ((!_isGuard) && (otherTag.Equals("Guard"))))
                 {
-                    Debug.Log($"(EnemySensor - {gameObject.transform.parent.transform.parent.name}) Detected {otherTag}");
                     return otherCollider.gameObject;
                 }
                 else
                 {
-                    Debug.Log($"(EnemySensor - {gameObject.transform.parent.transform.parent.name}) Am I guard? {_isGuard} and other is {otherTag}");
                     return null;
                 }
             }
