@@ -21,7 +21,13 @@ namespace Prince
             BlockSword,
             Retreat,
             HitBySword,
-            KilledBySword
+            KilledBySword,
+            Falling,
+            FallStart,
+            Dead,
+            CrouchFromStand,
+            Crouch,
+            StandFromCrouch
         }
         
         [SerializeField] private int life;
@@ -33,7 +39,19 @@ namespace Prince
         [SerializeField] private Animator stateMachine;
     
         [SerializeField] private bool lookingRightWards;
+
+        private bool _isFalling;
+        public bool IsFalling
+        {
+            get=> _isFalling;
+            set
+            {
+                _isFalling = value;
+                stateMachine.SetBool("isFalling", value);
+            }
+        }
         
+        // CurrentState is updated from StateUpdater components present in every machine state. 
         public States CurrentState { get; set;} 
     
         public int Life
