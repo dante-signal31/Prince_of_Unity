@@ -34,6 +34,8 @@ namespace Prince
             float speed = state switch
             {
                 CharacterStatus.States.AdvanceSword => characterMovementProfile.AdvanceWithSwordSpeed,
+                CharacterStatus.States.Retreat => characterMovementProfile.RetreatSpeed,
+                CharacterStatus.States.HitBySword => characterMovementProfile.HitBySwordSpeed,
                 _ => 0
             };
             return speed;
@@ -65,7 +67,7 @@ namespace Prince
         private void FixedUpdate()
         {
             UpdateCurrentSpeed();
-            if (_currentSpeed > 0.01f) UpdatePosition();
+            if (Math.Abs(_currentSpeed) > 0.01f) UpdatePosition();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Prince
     public class MovementProfile : ScriptableObject
     {
         public float AdvanceWithSwordSpeed;
-        
+        public float RetreatSpeed;
+        public float HitBySwordSpeed;
     }
 }

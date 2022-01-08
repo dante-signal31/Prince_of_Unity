@@ -59,6 +59,26 @@ namespace Tests.PlayTests
         }
         
         [UnityTest]
+        public IEnumerator PrinceRetreatWithSwordTest()
+        {
+            // Setup test.
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            float expected_distance = 0.369f;
+            string commandFile = @"Assets\Tests\TestResources\retreatWithSword";
+            Vector2 startPosition = _prince.transform.position;
+            InputController inputController = _prince.GetComponent<InputController>();
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            Vector2 endPosition = _prince.transform.position;
+            float advancedDistance = Vector2.Distance(startPosition, endPosition);
+            float error = advancedDistance - expected_distance;
+            Assert.True(Math.Abs(error) < 0.02);
+        }
+        
+        [UnityTest]
         public IEnumerator GuardAdvanceWithSwordTest()
         {
             // Setup test.
