@@ -232,6 +232,14 @@ PrefabInstance:
       propertyPath: fightingModeXOffset
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: centerFightingModeXOffset
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: forwardFightingModeXOffset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5934378511509603117, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 6

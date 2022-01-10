@@ -28,7 +28,8 @@ namespace Prince
             CrouchFromStand,
             Crouch,
             StandFromCrouch,
-            TurnBackWithSword
+            TurnBackWithSword,
+            Landing
         }
         
         [SerializeField] private int life;

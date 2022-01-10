@@ -38,7 +38,7 @@ namespace Prince
                 CharacterStatus.States.HitBySword => characterMovementProfile.HitBySwordSpeed,
                 _ => 0
             };
-            return speed;
+            return characterStatus.LookingRightWards? speed: speed * -1;
         }
 
         /// <summary>

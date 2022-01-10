@@ -15,7 +15,7 @@ namespace Prince
         [Tooltip("Needed to modify sprites depending on conditions.")]
         [SerializeField] private Transform character;
 
-        private bool _currentFacingIsRightWards = true;
+        private bool _currentFacingIsRightWards;
 
         private void FlipCharacter(bool rightWards)
         {
