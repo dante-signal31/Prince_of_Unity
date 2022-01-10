@@ -132,9 +132,9 @@ public class GroundSensors : MonoBehaviour
     
     private void FixedUpdate()
     {
-        _forwardGround = DetectForward();
-        _rearGround = DetectRear();
-        _centerGround = DetectCenter();
+        ForwardGround = DetectForward();
+        RearGround = DetectRear();
+        CenterGround = DetectCenter();
         UpdateSensorsPosition();
     }
 
