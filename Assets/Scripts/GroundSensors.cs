@@ -1,26 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Prince;
-using Unity.Collections.LowLevel.Unsafe;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 
 /// <summary>
 /// Component to manage character sensors to detect nearby ground.
 /// </summary>
 public class GroundSensors : MonoBehaviour
 {
+    [Header("WIRING:")]
     [Tooltip("Needed to set isFalling flag when ground is not detected any longer below feet.")]
     [SerializeField] private CharacterStatus characterStatus;
-
     [SerializeField] private Transform forwardSensorStart;
     [SerializeField] private Transform forwardSensorEnd;
     [SerializeField] private Transform rearSensorStart;
     [SerializeField] private Transform rearSensorEnd;
     [SerializeField] private Transform centerSensorStart;
     [SerializeField] private Transform centerSensorEnd;
+    [Header("CONFIGURATION:")]
+    [Tooltip("How much to advance forward and center sensor when in fighting mode.")]
+    [SerializeField] private float forwardFightingModeXOffset;
+    [Tooltip("How much to advance forward and center sensor when in fighting mode.")]
+    [SerializeField] private float centerFightingModeXOffset;
 
+    private bool _fightingMode = false;
+    
     private int _architectureLayerMask;
     
     private GameObject _forwardGround;
@@ -56,6 +59,19 @@ public class GroundSensors : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Is there ground ahead of us?
+    /// </summary>
+    public bool GroundAhead => ForwardGround != null;
+    /// <summary>
+    /// Is there ground below our feet?
+    /// </summary>
+    public bool GroundBelow => CenterGround != null;
+    /// <summary>
+    /// Is there ground behind us?
+    /// </summary>
+    public bool GroundBehind => RearGround != null;
     
     enum SensorType
     {
@@ -119,6 +135,50 @@ public class GroundSensors : MonoBehaviour
         _forwardGround = DetectForward();
         _rearGround = DetectRear();
         _centerGround = DetectCenter();
+        UpdateSensorsPosition();
+    }
+
+    /// <summary>
+    /// Fighting collider is bigger so forward and center sensors need to be advanced when in fighting mode.
+    /// On the other hand they need to be reverted to its previous position when in normal mode.
+    /// </summary>
+    private void UpdateSensorsPosition()
+    {
+        if (characterStatus.CurrentState == CharacterStatus.States.Unsheathe)
+        {
+            if (!_fightingMode) SetFightingModeSensors();
+            _fightingMode = true;
+        }
+
+        if (characterStatus.CurrentState == CharacterStatus.States.Sheathe)
+        {
+            if (_fightingMode) SetNormalModeSensors();
+            _fightingMode = false;
+        }
+    }
+
+    private void SetFightingModeSensors()
+    {
+        Vector3 currentPosition = forwardSensorStart.position;
+        forwardSensorStart.position = new Vector3(currentPosition.x + forwardFightingModeXOffset,
+            currentPosition.y,
+            currentPosition.z);
+        currentPosition = centerSensorStart.position;
+        centerSensorStart.position = new Vector3(currentPosition.x + centerFightingModeXOffset,
+            currentPosition.y,
+            currentPosition.z);
+    }
+    
+    private void SetNormalModeSensors()
+    {
+        Vector3 currentPosition = forwardSensorStart.position;
+        forwardSensorStart.position = new Vector3(currentPosition.x - forwardFightingModeXOffset,
+            currentPosition.y,
+            currentPosition.z);
+        currentPosition = centerSensorStart.position;
+        centerSensorStart.position = new Vector3(currentPosition.x - centerFightingModeXOffset,
+            currentPosition.y,
+            currentPosition.z);
     }
     
     private void DrawSensor(SensorType sensorType)
@@ -128,7 +188,7 @@ public class GroundSensors : MonoBehaviour
         switch (sensorType)
         {
             case SensorType.Forward:
-                Handles.color = Color.blue;
+                Gizmos.color = Color.blue;
                 Gizmos.DrawCube(forwardSensorStart.position, gizmoSize);
                 Gizmos.DrawSphere(forwardSensorEnd.position, gizmoRadius);
                 break;
@@ -143,7 +203,7 @@ public class GroundSensors : MonoBehaviour
                 Gizmos.DrawSphere(centerSensorEnd.position, gizmoRadius);
                 break;
         }
-        Handles.color = sensorType switch
+        Gizmos.color = sensorType switch
         {
             SensorType.Forward => (ForwardGround) ? Color.green : Color.red,
             SensorType.Rear => (RearGround) ? Color.green : Color.red,
@@ -152,13 +212,13 @@ public class GroundSensors : MonoBehaviour
         switch (sensorType)
         {
             case SensorType.Forward:
-                Handles.DrawLine(forwardSensorStart.position, forwardSensorEnd.position);
+                Gizmos.DrawLine(forwardSensorStart.position, forwardSensorEnd.position);
                 break;
             case SensorType.Rear:
-                Handles.DrawLine(rearSensorStart.position, rearSensorEnd.position);
+                Gizmos.DrawLine(rearSensorStart.position, rearSensorEnd.position);
                 break;
             case SensorType.Center:
-                Handles.DrawLine(centerSensorStart.position, centerSensorEnd.position);
+                Gizmos.DrawLine(centerSensorStart.position, centerSensorEnd.position);
                 break;
         }
     }

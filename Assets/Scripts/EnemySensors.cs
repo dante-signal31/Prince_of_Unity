@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine;
 
 namespace Prince
 {
@@ -7,15 +8,15 @@ namespace Prince
     /// </summary>
     public class EnemySensors : MonoBehaviour
     {
+        [Header("WIRING:")]
         [Tooltip("Needed to set EnemySeen flags when any enemy is detected.")]
         [SerializeField] private Animator stateMachine;
         [SerializeField] private Transform forwardSensorStart;
         [SerializeField] private Transform forwardSensorEnd;
         [SerializeField] private Transform rearSensorStart;
         [SerializeField] private Transform rearSensorEnd;
-
-
-        public bool _isGuard;
+        
+        private bool _isGuard;
         private int _opponentMask;
 
         private GameObject _forwardEnemy;
@@ -129,12 +130,12 @@ namespace Prince
         {
             if (otherCollider != null)
             {
-                // Collider is at Physics subtransform so we must go upwards to get parent tag.
-                string otherTag = otherCollider.transform.parent.tag;
+                // Collider is at a subtransform of Physics subtransform so we must go upwards twice to get parent tag.
+                string otherTag = otherCollider.transform.parent.transform.parent.tag;
                 if (((_isGuard) && (otherTag.Equals("Player"))) ||
                     ((!_isGuard) && (otherTag.Equals("Guard"))))
                 {
-                    return otherCollider.gameObject;
+                    return otherCollider.transform.parent.transform.parent.gameObject;
                 }
                 else
                 {

@@ -27,7 +27,8 @@ namespace Prince
             Dead,
             CrouchFromStand,
             Crouch,
-            StandFromCrouch
+            StandFromCrouch,
+            TurnBackWithSword
         }
         
         [SerializeField] private int life;
