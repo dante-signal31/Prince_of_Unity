@@ -48,8 +48,11 @@ namespace Prince
             get=> _isFalling;
             set
             {
-                _isFalling = value;
-                stateMachine.SetBool("isFalling", value);
+                if (_isFalling != value)
+                {
+                    _isFalling = value;
+                    stateMachine.SetBool("isFalling", value);
+                }
             }
         }
         
