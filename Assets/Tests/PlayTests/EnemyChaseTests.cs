@@ -17,6 +17,8 @@ namespace Tests.PlayTests
         private GameObject _startPosition1;
         private GameObject _startPosition2;
         private GameObject _startPosition3;
+        private GameObject _startPosition4;
+        private GameObject _startPosition5;
 
         private string _currentScene = "TwoLevelPit";
 
@@ -48,6 +50,8 @@ namespace Tests.PlayTests
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
             if (_startPosition3 == null) _startPosition3 = GameObject.Find("StartPosition3");
+            if (_startPosition4 == null) _startPosition4 = GameObject.Find("StartPosition4");
+            if (_startPosition5 == null) _startPosition5 = GameObject.Find("StartPosition5");
             
             yield return new EnterPlayMode();
         }
@@ -76,9 +80,62 @@ namespace Tests.PlayTests
             yield return new WaitForSeconds(5);
             Vector2 endPosition = _enemy.transform.position;
             float fallenDistance = startPosition.y - endPosition.y;
+            // Assert enemy has not fallen through hole.
             Assert.IsTrue(fallenDistance < 0.10f);
-            float advancedDistance = endPosition.x - startPosition.y;
-            Assert.IsTrue(advancedDistance > 0.3f);
+            float advancedDistance = endPosition.x - startPosition.x;
+            // Assert enemy has advanced to the edge.
+            Assert.IsTrue(advancedDistance > 0.5f);
+            yield return null;
+        }
+        
+        /// <summary>
+        /// Test guard follows Prince if he sneaks through a hole.
+        /// </summary>
+        /// <returns></returns>
+        [UnityTest]
+        public IEnumerator GuardJumpToHoleWhenChasingTest()
+        {
+            // Setup test.
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
+            Vector2 startPosition = _enemy.transform.position;
+            // Let fall perform.
+            yield return new WaitForSeconds(2);
+            _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(5);
+            Vector2 endPosition = _enemy.transform.position;
+            float fallenDistance = startPosition.y - endPosition.y;
+            // Assert enemy has fallen through hole.
+            Assert.IsTrue(fallenDistance > 1.0f);
+            float separationDistance = _prince.transform.position.x - _enemy.transform.position.x;
+            // Assert enemy is at hitting range of Prince.
+            Assert.IsTrue(separationDistance < 0.5f);
+            yield return null;
+        }
+        
+        
+        /// <summary>
+        /// Test guard chases Prince when he is forward detected..
+        /// </summary>
+        /// <returns></returns>
+        [UnityTest]
+        public IEnumerator GuardChaseForwardTest()
+        {
+            // Setup test.
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            Vector2 startPosition = _enemy.transform.position;
+            // Let chase happen.
+            yield return new WaitForSeconds(4);
+            float separationDistance = _prince.transform.position.x - _enemy.transform.position.x;
+            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
+            float difference = Math.Abs(separationDistance - hittingRange);
+            // Assert enemy is at hitting range of Prince.
+            Assert.IsTrue(difference < 0.2f);
             yield return null;
         }
     }

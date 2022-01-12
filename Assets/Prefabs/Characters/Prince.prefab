@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1367216486012578328, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1786895955714426400, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
@@ -70,6 +74,26 @@ PrefabInstance:
     - target: {fileID: 1893067669987441160, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893067669987441160, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0581837
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4637571
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.5293124
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.008511722
       objectReference: {fileID: 0}
     - target: {fileID: 2267921315580476983, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
@@ -90,6 +114,10 @@ PrefabInstance:
     - target: {fileID: 2967687920717457963, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3403941795922266251, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.698
       objectReference: {fileID: 0}
     - target: {fileID: 3490298813252367199, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
@@ -227,6 +255,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: stateMachine
+      value: 
+      objectReference: {fileID: 3792878465186783984}
     - target: {fileID: 8774815387925293592, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Name
       value: Prince

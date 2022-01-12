@@ -53,6 +53,10 @@ namespace Tests.PlayTests
 
         // A UnityTest behaves like a coroutine in PlayMode
         // and allows you to yield null to skip a frame in EditMode
+        
+        /// <summary>
+        /// Test Prince advance with sword movement.
+        /// </summary>
         [UnityTest]
         public IEnumerator PrinceAdvanceWithSwordTest()
         {
@@ -71,9 +75,13 @@ namespace Tests.PlayTests
             Vector2 endPosition = _prince.transform.position;
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
+            // Assert Prince has advanced what we expected.
             Assert.True(Math.Abs(error) < 0.02);
         }
         
+        /// <summary>
+        /// Test Prince retreat with sword movement.
+        /// </summary>
         [UnityTest]
         public IEnumerator PrinceRetreatWithSwordTest()
         {
@@ -92,10 +100,14 @@ namespace Tests.PlayTests
             Vector2 endPosition = _prince.transform.position;
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
+            // Assert Prince has retreated the distance we expected.
             Assert.IsTrue(Math.Abs(error) < 0.02);
             yield return null;
         }
         
+        /// <summary>
+        /// Test guard advance with sword movement.
+        /// </summary>
         [UnityTest]
         public IEnumerator GuardAdvanceWithSwordTest()
         {
@@ -115,6 +127,7 @@ namespace Tests.PlayTests
             Vector2 endPosition = _enemy.transform.position;
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
+            // Assert Guard has advanced what we expected.
             Assert.True(Math.Abs(error) < 0.02);
         }
     }

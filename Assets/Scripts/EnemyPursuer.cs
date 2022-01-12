@@ -18,7 +18,7 @@ public class EnemyPursuer : MonoBehaviour
     [Tooltip("Needed to find enemies to pursue to.")]
     [SerializeField] private EnemySensors enemySensor;
     [Tooltip("Needed to get hitting range and use it as an approaching threshold.")]
-    [SerializeField] private GuardFightingProfile fightingProfile;
+    [SerializeField] private FightingSensors fightingSensors;
     [Tooltip("Needed to know where we are looking to.")]
     [SerializeField] private CharacterStatus characterStatus;
     [Tooltip("Needed to avoid holes when pursuing enemies in the same level.")]
@@ -176,7 +176,7 @@ public class EnemyPursuer : MonoBehaviour
                 if (horizontalDistance < 0 && absHorizontalDistance > _hittingRange && !HoleAtLeft()) return Command.CommandType.WalkLeftWithSword;
             }
             if (absHorizontalDistance > pursuingRange) Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Prince beyond pursuing range ({pursuingRange}). Proposing Stop.");
-            if (absHorizontalDistance <= pursuingRange) Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Prince already at hitting range ({_hittingRange}). Proposing Stop.");
+            if (absHorizontalDistance <= _hittingRange) Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Prince already at hitting range ({_hittingRange}). Proposing Stop.");
             if (HoleAtRight() || HoleAtLeft()) Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Hole blocking route. Right hole: {HoleAtRight()}. Left hole: {HoleAtLeft()} Proposing Stop.");
             return Command.CommandType.Stop;
         } 
@@ -198,7 +198,7 @@ public class EnemyPursuer : MonoBehaviour
 
     private void Awake()
     {
-        _hittingRange = fightingProfile.fightingProfile.hittingRange;
+        _hittingRange = fightingSensors.HittingRange;
     }
     
 #if UNITY_EDITOR

@@ -60,6 +60,10 @@ public class ColliderController : MonoBehaviour
                 usualCollider.enabled = false;
                 fightingCollider.enabled = true;
                 break;
+            case CharacterStatus.States.FallStart:
+                usualCollider.enabled = true;
+                fightingCollider.enabled = false;
+                break;
         }
     }
 }

@@ -21,7 +21,7 @@ public class GuardController : MonoBehaviour
 
     private FightingProfile _fightingProfile;
     private bool _engagingEnemy = false;
-    
+
     private void FixedUpdate()
     {
         if (enemyPursuer.PursuedEnemy != null)

@@ -5,10 +5,6 @@ namespace Prince
     [CreateAssetMenu(fileName = "FightingProfile", menuName = "ScriptableObjects/GuardFightingProfile", order = 3)]
     public class FightingProfile : ScriptableObject
     {
-        [Tooltip("How far this character reaches to hit. Keep it under 2 units to avoid confusions between floors.")]
-        [Range(0,2.5f)]
-        public float hittingRange;
-
         [Tooltip("Probability this guard is going to Prince straightly. The lesser probability the higher likeness this guard stays in his position.")]
         [Range(0,1)]
         public float boldness;

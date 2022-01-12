@@ -96,9 +96,12 @@ public class WallAppearance : MonoBehaviour, IBorder
     /// <param name="spriteRenderer"></param>
     private void SetEnabledSpriteRenderer(SpriteRenderer spriteRenderer, bool enabled)
     {
-        spriteRenderer.enabled = enabled;
-        EdgeCollider2D collider = spriteRenderer.transform.GetComponent<EdgeCollider2D>();
-        if (collider != null) collider.enabled = enabled;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = enabled;
+            EdgeCollider2D collider = spriteRenderer.transform.GetComponent<EdgeCollider2D>();
+            if (collider != null) collider.enabled = enabled;
+        }
     }
 
     private void Start()
