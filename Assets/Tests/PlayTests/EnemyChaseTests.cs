@@ -106,15 +106,16 @@ namespace Tests.PlayTests
             yield return new WaitForSeconds(2);
             // Let fall perform.
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(4);
             Vector2 endPosition = _enemy.transform.position;
             float fallenDistance = startPosition.y - endPosition.y;
             // Assert enemy has fallen through hole.
             Assert.IsTrue(fallenDistance > 1.0f);
             float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
             float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
+            float difference = Math.Abs(separationDistance - hittingRange);
             // Assert enemy is at hitting range of Prince.
-            Assert.IsTrue(separationDistance <= hittingRange);
+            Assert.IsTrue(difference < 0.2f);
             yield return null;
         }
         
