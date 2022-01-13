@@ -19,6 +19,7 @@ namespace Tests.PlayTests
         private GameObject _startPosition3;
         private GameObject _startPosition4;
         private GameObject _startPosition5;
+        private GameObject _startPosition6;
 
         private string _currentScene = "TwoLevelPit";
 
@@ -52,6 +53,7 @@ namespace Tests.PlayTests
             if (_startPosition3 == null) _startPosition3 = GameObject.Find("StartPosition3");
             if (_startPosition4 == null) _startPosition4 = GameObject.Find("StartPosition4");
             if (_startPosition5 == null) _startPosition5 = GameObject.Find("StartPosition5");
+            if (_startPosition6 == null) _startPosition6 = GameObject.Find("StartPosition6");
             
             yield return new EnterPlayMode();
         }
@@ -77,7 +79,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
             Vector2 startPosition = _enemy.transform.position;
             // Let movements perform.
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             Vector2 endPosition = _enemy.transform.position;
             float fallenDistance = startPosition.y - endPosition.y;
             // Assert enemy has not fallen through hole.
@@ -99,19 +101,20 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
-            _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
+            _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
             Vector2 startPosition = _enemy.transform.position;
-            // Let fall perform.
             yield return new WaitForSeconds(2);
+            // Let fall perform.
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(8);
             Vector2 endPosition = _enemy.transform.position;
             float fallenDistance = startPosition.y - endPosition.y;
             // Assert enemy has fallen through hole.
             Assert.IsTrue(fallenDistance > 1.0f);
-            float separationDistance = _prince.transform.position.x - _enemy.transform.position.x;
+            float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
+            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
             // Assert enemy is at hitting range of Prince.
-            Assert.IsTrue(separationDistance < 0.5f);
+            Assert.IsTrue(separationDistance <= hittingRange);
             yield return null;
         }
         
@@ -132,6 +135,29 @@ namespace Tests.PlayTests
             // Let chase happen.
             yield return new WaitForSeconds(4);
             float separationDistance = _prince.transform.position.x - _enemy.transform.position.x;
+            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
+            float difference = Math.Abs(separationDistance - hittingRange);
+            // Assert enemy is at hitting range of Prince.
+            Assert.IsTrue(difference < 0.2f);
+            yield return null;
+        }
+        
+        /// <summary>
+        /// Test guard chases Prince when he is forward detected..
+        /// </summary>
+        /// <returns></returns>
+        [UnityTest]
+        public IEnumerator GuardChaseBackwardTest()
+        {
+            // Setup test.
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
+            Vector2 startPosition = _enemy.transform.position;
+            // Let chase happen.
+            yield return new WaitForSeconds(6);
+            float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
             float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
             float difference = Math.Abs(separationDistance - hittingRange);
             // Assert enemy is at hitting range of Prince.

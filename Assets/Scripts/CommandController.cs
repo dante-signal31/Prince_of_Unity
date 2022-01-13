@@ -4,6 +4,35 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
+    /// By default animator triggers get enqueued if they are fired while in a state that cannot consume it. That
+    /// is not the behaviour I want. I'd like trigger to vanish after a frame independently they are consumed or not.
+    ///
+    /// To do that, a method extension over Animator is needed to implement an special trigger call.
+    ///
+    /// Solution got from: https://forum.unity.com/threads/mecanim-trigger-stays-down-queued.314742/
+    /// </summary>
+    public static class AnimatorExtension {
+ 
+        /// <summary>
+        /// Set trigger just for one frame and reset it afterwards.
+        /// </summary>
+        /// <param name="anim">Animator our state machine is running on.</param>
+        /// <param name="coroutineRunner">MonoBehavior that is calling this method.</param>
+        /// <param name="trigger">Name of trigger we want to call.</param>
+        public static void SetTriggerOneFrame(this Animator anim, string trigger, MonoBehaviour coroutineRunner) {
+            coroutineRunner.StartCoroutine(TriggerOneFrame(anim, trigger));
+        }
+ 
+        private static IEnumerator TriggerOneFrame(Animator anim, string trigger) {
+            anim.SetTrigger(trigger);
+            yield return null;
+            if (anim != null) {
+                anim.ResetTrigger(trigger);
+            }
+        }
+    }
+    
+    /// <summary>
     /// This controller takes commands and send them to movement and physics components.
     ///
     /// This way you can use user generated commands while playing and recorded commands while testing.
@@ -26,27 +55,27 @@ namespace Prince
             {
                 case Command.CommandType.Action:
                     Debug.Log($"(CommandController) Executed Action at {Time.time}");
-                    stateMachine.SetTrigger("ActionPressed");
+                    stateMachine.SetTriggerOneFrame("ActionPressed", this);
                     break;
                 case Command.CommandType.Block:
                     Debug.Log($"(CommandController) Executed Block at {Time.time}");
-                    stateMachine.SetTrigger("Block");
+                    stateMachine.SetTriggerOneFrame("Block", this);
                     break;
                 case Command.CommandType.Strike:
                     Debug.Log($"(CommandController) Execute strike at {Time.time}");
-                    stateMachine.SetTrigger("Strike");
+                    stateMachine.SetTriggerOneFrame("Strike", this);
                     break;
                 case Command.CommandType.WalkRightWithSword:
                     Debug.Log($"(CommandController) Execute  walk right with sword at {Time.time}");
-                    stateMachine.SetTrigger("WalkRightWithSword");
+                    stateMachine.SetTriggerOneFrame("WalkRightWithSword", this);
                     break;
                 case Command.CommandType.WalkLeftWithSword:
                     Debug.Log($"(CommandController) Execute  walk left with sword at {Time.time}");
-                    stateMachine.SetTrigger("WalkLeftWithSword");
+                    stateMachine.SetTriggerOneFrame("WalkLeftWithSword", this);
                     break;
                 case Command.CommandType.Sheathe:
                     Debug.Log($"(CommandController) Executed Sheathe at {Time.time}");
-                    stateMachine.SetTrigger("Sheathe");
+                    stateMachine.SetTriggerOneFrame("Sheathe", this);
                     break;
                 case Command.CommandType.Duck:
                     Debug.Log($"(CommandController) Executed Duck at {Time.time}");
@@ -62,19 +91,19 @@ namespace Prince
                     break;
                 case Command.CommandType.RunLeft:
                     Debug.Log($"(CommandController) Executed RunLeft at {Time.time}");
-                    stateMachine.SetTrigger("RunLeft");
+                    stateMachine.SetTriggerOneFrame("RunLeft", this);
                     break;
                 case Command.CommandType.RunRight:
                     Debug.Log($"(CommandController) Executed RunRight at {Time.time}");
-                    stateMachine.SetTrigger("RunRight");
+                    stateMachine.SetTriggerOneFrame("RunRight", this);
                     break;
                 case Command.CommandType.WalkLeft:
                     Debug.Log($"(CommandController) Executed WalkLeft at {Time.time}");
-                    stateMachine.SetTrigger("WalkLeft");
+                    stateMachine.SetTriggerOneFrame("WalkLeft", this);
                     break;
                 case Command.CommandType.WalkRight:
                     Debug.Log($"(CommandController) Executed WalkRight at {Time.time}");
-                    stateMachine.SetTrigger("WalkRight");
+                    stateMachine.SetTriggerOneFrame("WalkRight", this);
                     break;
             }
         }

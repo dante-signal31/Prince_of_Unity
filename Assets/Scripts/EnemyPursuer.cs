@@ -31,6 +31,8 @@ public class EnemyPursuer : MonoBehaviour
     
     private GameObject _pursuedEnemy;
     private float _hittingRange;
+    
+    private const float YTolerance = 0.30f;
 
     /// <summary>
     /// Enemy selected to be pursued.
@@ -158,13 +160,13 @@ public class EnemyPursuer : MonoBehaviour
         Vector2 currentPosition = this.transform.position;
         
         // Enemy cannot climb so stop.
-        if (pursuedPosition.y > currentPosition.y)
+        if (pursuedPosition.y > currentPosition.y && Math.Abs(pursuedPosition.y - currentPosition.y) > YTolerance)
         {
             Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Prince is higher. As cannot climb, proposing Stop.");
             return Command.CommandType.Stop;
         } 
         // Enemy at same level. Chase him if there's not any hole in the way.
-        else if (Math.Abs(pursuedPosition.y - currentPosition.y) < 0.10f)
+        else if (Math.Abs(pursuedPosition.y - currentPosition.y) < YTolerance)
         {
             Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Prince at the same level. Choosing best approach.");
             float horizontalDistance = pursuedPosition.x - currentPosition.x;
@@ -172,7 +174,11 @@ public class EnemyPursuer : MonoBehaviour
             if (absHorizontalDistance <= pursuingRange && absHorizontalDistance > _hittingRange)
             {
                 // This method is only for guards and they walk only with swords unsheathed.
-                if (horizontalDistance > 0 && absHorizontalDistance > _hittingRange && !HoleAtRight()) return Command.CommandType.WalkRightWithSword;
+                if (horizontalDistance > 0 && absHorizontalDistance > _hittingRange && !HoleAtRight())
+                {
+                    Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Proposing WalkRightWithSword with horizontalDistance: {horizontalDistance} and absHorizontalDistance: {absHorizontalDistance}");
+                    return Command.CommandType.WalkRightWithSword;
+                }
                 if (horizontalDistance < 0 && absHorizontalDistance > _hittingRange && !HoleAtLeft()) return Command.CommandType.WalkLeftWithSword;
             }
             if (absHorizontalDistance > pursuingRange) Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Prince beyond pursuing range ({pursuingRange}). Proposing Stop.");
@@ -182,18 +188,42 @@ public class EnemyPursuer : MonoBehaviour
         } 
         // Enemy below. We saw him (if not we would not be aware of him) but he has disappeared probably
         // because he has fallen through a hole in front of us. So we got that hole and jump through it too.
-        else if ((pursuedPosition.y < currentPosition.y) && DistanceToEnemy(pursuedEnemy) <= pursuingRange)
+        else if ((pursuedPosition.y < currentPosition.y && Math.Abs(pursuedPosition.y - currentPosition.y) > YTolerance) 
+                 && DistanceToEnemy(pursuedEnemy) <= pursuingRange 
+                 && characterStatus.CurrentState != CharacterStatus.States.Falling)
         {
             Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Prince in a lower level. Choosing best option to chase him.");
             return GetForwardCommand();
+        }
+        // We are falling while we chase him. Let update our next command to look in the correct direction as soon
+        // as we land on ground.
+        else if ((pursuedPosition.y < currentPosition.y) && DistanceToEnemy(pursuedEnemy) <= pursuingRange && characterStatus.CurrentState == CharacterStatus.States.Falling)
+        {
+            Debug.Log($"(EnemyPursuer - {gameObject.transform.parent.name}) Prince detected while we fall. Choosing best option to chase him.");
+            float horizontalDistance = pursuedPosition.x - currentPosition.x;
+            if (horizontalDistance > 0) return Command.CommandType.WalkRightWithSword;
+            if (horizontalDistance < 0) return Command.CommandType.WalkLeftWithSword;
         }
         return Command.CommandType.Stop;
     }
     
     private void FixedUpdate()
     {
-        PursuedEnemy = GetEnemyToPursue();
-        NextPursuingCommand = GetNextPursuingCommand(PursuedEnemy);
+        switch (characterStatus.CurrentState)
+        {
+            // In some states is useless wasting time calculating because we cannot move yet.
+            // case CharacterStatus.States.Falling:
+            // case CharacterStatus.States.FallStart:
+            // case CharacterStatus.States.Crouch:
+            // case CharacterStatus.States.CrouchFromStand:
+            // case CharacterStatus.States.Landing:
+            //     break;
+            // In every other case get the job done.
+            default:
+                PursuedEnemy = GetEnemyToPursue();
+                NextPursuingCommand = GetNextPursuingCommand(PursuedEnemy);
+                break;
+        }
     }
 
     private void Awake()

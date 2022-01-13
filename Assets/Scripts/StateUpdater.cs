@@ -19,7 +19,8 @@ namespace Prince
             int layerIndex)
         {
             characterStatus.CurrentState = stateToUpdate;
-            Debug.Log($"(StateUpdater) State changed to {stateToUpdate}");
+            Debug.Log($"(StateUpdater - {animator.transform.parent.gameObject.name}) State changed to {stateToUpdate}, " +
+                      $"while looking to rightwards:{characterStatus.LookingRightWards}");
         }
         
     }

@@ -132,9 +132,12 @@ namespace Prince
         /// </summary>
         private void LinkWithStateMachine()
         {
-            // TurnBackState set this.lookingRightWards when turn back animation has ended.
-            TurnBackState turnBackState = stateMachine.GetBehaviour<TurnBackState>();
-            turnBackState.characterStatus = this;
+            // TurnBackState's set this.lookingRightWards when turn back animation has ended.
+            TurnBackState[] turnBackStates = stateMachine.GetBehaviours<TurnBackState>();
+            foreach (TurnBackState state in turnBackStates)
+            {
+                state.characterStatus = this;
+            }
             // StateUpdaters set CurrentState when every state at Animator is started.
             StateUpdater[] stateUpdaters = stateMachine.GetBehaviours<StateUpdater>();
             foreach (StateUpdater state in stateUpdaters)

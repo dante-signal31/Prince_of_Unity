@@ -19,6 +19,14 @@ public class ColliderController : MonoBehaviour
 
     private CharacterStatus.States _currentState;
 
+    private enum ColliderTypes
+    {
+        Usual,
+        Fighting,
+    }
+
+    private ColliderTypes _enabledCollider;
+
     private void Awake()
     {
         ResetColliders();
@@ -53,17 +61,70 @@ public class ColliderController : MonoBehaviour
         switch (currentState)
         {
             case CharacterStatus.States.Idle:
-                usualCollider.enabled = true;
-                fightingCollider.enabled = false;
+                EnableUsualCollider();
                 break;
             case CharacterStatus.States.Unsheathe:
-                usualCollider.enabled = false;
-                fightingCollider.enabled = true;
+                EnableFightingCollider();
                 break;
             case CharacterStatus.States.FallStart:
-                usualCollider.enabled = true;
-                fightingCollider.enabled = false;
+                DisableColliders();
+                break;
+            case CharacterStatus.States.Landing:
+            case CharacterStatus.States.Crouch:
+            case CharacterStatus.States.CrouchFromStand:
+                EnableColliders();
                 break;
         }
     }
+
+    /// <summary>
+    /// Enable UsualCollider and disable FightingCollider.
+    /// </summary>
+    private void EnableUsualCollider()
+    {
+        usualCollider.enabled = true;
+        fightingCollider.enabled = false;
+        _enabledCollider = ColliderTypes.Usual;
+    }
+
+    /// <summary>
+    /// Enable FightingCollider and disable UsualCollider.
+    /// </summary>
+    private void EnableFightingCollider()
+    {
+        usualCollider.enabled = false;
+        fightingCollider.enabled = true;
+        _enabledCollider = ColliderTypes.Fighting;
+    }
+
+    /// <summary>
+    /// Disable both colliders.
+    ///
+    /// Useful for falling cleanly through holes.
+    /// </summary>
+    private void DisableColliders()
+    {
+        usualCollider.enabled = false;
+        fightingCollider.enabled = false;
+    }
+
+    /// <summary>
+    /// Enable colliders to its previous configuration.
+    ///
+    /// Useful to land cleanly when ground is detected again.
+    /// </summary>
+    private void EnableColliders()
+    {
+        switch (_enabledCollider)
+        {
+            case ColliderTypes.Usual:
+                EnableUsualCollider();
+                break;
+            case ColliderTypes.Fighting:
+                EnableFightingCollider();
+                break;
+        }
+    }
+    
+    
 }
