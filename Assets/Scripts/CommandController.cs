@@ -85,6 +85,7 @@ namespace Prince
                     break;
                 case Command.CommandType.Stop:
                     Debug.Log($"(CommandController) Executed Stop at {Time.time}");
+                    stateMachine.SetTriggerOneFrame("Stop", this);
                     break;
                 case Command.CommandType.StopAction:
                     Debug.Log($"(CommandController) Executed StopAction at {Time.time}");

@@ -19,8 +19,13 @@ public class GuardController : MonoBehaviour
     [Tooltip("Needed to perform fighting calculations.")]
     [SerializeField] private GuardFightingProfile guardFightingProfile;
 
+    [Header("CONFIGURATION:")] 
+    [Tooltip("Time (in seconds) the guard does not move if he fails a boldness test.")] [SerializeField]
+    private float stopTime;
+
     private FightingProfile _fightingProfile;
     private bool _engagingEnemy = false;
+    private bool _movementAllowed = true;
 
     private void FixedUpdate()
     {
@@ -34,7 +39,7 @@ public class GuardController : MonoBehaviour
             }
             
             // Chasing phase.
-            if (ChaseEnemy()) return;
+            if (_movementAllowed && ChaseEnemy()) return;
             
             // We can't approach nearer. May be Prince is unreachable or he is already at hitting range.
             if (enemyPursuer.PursuedEnemyHittable)
@@ -85,10 +90,23 @@ public class GuardController : MonoBehaviour
             }
             Debug.Log($"(GuardController - {gameObject.transform.parent.name}) Boldness check failed (threshold: {_fightingProfile.boldness}), so guard will stay where it is.");
             // If we are not bold enough to advance just stay where we are.
+            StartCoroutine(stayStoppedForAWhile());
             inputController.Stop();
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// It is not enough to do nothing in a cycle if boldness test fails because they are performed so many times a second
+    /// that only winning a fraction of times the character keeps moving in a apparently constant manner. To really
+    /// stop character movement a waiting time is needed so ChaseEnemy() is not called for that waiting time. 
+    /// </summary>
+    private IEnumerator stayStoppedForAWhile()
+    {
+        _movementAllowed = false;
+        yield return new WaitForSeconds(stopTime);
+        _movementAllowed = true;
     }
 
     private void Awake()

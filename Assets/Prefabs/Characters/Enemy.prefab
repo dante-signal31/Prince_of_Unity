@@ -65,6 +65,7 @@ MonoBehaviour:
   enemyPursuer: {fileID: 8734194657173531148}
   inputController: {fileID: 1466397081513267720}
   guardFightingProfile: {fileID: 6095111500176580641}
+  stopTime: 1
 --- !u!1001 &391606109120057923
 PrefabInstance:
   m_ObjectHideFlags: 0

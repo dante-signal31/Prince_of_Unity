@@ -73,6 +73,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardDoNotFallTest()
         {
             // Setup test.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
@@ -98,6 +99,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardJumpToHoleWhenChasingTest()
         {
             // Setup test.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
@@ -121,13 +123,14 @@ namespace Tests.PlayTests
         
         
         /// <summary>
-        /// Test guard chases Prince when he is forward detected..
+        /// Test guard chases Prince when he is forward detected.
         /// </summary>
         /// <returns></returns>
         [UnityTest]
-        public IEnumerator GuardChaseForwardTest()
+        public IEnumerator BoldestGuardChaseForwardTest()
         {
             // Setup test.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
@@ -144,6 +147,52 @@ namespace Tests.PlayTests
         }
         
         /// <summary>
+        /// Test coward guard stays idle when Prince is forward detected.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CowardGuardChaseForwardTest()
+        {
+            // Setup test.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            Vector2 startPosition = _enemy.transform.position;
+            // Let chase happen.
+            yield return new WaitForSeconds(4);
+            float advancedDistance = _enemy.transform.position.x - startPosition.x;
+            // Assert enemy is in the same place.
+            Assert.IsTrue(Math.Abs(advancedDistance) < 0.2f);
+            yield return null;
+        }
+        
+        /// <summary>
+        /// Test prudent guard advance, but not much, when Prince is forward detected.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrudentGuardChaseForwardTest()
+        {
+            // Setup test.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0.3f;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            Vector2 startPosition = _enemy.transform.position;
+            // Let chase happen.
+            yield return new WaitForSeconds(4);
+            float advancedDistance = _enemy.transform.position.x - startPosition.x;
+            float separationDistance = _prince.transform.position.x - _enemy.transform.position.x;
+            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
+            float difference = Math.Abs(separationDistance - hittingRange);
+            // Assert enemy has advanced something but is still out of hitting range.
+            Assert.IsTrue(Math.Abs(advancedDistance) > 0.2f);
+            Assert.IsTrue(separationDistance > hittingRange);
+            yield return null;
+        }
+        
+        /// <summary>
         /// Test guard chases Prince when he is forward detected..
         /// </summary>
         /// <returns></returns>
@@ -151,13 +200,14 @@ namespace Tests.PlayTests
         public IEnumerator GuardChaseBackwardTest()
         {
             // Setup test.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
             _prince.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
             Vector2 startPosition = _enemy.transform.position;
             // Let chase happen.
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(4);
             float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
             float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
             float difference = Math.Abs(separationDistance - hittingRange);
