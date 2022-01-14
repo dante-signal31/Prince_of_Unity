@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Prince
 {
@@ -10,17 +11,18 @@ namespace Prince
     {
         [SerializeField] private CharacterStatus.States stateToUpdate;
         
-        // I was not able to set this field through inspector nor from this class. So it is initialized
-        // from CharacterStatus LinkWithStateMachine().
-        [HideInInspector]
-        public CharacterStatus characterStatus;
-        
+        private CharacterStatus _characterStatus;
+
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo,
             int layerIndex)
         {
-            characterStatus.CurrentState = stateToUpdate;
+            // I have to initialize characterStatus here because is where I get animator to go up and
+            // get parent gameobject which has our target CharacterStatus.
+            if (_characterStatus == null)
+                _characterStatus = animator.transform.parent.gameObject.GetComponent<CharacterStatus>();
+            _characterStatus.CurrentState = stateToUpdate;
             Debug.Log($"(StateUpdater - {animator.transform.parent.gameObject.name}) State changed to {stateToUpdate}, " +
-                      $"while looking to rightwards:{characterStatus.LookingRightWards}");
+                      $"while looking to rightwards:{_characterStatus.LookingRightWards}");
         }
         
     }

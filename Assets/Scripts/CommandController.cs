@@ -54,56 +54,56 @@ namespace Prince
             switch (command.Action)
             {
                 case Command.CommandType.Action:
-                    Debug.Log($"(CommandController) Executed Action at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Action at {Time.time}");
                     stateMachine.SetTriggerOneFrame("ActionPressed", this);
                     break;
                 case Command.CommandType.Block:
-                    Debug.Log($"(CommandController) Executed Block at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Block at {Time.time}");
                     stateMachine.SetTriggerOneFrame("Block", this);
                     break;
                 case Command.CommandType.Strike:
-                    Debug.Log($"(CommandController) Execute strike at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Execute strike at {Time.time}");
                     stateMachine.SetTriggerOneFrame("Strike", this);
                     break;
                 case Command.CommandType.WalkRightWithSword:
-                    Debug.Log($"(CommandController) Execute  walk right with sword at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Execute  walk right with sword at {Time.time}");
                     stateMachine.SetTriggerOneFrame("WalkRightWithSword", this);
                     break;
                 case Command.CommandType.WalkLeftWithSword:
-                    Debug.Log($"(CommandController) Execute  walk left with sword at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Execute  walk left with sword at {Time.time}");
                     stateMachine.SetTriggerOneFrame("WalkLeftWithSword", this);
                     break;
                 case Command.CommandType.Sheathe:
-                    Debug.Log($"(CommandController) Executed Sheathe at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Sheathe at {Time.time}");
                     stateMachine.SetTriggerOneFrame("Sheathe", this);
                     break;
                 case Command.CommandType.Duck:
-                    Debug.Log($"(CommandController) Executed Duck at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Duck at {Time.time}");
                     break;
                 case Command.CommandType.Jump:
-                    Debug.Log($"(CommandController) Executed Jump at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Jump at {Time.time}");
                     break;
                 case Command.CommandType.Stop:
-                    Debug.Log($"(CommandController) Executed Stop at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Stop at {Time.time}");
                     stateMachine.SetTriggerOneFrame("Stop", this);
                     break;
                 case Command.CommandType.StopAction:
-                    Debug.Log($"(CommandController) Executed StopAction at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed StopAction at {Time.time}");
                     break;
                 case Command.CommandType.RunLeft:
-                    Debug.Log($"(CommandController) Executed RunLeft at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed RunLeft at {Time.time}");
                     stateMachine.SetTriggerOneFrame("RunLeft", this);
                     break;
                 case Command.CommandType.RunRight:
-                    Debug.Log($"(CommandController) Executed RunRight at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed RunRight at {Time.time}");
                     stateMachine.SetTriggerOneFrame("RunRight", this);
                     break;
                 case Command.CommandType.WalkLeft:
-                    Debug.Log($"(CommandController) Executed WalkLeft at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed WalkLeft at {Time.time}");
                     stateMachine.SetTriggerOneFrame("WalkLeft", this);
                     break;
                 case Command.CommandType.WalkRight:
-                    Debug.Log($"(CommandController) Executed WalkRight at {Time.time}");
+                    Debug.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed WalkRight at {Time.time}");
                     stateMachine.SetTriggerOneFrame("WalkRight", this);
                     break;
             }

@@ -139,11 +139,11 @@ namespace Prince
                 state.characterStatus = this;
             }
             // StateUpdaters set CurrentState when every state at Animator is started.
-            StateUpdater[] stateUpdaters = stateMachine.GetBehaviours<StateUpdater>();
-            foreach (StateUpdater state in stateUpdaters)
-            {
-                state.characterStatus = this;
-            }
+            // StateUpdater[] stateUpdaters = stateMachine.GetBehaviours<StateUpdater>();
+            // foreach (StateUpdater state in stateUpdaters)
+            // {
+            //     state.characterStatus = this;
+            // }
         }
         
         private void Awake()

@@ -25,12 +25,21 @@ namespace Tests.PlayTests
 
         private IEnumerator ReLoadScene(string scene)
         {
+            _ = UnLoadScene(scene);
+            return LoadScene(scene);
+        }
+
+        private IEnumerator UnLoadScene(string scene)
+        {
             if (SceneManager.GetSceneByName(scene).isLoaded)
             {
                 AsyncOperation asyncUnLoad = SceneManager.UnloadSceneAsync(scene, UnloadSceneOptions.None);
                 yield return new WaitUntil(() => asyncUnLoad.isDone);
             }
+        }
 
+        private IEnumerator LoadScene(string scene)
+        {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
             yield return new WaitUntil(() => asyncLoad.isDone);
         }
@@ -44,7 +53,7 @@ namespace Tests.PlayTests
             //     yield return new WaitUntil(() => asyncLoad.isDone);
             // }
 
-            yield return ReLoadScene("TwoLevelPit");
+            yield return ReLoadScene(_currentScene);
 
             if (_prince == null) _prince = GameObject.Find("Prince");
             if (_enemy == null) _enemy = GameObject.Find("Enemy");
@@ -56,6 +65,12 @@ namespace Tests.PlayTests
             if (_startPosition6 == null) _startPosition6 = GameObject.Find("StartPosition6");
             
             yield return new EnterPlayMode();
+        }
+
+        [UnityTearDown]
+        public IEnumerator TearDown()
+        {
+            yield return UnLoadScene(_currentScene);
         }
 
         // [NUnit.Framework.Test]
