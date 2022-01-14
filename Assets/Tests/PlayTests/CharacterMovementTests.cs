@@ -16,37 +16,10 @@ namespace Tests.PlayTests
 
         private string _currentScene = "ThePit";
 
-        private IEnumerator ReLoadScene(string scene)
-        {
-            _ = UnLoadScene(scene);
-            yield return LoadScene(scene);
-        }
-
-        private IEnumerator UnLoadScene(string scene)
-        {
-            if (SceneManager.GetSceneByName(scene).isLoaded)
-            {
-                AsyncOperation asyncUnLoad = SceneManager.UnloadSceneAsync(scene, UnloadSceneOptions.None);
-                yield return new WaitUntil(() => asyncUnLoad.isDone);
-            }
-        }
-
-        private IEnumerator LoadScene(string scene)
-        {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-            yield return new WaitUntil(() => asyncLoad.isDone);
-        }
-        
         [UnitySetUp]
         public IEnumerator Setup()
         {
-            // if (!SceneManager.GetSceneByName("ThePit").isLoaded)
-            // {
-            //     AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("ThePit", LoadSceneMode.Additive);
-            //     yield return new WaitUntil(() => asyncLoad.isDone);
-            // }
-
-            yield return ReLoadScene(_currentScene);
+            yield return TestSceneManager.ReLoadScene(_currentScene);
             
             if (_prince == null) _prince = GameObject.Find("Prince");
             if (_enemy == null) _enemy = GameObject.Find("Enemy");
@@ -60,7 +33,7 @@ namespace Tests.PlayTests
         [UnityTearDown]
         public IEnumerator TearDown()
         {
-            yield return UnLoadScene(_currentScene);
+            yield return TestSceneManager.UnLoadScene(_currentScene);
         }
         
         // [NUnit.Framework.Test]
