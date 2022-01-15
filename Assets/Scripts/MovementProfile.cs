@@ -11,5 +11,6 @@ namespace Prince
         public float AdvanceWithSwordSpeed;
         public float RetreatSpeed;
         public float HitBySwordSpeed;
+        public float BlockSwordSpeed;
     }
 }

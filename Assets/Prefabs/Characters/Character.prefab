@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 88322598493374997}
   - component: {fileID: 7260485351124137714}
   - component: {fileID: 9005965534505083571}
+  - component: {fileID: 8326000155993945185}
   m_Layer: 0
   m_Name: Appearance
   m_TagString: Untagged
@@ -216,6 +217,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStatus: {fileID: 82222986682491871}
   character: {fileID: 5539811472104328280}
+--- !u!114 &8326000155993945185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759692437259027073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 832858cab185dbb4c8b8029489cb535f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightingInteractions: {fileID: 1391425223428354020}
 --- !u!1 &4124597107352935379
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1245777922232396092}
+  - component: {fileID: 1391425223428354020}
   m_Layer: 0
   m_Name: Fighting
   m_TagString: Untagged
@@ -375,6 +390,18 @@ Transform:
   m_Father: {fileID: 5539811472104328280}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1391425223428354020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6340411678766655691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7132215fec42f8946a17ad007e653de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8774815387925293592
 GameObject:
   m_ObjectHideFlags: 0

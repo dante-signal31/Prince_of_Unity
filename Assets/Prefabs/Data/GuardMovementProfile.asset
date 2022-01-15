@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: GuardMovementProfile
   m_EditorClassIdentifier: 
   AdvanceWithSwordSpeed: 0.92
+  RetreatSpeed: 0
+  HitBySwordSpeed: -0.509
+  BlockSwordSpeed: -0.518
