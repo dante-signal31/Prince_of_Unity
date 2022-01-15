@@ -14,7 +14,7 @@ namespace Prince
         [SerializeField] private Rigidbody2D rigidBody2D;
 
         private CharacterStatus.States _currentState;
-        [SerializeField] private Vector2 _currentForwardVector;
+        private Vector2 _currentForwardVector;
         private float _currentSpeed;
 
         private void Awake()
