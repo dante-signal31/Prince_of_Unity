@@ -18,7 +18,7 @@ namespace Prince
             Sheathe,
             AdvanceSword,
             AttackWithSword,
-            BlockSword,
+            BlockSword, // I block an attack from my enemy.
             Retreat,
             HitBySword,
             KilledBySword,
@@ -29,7 +29,10 @@ namespace Prince
             Crouch,
             StandFromCrouch,
             TurnBackWithSword,
-            Landing
+            Landing,
+            BlockedSword, // My attack was blocked by my enemy.
+            CounterBlockSword, // My attack was blocked but I immediately block the attack from my enemy.
+            CounterAttackWithSword, // I block the attack from my enemy and I immediately attack him.
         }
         
         [SerializeField] private int life;
