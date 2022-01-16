@@ -17,7 +17,7 @@ namespace Prince
             IdleSword,
             Sheathe,
             AdvanceSword,
-            AttackWithSword,
+            AttackWithSword, // I attack to my enemy.
             BlockSword, // I block an attack from my enemy.
             Retreat,
             HitBySword,
