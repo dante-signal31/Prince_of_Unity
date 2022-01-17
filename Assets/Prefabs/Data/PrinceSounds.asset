@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba45d86ba334d728cf77ac2cfac0e92, type: 3}
+  m_Name: PrinceSounds
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: blocked_sword
+    audioClip: {fileID: 8300000, guid: 0face17e12095fa43b5cbd3a89039230, type: 3}
+  - name: hit_by_sword
+    audioClip: {fileID: 8300000, guid: 7ecc0d9e3b79f88479ca13fe9db9b1ae, type: 3}
+  - name: missed_attack
+    audioClip: {fileID: 8300000, guid: 8794d349e38fb5141a67f86167b50792, type: 3}
+  - name: step
+    audioClip: {fileID: 8300000, guid: 91a32868a0be44e4a8f99eb28f685ee9, type: 3}
+  - name: victory
+    audioClip: {fileID: 8300000, guid: 313948af7de1f07428dfd1e0fd3a1e70, type: 3}
+  - name: unsheathe
+    audioClip: {fileID: 8300000, guid: 2c97d2b97cdf9b84d9d90a4b1e99fcd1, type: 3}
