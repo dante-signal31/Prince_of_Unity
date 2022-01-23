@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Prince;
 using UnityEngine;
 
-// TODO: This script should go in its own component.
 /// <summary>
 /// Component to switch character collider depending of its states.
 /// </summary>
