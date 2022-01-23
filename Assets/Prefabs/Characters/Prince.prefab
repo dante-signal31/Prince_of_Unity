@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3750459901707334060, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3797249012726017869, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -166,6 +170,22 @@ PrefabInstance:
     - target: {fileID: 4894456924351498176, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167775872429732071, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6480797
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167775872429732071, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167775872429732071, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.2740399
+      objectReference: {fileID: 0}
+    - target: {fileID: 5310342850138452362, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5371008632184392332, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: audioClips
@@ -223,6 +243,10 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[5].audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 313948af7de1f07428dfd1e0fd3a1e70, type: 3}
+    - target: {fileID: 5525279203881072729, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5539811472104328280, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_RootOrder
       value: 0

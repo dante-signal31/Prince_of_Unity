@@ -130,12 +130,12 @@ namespace Prince
         {
             if (otherCollider != null)
             {
-                // Collider is at a subtransform of Physics subtransform so we must go upwards twice to get parent tag.
-                string otherTag = otherCollider.transform.parent.transform.parent.tag;
+                // Collider is at a subtransform of a component of Physics subtransform so we must go upwards three times to get parent tag.
+                string otherTag = otherCollider.transform.parent.transform.parent.transform.parent.tag;
                 if (((_isGuard) && (otherTag.Equals("Player"))) ||
                     ((!_isGuard) && (otherTag.Equals("Guard"))))
                 {
-                    return otherCollider.transform.parent.transform.parent.gameObject;
+                    return otherCollider.transform.parent.transform.parent.transform.parent.gameObject;
                 }
                 else
                 {

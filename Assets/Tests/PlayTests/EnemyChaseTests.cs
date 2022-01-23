@@ -36,7 +36,7 @@ namespace Tests.PlayTests
             if (_startPosition4 == null) _startPosition4 = GameObject.Find("StartPosition4");
             if (_startPosition5 == null) _startPosition5 = GameObject.Find("StartPosition5");
             if (_startPosition6 == null) _startPosition6 = GameObject.Find("StartPosition6");
-            
+
             yield return new EnterPlayMode();
         }
 
@@ -87,6 +87,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardJumpToHoleWhenChasingTest()
         {
             // Setup test.
+            LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -188,12 +189,13 @@ namespace Tests.PlayTests
         public IEnumerator GuardChaseBackwardTest()
         {
             // Setup test.
+            LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
             _prince.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
-            Vector2 startPosition = _enemy.transform.position;
+            // Vector2 startPosition = _enemy.transform.position;
             // Let chase happen.
             yield return new WaitForSeconds(4);
             float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
