@@ -162,7 +162,7 @@ namespace Tests.PlayTests
         public IEnumerator PrudentGuardChaseForwardTest()
         {
             // Setup test.
-            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0.3f;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0.4f;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
