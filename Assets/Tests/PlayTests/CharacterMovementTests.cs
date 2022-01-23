@@ -13,6 +13,9 @@ namespace Tests.PlayTests
     {
         private GameObject _prince;
         private GameObject _enemy;
+        
+        private GameObject _startPosition1;
+        private GameObject _startPosition2;
 
         private string _currentScene = "ThePit";
 
@@ -23,6 +26,8 @@ namespace Tests.PlayTests
             
             if (_prince == null) _prince = GameObject.Find("Prince");
             if (_enemy == null) _enemy = GameObject.Find("Enemy");
+            if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
+            if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
             
             _prince.SetActive(false);
             _enemy.SetActive(false);
@@ -55,7 +60,11 @@ namespace Tests.PlayTests
             // Setup test.
             _enemy.SetActive(true);
             _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            // I dont want enemy to move.
             _enemy.GetComponentInChildren<GuardController>().enabled = false;
+            // I don't want EnemyPursuer clutter logs.
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = false;
             float expected_distance = 0.4161f;
             string commandFile = @"Assets\Tests\TestResources\advanceWithSword";
             Vector2 startPosition = _prince.transform.position;
@@ -81,7 +90,11 @@ namespace Tests.PlayTests
             // Setup test.
             _enemy.SetActive(true);
             _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            // I dont want enemy to move.
             _enemy.GetComponentInChildren<GuardController>().enabled = false;
+            // I don't want EnemyPursuer clutter logs.
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = false;
             float expected_distance = 0.369f;
             string commandFile = @"Assets\Tests\TestResources\retreatWithSword";
             Vector2 startPosition = _prince.transform.position;
@@ -111,6 +124,7 @@ namespace Tests.PlayTests
             // Setup test.
             _prince.SetActive(true);
             _enemy.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
             float expected_distance = 0.4295f;
             string commandFile = @"Assets\Tests\TestResources\advanceWithSwordGuard";
             Vector2 startPosition = _enemy.transform.position;
