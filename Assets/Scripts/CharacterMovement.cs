@@ -9,10 +9,16 @@ namespace Prince
     /// </summary>
     public class CharacterMovement : MonoBehaviour
     {
+        [Header("WIRING:")]
+        [Tooltip("Needed to know where is this character looking to.")]
         [SerializeField] private CharacterStatus characterStatus;
-        [SerializeField] private MovementProfile characterMovementProfile;
+        [Tooltip("Needed to change this character position depending on its speed.")]
         [SerializeField] private Rigidbody2D rigidBody2D;
 
+        [Header("CONFIGURATION:")]
+        [Tooltip("Needed to know this character speed in every state.")]
+        [SerializeField] private MovementProfile characterMovementProfile;
+        
         private CharacterStatus.States _currentState;
         private Vector2 _currentForwardVector;
         private float _currentSpeed;

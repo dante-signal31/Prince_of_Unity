@@ -35,14 +35,18 @@ namespace Prince
             CounterAttackWithSword, // I block the attack from my enemy and I immediately attack him.
         }
         
-        [SerializeField] private int life;
-    
-        [SerializeField] private int maximumLife;
-    
-        [SerializeField] private bool hasSword;
-    
+        [Header("WIRING:")]
+        [Tooltip("Needed to set state machine parameters depending on status.")]
         [SerializeField] private Animator stateMachine;
-    
+        
+        [Header("CONFIGURATION:")]
+        [Tooltip("Current character life.")]
+        [SerializeField] private int life;
+        [Tooltip("Current character maximum life.")]
+        [SerializeField] private int maximumLife;
+        [Tooltip("This character has already a sword o should look for it first?")]
+        [SerializeField] private bool hasSword;
+        [Tooltip("Is this character looking rightwards?")]
         [SerializeField] private bool lookingRightWards;
 
         private bool _isFalling;

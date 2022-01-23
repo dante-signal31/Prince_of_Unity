@@ -39,6 +39,7 @@ namespace Prince
     /// </summary>
     public class CommandController : MonoBehaviour
     {
+        [Header("WIRING:")]
         [Tooltip("Needed to set state flags depending on commands.")]
         [SerializeField] private Animator stateMachine;
         

@@ -10,6 +10,7 @@ namespace Prince
     [ExecuteAlways]
     public class CharacterAppearance : MonoBehaviour
     {
+        [Header("WIRING:")]
         [Tooltip("Needed to get if we are looking Rightwards and other conditions.")]
         [SerializeField] private CharacterStatus characterStatus;
         [Tooltip("Needed to modify sprites depending on conditions.")]

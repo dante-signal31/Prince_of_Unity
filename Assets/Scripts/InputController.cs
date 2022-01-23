@@ -12,9 +12,11 @@ namespace Prince
     /// </summary>
     public class InputController : MonoBehaviour
     {
-        
+        [Header("WIRING:")]
+        [Tooltip("Needed to submit command to different components.")]
         [SerializeField] private CommandController commandController;
         
+        [Header("CONFIGURATION:")]
         [Header("Command recording. ONLY FOR TESTING")]
         [Tooltip("ONLY FOR TESTING. If set to Recording, every command sent to character will be recorded in given file.")]
         [SerializeField] private InputControllerStates recordCommandAction;
