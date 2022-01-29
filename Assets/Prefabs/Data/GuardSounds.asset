@@ -15,7 +15,7 @@ MonoBehaviour:
   sounds:
   - name: blocked_sword
     audioClip: {fileID: 8300000, guid: 5b74613ed7a34124280461617ea95af4, type: 3}
-  - name: hit_by_enemy
+  - name: hit_by_sword
     audioClip: {fileID: 8300000, guid: 66e56d2f9e3b92049952face258621b7, type: 3}
   - name: missed_attack
     audioClip: {fileID: 8300000, guid: 6733dd809f6dd5849aea0a4eef14e03d, type: 3}

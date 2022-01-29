@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Prince
 {
@@ -13,8 +14,17 @@ namespace Prince
         [SerializeField] private FightingSensors fightingSensors;
         [Tooltip("Needed to play sound depending on combat conditions.")]
         [SerializeField] private SoundController soundEmitter;
+        [Tooltip("Needed to show damage effects when hit.")]
+        [SerializeField] private DamageEffect damageEffects;
+        [Tooltip("Needed to update health when hit.")]
+        [SerializeField] private HealthController healthController;
+        
+        [Header("CONFIGURATION:")]
+        [Tooltip("This component is in a guard?")]
+        [SerializeField] private bool iAmGuard;
         
         private FightingInteractions _currentEnemyInteractions;
+        
         
         /// <summary>
         /// Get FightingInteractions component from enemy currently detected by fighting sensors.
@@ -36,18 +46,6 @@ namespace Prince
             _currentEnemyInteractions = GetCurrentEnemyInteractions();
         }
 
-        // // Start is called before the first frame update
-        // void Start()
-        // {
-        //
-        // }
-        //
-        // // Update is called once per frame
-        // void Update()
-        // {
-        //
-        // }
-        
         /// <summary>
         /// Signal enemy we are starting an attack to give him a chance to block it.
         /// </summary>
@@ -80,7 +78,20 @@ namespace Prince
         /// </summary>
         public void StrikeHit()
         {
+            if (_currentEnemyInteractions != null)
+            {
+                Debug.Log($"(FightingInteractions - {gameObject.transform.parent.name}) Hitting to {_currentEnemyInteractions.transform.parent.name} ");
+                _currentEnemyInteractions.StrikeReceived();
+            }
+        }
 
+        /// <summary>
+        /// Used over an enemy to signal him he has been hit.
+        /// </summary>
+        public void StrikeReceived()
+        {
+            damageEffects.ShowSwordHit(iAmGuard);
+            healthController.SwordHit();
         }
 
         /// <summary>

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AdvanceWithSwordSpeed: 1.18
   RetreatSpeed: -1.05
-  HitBySwordSpeed: -0.598
+  HitBySwordSpeed: -0.912
   BlockSwordSpeed: -0.738

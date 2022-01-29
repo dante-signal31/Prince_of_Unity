@@ -28,11 +28,23 @@ namespace Prince
         [Tooltip("Sounds this character plays at certain moments.")]
         [SerializeField] private SoundList audioClips;
 
+        /// <summary>
+        /// Play given sound.
+        ///
+        /// Sound is played asynchronously.
+        /// </summary>
+        /// <param name="soundName"></param>
         public void PlaySound(string soundName)
+        {
+            StartCoroutine(PlaySoundAsync(soundName));
+        }
+
+        private IEnumerator PlaySoundAsync(string soundName)
         {
             Debug.Log($"(SoundController - {transform.parent.transform.parent.gameObject.name}) Playing {soundName}");
             audioSource.clip = audioClips[soundName];
             audioSource.Play();
+            yield return null;
         }
 
         // // Start is called before the first frame update
