@@ -953,6 +953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FightingSensors
       objectReference: {fileID: 0}
+    - target: {fileID: 7750844535794803135, guid: 6adae4bd66714334d8e68459dfeaf354, type: 3}
+      propertyPath: m_TagString
+      value: Sensor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6adae4bd66714334d8e68459dfeaf354, type: 3}
 --- !u!61 &2179013083815870541 stripped

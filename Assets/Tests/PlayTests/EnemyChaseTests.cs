@@ -61,6 +61,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardDoNotFallTest()
         {
             // Setup test.
+            // LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -119,6 +120,7 @@ namespace Tests.PlayTests
         public IEnumerator BoldestGuardChaseForwardTest()
         {
             // Setup test.
+            // LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -142,6 +144,7 @@ namespace Tests.PlayTests
         public IEnumerator CowardGuardChaseForwardTest()
         {
             // Setup test.
+            // LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -163,6 +166,7 @@ namespace Tests.PlayTests
         public IEnumerator PrudentGuardChaseForwardTest()
         {
             // Setup test.
+            // LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0.4f;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -189,7 +193,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardChaseBackwardTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);

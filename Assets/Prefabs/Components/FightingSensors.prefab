@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1921060690161498085}
   m_Layer: 0
   m_Name: FightingSensors
-  m_TagString: Untagged
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,3 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68633848af154074b8c6bca4ed95ea6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateMachine: {fileID: 0}
+  hittingZone: {fileID: 0}
+  imGuard: 0

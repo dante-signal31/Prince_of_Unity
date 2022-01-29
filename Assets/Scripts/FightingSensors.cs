@@ -34,11 +34,15 @@ public class FightingSensors : MonoBehaviour
     /// <returns>True if he is our enemy, false if not.</returns>
     private bool IsOurEnemy(Collider2D other)
     {
+        // We want to detect character solid colliders, not sensors.
+        if (other.transform.CompareTag("Sensor")) return false;
+        
         string otherTag = GetRootGameObject(other).tag;
         if (imGuard && otherTag == "Player") return true;
         if (imGuard && otherTag == "Guard") return false;
         if (!imGuard && otherTag == "Guard") return true;
         if (!imGuard && otherTag == "Player") return false;
+        
         // We aren't going to get here.
         return false; 
     }
@@ -50,8 +54,8 @@ public class FightingSensors : MonoBehaviour
     /// <returns>Root GameObject this collider is attached to.</returns>
     private GameObject GetRootGameObject(Collider2D col)
     {
-        // Non trigger collider are attached at a subtransform of a component of Physics subtransform so be must go up three times.
-        return col.transform.parent.transform.parent.transform.parent.gameObject;
+        // Non trigger collider are attached at a subtransform of a component of Physics subtransform so be must go up.
+        return col.transform.root.gameObject;
     }
     
     private void OnTriggerEnter2D(Collider2D col)

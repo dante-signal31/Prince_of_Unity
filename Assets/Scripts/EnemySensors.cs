@@ -84,7 +84,8 @@ namespace Prince
         private void Awake()
         {
             // This component is at Sensors subtransform so we must go to its parent to get current tag. 
-            _isGuard = gameObject.transform.parent.transform.parent.CompareTag("Guard");
+            // _isGuard = gameObject.transform.parent.transform.parent.CompareTag("Guard");
+            _isGuard = transform.root.CompareTag("Guard");
             _opponentMask = _isGuard ? LayerMask.GetMask("Player") : LayerMask.GetMask("Guards");
             UpdateStateMachineFlags();
         }
@@ -116,7 +117,7 @@ namespace Prince
                 rayDirection, 
                 rearSensorDistance, 
                 _opponentMask);
-            return DetectOpponent(hit.collider);
+            return (hit.collider != null)? DetectOpponent(hit.collider): null;
         }
 
         /// <summary>
@@ -130,12 +131,12 @@ namespace Prince
         {
             if (otherCollider != null)
             {
-                // Collider is at a subtransform of a component of Physics subtransform so we must go upwards three times to get parent tag.
-                string otherTag = otherCollider.transform.parent.transform.parent.transform.parent.tag;
+                // Collider is at a subtransform of a component of Physics subtransform so we must go up to get parent tag.
+                string otherTag = otherCollider.transform.root.tag;
                 if (((_isGuard) && (otherTag.Equals("Player"))) ||
                     ((!_isGuard) && (otherTag.Equals("Guard"))))
                 {
-                    return otherCollider.transform.parent.transform.parent.transform.parent.gameObject;
+                    return otherCollider.transform.root.gameObject;
                 }
                 else
                 {
