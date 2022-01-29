@@ -84,7 +84,6 @@ namespace Prince
         private void Awake()
         {
             // This component is at Sensors subtransform so we must go to its parent to get current tag. 
-            // _isGuard = gameObject.transform.parent.transform.parent.CompareTag("Guard");
             _isGuard = transform.root.CompareTag("Guard");
             _opponentMask = _isGuard ? LayerMask.GetMask("Player") : LayerMask.GetMask("Guards");
             UpdateStateMachineFlags();
