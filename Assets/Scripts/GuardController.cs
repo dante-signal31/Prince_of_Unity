@@ -14,16 +14,18 @@ namespace Prince
     public class GuardController : MonoBehaviour
     {
         [Header("WIRING:")]
-        [Tooltip("Needed to get Prince to hitting range.")]
+        [Tooltip("Needed to approach to Prince.")]
         [SerializeField] private EnemyPursuer enemyPursuer;
         [Tooltip("Needed to perform actions commands.")]
         [SerializeField] private InputController inputController;
         [Tooltip("Needed to perform fighting calculations.")]
         [SerializeField] private GuardFightingProfile guardFightingProfile;
+        [Tooltip("Needed to check if Prince is at hitting range.")]
+        [SerializeField] private FightingSensors fightingSensor;
 
         [Header("CONFIGURATION:")] 
-        [Tooltip("Time (in seconds) the guard does not move if he fails a boldness test.")] [SerializeField]
-        private float stopTime;
+        [Tooltip("Time (in seconds) the guard does not move if he fails a boldness test.")] 
+        [SerializeField] private float stopTime;
 
         private FightingProfile _fightingProfile;
         private bool _engagingEnemy = false;
@@ -44,11 +46,16 @@ namespace Prince
                 if (_movementAllowed && ChaseEnemy()) return;
                 
                 // We can't approach nearer. May be Prince is unreachable or he is already at hitting range.
-                if (enemyPursuer.PursuedEnemyHittable)
+                if (fightingSensor.EnemyAtHittingRange)
                 {
                     // Fighting phase.
-                    Debug.Log($"(GuardController - {gameObject.transform.parent.name}) We got to hitting range.");
-                } 
+                    Debug.Log($"(GuardController - {transform.root.name}) We got to hitting range.");
+                    AttackEnemy();
+                }
+                else
+                {
+                    Debug.Log($"(GuardController - {transform.root.name}) Cannot fight because not in hitting range.");
+                }
             }
             else
             {
@@ -75,7 +82,7 @@ namespace Prince
             Debug.Log($"(GuardController - {gameObject.transform.parent.name}) EnemyPursuer proposed: {bestCommandToExecute}");
             if (bestCommandToExecute != Command.CommandType.Stop)
             {
-                // We still need to move to be at hitting range, but will we bold enough?
+                // We still need to move to be at hitting range, but will us be bold enough?
                 if (Random.value < _fightingProfile.boldness)
                 {
                     Debug.Log($"(GuardController - {gameObject.transform.parent.name}) Boldness check succeeded (threshold: {_fightingProfile.boldness}), performing proposed command.");
@@ -96,7 +103,28 @@ namespace Prince
                 inputController.Stop();
                 return true;
             }
+            Debug.Log($"(GuardController - {transform.root.name}) Stopping.");
+            inputController.Stop();
             return false;
+        }
+
+        private void AttackEnemy()
+        {
+            // We want to attack, but will we have attack skill enough?
+            if (Random.value < _fightingProfile.attack)
+            {
+                Debug.Log(
+                    $"(GuardController - {transform.root.name}) Attack check succeeded (threshold: {_fightingProfile.attack}), performing attack against enemy.");
+                inputController.Strike();
+            }
+            else
+            {
+                Debug.Log(
+                    $"(GuardController - {transform.root.name}) Attack check failed (threshold: {_fightingProfile.attack}), just standing where we are.");
+                // If we are not skilled enough to attack just stay where we are.
+                StartCoroutine(stayStoppedForAWhile());
+                inputController.Stop();
+            }
         }
 
         /// <summary>

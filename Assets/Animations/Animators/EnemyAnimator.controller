@@ -235,7 +235,7 @@ AnimatorStateTransition:
     m_ConditionEvent: lookingRightWards
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: enemyInHittingRange
+    m_ConditionEvent: MaximumApproachToEnemyReached
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1693192718310012036}
@@ -290,7 +290,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: enemyInHittingRange
+    m_ConditionEvent: MaximumApproachToEnemyReached
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4933692620865995454}
@@ -459,7 +459,7 @@ AnimatorStateTransition:
     m_ConditionEvent: lookingRightWards
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: enemyInHittingRange
+    m_ConditionEvent: MaximumApproachToEnemyReached
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1693192718310012036}
@@ -1061,6 +1061,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: enemyInHittingRange
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: MaximumApproachToEnemyReached
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

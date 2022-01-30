@@ -22,7 +22,7 @@ namespace Prince
         [Header("CONFIGURATION:")]
         [Tooltip("This component is in a guard?")]
         [SerializeField] private bool iAmGuard;
-        
+
         private FightingInteractions _currentEnemyInteractions;
         
         

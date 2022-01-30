@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using Prince;
 using UnityEngine;
 
+
+/// <summary>
+/// This component manages visual effects when a character is damaged.
+/// </summary>
 public class DamageEffect : MonoBehaviour
 {
     [Header("WIRING:")]

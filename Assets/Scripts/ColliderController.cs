@@ -18,6 +18,16 @@ public class ColliderController : MonoBehaviour
     [SerializeField] private Collider2D fightingCollider;
 
     private CharacterStatus.States _currentState;
+    private Collider2D CurrentCollider=> (usualCollider.enabled)? usualCollider: fightingCollider;
+    
+    /// <summary>
+    /// Total width of this character active collider.
+    ///
+    /// I don't use semi-width because this property is mainly used while fighting and then current
+    /// colliders are mostly forward offset from gameobject center position, so entire width is more
+    /// realistic.
+    /// </summary>
+    public float CurrentColliderWidth => CurrentCollider.bounds.size.x;
 
     private enum ColliderTypes
     {

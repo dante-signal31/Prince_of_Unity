@@ -77,10 +77,9 @@ namespace Tests.PlayTests
         {
             // Setup test.
             LogAssert.ignoreFailingMessages = true;
-            // // I dont want enemy to move or defend by itself.
-            // _enemy.GetComponentInChildren<GuardController>().enabled = false;
-            // // I don't want EnemyPursuer to clutter log.
-            // _enemy.GetComponentInChildren<EnemyPursuer>().enabled = false;
+            // Let enemy attack Prince..
+            _enemy.GetComponentInChildren<GuardController>().enabled = true;
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 1;
             _enemy.SetActive(true);
@@ -89,12 +88,11 @@ namespace Tests.PlayTests
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             yield return null;
             float expected_distance = 0.68f;
-            string commandFile = @"Assets\Tests\TestResources\oneSwordHit";
             Vector2 startPosition = _prince.transform.position;
-            InputController inputController = _enemy.GetComponent<InputController>();
+            InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
-            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
-            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Put Prince in fighting mode.
+            inputController.Action();
             // Let movements perform.
             yield return new WaitForSeconds(3);
             Vector2 endPosition = _prince.transform.position;
