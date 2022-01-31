@@ -4,10 +4,19 @@ using UnityEngine.InputSystem;
 namespace Prince
 {
     /// <summary>
-    /// This component translates Input events received from a Player Input to commands.
-    /// Those commands are sent to character InputController.
+    /// <p>This component translates Input events received from a Player Input to an InputController.
+    /// InputController translates those calls to Commands and send them to a CommandController to
+    /// their execution. That way, both Guards and Prince can use InputController while their input comes
+    /// from different sources, Prince from player input while guard input comes from an AI component.</p>
+    /// <br/>
+    /// <p>Action map switching is done from here.</p>
+    /// <br/>
+    /// <p>Being aware of that, Prince input execution follows this order:<br/>
+    /// InputActionController --> InputController --> CommandController</p>
+    /// <br/>
+    /// <p>While guard input execution follows this order:<br/>
+    /// GuardController --> InputController --> CommandController</p>
     ///
-    /// Action map switching is done from here.
     /// </summary>
     public class InputActionController : MonoBehaviour
     {

@@ -42,7 +42,13 @@ namespace Prince
         public void SwordHit()
         {
             Life--;
-            if (!characterStatus.IsDead)
+            if (characterStatus.IsDead)
+            {
+                Debug.Log($"(HealthController - {gameObject.transform.parent.name}) Dead by sword.");
+                stateMachine.SetBool("isDead", true);
+                stateMachine.SetTrigger("Hit");
+            } 
+            else
             {
                 Debug.Log($"(HealthController - {gameObject.transform.parent.name}) Hit by sword. New current life: {Life}");
                 stateMachine.SetTrigger("Hit");

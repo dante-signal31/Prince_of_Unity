@@ -4,12 +4,12 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// By default animator triggers get enqueued if they are fired while in a state that cannot consume it. That
-    /// is not the behaviour I want. I'd like trigger to vanish after a frame independently they are consumed or not.
+    /// <p>By default animator triggers get enqueued if they are fired while in a state that cannot consume it. That
+    /// is not the behaviour I want. I'd like trigger to vanish after a frame independently they are consumed or not.</p>
     ///
-    /// To do that, a method extension over Animator is needed to implement an special trigger call.
+    /// <p>To do that, a method extension over Animator is needed to implement an special trigger call.</p>
     ///
-    /// Solution got from: https://forum.unity.com/threads/mecanim-trigger-stays-down-queued.314742/
+    /// <p>Solution got from: https://forum.unity.com/threads/mecanim-trigger-stays-down-queued.314742/</p>
     /// </summary>
     public static class AnimatorExtension {
  
@@ -33,9 +33,15 @@ namespace Prince
     }
     
     /// <summary>
-    /// This controller takes commands and send them to movement and physics components.
-    ///
-    /// This way you can use user generated commands while playing and recorded commands while testing.
+    /// <p>This controller takes commands and send them to movement and physics components.</p>
+    /// <br/>
+    /// <p>This way you can use user generated commands while playing and recorded commands while testing.</p>
+    /// <br/>
+    /// <p>Being aware of that, Prince input execution follows this order:<br/>
+    /// InputActionController --> InputController --> CommandController</p>
+    /// <br/>
+    /// <p>While guard input execution follows this order:<br/>
+    /// GuardController --> InputController --> CommandController</p>
     /// </summary>
     public class CommandController : MonoBehaviour
     {

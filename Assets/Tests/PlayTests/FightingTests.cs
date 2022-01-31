@@ -102,5 +102,35 @@ namespace Tests.PlayTests
             Assert.True(Math.Abs(error) < 0.08);
             yield return null;
         }
+        
+        /// <summary>
+        /// Test prince dies after been repeatedly hit by a guard.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceDeadBySwordFightTest()
+        {
+            // Setup test.
+            LogAssert.ignoreFailingMessages = true;
+            // Let enemy attack Prince..
+            _enemy.GetComponentInChildren<GuardController>().enabled = true;
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 1;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            yield return null;
+            float expected_distance = 0.68f;
+            Vector2 startPosition = _prince.transform.position;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            // Put Prince in fighting mode.
+            inputController.Action();
+            // Let movements perform.
+            yield return new WaitForSeconds(7);
+            Assert.IsTrue(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.KilledBySword);
+            yield return null;
+        }
     }
 }

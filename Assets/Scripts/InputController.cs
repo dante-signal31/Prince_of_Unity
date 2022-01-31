@@ -3,12 +3,18 @@
 namespace Prince
 {
     /// <summary>
-    /// This component translates Input calls received from a InputActionController, or an AI controller,
+    /// <p>This component translates Input calls received from a InputActionController, or an AI controller,
     /// to commands. Those commands are sent to a CommandController which is intended to submit them to
-    /// destination components.
-    ///
-    /// This component is shared between main characters and enemy characters. Its main utility is that
-    /// it allows to record commands received by character so they can be replayed at tests.
+    /// destination components.</p>
+    /// <br/>
+    /// <p>This component is shared between main characters and enemy characters. Its main utility is that
+    /// it allows to record commands received by character so they can be replayed at tests.</p>
+    /// <br/>
+    /// <p>Being aware of that, Prince input execution follows this order:<br/>
+    /// InputActionController --> InputController --> CommandController</p>
+    /// <br/>
+    /// <p>While guard input execution follows this order:<br/>
+    /// GuardController --> InputController --> CommandController</p>
     /// </summary>
     public class InputController : MonoBehaviour
     {
