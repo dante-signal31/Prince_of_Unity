@@ -142,15 +142,8 @@ public class FightingSensors : MonoBehaviour
     /// </summary>
     private void CheckIfMaximumApproachReached()
     {
-        if (CurrentEnemy == null)
-        {
-            if (MaximumApproachToEnemyReached)
-            {
-                stateMachine.SetBool("MaximumApproachToEnemyReached", false);
-                MaximumApproachToEnemyReached = false;
-            }
-        }
-        else
+        // Enemy in hitting range and under MaximumApproachDistance.
+        if (CurrentEnemy != null)
         {
             if (DistanceToEnemy(CurrentEnemy) <= MaximumApproachDistance)
             {
@@ -159,8 +152,16 @@ public class FightingSensors : MonoBehaviour
                     stateMachine.SetBool("MaximumApproachToEnemyReached", true);
                     MaximumApproachToEnemyReached = true;
                 }
+                return;
             }
         }
+        // Enemy out of hitting range or beyond MaximumApproachDistance.
+        if (MaximumApproachToEnemyReached)
+        {
+            stateMachine.SetBool("MaximumApproachToEnemyReached", false);
+            MaximumApproachToEnemyReached = false;
+        }
+        
     }
     
 

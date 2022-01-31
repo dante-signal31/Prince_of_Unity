@@ -120,16 +120,42 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
-            yield return null;
-            float expected_distance = 0.68f;
-            Vector2 startPosition = _prince.transform.position;
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
             // Put Prince in fighting mode.
             inputController.Action();
             // Let movements perform.
             yield return new WaitForSeconds(7);
-            Assert.IsTrue(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.KilledBySword);
+            Assert.IsTrue(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
+            yield return null;
+        }
+        
+        /// <summary>
+        /// Test guard dies after been repeatedly hit by prince.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardDeadBySwordFightTest()
+        {
+            // Setup test.
+            LogAssert.ignoreFailingMessages = true;
+            // Let enemy attack Prince..
+            _enemy.GetComponentInChildren<GuardController>().enabled = true;
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            InputController inputController = _prince.GetComponent<InputController>();
+            string commandFile = @"Assets\Tests\TestResources\attackingGuard";
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(10);
+            Assert.IsTrue(_enemy.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
             yield return null;
         }
     }

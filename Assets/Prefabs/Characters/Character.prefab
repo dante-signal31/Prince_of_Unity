@@ -122,7 +122,7 @@ MonoBehaviour:
   characterStatus: {fileID: 82222986682491871}
   character: {fileID: 5539811472104328280}
   spriteRenderer: {fileID: 7260485351124137714}
-  foregroundOrderInLayer: 1
+  foregroundOrderInLayer: 2
 --- !u!114 &8326000155993945185
 MonoBehaviour:
   m_ObjectHideFlags: 0
