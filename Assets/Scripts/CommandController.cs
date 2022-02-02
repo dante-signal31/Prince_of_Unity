@@ -57,7 +57,6 @@ namespace Prince
         /// <param name="command">Command to add.</param>
         public IEnumerator ExecuteCommand(Command command)
         {
-            yield return new WaitForSeconds(command.Delay);
             switch (command.Action)
             {
                 case Command.CommandType.Action:
@@ -114,23 +113,21 @@ namespace Prince
                     stateMachine.SetTriggerOneFrame("WalkRight", this);
                     break;
             }
+            yield return null;
         }
 
-        // /// <summary>
-        // /// Add a command sequence to pending commands to execute queue.
-        // /// </summary>
-        // /// <param name="commandSequence">Command sequence to add.</param>
-        // public void PushCommandSequence(CommandSequence commandSequence)
-        // {
-        //     _commandQueue.PushCommandSequence(commandSequence);
-        // }
-
-        public void ReplayCommandSequence(CommandSequence commandSequence)
+        /// <summary>
+        /// Replay a sequence of stored commands over current command.
+        /// </summary>
+        /// <param name="commandSequence">Command sequence to execute.</param>
+        public IEnumerator ReplayCommandSequence(CommandSequence commandSequence)
         {
             _commandQueue.PushCommandSequence(commandSequence);
             while (_commandQueue.Count > 0)
             {
                 Command command = PopCommand();
+                Debug.Log($"(CommandController - {transform.root.name}) Replay recorded command {command.Action} with delay {command.Delay}");
+                yield return new WaitForSeconds(command.Delay);
                 StartCoroutine(ExecuteCommand(command));
             }
         }

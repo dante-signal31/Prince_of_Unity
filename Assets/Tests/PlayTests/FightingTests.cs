@@ -60,7 +60,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(5);
             Vector2 endPosition = _enemy.transform.position;
             float movedDistance = Vector2.Distance(startPosition, endPosition);
             float error = movedDistance - expected_distance;
@@ -154,7 +154,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(11);
             Assert.IsTrue(_enemy.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
             yield return null;
         }

@@ -16,6 +16,7 @@ namespace Tests.PlayTests
         
         private GameObject _startPosition1;
         private GameObject _startPosition2;
+        private GameObject _startPosition3;
 
         private string _currentScene = "ThePit";
 
@@ -28,6 +29,7 @@ namespace Tests.PlayTests
             if (_enemy == null) _enemy = GameObject.Find("Enemy");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
+            if (_startPosition3 == null) _startPosition3 = GameObject.Find("StartPosition3");
             
             _prince.SetActive(false);
             _enemy.SetActive(false);
@@ -61,6 +63,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
             // I dont want enemy to move.
             _enemy.GetComponentInChildren<GuardController>().enabled = false;
             // I don't want EnemyPursuer clutter logs.
@@ -103,7 +106,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4);
             Vector2 endPosition = _prince.transform.position;
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;

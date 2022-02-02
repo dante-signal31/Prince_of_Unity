@@ -22,6 +22,7 @@ namespace Prince
         /// <param name="command">Command to add.</param>
         public void PushCommand(Command command)
         {
+            Debug.Log($"(CommandSequence) Registering command: {command.Action}");
             CommandQueue.Enqueue(command);
         }
     

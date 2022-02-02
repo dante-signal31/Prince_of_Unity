@@ -52,7 +52,7 @@ namespace Prince
         private void ReplayRecordedCommands()
         {
             _recordedCommandSequence = CommandSequence.Load(recordedCommandsFile);
-            commandController.ReplayCommandSequence(_recordedCommandSequence);
+            StartCoroutine(commandController.ReplayCommandSequence(_recordedCommandSequence));
         }
 
         /// <summary>
