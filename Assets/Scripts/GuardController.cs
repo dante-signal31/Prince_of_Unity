@@ -26,10 +26,14 @@ namespace Prince
         [Header("CONFIGURATION:")] 
         [Tooltip("Time (in seconds) the guard does not move if he fails a boldness test.")] 
         [SerializeField] private float stopTime;
+        [Tooltip("Time (in seconds) the guard does not attack if he fails a boldness test.")] 
+        [SerializeField] private float stopAttackTime;
+        
 
         private FightingProfile _fightingProfile;
         private bool _engagingEnemy = false;
         private bool _movementAllowed = true;
+        private bool _attackAllowed = true;
 
         private void FixedUpdate()
         {
@@ -50,7 +54,7 @@ namespace Prince
                 {
                     // Fighting phase.
                     Debug.Log($"(GuardController - {transform.root.name}) We got to hitting range.");
-                    AttackEnemy();
+                    if (_attackAllowed) AttackEnemy();
                 }
                 else
                 {
@@ -99,7 +103,7 @@ namespace Prince
                 }
                 Debug.Log($"(GuardController - {gameObject.transform.parent.name}) Boldness check failed (threshold: {_fightingProfile.boldness}), so guard will stay where it is.");
                 // If we are not bold enough to advance just stay where we are.
-                StartCoroutine(stayStoppedForAWhile());
+                StartCoroutine(StayStoppedForAWhile());
                 inputController.Stop();
                 return true;
             }
@@ -122,7 +126,7 @@ namespace Prince
                 Debug.Log(
                     $"(GuardController - {transform.root.name}) Attack check failed (threshold: {_fightingProfile.attack}), just standing where we are.");
                 // If we are not skilled enough to attack just stay where we are.
-                StartCoroutine(stayStoppedForAWhile());
+                StartCoroutine(DontAttackForAWhile());
                 inputController.Stop();
             }
         }
@@ -132,11 +136,23 @@ namespace Prince
         /// that only winning a fraction of times the character keeps moving in a apparently constant manner. To really
         /// stop character movement a waiting time is needed so ChaseEnemy() is not called for that waiting time. 
         /// </summary>
-        private IEnumerator stayStoppedForAWhile()
+        private IEnumerator StayStoppedForAWhile()
         {
             _movementAllowed = false;
             yield return new WaitForSeconds(stopTime);
             _movementAllowed = true;
+        }
+        
+        /// <summary>
+        /// It is not enough to do nothing in a cycle if attack test fails because they are performed so many times a second
+        /// that only winning a fraction of times the character keeps attacking in a apparently constant manner. To really
+        /// stop character attacks a waiting time is needed so AttackEnemy() does nothing for that waiting time. 
+        /// </summary>
+        private IEnumerator DontAttackForAWhile()
+        {
+            _attackAllowed = false;
+            yield return new WaitForSeconds(stopAttackTime);
+            _attackAllowed = true;
         }
 
         private void Awake()

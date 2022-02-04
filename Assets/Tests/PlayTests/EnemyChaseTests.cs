@@ -167,7 +167,7 @@ namespace Tests.PlayTests
         {
             // Setup test.
             // LogAssert.ignoreFailingMessages = true;
-            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0.4f;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0.5f;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);

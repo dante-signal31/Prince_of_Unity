@@ -50,7 +50,9 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             // I dont want enemy to move or defend by itself.
-            _enemy.GetComponentInChildren<GuardController>().enabled = false;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
             yield return null;
             float expected_distance = 0.697f;
             string commandFile = @"Assets\Tests\TestResources\oneSwordHit";
@@ -127,6 +129,65 @@ namespace Tests.PlayTests
             // Let movements perform.
             yield return new WaitForSeconds(7);
             Assert.IsTrue(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
+            yield return null;
+        }
+        
+        /// <summary>
+        /// Test prince is not hit by a guard with an attack profile of 0.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceAliveByInactiveSwordFightTest()
+        {
+            // Setup test.
+            LogAssert.ignoreFailingMessages = true;
+            // Let enemy attack Prince..
+            _enemy.GetComponentInChildren<GuardController>().enabled = true;
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            int startLife = _prince.GetComponent<CharacterStatus>().Life;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            // Put Prince in fighting mode.
+            inputController.Action();
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            int endLife = _prince.GetComponent<CharacterStatus>().Life;
+            Assert.IsTrue(startLife == endLife);
+            yield return null;
+        }
+        
+        /// <summary>
+        /// Test prince is only wounded by a guard with an attack profile of 0,4.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceWoundedBySwordFightTest()
+        {
+            // Setup test.
+            LogAssert.ignoreFailingMessages = true;
+            // Let enemy attack Prince..
+            _enemy.GetComponentInChildren<GuardController>().enabled = true;
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0.3f;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            int startLife = _prince.GetComponent<CharacterStatus>().Life;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            // Put Prince in fighting mode.
+            inputController.Action();
+            // Let movements perform.
+            yield return new WaitForSeconds(7);
+            int endLife = _prince.GetComponent<CharacterStatus>().Life;
+            Assert.IsTrue(startLife > endLife);
+            Assert.IsTrue(endLife > 0);
             yield return null;
         }
         

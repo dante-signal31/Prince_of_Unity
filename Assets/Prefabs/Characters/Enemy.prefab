@@ -67,6 +67,7 @@ MonoBehaviour:
   guardFightingProfile: {fileID: 6095111500176580641}
   fightingSensor: {fileID: 8963627455871625809}
   stopTime: 1
+  stopAttackTime: 1
 --- !u!1001 &391606109120057923
 PrefabInstance:
   m_ObjectHideFlags: 0
