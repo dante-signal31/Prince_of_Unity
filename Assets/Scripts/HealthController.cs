@@ -41,7 +41,24 @@ namespace Prince
         /// </summary>
         public void SwordHit()
         {
-            Life--;
+            switch (characterStatus.CurrentState)
+            {
+                // If character has sword unsheathed then only loses a life.
+                case CharacterStatus.States.IdleSword:
+                case CharacterStatus.States.AdvanceSword:
+                case CharacterStatus.States.AttackWithSword:
+                case CharacterStatus.States.BlockedSword:
+                case CharacterStatus.States.CounterBlockSword:
+                case CharacterStatus.States.BlockSword:
+                case CharacterStatus.States.Retreat:
+                    Life--;
+                    break;
+                // In every other case character is directly killed.
+                default:
+                    Life = 0;
+                    break;
+            }
+            // Life--;
             if (characterStatus.IsDead)
             {
                 Debug.Log($"(HealthController - {gameObject.transform.parent.name}) Dead by sword.");

@@ -106,6 +106,31 @@ namespace Tests.PlayTests
         }
         
         /// <summary>
+        /// Test prince dies immediately if he is hit with sword sheathed.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceDeadIfDoesNotFightFightTest()
+        {
+            // Setup test.
+            LogAssert.ignoreFailingMessages = true;
+            // Let enemy attack Prince..
+            _enemy.GetComponentInChildren<GuardController>().enabled = true;
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 1;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            Assert.IsTrue(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
+            yield return null;
+        }
+        
+        /// <summary>
         /// Test prince dies after been repeatedly hit by a guard.
         /// </summary>
         [UnityTest]
