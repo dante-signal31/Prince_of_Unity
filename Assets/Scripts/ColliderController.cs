@@ -77,6 +77,7 @@ public class ColliderController : MonoBehaviour
                 EnableFightingCollider();
                 break;
             case CharacterStatus.States.FallStart:
+            case CharacterStatus.States.Dead: 
                 DisableColliders();
                 break;
             case CharacterStatus.States.Landing:
