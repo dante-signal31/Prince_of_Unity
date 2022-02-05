@@ -244,5 +244,43 @@ namespace Tests.PlayTests
             Assert.IsTrue(_enemy.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
             yield return null;
         }
+        
+        /// <summary>
+        /// Test guard moves backwards when blocks an strike.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardBlockStrikeTest()
+        {
+            // Setup test.
+            LogAssert.ignoreFailingMessages = true;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            // I dont want enemy to move, but I want him to be a perfect defender.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 1;
+            yield return null;
+            float expected_distance = 0.3885f;
+            string commandFile = @"Assets\Tests\TestResources\oneSwordHit";
+            Vector2 startPosition = _enemy.transform.position;
+            int startLife = _enemy.GetComponent<CharacterStatus>().Life;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            // Assert Guard has not lost any life point.
+            int endLife = _enemy.GetComponent<CharacterStatus>().Life;
+            Assert.True(startLife == endLife);
+            // Assert Guard has moved what we expected.
+            Vector2 endPosition = _enemy.transform.position;
+            float movedDistance = Vector2.Distance(startPosition, endPosition);
+            float error = movedDistance - expected_distance;
+            Assert.True(Math.Abs(error) < 0.08);
+            yield return null;
+        }
     }
 }

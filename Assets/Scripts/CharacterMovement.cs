@@ -41,6 +41,7 @@ namespace Prince
                 CharacterStatus.States.AdvanceSword => characterMovementProfile.AdvanceWithSwordSpeed,
                 CharacterStatus.States.Retreat => characterMovementProfile.RetreatSpeed,
                 CharacterStatus.States.HitBySword => characterMovementProfile.HitBySwordSpeed,
+                CharacterStatus.States.BlockSword => characterMovementProfile.BlockSwordSpeed,
                 _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;

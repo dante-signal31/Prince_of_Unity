@@ -58,7 +58,7 @@ namespace Prince
                     Life = 0;
                     break;
             }
-            // Life--;
+            
             if (characterStatus.IsDead)
             {
                 Debug.Log($"(HealthController - {transform.root.name}) Dead by sword.");

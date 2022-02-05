@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightingSensors: {fileID: 8721906775669078034}
+  stateMachine: {fileID: 88322598493374997}
   soundEmitter: {fileID: 7454332378449417252}
   damageEffects: {fileID: 6359709207466570223}
   healthController: {fileID: 2281631549126216618}
