@@ -34,7 +34,6 @@ namespace Prince
         [SerializeField] private float stopAttackTime;
         [Tooltip("Time (in seconds) the guard does not try to block again if he fails a defense test.")]
         [SerializeField] private float stopBlockTime;
-        
 
         private FightingProfile _fightingProfile;
         private bool _engagingEnemy = false;
@@ -54,7 +53,11 @@ namespace Prince
                 }
                 
                 // Must we block and incoming attack?
-                if (_blockAllowed && fightingInteractions.BlockingStrikePossible) BlockAttack();
+                if (_blockAllowed && fightingInteractions.BlockingStrikePossible)
+                {
+                    Debug.Log($"(GuardController - {transform.root.name}) I've being attacked. Checking if I can block attack.");
+                    BlockAttack();
+                }
                 
                 // Chasing phase.
                 if (_movementAllowed && ChaseEnemy()) return;
@@ -159,7 +162,12 @@ namespace Prince
         private void BlockAttack()
         {
             // If we are yet blocking just skip.
-            if (characterStatus.CurrentState == CharacterStatus.States.BlockSword) return;
+            if (characterStatus.CurrentState == CharacterStatus.States.BlockSword)
+            {
+                Debug.Log(
+                    $"(GuardController - {transform.root.name}) We're just blocking an incoming attack so we do nothing.");
+                return;
+            }
             
             // We need to block, but will we have defense skill enough?
             if (Random.value < _fightingProfile.defense)
