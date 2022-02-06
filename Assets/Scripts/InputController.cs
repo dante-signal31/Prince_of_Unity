@@ -28,6 +28,11 @@ namespace Prince
         [SerializeField] private InputControllerStates recordCommandAction;
         [Tooltip("Where recorded commands should be recorded.")]
         [SerializeField] private string recordedCommandsFile;
+        
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
+        
 
         private bool _isRecording;
         private float _startTime;
@@ -90,7 +95,7 @@ namespace Prince
         {
             if (_isRecording)
             {
-                Debug.Log("(InputController) Saving commands.");
+                this.Log("(InputController) Saving commands.", showLogs);
                 SaveRecordedCommands();
             }
         }

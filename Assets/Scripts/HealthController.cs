@@ -13,6 +13,10 @@ namespace Prince
         [SerializeField] private CharacterStatus characterStatus;
         [Tooltip("Needed to signal state machine state changes related to health conditions.")]
         [SerializeField] private Animator stateMachine;
+        
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
 
         /// <summary>
         /// Current character life.
@@ -61,13 +65,13 @@ namespace Prince
             
             if (characterStatus.IsDead)
             {
-                Debug.Log($"(HealthController - {transform.root.name}) Dead by sword.");
+                this.Log($"(HealthController - {transform.root.name}) Dead by sword.", showLogs);
                 stateMachine.SetBool("isDead", true);
                 stateMachine.SetTrigger("Hit");
             } 
             else
             {
-                Debug.Log($"(HealthController - {transform.root.name}) Hit by sword. New current life: {Life}");
+                this.Log($"(HealthController - {transform.root.name}) Hit by sword. New current life: {Life}", showLogs);
                 stateMachine.SetTrigger("Hit");
             }
         }

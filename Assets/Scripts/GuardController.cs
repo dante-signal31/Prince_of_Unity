@@ -35,6 +35,10 @@ namespace Prince
         [Tooltip("Time (in seconds) the guard does not try to block again if he fails a defense test.")]
         [SerializeField] private float stopBlockTime;
 
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
+        
         private FightingProfile _fightingProfile;
         private bool _engagingEnemy = false;
         private bool _movementAllowed = true;
@@ -55,7 +59,7 @@ namespace Prince
                 // Must we block and incoming attack?
                 if (_blockAllowed && fightingInteractions.BlockingStrikePossible)
                 {
-                    Debug.Log($"(GuardController - {transform.root.name}) I've being attacked. Checking if I can block attack.");
+                    this.Log($"(GuardController - {transform.root.name}) I've being attacked. Checking if I can block attack.", showLogs);
                     BlockAttack();
                 }
                 
@@ -65,13 +69,13 @@ namespace Prince
                 // We can't approach nearer. May be Prince is unreachable or he is already at hitting range.
                 if (fightingSensor.EnemyAtHittingRange)
                 {
-                    Debug.Log($"(GuardController - {transform.root.name}) We got to hitting range.");
+                    this.Log($"(GuardController - {transform.root.name}) We got to hitting range.", showLogs);
                     // Fighting phase.
                     if (_attackAllowed) AttackEnemy();
                 }
                 else
                 {
-                    Debug.Log($"(GuardController - {transform.root.name}) Cannot fight because not in hitting range.");
+                    this.Log($"(GuardController - {transform.root.name}) Cannot fight because not in hitting range.", showLogs);
                 }
             }
             else
@@ -96,13 +100,13 @@ namespace Prince
         private bool ChaseEnemy()
         {
             Command.CommandType bestCommandToExecute = enemyPursuer.NextPursuingCommand;
-            Debug.Log($"(GuardController - {transform.root.name}) EnemyPursuer proposed: {bestCommandToExecute}");
+            this.Log($"(GuardController - {transform.root.name}) EnemyPursuer proposed: {bestCommandToExecute}", showLogs);
             if (bestCommandToExecute != Command.CommandType.Stop)
             {
                 // We still need to move to be at hitting range, but will us be bold enough?
                 if (Random.value < _fightingProfile.boldness)
                 {
-                    Debug.Log($"(GuardController - {transform.root.name}) Boldness check succeeded (threshold: {_fightingProfile.boldness}), performing proposed command.");
+                    this.Log($"(GuardController - {transform.root.name}) Boldness check succeeded (threshold: {_fightingProfile.boldness}), performing proposed command.", showLogs);
                     switch (bestCommandToExecute)
                     {
                         case Command.CommandType.WalkRightWithSword:
@@ -114,14 +118,18 @@ namespace Prince
                     }
                     return true;
                 }
-                Debug.Log($"(GuardController - {transform.root.name}) Boldness check failed (threshold: {_fightingProfile.boldness}), so guard will stay where it is.");
+                this.Log($"(GuardController - {transform.root.name}) Boldness check failed (threshold: {_fightingProfile.boldness}), so guard will stay where it is.", showLogs);
                 // If we are not bold enough to advance just stay where we are.
                 StartCoroutine(StayStoppedForAWhile());
                 inputController.Stop();
                 return true;
             }
-            Debug.Log($"(GuardController - {transform.root.name}) Stopping.");
-            inputController.Stop();
+
+            if (characterStatus.CurrentState is not (CharacterStatus.States.Idle or CharacterStatus.States.IdleSword))
+            {
+                this.Log($"(GuardController - {transform.root.name}) Stopping.", showLogs);
+                inputController.Stop();
+            }
             return false;
         }
 
@@ -139,14 +147,14 @@ namespace Prince
             // We want to attack, but will we have attack skill enough?
             if (Random.value < _fightingProfile.attack)
             {
-                Debug.Log(
-                    $"(GuardController - {transform.root.name}) Attack check succeeded (threshold: {_fightingProfile.attack}), performing attack against enemy.");
+                this.Log(
+                    $"(GuardController - {transform.root.name}) Attack check succeeded (threshold: {_fightingProfile.attack}), performing attack against enemy.", showLogs);
                 inputController.Strike();
             }
             else
             {
-                Debug.Log(
-                    $"(GuardController - {transform.root.name}) Attack check failed (threshold: {_fightingProfile.attack}), just standing where we are.");
+                this.Log(
+                    $"(GuardController - {transform.root.name}) Attack check failed (threshold: {_fightingProfile.attack}), just standing where we are.", showLogs);
                 // If we are not skilled enough to attack just stay where we are.
                 StartCoroutine(DontAttackForAWhile());
                 inputController.Stop();
@@ -164,22 +172,22 @@ namespace Prince
             // If we are yet blocking just skip.
             if (characterStatus.CurrentState == CharacterStatus.States.BlockSword)
             {
-                Debug.Log(
-                    $"(GuardController - {transform.root.name}) We're just blocking an incoming attack so we do nothing.");
+                this.Log(
+                    $"(GuardController - {transform.root.name}) We're just blocking an incoming attack so we do nothing.", showLogs);
                 return;
             }
             
             // We need to block, but will we have defense skill enough?
             if (Random.value < _fightingProfile.defense)
             {
-                Debug.Log(
-                    $"(GuardController - {transform.root.name}) Defense check succeeded (threshold: {_fightingProfile.attack}), blocking attack from enemy.");
+                this.Log(
+                    $"(GuardController - {transform.root.name}) Defense check succeeded (threshold: {_fightingProfile.attack}), blocking attack from enemy.", showLogs);
                 inputController.Block();
             }
             else
             {
-                Debug.Log(
-                    $"(GuardController - {transform.root.name}) Defense check failed (threshold: {_fightingProfile.attack}), we are going to receive a hit.");
+                this.Log(
+                    $"(GuardController - {transform.root.name}) Defense check failed (threshold: {_fightingProfile.attack}), we are going to receive a hit.", showLogs);
                 // If we are not skilled enough to block just stay where we are.
                 StartCoroutine(DontBlockForAWhile());
                 inputController.Stop();

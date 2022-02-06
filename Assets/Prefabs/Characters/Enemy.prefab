@@ -50,6 +50,7 @@ MonoBehaviour:
   characterStatus: {fileID: 309445386847498652}
   groundSensors: {fileID: 6078154809529529353}
   pursuingRange: 5.3
+  showLogs: 1
 --- !u!114 &6358967624518504285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +72,7 @@ MonoBehaviour:
   stopTime: 1
   stopAttackTime: 1
   stopBlockTime: 1
+  showLogs: 1
 --- !u!1001 &391606109120057923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,6 +155,10 @@ PrefabInstance:
     - target: {fileID: 1029978269380189013, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240446814125932619, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: showLogs
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245777922232396092, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_RootOrder
@@ -537,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 8326000155993945185, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: soundController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7069622701028197991}
     - target: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: imGuard
       value: 1
@@ -650,6 +656,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f572a8810d2438791aeb9a4be2ee533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7069622701028197991 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7454332378449417252, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 391606109120057923}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d772b87ff42ca4bbb2f7954db8e6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8963627455871625809 stripped

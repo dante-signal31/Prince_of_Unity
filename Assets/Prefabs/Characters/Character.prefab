@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 88322598493374997}
+  showLogs: 1
 --- !u!1 &4208924519771227386
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
   damageEffects: {fileID: 6359709207466570223}
   healthController: {fileID: 2281631549126216618}
   iAmGuard: 0
+  showLogs: 1
 --- !u!114 &2281631549126216618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStatus: {fileID: 82222986682491871}
   stateMachine: {fileID: 88322598493374997}
+  showLogs: 1
 --- !u!1 &7528680167608715500
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +420,7 @@ MonoBehaviour:
   commandController: {fileID: 5250694692991532468}
   recordCommandAction: 0
   recordedCommandsFile: 
+  showLogs: 0
 --- !u!114 &82222986682491871
 MonoBehaviour:
   m_ObjectHideFlags: 0

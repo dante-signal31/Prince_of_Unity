@@ -23,11 +23,14 @@ public class EnemyPursuer : MonoBehaviour
     [SerializeField] private CharacterStatus characterStatus;
     [Tooltip("Needed to avoid holes when pursuing enemies in the same level.")]
     [SerializeField] private GroundSensors groundSensors;
-    // [Tooltip("Needed to get how much we are going to lett enemies enter in our hitting zone.")]
-    // [SerializeField] private FightingInteractions fightingInteractions;
+
     [Header("CONFIGURATION:")]
     [Tooltip("Once sighted, enemy will be pursued until going further than this range.")]
     [SerializeField] private float pursuingRange;
+    
+    [Header("DEBUG:")]
+    [Tooltip("Show this component logs on console window.")]
+    [SerializeField] private bool showLogs;
 
     /// <summary>
     /// Status of enemy we are pursuing.
@@ -152,20 +155,20 @@ public class EnemyPursuer : MonoBehaviour
     {
         if (pursuedEnemy == null) return Command.CommandType.Stop;
         
-        Debug.Log($"(EnemyPursuer - {transform.root.name}) EnemyPursuer chasing Prince.");
+        this.Log($"(EnemyPursuer - {transform.root.name}) EnemyPursuer chasing Prince.", showLogs);
         Vector2 pursuedPosition = pursuedEnemy.transform.position;
         Vector2 currentPosition = this.transform.position;
         
         // Enemy cannot climb so stop.
         if (pursuedPosition.y > currentPosition.y && Math.Abs(pursuedPosition.y - currentPosition.y) > YTolerance)
         {
-            Debug.Log($"(EnemyPursuer - {transform.root.name}) Prince is higher. As cannot climb, proposing Stop.");
+            this.Log($"(EnemyPursuer - {transform.root.name}) Prince is higher. As cannot climb, proposing Stop.", showLogs);
             return Command.CommandType.Stop;
         } 
         // Enemy at same level. Chase him if there's not any hole in the way.
         else if (Math.Abs(pursuedPosition.y - currentPosition.y) < YTolerance)
         {
-            Debug.Log($"(EnemyPursuer - {transform.root.name}) Prince at the same level. Choosing best approach.");
+            this.Log($"(EnemyPursuer - {transform.root.name}) Prince at the same level. Choosing best approach.", showLogs);
             float horizontalDistance = pursuedPosition.x - currentPosition.x;
             float absHorizontalDistance = Math.Abs(horizontalDistance);
             if (absHorizontalDistance <= pursuingRange && absHorizontalDistance > fightingSensors.MaximumApproachDistance)
@@ -173,19 +176,19 @@ public class EnemyPursuer : MonoBehaviour
                 // This scope is only for guards as they walk only with swords unsheathed.
                 if (horizontalDistance > 0 && absHorizontalDistance > fightingSensors.MaximumApproachDistance && !HoleAtRight())
                 {
-                    Debug.Log($"(EnemyPursuer - {transform.root.name}) Proposing WalkRightWithSword with horizontalDistance: {horizontalDistance}, absHorizontalDistance: {absHorizontalDistance} and MaximumApproachDistance: {fightingSensors.MaximumApproachDistance}");
+                    this.Log($"(EnemyPursuer - {transform.root.name}) Proposing WalkRightWithSword with horizontalDistance: {horizontalDistance}, absHorizontalDistance: {absHorizontalDistance} and MaximumApproachDistance: {fightingSensors.MaximumApproachDistance}", showLogs);
                     return Command.CommandType.WalkRightWithSword;
                 }
 
                 if (horizontalDistance < 0 && absHorizontalDistance > fightingSensors.MaximumApproachDistance && !HoleAtLeft())
                 {
-                    Debug.Log($"(EnemyPursuer - {transform.root.name}) Proposing WalkLeftWithSword with horizontalDistance: {horizontalDistance}, absHorizontalDistance: {absHorizontalDistance} and MaximumApproachDistance: {fightingSensors.MaximumApproachDistance}");
+                    this.Log($"(EnemyPursuer - {transform.root.name}) Proposing WalkLeftWithSword with horizontalDistance: {horizontalDistance}, absHorizontalDistance: {absHorizontalDistance} and MaximumApproachDistance: {fightingSensors.MaximumApproachDistance}", showLogs);
                     return Command.CommandType.WalkLeftWithSword;
                 }
             }
-            if (absHorizontalDistance > pursuingRange) Debug.Log($"(EnemyPursuer - {transform.root.name}) Prince beyond pursuing range ({pursuingRange}). Proposing Stop.");
-            if (absHorizontalDistance <= _hittingRange) Debug.Log($"(EnemyPursuer - {transform.root.name}) Prince already at hitting range ({_hittingRange}). Proposing Stop.");
-            if (HoleAtRight() || HoleAtLeft()) Debug.Log($"(EnemyPursuer - {transform.root.name}) Hole blocking route. Right hole: {HoleAtRight()}. Left hole: {HoleAtLeft()} Proposing Stop.");
+            if (absHorizontalDistance > pursuingRange) this.Log($"(EnemyPursuer - {transform.root.name}) Prince beyond pursuing range ({pursuingRange}). Proposing Stop.", showLogs);
+            if (absHorizontalDistance <= _hittingRange) this.Log($"(EnemyPursuer - {transform.root.name}) Prince already at hitting range ({_hittingRange}). Proposing Stop.", showLogs);
+            if (HoleAtRight() || HoleAtLeft()) this.Log($"(EnemyPursuer - {transform.root.name}) Hole blocking route. Right hole: {HoleAtRight()}. Left hole: {HoleAtLeft()} Proposing Stop.", showLogs);
             return Command.CommandType.Stop;
         } 
         // Enemy below. We saw him (if not we would not be aware of him) but he has disappeared probably
@@ -194,14 +197,14 @@ public class EnemyPursuer : MonoBehaviour
                  && DistanceToEnemy(pursuedEnemy) <= pursuingRange 
                  && characterStatus.CurrentState != CharacterStatus.States.Falling)
         {
-            Debug.Log($"(EnemyPursuer - {transform.root.name}) Prince in a lower level. Choosing best option to chase him.");
+            this.Log($"(EnemyPursuer - {transform.root.name}) Prince in a lower level. Choosing best option to chase him.", showLogs);
             return GetForwardCommand();
         }
         // We are falling while we chase him. Let update our next command to look in the correct direction as soon
         // as we land on ground.
         else if ((pursuedPosition.y < currentPosition.y) && DistanceToEnemy(pursuedEnemy) <= pursuingRange && characterStatus.CurrentState == CharacterStatus.States.Falling)
         {
-            Debug.Log($"(EnemyPursuer - {transform.root.name}) Prince detected while we fall. Choosing best option to chase him.");
+            this.Log($"(EnemyPursuer - {transform.root.name}) Prince detected while we fall. Choosing best option to chase him.", showLogs);
             float horizontalDistance = pursuedPosition.x - currentPosition.x;
             if (horizontalDistance > 0) return Command.CommandType.WalkRightWithSword;
             if (horizontalDistance < 0) return Command.CommandType.WalkLeftWithSword;
