@@ -76,7 +76,10 @@ namespace Prince
         /// </summary>
         private void UpdatePosition()
         {
-            rigidBody2D.velocity = _currentForwardVector * _currentSpeed;
+            // We only change speed on horizontal axis (X). Vertical axis (Y) is changed only by gravity forces
+            // so we must keep that axis to restore it when changing horizontal velocity.
+            Vector2 yComponent = new Vector2(0, rigidBody2D.velocity.y);
+            rigidBody2D.velocity = _currentForwardVector * _currentSpeed + yComponent;
             Debug.Log($"(CharacterMovement - {gameObject.name}) Moving with speed {_currentSpeed} and forward vector {_currentForwardVector}");
         }
 
