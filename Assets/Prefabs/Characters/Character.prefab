@@ -473,6 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStatus: {fileID: 82222986682491871}
   rigidBody2D: {fileID: 7284997314533658813}
+  fightingInteractions: {fileID: 1391425223428354020}
   characterMovementProfile: {fileID: 0}
 --- !u!1001 &143874079488135331
 PrefabInstance:

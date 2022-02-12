@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PurpleGuardFightingProfile
   m_EditorClassIdentifier: 
   boldness: 1
-  attack: 1
-  defense: 1
+  attack: 0.531
+  defense: 0.521

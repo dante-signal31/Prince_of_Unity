@@ -14,6 +14,8 @@ namespace Prince
         [SerializeField] private CharacterStatus characterStatus;
         [Tooltip("Needed to change this character position depending on its speed.")]
         [SerializeField] private Rigidbody2D rigidBody2D;
+        [Tooltip("Needed to know combat conditions that may change movements.")]
+        [SerializeField] private FightingInteractions fightingInteractions;
 
         [Header("CONFIGURATION:")]
         [Tooltip("Needed to know this character speed in every state.")]
@@ -41,7 +43,9 @@ namespace Prince
                 CharacterStatus.States.AdvanceSword => characterMovementProfile.AdvanceWithSwordSpeed,
                 CharacterStatus.States.Retreat => characterMovementProfile.RetreatSpeed,
                 CharacterStatus.States.HitBySword => characterMovementProfile.HitBySwordSpeed,
-                CharacterStatus.States.BlockSword => characterMovementProfile.BlockSwordSpeed,
+                // Character only retreats when blocks while he is receiving an attack. Otherwise he 
+                // performs a useless block but stays in his place.
+                CharacterStatus.States.BlockSword when fightingInteractions.BlockingStrikePossible => characterMovementProfile.BlockSwordSpeed,
                 _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;
