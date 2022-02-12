@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c7d3ea845f4a6e8cf02c8375b56964, type: 3}
   m_Name: GuardMovementProfile
   m_EditorClassIdentifier: 
-  AdvanceWithSwordSpeed: 0.92
+  AdvanceWithSwordSpeed: 0.84
   RetreatSpeed: 0
   HitBySwordSpeed: -0.93
   BlockSwordSpeed: -0.518

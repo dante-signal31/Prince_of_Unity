@@ -122,6 +122,7 @@ namespace Tests.PlayTests
             // Setup test.
             // LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
@@ -133,7 +134,7 @@ namespace Tests.PlayTests
             float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
             float difference = Math.Abs(separationDistance - hittingRange);
             // Assert enemy is at hitting range of Prince.
-            Assert.IsTrue(difference < 0.2f);
+            Assert.IsTrue(difference < 0.25f);
             yield return null;
         }
         

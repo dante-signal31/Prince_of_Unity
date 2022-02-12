@@ -76,9 +76,10 @@ namespace Prince
         /// </summary>
         private void UpdatePosition()
         {
-            Vector2 currentPosition = gameObject.transform.position;
-            Vector2 newPosition = currentPosition + _currentForwardVector * _currentSpeed * Time.fixedDeltaTime;
-            rigidBody2D.MovePosition(newPosition);
+            // Vector2 currentPosition = gameObject.transform.position;
+            // Vector2 newPosition = currentPosition + _currentForwardVector * _currentSpeed * Time.fixedDeltaTime;
+            // rigidBody2D.MovePosition(newPosition);
+            rigidBody2D.velocity = _currentForwardVector * _currentSpeed;
             Debug.Log($"(CharacterMovement - {gameObject.name}) Moving with speed {_currentSpeed} and forward vector {_currentForwardVector}");
         }
 

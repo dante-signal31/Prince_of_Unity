@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c7d3ea845f4a6e8cf02c8375b56964, type: 3}
   m_Name: PrinceMovementProfile
   m_EditorClassIdentifier: 
-  AdvanceWithSwordSpeed: 1.18
-  RetreatSpeed: -1.05
+  AdvanceWithSwordSpeed: 0.95
+  RetreatSpeed: -0.86
   HitBySwordSpeed: -0.912
   BlockSwordSpeed: -0.738
