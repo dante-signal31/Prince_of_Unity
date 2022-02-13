@@ -31,7 +31,7 @@ namespace Prince
         [Header("CONFIGURATION:")] 
         [Tooltip("Time (in seconds) the guard does not move if he fails a boldness test.")] 
         [SerializeField] private float stopTime;
-        [Tooltip("Time (in seconds) the guard does not attack if he fails a boldness test.")] 
+        [Tooltip("Time (in seconds) the guard does not attack if he fails an attack test or has been blocked.")] 
         [SerializeField] private float stopAttackTime;
         [Tooltip("Time (in seconds) the guard does not try to block again if he fails a defense test.")]
         [SerializeField] private float stopBlockTime;
@@ -45,9 +45,34 @@ namespace Prince
         private bool _movementAllowed = true;
         private bool _attackAllowed = true;
         private bool _blockAllowed = true;
+        
+        private CharacterStatus.States _currentState;
 
+        
+        /// <summary>
+        /// Check if we just entered to BlockedSword state.
+        /// </summary>
+        /// <returns> True if be have just entered. False if we're not in that state or if we are there but
+        /// we entered in a previous call.
+        /// </returns>
+        private bool OurAttackHasJustBeenBlocked()
+        {
+            if (_currentState != characterStatus.CurrentState)
+            {
+                _currentState = characterStatus.CurrentState;
+                if (characterStatus.CurrentState == CharacterStatus.States.BlockedSword)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
         private void FixedUpdate()
         {
+            
+            if (OurAttackHasJustBeenBlocked()) StartCoroutine(DontAttackForAWhile());
+            
             if (enemyPursuer.PursuedEnemy != null)
             {
                 if (!_engagingEnemy)
@@ -58,18 +83,28 @@ namespace Prince
                 }
                 
                 // Must we block and incoming attack?
+                if (_blockAllowed && fightingInteractions.BlockingStrikePossible &&
+                    characterStatus.CurrentState == CharacterStatus.States.BlockSword)
+                {
+                    // Enemy attack is being already blocked so do nothing until we leave block state.
+                    this.Log(
+                        $"(GuardController - {transform.root.name}) We're already blocking an incoming attack so we do nothing.", showLogs);
+                    return;
+                }
                 if (_blockAllowed && fightingInteractions.BlockingStrikePossible)
                 {
+                    // Attack has not been blocked yet so we perform defense check.
                     this.Log($"(GuardController - {transform.root.name}) I've being attacked. Checking if I can block attack.", showLogs);
                     BlockAttack();
                 } 
                 else if (fightingInteractions.BlockingStrikePossible)
                 {
+                    // If we get here then we are under attack but we failed defense check so we can only wait for the hit.
                     this.Log($"(GuardController - {transform.root.name}) I've being attacked, but I cannot block because I failed a defense test.", showLogs);
                 }
                 
                 // If we have blocked an enemy attack we have a chance to counter attack.
-                if (fightingInteractions.CounterAttackPossible && _attackAllowed)
+                if (fightingInteractions.CounterAttackPossible && _attackAllowed && fightingSensor.EnemyAtHittingRange)
                 {
                     this.Log($"(GuardController - {transform.root.name}) Trying to counter attack.", showLogs);
                     fightingInteractions.CounterAttackStarted();
@@ -203,13 +238,13 @@ namespace Prince
         /// </summary>
         private void BlockAttack()
         {
-            // If we are yet blocking just skip.
-            if (characterStatus.CurrentState == CharacterStatus.States.BlockSword)
-            {
-                this.Log(
-                    $"(GuardController - {transform.root.name}) We're just blocking an incoming attack so we do nothing.", showLogs);
-                return;
-            }
+            // // If we are yet blocking just skip.
+            // if (characterStatus.CurrentState == CharacterStatus.States.BlockSword)
+            // {
+            //     this.Log(
+            //         $"(GuardController - {transform.root.name}) We're already blocking an incoming attack so we do nothing.", showLogs);
+            //     return;
+            // }
             
             // We need to block, but will we have defense skill enough?
             if (Random.value < _fightingProfile.defense)
