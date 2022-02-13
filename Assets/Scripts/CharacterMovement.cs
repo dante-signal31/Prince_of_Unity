@@ -21,6 +21,10 @@ namespace Prince
         [Tooltip("Needed to know this character speed in every state.")]
         [SerializeField] private MovementProfile characterMovementProfile;
         
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
+        
         private CharacterStatus.States _currentState;
         private Vector2 _currentForwardVector;
         private float _currentSpeed;
@@ -84,7 +88,7 @@ namespace Prince
             // so we must keep that axis to restore it when changing horizontal velocity.
             Vector2 yComponent = new Vector2(0, rigidBody2D.velocity.y);
             rigidBody2D.velocity = _currentForwardVector * _currentSpeed + yComponent;
-            Debug.Log($"(CharacterMovement - {gameObject.name}) Moving with speed {_currentSpeed} and forward vector {_currentForwardVector}");
+            this.Log($"(CharacterMovement - {gameObject.name}) Moving with speed {_currentSpeed} and forward vector {_currentForwardVector}", showLogs);
         }
 
         private void FixedUpdate()
