@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Prince;
 using UnityEngine;
@@ -61,6 +62,19 @@ namespace Prince
                 {
                     this.Log($"(GuardController - {transform.root.name}) I've being attacked. Checking if I can block attack.", showLogs);
                     BlockAttack();
+                } 
+                else if (fightingInteractions.BlockingStrikePossible)
+                {
+                    this.Log($"(GuardController - {transform.root.name}) I've being attacked, but I cannot block because I failed a defense test.", showLogs);
+                }
+                
+                // If we have blocked an enemy attack we have a chance to counter attack.
+                if (fightingInteractions.CounterAttackPossible && _attackAllowed)
+                {
+                    this.Log($"(GuardController - {transform.root.name}) Trying to counter attack.", showLogs);
+                    fightingInteractions.CounterAttackStarted();
+                    AttackEnemy();
+                    return;
                 }
                 
                 // Chasing phase.
@@ -71,7 +85,11 @@ namespace Prince
                 {
                     this.Log($"(GuardController - {transform.root.name}) We got to hitting range.", showLogs);
                     // Fighting phase.
-                    if (_attackAllowed) AttackEnemy();
+                    if (_attackAllowed)
+                    {
+                        AttackEnemy();
+                        return;
+                    }
                 }
                 else
                 {
@@ -141,24 +159,40 @@ namespace Prince
         /// </summary>
         private void AttackEnemy()
         {
-            // If we are yet attacking just skip.
+            // If we are already attacking just skip.
             if (characterStatus.CurrentState == CharacterStatus.States.AttackWithSword) return;
             
             // We want to attack, but will we have attack skill enough?
+            bool counterAttacking = (characterStatus.CurrentState == CharacterStatus.States.BlockSword);
+            this.Log($"(GuardController - {transform.root.name}) Doing attack check (counter attack: {counterAttacking}).", showLogs);
             if (Random.value < _fightingProfile.attack)
             {
                 this.Log(
-                    $"(GuardController - {transform.root.name}) Attack check succeeded (threshold: {_fightingProfile.attack}), performing attack against enemy.", showLogs);
-                inputController.Strike();
+                    $"(GuardController - {transform.root.name}) Attack check succeeded (threshold: {_fightingProfile.attack}), performing attack against enemy. (counter attack: {counterAttacking})", showLogs);
+                // inputController.Strike();
+                StartCoroutine(Attack());
             }
             else
             {
                 this.Log(
-                    $"(GuardController - {transform.root.name}) Attack check failed (threshold: {_fightingProfile.attack}), just standing where we are.", showLogs);
+                    $"(GuardController - {transform.root.name}) Attack check failed (threshold: {_fightingProfile.attack}), just standing where we are. (counter attack: {counterAttacking})", showLogs);
                 // If we are not skilled enough to attack just stay where we are.
                 StartCoroutine(DontAttackForAWhile());
                 inputController.Stop();
             }
+        }
+
+        /// <summary>
+        /// We don't want to spend CPU calling repeatedly Strike(), so we call it once and guard it
+        /// to not to be called again until state has changed.
+        /// </summary>
+        private IEnumerator Attack()
+        {
+            _attackAllowed = false;
+            CharacterStatus.States currentState = characterStatus.CurrentState;
+            inputController.Strike();
+            yield return new WaitUntil(() => currentState != characterStatus.CurrentState);
+            _attackAllowed = true;
         }
         
         /// <summary>
@@ -219,9 +253,9 @@ namespace Prince
         }
         
         /// <summary>
-        /// It is not enough to do nothing in a cycle if attack test fails because they are performed so many times a second
-        /// that only winning a fraction of times the character keeps attacking in a apparently constant manner. To really
-        /// stop character attacks a waiting time is needed so AttackEnemy() does nothing for that waiting time. 
+        /// It is not enough to do nothing in a cycle if defense test fails because they are performed so many times a second
+        /// that only winning a fraction of times the character keeps blocking in a apparently constant manner. To really
+        /// stop character blocks a waiting time is needed so BlockAttack() does nothing for that waiting time. 
         /// </summary>
         private IEnumerator DontBlockForAWhile()
         {

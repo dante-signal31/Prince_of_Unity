@@ -68,6 +68,8 @@ namespace Prince
         private void FixedUpdate()
         {
             _currentEnemyInteractions = GetCurrentEnemyInteractions();
+            if (_currentEnemyInteractions == null)
+                this.Log($"(FightingInteractions - {transform.root.name}) No enemy to interact with.", showLogs);
             _elapsedBlockingTime += Time.fixedDeltaTime;
             
             // This is for an edge case. If you start an attack just before your enemy enters hitting range then
@@ -76,11 +78,15 @@ namespace Prince
             // any chance to block it.
             //
             // To fix that, at once both character are at hitting range we check that StrikeBlockable variable from attacker
-            // and BlockingStrikePossible are synced.
+            // and BlockingStrikePossible are synced. Attacker is who performs that synchronization.
             if (_currentEnemyInteractions != null)
             {
                 if (StrikeBlockable && !_currentEnemyInteractions.BlockingStrikePossible) _currentEnemyInteractions.NoticeStrikeStart();
             }
+
+            // Another edge case. If defender loses contact with his attacker while waiting for an attack he should
+            // reset his BlockingStrikePossible flag to avoid useless defense test and blocks.
+            if (_currentEnemyInteractions == null && BlockingStrikePossible) BlockingStrikePossible = false;
         }
 
         /// <summary>
@@ -93,16 +99,24 @@ namespace Prince
                 this.Log($"(FightingInteractions - {transform.root.name}) Noticing {_currentEnemyInteractions.transform.root.name} that I'm going to attack him.", showLogs);
                 _currentEnemyInteractions.NoticeStrikeStart();
                 this.Log($"(FightingInteractions - {transform.root.name}) Starting attack against {_currentEnemyInteractions.transform.root.name}", showLogs);
+                _strikeMissed = false;
+                StrikeBlockable = true;
             }
-            _strikeMissed = false;
-            StrikeBlockable = true;
+            else
+            {
+                this.Log($"(FightingInteractions - {transform.root.name}) Doing a missed attack", showLogs);
+                _strikeMissed = true;
+                StrikeBlockable = false;
+            }
+            // _strikeMissed = false;
+            // StrikeBlockable = true;
             _elapsedBlockingTime = 0;
         }
 
         /// <summary>
         /// Method used by enemies to signal us they're starting an attack.
         ///
-        /// Since this moment, enemy has an small chance to block our attack until 
+        /// Since this moment, we have an small chance to block his attack. 
         /// </summary>
         public void NoticeStrikeStart()
         {
@@ -138,7 +152,7 @@ namespace Prince
         }
 
         /// <summary>
-        /// Method used by enemies to signal us our chance to block their attack has ended..
+        /// Method used by enemies to signal us our chance to block their attack has ended.
         /// </summary>
         public void NoticeBlockingChanceEnded()
         {
@@ -152,7 +166,6 @@ namespace Prince
                 this.Log(
                     $"(FightingInteractions - {transform.root.name}) We have been noticed our chance to block his attack has ended.", showLogs);
             }
-            
             BlockingStrikePossible = false;
         }
 
@@ -188,6 +201,7 @@ namespace Prince
                 this.Log($"(FightingInteractions - {transform.root.name}) Noticing {_currentEnemyInteractions.transform.root.name} we are going to block his attack.", showLogs);
                 _currentEnemyInteractions.NoticeBlockSwordStarted();
             }
+            this.Log($"(FightingInteractions - {transform.root.name}) We have a chance to counter attack after blocking {_currentEnemyInteractions.transform.root.name} attack.", showLogs);
             CounterAttackPossible = true;
         }
 
@@ -197,7 +211,24 @@ namespace Prince
         public void NoticeBlockSwordStarted()
         {
             if (_currentEnemyInteractions != null) this.Log($"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} notice us he is going to block our attack.", showLogs);
-            stateMachine.SetTrigger("Blocked");
+            if (StrikeBlockable)
+            {
+                stateMachine.SetTrigger("Blocked");
+                StrikeBlockable = false;
+                this.Log($"(FightingInteractions - {transform.root.name}) Our attack has been blocked by {_currentEnemyInteractions.transform.root.name}.", showLogs);
+            }
+            else
+            {
+                this.Log($"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} blocks but we were not attacking him so actually nothing happens.", showLogs);
+            }
+        }
+
+        /// <summary>
+        /// We used our chance to counter attack after blocking an enemy attack.
+        /// </summary>
+        public void CounterAttackStarted()
+        {
+            CounterAttackPossible = false;
         }
 
         /// <summary>
@@ -205,7 +236,8 @@ namespace Prince
         /// </summary>
         public void CounterAttackChanceEnded()
         {
-            if (_currentEnemyInteractions != null) this.Log($"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} notices us our chance to counter attack has ended.", showLogs);
+            if (_currentEnemyInteractions != null) 
+                this.Log($"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} notices us our chance to counter attack has ended.", showLogs);
             CounterAttackPossible = false;
         }
         
@@ -216,7 +248,7 @@ namespace Prince
         public void BlockedSwordStarted()
         {
             this.Log($"(FightingInteractions - {transform.root.name}) Our attack was blocked.", showLogs);
-            BlockingStrikePossible = true;
+            // BlockingStrikePossible = true;
         }
 
         /// <summary>
@@ -225,7 +257,7 @@ namespace Prince
         public void CounterBlockSwordChanceEnded()
         {
             this.Log($"(FightingInteractions - {transform.root.name}) Our chance to counter block has ended.", showLogs);
-            BlockingStrikePossible = false;
+            // BlockingStrikePossible = false;
         }
     }
 }

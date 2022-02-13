@@ -50,7 +50,7 @@ MonoBehaviour:
   characterStatus: {fileID: 309445386847498652}
   groundSensors: {fileID: 6078154809529529353}
   pursuingRange: 5.3
-  showLogs: 1
+  showLogs: 0
 --- !u!114 &6358967624518504285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,9 +69,9 @@ MonoBehaviour:
   fightingSensor: {fileID: 8963627455871625809}
   fightingInteractions: {fileID: 1594298939120450983}
   characterStatus: {fileID: 309445386847498652}
-  stopTime: 1
-  stopAttackTime: 1
-  stopBlockTime: 1
+  stopTime: 0.5
+  stopAttackTime: 0.5
+  stopBlockTime: 0.5
   showLogs: 1
 --- !u!1001 &391606109120057923
 PrefabInstance:
@@ -214,11 +214,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Offset.y
-      value: -0.001737088
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2267921315580476983, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2281631549126216618, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: showLogs
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2759692437259027073, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
@@ -343,6 +347,10 @@ PrefabInstance:
     - target: {fileID: 5167775872429732071, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Offset.y
       value: 0.64276135
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250694692991532468, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: showLogs
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5310342850138452362, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Size.x
