@@ -26,6 +26,8 @@ namespace Prince
         [SerializeField] private InputController inputController;
         [Tooltip("Needed to give context. Some actions depends on sensors lectures to be converted to a command or another.")]
         [SerializeField] private EnemySensors sensors;
+        [Tooltip("Needed to not duplicate inputs in some states.")]
+        [SerializeField] private CharacterStatus characterStatus;
 
         public void RunRight(InputAction.CallbackContext context)
         {
@@ -75,7 +77,9 @@ namespace Prince
 
         public void Block(InputAction.CallbackContext context)
         {
-            if (context.performed) inputController.Block();
+            // If we are already blocking, don't send an block sword signal again.
+            if (context.performed && characterStatus.CurrentState != CharacterStatus.States.BlockSword) 
+                inputController.Block();
         }
 
         public void Sheathe(InputAction.CallbackContext context)
@@ -89,7 +93,9 @@ namespace Prince
 
         public void Strike(InputAction.CallbackContext context)
         {
-            if (context.performed) inputController.Strike();
+            // If we are already attacking, don't send an strike signal again.
+            if (context.performed && characterStatus.CurrentState != CharacterStatus.States.AttackWithSword) 
+                inputController.Strike();
         }
 
         public void WalkRightWithSword(InputAction.CallbackContext context)

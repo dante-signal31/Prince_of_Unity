@@ -70,7 +70,7 @@ MonoBehaviour:
   fightingInteractions: {fileID: 1594298939120450983}
   characterStatus: {fileID: 309445386847498652}
   stopTime: 0.5
-  stopAttackTime: 0.5
+  stopAttackTime: 1
   stopBlockTime: 0.5
   showLogs: 1
 --- !u!1001 &391606109120057923

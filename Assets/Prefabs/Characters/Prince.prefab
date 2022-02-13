@@ -703,6 +703,7 @@ MonoBehaviour:
   playerInput: {fileID: 1452170724144168538}
   inputController: {fileID: 2642550848936503470}
   sensors: {fileID: 7338974255637909718}
+  characterStatus: {fileID: 3800712010592504634}
 --- !u!114 &2642550848936503470 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1240446814125932619, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
