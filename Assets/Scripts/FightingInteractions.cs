@@ -121,6 +121,7 @@ namespace Prince
         public void NoticeStrikeStart()
         {
             this.Log($"(FightingInteractions - {transform.root.name}) Entering NoticeStrikeStart.", showLogs);
+            BlockingStrikePossible = true;
             if (_currentEnemyInteractions != null)
             {
                 this.Log($"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} notice us he is going to attack us.", showLogs);
@@ -129,7 +130,6 @@ namespace Prince
             {
                 this.Log($"(FightingInteractions - {transform.root.name}) We have been noticed we are going to be attacked", showLogs);
             }
-            BlockingStrikePossible = true;
         }
         
         /// <summary>

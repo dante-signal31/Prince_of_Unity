@@ -40,7 +40,8 @@ namespace Prince
                     break;
                 case Command.CommandType.Block:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Block at {Time.time}", showLogs);
-                    stateMachine.SetTriggerOneFrame("Block", this);
+                    // stateMachine.SetTriggerOneFrame("Block", this);
+                    stateMachine.SetTrigger("Block");
                     break;
                 case Command.CommandType.Strike:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Execute strike at {Time.time}", showLogs);
