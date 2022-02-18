@@ -42,10 +42,10 @@ namespace Prince
         /// <summary>
         /// Take a command from FIFO queue.
         /// </summary>
-        /// <returns>Oldest command.</returns>
+        /// <returns>Oldest command. Null if queue is empty.</returns>
         public Command PopCommand()
         {
-            return CommandQueue.Dequeue();
+            return (CommandQueue.Count > 0)? CommandQueue.Dequeue(): null;
         }
         
         /// <summary>

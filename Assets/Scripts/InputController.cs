@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Prince
 {
@@ -37,6 +38,16 @@ namespace Prince
         private bool _isRecording;
         private float _startTime;
         private CommandSequence _recordedCommandSequence = new CommandSequence();
+
+        private CommandTicker _commandTicker;
+        private int ID;
+
+        private void Awake()
+        {
+            ID = gameObject.GetInstanceID();
+            _commandTicker = GameObject.FindObjectOfType<CommandTicker>();
+            if (_commandTicker != null) _commandTicker.Register(ID, ExecuteCommand);
+        }
 
         private void Start()
         {
@@ -147,7 +158,8 @@ namespace Prince
 
         public void Block()
         {
-            ExecuteCommand(Command.CommandType.Block);
+            _commandTicker.PushCommand(ID, Command.CommandType.Block);
+            // ExecuteCommand(Command.CommandType.Block);
         }
 
         public void Sheathe()
@@ -157,7 +169,8 @@ namespace Prince
 
         public void Strike()
         {
-            ExecuteCommand(Command.CommandType.Strike);
+            _commandTicker.PushCommand(ID, Command.CommandType.Strike);
+            // ExecuteCommand(Command.CommandType.Strike);
         }
         
         public void WalkRightWithSword()
