@@ -196,12 +196,12 @@ namespace Prince
         /// </summary>
         public void BlockSwordStarted()
         {
-            if (_currentEnemyInteractions != null)
+            if (_currentEnemyInteractions != null && BlockingStrikePossible)
             {
                 this.Log($"(FightingInteractions - {transform.root.name}) Noticing {_currentEnemyInteractions.transform.root.name} we are going to block his attack.", showLogs);
                 _currentEnemyInteractions.NoticeBlockSwordStarted();
             }
-            this.Log($"(FightingInteractions - {transform.root.name}) We have a chance to counter attack after blocking {_currentEnemyInteractions.transform.root.name} attack.", showLogs);
+            this.Log($"(FightingInteractions - {transform.root.name}) We have a chance to counter attack after blocking an strike.", showLogs);
             CounterAttackPossible = true;
         }
 
@@ -229,6 +229,8 @@ namespace Prince
         public void CounterAttackStarted()
         {
             CounterAttackPossible = false;
+            BlockingStrikePossible = false;
+            this.Log($"(FightingInteractions - {transform.root.name}) We have used our chance to counter attack. (CounterAttackPossible set to {CounterAttackPossible})", showLogs);
         }
 
         /// <summary>
