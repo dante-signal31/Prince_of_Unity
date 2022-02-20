@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a99ba4b6894f9aa1e84a4cce17d6c0, type: 3}
   m_Name: PurpleGuardFightingProfile
   m_EditorClassIdentifier: 
-  boldness: 1
+  boldness: 0.915
   attack: 1
   defense: 1

@@ -104,8 +104,8 @@ namespace Tests.PlayTests
             // Assert enemy has fallen through hole.
             Assert.IsTrue(fallenDistance > 1.0f);
             float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
-            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
-            float difference = Math.Abs(separationDistance - hittingRange);
+            float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
+            float difference = Math.Abs(separationDistance - maximumApproachDistance);
             // Assert enemy is at hitting range of Prince.
             Assert.IsTrue(difference < 0.2f);
             yield return null;
@@ -129,10 +129,11 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
             Vector2 startPosition = _enemy.transform.position;
             // Let chase happen.
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(5);
             float separationDistance = _prince.transform.position.x - _enemy.transform.position.x;
-            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
-            float difference = Math.Abs(separationDistance - hittingRange);
+            // float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
+            float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
+            float difference = Math.Abs(separationDistance - maximumApproachDistance);
             // Assert enemy is at hitting range of Prince.
             Assert.IsTrue(difference < 0.25f);
             yield return null;
@@ -178,11 +179,11 @@ namespace Tests.PlayTests
             yield return new WaitForSeconds(4);
             float advancedDistance = _enemy.transform.position.x - startPosition.x;
             float separationDistance = _prince.transform.position.x - _enemy.transform.position.x;
-            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
-            float difference = Math.Abs(separationDistance - hittingRange);
+            float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
+            float difference = Math.Abs(separationDistance - maximumApproachDistance);
             // Assert enemy has advanced something but is still out of hitting range.
             Assert.IsTrue(Math.Abs(advancedDistance) > 0.2f);
-            Assert.IsTrue(separationDistance > hittingRange);
+            Assert.IsTrue(separationDistance > maximumApproachDistance);
             yield return null;
         }
         
@@ -196,6 +197,7 @@ namespace Tests.PlayTests
             // Setup test.
             // LogAssert.ignoreFailingMessages = true;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
@@ -204,8 +206,8 @@ namespace Tests.PlayTests
             // Let chase happen.
             yield return new WaitForSeconds(4);
             float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
-            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
-            float difference = Math.Abs(separationDistance - hittingRange);
+            float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
+            float difference = Math.Abs(separationDistance - maximumApproachDistance);
             // Assert enemy is at hitting range of Prince.
             Assert.IsTrue(difference < 0.2f);
             yield return null;
