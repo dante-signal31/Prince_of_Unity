@@ -119,10 +119,7 @@ namespace Prince
                     AttackEnemy();
                     return;
                 }
-                
-                // Chasing phase.
-                if (_movementAllowed && ChaseEnemy()) return;
-                
+
                 // We can't approach nearer. May be Prince is unreachable or he is already at hitting range.
                 if (fightingSensor.EnemyAtHittingRange)
                 {
@@ -138,6 +135,14 @@ namespace Prince
                 {
                     this.Log($"(GuardController - {transform.root.name}) Cannot fight because not in hitting range.", showLogs);
                 }
+                
+                // Chasing phase.
+                if (!fightingSensor.EnemyAtHittingRange ||
+                    (fightingSensor.EnemyAtHittingRange && (_fightingProfile.boldness > _fightingProfile.attack)))
+                {
+                    if (_movementAllowed && ChaseEnemy()) return;
+                }
+                
             }
             else
             {
@@ -147,6 +152,7 @@ namespace Prince
                     _engagingEnemy = true;
                 }
             }
+            
         }
 
         /// <summary>
