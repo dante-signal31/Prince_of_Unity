@@ -16,3 +16,4 @@ MonoBehaviour:
   RetreatSpeed: -0.86
   HitBySwordSpeed: -0.912
   BlockSwordSpeed: -0.738
+  MaximumRunningSpeed: 2.9

@@ -33,6 +33,10 @@ namespace Prince
             BlockedSword, // My attack was blocked by my enemy.
             CounterBlockSword, // My attack was blocked but I immediately block the attack from my enemy.
             CounterAttackWithSword, // I block the attack from my enemy and I immediately attack him.
+            RunningStart,
+            Running,
+            RunningEnd,
+            TurnBackRunning
         }
         
         [Header("WIRING:")]

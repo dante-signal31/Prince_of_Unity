@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.TextCore.Text;
 
 namespace Prince
 {
@@ -20,7 +21,7 @@ namespace Prince
         [Header("CONFIGURATION:")]
         [Tooltip("Needed to know this character speed in every state.")]
         [SerializeField] private MovementProfile characterMovementProfile;
-        
+
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
@@ -28,13 +29,17 @@ namespace Prince
         private CharacterStatus.States _currentState;
         private Vector2 _currentForwardVector;
         private float _currentSpeed;
+        
+        // Needed To get a reference to characterMovementProfile from SpeedForwarder script to 
+        // animate speed values at variable speed stated.
+        public MovementProfile CharacterMovementProfile => characterMovementProfile;
 
         private void Awake()
         {
             _currentState = characterStatus.CurrentState;
             _currentForwardVector = GetCurrentForwardVector();
         }
-        
+
         /// <summary>
         /// Get speed depending on state.
         /// </summary>
@@ -50,6 +55,12 @@ namespace Prince
                 // Character only retreats when blocks while he is receiving an attack. Otherwise he 
                 // performs a useless block but stays in his place.
                 CharacterStatus.States.BlockSword when fightingInteractions.BlockingStrikePossible => characterMovementProfile.BlockSwordSpeed,
+                // Transitional running states get running speeds from movement profiles after being pondered by animation
+                // curves.
+                CharacterStatus.States.RunningStart or
+                    CharacterStatus.States.RunningEnd or 
+                    CharacterStatus.States.TurnBackRunning => characterMovementProfile.CurrentRunningSpeed,
+                CharacterStatus.States.Running => characterMovementProfile.MaximumRunningSpeed,
                 _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;
@@ -57,16 +68,37 @@ namespace Prince
         }
 
         /// <summary>
-        /// Update current speed only if state has changed.
+        /// Update current speed only if state has changed or if are in a non constant speed..
         /// </summary>
         private void UpdateCurrentSpeed()
         {
             CharacterStatus.States characterState = characterStatus.CurrentState;
-            if (_currentState != characterState)
+            if ((_currentState != characterState) || (IsVariableSpeedState()))
             {
                 _currentSpeed = GetCurrentSpeed(characterState);
                 _currentState = characterState;
                 _currentForwardVector = GetCurrentForwardVector();
+            }
+            this.Log($"(CharacterMovement - {gameObject.name}) Current speed {_currentSpeed}", showLogs);
+        }
+
+        /// <summary>
+        /// Whether this state's movement speed is variable or not.
+        /// </summary>
+        /// <returns>
+        /// True if current state's movement speed follows an animation curve instead. False if current state's
+        /// movement speed has a constant speed.
+        /// </returns>
+        private bool IsVariableSpeedState()
+        {
+            switch (characterStatus.CurrentState)
+            {
+                case CharacterStatus.States.RunningStart:
+                case CharacterStatus.States.RunningEnd:
+                case CharacterStatus.States.TurnBackRunning:
+                    return true;
+                default:
+                    return false;
             }
         }
 

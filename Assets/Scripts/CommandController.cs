@@ -68,7 +68,8 @@ namespace Prince
                     break;
                 case Command.CommandType.Stop:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Stop at {Time.time}", showLogs);
-                    stateMachine.SetTriggerOneFrame("Stop", this);
+                    // stateMachine.SetTriggerOneFrame("Stop", this);
+                    stateMachine.SetTrigger("Stop");
                     break;
                 case Command.CommandType.StopAction:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed StopAction at {Time.time}", showLogs);
