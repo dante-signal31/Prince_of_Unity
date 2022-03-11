@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: maximumLife
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 82222986682491871, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: lookingRightWards
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 88322598493374997, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Controller
       value: 
@@ -162,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245777922232396092, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1367216486012578328, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
@@ -287,6 +291,14 @@ PrefabInstance:
     - target: {fileID: 3142473720951426624, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166921662542275327, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166921662542275327, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3353167460853004097, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.x
@@ -540,6 +552,10 @@ PrefabInstance:
       propertyPath: audioClips
       value: 
       objectReference: {fileID: 11400000, guid: 5a135148dcf9bdb459525067c03a4e0f, type: 2}
+    - target: {fileID: 7956368920170832525, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8216274256070130676, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.2

@@ -21,6 +21,8 @@ public class FightingSensors : MonoBehaviour
     [Tooltip("How much space proportion we let enemy enter into our hitting zone.")]
     [Range(0,1)]
     [SerializeField] private float hittingZoneTolerance;
+    [Tooltip("Needed to set correct hitting tolerance zone orientation.")]
+    [SerializeField] private CharacterStatus characterStatus;
 
     /// <summary>
     /// How much space proportion we let enemy enter into our hitting zone.
@@ -173,8 +175,8 @@ public class FightingSensors : MonoBehaviour
         Vector2 forwardVector = transform.root.gameObject.GetComponentInChildren<CharacterStatus>().ForwardVector;
         if (CurrentEnemy == null)
         {
-            Gizmos.DrawWireCube(hittingZone.transform.position + (Vector3) forwardVector*MaximumApproachDistance/2, 
-                new Vector3(MaximumApproachDistance,hittingZone.bounds.size.y,hittingZone.bounds.size.z));
+            Gizmos.DrawWireCube(hittingZone.transform.position + (Vector3)forwardVector * MaximumApproachDistance / 2,
+                new Vector3(MaximumApproachDistance * forwardVector.x, hittingZone.bounds.size.y, hittingZone.bounds.size.z));
         }
         else
         {
@@ -182,7 +184,7 @@ public class FightingSensors : MonoBehaviour
                 .GetComponentInChildren<ColliderController>()
                 .CurrentColliderWidth;
             Gizmos.DrawWireCube(hittingZone.transform.position + (Vector3) forwardVector*correctedMaximumApproachDistance/2, 
-                new Vector3(correctedMaximumApproachDistance,
+                new Vector3(correctedMaximumApproachDistance * forwardVector.x,
                     hittingZone.bounds.size.y,
                     hittingZone.bounds.size.z));
         }

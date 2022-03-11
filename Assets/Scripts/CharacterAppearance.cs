@@ -23,6 +23,7 @@ namespace Prince
         [SerializeField] private int foregroundOrderInLayer;
 
         private bool _currentFacingIsRightWards;
+        private float _spriteRendererOffset;
 
         private void FlipCharacter(bool rightWards)
         {
@@ -39,6 +40,7 @@ namespace Prince
             // This work around is partially effective. Frame ghosting still happens but it is less likely.
             // Hopefully this will be fixed in any further Unity version.
             FlipSpriteRenderer(rightWards);
+            CorrectSpriteRendererOffset(rightWards);
             FlipDirectionalComponents(rightWards);
         }
 
@@ -61,10 +63,31 @@ namespace Prince
             spriteRenderer.enabled = true;
         }
 
+        /// <summary>
+        /// Sprite flips using SpriteRenderer transform as it axis instead of current gameobject
+        /// transform. So when flipped an offset appears that must be corrected.
+        /// </summary>
+        /// <param name="rightWards"></param>
+        private void CorrectSpriteRendererOffset(bool rightWards)
+        {
+            if (rightWards) transform.position = new Vector3(transform.root.position.x + _spriteRendererOffset,
+                transform.position.y,
+                transform.position.z);
+            else transform.position = new Vector3(transform.root.position.x - _spriteRendererOffset,
+                transform.position.y,
+                transform.position.z);
+        }
+
         private void Awake()
         {
             _currentFacingIsRightWards = characterStatus.LookingRightWards;
+            GetInitialSpriteRendererOffset(_currentFacingIsRightWards);
             FlipCharacter(_currentFacingIsRightWards);
+        }
+
+        private void GetInitialSpriteRendererOffset(bool rightWards)
+        {
+            _spriteRendererOffset = rightWards ? transform.position.x - transform.root.position.x : transform.root.position.x - transform.position.x;
         }
 
         private void Update()
@@ -99,10 +122,6 @@ namespace Prince
             spriteRenderer.sortingLayerName = "Foreground";
             spriteRenderer.sortingOrder = foregroundOrderInLayer;
         }
-
-        // private void SpriteToItsOriginalLayer()
-        // {
-        //     
-        // }
+        
     }
 }

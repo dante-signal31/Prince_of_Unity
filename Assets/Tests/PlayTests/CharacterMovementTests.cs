@@ -128,6 +128,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _enemy.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
             float expected_distance = 0.4295f;
             string commandFile = @"Assets\Tests\TestResources\advanceWithSwordGuard";
             Vector2 startPosition = _enemy.transform.position;

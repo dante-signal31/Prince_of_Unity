@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 73194478d806bc44b90e435f116d4592, type: 2}
     - target: {fileID: 286802353711401723, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.165
+      value: -0.171
       objectReference: {fileID: 0}
     - target: {fileID: 286802353711401723, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.y
@@ -178,6 +178,14 @@ PrefabInstance:
     - target: {fileID: 3142473720951426624, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166921662542275327, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166921662542275327, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3403941795922266251, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.y
@@ -392,6 +400,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7260485351124137714, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260485351124137714, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Size.x
       value: 0.375
       objectReference: {fileID: 0}
@@ -467,6 +479,10 @@ PrefabInstance:
       propertyPath: characterStatus
       value: 
       objectReference: {fileID: 3800712010592504634}
+    - target: {fileID: 9005965534505083571, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: _spriteRendererOffset
+      value: 0.171
+      objectReference: {fileID: 0}
     - target: {fileID: 9005965534505083571, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: foregroundOrderInLayer
       value: 1
