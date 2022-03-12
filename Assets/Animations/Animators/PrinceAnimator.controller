@@ -1131,7 +1131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2689f7f56c02941b5f30b93ee0afe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStatus: {fileID: 0}
 --- !u!1101 &-3233973234102460284
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2187,7 +2186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2689f7f56c02941b5f30b93ee0afe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStatus: {fileID: 0}
 --- !u!1101 &2103628764741048878
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
