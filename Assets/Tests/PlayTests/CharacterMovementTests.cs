@@ -54,6 +54,93 @@ namespace Tests.PlayTests
         // and allows you to yield null to skip a frame in EditMode
         
         /// <summary>
+        /// Test Prince running movement.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceRunningTest()
+        {
+            // Setup test.
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            float expected_distance = 4.13f;
+            string commandFile = @"Assets\Tests\TestResources\runningSequence";
+            Vector2 startPosition = _prince.transform.position;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            Vector2 endPosition = _prince.transform.position;
+            float advancedDistance = Vector2.Distance(startPosition, endPosition);
+            float error = advancedDistance - expected_distance;
+            // Assert Prince has advanced what we expected.
+            Assert.True(Math.Abs(error) < 0.04);
+        }
+        
+        /// <summary>
+        /// Test Prince end running while starting.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceAbortRunningTest()
+        {
+            // Setup test.
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            float expected_distance = 1.36f;
+            string commandFile = @"Assets\Tests\TestResources\abortRunningSequence";
+            Vector2 startPosition = _prince.transform.position;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            Vector2 endPosition = _prince.transform.position;
+            float advancedDistance = Vector2.Distance(startPosition, endPosition);
+            float error = advancedDistance - expected_distance;
+            // Assert Prince has advanced what we expected.
+            Assert.True(Math.Abs(error) < 0.04);
+        }
+        
+        /// <summary>
+        /// Test Prince turn while running movement.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceTurnWhileRunningTest()
+        {
+            // Setup test.
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            float expected_distance = 5.12f;
+            float expected_end_distance = 0.04f;
+            string commandFile = @"Assets\Tests\TestResources\turnWhileRunningSequence";
+            Vector2 startPosition = _prince.transform.position;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            // Advance phase.
+            yield return new WaitForSeconds(4);
+            Vector2 endPosition = _prince.transform.position;
+            float advancedDistance = Vector2.Distance(startPosition, endPosition);
+            float error = advancedDistance - expected_distance;
+            // Assert Prince has advanced what we expected.
+            Assert.True(Math.Abs(error) < 0.07);
+            // Retreat phase
+            yield return new WaitForSeconds(3);
+            endPosition = _prince.transform.position;
+            advancedDistance = Vector2.Distance(startPosition, endPosition);
+            error = advancedDistance - expected_end_distance;
+            // Assert Prince has retreated what we expected.
+            Assert.True(Math.Abs(error) < 0.04);
+        }
+        
+        /// <summary>
         /// Test Prince advance with sword movement.
         /// </summary>
         [UnityTest]

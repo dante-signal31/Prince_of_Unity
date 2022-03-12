@@ -134,32 +134,8 @@ namespace Prince
             stateMachine.SetBool("lookingRightWards", LookingRightWards);
         }
 
-        /// <summary>
-        /// Create references to CharacterStatus in StateMachineBehaviours.
-        ///
-        /// Unlike MonoBehaviours I've not been able to reference CharacterStatus in StateMachineBehaviours
-        /// using inspector nor calling gameObject from StateMachineBehaviour itself. So I must link it
-        /// from outside.
-        /// </summary>
-        private void LinkWithStateMachine()
-        {
-            // TurnBackState's set this.lookingRightWards when turn back animation has ended.
-            TurnBackState[] turnBackStates = stateMachine.GetBehaviours<TurnBackState>();
-            foreach (TurnBackState state in turnBackStates)
-            {
-                state.characterStatus = this;
-            }
-            // StateUpdaters set CurrentState when every state at Animator is started.
-            // StateUpdater[] stateUpdaters = stateMachine.GetBehaviours<StateUpdater>();
-            // foreach (StateUpdater state in stateUpdaters)
-            // {
-            //     state.characterStatus = this;
-            // }
-        }
-        
         private void Awake()
         {
-            LinkWithStateMachine();
             UpdateStateMachineFlags();
         }
 
