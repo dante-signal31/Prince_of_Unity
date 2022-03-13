@@ -61,6 +61,7 @@ namespace Prince
                     CharacterStatus.States.RunningEnd or 
                     CharacterStatus.States.TurnBackRunning => characterMovementProfile.CurrentRunningSpeed,
                 CharacterStatus.States.Running => characterMovementProfile.MaximumRunningSpeed,
+                CharacterStatus.States.Walk => characterMovementProfile.CurrentWalkingSpeed,
                 _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;
@@ -68,7 +69,7 @@ namespace Prince
         }
 
         /// <summary>
-        /// Update current speed only if state has changed or if are in a non constant speed..
+        /// Update current speed only if state has changed or if we are in a non constant speed state.
         /// </summary>
         private void UpdateCurrentSpeed()
         {
@@ -95,7 +96,8 @@ namespace Prince
             {
                 case CharacterStatus.States.RunningStart:
                 case CharacterStatus.States.RunningEnd:
-                case CharacterStatus.States.TurnBackRunning:
+                case CharacterStatus.States.TurnBackRunning: 
+                case CharacterStatus.States.Walk:
                     return true;
                 default:
                     return false;

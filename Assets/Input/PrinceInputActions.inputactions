@@ -6,7 +6,7 @@
             "id": "444b6b26-46f8-4a9b-9a5f-304431449a0f",
             "actions": [
                 {
-                    "name": "Run right",
+                    "name": "Move right",
                     "type": "Button",
                     "id": "56d218e9-d27d-4c51-bb2c-1e5b33ff3e14",
                     "expectedControlType": "Button",
@@ -15,27 +15,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Run left",
+                    "name": "Move left",
                     "type": "Button",
                     "id": "3174ad10-feb1-41e9-93b1-a45512c07ac2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold(duration=0.1,pressPoint=1)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Walk right",
-                    "type": "Button",
-                    "id": "1fa27bce-12f9-40a1-9248-9c225ca7cfdb",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold(duration=0.1,pressPoint=1)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Walk left",
-                    "type": "Button",
-                    "id": "5653c332-24db-4135-8423-a9f4871a4b77",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold(duration=0.1,pressPoint=1)",
@@ -77,7 +59,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Run right",
+                    "action": "Move right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -88,7 +70,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Run right",
+                    "action": "Move right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -99,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Run left",
+                    "action": "Move left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -110,141 +92,9 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Run left",
+                    "action": "Move left",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "One Modifier",
-                    "id": "e3c30747-c382-416f-aaa6-e7798fbdb844",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Walk right",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "49c25ae7-11b8-4d5d-b6dd-50c62af42ebd",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Walk right",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "dc9c2f13-605c-4f72-bfba-beeab5ada5d7",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Walk right",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "One Modifier",
-                    "id": "79346758-bf9a-4246-9f89-9e8015a5a97c",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Walk right",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "98486ee2-33d0-49b2-978d-f9c8dc5f42e0",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Walk right",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "c6d5ab68-a09f-44bd-a6ad-5e2e2e91d609",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Walk right",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "One Modifier",
-                    "id": "b1b189e0-0235-4fd1-bdb8-de17cc26d402",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Walk left",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "0b639ca2-40d8-469e-b3c3-92f3220ff7a6",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Walk left",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "1b1c681f-3c7c-4733-88df-cebafea7505a",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Walk left",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "One Modifier",
-                    "id": "44d14e2e-dbe0-4795-8e12-75c2e82e6b94",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Walk left",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "f61fbb14-f884-464d-ae0f-6eabf9062cb0",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Walk left",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "3ff9b172-3590-453c-b32e-586f1c116244",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Walk left",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

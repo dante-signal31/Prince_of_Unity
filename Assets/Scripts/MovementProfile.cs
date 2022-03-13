@@ -14,6 +14,7 @@ namespace Prince
         public float HitBySwordSpeed;
         public float BlockSwordSpeed;
         public float MaximumRunningSpeed;
+        public float MaximumWalkingSpeed;
 
         // Next value is automatically set by SpeedForwarder in every FixedUpdate. So, it should not be shown 
         // in inspector. 
@@ -27,22 +28,38 @@ namespace Prince
             }
         }
 
-        public float CurrentRunningSpeed
+        /// <summary>
+        /// Movement speed at current point of running animation.
+        /// </summary>
+        public float CurrentRunningSpeed => Lerp(CurrentSpeedProportion, MaximumRunningSpeed);
+
+        /// <summary>
+        /// Movement speed at current point of walking animation.
+        /// </summary>
+        public float CurrentWalkingSpeed => Lerp(CurrentSpeedProportion, MaximumWalkingSpeed);
+
+        /// <summary>
+        /// Linear interpolation of maximum speed depending on current speed proportion.
+        ///
+        /// Actually is a wrapper of Math.Lerp() but I've read that method has problem at the
+        /// edges, so here a set those edges values manually.
+        /// </summary>
+        /// <param name="currentSpeedProportion"></param>
+        /// <param name="maximumSpeed"></param>
+        /// <returns></returns>
+        private static float Lerp(float currentSpeedProportion, float maximumSpeed)
         {
-            get
+            if (currentSpeedProportion > 0 && currentSpeedProportion < 1)
             {
-                if (CurrentSpeedProportion > 0 && CurrentSpeedProportion < 1)
-                {
-                    return Mathf.Lerp(0, MaximumRunningSpeed ,CurrentSpeedProportion);
-                } 
-                else if (CurrentSpeedProportion == 0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return MaximumRunningSpeed;
-                }
+                return Mathf.Lerp(0, maximumSpeed, currentSpeedProportion);
+            }
+            else if (currentSpeedProportion <= 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return maximumSpeed;
             }
         }
     }

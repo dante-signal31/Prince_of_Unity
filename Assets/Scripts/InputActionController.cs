@@ -28,30 +28,60 @@ namespace Prince
         [SerializeField] private EnemySensors sensors;
         [Tooltip("Needed to not duplicate inputs in some states.")]
         [SerializeField] private CharacterStatus characterStatus;
+        
+        private bool _actionPressed;
 
-        public void RunRight(InputAction.CallbackContext context)
+        public void MoveRight(InputAction.CallbackContext context)
         {
-            if (context.performed) inputController.RunRight();
-            if (context.canceled) inputController.Stop();
+            if (context.performed)
+            {
+                if (_actionPressed)
+                {
+                    inputController.WalkRight();
+                }
+                else
+                {
+                    inputController.RunRight();
+                }
+            }
+
+            if (context.canceled)
+            {
+                if (!_actionPressed) inputController.Stop();
+            }
         }
         
-        public void RunLeft(InputAction.CallbackContext context)
+        public void MoveLeft(InputAction.CallbackContext context)
         {
-            if (context.performed) inputController.RunLeft();
-            if (context.canceled) inputController.Stop();
+            if (context.performed)
+            {
+                if (_actionPressed)
+                {
+                    inputController.WalkLeft();
+                }
+                else
+                {
+                    inputController.RunLeft();
+                }
+            }
+
+            if (context.canceled)
+            {
+                if (!_actionPressed) inputController.Stop();
+            }
         }
 
-        public void WalkRight(InputAction.CallbackContext context)
-        {
-            if (context.performed) inputController.WalkRight();
-            if (context.canceled) inputController.Stop();
-        }
-
-        public void WalkLeft(InputAction.CallbackContext context)
-        {
-            if (context.performed) inputController.WalkLeft();
-            if (context.canceled) inputController.Stop();
-        }
+        // public void WalkRight(InputAction.CallbackContext context)
+        // {
+        //     if (context.performed) inputController.WalkRight();
+        //     if (context.canceled) inputController.Stop();
+        // }
+        //
+        // public void WalkLeft(InputAction.CallbackContext context)
+        // {
+        //     if (context.performed) inputController.WalkLeft();
+        //     if (context.canceled) inputController.Stop();
+        // }
 
         public void Duck(InputAction.CallbackContext context)
         {
@@ -61,12 +91,33 @@ namespace Prince
 
         public void Action(InputAction.CallbackContext context)
         {
+            // New input system does not have yet multiple keys support for the same binding, although
+            // it is planned:
+            //
+            // https://forum.unity.com/threads/do-you-consider-walk-and-sprint-to-be-the-same-action.1231047/#post-7845540
+            //
+            // While that support arrives the only option we have is using flags. 
+            if (context.started)
+            {
+                _actionPressed = true;
+            }
+                
             if (context.performed)
             {
-                if (sensors.EnemySeen) playerInput.SwitchCurrentActionMap("FightingActionMap");
-                inputController.Action();
+                if (sensors.EnemySeen)
+                {
+                    if (playerInput.currentActionMap.name != "FightingActionMap")
+                        playerInput.SwitchCurrentActionMap("FightingActionMap");
+                    inputController.Action();
+                }
             }
-            if (context.canceled) inputController.StopAction();
+
+            if (context.canceled)
+            {
+                if (sensors.EnemySeen)
+                    inputController.StopAction();
+                _actionPressed = false;
+            }
         }
 
         public void Jump(InputAction.CallbackContext context)

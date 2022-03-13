@@ -36,7 +36,8 @@ namespace Prince
             RunningStart,
             Running,
             RunningEnd,
-            TurnBackRunning
+            TurnBackRunning,
+            Walk
         }
         
         [Header("WIRING:")]

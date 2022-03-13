@@ -527,7 +527,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
-        m_MethodName: RunRight
+        m_MethodName: MoveRight
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -543,7 +543,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2555740834043721919}
         m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
-        m_MethodName: RunLeft
+        m_MethodName: MoveLeft
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -555,38 +555,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3174ad10-feb1-41e9-93b1-a45512c07ac2
     m_ActionName: PrinceActionMap/Run left[/Keyboard/a,/Keyboard/leftArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2555740834043721919}
-        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
-        m_MethodName: WalkRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1fa27bce-12f9-40a1-9248-9c225ca7cfdb
-    m_ActionName: PrinceActionMap/Walk right[/Keyboard/shift,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2555740834043721919}
-        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
-        m_MethodName: WalkRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5653c332-24db-4135-8423-a9f4871a4b77
-    m_ActionName: PrinceActionMap/Walk left[/Keyboard/shift,/Keyboard/a,/Keyboard/leftArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2555740834043721919}
