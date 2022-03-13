@@ -62,6 +62,12 @@ namespace Prince
                     break;
                 case Command.CommandType.Duck:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Duck at {Time.time}", showLogs);
+                    stateMachine.SetTriggerOneFrame("Duck", this);
+                    break;
+                case Command.CommandType.Stand:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Stand at {Time.time}", showLogs);
+                    // stateMachine.SetTriggerOneFrame("Stand", this);
+                    stateMachine.SetTrigger("Stand");
                     break;
                 case Command.CommandType.Jump:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Jump at {Time.time}", showLogs);

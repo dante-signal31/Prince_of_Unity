@@ -71,22 +71,10 @@ namespace Prince
             }
         }
 
-        // public void WalkRight(InputAction.CallbackContext context)
-        // {
-        //     if (context.performed) inputController.WalkRight();
-        //     if (context.canceled) inputController.Stop();
-        // }
-        //
-        // public void WalkLeft(InputAction.CallbackContext context)
-        // {
-        //     if (context.performed) inputController.WalkLeft();
-        //     if (context.canceled) inputController.Stop();
-        // }
-
         public void Duck(InputAction.CallbackContext context)
         {
             if (context.performed) inputController.Duck();
-            if (context.canceled) inputController.Stop();
+            if (context.canceled) inputController.Stand();
         }
 
         public void Action(InputAction.CallbackContext context)
@@ -96,7 +84,7 @@ namespace Prince
             //
             // https://forum.unity.com/threads/do-you-consider-walk-and-sprint-to-be-the-same-action.1231047/#post-7845540
             //
-            // While that support arrives the only option we have is using flags. 
+            // While that support arrives the only option we have is using flags to combine keys action. 
             if (context.started)
             {
                 _actionPressed = true;

@@ -158,6 +158,32 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
+            yield return new WaitForSeconds(3);
+            Vector2 endPosition = _prince.transform.position;
+            float advancedDistance = Vector2.Distance(startPosition, endPosition);
+            float error = advancedDistance - expected_distance;
+            // Assert Prince has advanced what we expected.
+            Assert.True(Math.Abs(error) < 0.04);
+        }
+        
+        /// <summary>
+        /// Test Prince standing from crouch movement.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceStandingFromCrouchTest()
+        {
+            // Setup test.
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            float expected_distance = 0.20f;
+            string commandFile = @"Assets\Tests\TestResources\standingFromCrouchSequence";
+            Vector2 startPosition = _prince.transform.position;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
             yield return new WaitForSeconds(4);
             Vector2 endPosition = _prince.transform.position;
             float advancedDistance = Vector2.Distance(startPosition, endPosition);

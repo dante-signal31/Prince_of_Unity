@@ -26,7 +26,8 @@ namespace Prince
             Sheathe,
             Strike,
             WalkRightWithSword,
-            WalkLeftWithSword
+            WalkLeftWithSword,
+            Stand
         }
 
         [SerializeField] private float _delay;

@@ -62,6 +62,7 @@ namespace Prince
                     CharacterStatus.States.TurnBackRunning => characterMovementProfile.CurrentRunningSpeed,
                 CharacterStatus.States.Running => characterMovementProfile.MaximumRunningSpeed,
                 CharacterStatus.States.Walk => characterMovementProfile.CurrentWalkingSpeed,
+                CharacterStatus.States.StandFromCrouch => characterMovementProfile.CurrentStandingSpeed,
                 _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;
@@ -79,6 +80,7 @@ namespace Prince
                 _currentSpeed = GetCurrentSpeed(characterState);
                 _currentState = characterState;
                 _currentForwardVector = GetCurrentForwardVector();
+                this.Log($"(CharacterMovement - {gameObject.name}) We are in a variable speed state with speed {_currentSpeed}", showLogs);
             }
             this.Log($"(CharacterMovement - {gameObject.name}) Current speed {_currentSpeed}", showLogs);
         }
@@ -98,6 +100,7 @@ namespace Prince
                 case CharacterStatus.States.RunningEnd:
                 case CharacterStatus.States.TurnBackRunning: 
                 case CharacterStatus.States.Walk:
+                case CharacterStatus.States.StandFromCrouch:
                     return true;
                 default:
                     return false;

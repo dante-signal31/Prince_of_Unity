@@ -135,6 +135,11 @@ namespace Prince
             ExecuteCommand(Command.CommandType.Duck);
         }
 
+        public void Stand()
+        {
+            ExecuteCommand(Command.CommandType.Stand);
+        }
+
         public void Action()
         {
             ExecuteCommand(Command.CommandType.Action);
