@@ -191,6 +191,32 @@ namespace Tests.PlayTests
             // Assert Prince has advanced what we expected.
             Assert.True(Math.Abs(error) < 0.04);
         }
+
+        /// <summary>
+        /// Test Prince crouch walking movement.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceCrouchWalkingTest()
+        {
+            // Setup test.
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            float expected_distance = 0.50f;
+            string commandFile = @"Assets\Tests\TestResources\crouchWalkingSequence";
+            Vector2 startPosition = _prince.transform.position;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            Vector2 endPosition = _prince.transform.position;
+            float advancedDistance = Vector2.Distance(startPosition, endPosition);
+            float error = advancedDistance - expected_distance;
+            // Assert Prince has advanced what we expected.
+            Assert.True(Math.Abs(error) < 0.04);
+        }
         
         /// <summary>
         /// Test Prince advance with sword movement.

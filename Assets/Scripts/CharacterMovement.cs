@@ -63,6 +63,7 @@ namespace Prince
                 CharacterStatus.States.Running => characterMovementProfile.MaximumRunningSpeed,
                 CharacterStatus.States.Walk => characterMovementProfile.CurrentWalkingSpeed,
                 CharacterStatus.States.StandFromCrouch => characterMovementProfile.CurrentStandingSpeed,
+                CharacterStatus.States.CrouchWalking => characterMovementProfile.CurrentCrouchWalkingSpeed,
                 _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;
@@ -101,6 +102,7 @@ namespace Prince
                 case CharacterStatus.States.TurnBackRunning: 
                 case CharacterStatus.States.Walk:
                 case CharacterStatus.States.StandFromCrouch:
+                case CharacterStatus.States.CrouchWalking:
                     return true;
                 default:
                     return false;

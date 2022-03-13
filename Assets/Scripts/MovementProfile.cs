@@ -16,6 +16,7 @@ namespace Prince
         public float MaximumRunningSpeed;
         public float MaximumWalkingSpeed;
         public float MaximumStandingSpeed;
+        public float MaximumCrouchWalkingSpeed;
 
         // Next value is automatically set by SpeedForwarder in every FixedUpdate. So, it should not be shown 
         // in inspector. 
@@ -43,6 +44,11 @@ namespace Prince
         /// Movement speed at current point of walking animation.
         /// </summary>
         public float CurrentStandingSpeed => Lerp(CurrentSpeedProportion, MaximumStandingSpeed);
+        
+        /// <summary>
+        /// Movement speed at current point of crouching walking animation.
+        /// </summary>
+        public float CurrentCrouchWalkingSpeed => Lerp(CurrentSpeedProportion, MaximumCrouchWalkingSpeed);
         
         /// <summary>
         /// Linear interpolation of maximum speed depending on current speed proportion.

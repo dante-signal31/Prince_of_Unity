@@ -120,6 +120,16 @@ namespace Prince
             ExecuteCommand(Command.CommandType.WalkLeft);
         }
 
+        public void CrouchWalkRight()
+        {
+            ExecuteCommand(Command.CommandType.CrouchWalk);
+        }
+
+        public void CrouchWalkLeft()
+        {
+            ExecuteCommand(Command.CommandType.CrouchWalk);
+        }
+
         public void Stop()
         {
             ExecuteCommand(Command.CommandType.Stop);

@@ -35,7 +35,11 @@ namespace Prince
         {
             if (context.performed)
             {
-                if (_actionPressed)
+                if (characterStatus.CurrentState == CharacterStatus.States.Crouch)
+                {
+                    inputController.CrouchWalkRight();
+                }
+                else if (_actionPressed)
                 {
                     inputController.WalkRight();
                 }
@@ -47,13 +51,19 @@ namespace Prince
 
             if (context.canceled)
             {
-                if (!_actionPressed) inputController.Stop();
+                if (!(_actionPressed ||
+                      characterStatus.CurrentState == CharacterStatus.States.CrouchWalking)) 
+                    inputController.Stop();
             }
         }
         
         public void MoveLeft(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (characterStatus.CurrentState == CharacterStatus.States.Crouch)
+            {
+                inputController.CrouchWalkLeft();
+            }
+            else if (context.performed)
             {
                 if (_actionPressed)
                 {
@@ -67,7 +77,9 @@ namespace Prince
 
             if (context.canceled)
             {
-                if (!_actionPressed) inputController.Stop();
+                if (!(_actionPressed ||
+                      characterStatus.CurrentState == CharacterStatus.States.CrouchWalking))
+                    inputController.Stop();
             }
         }
 

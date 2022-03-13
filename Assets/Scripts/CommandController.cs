@@ -64,6 +64,10 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Duck at {Time.time}", showLogs);
                     stateMachine.SetTriggerOneFrame("Duck", this);
                     break;
+                case Command.CommandType.CrouchWalk:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed CrouchWalk at {Time.time}", showLogs);
+                    stateMachine.SetTriggerOneFrame("CrouchWalk", this);
+                    break;
                 case Command.CommandType.Stand:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Stand at {Time.time}", showLogs);
                     // stateMachine.SetTriggerOneFrame("Stand", this);
@@ -96,6 +100,7 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed WalkRight at {Time.time}", showLogs);
                     stateMachine.SetTriggerOneFrame("WalkRight", this);
                     break;
+                
             }
             yield return null;
         }

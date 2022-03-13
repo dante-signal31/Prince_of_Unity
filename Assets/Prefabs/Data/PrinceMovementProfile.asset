@@ -19,3 +19,4 @@ MonoBehaviour:
   MaximumRunningSpeed: 2.9
   MaximumWalkingSpeed: 1.3
   MaximumStandingSpeed: 1
+  MaximumCrouchWalkingSpeed: 4

@@ -27,7 +27,8 @@ namespace Prince
             Strike,
             WalkRightWithSword,
             WalkLeftWithSword,
-            Stand
+            Stand,
+            CrouchWalk
         }
 
         [SerializeField] private float _delay;
