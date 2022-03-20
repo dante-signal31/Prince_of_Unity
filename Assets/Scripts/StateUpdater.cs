@@ -9,7 +9,13 @@ namespace Prince
     /// </summary>
     public class StateUpdater : StateMachineBehaviour
     {
+        [Header("CONFIGURATION:")]
+        [Tooltip("State to set as active at character status.")]
         [SerializeField] private CharacterStatus.States stateToUpdate;
+        
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
         
         private CharacterStatus _characterStatus;
 
@@ -21,8 +27,8 @@ namespace Prince
             if (_characterStatus == null)
                 _characterStatus = animator.transform.parent.gameObject.GetComponent<CharacterStatus>();
             _characterStatus.CurrentState = stateToUpdate;
-            Debug.Log($"(StateUpdater - {animator.transform.parent.gameObject.name}) State changed to {stateToUpdate}, " +
-                      $"while looking to rightwards:{_characterStatus.LookingRightWards}");
+            this.Log($"(StateUpdater - {animator.transform.root.name}) State changed to {stateToUpdate}, " +
+                      $"while looking to rightwards:{_characterStatus.LookingRightWards}", showLogs);
         }
         
     }

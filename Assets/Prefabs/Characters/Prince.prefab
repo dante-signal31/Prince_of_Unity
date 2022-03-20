@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1240446814125932619, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: showLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1367216486012578328, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5250694692991532468, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: showLogs
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5310342850138452362, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -361,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: showLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: characterStatus
@@ -443,6 +447,10 @@ PrefabInstance:
       propertyPath: stateMachine
       value: 
       objectReference: {fileID: 3792878465186783984}
+    - target: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: characterStatus
+      value: 
+      objectReference: {fileID: 3800712010592504634}
     - target: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: hittingZoneTolerance
       value: 0.358
@@ -722,7 +730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterMovement: {fileID: 7309082836776320191}
-  showLogs: 1
+  showLogs: 0
   currentSpeedProportion: 0
 --- !u!114 &2642550848936503470 stripped
 MonoBehaviour:

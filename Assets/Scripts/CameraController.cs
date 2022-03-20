@@ -55,9 +55,10 @@ public class CameraController : MonoBehaviour
     /// </summary>
     private void FixPositionOffset()
     {
-        camera.transform.localPosition = new Vector3((float)width / 2,
-                (float) height / 2,
-                camera.transform.localPosition.z);
+        // camera.transform.localPosition = new Vector3((float)width / 2,
+        //         (float) height / 2,
+        //         camera.transform.localPosition.z);
+        camera.transform.localPosition = new Vector3(0,0, camera.transform.localPosition.z);
     }
     
     private void Awake()

@@ -27,6 +27,10 @@ namespace Prince
         [Header("CONFIGURATION:")]
         [Tooltip("Sounds this character plays at certain moments.")]
         [SerializeField] private SoundList audioClips;
+        
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
 
         /// <summary>
         /// Play given sound.
@@ -41,7 +45,7 @@ namespace Prince
 
         private IEnumerator PlaySoundAsync(string soundName)
         {
-            Debug.Log($"(SoundController - {transform.parent.transform.parent.gameObject.name}) Playing {soundName}");
+            this.Log($"(SoundController - {transform.root.name}) Playing {soundName}", showLogs);
             audioSource.clip = audioClips[soundName];
             audioSource.Play();
             yield return null;
