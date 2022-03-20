@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Prince;
 using UnityEngine;
 
 /// <summary>
@@ -39,6 +40,18 @@ public class CameraController : MonoBehaviour
     
     public float AspectRatio => (float) width / (float) height;
     public float OrthographicSize => (float) height / 2;
+    
+    public Room CurrentRoom { get; private set; }
+
+    /// <summary>
+    /// Place this level camera over given room.
+    /// </summary>
+    /// <param name="room">Room to place this camera over.</param>
+    public void PlaceInRoom(Room room)
+    {
+        transform.position = room.RoomCameraPosition;
+        CurrentRoom = room;
+    }
     
     /// <summary>
     /// Set camera settings.

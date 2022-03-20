@@ -166,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245777922232396092, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1367216486012578328, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
@@ -516,6 +516,10 @@ PrefabInstance:
       propertyPath: damageSprite
       value: 
       objectReference: {fileID: 21300000, guid: 91e5b9357aac18a41a538e277d9b10e3, type: 3}
+    - target: {fileID: 6856231554113940006, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7018843227679485157, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 6

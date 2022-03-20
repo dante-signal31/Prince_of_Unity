@@ -399,6 +399,10 @@ PrefabInstance:
       propertyPath: damageSprite
       value: 
       objectReference: {fileID: 21300000, guid: 861331c538199834aa524c024c87d0a9, type: 3}
+    - target: {fileID: 6856231554113940006, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7018843227679485157, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 3

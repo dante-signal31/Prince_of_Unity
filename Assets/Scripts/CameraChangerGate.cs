@@ -28,12 +28,12 @@ namespace Prince
         [SerializeField] private bool showLogs;
         
         private Room _externalRoom;
-        private GameObject _levelCamera;
+        private CameraController _levelCamera;
         
         private void Start()
         {
             SetExternalRoom();
-            _levelCamera = currentRoom.LevelCamera;
+            _levelCamera = currentRoom.LevelCamera.GetComponentInChildren<CameraController>();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Prince
                 case ChangerGateTypes.Horizontal:
                     return positionDifference.x > 0;
                 default:
-                    return positionDifference.z > 0;
+                    return positionDifference.y > 0;
             }
         }
 
@@ -81,13 +81,15 @@ namespace Prince
                 if (IsPlayerOutOfCurrentRoom(other))
                 {
                     // Player is entering in current room.
-                    _levelCamera.transform.position = currentRoom.RoomCameraPosition;
+                    // _levelCamera.transform.position = currentRoom.RoomCameraPosition;
+                    _levelCamera.PlaceInRoom(currentRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player seems to be entering in me.", showLogs);
                 }
                 else
                 {
                     // Player is leaving current room.
-                    _levelCamera.transform.position = _externalRoom.RoomCameraPosition;
+                    // _levelCamera.transform.position = _externalRoom.RoomCameraPosition;
+                    _levelCamera.PlaceInRoom(_externalRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player seems to be leaving from me.", showLogs);
                 }
             }
@@ -109,13 +111,15 @@ namespace Prince
                 if (IsPlayerOutOfCurrentRoom(other))
                 {
                     // Player is returning to his former room.
-                    _levelCamera.transform.position = _externalRoom.RoomCameraPosition;
+                    // _levelCamera.transform.position = _externalRoom.RoomCameraPosition;
+                    _levelCamera.PlaceInRoom(_externalRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player is returning to his former room.", showLogs);
                 }
                 else
                 {
                     // Player is finally entering in current room.
-                    _levelCamera.transform.position = currentRoom.RoomCameraPosition;
+                    // _levelCamera.transform.position = currentRoom.RoomCameraPosition;
+                    _levelCamera.PlaceInRoom(currentRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player finally is entering in me.", showLogs);
                 }
             }

@@ -41,6 +41,11 @@ namespace Prince
         /// Room's neighbour at right.
         /// </summary>
         public Room RightRoomNeighbour => rightRoomNeighbour;
+
+        /// <summary>
+        /// This room's name.
+        /// </summary>
+        public string Name => transform.root.name;
         
         /// <summary>
         /// Is this room the one with current camera focus?

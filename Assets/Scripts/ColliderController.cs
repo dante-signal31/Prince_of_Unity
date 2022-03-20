@@ -16,16 +16,38 @@ public class ColliderController : MonoBehaviour
     [SerializeField] private Collider2D usualCollider;
     [Tooltip("Collider used when character moves with sword unsheathed.")]
     [SerializeField] private Collider2D fightingCollider;
+    [Tooltip("Collider used when character falls.")]
+    [SerializeField] private Collider2D fallingCollider;
 
     private CharacterStatus.States _currentState;
-    private Collider2D CurrentCollider=> (usualCollider.enabled)? usualCollider: fightingCollider;
     
     /// <summary>
-    /// Total width of this character active collider.
+    /// Collider currently enabled.
+    /// </summary>
+    private Collider2D CurrentCollider {
+        get
+        {
+            if (usualCollider.enabled)
+            {
+                return usualCollider;
+            }
+            else if (fightingCollider.enabled)
+            {
+                return fightingCollider;
+            }
+            else
+            {
+                return fallingCollider;
+            }
+        }
+    }
+    
+    /// <summary>
+    /// <p>Total width of this character active collider.</p>
     ///
-    /// I don't use semi-width because this property is mainly used while fighting and then current
+    /// <p>I don't use semi-width because this property is mainly used while fighting and then current
     /// colliders are mostly forward offset from gameobject center position, so entire width is more
-    /// realistic.
+    /// realistic.</p>
     /// </summary>
     public float CurrentColliderWidth => CurrentCollider.bounds.size.x;
 
@@ -33,6 +55,7 @@ public class ColliderController : MonoBehaviour
     {
         Usual,
         Fighting,
+        Falling
     }
 
     private ColliderTypes _enabledCollider;
@@ -58,12 +81,13 @@ public class ColliderController : MonoBehaviour
     {
         usualCollider.enabled = true;
         fightingCollider.enabled = false;
+        fallingCollider.enabled = false;
     }
 
     /// <summary>
-    /// Enable correct collider depending on current state.
+    /// <p>Enable correct collider depending on current state.</p>
     ///
-    /// Every other collider is disabled.
+    /// <p>Every other collider is disabled.</p>
     /// </summary>
     /// <param name="currentState">State we have just switched to.</param>
     private void UpdateColliders(CharacterStatus.States currentState)
@@ -78,6 +102,9 @@ public class ColliderController : MonoBehaviour
                 EnableFightingCollider();
                 break;
             case CharacterStatus.States.FallStart:
+            // case CharacterStatus.States.Falling:
+                EnableFallingCollider();
+                break;
             case CharacterStatus.States.Dead: 
                 DisableColliders();
                 break;
@@ -90,23 +117,36 @@ public class ColliderController : MonoBehaviour
     }
 
     /// <summary>
-    /// Enable UsualCollider and disable FightingCollider.
+    /// Enable UsualCollider and disable every other collider.
     /// </summary>
     private void EnableUsualCollider()
     {
         usualCollider.enabled = true;
         fightingCollider.enabled = false;
+        fallingCollider.enabled = false;
         _enabledCollider = ColliderTypes.Usual;
     }
 
     /// <summary>
-    /// Enable FightingCollider and disable UsualCollider.
+    /// Enable FightingCollider and disable every other collider.
     /// </summary>
     private void EnableFightingCollider()
     {
         usualCollider.enabled = false;
         fightingCollider.enabled = true;
+        fallingCollider.enabled = false;
         _enabledCollider = ColliderTypes.Fighting;
+    }
+
+    /// <summary>
+    /// Enable FallingCollider and disable every other collider.
+    /// </summary>
+    private void EnableFallingCollider()
+    {
+        usualCollider.enabled = false;
+        fightingCollider.enabled = false;
+        fallingCollider.enabled = true;
+        _enabledCollider = ColliderTypes.Falling;
     }
 
     /// <summary>
@@ -118,6 +158,7 @@ public class ColliderController : MonoBehaviour
     {
         usualCollider.enabled = false;
         fightingCollider.enabled = false;
+        fallingCollider.enabled = false;
     }
 
     /// <summary>
@@ -134,6 +175,9 @@ public class ColliderController : MonoBehaviour
                 break;
             case ColliderTypes.Fighting:
                 EnableFightingCollider();
+                break;
+            case ColliderTypes.Falling:
+                EnableFallingCollider();
                 break;
         }
     }
