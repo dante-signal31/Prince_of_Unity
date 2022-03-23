@@ -108,7 +108,6 @@ public class ColliderController : MonoBehaviour
             case CharacterStatus.States.Dead: 
                 DisableColliders();
                 break;
-            case CharacterStatus.States.Landing:
             case CharacterStatus.States.Crouch:
             case CharacterStatus.States.CrouchFromStand:
                 EnableColliders();
@@ -146,7 +145,7 @@ public class ColliderController : MonoBehaviour
         usualCollider.enabled = false;
         fightingCollider.enabled = false;
         fallingCollider.enabled = true;
-        _enabledCollider = ColliderTypes.Falling;
+        // _enabledCollider = ColliderTypes.Falling;
     }
 
     /// <summary>

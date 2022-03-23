@@ -29,7 +29,6 @@ namespace Prince
             Crouch,
             StandFromCrouch,
             TurnBackWithSword,
-            Landing,
             BlockedSword, // My attack was blocked by my enemy.
             CounterBlockSword, // My attack was blocked but I immediately block the attack from my enemy.
             CounterAttackWithSword, // I block the attack from my enemy and I immediately attack him.
@@ -64,7 +63,14 @@ namespace Prince
                 if (_isFalling != value)
                 {
                     _isFalling = value;
-                    stateMachine.SetBool("isFalling", value);
+                    if (_isFalling)
+                    {
+                        stateMachine.SetTrigger("Fall");
+                    } 
+                    else
+                    {
+                        stateMachine.SetTrigger("Land");
+                    }
                 }
             }
         }

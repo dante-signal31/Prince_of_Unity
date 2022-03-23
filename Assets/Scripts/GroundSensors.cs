@@ -97,7 +97,7 @@ public class GroundSensors : MonoBehaviour
             rayDirection, 
             forwardSensorDistance, 
             _architectureLayerMask);
-        return (hit.collider != null) ? hit.collider.transform.parent.gameObject: null;
+        return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
     }
     
     /// <summary>
@@ -112,7 +112,7 @@ public class GroundSensors : MonoBehaviour
             rayDirection, 
             rearSensorDistance, 
             _architectureLayerMask);
-        return (hit.collider != null) ? hit.collider.transform.parent.gameObject: null;
+        return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
     }
     
     /// <summary>
@@ -127,14 +127,14 @@ public class GroundSensors : MonoBehaviour
             rayDirection, 
             centerSensorDistance, 
             _architectureLayerMask);
-        return (hit.collider != null) ? hit.collider.transform.parent.gameObject: null;
+        return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
     }
     
     private void FixedUpdate()
     {
         ForwardGround = DetectForward();
-        RearGround = DetectRear();
         CenterGround = DetectCenter();
+        RearGround = DetectRear();
         UpdateSensorsPosition();
     }
 

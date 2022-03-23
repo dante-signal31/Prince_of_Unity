@@ -141,7 +141,7 @@ namespace Tests.PlayTests
             Assert.True(room01.IsActiveRoom());
             Assert.False(room02.IsActiveRoom());
             // Let Prince fall further.
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1f);
             // Check everything ended as we expected.
             Assert.True(cameraController.CurrentRoom.Name == "Room_0_0");
             Assert.True(room00.IsActiveRoom());
