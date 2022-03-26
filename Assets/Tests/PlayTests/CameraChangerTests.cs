@@ -72,7 +72,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3);
             // Check everything ended as we expected.
             Assert.True(cameraController.CurrentRoom.Name == "Room_1_0");
             Assert.False(room00.IsActiveRoom());
