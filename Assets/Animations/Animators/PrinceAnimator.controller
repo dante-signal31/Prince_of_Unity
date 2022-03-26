@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f02363a66f4851824a750c5efd5255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateToUpdate: 14
+  stateToUpdate: 27
   showLogs: 0
 --- !u!1102 &-8830297908953457793
 AnimatorState:
@@ -193,7 +193,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Crouch
+  m_Name: HardLanding
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -208,7 +208,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 740e1ddf9eeec8645b2d7d1308287d92, type: 2}
+  m_Motion: {fileID: 7400000, guid: 944a13a0be203694c80701dbed006bab, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1915,7 +1915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f02363a66f4851824a750c5efd5255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateToUpdate: 15
+  stateToUpdate: 28
   showLogs: 0
 --- !u!114 &-838924088342168614
 MonoBehaviour:
@@ -2601,7 +2601,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CrouchFromStand
+  m_Name: Landing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -2616,7 +2616,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6b88a20508b1fc040bf53f1c43ea0ebb, type: 2}
+  m_Motion: {fileID: 7400000, guid: 517e90fb0ad3a7a46bd969ba7840fdeb, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

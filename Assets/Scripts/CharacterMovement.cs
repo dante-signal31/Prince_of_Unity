@@ -29,6 +29,7 @@ namespace Prince
         private CharacterStatus.States _currentState;
         private Vector2 _currentForwardVector;
         private float _currentSpeed;
+        private float _oldSpeed;
         
         // Needed To get a reference to characterMovementProfile from SpeedForwarder script to 
         // animate speed values at variable speed stated.
@@ -64,6 +65,7 @@ namespace Prince
                 CharacterStatus.States.Walk => characterMovementProfile.CurrentWalkingSpeed,
                 CharacterStatus.States.StandFromCrouch => characterMovementProfile.CurrentStandingSpeed,
                 CharacterStatus.States.CrouchWalking => characterMovementProfile.CurrentCrouchWalkingSpeed,
+                CharacterStatus.States.Falling => CharacterMovementProfile.FallingHorizontalSpeed,
                 _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;
@@ -81,7 +83,7 @@ namespace Prince
                 _currentSpeed = GetCurrentSpeed(characterState);
                 _currentState = characterState;
                 _currentForwardVector = GetCurrentForwardVector();
-                this.Log($"(CharacterMovement - {gameObject.name}) We are in a variable speed state with speed {_currentSpeed}", showLogs);
+                this.Log($"(CharacterMovement - {gameObject.name}) We are in a variable speed state ({_currentState}) with speed {_currentSpeed}", showLogs);
             }
             this.Log($"(CharacterMovement - {gameObject.name}) Current speed {_currentSpeed}", showLogs);
         }
@@ -133,7 +135,7 @@ namespace Prince
         private void FixedUpdate()
         {
             UpdateCurrentSpeed();
-            if (Math.Abs(_currentSpeed) > 0.01f) UpdatePosition();
+            UpdatePosition();
         }
     }
 }

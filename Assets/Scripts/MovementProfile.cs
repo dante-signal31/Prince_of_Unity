@@ -17,6 +17,7 @@ namespace Prince
         public float MaximumWalkingSpeed;
         public float MaximumStandingSpeed;
         public float MaximumCrouchWalkingSpeed;
+        public float FallingHorizontalSpeed;
 
         // Next value is automatically set by SpeedForwarder in every FixedUpdate. So, it should not be shown 
         // in inspector. 
