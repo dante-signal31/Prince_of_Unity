@@ -93,7 +93,8 @@ namespace Prince
         private void Update()
         {
             UpdateCharacterFacing();
-            if (characterStatus.CurrentState == CharacterStatus.States.Dead)
+            if (characterStatus.CurrentState == CharacterStatus.States.Dead ||
+                characterStatus.CurrentState == CharacterStatus.States.DeadByFall)
             {
                 SpriteToForeground();
             }

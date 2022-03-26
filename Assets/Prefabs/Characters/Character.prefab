@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fightingInteractions: {fileID: 1391425223428354020}
   soundController: {fileID: 7454332378449417252}
+  musicController: {fileID: 8994338604963863714}
 --- !u!1 &4124597107352935379
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7956368920170832525}
+  - component: {fileID: 8994338604963863714}
   m_Layer: 0
   m_Name: Effects
   m_TagString: Untagged
@@ -398,6 +400,18 @@ Transform:
   m_Father: {fileID: 3166921662542275327}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8994338604963863714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528680167608715500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a22f375cda457a82a56b8af7941681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8774815387925293592
 GameObject:
   m_ObjectHideFlags: 0

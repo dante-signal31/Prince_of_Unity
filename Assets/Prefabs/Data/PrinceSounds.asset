@@ -25,3 +25,13 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 313948af7de1f07428dfd1e0fd3a1e70, type: 3}
   - name: unsheathe
     audioClip: {fileID: 8300000, guid: 2c97d2b97cdf9b84d9d90a4b1e99fcd1, type: 3}
+  - name: landing
+    audioClip: {fileID: 8300000, guid: cebb3a1a4d171b447ae2b580d80dde4e, type: 3}
+  - name: hard_landing
+    audioClip: {fileID: 8300000, guid: f10747b7958deeb44837487f5379ca2b, type: 3}
+  - name: falling_chaft
+    audioClip: {fileID: 8300000, guid: 581f2a698bd248f4d86b6fec1ae51cd3, type: 3}
+  - name: falling_scream
+    audioClip: {fileID: 8300000, guid: f88f7583dacee2949ad47f0a7ec27ead, type: 3}
+  - name: regular_death
+    audioClip: {fileID: 8300000, guid: 05fefc6c9099c424d8daa7818b05a1ba, type: 3}

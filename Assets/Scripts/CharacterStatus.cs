@@ -39,7 +39,8 @@ namespace Prince
             Walk,
             CrouchWalking,
             Landing,
-            HardLanding
+            HardLanding,
+            DeadByFall,
         }
         
         [Header("WIRING:")]

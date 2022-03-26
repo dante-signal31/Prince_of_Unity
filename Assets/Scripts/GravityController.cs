@@ -3,6 +3,12 @@ using UnityEngine;
 
 namespace Prince
 {
+    /// <summary>
+    /// This component controls how gravity affects character.
+    ///
+    /// It is used mainly to deactivate gravity for this character in special moments
+    /// like jumps or death.
+    /// </summary>
     public class GravityController : MonoBehaviour
     {
         [Header("WIRING:")]
@@ -23,6 +29,7 @@ namespace Prince
             switch (characterStatus.CurrentState)
             {
                 case CharacterStatus.States.Dead:
+                case CharacterStatus.States.DeadByFall:
                     DisableGravity();
                     break;
                 

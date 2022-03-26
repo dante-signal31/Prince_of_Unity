@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281631549126216618, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: showLogs
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2759692437259027073, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: showLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: characterStatus
@@ -447,6 +447,10 @@ PrefabInstance:
       propertyPath: characterStatus
       value: 
       objectReference: {fileID: 3800712010592504634}
+    - target: {fileID: 8326000155993945185, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: musicController
+      value: 
+      objectReference: {fileID: 5280617345999287367}
     - target: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: stateMachine
       value: 
@@ -716,6 +720,30 @@ MonoBehaviour:
   inputController: {fileID: 2642550848936503470}
   sensors: {fileID: 7338974255637909718}
   characterStatus: {fileID: 3800712010592504634}
+--- !u!1 &1149491836488576031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4208924519771227386, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 3862621942988777701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4544791215336684474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149491836488576031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d868bb499f4b46c19cac6dc564e38e0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStatus: {fileID: 3800712010592504634}
+  stateMachine: {fileID: 3792878465186783984}
+  soundController: {fileID: 5974537263132064961}
+  safeHeight: 2
+  hurtHeight: 4
+  screamFallHeight: 3.5
+  showLogs: 1
 --- !u!1 &1429522996310157924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2759692437259027073, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
@@ -761,6 +789,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4317807658ac49349a0c58422d69ebbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5280617345999287367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8994338604963863714, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 3862621942988777701}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a22f375cda457a82a56b8af7941681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5517114264666132727 stripped

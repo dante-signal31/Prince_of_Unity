@@ -5,19 +5,9 @@ using UnityEngine;
 
 namespace Prince
 {
-    // [Serializable]
-    // public class NamedAudioClip
-    // {
-    //     public string name;
-    //     public AudioClip audioClip;
-    //
-    //     public NamedAudioClip(string name, AudioClip audioClip)
-    //     {
-    //         this.name = name;
-    //         this.audioClip = audioClip;
-    //     }
-    // }
-    
+    /// <summary>
+    /// This component manages every sound that gameobject produces.
+    /// </summary>
     public class SoundController : MonoBehaviour
     {
         [Header("WIRING:")]
@@ -50,18 +40,6 @@ namespace Prince
             audioSource.Play();
             yield return null;
         }
-
-        // // Start is called before the first frame update
-        // void Start()
-        // {
-        //
-        // }
-        //
-        // // Update is called once per frame
-        // void Update()
-        // {
-        //
-        // }
     }
 }
 

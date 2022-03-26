@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Prince
 {
@@ -18,6 +19,8 @@ namespace Prince
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
 
+        private CharacterStatus.States _oldState;
+        
         /// <summary>
         /// Current character life.
         ///
@@ -74,6 +77,28 @@ namespace Prince
                 this.Log($"(HealthController - {transform.root.name}) Hit by sword. New current life: {Life}", showLogs);
                 stateMachine.SetTrigger("Hit");
             }
+        }
+
+        private void FixedUpdate()
+        {
+            if (characterStatus.CurrentState != _oldState)
+            {
+                switch (characterStatus.CurrentState)
+                {
+                    case CharacterStatus.States.HardLanding:
+                        Life--;
+                        this.Log($"(HealthController - {transform.root.name}) Hard landing. Now life is {Life}.", showLogs);
+                        break;
+                    case CharacterStatus.States.DeadByFall:
+                        Life = 0;
+                        this.Log($"(HealthController - {transform.root.name}) Deadly landing.", showLogs);
+                        break;
+                    default:
+                        break;
+                }
+                _oldState = characterStatus.CurrentState;
+            }
+            
         }
     }
 }

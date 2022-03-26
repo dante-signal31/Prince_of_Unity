@@ -14,8 +14,10 @@ namespace Prince
                 [Header("WIRING:")]
                 [Tooltip("Needed to signal fighting events to stay in synch with animations.")]
                 [SerializeField] private FightingInteractions fightingInteractions;
-                [Tooltip("Needed to play sounds at certain points of animations")] [SerializeField]
-                private SoundController soundController;
+                [Tooltip("Needed to play sounds at certain points of animations")] 
+                [SerializeField] private SoundController soundController;
+                [Tooltip("Needed to play music at certain points of animation.")]
+                [SerializeField] private MusicController musicController;
 
 ///////// My strike can be blocked.
                 public void StrikeStart()
@@ -58,6 +60,11 @@ namespace Prince
                 public void PlaySound(string soundName)
                 {
                     soundController.PlaySound(soundName);
+                }
+
+                public void PlayMusic(string musicName)
+                {
+                    musicController.PlayMusic(musicName);
                 }
         }
 }
