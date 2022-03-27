@@ -30,6 +30,11 @@ namespace Prince
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
+
+        /// <summary>
+        /// Whether this character is a guard or not.
+        /// </summary>
+        public bool ImGuard => iAmGuard;
         
         /// <summary>
         /// Used by attacker to track he has an attack on course.

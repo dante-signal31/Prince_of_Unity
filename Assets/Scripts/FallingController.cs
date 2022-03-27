@@ -16,6 +16,10 @@ namespace Prince
         [SerializeField] private Animator stateMachine;
         [Tooltip("Needed to play scream sound.")]
         [SerializeField] private SoundController soundController;
+        [Tooltip("Needed to show damage flash shen hard or deadly landing.")]
+        [SerializeField] private DamageEffect damageEffect;
+        [Tooltip("Needed to know if we are a guard or not.")]
+        [SerializeField] private FightingInteractions fightingInteractions;
 
         [Header("CONFIGURATION:")]
         [Tooltip("Maximum fall height to not be hurt.")]
@@ -46,6 +50,7 @@ namespace Prince
         }
 
         private bool _alreadyScreamed;
+        private bool _damageAlreadyShown;
         private bool _previouslyWasFalling;
         private float _previousHeight;
         private float _totalFallingHeight;
@@ -114,6 +119,7 @@ namespace Prince
             _previouslyWasFalling = false;
             ExpectedLanding = LandingStates.Normal;
             _alreadyScreamed = false;
+            _damageAlreadyShown = false;
         }
         
 
@@ -122,6 +128,21 @@ namespace Prince
             UpdateFallingCounter();
             UpdateExpectedLandingState();
             ScreamIfNeeded();
+            ShowDamageEffectIfNeeded();
+        }
+
+        /// <summary>
+        /// Show damage effect if we are in a deadly or hard landing state.
+        /// </summary>
+        private void ShowDamageEffectIfNeeded()
+        {
+            if ((characterStatus.CurrentState == CharacterStatus.States.HardLanding ||
+                 characterStatus.CurrentState == CharacterStatus.States.DeadByFall) &&
+                !_damageAlreadyShown)
+            {
+                damageEffect.ShowLandingHit(fightingInteractions.ImGuard);
+                _damageAlreadyShown = true;
+            }
         }
 
         /// <summary>

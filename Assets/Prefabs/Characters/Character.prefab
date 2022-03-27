@@ -228,6 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3314638672175299456}
   - component: {fileID: 3516496625040567591}
+  - component: {fileID: 7555925246985261242}
   m_Layer: 0
   m_Name: Physics
   m_TagString: Untagged
@@ -265,6 +266,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 7284997314533658813}
   characterStatus: {fileID: 82222986682491871}
+--- !u!114 &7555925246985261242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4208924519771227386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d868bb499f4b46c19cac6dc564e38e0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStatus: {fileID: 82222986682491871}
+  stateMachine: {fileID: 88322598493374997}
+  soundController: {fileID: 7454332378449417252}
+  damageEffect: {fileID: 6359709207466570223}
+  fightingInteractions: {fileID: 1391425223428354020}
+  safeHeight: 2
+  hurtHeight: 4
+  screamFallHeight: 3.5
+  showLogs: 0
 --- !u!1 &5796631354318011793
 GameObject:
   m_ObjectHideFlags: 0

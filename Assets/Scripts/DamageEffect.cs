@@ -107,4 +107,27 @@ public class DamageEffect : MonoBehaviour
         yield return new WaitForSeconds(damageTime);
         HideDamage();
     }
+    
+    /// <summary>
+    /// Show damage produced falling landing.
+    /// </summary>
+    /// <param name="hitOverGuard">If true then we are hitting over a guard. Guards do not show
+    /// screen red tint when hit.
+    /// </param>
+    public void ShowLandingHit(bool hitOverGuard)
+    {
+        StartCoroutine(ShowLandingHitAsync(hitOverGuard));
+    }
+
+    private IEnumerator ShowLandingHitAsync(bool hitOverGuard)
+    {
+        if (!hitOverGuard) ShowDamageFlash();
+        yield return new WaitForSeconds(damageDelay);
+        ShowDamage(DamageEffectType.DownDamage);
+        // In this case sound effects are called from animations, because those effects are
+        // different depending on animation.
+        // soundController.PlaySound("hit_by_sword");
+        yield return new WaitForSeconds(damageTime);
+        HideDamage();
+    }
 }
