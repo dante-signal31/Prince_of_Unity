@@ -98,7 +98,7 @@ namespace Tests.PlayTests
             yield return new WaitForSeconds(2);
             // Let fall perform.
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             Vector2 endPosition = _enemy.transform.position;
             float fallenDistance = startPosition.y - endPosition.y;
             // Assert enemy has fallen through hole.

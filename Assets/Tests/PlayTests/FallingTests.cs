@@ -64,13 +64,6 @@ namespace Tests.PlayTests
         {
             yield return TestSceneManager.UnLoadScene(_currentScene);
         }
-        
-        // [Test]
-        // public void FallingTestsSimplePasses()
-        // {
-        //     // Use the Assert class to test conditions.
-        //     
-        // }
 
         /// <summary>
         /// Test that Prince survives unharmed a 1 level fall.
@@ -182,6 +175,140 @@ namespace Tests.PlayTests
             Assert.True((startingHeight - currentHeight) > 6f);
             // Assert Prince is screaming.
             FallingController fallingController = _prince.GetComponentInChildren<FallingController>();
+            bool hasScreamed = AccessPrivateHelper.GetPrivateField<bool>(fallingController, "_alreadyScreamed");
+            Assert.True(hasScreamed);
+        }
+        
+        /// <summary>
+        /// Test that Guard survives unharmed a 1 level fall.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardFallingOneLevelTest()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            // I dont want enemy to move or defend by itself.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+            int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            float expectedFinalHeight = 0.32f;
+            string commandFile = @"Assets\Tests\TestResources\oneSwordHit";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            // Assert guard has fallen to where we expected.
+            float endHeight = _enemy.transform.position.y;
+            float heightError = endHeight - expectedFinalHeight;
+            Assert.True(Math.Abs(heightError) < 0.04);
+            // Assert guard keeps his life (minus 1 point because the hit we needed to make him fall.
+            Assert.False(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True((startingHealth - 1) == endHealth);
+        }
+        
+        /// <summary>
+        /// Test that Guard survives a 2 level fall but receives 1 additional hit.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardFallingTwoLevelsTest()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            // I dont want enemy to move or defend by itself.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
+            int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            float expectedFinalHeight = 0.32f;
+            string commandFile = @"Assets\Tests\TestResources\oneSwordHit";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            // Assert guard has fallen to where we expected.
+            float endHeight = _enemy.transform.position.y;
+            float heightError = endHeight - expectedFinalHeight;
+            Assert.True(Math.Abs(heightError) < 0.04);
+            // Assert guard has lost 1 point because of fall (minus 1 point becuase the hit we needed to make him fall.
+            Assert.False(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True((startingHealth - 2) == endHealth);
+        }
+        
+        /// <summary>
+        /// Test that Guard dies if he falls more than three levels.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardFallingThreeLevelsTest()
+        {
+            _cameraController.PlaceInRoom(_room01);
+            // I dont want enemy to move or defend by itself.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition7.transform.position, Quaternion.identity);
+            int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            float expectedFinalHeight = 0.32f;
+            string commandFile = @"Assets\Tests\TestResources\oneSwordHit";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(6);
+            // Assert guard has fallen to where we expected.
+            float endHeight = _enemy.transform.position.y;
+            float heightError = endHeight - expectedFinalHeight;
+            Assert.True(Math.Abs(heightError) < 0.04);
+            // Assert guard is dead.
+            Assert.True(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
+        
+        
+        /// <summary>
+        /// Test that Guard screams if he falls more than three levels.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardScreamTest()
+        {
+            _cameraController.PlaceInRoom(_room02);
+            // I dont want enemy to move or defend by itself.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
+            _enemy.transform.SetPositionAndRotation(_startPosition8.transform.position, Quaternion.identity);
+            float startingHeight = _enemy.transform.position.y;
+            float expectedFinalHeight = 0.32f;
+            string commandFile = @"Assets\Tests\TestResources\oneSwordHit";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(6);
+            // Assert we have fallen enough.
+            float currentHeight = _enemy.transform.position.y;
+            Assert.True((startingHeight - currentHeight) > 6f);
+            // Assert guard is screaming.
+            FallingController fallingController = _enemy.GetComponentInChildren<FallingController>();
             bool hasScreamed = AccessPrivateHelper.GetPrivateField<bool>(fallingController, "_alreadyScreamed");
             Assert.True(hasScreamed);
         }
