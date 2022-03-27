@@ -85,7 +85,6 @@ namespace Tests.PlayTests
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
-            Vector2 startPosition = _prince.transform.position;
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
@@ -115,7 +114,6 @@ namespace Tests.PlayTests
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
-            Vector2 startPosition = _prince.transform.position;
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
@@ -142,7 +140,6 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
-            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
             Vector2 startPosition = _prince.transform.position;
