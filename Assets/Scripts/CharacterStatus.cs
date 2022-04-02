@@ -70,18 +70,26 @@ namespace Prince
         public bool IsFalling
         {
             get=> _isFalling;
+            
             // This value is set from GroundSensors.
+            //
+            // I don't like IsFalling being set from another component. This component should
+            // read GroundSensor and update itself accordingly. Problem is that I've tried
+            // to refactor in that way and I've meet odd problems, likely because of some 
+            // time race between GroundSensor and CharacterStatus. In my test I've only got an
+            // stable behaviour if IsFalling is set from GroundSensor.
             set
             {
                 if (_isFalling != value)
                 {
-                    _isFalling = value;
-                    if (_isFalling)
+                    if (value && gravityController.GravityEnabled)
                     {
-                        if (gravityController.GravityEnabled) stateMachine.SetTrigger("Fall");
+                        _isFalling = true;
+                        stateMachine.SetTrigger("Fall");
                     } 
-                    else
+                    else if (gravityController.GravityEnabled)
                     {
+                        _isFalling = false;
                         stateMachine.SetTrigger("Land");
                     }
                 }

@@ -10,6 +10,7 @@ namespace Tests.PlayTests
     public class CameraChangerTests
     {
         private GameObject _prince;
+        private GameObject _enemy;
         private GameObject _levelCamera;
         
         private GameObject _startPosition1;
@@ -27,6 +28,7 @@ namespace Tests.PlayTests
             yield return TestSceneManager.ReLoadScene(_currentScene);
             
             if (_prince == null) _prince = GameObject.Find("Prince");
+            if (_enemy == null) _enemy = GameObject.Find("Enemy");
             if (_levelCamera == null) _levelCamera = GameObject.Find("LevelCamera");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
@@ -60,6 +62,7 @@ namespace Tests.PlayTests
         public IEnumerator CameraChangerHorizontalToRightTest()
         {
             _prince.SetActive(true);
+            _enemy.SetActive(false);
             _prince.transform.SetPositionAndRotation(_startPosition9.transform.position, Quaternion.identity);
             Room room00 = GameObject.Find("Room_0_0").GetComponent<Room>();
             Room room10 = GameObject.Find("Room_1_0").GetComponent<Room>();
@@ -90,6 +93,7 @@ namespace Tests.PlayTests
         public IEnumerator CameraChangerHorizontalToLeftTest()
         {
             _prince.SetActive(true);
+            _enemy.SetActive(false);
             _prince.transform.SetPositionAndRotation(_startPosition10.transform.position, Quaternion.identity);
             Room room00 = GameObject.Find("Room_0_0").GetComponent<Room>();
             Room room10 = GameObject.Find("Room_1_0").GetComponent<Room>();
@@ -120,6 +124,7 @@ namespace Tests.PlayTests
         public IEnumerator CameraChangerVerticalTest()
         {
             _prince.SetActive(true);
+            _enemy.SetActive(false);
             _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
             Room room00 = GameObject.Find("Room_0_0").GetComponent<Room>();
             Room room01 = GameObject.Find("Room_0_1").GetComponent<Room>();

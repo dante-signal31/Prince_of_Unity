@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 88322598493374997}
+  gravityController: {fileID: 3516496625040567591}
   life: 0
   maximumLife: 0
   hasSword: 0
