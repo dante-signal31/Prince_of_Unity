@@ -75,6 +75,7 @@ namespace Prince
                     break;
                 case Command.CommandType.Jump:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Jump at {Time.time}", showLogs);
+                    stateMachine.SetTrigger("Jump");
                     break;
                 case Command.CommandType.Stop:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Stop at {Time.time}", showLogs);

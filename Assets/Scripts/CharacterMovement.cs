@@ -66,7 +66,9 @@ namespace Prince
                 CharacterStatus.States.StandFromCrouch => characterMovementProfile.CurrentStandingSpeed,
                 CharacterStatus.States.CrouchWalking => characterMovementProfile.CurrentCrouchWalkingSpeed,
                 CharacterStatus.States.Falling => CharacterMovementProfile.FallingHorizontalSpeed,
-                _ => 0
+                CharacterStatus.States.RunningJumpImpulse => CharacterMovementProfile.RunningJumpingImpulseSpeed,
+                CharacterStatus.States.RunningJump => CharacterMovementProfile.RunningJumpingSpeed,
+                    _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;
             return speed;

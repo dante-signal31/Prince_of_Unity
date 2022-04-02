@@ -41,11 +41,15 @@ namespace Prince
             Landing,
             HardLanding,
             DeadByFall,
+            RunningJumpImpulse,
+            RunningJump
         }
         
         [Header("WIRING:")]
         [Tooltip("Needed to set state machine parameters depending on status.")]
         [SerializeField] private Animator stateMachine;
+        [Tooltip("Needed to know is enabled and we can fall.")]
+        [SerializeField] private GravityController gravityController;
         
         [Header("CONFIGURATION:")]
         [Tooltip("Current character life.")]
@@ -58,9 +62,15 @@ namespace Prince
         [SerializeField] private bool lookingRightWards;
 
         private bool _isFalling;
+        
+        /// <summary>
+        /// Whether this character is falling or not.
+        /// </summary>
+        /// TODO: I don't like IsFalling being set from another component. This component should read GroundSensor and update itself accordingly.
         public bool IsFalling
         {
             get=> _isFalling;
+            // This value is set from GroundSensors.
             set
             {
                 if (_isFalling != value)
@@ -68,7 +78,7 @@ namespace Prince
                     _isFalling = value;
                     if (_isFalling)
                     {
-                        stateMachine.SetTrigger("Fall");
+                        if (gravityController.GravityEnabled) stateMachine.SetTrigger("Fall");
                     } 
                     else
                     {

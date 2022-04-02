@@ -19,6 +19,11 @@ namespace Prince
 
         private float _enabledGravity;
 
+        /// <summary>
+        /// Whether gravity affects this character.
+        /// </summary>
+        public bool GravityEnabled => rigidBody.gravityScale > 0;
+
         private void Awake()
         {
             _enabledGravity = rigidBody.gravityScale;
@@ -32,7 +37,12 @@ namespace Prince
                 case CharacterStatus.States.DeadByFall:
                     DisableGravity();
                     break;
-                
+                case CharacterStatus.States.RunningJump:
+                    if (GravityEnabled) DisableGravity();
+                    break;
+                default:
+                    if (!GravityEnabled) EnableGravity();
+                    break;
             }
         }
 
