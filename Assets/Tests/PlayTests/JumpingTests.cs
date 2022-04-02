@@ -22,6 +22,8 @@ namespace Tests.PlayTests
         private GameObject _startPosition7;
         private GameObject _startPosition8;
         private GameObject _startPosition11;
+        private GameObject _startPosition12;
+        private GameObject _startPosition13;
 
         private CameraController _cameraController;
         private Room _room00;
@@ -46,6 +48,8 @@ namespace Tests.PlayTests
             if (_startPosition7 == null) _startPosition7 = GameObject.Find("StartPosition7");
             if (_startPosition8 == null) _startPosition8 = GameObject.Find("StartPosition8");
             if (_startPosition11 == null) _startPosition11 = GameObject.Find("StartPosition11");
+            if (_startPosition12 == null) _startPosition12 = GameObject.Find("StartPosition12");
+            if (_startPosition13 == null) _startPosition13 = GameObject.Find("StartPosition13");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
@@ -80,7 +84,7 @@ namespace Tests.PlayTests
             float startingHeight = _prince.transform.position.y;
             float startingHorizontalPosition = _prince.transform.position.x;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
-            float expectedAdvancedHorizontalPosition = 11.21f;
+            float expectedAdvancedHorizontalPosition = 9.8f;
             string commandFile = @"Assets\Tests\TestResources\runningJumpingSequence";
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
@@ -94,7 +98,35 @@ namespace Tests.PlayTests
             // Assert Prince has advanced what we expected.
             float endHorizontalPosition = _prince.transform.position.x;
             float advancedHorizontalPosition = endHorizontalPosition - startingHorizontalPosition;
-            Assert.True(Math.Abs(advancedHorizontalPosition - expectedAdvancedHorizontalPosition) < 0.10);
+            Assert.True(Math.Abs(advancedHorizontalPosition - expectedAdvancedHorizontalPosition) < 0.15);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test that running jumping can get over a 4 unit wide gap if it land one level below.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator RunningJumpingFallingTest()
+        {
+            _cameraController.PlaceInRoom(_room01);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition12.transform.position, Quaternion.identity);
+            Vector3 expectedLandingPosition = _startPosition13.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\runningJumpingSequence";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
             // Assert Prince keeps his life.
             Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;

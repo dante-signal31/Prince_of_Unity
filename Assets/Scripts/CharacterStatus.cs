@@ -42,7 +42,15 @@ namespace Prince
             HardLanding,
             DeadByFall,
             RunningJumpImpulse,
-            RunningJump
+            RunningJump,
+            WalkingJump,
+        }
+
+        public enum JumpingTypes
+        {
+            RunningJumping,
+            WalkingJumping,
+            None
         }
         
         [Header("WIRING:")]
@@ -50,6 +58,8 @@ namespace Prince
         [SerializeField] private Animator stateMachine;
         [Tooltip("Needed to know is enabled and we can fall.")]
         [SerializeField] private GravityController gravityController;
+        [Tooltip("Needed to know if we hve ground under our feet.")]
+        [SerializeField] private GroundSensors groundSensors;
         
         [Header("CONFIGURATION:")]
         [Tooltip("Current character life.")]
@@ -95,10 +105,48 @@ namespace Prince
                 }
             }
         }
+
+        private States _currentState;
         
-        // CurrentState is updated from StateUpdater components present in every machine state. 
-        public States CurrentState { get; set;} 
-    
+        /// <summary>
+        /// <p>Jumping sequence this character is performing</p>
+        ///
+        /// <p>You can jump over an empty space and chain that jump with a fall.
+        /// Fall speeds are different depending on the jumping type. So we must
+        /// take note of current fall type if we are performing one. If we are
+        /// not doing any jump sequence then CurrentJumpingType is None.</p>
+        /// <p>CurrentJumpingType is set to None in any of the landing states.</p>
+        /// </summary>
+        public JumpingTypes CurrentJumpingSequence { get; private set; }
+        
+        /// <summary>
+        /// State of this character.
+        /// </summary>
+        public States CurrentState
+        {
+            get => _currentState;
+            
+            set
+            {
+                _currentState = value;
+                CurrentJumpingSequence = value switch
+                {
+                    States.RunningJumpImpulse => JumpingTypes.RunningJumping,
+                    States.WalkingJump => JumpingTypes.WalkingJumping,
+                    States.Landing or States.HardLanding => JumpingTypes.None,
+                    // When you chain a running jump with a fall you pass through 
+                    // running state. I only
+                    // want reset CurrentJumpingSequence to None only when we
+                    // chain a running jump with running (i.e. we jump through
+                    // hole and we continue running on the other side). Than last
+                    // thing happens when you have ground under your feet.
+                    States.Running when groundSensors.GroundBelow => JumpingTypes.None,
+                    _ => CurrentJumpingSequence
+                };
+                
+            } 
+        }
+
         public int Life
         {
             get => life;

@@ -46,9 +46,9 @@ namespace Prince
         /// </summary>
         /// <param name="state">State to get speed.</param>
         /// <returns>Speed for given state.</returns>
-        private float GetCurrentSpeed(CharacterStatus.States state)
+        private float GetCurrentSpeed()
         {
-            float speed = state switch
+            float speed = characterStatus.CurrentState switch
             {
                 CharacterStatus.States.AdvanceSword => characterMovementProfile.AdvanceWithSwordSpeed,
                 CharacterStatus.States.Retreat => characterMovementProfile.RetreatSpeed,
@@ -65,7 +65,12 @@ namespace Prince
                 CharacterStatus.States.Walk => characterMovementProfile.CurrentWalkingSpeed,
                 CharacterStatus.States.StandFromCrouch => characterMovementProfile.CurrentStandingSpeed,
                 CharacterStatus.States.CrouchWalking => characterMovementProfile.CurrentCrouchWalkingSpeed,
-                CharacterStatus.States.Falling => CharacterMovementProfile.FallingHorizontalSpeed,
+                CharacterStatus.States.FallStart or CharacterStatus.States.Falling when 
+                    characterStatus.CurrentJumpingSequence == CharacterStatus.JumpingTypes.RunningJumping => CharacterMovementProfile.FallingHorizontalSpeedAfterRunningJump,
+                CharacterStatus.States.FallStart or CharacterStatus.States.Falling when 
+                    characterStatus.CurrentJumpingSequence == CharacterStatus.JumpingTypes.WalkingJumping => CharacterMovementProfile.FallingHorizontalSpeedAfterWalkingJump,
+                CharacterStatus.States.FallStart or CharacterStatus.States.Falling when 
+                    characterStatus.CurrentJumpingSequence == CharacterStatus.JumpingTypes.None => CharacterMovementProfile.FallingHorizontalSpeed,
                 CharacterStatus.States.RunningJumpImpulse => CharacterMovementProfile.RunningJumpingImpulseSpeed,
                 CharacterStatus.States.RunningJump => CharacterMovementProfile.RunningJumpingSpeed,
                     _ => 0
@@ -82,7 +87,7 @@ namespace Prince
             CharacterStatus.States characterState = characterStatus.CurrentState;
             if ((_currentState != characterState) || (IsVariableSpeedState()))
             {
-                _currentSpeed = GetCurrentSpeed(characterState);
+                _currentSpeed = GetCurrentSpeed();
                 _currentState = characterState;
                 _currentForwardVector = GetCurrentForwardVector();
                 this.Log($"(CharacterMovement - {gameObject.name}) We are in a variable speed state ({_currentState}) with speed {_currentSpeed}", showLogs);

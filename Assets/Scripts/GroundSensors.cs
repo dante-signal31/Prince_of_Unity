@@ -22,7 +22,7 @@ public class GroundSensors : MonoBehaviour
     [Tooltip("How much to advance forward and center sensor when in fighting mode.")]
     [SerializeField] private float centerFightingModeXOffset;
 
-    private bool _fightingMode = false;
+    private bool _wideSensorDistribution = false;
     
     private int _architectureLayerMask;
     
@@ -139,25 +139,38 @@ public class GroundSensors : MonoBehaviour
     }
 
     /// <summary>
-    /// Fighting collider is bigger so forward and center sensors need to be advanced when in fighting mode.
+    /// Fighting/running collider is bigger so forward and center sensors need to be advanced when in fighting/running mode.
     /// On the other hand they need to be reverted to its previous position when in normal mode.
     /// </summary>
     private void UpdateSensorsPosition()
     {
-        if (characterStatus.CurrentState == CharacterStatus.States.Unsheathe)
+        // if (characterStatus.CurrentState == CharacterStatus.States.Unsheathe)
+        // {
+        //     if (!_wideSensorDistribution) SetWideModeSensors();
+        //     _wideSensorDistribution = true;
+        // }
+        //
+        // if (characterStatus.CurrentState == CharacterStatus.States.Sheathe)
+        // {
+        //     if (_wideSensorDistribution) SetNormalModeSensors();
+        //     _wideSensorDistribution = false;
+        // }
+        switch (characterStatus.CurrentState)
         {
-            if (!_fightingMode) SetFightingModeSensors();
-            _fightingMode = true;
-        }
-
-        if (characterStatus.CurrentState == CharacterStatus.States.Sheathe)
-        {
-            if (_fightingMode) SetNormalModeSensors();
-            _fightingMode = false;
+            case CharacterStatus.States.RunningStart:
+            case CharacterStatus.States.Unsheathe:
+                if (!_wideSensorDistribution) SetWideModeSensors();
+                _wideSensorDistribution = true;
+                break;
+            case CharacterStatus.States.Idle:
+            case CharacterStatus.States.Sheathe:
+                if (_wideSensorDistribution) SetNormalModeSensors();
+                _wideSensorDistribution = false;
+                break;
         }
     }
 
-    private void SetFightingModeSensors()
+    private void SetWideModeSensors()
     {
         Vector3 currentPosition = forwardSensorStart.position;
         forwardSensorStart.position = new Vector3(currentPosition.x + forwardFightingModeXOffset,
