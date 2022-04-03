@@ -73,6 +73,8 @@ namespace Prince
                     characterStatus.CurrentJumpingSequence == CharacterStatus.JumpingTypes.None => CharacterMovementProfile.FallingHorizontalSpeed,
                 CharacterStatus.States.RunningJumpImpulse => CharacterMovementProfile.RunningJumpingImpulseSpeed,
                 CharacterStatus.States.RunningJump => CharacterMovementProfile.RunningJumpingSpeed,
+                CharacterStatus.States.WalkingJump => CharacterMovementProfile.WalkingJumpingSpeed,
+                CharacterStatus.States.WalkingJumpEnd => CharacterMovementProfile.WalkingJumpingEndSpeed,
                     _ => 0
             };
             // return characterStatus.LookingRightWards? speed: speed * -1;

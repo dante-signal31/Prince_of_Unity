@@ -44,6 +44,8 @@ namespace Prince
             RunningJumpImpulse,
             RunningJump,
             WalkingJump,
+            WalkingJumpStart,
+            WalkingJumpEnd,
         }
 
         public enum JumpingTypes

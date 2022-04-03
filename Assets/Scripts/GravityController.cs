@@ -38,6 +38,7 @@ namespace Prince
                     DisableGravity();
                     break;
                 case CharacterStatus.States.RunningJump:
+                case CharacterStatus.States.WalkingJump:
                     if (GravityEnabled) DisableGravity();
                     break;
                 default:

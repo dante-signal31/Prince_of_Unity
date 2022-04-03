@@ -30,6 +30,7 @@ namespace Prince
         [SerializeField] private CharacterStatus characterStatus;
         
         private bool _actionPressed;
+        private bool _jumpPressed;
 
         public void MoveRight(InputAction.CallbackContext context)
         {
@@ -59,13 +60,13 @@ namespace Prince
         
         public void MoveLeft(InputAction.CallbackContext context)
         {
-            if (characterStatus.CurrentState == CharacterStatus.States.Crouch)
+            if (context.performed)
             {
-                inputController.CrouchWalkLeft();
-            }
-            else if (context.performed)
-            {
-                if (_actionPressed)
+                if (characterStatus.CurrentState == CharacterStatus.States.Crouch)
+                {
+                    inputController.CrouchWalkLeft();
+                }
+                else if (_actionPressed)
                 {
                     inputController.WalkLeft();
                 }
@@ -122,8 +123,20 @@ namespace Prince
 
         public void Jump(InputAction.CallbackContext context)
         {
-            if (context.performed) inputController.Jump();
-            if (context.canceled) inputController.Stop();
+            if (context.started)
+            {
+                _jumpPressed = true;
+            }
+
+            if (context.performed)
+            {
+                inputController.Jump();
+            }
+            
+            if (context.canceled)
+            {
+                _jumpPressed = false;
+            }
         }
 
         public void Block(InputAction.CallbackContext context)
