@@ -24,11 +24,14 @@ namespace Tests.PlayTests
         private GameObject _startPosition11;
         private GameObject _startPosition12;
         private GameObject _startPosition13;
+        private GameObject _startPosition14;
+        private GameObject _startPosition15;
 
         private CameraController _cameraController;
         private Room _room00;
         private Room _room01;
         private Room _room02;
+        private Room _room10;
 
         private string _currentScene = "TheAbyss";
 
@@ -50,6 +53,8 @@ namespace Tests.PlayTests
             if (_startPosition11 == null) _startPosition11 = GameObject.Find("StartPosition11");
             if (_startPosition12 == null) _startPosition12 = GameObject.Find("StartPosition12");
             if (_startPosition13 == null) _startPosition13 = GameObject.Find("StartPosition13");
+            if (_startPosition14 == null) _startPosition14 = GameObject.Find("StartPosition14");
+            if (_startPosition15 == null) _startPosition15 = GameObject.Find("StartPosition15");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
@@ -58,6 +63,8 @@ namespace Tests.PlayTests
                 _room01 = GameObject.Find("Room_0_1").GetComponentInChildren<Room>();
             if (_room02 == null)
                 _room02 = GameObject.Find("Room_0_2").GetComponentInChildren<Room>();
+            if (_room10 == null)
+                _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
             
             _prince.SetActive(false);
             _enemy.SetActive(false);
@@ -131,6 +138,62 @@ namespace Tests.PlayTests
             Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test that walking jumping can get over a 2 unit wide gap.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator WalkingJumpingTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition13.transform.position, Quaternion.identity);
+            Vector3 expectedLandingPosition = _startPosition14.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\walkingJumpingSequence";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test that walking jumping can get over a 3 unit wide gap if it lands 2 levels below.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator WalkingJumpingFallingTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition14.transform.position, Quaternion.identity);
+            Vector3 expectedLandingPosition = _startPosition15.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\walkingJumpingSequence";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth - 1 == endHealth);
         }
     }
 }
