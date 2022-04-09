@@ -134,9 +134,16 @@ namespace Prince
         /// </summary>
         private void UpdatePosition()
         {
-            // We only change speed on horizontal axis (X). Vertical axis (Y) is changed only by gravity forces
-            // so we must keep that axis to restore it when changing horizontal velocity.
-            Vector2 yComponent = new Vector2(0, rigidBody2D.velocity.y);
+            Vector2 yComponent = characterStatus.CurrentState switch
+            {
+                // When jumping, gravity is disabled so any residual Y velocity makes character float away a bit.
+                // So when jumping I make sure Y velocity is 0 to make jump movement keep its Y position.
+                CharacterStatus.States.RunningJump or
+                    CharacterStatus.States.WalkingJump => Vector2.zero,
+                // In any other case we only change speed on horizontal axis (X). Vertical axis (Y) is changed only by gravity forces
+                // so we must keep that axis to restore it when changing horizontal velocity.
+                _ => new Vector2(0, rigidBody2D.velocity.y)
+            };
             rigidBody2D.velocity = _currentForwardVector * _currentSpeed + yComponent;
             this.Log($"(CharacterMovement - {gameObject.name}) Moving with speed {_currentSpeed} and forward vector {_currentForwardVector}", showLogs);
         }
