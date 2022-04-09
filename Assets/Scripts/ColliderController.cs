@@ -99,6 +99,7 @@ public class ColliderController : MonoBehaviour
                 break;
             case CharacterStatus.States.Unsheathe:
             case CharacterStatus.States.RunningStart:
+            case CharacterStatus.States.WalkingJumpStart:
                 EnableFightingCollider();
                 break;
             case CharacterStatus.States.FallStart:
