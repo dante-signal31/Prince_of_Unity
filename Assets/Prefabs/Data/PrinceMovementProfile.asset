@@ -24,7 +24,7 @@ MonoBehaviour:
   RunningJumpingImpulseSpeed: 3.32
   RunningJumpingSpeed: 4.2
   FallingHorizontalSpeedAfterRunningJump: 3.1
-  WalkingJumpingSpeed: 4.4
+  WalkingJumpingSpeed: 4.6
   WalkingJumpingEndSpeed: 1.57
   FallingHorizontalSpeedAfterWalkingJump: 1.5
   VerticalJumpHorizontalSpeed: 0.7
