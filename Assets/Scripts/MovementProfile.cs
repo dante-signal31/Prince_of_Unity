@@ -24,6 +24,7 @@ namespace Prince
         public float WalkingJumpingSpeed;
         public float WalkingJumpingEndSpeed;
         public float FallingHorizontalSpeedAfterWalkingJump;
+        public float VerticalJumpHorizontalSpeed;
 
         // Next value is automatically set by SpeedForwarder in every FixedUpdate. So, it should not be shown 
         // in inspector. 

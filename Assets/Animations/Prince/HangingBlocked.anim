@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WalkJumpEnd
+  m_Name: HangingBlocked
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,20 +20,22 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 216a7b570d7cbc341ab28e57713170ae, type: 3}
-    - time: 0.083333336
-      value: {fileID: 21300000, guid: 2c4ff926efb29884187b470844f0326d, type: 3}
-    - time: 0.16666667
-      value: {fileID: 21300000, guid: e89460cfb4634c34dad85441f2975317, type: 3}
+      value: {fileID: 21300000, guid: 2cda224056b2d9249b7c15db06e7e84d, type: 3}
+    - time: 0.125
+      value: {fileID: 21300000, guid: bec3d750a67e51e429c7cf6818bec310, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: f44f9c6a0da9fb84ab8396a9c3c96cb6, type: 3}
-    - time: 0.33333334
-      value: {fileID: 21300000, guid: 4723f28b723fb944f98e8f50746d60f1, type: 3}
+      value: {fileID: 21300000, guid: f44af0f6206e397479494771d840bd95, type: 3}
+    - time: 0.375
+      value: {fileID: 21300000, guid: 593aa4ebc0b06284f9a23980cf770b31, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: f44af0f6206e397479494771d840bd95, type: 3}
+    - time: 0.625
+      value: {fileID: 21300000, guid: bec3d750a67e51e429c7cf6818bec310, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 12
+  m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -48,22 +50,23 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 216a7b570d7cbc341ab28e57713170ae, type: 3}
-    - {fileID: 21300000, guid: 2c4ff926efb29884187b470844f0326d, type: 3}
-    - {fileID: 21300000, guid: e89460cfb4634c34dad85441f2975317, type: 3}
-    - {fileID: 21300000, guid: f44f9c6a0da9fb84ab8396a9c3c96cb6, type: 3}
-    - {fileID: 21300000, guid: 4723f28b723fb944f98e8f50746d60f1, type: 3}
+    - {fileID: 21300000, guid: 2cda224056b2d9249b7c15db06e7e84d, type: 3}
+    - {fileID: 21300000, guid: bec3d750a67e51e429c7cf6818bec310, type: 3}
+    - {fileID: 21300000, guid: f44af0f6206e397479494771d840bd95, type: 3}
+    - {fileID: 21300000, guid: 593aa4ebc0b06284f9a23980cf770b31, type: 3}
+    - {fileID: 21300000, guid: f44af0f6206e397479494771d840bd95, type: 3}
+    - {fileID: 21300000, guid: bec3d750a67e51e429c7cf6818bec310, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4166667
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -77,11 +80,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: PlaySound
-    data: step
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

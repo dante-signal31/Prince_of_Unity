@@ -195,5 +195,34 @@ namespace Tests.PlayTests
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             Assert.True(startingHealth - 1 == endHealth);
         }
+        
+        /// <summary>
+        /// Test that vertical jumping advances horizontally some centimetres.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator VerticalJumpingTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition15.transform.position, Quaternion.identity);
+            float startingHeight = _prince.transform.position.y;
+            float startingHorizontalPosition = _prince.transform.position.x;
+            float expectedAdvancedHorizontalPosition = 0.22f;
+            string commandFile = @"Assets\Tests\TestResources\verticalJumpingSequence";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Assert Prince has not fallen.
+            float endHeight = _prince.transform.position.y;
+            Assert.True(Math.Abs(endHeight - startingHeight)< 0.04f);
+            // Assert Prince has advanced what we expected.
+            float endHorizontalPosition = _prince.transform.position.x;
+            float advancedHorizontalPosition = endHorizontalPosition - startingHorizontalPosition;
+            Assert.True(Math.Abs(advancedHorizontalPosition - expectedAdvancedHorizontalPosition) < 0.05);
+        }
     }
 }

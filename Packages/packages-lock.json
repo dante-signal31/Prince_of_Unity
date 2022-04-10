@@ -86,7 +86,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.6.4",
+      "version": "1.6.5",
       "depth": 2,
       "source": "registry",
       "dependencies": {
@@ -95,7 +95,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
-      "version": "1.15.13",
+      "version": "1.15.15",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -111,7 +111,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.12",
+      "version": "3.0.13",
       "depth": 0,
       "source": "registry",
       "dependencies": {

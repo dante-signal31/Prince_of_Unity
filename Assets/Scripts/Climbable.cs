@@ -7,7 +7,7 @@ using UnityEngine;
 /// Any prefab that has ledges which can be climbed should have this behaviour to interact with
 /// its grabbing ledges.
 /// </summary>
-public class HasGrabbingLedges : MonoBehaviour
+public class Climbable: MonoBehaviour
 {
     [SerializeField] private Transform GrabbingPointRight;
 

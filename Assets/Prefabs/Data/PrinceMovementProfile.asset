@@ -27,3 +27,4 @@ MonoBehaviour:
   WalkingJumpingSpeed: 4.4
   WalkingJumpingEndSpeed: 1.57
   FallingHorizontalSpeedAfterWalkingJump: 1.5
+  VerticalJumpHorizontalSpeed: 0.7
