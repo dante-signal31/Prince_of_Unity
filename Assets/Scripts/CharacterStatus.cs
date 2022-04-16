@@ -76,6 +76,10 @@ namespace Prince
         [SerializeField] private bool hasSword;
         [Tooltip("Is this character looking rightwards?")]
         [SerializeField] private bool lookingRightWards;
+        
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
 
         private bool _isFalling;
         
@@ -102,11 +106,13 @@ namespace Prince
                     {
                         _isFalling = true;
                         stateMachine.SetTrigger("Fall");
+                        this.Log($"(CharacterStatus - {transform.root.name}) We are falling.", showLogs);
                     } 
                     else if (gravityController.GravityEnabled)
                     {
                         _isFalling = false;
                         stateMachine.SetTrigger("Land");
+                        this.Log($"(CharacterStatus - {transform.root.name}) We are landing.", showLogs);
                     }
                     // OnGround is not the same as IsFalling. With no gravity you can be
                     // off ground but not being falling. With gravity enabled isFalling == !OnGround.

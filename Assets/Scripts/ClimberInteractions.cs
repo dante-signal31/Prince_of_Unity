@@ -52,7 +52,7 @@ namespace Prince
             _climbable = ceilingSensors.Ledge.GetComponentInChildren<Climbable>();
             if (_climbable != null)
             {
-                this.Log($"(ClimberInteractions - {transform.parent.transform.gameObject.name}) Starting climbing.", showLogs);
+                this.Log($"(ClimberInteractions - {transform.root.name}) Starting climbing.", showLogs);
                 Climbable.HangableLedges hangingLedge = (characterStatus.LookingRightWards)
                     ? Climbable.HangableLedges.Left
                     : Climbable.HangableLedges.Right;
@@ -61,7 +61,7 @@ namespace Prince
                 // yield return new WaitUntil(() => !_climbable.PlayingAnimations);
                 stateMachine.SetTrigger("ClimbingFinished");
                 _climbable = null;
-                this.Log($"(ClimberInteractions - {transform.parent.transform.gameObject.name}) Climbing finished.", showLogs);
+                this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
             }
         }
 
