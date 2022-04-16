@@ -144,23 +144,13 @@ public class GroundSensors : MonoBehaviour
     /// </summary>
     private void UpdateSensorsPosition()
     {
-        // if (characterStatus.CurrentState == CharacterStatus.States.Unsheathe)
-        // {
-        //     if (!_wideSensorDistribution) SetWideModeSensors();
-        //     _wideSensorDistribution = true;
-        // }
-        //
-        // if (characterStatus.CurrentState == CharacterStatus.States.Sheathe)
-        // {
-        //     if (_wideSensorDistribution) SetNormalModeSensors();
-        //     _wideSensorDistribution = false;
-        // }
         switch (characterStatus.CurrentState)
         {
             case CharacterStatus.States.RunningStart:
             case CharacterStatus.States.Running:
             case CharacterStatus.States.RunningEnd:
             case CharacterStatus.States.FallStart:
+            case CharacterStatus.States.Falling:
             case CharacterStatus.States.Unsheathe:
             case CharacterStatus.States.RunningJump:
             case CharacterStatus.States.WalkingJumpStart:
