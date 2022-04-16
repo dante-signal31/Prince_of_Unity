@@ -158,12 +158,15 @@ public class GroundSensors : MonoBehaviour
         switch (characterStatus.CurrentState)
         {
             case CharacterStatus.States.RunningStart:
+            case CharacterStatus.States.Running:
+            case CharacterStatus.States.FallStart:
             case CharacterStatus.States.Unsheathe:
                 if (!_wideSensorDistribution) SetWideModeSensors();
                 _wideSensorDistribution = true;
                 break;
-            case CharacterStatus.States.Idle:
-            case CharacterStatus.States.Sheathe:
+            // case CharacterStatus.States.Idle:
+            // case CharacterStatus.States.Sheathe:
+            default:
                 if (_wideSensorDistribution) SetNormalModeSensors();
                 _wideSensorDistribution = false;
                 break;
@@ -172,24 +175,40 @@ public class GroundSensors : MonoBehaviour
 
     private void SetWideModeSensors()
     {
-        Vector3 currentPosition = forwardSensorStart.position;
-        forwardSensorStart.position = new Vector3(currentPosition.x + forwardFightingModeXOffset,
+        // Vector3 currentPosition = forwardSensorStart.position;
+        // forwardSensorStart.position = new Vector3(currentPosition.x + forwardFightingModeXOffset,
+        //     currentPosition.y,
+        //     currentPosition.z);
+        // currentPosition = centerSensorStart.position;
+        // centerSensorStart.position = new Vector3(currentPosition.x + centerFightingModeXOffset,
+        //     currentPosition.y,
+        //     currentPosition.z);
+        Vector3 currentPosition = forwardSensorStart.localPosition;
+        forwardSensorStart.localPosition = new Vector3(currentPosition.x + forwardFightingModeXOffset,
             currentPosition.y,
             currentPosition.z);
-        currentPosition = centerSensorStart.position;
-        centerSensorStart.position = new Vector3(currentPosition.x + centerFightingModeXOffset,
+        currentPosition = centerSensorStart.localPosition;
+        centerSensorStart.localPosition = new Vector3(currentPosition.x + centerFightingModeXOffset,
             currentPosition.y,
             currentPosition.z);
     }
     
     private void SetNormalModeSensors()
     {
-        Vector3 currentPosition = forwardSensorStart.position;
-        forwardSensorStart.position = new Vector3(currentPosition.x - forwardFightingModeXOffset,
+        // Vector3 currentPosition = forwardSensorStart.position;
+        // forwardSensorStart.position = new Vector3(currentPosition.x - forwardFightingModeXOffset,
+        //     currentPosition.y,
+        //     currentPosition.z);
+        // currentPosition = centerSensorStart.position;
+        // centerSensorStart.position = new Vector3(currentPosition.x - centerFightingModeXOffset,
+        //     currentPosition.y,
+        //     currentPosition.z);
+        Vector3 currentPosition = forwardSensorStart.localPosition;
+        forwardSensorStart.localPosition = new Vector3(currentPosition.x - forwardFightingModeXOffset,
             currentPosition.y,
             currentPosition.z);
-        currentPosition = centerSensorStart.position;
-        centerSensorStart.position = new Vector3(currentPosition.x - centerFightingModeXOffset,
+        currentPosition = centerSensorStart.localPosition;
+        centerSensorStart.localPosition = new Vector3(currentPosition.x - centerFightingModeXOffset,
             currentPosition.y,
             currentPosition.z);
     }
