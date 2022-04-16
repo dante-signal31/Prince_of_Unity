@@ -181,6 +181,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: showLogs
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: fightingSensors
       value: 
       objectReference: {fileID: 8963627455871625809}

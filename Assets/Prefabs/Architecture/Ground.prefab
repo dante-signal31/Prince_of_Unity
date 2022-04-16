@@ -396,6 +396,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3435191164347704265, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 8344338209899719822}
     - target: {fileID: 5097506770158315525, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: GrabbingPointLeft
       value: 
@@ -487,5 +491,10 @@ Transform:
 --- !u!4 &2828904969617846887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6838444862746095271, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+  m_PrefabInstance: {fileID: 8765486235213618368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8344338209899719822 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 749928701767020622, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
   m_PrefabInstance: {fileID: 8765486235213618368}
   m_PrefabAsset: {fileID: 0}

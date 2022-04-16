@@ -24,6 +24,8 @@ namespace Prince
 
         private bool _currentFacingIsRightWards;
         private float _spriteRendererOffset;
+        
+        private bool SpriteVisible => spriteRenderer.enabled;
 
         private void FlipCharacter(bool rightWards)
         {
@@ -93,11 +95,24 @@ namespace Prince
         private void Update()
         {
             UpdateCharacterFacing();
-            if (characterStatus.CurrentState == CharacterStatus.States.Dead ||
-                characterStatus.CurrentState == CharacterStatus.States.DeadByFall)
+            switch (characterStatus.CurrentState)
             {
-                SpriteToForeground();
+                case CharacterStatus.States.Dead:
+                case CharacterStatus.States.DeadByFall:
+                    SpriteToForeground();
+                    break;
+                case CharacterStatus.States.Climbing:
+                    MakeSpriteInvisible();
+                    break;
+                default:
+                    MakeSpriteVisible();
+                    break;
             }
+            // if (characterStatus.CurrentState == CharacterStatus.States.Dead ||
+            //     characterStatus.CurrentState == CharacterStatus.States.DeadByFall)
+            // {
+            //     SpriteToForeground();
+            // }
         }
 
         /// <summary>
@@ -124,5 +139,24 @@ namespace Prince
             spriteRenderer.sortingOrder = foregroundOrderInLayer;
         }
         
+        /// <summary>
+        /// <p>Make character sprite invisible</p>.
+        ///
+        /// <p>This is useful when other props animations of character (like climbing a brick or drinking a portion) are playing.</p>
+        /// </summary>
+        private void MakeSpriteInvisible()
+        {
+            if (SpriteVisible) spriteRenderer.enabled = false;
+        }
+        
+        /// <summary>
+        /// <p>Make character sprite visible</p>.
+        ///
+        /// <p>This is useful when other props animations of character (like climbing a brick or drinking a portion) have finished.</p>
+        /// </summary>
+        private void MakeSpriteVisible()
+        {
+            if (!SpriteVisible) spriteRenderer.enabled = true;
+        }
     }
 }

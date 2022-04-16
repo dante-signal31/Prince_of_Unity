@@ -49,6 +49,7 @@ namespace Prince
             VerticalJumpStart,
             VerticalJump,
             VerticalJumpEnd,
+            Climbing,
         }
 
         public enum JumpingTypes
@@ -107,6 +108,9 @@ namespace Prince
                         _isFalling = false;
                         stateMachine.SetTrigger("Land");
                     }
+                    // OnGround is not the same as IsFalling. With no gravity you can be
+                    // off ground but not being falling. With gravity enabled isFalling == !OnGround.
+                    stateMachine.SetBool("OnGround", !value);
                 }
             }
         }
@@ -214,6 +218,7 @@ namespace Prince
             stateMachine.SetBool("hasSword", HasSword);
             stateMachine.SetBool("isDead", IsDead);
             stateMachine.SetBool("lookingRightWards", LookingRightWards);
+            stateMachine.SetBool("OnGround", !IsFalling);
         }
 
         private void Awake()
