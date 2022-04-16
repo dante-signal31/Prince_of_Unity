@@ -33,8 +33,14 @@ namespace Prince
         /// Whether the character is currently climbing.
         /// </summary>
         private bool ClimbingInProgress => _climbable != null;
+
+        /// <summary>
+        /// Whether current climbing can still be aborted.
+        /// </summary>
+        public bool ClimbingAbortable => ((_climbable != null) && (_climbable.ClimbingAbortable));
         
         private Climbable _climbable;
+        private bool _climbAborted;
         
         
         private void FixedUpdate()
@@ -57,11 +63,33 @@ namespace Prince
                     ? Climbable.HangableLedges.Left
                     : Climbable.HangableLedges.Right;
                 yield return _climbable.Hang(hangingLedge);
-                UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
-                // yield return new WaitUntil(() => !_climbable.PlayingAnimations);
-                stateMachine.SetTrigger("ClimbingFinished");
-                _climbable = null;
-                this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
+                if (_climbAborted)
+                {
+                    this.Log($"(ClimberInteractions - {transform.root.name}) Climbing aborted.", showLogs);
+                    _climbAborted = false;
+                    _climbable = null;
+                }
+                else
+                {
+                    UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
+                    // yield return new WaitUntil(() => !_climbable.PlayingAnimations);
+                    stateMachine.SetTrigger("ClimbingFinished");
+                    _climbable = null;
+                    this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
+                }
+               
+            }
+        }
+
+        /// <summary>
+        /// Used to signal climbable that climbing has been aborted.
+        /// </summary>
+        public void AbortClimb()
+        {
+            if ((_climbable != null) && (_climbable.ClimbingAbortable))
+            {
+                _climbable.JumpPushed(false);
+                _climbAborted = true;
             }
         }
 

@@ -39,11 +39,25 @@ public class Climbable: MonoBehaviour
         Right,
         Left,
     }
+
+    private bool _climbingAbortable;
     
     /// <summary>
-    /// Wheter this brick is playing character climbing animations.
+    /// Whether we can abort a climbing.
     /// </summary>
-    public bool PlayingAnimations { get; private set; }
+    public bool ClimbingAbortable { 
+        get => _climbingAbortable;
+        set
+        {
+            _climbingAbortable = value;
+            stateMachine.SetBool("ClimbingAbortable", value);
+        } 
+    }
+    
+    // /// <summary>
+    // /// Wheter this brick is playing character climbing animations.
+    // /// </summary>
+    // public bool PlayingAnimations { get; private set; }
 
     /// <summary>
     /// Used to place character on ledge after climbing by right side.
@@ -76,7 +90,7 @@ public class Climbable: MonoBehaviour
     /// <param name="fromRight">True if Prince is trying right ledge, false if is trying left ledge.</param>
     public IEnumerator Hang(HangableLedges HangingLedge)
     {
-        PlayingAnimations = true;
+        // PlayingAnimations = true;
         this.Log($"(Climbable - {transform.root.name}) Prince is hanging from me.", showLogs);
         climbableStatus.LookingRightWards = (HangingLedge == HangableLedges.Left);
         stateMachine.SetTrigger("Hang");
@@ -85,8 +99,9 @@ public class Climbable: MonoBehaviour
         // to Hanging.
         yield return null;
         yield return new WaitUntil(() => climbableStatus.CurrentState == ClimbableStatus.States.Inactive);
+        JumpPushed(false);
         this.Log($"(Climbable - {transform.root.name}) Climbing animation finished.", showLogs);
-        PlayingAnimations = false;
+        // PlayingAnimations = false;
     }
 
     /// <summary>

@@ -16,6 +16,7 @@ namespace Prince
             RunRight,
             RunLeft,
             Jump,
+            StopJump,
             Duck,
             Stop,
             WalkRight,

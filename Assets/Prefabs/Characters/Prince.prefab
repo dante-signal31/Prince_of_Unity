@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: showLogs
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5250694692991532468, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: climbingInteractions
+      value: 
+      objectReference: {fileID: 447640868358498204}
     - target: {fileID: 5310342850138452362, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Enabled
       value: 1

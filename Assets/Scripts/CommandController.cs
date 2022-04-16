@@ -19,7 +19,9 @@ namespace Prince
         [Header("WIRING:")]
         [Tooltip("Needed to set state flags depending on commands.")]
         [SerializeField] private Animator stateMachine;
-        
+        [Tooltip("Needed to signal changes in climbing/hangings conditions.")] 
+        [SerializeField] private ClimberInteractions climbingInteractions;
+
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
@@ -76,6 +78,14 @@ namespace Prince
                 case Command.CommandType.Jump:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Jump at {Time.time}", showLogs);
                     stateMachine.SetTrigger("Jump");
+                    break;
+                case Command.CommandType.StopJump:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Jump at {Time.time}", showLogs);
+                    if (climbingInteractions.ClimbingAbortable)
+                    {
+                        stateMachine.SetTrigger("StopJump");
+                        climbingInteractions.AbortClimb();
+                    }
                     break;
                 case Command.CommandType.Stop:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Stop at {Time.time}", showLogs);

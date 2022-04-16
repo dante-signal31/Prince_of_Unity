@@ -135,6 +135,7 @@ namespace Prince
             
             if (context.canceled)
             {
+                inputController.StopJump();
                 _jumpPressed = false;
             }
         }

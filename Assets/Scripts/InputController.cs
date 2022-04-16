@@ -135,6 +135,11 @@ namespace Prince
             ExecuteCommand(Command.CommandType.Stop);
         }
 
+        public void StopJump()
+        {
+            ExecuteCommand(Command.CommandType.StopJump);
+        }
+
         public void StopAction()
         {
             ExecuteCommand(Command.CommandType.StopAction);
