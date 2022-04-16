@@ -88,6 +88,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition11.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             float startingHeight = _prince.transform.position.y;
             float startingHorizontalPosition = _prince.transform.position.x;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
@@ -150,6 +151,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition13.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             Vector3 expectedLandingPosition = _startPosition14.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\walkingJumpingSequence";

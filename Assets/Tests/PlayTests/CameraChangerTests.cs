@@ -126,6 +126,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _enemy.SetActive(false);
             _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             Room room00 = GameObject.Find("Room_0_0").GetComponent<Room>();
             Room room01 = GameObject.Find("Room_0_1").GetComponent<Room>();
             Room room02 = GameObject.Find("Room_0_2").GetComponent<Room>();
@@ -150,7 +151,7 @@ namespace Tests.PlayTests
             Assert.True(room01.IsActiveRoom());
             Assert.False(room02.IsActiveRoom());
             // Let Prince fall further.
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             // Check everything ended as we expected.
             Assert.True(cameraController.CurrentRoom.Name == "Room_0_0");
             Assert.True(room00.IsActiveRoom());

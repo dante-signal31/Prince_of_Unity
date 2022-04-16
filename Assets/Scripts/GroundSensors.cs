@@ -159,8 +159,19 @@ public class GroundSensors : MonoBehaviour
         {
             case CharacterStatus.States.RunningStart:
             case CharacterStatus.States.Running:
+            case CharacterStatus.States.RunningEnd:
             case CharacterStatus.States.FallStart:
             case CharacterStatus.States.Unsheathe:
+            case CharacterStatus.States.RunningJump:
+            case CharacterStatus.States.WalkingJumpStart:
+            case CharacterStatus.States.WalkingJump:
+            case CharacterStatus.States.WalkingJumpEnd:
+            case CharacterStatus.States.AdvanceSword:
+            case CharacterStatus.States.Retreat:
+            case CharacterStatus.States.AttackWithSword:
+            case CharacterStatus.States.BlockSword:
+            case CharacterStatus.States.BlockedSword:
+            case CharacterStatus.States.IdleSword:
                 if (!_wideSensorDistribution) SetWideModeSensors();
                 _wideSensorDistribution = true;
                 break;

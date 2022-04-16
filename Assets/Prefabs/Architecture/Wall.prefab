@@ -458,7 +458,7 @@ SpriteRenderer:
   m_SortingLayerID: 1808101567
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 3f6ce71e5fe876744823032b352f853d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 699af7f6edd682a4da7422f6384057ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -510,6 +510,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3071512933337866708, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+      propertyPath: HollowBrick
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564429692381040154, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 5097506770158315525, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: GrabbingPointLeft
       value: 
@@ -526,9 +534,13 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6574767557930608684, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 6838444862746095271, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.47
+      value: 1.36
       objectReference: {fileID: 0}
     - target: {fileID: 6838444862746095271, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: m_LocalPosition.y
