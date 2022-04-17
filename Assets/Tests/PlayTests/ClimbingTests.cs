@@ -133,5 +133,35 @@ namespace Tests.PlayTests
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             Assert.True(startingHealth == endHealth);
         }
+        
+        /// <summary>
+        /// Test we have a chance to abort climbing just releasing jump button..
+        /// </summary>
+        [UnityTest]
+        public IEnumerator ClimbingAbortTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            Vector3 expectedLandingPosition = _startPosition16.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\climbingAborted";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
     }
 }
