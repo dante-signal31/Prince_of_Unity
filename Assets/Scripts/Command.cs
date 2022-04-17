@@ -16,7 +16,6 @@ namespace Prince
             RunRight,
             RunLeft,
             Jump,
-            StopJump,
             Duck,
             Stop,
             WalkRight,
@@ -29,7 +28,8 @@ namespace Prince
             WalkRightWithSword,
             WalkLeftWithSword,
             Stand,
-            CrouchWalk
+            CrouchWalk,
+            StopJump,
         }
 
         [SerializeField] private float _delay;
