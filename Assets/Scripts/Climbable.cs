@@ -93,15 +93,32 @@ public class Climbable: MonoBehaviour
         // PlayingAnimations = true;
         this.Log($"(Climbable - {transform.root.name}) Prince is hanging from me.", showLogs);
         climbableStatus.LookingRightWards = (HangingLedge == HangableLedges.Left);
-        stateMachine.SetTrigger("Hang");
         JumpPushed(true);
-        // This yield return null is needed to give time to climbableStatus to change its state from Inactive
+        stateMachine.SetTrigger("Hang");
+        // First yield return is needed to give time to climbableStatus to change its state from Inactive
         // to Hanging.
-        yield return null;
+        yield return new WaitUntil(() => climbableStatus.CurrentState != ClimbableStatus.States.Inactive);
         yield return new WaitUntil(() => climbableStatus.CurrentState == ClimbableStatus.States.Inactive);
         JumpPushed(false);
         this.Log($"(Climbable - {transform.root.name}) Climbing animation finished.", showLogs);
         // PlayingAnimations = false;
+    }
+    
+    /// <summary>
+    /// Called from Prince to hang from this ledge to descend.
+    /// </summary>
+    /// <param name="fromRight">True if Prince is trying right ledge, false if is trying left ledge.</param>
+    public IEnumerator Descend(HangableLedges HangingLedge)
+    {
+        this.Log($"(Climbable - {transform.root.name}) Prince is hanging from me to descend.", showLogs);
+        climbableStatus.LookingRightWards = (HangingLedge == HangableLedges.Left);
+        JumpPushed(false);
+        stateMachine.SetTrigger("Descend");
+        // First yield return is needed to give time to climbableStatus to change its state from Inactive
+        // to Descending.
+        yield return new WaitUntil(() => climbableStatus.CurrentState != ClimbableStatus.States.Inactive);
+        yield return new WaitUntil(() => climbableStatus.CurrentState == ClimbableStatus.States.Inactive);
+        this.Log($"(Climbable - {transform.root.name}) Descend animation finished.", showLogs);
     }
 
     /// <summary>
@@ -130,5 +147,23 @@ public class Climbable: MonoBehaviour
         stateMachine.SetBool("HollowBrick", HollowBrick);
     }
 
+#if UNITY_EDITOR
+    private void DrawPoint(Transform pointToDraw, Color color)
+    {
+        float gizmoRadius = 0.05f;
+        Vector3 gizmoSize = new Vector3(gizmoRadius, gizmoRadius, gizmoRadius);
+        Gizmos.color = color;
+        Gizmos.DrawCube(pointToDraw.position, gizmoSize);
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        DrawPoint(LeftLedgeTransform, Color.magenta);
+        DrawPoint(RightLedgeTransform, Color.cyan);
+        DrawPoint(RightDescendingTransform, Color.blue);
+        DrawPoint(LeftDescendingTransform, Color.red);
+    }
+#endif
     
 }

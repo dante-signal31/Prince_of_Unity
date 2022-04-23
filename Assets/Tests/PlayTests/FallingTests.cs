@@ -75,6 +75,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
@@ -104,6 +105,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
@@ -133,6 +135,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
             Vector2 startPosition = _prince.transform.position;
@@ -160,6 +163,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             float startingHeight = _prince.transform.position.y;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
@@ -193,6 +197,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
             int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
@@ -227,6 +232,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             _enemy.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
             int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
@@ -261,6 +267,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             _enemy.transform.SetPositionAndRotation(_startPosition7.transform.position, Quaternion.identity);
             int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
@@ -294,6 +301,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             _enemy.transform.SetPositionAndRotation(_startPosition8.transform.position, Quaternion.identity);
             float startingHeight = _enemy.transform.position.y;
             float expectedFinalHeight = 0.32f;

@@ -24,6 +24,7 @@ namespace Tests.PlayTests
         private GameObject _startPosition16;
         private GameObject _startPosition17;
         private GameObject _startPosition18;
+        private GameObject _startPosition19;
 
         private CameraController _cameraController;
         private Room _room00;
@@ -51,6 +52,7 @@ namespace Tests.PlayTests
             if (_startPosition16 == null) _startPosition16 = GameObject.Find("StartPosition16");
             if (_startPosition17 == null) _startPosition17 = GameObject.Find("StartPosition17");
             if (_startPosition18 == null) _startPosition18 = GameObject.Find("StartPosition18");
+            if (_startPosition19 == null) _startPosition19 = GameObject.Find("StartPosition19");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
@@ -163,5 +165,65 @@ namespace Tests.PlayTests
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             Assert.True(startingHealth == endHealth);
         }
+    
+    /// <summary>
+    /// Test we can descend one level.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendOneLevelTest()
+    {
+        _cameraController.PlaceInRoom(_room00);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedLandingPosition = _startPosition19.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendOneLevel";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+    }
+    
+    /// <summary>
+    /// Test we can climb two levels.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendTwoLevelsTest()
+    {
+        _cameraController.PlaceInRoom(_room10);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition17.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedLandingPosition = _startPosition16.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendTwoLevels";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(8);
+        // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+    }
     }
 }

@@ -102,6 +102,7 @@ namespace Prince
                     SpriteToForeground();
                     break;
                 case CharacterStatus.States.Climbing:
+                case CharacterStatus.States.Descending:
                     MakeSpriteInvisible();
                     break;
                 default:

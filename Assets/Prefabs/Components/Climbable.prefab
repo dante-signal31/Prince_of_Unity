@@ -299,7 +299,7 @@ MonoBehaviour:
   descendingPointRight: {fileID: 3564429692381040154}
   descendingPointLeft: {fileID: 6574767557930608684}
   HollowBrick: 0
-  showLogs: 0
+  showLogs: 1
 --- !u!1 &8815333376052080337
 GameObject:
   m_ObjectHideFlags: 0

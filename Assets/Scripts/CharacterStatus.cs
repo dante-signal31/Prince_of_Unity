@@ -50,6 +50,7 @@ namespace Prince
             VerticalJump,
             VerticalJumpEnd,
             Climbing,
+            Descending,
         }
 
         public enum JumpingTypes
@@ -114,9 +115,6 @@ namespace Prince
                         stateMachine.SetTrigger("Land");
                         this.Log($"(CharacterStatus - {transform.root.name}) We are landing.", showLogs);
                     }
-                    // OnGround is not the same as IsFalling. With no gravity you can be
-                    // off ground but not being falling. With gravity enabled isFalling == !OnGround.
-                    stateMachine.SetBool("OnGround", !value);
                 }
             }
         }

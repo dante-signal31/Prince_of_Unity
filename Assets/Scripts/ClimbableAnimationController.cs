@@ -22,7 +22,7 @@ namespace Prince
         /// <summary>
         /// True if climbing/hanging/descending animations are visible.
         /// </summary>
-        public bool AnimationEnabled => spriteRenderer.sprite;
+        public bool AnimationEnabled => spriteRenderer.enabled;
         
         /// <summary>
         /// Make animations invisible.

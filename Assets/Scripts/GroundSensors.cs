@@ -10,12 +10,15 @@ public class GroundSensors : MonoBehaviour
     [Header("WIRING:")]
     [Tooltip("Needed to set isFalling flag when ground is not detected any longer below feet.")]
     [SerializeField] private CharacterStatus characterStatus;
+    [Tooltip("Needed to update state machine with ground detected.")]
+    [SerializeField] private Animator stateMachine;
     [SerializeField] private Transform forwardSensorStart;
     [SerializeField] private Transform forwardSensorEnd;
     [SerializeField] private Transform rearSensorStart;
     [SerializeField] private Transform rearSensorEnd;
     [SerializeField] private Transform centerSensorStart;
     [SerializeField] private Transform centerSensorEnd;
+    
     [Header("CONFIGURATION:")]
     [Tooltip("How much to advance forward and center sensor when in fighting mode.")]
     [SerializeField] private float forwardFightingModeXOffset;
@@ -33,30 +36,34 @@ public class GroundSensors : MonoBehaviour
     public GameObject ForwardGround
     {
         get=> _forwardGround;
-        private set => _forwardGround = value;
+        private set
+        {
+            _forwardGround = value;
+            stateMachine.SetBool("GroundAhead", (value != null));
+        }
     }
     
     
     public GameObject RearGround
     {
         get=> _rearGround;
-        private set => _rearGround = value;
+        private set
+        {
+            _rearGround = value;
+            stateMachine.SetBool("GroundBehind", (value != null));
+        }
     }
-    
+
     public GameObject CenterGround
     {
         get=> _centerGround;
         private set
         {
             _centerGround = value;
-            if (value == null)
-            {
-                characterStatus.IsFalling = true;
-            }
-            else
-            {
-                characterStatus.IsFalling = false;
-            }
+            characterStatus.IsFalling = (value == null);
+            // OnGround is not the same as IsFalling. With no gravity you can be
+            // off ground but not being falling. With gravity enabled isFalling == !OnGround.
+            stateMachine.SetBool("OnGround", (value != null));
         }
     }
 

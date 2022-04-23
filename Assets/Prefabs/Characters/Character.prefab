@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 88322598493374997}
+  climbingInteractions: {fileID: 0}
   showLogs: 1
 --- !u!1 &4208924519771227386
 GameObject:
@@ -508,6 +509,7 @@ MonoBehaviour:
   maximumLife: 0
   hasSword: 0
   lookingRightWards: 1
+  showLogs: 0
 --- !u!50 &7284997314533658813
 Rigidbody2D:
   serializedVersion: 4
@@ -674,6 +676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundSensors
       objectReference: {fileID: 0}
+    - target: {fileID: 6649583082068375673, guid: c95218e57f6137b418fddce00174ab49, type: 3}
+      propertyPath: stateMachine
+      value: 
+      objectReference: {fileID: 88322598493374997}
     - target: {fileID: 6649583082068375673, guid: c95218e57f6137b418fddce00174ab49, type: 3}
       propertyPath: rearSensorEnd
       value: 

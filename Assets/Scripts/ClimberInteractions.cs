@@ -18,6 +18,8 @@ namespace Prince
         [SerializeField] private Transform characterTransform;
         [Tooltip("Needed to get a reference to climbable game object.")]
         [SerializeField] private CeilingSensors ceilingSensors;
+        [Tooltip("Needed to get a reference to climbable game objects to descend.")]
+        [SerializeField] private GroundSensors groundSensors;
         
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -49,6 +51,9 @@ namespace Prince
             {
                 case CharacterStatus.States.Climbing:
                     if (!ClimbingInProgress) StartCoroutine(Climb());
+                    break;
+                case CharacterStatus.States.Descending:
+                    if (!ClimbingInProgress) StartCoroutine(Descend());
                     break;
             }
         }
@@ -90,6 +95,39 @@ namespace Prince
             {
                 _climbable.JumpPushed(false);
                 _climbAborted = true;
+            }
+        }
+        
+        private IEnumerator Descend()
+        {
+            _climbable = groundSensors.CenterGround.GetComponentInChildren<Climbable>();
+            if (_climbable != null)
+            {
+                this.Log($"(ClimberInteractions - {transform.root.name}) Starting descend.", showLogs);
+                Climbable.HangableLedges hangingLedge = (characterStatus.LookingRightWards)
+                    ? Climbable.HangableLedges.Left
+                    : Climbable.HangableLedges.Right;
+                yield return _climbable.Descend(hangingLedge);
+                UpdateCharacterPosition(hangingLedge, ClimbingOptions.Descend);
+                stateMachine.SetTrigger("ClimbingFinished");
+                _climbable = null;
+                this.Log($"(ClimberInteractions - {transform.root.name}) Descend finished.", showLogs);
+                
+                // if (_climbAborted)
+                // {
+                //     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing aborted.", showLogs);
+                //     _climbAborted = false;
+                //     _climbable = null;
+                // }
+                // else
+                // {
+                //     UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
+                //     // yield return new WaitUntil(() => !_climbable.PlayingAnimations);
+                //     stateMachine.SetTrigger("ClimbingFinished");
+                //     _climbable = null;
+                //     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
+                // }
+               
             }
         }
 

@@ -19,7 +19,8 @@ namespace Prince
             Climbing,
             HangingLong,
             HangingBlocked,
-            Inactive
+            Inactive,
+            Descending
         }
         
         /// <summary>
@@ -59,11 +60,11 @@ namespace Prince
         {
             switch (CurrentState)
             {
-                case States.Hanging:
-                    if (!animationController.AnimationEnabled) animationController.ShowAnimation();
-                    break;
                 case States.Inactive:
                     if (animationController.AnimationEnabled) animationController.HideAnimation();
+                    break;
+                default:
+                    if (!animationController.AnimationEnabled) animationController.ShowAnimation();
                     break;
             }
         }

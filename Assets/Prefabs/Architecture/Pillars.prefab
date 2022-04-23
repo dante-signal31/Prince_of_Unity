@@ -340,7 +340,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1160500489210156492, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: showLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2343504428120140490, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: m_Layer
