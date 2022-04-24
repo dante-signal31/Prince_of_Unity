@@ -109,14 +109,15 @@ namespace Prince
                 {
                     if (playerInput.currentActionMap.name != "FightingActionMap")
                         playerInput.SwitchCurrentActionMap("FightingActionMap");
-                    inputController.Action();
                 }
+                inputController.Action();
             }
 
             if (context.canceled)
             {
-                if (sensors.EnemySeen)
-                    inputController.StopAction();
+                // if (sensors.EnemySeen)
+                //     inputController.StopAction();
+                inputController.StopAction();
                 _actionPressed = false;
             }
         }

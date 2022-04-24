@@ -107,7 +107,7 @@ namespace Prince
                 rayDirection, 
                 forwardSensorDistance, 
                 _architectureLayerMask);
-            return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
+            return (hit.collider != null)? hit.collider.transform.root.gameObject: null;
         }
         
         /// <summary>

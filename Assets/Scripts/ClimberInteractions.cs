@@ -34,7 +34,12 @@ namespace Prince
         /// <summary>
         /// Whether the character is currently climbing.
         /// </summary>
-        private bool ClimbingInProgress => _climbable != null;
+        public bool ClimbingInProgress => _climbable != null;
+
+        /// <summary>
+        /// Whether player could climb if he should want.
+        /// </summary>
+        public bool ClimbingPossible => ceilingSensors.LedgeReachable && !ceilingSensors.RoofOverHead;
 
         /// <summary>
         /// Whether current climbing can still be aborted.
@@ -43,6 +48,8 @@ namespace Prince
         
         private Climbable _climbable;
         private bool _climbAborted;
+        private bool _actionPushed;
+        private bool _jumpPushed;
         
         
         private void FixedUpdate()
@@ -73,6 +80,7 @@ namespace Prince
                     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing aborted.", showLogs);
                     _climbAborted = false;
                     _climbable = null;
+                    stateMachine.SetTrigger("ClimbingAborted");
                 }
                 else
                 {
@@ -87,13 +95,49 @@ namespace Prince
         }
 
         /// <summary>
-        /// Used to signal climbable that climbing has been aborted.
+        /// Used to signal that the jump button has been pushed.
         /// </summary>
-        public void AbortClimb()
+        public void JumpPushed()
         {
-            if ((_climbable != null) && (_climbable.ClimbingAbortable))
+            if (ClimbingInProgress) _climbable.JumpPushed(true);
+            _jumpPushed = true;
+        }
+        
+        /// <summary>
+        /// Used to signal climbable that jump button has been released.
+        /// </summary>
+        public void JumpReleased()
+        {
+            if ((ClimbingInProgress) && (_climbable.ClimbingAbortable))
             {
                 _climbable.JumpPushed(false);
+                _jumpPushed = false;
+                if (!_actionPushed) _climbAborted = true;
+            }
+        }
+
+        /// <summary>
+        /// Used to signal climbable that action has been pushed.
+        /// </summary>
+        public void ActionPushed()
+        {
+            if (ClimbingInProgress)
+            {
+                _climbable.ActionPushed(true);
+                _actionPushed = true;
+                _climbAborted = false;
+            }
+        }
+        
+        /// <summary>
+        /// Used to signal climbable that action has been released.
+        /// </summary>
+        public void ActionReleased()
+        {
+            if (ClimbingInProgress)
+            {
+                _climbable.ActionPushed(false);
+                _actionPushed = false;
                 _climbAborted = true;
             }
         }
