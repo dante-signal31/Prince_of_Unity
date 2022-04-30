@@ -75,22 +75,23 @@ namespace Prince
                     ? Climbable.HangableLedges.Left
                     : Climbable.HangableLedges.Right;
                 yield return _climbable.Hang(hangingLedge);
-                if (_climbAborted)
+                if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Descended)
                 {
                     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing aborted.", showLogs);
-                    _climbAborted = false;
-                    _climbable = null;
                     stateMachine.SetTrigger("ClimbingAborted");
+                }
+                else if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Climbed)
+                {
+                    UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
+                    stateMachine.SetTrigger("ClimbingFinished");
+                    this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
                 }
                 else
                 {
-                    UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
-                    // yield return new WaitUntil(() => !_climbable.PlayingAnimations);
-                    stateMachine.SetTrigger("ClimbingFinished");
-                    _climbable = null;
-                    this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
+                    this.Log($"(ClimberInteractions - {transform.root.name}) Climbing ended in an undefined state.", showLogs);
                 }
-               
+
+                _climbable = null;
             }
         }
 
@@ -152,26 +153,22 @@ namespace Prince
                     ? Climbable.HangableLedges.Left
                     : Climbable.HangableLedges.Right;
                 yield return _climbable.Descend(hangingLedge);
-                UpdateCharacterPosition(hangingLedge, ClimbingOptions.Descend);
-                stateMachine.SetTrigger("ClimbingFinished");
+                if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Descended)
+                {
+                    UpdateCharacterPosition(hangingLedge, ClimbingOptions.Descend);
+                    stateMachine.SetTrigger("ClimbingFinished");
+                    this.Log($"(ClimberInteractions - {transform.root.name}) Descend finished.", showLogs);
+                } 
+                else if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Climbed)
+                {
+                    this.Log($"(ClimberInteractions - {transform.root.name}) Descend aborted.", showLogs);
+                    stateMachine.SetTrigger("ClimbingAborted");
+                }
+                else
+                {
+                    this.Log($"(ClimberInteractions - {transform.root.name}) Descend ended in an undefined state.", showLogs);
+                }
                 _climbable = null;
-                this.Log($"(ClimberInteractions - {transform.root.name}) Descend finished.", showLogs);
-                
-                // if (_climbAborted)
-                // {
-                //     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing aborted.", showLogs);
-                //     _climbAborted = false;
-                //     _climbable = null;
-                // }
-                // else
-                // {
-                //     UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
-                //     // yield return new WaitUntil(() => !_climbable.PlayingAnimations);
-                //     stateMachine.SetTrigger("ClimbingFinished");
-                //     _climbable = null;
-                //     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
-                // }
-               
             }
         }
 

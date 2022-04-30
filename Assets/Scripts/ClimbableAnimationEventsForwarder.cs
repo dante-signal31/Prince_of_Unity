@@ -11,16 +11,16 @@ namespace Prince
     {
         [Header("WIRING:")]
         [Tooltip("Needed to signal abortable climbing period.")]
-        [SerializeField] private Climbable climbable;
+        [SerializeField] private ClimbableStatus climbableStatus;
 
         public void AbortClimbingChanceStart()
         {
-            climbable.ClimbingAbortable = true;
+            climbableStatus.ClimbingAbortable = true;
         }
 
         public void AbortClimbingChanceEnd()
         {
-            climbable.ClimbingAbortable = false;
+            climbableStatus.ClimbingAbortable = false;
         }
     }
 }

@@ -10,9 +10,11 @@ namespace Prince
     {
 
         [Header("WIRING:")] 
+        [Tooltip("Needed to signal state machine when climbing is abortable.")]
+        [SerializeField] private Animator stateMachine;
         [Tooltip("Needed to show and hide animations.")] 
         [SerializeField] private ClimbableAnimationController animationController;
-
+    
         public enum States
         {
             Hanging,
@@ -20,13 +22,73 @@ namespace Prince
             HangingLong,
             HangingBlocked,
             Inactive,
-            Descending
+            Descending,
+            Hanged
         }
+
+        /// <summary>
+        /// State before current one.
+        /// </summary>
+        private States _previousState;
         
+        private States _currentState;
         /// <summary>
         /// Current animation state.
         /// </summary>
-        public States CurrentState{ get; set; }
+        public States CurrentState{ 
+            get => _currentState;
+            set
+            {
+                _previousState = _currentState;
+                _currentState = value;
+            } 
+        }
+        
+        private bool _climbingAbortable;
+    
+        /// <summary>
+        /// Whether we can abort a climbing.
+        /// </summary>
+        public bool ClimbingAbortable { 
+            get => _climbingAbortable;
+            set
+            {
+                _climbingAbortable = value;
+                stateMachine.SetBool("ClimbingAbortable", value);
+            } 
+        }
+        
+        /// <summary>
+        /// <p>Possible results of a climbing operation:</p>
+        /// <ul>
+        /// <li> <b>Climbed</b>: Character climbed to a ledge grabbing point.</li>
+        /// <li> <b>Descended</b>: Character descended to a descending point.</li>
+        /// <li> <b>Uncertain</b>: Climbing interaction has not ended yet.</li>
+        /// </ul>
+        /// </summary>
+        public enum ClimbingResult
+        {
+            Climbed,
+            Descended,
+            Uncertain,
+        }
+
+        /// <summary>
+        /// Result of the last climbing interaction from the point of view of the climbable.
+        /// </summary>
+        public ClimbingResult LastClimbingResult
+        {
+            get
+            {
+                return CurrentState switch
+                {
+                    States.Inactive when (_previousState == States.Climbing && !ClimbingAbortable)=> ClimbingResult.Climbed,
+                    States.Inactive when (_previousState == States.Climbing && ClimbingAbortable)=> ClimbingResult.Descended,
+                    States.Inactive when (_previousState != States.Climbing)=> ClimbingResult.Descended,
+                    _ => ClimbingResult.Uncertain
+                };
+            }
+        }
         
         /// <summary>
         /// True if no animation is being played.

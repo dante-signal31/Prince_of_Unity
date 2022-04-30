@@ -20,6 +20,7 @@ namespace Prince
         [Tooltip("Needed to set state flags depending on commands.")]
         [SerializeField] private Animator stateMachine;
         [Tooltip("Needed to signal changes in climbing/hangings conditions.")] 
+        // Enemy does not climb, so he will keep this value to null.
         [SerializeField] private ClimberInteractions climbingInteractions;
 
         [Header("DEBUG:")]
@@ -40,7 +41,7 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Action at {Time.time}", showLogs);
                     stateMachine.SetTriggerOneFrame("ActionPressed", this);
                     stateMachine.SetBool("ActionHoldPressed", true);
-                    climbingInteractions.ActionPushed();
+                    if (climbingInteractions != null) climbingInteractions.ActionPushed();
                     break;
                 case Command.CommandType.Block:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Block at {Time.time}", showLogs);
@@ -98,7 +99,7 @@ namespace Prince
                 case Command.CommandType.StopAction:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed StopAction at {Time.time}", showLogs);
                     stateMachine.SetBool("ActionHoldPressed", false);
-                    climbingInteractions.ActionReleased();
+                    if (climbingInteractions != null) climbingInteractions.ActionReleased();
                     break;
                 case Command.CommandType.RunLeft:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed RunLeft at {Time.time}", showLogs);

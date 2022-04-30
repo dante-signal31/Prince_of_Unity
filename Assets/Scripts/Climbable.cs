@@ -13,7 +13,7 @@ using UnityEngine;
 public class Climbable: MonoBehaviour
 {
     [Header("WIRING:")]
-    [Tooltip("Climbing and hanging animations state machine.")]
+    [Tooltip("Needed to signal character actions to animations state machine.")]
     [SerializeField] private Animator stateMachine;
     [Tooltip("Needed to know current state machine status.")]
     [SerializeField] private ClimbableStatus climbableStatus;
@@ -40,19 +40,36 @@ public class Climbable: MonoBehaviour
         Left,
     }
 
-    private bool _climbingAbortable;
-    
+    // private bool _climbingAbortable;
+    //
+    // /// <summary>
+    // /// Whether we can abort a climbing.
+    // /// </summary>
+    // public bool ClimbingAbortable { 
+    //     get => _climbingAbortable;
+    //     set
+    //     {
+    //         _climbingAbortable = value;
+    //         stateMachine.SetBool("ClimbingAbortable", value);
+    //     } 
+    // }
+
     /// <summary>
     /// Whether we can abort a climbing.
     /// </summary>
-    public bool ClimbingAbortable { 
-        get => _climbingAbortable;
-        set
-        {
-            _climbingAbortable = value;
-            stateMachine.SetBool("ClimbingAbortable", value);
-        } 
-    }
+    public bool ClimbingAbortable => climbableStatus.ClimbingAbortable;
+
+    /// <summary>
+    /// <p>Result of the last climbing interaction from the point of view of the climbable.</p>
+    ///
+    /// <p>Possible results of a climbing operation:</p>
+    /// <ul>
+    /// <li> <b>Climbed</b>: Character climbed to a ledge grabbing point.</li>
+    /// <li> <b>Descended</b>: Character descended to a descending point.</li>
+    /// <li> <b>Uncertain</b>: Climbing interaction has not ended yet.</li>
+    /// </ul>
+    /// </summary>
+    public ClimbableStatus.ClimbingResult ClimbingResult => climbableStatus.LastClimbingResult;
     
     // /// <summary>
     // /// Wheter this brick is playing character climbing animations.
@@ -98,8 +115,10 @@ public class Climbable: MonoBehaviour
         // First yield return is needed to give time to climbableStatus to change its state from Inactive
         // to Hanging.
         yield return new WaitUntil(() => climbableStatus.CurrentState != ClimbableStatus.States.Inactive);
+        // Second yield return is needed to play every needed climbing hanging animation sequence.
         yield return new WaitUntil(() => climbableStatus.CurrentState == ClimbableStatus.States.Inactive);
         JumpPushed(false);
+        ActionPushed(false);
         this.Log($"(Climbable - {transform.root.name}) Climbing animation finished.", showLogs);
         // PlayingAnimations = false;
     }
@@ -117,6 +136,7 @@ public class Climbable: MonoBehaviour
         // First yield return is needed to give time to climbableStatus to change its state from Inactive
         // to Descending.
         yield return new WaitUntil(() => climbableStatus.CurrentState != ClimbableStatus.States.Inactive);
+        // Second yield return is needed to play every needed climbing hanging animation sequence.
         yield return new WaitUntil(() => climbableStatus.CurrentState == ClimbableStatus.States.Inactive);
         this.Log($"(Climbable - {transform.root.name}) Descend animation finished.", showLogs);
     }

@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79c07218e9846d79cfea535be1c4299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  climbable: {fileID: 3071512933337866708}
+  climbableStatus: {fileID: 3435191164347704265}
 --- !u!1 &5664962019649350186
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcee8d20f0a14445a8630b5e782e3fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateMachine: {fileID: 2278039795481067900}
   animationController: {fileID: 1160500489210156492}
 --- !u!114 &3071512933337866708
 MonoBehaviour:
