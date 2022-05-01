@@ -12,6 +12,8 @@ namespace Prince
         [Header("WIRING:")]
         [Tooltip("Needed to signal abortable climbing period.")]
         [SerializeField] private ClimbableStatus climbableStatus;
+        [Tooltip("Needed to play sounds.")]
+        [SerializeField] private SoundController soundController;
 
         public void AbortClimbingChanceStart()
         {
@@ -21,6 +23,11 @@ namespace Prince
         public void AbortClimbingChanceEnd()
         {
             climbableStatus.ClimbingAbortable = false;
+        }
+
+        public void PlaySound(string clipName)
+        {
+            soundController.PlaySound(clipName);
         }
     }
 }
