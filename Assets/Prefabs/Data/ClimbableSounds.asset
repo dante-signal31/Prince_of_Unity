@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba45d86ba334d728cf77ac2cfac0e92, type: 3}
   m_Name: ClimbableSounds
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: hanged_after_jump
+    audioClip: {fileID: 8300000, guid: 38bf7f577038d95459f0ef48859cfcc5, type: 3}
+  - name: path_blocked
+    audioClip: {fileID: 8300000, guid: 95f3a56ab6ceae14898cfb9334486c86, type: 3}

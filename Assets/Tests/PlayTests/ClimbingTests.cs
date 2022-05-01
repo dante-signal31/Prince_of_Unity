@@ -25,6 +25,8 @@ namespace Tests.PlayTests
         private GameObject _startPosition17;
         private GameObject _startPosition18;
         private GameObject _startPosition19;
+        private GameObject _startPosition20;
+        private GameObject _startPosition21;
 
         private CameraController _cameraController;
         private Room _room00;
@@ -53,6 +55,8 @@ namespace Tests.PlayTests
             if (_startPosition17 == null) _startPosition17 = GameObject.Find("StartPosition17");
             if (_startPosition18 == null) _startPosition18 = GameObject.Find("StartPosition18");
             if (_startPosition19 == null) _startPosition19 = GameObject.Find("StartPosition19");
+            if (_startPosition20 == null) _startPosition20 = GameObject.Find("StartPosition20");
+            if (_startPosition21 == null) _startPosition21 = GameObject.Find("StartPosition21");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
@@ -156,7 +160,223 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
+            yield return new WaitForSeconds(5);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test we can hang in a hollow brick and that we fall if we don´t complete climbing in a time.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator ClimbingHangingHollowIncompleteTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            Vector3 expectedLandingPosition = _startPosition16.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\climbingKeepHanged";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            // Assert we are still climbing.
+            Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Let time pass while hanged.
             yield return new WaitForSeconds(3);
+            // Now Prince should have fallen to ground again.
+            Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test we can hang in a hollow brick and then let us fall.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator ClimbingHangingHollowAbortedTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            Vector3 expectedLandingPosition = _startPosition16.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\climbingKeepHangedAndFall";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            // Assert we are still climbing.
+            Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Let time pass while hanged.
+            yield return new WaitForSeconds(2);
+            // Now Prince should have fallen to ground again.
+            Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test we can hang in a not hollow brick and that we don`t fall if we don´t complete climbing in a time.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator ClimbingHangingNotHollowIncompleteTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition20.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            Vector3 expectedLandingPosition = _startPosition20.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\climbingKeepHanged";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            // Assert we are still climbing.
+            Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Let time pass while hanged.
+            yield return new WaitForSeconds(3);
+            // Now Prince should stay climbing.
+            Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Assert Prince is still at the same position..
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test we can hang in a not hollow brick and that we can leave us fall.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator ClimbingHangingNotHollowAbortedTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition20.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            Vector3 expectedLandingPosition = _startPosition20.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\climbingKeepHangedAndFall2";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            // Assert we are still climbing.
+            Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Let time pass while hanged.
+            yield return new WaitForSeconds(4);
+            // Now Prince should have landed.
+            Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Assert Prince is still at the same position..
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test we can hang in a hollow brick and that we can climb from hanging.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator ClimbingHangingHollowCompleteTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            Vector3 expectedLandingPosition = _startPosition18.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\climbingAfterHanged";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            // Assert we are still climbing.
+            Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Let time pass while hanged.
+            yield return new WaitForSeconds(4);
+            // Now Prince should have climbed to upper ground.
+            Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test we can hang in a not hollow brick and that we can climb from hanging.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator ClimbingHangingNotHollowCompleteTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition20.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            Vector3 expectedLandingPosition = _startPosition21.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\climbingAfterHanged";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            // Assert we are still climbing.
+            Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Let time pass while hanged.
+            yield return new WaitForSeconds(4);
+            // Now Prince should have climbed to upper ground.
+            Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
             // Assert Prince is at expected position.
             Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
             Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
@@ -195,7 +415,7 @@ namespace Tests.PlayTests
         int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         Assert.True(startingHealth == endHealth);
     }
-    
+
     /// <summary>
     /// Test we can climb two levels.
     /// </summary>
@@ -218,6 +438,42 @@ namespace Tests.PlayTests
         // Let movements perform.
         yield return new WaitForSeconds(7);
         // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.20f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+    }
+    
+    /// <summary>
+    /// Test we can keep hanged while descending but we fall after a while hanging from a hollow brick.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendHangingHollowIncompleteTest()
+    {
+        _cameraController.PlaceInRoom(_room00);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedLandingPosition = _startPosition19.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendKeepHanged";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert we are still hanged.
+        Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Let time pass while hanged.
+        yield return new WaitForSeconds(6);
+        // Now Prince should have fallen to below ground.
+        Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Assert Prince is at expected position.
         Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
         Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
         // Assert Prince keeps his life.
@@ -225,5 +481,187 @@ namespace Tests.PlayTests
         int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         Assert.True(startingHealth == endHealth);
     }
+    
+    /// <summary>
+    /// Test we can keep hanged while descending and after we can leave as fall.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendHangingHollowCompleteTest()
+    {
+        _cameraController.PlaceInRoom(_room00);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedLandingPosition = _startPosition19.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndFall";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert we are still hanged.
+        Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Let time pass while hanged.
+        yield return new WaitForSeconds(4);
+        // Now Prince should have fallen to below ground.
+        Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+    }
+    
+    /// <summary>
+    /// Test we can keep hanged while descending a hollow brick and then we can climb up again.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendHangingHollowAbortedTest()
+    {
+        _cameraController.PlaceInRoom(_room00);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedLandingPosition = _startPosition5.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndClimb";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert we are still hanged.
+        Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Let time pass while hanged.
+        yield return new WaitForSeconds(4);
+        // Now Prince should have climbed again to upper ground.
+        Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+    }
+    
+    /// <summary>
+    /// Test we can keep hanged while descending and that we can keep hanging indefinitely from a not hollow brick.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendHangingNotHollowIncompleteTest()
+    {
+        _cameraController.PlaceInRoom(_room00);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedLandingPosition = _startPosition21.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendKeepHanged";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert we are still hanged.
+        Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Let time pass while hanged.
+        yield return new WaitForSeconds(3);
+        // Now Prince should still be hanging. Actually this position is the same as the beginning
+        // because descending has not completed.
+        Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+    }
+    
+    /// <summary>
+    /// Test we can keep hanged while descending and then we can leave us fall.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendHangingNotHollowCompleteTest()
+    {
+        _cameraController.PlaceInRoom(_room00);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedLandingPosition = _startPosition20.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndFall";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert we are still hanged.
+        Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Let time pass while we let us fall.
+        yield return new WaitForSeconds(4);
+        // Now Prince should have landed.
+        Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+    }
+    
+    /// <summary>
+    /// Test we can keep hanged while descending and that we can keep hanging indefinitely from a not hollow brick.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendHangingNotHollowAbortedTest()
+    {
+        _cameraController.PlaceInRoom(_room00);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedLandingPosition = _startPosition21.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndClimb";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert we are still hanged.
+        Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Let time pass while hanged.
+        yield return new WaitForSeconds(4);
+        // Now Prince should be back to the upper ground.
+        Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+    }
+    
     }
 }
