@@ -85,9 +85,9 @@ namespace Prince
                     break;
                 case Command.CommandType.StopJump:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Jump at {Time.time}", showLogs);
-                    if (climbingInteractions.ClimbingInProgress)
+                    if (climbingInteractions != null)
                     {
-                        stateMachine.SetTrigger("StopJump");
+                        if (climbingInteractions.ClimbingInProgress) stateMachine.SetTrigger("StopJump");
                         climbingInteractions.JumpReleased();
                     }
                     break;

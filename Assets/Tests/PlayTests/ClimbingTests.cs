@@ -292,7 +292,7 @@ namespace Tests.PlayTests
             princeStatus.LookingRightWards = false;
             Vector3 expectedLandingPosition = _startPosition20.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
-            string commandFile = @"Assets\Tests\TestResources\climbingKeepHangedAndFall2";
+            string commandFile = @"Assets\Tests\TestResources\climbingKeepHangedAndFall";
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
@@ -302,7 +302,7 @@ namespace Tests.PlayTests
             // Assert we are still climbing.
             Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
             // Let time pass while hanged.
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3);
             // Now Prince should have landed.
             Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
             // Assert Prince is still at the same position..

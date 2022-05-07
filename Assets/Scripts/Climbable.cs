@@ -104,13 +104,15 @@ public class Climbable: MonoBehaviour
     /// <summary>
     /// Called from Prince to hang from this ledge.
     /// </summary>
-    /// <param name="fromRight">True if Prince is trying right ledge, false if is trying left ledge.</param>
-    public IEnumerator Hang(HangableLedges HangingLedge)
+    /// <param name="hangingLedge">Hanging ledge used by character to climb.</param>
+    /// <param name="actionAlreadyPushed">Whether action was previously pushed and hold before starting the climbing.</param>
+    public IEnumerator Hang(HangableLedges hangingLedge, bool actionAlreadyPushed, bool jumpStillPushed)
     {
         // PlayingAnimations = true;
         this.Log($"(Climbable - {transform.root.name}) Prince is hanging from me.", showLogs);
-        climbableStatus.LookingRightWards = (HangingLedge == HangableLedges.Left);
-        JumpPushed(true);
+        climbableStatus.LookingRightWards = (hangingLedge == HangableLedges.Left);
+        JumpPushed(jumpStillPushed);
+        ActionPushed(actionAlreadyPushed);
         stateMachine.SetTrigger("Hang");
         // First yield return is needed to give time to climbableStatus to change its state from Inactive
         // to Hanging.
@@ -122,16 +124,18 @@ public class Climbable: MonoBehaviour
         this.Log($"(Climbable - {transform.root.name}) Climbing animation finished.", showLogs);
         // PlayingAnimations = false;
     }
-    
+
     /// <summary>
     /// Called from Prince to hang from this ledge to descend.
     /// </summary>
-    /// <param name="fromRight">True if Prince is trying right ledge, false if is trying left ledge.</param>
-    public IEnumerator Descend(HangableLedges HangingLedge)
+    /// <param name="hangingLedge">Hanging ledge used by character to descend.</param>
+    /// <param name="actionAlreadyPushed">Whether action was previously pushed and hold before starting the descending.</param>
+    public IEnumerator Descend(HangableLedges hangingLedge, bool actionAlreadyPushed)
     {
         this.Log($"(Climbable - {transform.root.name}) Prince is hanging from me to descend.", showLogs);
-        climbableStatus.LookingRightWards = (HangingLedge == HangableLedges.Left);
+        climbableStatus.LookingRightWards = (hangingLedge == HangableLedges.Left);
         JumpPushed(false);
+        ActionPushed(actionAlreadyPushed);
         stateMachine.SetTrigger("Descend");
         // First yield return is needed to give time to climbableStatus to change its state from Inactive
         // to Descending.

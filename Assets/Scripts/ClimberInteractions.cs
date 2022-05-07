@@ -50,8 +50,8 @@ namespace Prince
         private bool _climbAborted;
         private bool _actionPushed;
         private bool _jumpPushed;
-        
-        
+
+
         private void FixedUpdate()
         {
             switch (characterStatus.CurrentState)
@@ -74,7 +74,7 @@ namespace Prince
                 Climbable.HangableLedges hangingLedge = (characterStatus.LookingRightWards)
                     ? Climbable.HangableLedges.Left
                     : Climbable.HangableLedges.Right;
-                yield return _climbable.Hang(hangingLedge);
+                yield return _climbable.Hang(hangingLedge, _actionPushed, _jumpPushed);
                 if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Descended)
                 {
                     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing aborted.", showLogs);
@@ -112,9 +112,9 @@ namespace Prince
             if ((ClimbingInProgress) && (_climbable.ClimbingAbortable))
             {
                 _climbable.JumpPushed(false);
-                _jumpPushed = false;
                 if (!_actionPushed) _climbAborted = true;
             }
+            _jumpPushed = false;
         }
 
         /// <summary>
@@ -125,9 +125,9 @@ namespace Prince
             if (ClimbingInProgress)
             {
                 _climbable.ActionPushed(true);
-                _actionPushed = true;
                 _climbAborted = false;
-            }
+            } 
+            _actionPushed = true;
         }
         
         /// <summary>
@@ -138,9 +138,9 @@ namespace Prince
             if (ClimbingInProgress)
             {
                 _climbable.ActionPushed(false);
-                _actionPushed = false;
                 _climbAborted = true;
             }
+            _actionPushed = false;
         }
         
         private IEnumerator Descend()
@@ -152,7 +152,7 @@ namespace Prince
                 Climbable.HangableLedges hangingLedge = (characterStatus.LookingRightWards)
                     ? Climbable.HangableLedges.Left
                     : Climbable.HangableLedges.Right;
-                yield return _climbable.Descend(hangingLedge);
+                yield return _climbable.Descend(hangingLedge, _actionPushed);
                 if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Descended)
                 {
                     UpdateCharacterPosition(hangingLedge, ClimbingOptions.Descend);
