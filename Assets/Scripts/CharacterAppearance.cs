@@ -41,6 +41,7 @@ namespace Prince
             //
             // This work around is partially effective. Frame ghosting still happens but it is less likely.
             // Hopefully this will be fixed in any further Unity version.
+            // TODO: Reimplement flip by transform only, as I've fixed ghosting using empty animations.
             FlipSpriteRenderer(rightWards);
             CorrectSpriteRendererOffset(rightWards);
             FlipDirectionalComponents(rightWards);

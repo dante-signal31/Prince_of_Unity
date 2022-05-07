@@ -87,7 +87,6 @@ namespace Prince
         /// <summary>
         /// Whether this character is falling or not.
         /// </summary>
-        /// TODO: I don't like IsFalling being set from another component. This component should read GroundSensor and update itself accordingly.
         public bool IsFalling
         {
             get=> _isFalling;

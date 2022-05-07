@@ -5,8 +5,6 @@ using UnityEngine;
 [ExecuteAlways]
 public class PillarsAppearance : MonoBehaviour, IBorder
 {
-    // TODO: Back pillar occluder might be useless. Consider removing it at prefab editor.
-    
     [SerializeField] private bool hasBorder;
     
     [SerializeField] private SpriteRenderer groundSpriteRenderer;
