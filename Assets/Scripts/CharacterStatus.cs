@@ -114,6 +114,11 @@ namespace Prince
                         stateMachine.SetTrigger("Land");
                         this.Log($"(CharacterStatus - {transform.root.name}) We are landing.", showLogs);
                     }
+                    else
+                    {
+                        _isFalling = false;
+                        this.Log($"(CharacterStatus - {transform.root.name}) Gravity is not enabled so we are not falling.", showLogs);
+                    }
                 }
             }
         }
@@ -152,7 +157,8 @@ namespace Prince
                     // chain a running jump with running (i.e. we jump through
                     // hole and we continue running on the other side). Than last
                     // thing happens when you have ground under your feet.
-                    States.Running when groundSensors.GroundBelow => JumpingTypes.None,
+                    // States.Running when groundSensors.GroundBelow => JumpingTypes.None,
+                    _ when groundSensors.GroundBelow => JumpingTypes.None,
                     _ => CurrentJumpingSequence
                 };
                 
@@ -165,7 +171,8 @@ namespace Prince
             set
             {
                 life = Math.Clamp(value, 0, maximumLife);
-                stateMachine.SetBool("isDead", IsDead);
+                // Added check to get rid of "Animator is not playing an AnimatorController" warning.
+                if (stateMachine.isActiveAndEnabled) stateMachine.SetBool("isDead", IsDead);
             }
         }
     
@@ -189,7 +196,8 @@ namespace Prince
             set
             {
                 hasSword = value;
-                stateMachine.SetBool("hasSword", value);
+                // Added check to get rid of "Animator is not playing an AnimatorController" warning.
+                if (stateMachine.isActiveAndEnabled) stateMachine.SetBool("hasSword", value);
             }
         }
     
@@ -201,7 +209,8 @@ namespace Prince
             set
             {
                 lookingRightWards = value;
-                stateMachine.SetBool("lookingRightWards", lookingRightWards);
+                // Added check to get rid of "Animator is not playing an AnimatorController" warning.
+                if (stateMachine.isActiveAndEnabled) stateMachine.SetBool("lookingRightWards", lookingRightWards);
             }
         }
 

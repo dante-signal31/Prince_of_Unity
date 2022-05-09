@@ -92,7 +92,7 @@ namespace Tests.PlayTests
             float startingHeight = _prince.transform.position.y;
             float startingHorizontalPosition = _prince.transform.position.x;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
-            float expectedAdvancedHorizontalPosition = 9.8f;
+            float expectedAdvancedHorizontalPosition = 10.8f;
             string commandFile = @"Assets\Tests\TestResources\runningJumpingSequence";
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
@@ -132,7 +132,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(6);
             // Assert Prince is at expected position.
             Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
             Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);

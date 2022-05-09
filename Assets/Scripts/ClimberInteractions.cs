@@ -20,6 +20,8 @@ namespace Prince
         [SerializeField] private CeilingSensors ceilingSensors;
         [Tooltip("Needed to get a reference to climbable game objects to descend.")]
         [SerializeField] private GroundSensors groundSensors;
+        [Tooltip("Needed play hanging sounds.")]
+        [SerializeField] private SoundController soundController;
         
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -50,12 +52,26 @@ namespace Prince
         private bool _climbAborted;
         private bool _actionPushed;
         private bool _jumpPushed;
+        private bool _fallingHangingAllowed = true;
 
+
+        private void Awake()
+        {
+            stateMachine.SetBool("FallingHangingAllowed", true);
+        }
 
         private void FixedUpdate()
         {
             switch (characterStatus.CurrentState)
             {
+                case CharacterStatus.States.Climbing when characterStatus.IsFalling:
+                    if (!ClimbingInProgress)
+                    {
+                        // // TODO: Remove this _actionPushed = true. It is only useful for tests. Usual game play set it by gameplay events.
+                        // _actionPushed = true;
+                        StartCoroutine(Climb(fallingHanging: true));
+                    }
+                    break;
                 case CharacterStatus.States.Climbing:
                     if (!ClimbingInProgress) StartCoroutine(Climb());
                     break;
@@ -65,21 +81,57 @@ namespace Prince
             }
         }
 
-        private IEnumerator Climb()
+        private void AllowFallingHanging()
         {
-            _climbable = ceilingSensors.Ledge.GetComponentInChildren<Climbable>();
+            stateMachine.SetBool("FallingHangingAllowed", true);
+            this.Log($"(ClimberInteractions - {transform.root.name}) Falling allowed again.", showLogs);
+        }
+        
+        /// <summary>
+        /// Suspend temporarily falling hanging.
+        /// </summary>
+        /// <param name="duration">Time in seconds to suspend falling hanging.</param>
+        private void SuspendFallingHanging(float duration)
+        {
+            stateMachine.SetBool("FallingHangingAllowed", false);
+            Invoke(nameof(AllowFallingHanging), duration);
+            this.Log($"(ClimberInteractions - {transform.root.name}) Falling hanging suspended for {duration} seconds.", showLogs);
+        }
+
+        /// <summary>
+        /// Climb a climbable brick
+        ///
+        /// This method is called both when prince wants to climb a brick and when he is falling
+        /// and trying to grab a ledge to hang from it.
+        /// </summary>
+        /// <param name="fallingHanging">True if character is falling when he tries to grab the ledge.</param>
+        private IEnumerator Climb(bool fallingHanging = false)
+        {
+            _climbable = fallingHanging
+                ? ceilingSensors.FallingLedge.GetComponentInChildren<Climbable>()
+                : ceilingSensors.Ledge.GetComponentInChildren<Climbable>();
             if (_climbable != null)
             {
-                this.Log($"(ClimberInteractions - {transform.root.name}) Starting climbing.", showLogs);
+                this.Log($"(ClimberInteractions - {transform.root.name}) Starting climbing. " +
+                         $"Falling hanging: {fallingHanging}" +
+                         $" Action pushed:{_actionPushed} Jump pushed: {_jumpPushed}", showLogs);
+                if (fallingHanging) soundController.PlaySound("hanged_after_jump");
                 Climbable.HangableLedges hangingLedge = (characterStatus.LookingRightWards)
                     ? Climbable.HangableLedges.Left
                     : Climbable.HangableLedges.Right;
                 yield return _climbable.Hang(hangingLedge, _actionPushed, _jumpPushed);
+                // If we tried to climb and ended descending then we aborted climbing.
                 if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Descended)
                 {
                     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing aborted.", showLogs);
                     stateMachine.SetTrigger("ClimbingAborted");
+                    if (fallingHanging)
+                    {
+                        SuspendFallingHanging(0.3f);
+                        UpdateCharacterPosition(hangingLedge, ClimbingOptions.Descend);
+                    }
                 }
+                // If we tried to climb and ended up the brick (climbed) then everything was ok.
                 else if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Climbed)
                 {
                     UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
@@ -90,7 +142,8 @@ namespace Prince
                 {
                     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing ended in an undefined state.", showLogs);
                 }
-
+                // Let character status time to get to new state.
+                yield return new WaitUntil(() => characterStatus.CurrentState != CharacterStatus.States.Climbing);
                 _climbable = null;
             }
         }

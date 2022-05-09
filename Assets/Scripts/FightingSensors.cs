@@ -21,9 +21,7 @@ public class FightingSensors : MonoBehaviour
     [Tooltip("How much space proportion we let enemy enter into our hitting zone.")]
     [Range(0,1)]
     [SerializeField] private float hittingZoneTolerance;
-    [Tooltip("Needed to set correct hitting tolerance zone orientation.")]
-    [SerializeField] private CharacterStatus characterStatus;
-
+    
     /// <summary>
     /// How much space proportion we let enemy enter into our hitting zone.
     /// </summary>

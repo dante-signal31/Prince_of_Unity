@@ -369,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: showLogs
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: characterStatus
@@ -835,6 +835,7 @@ MonoBehaviour:
   characterTransform: {fileID: 8753756464017843389}
   ceilingSensors: {fileID: 2988451417780407435}
   groundSensors: {fileID: 7254305074926980783}
+  soundController: {fileID: 5974537263132064961}
   showLogs: 1
 --- !u!114 &7254305074926980783 stripped
 MonoBehaviour:
@@ -935,12 +936,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6295542199889217454, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: showLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6295542199889217454, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: stateMachine
       value: 
       objectReference: {fileID: 3792878465186783984}
+    - target: {fileID: 8245138073941359341, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.542
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956223768473571339, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.185
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
 --- !u!114 &2988451417780407435 stripped

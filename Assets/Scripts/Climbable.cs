@@ -17,7 +17,7 @@ public class Climbable: MonoBehaviour
     [SerializeField] private Animator stateMachine;
     [Tooltip("Needed to know current state machine status.")]
     [SerializeField] private ClimbableStatus climbableStatus;
-    
+
     [Header("CONFIGURATION:")]
     [Tooltip("Anchor for climbing and hanging animations at right side.")]
     [SerializeField] private Transform grabbingPointRight;

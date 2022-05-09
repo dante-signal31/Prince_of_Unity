@@ -35,3 +35,5 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: f88f7583dacee2949ad47f0a7ec27ead, type: 3}
   - name: regular_death
     audioClip: {fileID: 8300000, guid: 05fefc6c9099c424d8daa7818b05a1ba, type: 3}
+  - name: hanged_after_jump
+    audioClip: {fileID: 8300000, guid: 38bf7f577038d95459f0ef48859cfcc5, type: 3}

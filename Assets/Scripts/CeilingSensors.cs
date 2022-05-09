@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Prince
 {
@@ -14,6 +15,8 @@ namespace Prince
         [SerializeField] private Transform ledgeSensorEnd; 
         [SerializeField] private Transform roofSensorStart;
         [SerializeField] private Transform roofSensorEnd;
+        [SerializeField] private Transform fallingLedgeSensorStart;
+        [SerializeField] private Transform fallingLedgeSensorEnd;
 
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -21,14 +24,17 @@ namespace Prince
         
         private GameObject _ledge;
         private GameObject _roof;
+        private GameObject _fallingLedge;
         
         private int _architectureLayerMask;
-        
-        
+        private bool _fallingLedgeDetectionSuspended;
+
+
         enum SensorType
         {
             Ledge,
-            Roof
+            Roof,
+            FallingLedge
         };
         
         /// <summary>
@@ -42,7 +48,12 @@ namespace Prince
         public bool RoofOverHead => _roof != null;
         
         /// <summary>
-        /// The game object we are we can climb or hang from.
+        /// Whether we have a ledge we can grab to while we are falling.
+        /// </summary>
+        public bool FallingLedgeReachable => _fallingLedge != null;
+        
+        /// <summary>
+        /// The game object we can climb or hang from.
         /// </summary>
         public GameObject Ledge
         {
@@ -90,6 +101,31 @@ namespace Prince
             }
         }
         
+        /// <summary>
+        /// The game object we can climb or hang from while falling.
+        /// </summary>
+        public GameObject FallingLedge
+        {
+            get=> _fallingLedge;
+            private set
+            {
+                if ((value != null) && 
+                    (value.GetComponentInChildren<Climbable>() != null) && 
+                    (value != _fallingLedge))
+                {
+                    stateMachine.SetBool("FallingLedgeReachable", true);
+                    _fallingLedge = value;
+                    this.Log($"(CeilingSensors - {transform.root.name}) Falling ledge detected.", showLogs);
+                }
+                else if ((value == null) && (_fallingLedge != null))
+                {
+                    stateMachine.SetBool("FallingLedgeReachable", false);
+                    _fallingLedge = null;
+                    this.Log($"(CeilingSensors - {transform.root.name}) Falling ledge no longer reachable.", showLogs);
+                }
+            }
+        }
+        
         private void Awake()
         {
             _architectureLayerMask = LayerMask.GetMask("Architecture");
@@ -125,12 +161,49 @@ namespace Prince
             return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
         }
         
+        /// <summary>
+        /// Return falling ledge detected in front and above of character if any, or null otherwise.
+        /// </summary>
+        /// <returns>Falling ledge detected or null otherwise.</returns>
+        private GameObject DetectFallingLedge()
+        {
+            Vector2 rayDirection = fallingLedgeSensorEnd.position - fallingLedgeSensorStart.position;
+            float forwardSensorDistance = Vector2.Distance(fallingLedgeSensorStart.position, fallingLedgeSensorEnd.position);
+            RaycastHit2D hit = Physics2D.Raycast(fallingLedgeSensorStart.position, 
+                rayDirection, 
+                forwardSensorDistance, 
+                _architectureLayerMask);
+            return (hit.collider != null)? hit.collider.transform.root.gameObject: null;
+        }
+        
         private void FixedUpdate()
         {
             Ledge = DetectLedge();
             Roof = DetectRoof();
+            FallingLedge = DetectFallingLedge();
         }
 
+        /// <summary>
+        /// Reactivate at once falling ledge detection.
+        /// </summary>
+        public void ReactivateFallingLedgeDetection()
+        {
+            _fallingLedgeDetectionSuspended = false;
+        }
+
+        /// <summary>
+        /// Suspend temporarily falling ledge detection.
+        /// </summary>
+        /// <param name="duration">Time in seconds to suspend falling ledge detection.</param>
+        public void SuspendFallingLedgeDetection(float duration)
+        {
+            _fallingLedgeDetectionSuspended = true;
+            FallingLedge = null;
+            Invoke(nameof(ReactivateFallingLedgeDetection), duration);
+        }
+
+
+#if UNITY_EDITOR
         private void DrawSensor(SensorType sensorType)
             {
                 float gizmoRadius = 0.05f;
@@ -147,11 +220,17 @@ namespace Prince
                         Gizmos.DrawCube(roofSensorStart.position, gizmoSize);
                         Gizmos.DrawSphere(roofSensorEnd.position, gizmoRadius);
                         break;
+                    case SensorType.FallingLedge:
+                        Gizmos.color = Color.blue;
+                        Gizmos.DrawCube(fallingLedgeSensorStart.position, gizmoSize);
+                        Gizmos.DrawSphere(fallingLedgeSensorEnd.position, gizmoRadius);
+                        break;
                 }
                 Gizmos.color = sensorType switch
                 {
                     SensorType.Ledge => (LedgeReachable) ? Color.green : Color.red,
                     SensorType.Roof => (RoofOverHead) ? Color.green : Color.red,
+                    SensorType.FallingLedge => (FallingLedgeReachable) ? Color.green : Color.red,
                 };
                 switch (sensorType)
                 {
@@ -161,16 +240,19 @@ namespace Prince
                     case SensorType.Roof:
                         Gizmos.DrawLine(roofSensorStart.position, roofSensorEnd.position);
                         break;
+                    case SensorType.FallingLedge:
+                        Gizmos.DrawLine(fallingLedgeSensorStart.position, fallingLedgeSensorEnd.position);
+                        break;
                 }
             }
             
-        #if UNITY_EDITOR
             private void OnDrawGizmosSelected()
             {
                 DrawSensor(SensorType.Ledge);
                 DrawSensor(SensorType.Roof);
+                DrawSensor(SensorType.FallingLedge);
             }
-        #endif
+#endif
         
     }
 }

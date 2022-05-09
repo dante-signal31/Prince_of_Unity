@@ -267,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 7284997314533658813}
   characterStatus: {fileID: 82222986682491871}
+  showLogs: 0
 --- !u!114 &7555925246985261242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +705,10 @@ PrefabInstance:
       propertyPath: centerSensorStart
       value: 
       objectReference: {fileID: 3353167460853004097}
+    - target: {fileID: 6649583082068375673, guid: c95218e57f6137b418fddce00174ab49, type: 3}
+      propertyPath: gravityController
+      value: 
+      objectReference: {fileID: 3516496625040567591}
     - target: {fileID: 6649583082068375673, guid: c95218e57f6137b418fddce00174ab49, type: 3}
       propertyPath: forwardSensorStart
       value: 

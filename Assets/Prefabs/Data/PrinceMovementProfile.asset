@@ -20,9 +20,9 @@ MonoBehaviour:
   MaximumWalkingSpeed: 1.3
   MaximumStandingSpeed: 1
   MaximumCrouchWalkingSpeed: 4
-  FallingHorizontalSpeed: 0.3
+  FallingHorizontalSpeed: 1
   RunningJumpingImpulseSpeed: 3.32
-  RunningJumpingSpeed: 4.2
+  RunningJumpingSpeed: 5.7
   FallingHorizontalSpeedAfterRunningJump: 3.1
   WalkingJumpingSpeed: 4.6
   WalkingJumpingEndSpeed: 1.57

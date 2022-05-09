@@ -10,6 +10,8 @@ public class GroundSensors : MonoBehaviour
     [Header("WIRING:")]
     [Tooltip("Needed to set isFalling flag when ground is not detected any longer below feet.")]
     [SerializeField] private CharacterStatus characterStatus;
+    [Tooltip("Needed to know if gravity is enabled")] [SerializeField]
+    private GravityController gravityController;
     [Tooltip("Needed to update state machine with ground detected.")]
     [SerializeField] private Animator stateMachine;
     [SerializeField] private Transform forwardSensorStart;
@@ -59,11 +61,15 @@ public class GroundSensors : MonoBehaviour
         get=> _centerGround;
         private set
         {
-            _centerGround = value;
-            characterStatus.IsFalling = (value == null);
-            // OnGround is not the same as IsFalling. With no gravity you can be
-            // off ground but not being falling. With gravity enabled isFalling == !OnGround.
-            stateMachine.SetBool("OnGround", (value != null));
+            if (_centerGround != value)
+            {
+                _centerGround = value;
+                // Gravity enabled check is done in IsFalling property.
+                characterStatus.IsFalling = (value == null);
+                // OnGround is not the same as IsFalling. With no gravity you can be
+                // off ground but not being falling. With gravity enabled isFalling == !OnGround.
+                stateMachine.SetBool("OnGround", (value != null));
+            }
         }
     }
 

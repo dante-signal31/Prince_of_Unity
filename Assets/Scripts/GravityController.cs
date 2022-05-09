@@ -17,6 +17,10 @@ namespace Prince
         [Tooltip("Needed to know current character state.")]
         [SerializeField] private CharacterStatus characterStatus;
 
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
+        
         private float _enabledGravity;
 
         /// <summary>
@@ -33,12 +37,14 @@ namespace Prince
         {
             switch (characterStatus.CurrentState)
             {
+                // TODO: Try to unify this first bunch of conditions with second one.
                 case CharacterStatus.States.Dead:
                 case CharacterStatus.States.DeadByFall:
                     DisableGravity();
                     break;
                 case CharacterStatus.States.RunningJump:
                 case CharacterStatus.States.WalkingJump:
+                case CharacterStatus.States.Climbing:
                     if (GravityEnabled) DisableGravity();
                     break;
                 default:
@@ -53,6 +59,8 @@ namespace Prince
         private void DisableGravity()
         {
             rigidBody.gravityScale = 0;
+            rigidBody.velocity = Vector2.zero;
+            this.Log($"(Gravity controller - {transform.root.name}) Gravity disabled for this game object.", showLogs);
         }
 
         /// <summary>
@@ -61,6 +69,7 @@ namespace Prince
         private void EnableGravity()
         {
             rigidBody.gravityScale = _enabledGravity;
+            this.Log($"(Gravity controller - {transform.root.name}) Gravity enabled for this game object.", showLogs);
         }
     }
 }
