@@ -111,7 +111,7 @@ namespace Prince
                     else if (gravityController.GravityEnabled)
                     {
                         _isFalling = false;
-                        stateMachine.SetTrigger("Land");
+                        // stateMachine.SetTrigger("Land");
                         this.Log($"(CharacterStatus - {transform.root.name}) We are landing.", showLogs);
                     }
                     else
