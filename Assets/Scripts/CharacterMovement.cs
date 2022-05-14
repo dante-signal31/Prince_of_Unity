@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.TextCore.Text;
@@ -17,6 +18,12 @@ namespace Prince
         [SerializeField] private Rigidbody2D rigidBody2D;
         [Tooltip("Needed to know combat conditions that may change movements.")]
         [SerializeField] private FightingInteractions fightingInteractions;
+        [Tooltip("Needed to know if there is a hole ahead.")]
+        [SerializeField] private GroundSensors groundSensors;
+        [Tooltip("Needed so send an stop signal if we are walking over a hole ahead.")]
+        [SerializeField] private Animator stateMachine;
+        [Tooltip("Needed to play blocked sound.")] 
+        [SerializeField] private SoundController soundController;
 
         [Header("CONFIGURATION:")]
         [Tooltip("Needed to know this character speed in every state.")]
@@ -30,6 +37,7 @@ namespace Prince
         private Vector2 _currentForwardVector;
         private float _currentSpeed;
         private float _oldSpeed;
+        private bool _playingSound;
         
         // Needed To get a reference to characterMovementProfile from SpeedForwarder script to 
         // animate speed values at variable speed stated.
@@ -149,8 +157,21 @@ namespace Prince
             this.Log($"(CharacterMovement - {gameObject.name}) Moving with speed {_currentSpeed} and forward vector {_currentForwardVector}", showLogs);
         }
 
+        /// <summary>
+        /// If we are walking we stop if there`s no ground ahead.
+        /// </summary>
+        private void StopIfHoleAheadWhileWalking()
+        {
+            if (characterStatus.CurrentState == CharacterStatus.States.Walk && !groundSensors.GroundAhead)
+            {
+                stateMachine.SetTrigger("Stop");
+                soundController.PlaySound("path_blocked");
+            }
+        }
+
         private void FixedUpdate()
         {
+            StopIfHoleAheadWhileWalking();
             UpdateCurrentSpeed();
             UpdatePosition();
         }

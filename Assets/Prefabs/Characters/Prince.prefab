@@ -373,16 +373,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: stateMachine
+      value: 
+      objectReference: {fileID: 3792878465186783984}
+    - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: groundSensors
+      value: 
+      objectReference: {fileID: 7254305074926980783}
+    - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: characterStatus
       value: 
       objectReference: {fileID: 3800712010592504634}
+    - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: soundController
+      value: 
+      objectReference: {fileID: 5974537263132064961}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: characterMovementProfile
       value: 
       objectReference: {fileID: 11400000, guid: 4249198caf443b7438582b45d9265795, type: 2}
     - target: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: showLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: centerFightingModeXOffset

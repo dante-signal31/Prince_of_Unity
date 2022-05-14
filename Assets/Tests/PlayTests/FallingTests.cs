@@ -96,6 +96,30 @@ namespace Tests.PlayTests
         }
         
         /// <summary>
+        /// Test that Prince do not fall if he walks over a hole.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator WalkingDoNotFallTest()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+            Vector3 expectedPosition = _startPosition5.transform.position;
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            string commandFile = @"Assets\Tests\TestResources\walkingThreeSteps";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Assert Prince has not fallen.
+            Assert.True(Math.Abs(expectedPosition.x - _prince.transform.position.x) < 0.10);
+            Assert.True(Math.Abs(expectedPosition.y - _prince.transform.position.y) < 0.10);
+        }
+        
+        /// <summary>
         /// Test that Prince survives a 2 level fall but loses 1 point.
         /// </summary>
         [UnityTest]
@@ -148,7 +172,7 @@ namespace Tests.PlayTests
             // Assert Prince has fallen to where we expected.
             float endHeight = _prince.transform.position.y;
             float heightError = endHeight - expectedFinalHeight;
-            Assert.True(Math.Abs(heightError) < 0.04);
+            Assert.True(Math.Abs(heightError) < 0.20);
             // Assert Prince is dead.
             Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         }
