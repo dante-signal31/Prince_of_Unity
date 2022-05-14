@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6784542123023916, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
@@ -380,6 +381,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4249198caf443b7438582b45d9265795, type: 2}
     - target: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: showLogs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: centerFightingModeXOffset
       value: 0.3
       objectReference: {fileID: 0}
@@ -516,6 +521,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8120205002041218569, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6247092587485351717}
   m_SourcePrefab: {fileID: 100100000, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
 --- !u!1 &911777741766505270 stripped
 GameObject:
@@ -836,7 +845,7 @@ MonoBehaviour:
   ceilingSensors: {fileID: 2988451417780407435}
   groundSensors: {fileID: 7254305074926980783}
   soundController: {fileID: 5974537263132064961}
-  showLogs: 1
+  showLogs: 0
 --- !u!114 &7254305074926980783 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
@@ -880,6 +889,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4983806228774649580}
     m_Modifications:
     - target: {fileID: 2924383590617367552, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
@@ -944,13 +954,18 @@ PrefabInstance:
       objectReference: {fileID: 3792878465186783984}
     - target: {fileID: 8245138073941359341, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.542
+      value: 0.617
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245138073941359341, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.658
       objectReference: {fileID: 0}
     - target: {fileID: 8956223768473571339, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.185
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
 --- !u!114 &2988451417780407435 stripped
 MonoBehaviour:
@@ -963,3 +978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f89804cbe8e4f7e9080218d3962f2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6247092587485351717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2924383590617367552, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
+  m_PrefabInstance: {fileID: 9090338816504400677}
+  m_PrefabAsset: {fileID: 0}

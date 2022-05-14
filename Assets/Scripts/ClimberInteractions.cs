@@ -52,16 +52,34 @@ namespace Prince
         private bool _climbAborted;
         private bool _actionPushed;
         private bool _jumpPushed;
-        private bool _fallingHangingAllowed = true;
+        private bool _fallingHangingAllowed;
 
-
-        private void Awake()
+        private bool FallingHangingAllowed
         {
-            stateMachine.SetBool("FallingHangingAllowed", true);
+            get
+            {
+                return _fallingHangingAllowed;
+            }
+            set
+            {
+                if (_fallingHangingAllowed != value)
+                {
+                    _fallingHangingAllowed = value;
+                    stateMachine.SetBool("FallingHangingAllowed", _fallingHangingAllowed);
+                    this.Log($"(ClimberInteractions - {transform.root.name}) FallingHangingAllowed set to: {_fallingHangingAllowed}.", showLogs);
+                }
+            }
+            
+        }
+        
+        private void Start()
+        {
+            FallingHangingAllowed = true;
         }
 
         private void FixedUpdate()
         {
+            FixFallingHangingAllowedFlag();
             switch (characterStatus.CurrentState)
             {
                 case CharacterStatus.States.Climbing when characterStatus.IsFalling:
@@ -81,9 +99,34 @@ namespace Prince
             }
         }
 
+        /// <summary>
+        /// This embarrasing, but I don't know why FallingHangingAllowed animator flag backs to false after being set at start
+        /// and with no call to SuspendFallingHanging(). Oddly it does not happen in normal game execution but
+        /// in play tests. I've check calls to stateMachine.SetBool("FallingHangingAllowed") and the only one
+        /// is in FallingHangingAllowed property and that one is only called at Start(), SuspendFallingHanging()
+        /// and AllowFallingHanging(). Even when the later two methods are not called FallingHangingAllowed animator
+        /// flag is set to true after Start(), stays in that value for a FixedUpdate() round and in the next one is back
+        /// to false. It only happens in play mode tests.
+        ///
+        /// So, this method is a workaround to fix that. Hopefully it will only be needed in play mode tests.
+        /// </summary>
+        private void FixFallingHangingAllowedFlag()
+        {
+            if (FallingHangingAllowed != stateMachine.GetBool("FallingHangingAllowed"))
+            {
+                this.Log(
+                    $"(ClimberInteractions - {transform.root.name}) State mismatch. FallingHangingAllowed: {FallingHangingAllowed} while in state machine is {stateMachine.GetBool("FallingHangingAllowed")}",
+                    showLogs);
+                stateMachine.SetBool("FallingHangingAllowed", FallingHangingAllowed);
+                this.Log(
+                    $"(ClimberInteractions - {transform.root.name}) Fix applied to state mismatch.",
+                    showLogs);
+            }
+        }
+
         private void AllowFallingHanging()
         {
-            stateMachine.SetBool("FallingHangingAllowed", true);
+            FallingHangingAllowed = true;
             this.Log($"(ClimberInteractions - {transform.root.name}) Falling allowed again.", showLogs);
         }
         
@@ -93,7 +136,7 @@ namespace Prince
         /// <param name="duration">Time in seconds to suspend falling hanging.</param>
         private void SuspendFallingHanging(float duration)
         {
-            stateMachine.SetBool("FallingHangingAllowed", false);
+            FallingHangingAllowed = false;
             Invoke(nameof(AllowFallingHanging), duration);
             this.Log($"(ClimberInteractions - {transform.root.name}) Falling hanging suspended for {duration} seconds.", showLogs);
         }

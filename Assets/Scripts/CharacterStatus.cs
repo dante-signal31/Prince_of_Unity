@@ -230,7 +230,7 @@ namespace Prince
             stateMachine.SetBool("hasSword", HasSword);
             stateMachine.SetBool("isDead", IsDead);
             stateMachine.SetBool("lookingRightWards", LookingRightWards);
-            stateMachine.SetBool("OnGround", !IsFalling);
+            //stateMachine.SetBool("OnGround", !IsFalling);
         }
 
         private void Awake()

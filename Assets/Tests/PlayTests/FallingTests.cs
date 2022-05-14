@@ -144,7 +144,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(5);
             // Assert Prince has fallen to where we expected.
             float endHeight = _prince.transform.position.y;
             float heightError = endHeight - expectedFinalHeight;

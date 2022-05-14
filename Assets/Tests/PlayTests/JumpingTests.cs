@@ -134,8 +134,8 @@ namespace Tests.PlayTests
             // Let movements perform.
             yield return new WaitForSeconds(6);
             // Assert Prince is at expected position.
-            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
-            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.20f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.20f);
             // Assert Prince keeps his life.
             Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;

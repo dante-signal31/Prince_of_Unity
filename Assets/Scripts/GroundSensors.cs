@@ -27,6 +27,10 @@ public class GroundSensors : MonoBehaviour
     [Tooltip("How much to advance forward and center sensor when in fighting mode.")]
     [SerializeField] private float centerFightingModeXOffset;
 
+    [Header("DEBUG:")]
+    [Tooltip("Show this component logs on console window.")]
+    [SerializeField] private bool showLogs;
+    
     private bool _wideSensorDistribution = false;
     
     private int _architectureLayerMask;
@@ -34,7 +38,7 @@ public class GroundSensors : MonoBehaviour
     private GameObject _forwardGround;
     private GameObject _rearGround;
     private GameObject _centerGround;
-    
+
     public GameObject ForwardGround
     {
         get=> _forwardGround;
@@ -61,15 +65,14 @@ public class GroundSensors : MonoBehaviour
         get=> _centerGround;
         private set
         {
-            if (_centerGround != value)
-            {
+                bool _onGround = (value != null);
                 _centerGround = value;
                 // Gravity enabled check is done in IsFalling property.
-                characterStatus.IsFalling = (value == null);
+                characterStatus.IsFalling = !_onGround;
                 // OnGround is not the same as IsFalling. With no gravity you can be
                 // off ground but not being falling. With gravity enabled isFalling == !OnGround.
-                stateMachine.SetBool("OnGround", (value != null));
-            }
+                stateMachine.SetBool("OnGround", _onGround);
+                this.Log($"(GroundSensors - {transform.root.name}) On ground: {_onGround}.", showLogs);
         }
     }
 

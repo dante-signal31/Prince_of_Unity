@@ -96,6 +96,8 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _enemy.SetActive(false);
             _prince.transform.SetPositionAndRotation(_startPosition10.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
             Room room00 = GameObject.Find("Room_0_0").GetComponent<Room>();
             Room room10 = GameObject.Find("Room_1_0").GetComponent<Room>();
             CameraController cameraController = _levelCamera.GetComponentInChildren<CameraController>();
