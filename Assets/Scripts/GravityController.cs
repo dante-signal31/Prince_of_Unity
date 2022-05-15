@@ -38,15 +38,16 @@ namespace Prince
 
         private void Start()
         {
-            stateMachine.SetBool("GravityEnabled", true);
-            _isGravityEnabled = true;
+            // stateMachine.SetBool("GravityEnabled", true);
+            // _isGravityEnabled = true;
+            _isGravityEnabled = stateMachine.GetBool("GravityEnabled");
         }
 
         private void FixedUpdate()
         {
-            if (_isGravityEnabled != stateMachine.GetBool("GravityEnabled")) {
-                stateMachine.SetBool("GravityEnabled", _isGravityEnabled);
-            }
+            // if (_isGravityEnabled != stateMachine.GetBool("GravityEnabled")) {
+            //     stateMachine.SetBool("GravityEnabled", _isGravityEnabled);
+            // }
             
             switch (characterStatus.CurrentState)
             {
