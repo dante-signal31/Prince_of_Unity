@@ -102,22 +102,16 @@ namespace Prince
             {
                 if (_isFalling != value)
                 {
-                    if (value && gravityController.GravityEnabled)
+                    if (value & gravityController.GravityEnabled)
                     {
                         _isFalling = true;
                         stateMachine.SetTrigger("Fall");
                         this.Log($"(CharacterStatus - {transform.root.name}) We are falling.", showLogs);
                     } 
-                    else if (gravityController.GravityEnabled)
+                    else 
                     {
                         _isFalling = false;
-                        // stateMachine.SetTrigger("Land");
                         this.Log($"(CharacterStatus - {transform.root.name}) We are landing.", showLogs);
-                    }
-                    else
-                    {
-                        _isFalling = false;
-                        this.Log($"(CharacterStatus - {transform.root.name}) Gravity is not enabled so we are not falling.", showLogs);
                     }
                 }
             }

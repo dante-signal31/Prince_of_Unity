@@ -78,6 +78,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6784542123023916, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
@@ -316,6 +317,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3516496625040567591, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: stateMachine
+      value: 
+      objectReference: {fileID: 312590335524935766}
     - target: {fileID: 3729635869785204303, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -619,6 +624,10 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2957703069270075706, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
     - {fileID: 3074853954623968156, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5539811472104328280, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8741629021693429890}
   m_SourcePrefab: {fileID: 100100000, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
 --- !u!114 &309445386847498652 stripped
 MonoBehaviour:

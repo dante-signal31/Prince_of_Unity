@@ -16,12 +16,15 @@ namespace Prince
         [SerializeField] private Rigidbody2D rigidBody;
         [Tooltip("Needed to know current character state.")]
         [SerializeField] private CharacterStatus characterStatus;
+        [Tooltip("Needed to signal if gravity is enabled.")]
+        [SerializeField] private Animator stateMachine;
 
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
         
         private float _enabledGravity;
+        private bool _isGravityEnabled;
 
         /// <summary>
         /// Whether gravity affects this character.
@@ -33,8 +36,18 @@ namespace Prince
             _enabledGravity = rigidBody.gravityScale;
         }
 
+        private void Start()
+        {
+            stateMachine.SetBool("GravityEnabled", true);
+            _isGravityEnabled = true;
+        }
+
         private void FixedUpdate()
         {
+            if (_isGravityEnabled != stateMachine.GetBool("GravityEnabled")) {
+                stateMachine.SetBool("GravityEnabled", _isGravityEnabled);
+            }
+            
             switch (characterStatus.CurrentState)
             {
                 // TODO: Try to unify this first bunch of conditions with second one.
@@ -60,6 +73,8 @@ namespace Prince
         {
             rigidBody.gravityScale = 0;
             rigidBody.velocity = Vector2.zero;
+            stateMachine.SetBool("GravityEnabled", false);
+            _isGravityEnabled = false;
             this.Log($"(Gravity controller - {transform.root.name}) Gravity disabled for this game object.", showLogs);
         }
 
@@ -69,6 +84,8 @@ namespace Prince
         private void EnableGravity()
         {
             rigidBody.gravityScale = _enabledGravity;
+            stateMachine.SetBool("GravityEnabled", true);
+            _isGravityEnabled = true;
             this.Log($"(Gravity controller - {transform.root.name}) Gravity enabled for this game object.", showLogs);
         }
     }

@@ -581,7 +581,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -919,6 +919,9 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
+    m_ConditionEvent: GravityEnabled
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
     m_ConditionEvent: Fall
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -993,7 +996,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1434,6 +1437,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: ActionHoldPressed
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: GravityEnabled
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -2248,7 +2257,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HardLandingPurpleGuard
+  m_Name: Hard Landing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -2497,7 +2506,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DeadByFallPurpleGuard
+  m_Name: ' Dead By Fall'
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
