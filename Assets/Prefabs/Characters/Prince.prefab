@@ -530,7 +530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9005965534505083571, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: foregroundOrderInLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9170674402223616008, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
