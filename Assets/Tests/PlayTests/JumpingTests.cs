@@ -132,7 +132,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(7);
             // Assert Prince is at expected position.
             Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.20f);
             Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.20f);

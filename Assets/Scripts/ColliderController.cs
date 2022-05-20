@@ -16,6 +16,7 @@ public class ColliderController : MonoBehaviour
     [SerializeField] private Collider2D usualCollider;
     [Tooltip("Collider used when character moves with sword unsheathed.")]
     [SerializeField] private Collider2D fightingCollider;
+    // TODO: Try to remove fallingCollider. Is a trigger but I don't use its events so I think is pretty useless.
     [Tooltip("Collider used when character falls.")]
     [SerializeField] private Collider2D fallingCollider;
 
