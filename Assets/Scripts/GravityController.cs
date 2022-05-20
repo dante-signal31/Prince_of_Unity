@@ -38,17 +38,12 @@ namespace Prince
 
         private void Start()
         {
-            // stateMachine.SetBool("GravityEnabled", true);
-            // _isGravityEnabled = true;
             _isGravityEnabled = stateMachine.GetBool("GravityEnabled");
         }
 
         private void FixedUpdate()
         {
-            // if (_isGravityEnabled != stateMachine.GetBool("GravityEnabled")) {
-            //     stateMachine.SetBool("GravityEnabled", _isGravityEnabled);
-            // }
-            
+
             switch (characterStatus.CurrentState)
             {
                 // TODO: Try to unify this first bunch of conditions with second one.
