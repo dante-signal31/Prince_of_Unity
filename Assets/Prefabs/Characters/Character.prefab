@@ -228,8 +228,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3314638672175299456}
-  - component: {fileID: 3516496625040567591}
   - component: {fileID: 7555925246985261242}
+  - component: {fileID: 7973259305185711377}
   m_Layer: 0
   m_Name: Physics
   m_TagString: Untagged
@@ -253,21 +253,6 @@ Transform:
   m_Father: {fileID: 3166921662542275327}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3516496625040567591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4208924519771227386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 747b7e1c5d4e4adab76159e1f90280f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 7284997314533658813}
-  characterStatus: {fileID: 82222986682491871}
-  showLogs: 0
 --- !u!114 &7555925246985261242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +274,22 @@ MonoBehaviour:
   hurtHeight: 4
   screamFallHeight: 3.5
   showLogs: 0
+--- !u!114 &7973259305185711377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4208924519771227386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5daba161e6234af48cf299f7651f9314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 7284997314533658813}
+  stateMachine: {fileID: 88322598493374997}
+  showLogs: 0
+  stateMachineStatus: {fileID: 82222986682491871}
 --- !u!1 &5796631354318011793
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 88322598493374997}
-  gravityController: {fileID: 3516496625040567591}
+  gravityController: {fileID: 7973259305185711377}
   groundSensors: {fileID: 5852060714942834250}
   life: 0
   maximumLife: 0
@@ -547,6 +548,9 @@ MonoBehaviour:
   characterStatus: {fileID: 82222986682491871}
   rigidBody2D: {fileID: 7284997314533658813}
   fightingInteractions: {fileID: 1391425223428354020}
+  groundSensors: {fileID: 0}
+  stateMachine: {fileID: 0}
+  soundController: {fileID: 0}
   characterMovementProfile: {fileID: 0}
   showLogs: 0
 --- !u!1001 &143874079488135331
@@ -554,6 +558,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 7956368920170832525}
     m_Modifications:
     - target: {fileID: 4788543338495704051, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
@@ -605,6 +610,7 @@ PrefabInstance:
       value: SoundEmitter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
 --- !u!4 &4867114102132026192 stripped
 Transform:
@@ -627,6 +633,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 8120205002041218569}
     m_Modifications:
     - target: {fileID: 196651389810745074, guid: c95218e57f6137b418fddce00174ab49, type: 3}
@@ -708,12 +715,13 @@ PrefabInstance:
     - target: {fileID: 6649583082068375673, guid: c95218e57f6137b418fddce00174ab49, type: 3}
       propertyPath: gravityController
       value: 
-      objectReference: {fileID: 3516496625040567591}
+      objectReference: {fileID: 7973259305185711377}
     - target: {fileID: 6649583082068375673, guid: c95218e57f6137b418fddce00174ab49, type: 3}
       propertyPath: forwardSensorStart
       value: 
       objectReference: {fileID: 8392564293191268382}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c95218e57f6137b418fddce00174ab49, type: 3}
 --- !u!4 &1001053490465594160 stripped
 Transform:
@@ -766,6 +774,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3314638672175299456}
     m_Modifications:
     - target: {fileID: 1745294260854197706, guid: c49dcf50b601bb748a58b1d7a4651328, type: 3}
@@ -821,6 +830,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c49dcf50b601bb748a58b1d7a4651328, type: 3}
 --- !u!4 &5722944529123301528 stripped
 Transform:
@@ -832,6 +842,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 8120205002041218569}
     m_Modifications:
     - target: {fileID: 3626297558726316604, guid: 328cea4343c4bf74c9cc39a21f3cfcf9, type: 3}
@@ -903,6 +914,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 328cea4343c4bf74c9cc39a21f3cfcf9, type: 3}
 --- !u!4 &6784542123023916 stripped
 Transform:
@@ -934,6 +946,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 7956368920170832525}
     m_Modifications:
     - target: {fileID: 6770086924521068725, guid: 11f84f1d07262f24ab738fca1628d83e, type: 3}
@@ -993,6 +1006,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 11f84f1d07262f24ab738fca1628d83e, type: 3}
 --- !u!4 &5932239455237854860 stripped
 Transform:
@@ -1015,6 +1029,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 8120205002041218569}
     m_Modifications:
     - target: {fileID: 1921060690161498085, guid: 6adae4bd66714334d8e68459dfeaf354, type: 3}
@@ -1074,6 +1089,7 @@ PrefabInstance:
       value: Sensor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6adae4bd66714334d8e68459dfeaf354, type: 3}
 --- !u!61 &2179013083815870541 stripped
 BoxCollider2D:

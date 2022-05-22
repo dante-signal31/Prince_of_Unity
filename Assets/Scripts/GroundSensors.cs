@@ -7,11 +7,13 @@ using UnityEditor;
 /// </summary>
 public class GroundSensors : MonoBehaviour
 {
+    // TODO: Raycasts distances should be calculated just once at awake. There's no point to calculate them at every frame.
+    
     [Header("WIRING:")]
     [Tooltip("Needed to set isFalling flag when ground is not detected any longer below feet.")]
     [SerializeField] private CharacterStatus characterStatus;
-    [Tooltip("Needed to know if gravity is enabled")] [SerializeField]
-    private GravityController gravityController;
+    // [Tooltip("Needed to know if gravity is enabled")] 
+    // [SerializeField] private GravityController gravityController;
     [Tooltip("Needed to update state machine with ground detected.")]
     [SerializeField] private Animator stateMachine;
     [SerializeField] private Transform forwardSensorStart;

@@ -72,6 +72,11 @@ public class GroundAppearance : MonoBehaviour, IBorder
         }
     }
 
+    public void HideGround()
+    {
+        // TODO: implement.
+    }
+
     public bool IsBorderShown()
     {
         return hasBorder;

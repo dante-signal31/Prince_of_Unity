@@ -4,18 +4,25 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// This component controls how gravity affects character.
+    /// This component controls how gravity affects game object.
     ///
-    /// It is used mainly to deactivate gravity for this character in special moments
-    /// like jumps or death.
+    /// It is used mainly to deactivate gravity for this character in special moments.
+    ///
+    /// As it is designed to be used across multiple game objects it is generic. So, it should not
+    /// be directly attached to a game object. Instead you must subclass it, specifying its generic type and
+    /// that subclass can then be directly attached to a game object.
     /// </summary>
-    public class GravityController : MonoBehaviour
+    public class GravityController: MonoBehaviour
     {
-        [Header("WIRING:")]
+        [Header("BASE-WIRING:")]
         [Tooltip("Needed to alter gravity affection on character.")]
         [SerializeField] private Rigidbody2D rigidBody;
-        [Tooltip("Needed to know current character state.")]
-        [SerializeField] private CharacterStatus characterStatus;
+
+        //[Tooltip("Needed to know current character state.")]
+        //[SerializeField] private CharacterStatus characterStatus;
+        // [Tooltip("Needed to know current game object state.")]
+        // [SerializeReference] protected IStateMachineStatus<T> stateMachineStatus;
+
         [Tooltip("Needed to signal if gravity is enabled.")]
         [SerializeField] private Animator stateMachine;
 
@@ -43,29 +50,14 @@ namespace Prince
 
         private void FixedUpdate()
         {
-
-            switch (characterStatus.CurrentState)
-            {
-                // TODO: Try to unify this first bunch of conditions with second one.
-                case CharacterStatus.States.Dead:
-                case CharacterStatus.States.DeadByFall:
-                    DisableGravity();
-                    break;
-                case CharacterStatus.States.RunningJump:
-                case CharacterStatus.States.WalkingJump:
-                case CharacterStatus.States.Climbing:
-                    if (GravityEnabled) DisableGravity();
-                    break;
-                default:
-                    if (!GravityEnabled) EnableGravity();
-                    break;
-            }
+            throw new NotImplementedException(
+                "This class should not be used directly. Use one of its children instead.");
         }
 
         /// <summary>
         /// Deactivate gravity affection over this character.
         /// </summary>
-        private void DisableGravity()
+        protected void DisableGravity()
         {
             rigidBody.gravityScale = 0;
             rigidBody.velocity = Vector2.zero;
@@ -77,7 +69,7 @@ namespace Prince
         /// <summary>
         /// Activate gravity affection over this character.
         /// </summary>
-        private void EnableGravity()
+        protected void EnableGravity()
         {
             rigidBody.gravityScale = _enabledGravity;
             stateMachine.SetBool("GravityEnabled", true);
