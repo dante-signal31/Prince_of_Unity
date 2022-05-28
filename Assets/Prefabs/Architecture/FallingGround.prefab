@@ -1,5 +1,84 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3693338545090401580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7978629646620890864}
+  m_Layer: 7
+  m_Name: NeighbourSensorEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7978629646620890864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693338545090401580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.556, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5394788806482527763}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3790655632190448834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822315989975932629}
+  - component: {fileID: 6249906952467047238}
+  m_Layer: 7
+  m_Name: NeighbourSensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &822315989975932629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3790655632190448834}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5394788806482527763}
+  m_Father: {fileID: 4665939774224349326}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6249906952467047238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3790655632190448834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d741c2d29334caa9a065122322ede2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallingGroundStatus: {fileID: 1794150098843657257}
+  fallingGroundNeighbourSensorStart: {fileID: 5394788806482527763}
+  fallingGroundNeighbourSensorEnd: {fileID: 7978629646620890864}
 --- !u!1 &3954554549055029389
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +90,7 @@ GameObject:
   - component: {fileID: 854369143876601718}
   - component: {fileID: 5796176455120547889}
   - component: {fileID: 7409662024876000200}
+  - component: {fileID: 7856379183989504403}
   m_Layer: 7
   m_Name: Interactions
   m_TagString: Untagged
@@ -64,6 +144,20 @@ MonoBehaviour:
   soundController: {fileID: 689670496724525407}
   crashDistance: 0.2
   showLogs: 1
+--- !u!114 &7856379183989504403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3954554549055029389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabb9b9d4bee4fbab6fc6bbd9d3b85cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neighbourSensor: {fileID: 6249906952467047238}
+  fallingGroundStatus: {fileID: 1794150098843657257}
 --- !u!1 &4083765913932547658
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +324,40 @@ Transform:
   m_Children:
   - {fileID: 2170676642506777239}
   - {fileID: 4185224459507936240}
+  - {fileID: 822315989975932629}
   m_Father: {fileID: 4832502423371336198}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7066075884455199022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5394788806482527763}
+  m_Layer: 7
+  m_Name: NeighbourSensorStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5394788806482527763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7066075884455199022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.409, y: 0.174, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7978629646620890864}
+  m_Father: {fileID: 822315989975932629}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7916833068768079662
@@ -534,6 +661,7 @@ MonoBehaviour:
   groundBorderSprite: {fileID: 21300000, guid: a781e5c787c611541ae0f6594a8ed34e, type: 3}
   hasBorder: 1
   fallingGroundStatus: {fileID: 1794150098843657257}
+  stateMachine: {fileID: 575157283389842710}
 --- !u!212 &2076964897608588325 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5085910350445059474, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}

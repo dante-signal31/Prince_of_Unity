@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Prince
 {
@@ -10,9 +11,19 @@ namespace Prince
         [Header("SUB-WIRING:")]
         [Tooltip("Needed to know when we are crashing.")]
         [SerializeField] private FallingGroundStatus fallingGroundStatus;
+        [Tooltip("Needed to signal state machine whether we have border or not.")] 
+        [SerializeField] private Animator stateMachine;
+
+        private bool _currentShowBorder;
+
+        private void Awake()
+        {
+            UpdateBorder();
+        }
 
         private void Update()
         {
+            UpdateBorder();
             switch (fallingGroundStatus.CurrentState)
             {
                 case FallingGroundStatus.FallingGroundStates.Crashing:
@@ -53,6 +64,31 @@ namespace Prince
                 rubbishAppearance.ShowRubbish = true;
                 _hidden = false;
             }
+        }
+
+        /// <summary>
+        /// Update border only if base GroundAppearance hasBorder value has change.
+        /// </summary>
+        private void UpdateBorder()
+        {
+            if (_currentShowBorder != base.hasBorder)
+            {
+                _currentShowBorder = base.hasBorder;
+                ShowBorder(_currentShowBorder);
+            }
+        }
+
+        /// <summary>
+        /// Despite what happens with Ground, it seems that animator setting prevails over
+        /// direct sprite access to show or not border in FallingGround. So in FallingGround
+        /// you must have a one frame animation with border and another without it.
+        /// </summary>
+        /// <param name="showIt">Whether to show border or not.</param>
+        public new void ShowBorder(bool showIt)
+        {
+            _currentShowBorder = showIt;
+            base.ShowBorder(showIt);
+            stateMachine.SetBool("ShowBorder", showIt);
         }
     }
 }

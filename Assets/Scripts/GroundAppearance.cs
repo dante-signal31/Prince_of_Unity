@@ -21,7 +21,7 @@ public class GroundAppearance : MonoBehaviour, IBorder
     [Tooltip("Sprite to use as ground with border.")]
     [SerializeField] private Sprite groundBorderSprite;
     [Tooltip("Whether brick show border or not. ")]
-    [SerializeField] private bool hasBorder=true;
+    [SerializeField] protected bool hasBorder=true;
     
     // private GroundRubbishAppearance rubbishAppearance;
     private bool _appearanceUpdateNeeded = false;
@@ -122,5 +122,6 @@ public class GroundAppearance : MonoBehaviour, IBorder
     public void ShowBorder(bool showIt)
     {
         hasBorder = showIt;
+        UpdateAppearance();
     }
 }
