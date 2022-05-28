@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// This components detects when a falling ground lands and makes it disappear leaving garbage.
+    /// This component detects when a falling ground lands and makes it disappear leaving garbage.
     /// </summary>
     public class FallingGroundGroundInteractions : MonoBehaviour
     {
@@ -53,6 +53,7 @@ namespace Prince
         private void UpdateDistanceToGroundBelow()
         {
             _distanceToGroundBelow = fallingGroundCrashSensor.DistanceToGroundBelow;
+            _groundBelow = fallingGroundCrashSensor.CrashingOverGround;
             this.Log($"(FallingGroundGroundInteractions - {transform.root.name}) Distance to ground below: {_distanceToGroundBelow}.", showLogs);
         }
 
@@ -63,6 +64,7 @@ namespace Prince
         {
             stateMachine.SetTrigger("Crash");
             soundController.PlaySound("ground_crashing");
+            _groundBelow.GetComponentInChildren<GroundRubbishAppearance>().PlaceThingsOverGround(ThingsOverGround.Garbage);
             this.Log($"(FallingGroundGroundInteractions - {transform.root.name}) Crash triggered.", showLogs);
         }
     }

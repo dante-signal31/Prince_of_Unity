@@ -5,20 +5,32 @@ using UnityEngine;
 [ExecuteAlways]
 public class GroundAppearance : MonoBehaviour, IBorder
 {
-    [SerializeField] private bool hasBorder=true;
+    [Header("WIRING:")]
+    [Tooltip("Needed to show garbage over the ground.")]
+    [SerializeField] protected GroundRubbishAppearance rubbishAppearance; 
+    [Tooltip("Needed to operate over main sprite.")]
+    [SerializeField] protected SpriteRenderer groundSpriteRenderer;
+    [Tooltip("Needed to operate over occluder sprite.")]
+    [SerializeField] protected SpriteRenderer occluderSpriteRenderer;
+
+    [Header("CONFIGURATION:")]
+    [Tooltip("Data about garbage placeable over ground.")]
     [SerializeField] private ThingsOverGround thingsOverGround;
-    
-    [SerializeField] private SpriteRenderer groundSpriteRenderer;
+    [Tooltip("Sprite to use as ground with no border.")]
     [SerializeField] private Sprite groundNoBorderSprite;
+    [Tooltip("Sprite to use as ground with border.")]
     [SerializeField] private Sprite groundBorderSprite;
-
-    private GroundRubbishAppearance _rubbishAppearance;
+    [Tooltip("Whether brick show border or not. ")]
+    [SerializeField] private bool hasBorder=true;
+    
+    // private GroundRubbishAppearance rubbishAppearance;
     private bool _appearanceUpdateNeeded = false;
+    protected bool _hidden = false;
 
-    private void Awake()
-    {
-        _rubbishAppearance = gameObject.GetComponentInChildren<GroundRubbishAppearance>();
-    }
+    // private void Awake()
+    // {
+    //     rubbishAppearance = gameObject.GetComponentInChildren<GroundRubbishAppearance>();
+    // }
 
     private void Start()
     {
@@ -54,7 +66,7 @@ public class GroundAppearance : MonoBehaviour, IBorder
     private void UpdateAppearance()
     {
         SetGround();
-        _rubbishAppearance.PlaceThingsOverGround(thingsOverGround);
+        rubbishAppearance.PlaceThingsOverGround(thingsOverGround);
     }
     
     /// <summary>
@@ -72,10 +84,35 @@ public class GroundAppearance : MonoBehaviour, IBorder
         }
     }
 
-    public void HideGround()
-    {
-        // TODO: implement.
-    }
+    // /// <summary>
+    // /// Make this ground invisible.
+    // ///
+    // /// Used in falling ground to hide ground when it crashes against below brick.
+    // /// </summary>
+    // public void HideGround()
+    // {
+    //     if (!_hidden)
+    //     {
+    //         groundSpriteRenderer.enabled = false;
+    //         occluderSpriteRenderer.enabled = false;
+    //         rubbishAppearance.ShowRubbish = false;
+    //         _hidden = true;
+    //     }
+    // }
+    //
+    // /// <summary>
+    // /// Make this ground visible.
+    // /// </summary>
+    // public void ShowGround()
+    // {
+    //     if (_hidden)
+    //     {
+    //         groundSpriteRenderer.enabled = true;
+    //         occluderSpriteRenderer.enabled = true;
+    //         rubbishAppearance.ShowRubbish = true;
+    //         _hidden = false;
+    //     }
+    // }
 
     public bool IsBorderShown()
     {

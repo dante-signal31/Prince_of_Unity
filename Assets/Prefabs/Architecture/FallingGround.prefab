@@ -61,6 +61,7 @@ MonoBehaviour:
   fallingGroundCrashSensor: {fileID: 629327415807817652}
   fallingGroundStatus: {fileID: 1794150098843657257}
   stateMachine: {fileID: 575157283389842710}
+  soundController: {fileID: 689670496724525407}
   crashDistance: 0.2
   showLogs: 1
 --- !u!1 &4083765913932547658
@@ -87,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4083765913932547658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.459, y: -0.05, z: 0}
+  m_LocalPosition: {x: 0.89, y: -0.132, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -280,6 +281,7 @@ MonoBehaviour:
   fallingGroundStatus: {fileID: 1794150098843657257}
   fallingGroundCrashSensorStart: {fileID: 7842585714252495482}
   fallingGroundCrashSensorEnd: {fileID: 3969332484262709501}
+  DistanceToGroundBelow: Infinity
 --- !u!1 &8368356934175673646
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +384,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -890423505040606106, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -890423505040606106, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: occluderSpriteRenderer
+      value: 
+      objectReference: {fileID: 2076964897608588325}
     - target: {fileID: 1825764673919355825, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -439,6 +449,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9084804724281271905, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a781e5c787c611541ae0f6594a8ed34e, type: 3}
+    - target: {fileID: 9084804724281271905, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -446,7 +460,8 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -890423505040606106, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1825764673919355825, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       insertIndex: -1
@@ -499,9 +514,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad146f6ace54002a14d8dfa306e45bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4663531053186463278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745435679719867423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2ef1615a2f46c6bee70731372c569f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rubbishAppearance: {fileID: 4740798715763121790}
+  groundSpriteRenderer: {fileID: 2618176702869383126}
+  occluderSpriteRenderer: {fileID: 2076964897608588325}
+  thingsOverGround: 0
+  groundNoBorderSprite: {fileID: 21300000, guid: b705f0af58c8e9b4faa46db866ca2426, type: 3}
+  groundBorderSprite: {fileID: 21300000, guid: a781e5c787c611541ae0f6594a8ed34e, type: 3}
+  hasBorder: 1
+  fallingGroundStatus: {fileID: 1794150098843657257}
 --- !u!212 &2076964897608588325 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5085910350445059474, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+  m_PrefabInstance: {fileID: 6504908794377060791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2618176702869383126 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9084804724281271905, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
   m_PrefabInstance: {fileID: 6504908794377060791}
   m_PrefabAsset: {fileID: 0}
 --- !u!68 &3183001116617203544 stripped
@@ -509,6 +549,17 @@ EdgeCollider2D:
   m_CorrespondingSourceObject: {fileID: 8532736567881178863, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
   m_PrefabInstance: {fileID: 6504908794377060791}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4740798715763121790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1985145454544330697, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+  m_PrefabInstance: {fileID: 6504908794377060791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bb4b90e9794ed3a9fcb7ab73774210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4832502423371336198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1825764673919355825, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
