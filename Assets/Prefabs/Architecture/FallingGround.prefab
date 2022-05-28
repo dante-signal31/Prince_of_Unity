@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallingGroundStatus: {fileID: 1794150098843657257}
+  stateMachine: {fileID: 575157283389842710}
+  soundController: {fileID: 689670496724525407}
 --- !u!114 &7409662024876000200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +324,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2162690075664768037}
   - {fileID: 2170676642506777239}
   - {fileID: 4185224459507936240}
   - {fileID: 822315989975932629}
@@ -503,6 +506,118 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCollider: {fileID: 3183001116617203544}
   fallingGroundStatus: {fileID: 1794150098843657257}
+--- !u!1001 &834987721926775579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 4665939774224349326}
+    m_Modifications:
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: activationTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5796176455120547889}
+    - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnCharacterWeightSensorTriggered
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Prince.FallingGroundCharacterInteractions, GameAssembly
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775714439044717806, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9723005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775714439044717806, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.09365815
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775714439044717806, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.96577644
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775714439044717806, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.37906173
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067484437758952239, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_Name
+      value: CharacterWeightSensor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+--- !u!4 &2162690075664768037 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1555170974196879166, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+  m_PrefabInstance: {fileID: 834987721926775579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6504908794377060791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,7 +756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad146f6ace54002a14d8dfa306e45bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundController: {fileID: 689670496724525407}
 --- !u!114 &4663531053186463278
 MonoBehaviour:
   m_ObjectHideFlags: 0

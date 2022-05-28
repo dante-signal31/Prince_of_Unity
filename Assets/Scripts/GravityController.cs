@@ -31,6 +31,7 @@ namespace Prince
         [SerializeField] private bool showLogs;
         
         private float _enabledGravity;
+        private RigidbodyConstraints2D _currentRigidbodyConstraints;
         private bool _isGravityEnabled;
 
         /// <summary>
@@ -60,6 +61,12 @@ namespace Prince
         protected void DisableGravity()
         {
             rigidBody.gravityScale = 0;
+            // Rigid body constraints must be set. Otherwise when this component is used with
+            // falling ground character pushes ground before its falling timer is up. Although
+            // falling ground gravity is disabled it can still be pushed by characters that have
+            // gravity enabled.
+            _currentRigidbodyConstraints = rigidBody.constraints;
+            rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             rigidBody.velocity = Vector2.zero;
             stateMachine.SetBool("GravityEnabled", false);
             _isGravityEnabled = false;
@@ -72,6 +79,7 @@ namespace Prince
         protected void EnableGravity()
         {
             rigidBody.gravityScale = _enabledGravity;
+            rigidBody.constraints = _currentRigidbodyConstraints;
             stateMachine.SetBool("GravityEnabled", true);
             _isGravityEnabled = true;
             this.Log($"(Gravity controller - {transform.root.name}) Gravity enabled for this game object.", showLogs);
