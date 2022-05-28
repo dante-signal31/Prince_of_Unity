@@ -560,7 +560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: activationTime
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.size
