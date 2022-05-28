@@ -29,6 +29,5 @@ namespace Prince
                 _currentState = value;
             }
         }
-        
     }
 }

@@ -37,9 +37,12 @@ namespace Prince
             _raycastDistance = Vector2.Distance(fallingGroundNeighbourSensorStart.position, fallingGroundNeighbourSensorEnd.position);
         }
 
-        private void Start()
+        private void Update()
         {
-            // Architecture bricks don't move so we need to run this detection once, at start.
+            // At first you may think thant architecture bricks don't move so we need to run
+            // this detection once, at start. The problem with that is that you can have another
+            // falling ground at your left, and those can move (e.g. fall) at any moment, so 
+            // you must keep refreshing your sensor.
             Neighbour = DetectNeighbour();
         }
 
