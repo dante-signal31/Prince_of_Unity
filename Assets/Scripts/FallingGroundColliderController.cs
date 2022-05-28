@@ -14,15 +14,12 @@ namespace Prince
         [Tooltip("Needed to know when we are falling.")]
         [SerializeField] private FallingGroundStatus fallingGroundStatus;
 
-        private bool _trackingEnabled = false;
+        private bool _trackingEnabled = true;
         
         private void FixedUpdate()
         {
-            if (fallingGroundStatus.CurrentState == FallingGroundStatus.FallingGroundStates.Falling)
-                _trackingEnabled = true;
             if (_trackingEnabled &&
-                (fallingGroundStatus.CurrentState == FallingGroundStatus.FallingGroundStates.Crashing ||
-                 fallingGroundStatus.CurrentState == FallingGroundStatus.FallingGroundStates.Crashed))
+                fallingGroundStatus.CurrentState == FallingGroundStatus.FallingGroundStates.Falling)
             {
                 groundCollider.enabled = false;
                 _trackingEnabled = false;
