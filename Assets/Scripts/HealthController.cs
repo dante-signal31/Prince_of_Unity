@@ -79,6 +79,27 @@ namespace Prince
             }
         }
 
+        /// <summary>
+        /// Character has been hit by a falling ground.
+        /// </summary>
+        /// <param name="damage">Damage amount to inflict to character.</param>
+        public void GroundHit(int damage)
+        {
+            Life = Math.Clamp(Life - damage, 0, MaximumLife);
+            if (characterStatus.IsDead)
+            {
+                this.Log($"(HealthController - {transform.root.name}) Dead by falling ground.", showLogs);
+                // stateMachine.SetBool("isDead", true);
+                // stateMachine.SetTrigger("Hit");
+            } 
+            else
+            {
+                this.Log($"(HealthController - {transform.root.name}) Hit by falling ground. New current life: {Life}", showLogs);
+                // stateMachine.SetTrigger("Hit");
+            }
+            
+        }
+
         private void FixedUpdate()
         {
             if (characterStatus.CurrentState != _oldState)

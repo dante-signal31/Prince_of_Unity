@@ -21,6 +21,11 @@ public class CharacterWeightSensor : MonoBehaviour
     // I could have used polling to know if sensor is triggered, but as this sensor is only
     // activated few times I found interesting using unity events. That way I'm not going 
     // to waste CPU polling a sensor that is idle most of the time.
+    //
+    // In this specific use case (intra-prefab communication) I could have wired
+    // FallingGroundCharacterInteractions to call its public methods directly. Probably
+    // the result would have been the same, and would have been more performant. But
+    // this way at least I have a chance to practice with UnityEvents.
     [Tooltip("Callbacks to activate when sensor is triggered.")]
     [SerializeField] private UnityEvent weightSensorActivated;
     
@@ -78,21 +83,10 @@ public class CharacterWeightSensor : MonoBehaviour
         _elapsedTime = 0;
     }
 
-    /// <summary>
-    /// Assess given game object to find out it it is a Character.
-    /// </summary>
-    /// <param name="detectedGameObject">Given game object to assess.</param>
-    /// <returns>True if given game object is a Character.</returns>
-    private bool IsACharacter(GameObject detectedGameObject)
-    {
-        CharacterStatus characterStatus = detectedGameObject.GetComponentInChildren<CharacterStatus>();
-        return characterStatus != null;
-    }
-
     private void OnTriggerEnter2D(Collider2D col)
     {
-        GameObject detectedGameObject = col.transform.root.gameObject;
-        if (IsACharacter(detectedGameObject))
+        GameObject detectedGameObject = GameObjectTools.Collider2GameObject(col);
+        if (GameObjectTools.IsACharacter(detectedGameObject))
         {
             CharactersOverSensor.Add(detectedGameObject);
             CounterStart();
@@ -101,8 +95,8 @@ public class CharacterWeightSensor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        GameObject detectedGameObject = other.transform.root.gameObject;
-        if (IsACharacter(detectedGameObject))
+        GameObject detectedGameObject = GameObjectTools.Collider2GameObject(other);
+        if (GameObjectTools.IsACharacter(detectedGameObject))
         {
             CharactersOverSensor.Remove(detectedGameObject);
             if (CharactersOverSensor.Count == 0)

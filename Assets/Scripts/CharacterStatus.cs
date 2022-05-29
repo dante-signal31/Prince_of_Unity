@@ -7,7 +7,7 @@ namespace Prince
     /// This component keeps every variable about Character general state.
     /// </summary>
     [ExecuteAlways]
-    public class CharacterStatus : MonoBehaviour
+    public class CharacterStatus : MonoBehaviour, IStateMachineStatus<CharacterStatus.States>
     {
         public enum States
         {

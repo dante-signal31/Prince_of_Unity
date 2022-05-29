@@ -12,7 +12,13 @@ namespace Prince
         [SerializeField] private Animator stateMachine;
         [Tooltip("Needed to play sound when ground is about to fall.")]
         [SerializeField] private SoundController soundController;
+        [Tooltip("Needed to know how much this ground has fallen.")]
+        [SerializeField] private FallingGroundFallenHeightCounter fallingHeightCounter;
 
+        [Header("DEBUG:")]
+        [Tooltip("Show this component logs on console window.")]
+        [SerializeField] private bool showLogs;
+        
         private bool _fallingSoundAlreadyPlayed = false;
         
         /// <summary>
@@ -21,6 +27,20 @@ namespace Prince
         public void OnCharacterWeightSensorTriggered()
         {
             stateMachine.SetBool("Fall", true);
+        }
+
+        /// <summary>
+        /// When a character is hit, then we must hurt him.
+        ///
+        /// The inflicted damage depends on how much this ground has fallen. 
+        /// </summary>
+        /// <param name="characterHit">Character to apply damage.</param>
+        public void OnCharacterHit(GameObject characterHit)
+        {
+            int damage = (int)Mathf.Ceil(fallingHeightCounter.FallenHeight);
+            HealthController characterHitHealthController = characterHit.GetComponentInChildren<HealthController>();
+            characterHitHealthController.GroundHit(damage);
+            this.Log($"(FallingGroundCharacterInteractions - {transform.root.name}) Character hit wit {damage} damage.", showLogs);
         }
 
         private void Update()

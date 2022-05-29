@@ -128,6 +128,8 @@ MonoBehaviour:
   fallingGroundStatus: {fileID: 1794150098843657257}
   stateMachine: {fileID: 575157283389842710}
   soundController: {fileID: 689670496724525407}
+  fallingHeightCounter: {fileID: 6658354330959168871}
+  showLogs: 1
 --- !u!114 &7409662024876000200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +265,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199203874061481991815ab3f842713b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingGroundCharacterInteractions: {fileID: 5796176455120547889}
+  hitSensorActivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5796176455120547889}
+        m_TargetAssemblyTypeName: Prince.FallingGroundCharacterInteractions, GameAssembly
+        m_MethodName: OnCharacterHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5083642059490695580
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +470,7 @@ GameObject:
   - component: {fileID: 6518505699896287929}
   - component: {fileID: 6913730806701410978}
   - component: {fileID: 1161509208708691285}
+  - component: {fileID: 6658354330959168871}
   m_Layer: 7
   m_Name: Physics
   m_TagString: Untagged
@@ -505,6 +522,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCollider: {fileID: 3183001116617203544}
+  fallingGroundStatus: {fileID: 1794150098843657257}
+--- !u!114 &6658354330959168871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765591311962645288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d64771eda4a4f188fc2f2a6ccd6d60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   fallingGroundStatus: {fileID: 1794150098843657257}
 --- !u!1001 &834987721926775579
 PrefabInstance:
@@ -783,6 +813,19 @@ MonoBehaviour:
   hasBorder: 1
   fallingGroundStatus: {fileID: 1794150098843657257}
   stateMachine: {fileID: 575157283389842710}
+--- !u!114 &3319717749863030193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745435679719867423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf4bd181b4741b8a58279929fc291ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallingGroundStatus: {fileID: 1794150098843657257}
 --- !u!212 &2076964897608588325 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5085910350445059474, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
