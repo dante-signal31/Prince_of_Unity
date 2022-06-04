@@ -590,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: activationTime
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6474297121670515530, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: weightSensorActivated.m_PersistentCalls.m_Calls.Array.size
@@ -622,7 +622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8775714439044717806, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: m_Size.x
-      value: 0.9723005
+      value: 0.8043189
       objectReference: {fileID: 0}
     - target: {fileID: 8775714439044717806, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: m_Size.y
@@ -630,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8775714439044717806, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: m_Offset.x
-      value: 0.96577644
+      value: 0.97585535
       objectReference: {fileID: 0}
     - target: {fileID: 8775714439044717806, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: m_Offset.y
@@ -792,6 +792,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 575157283389842710}
   startFalling: 0
+--- !u!114 &3319717749863030193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745435679719867423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf4bd181b4741b8a58279929fc291ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disablingState: 4
+  waitingTime: 1
 --- !u!114 &4663531053186463278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,19 +827,6 @@ MonoBehaviour:
   hasBorder: 1
   fallingGroundStatus: {fileID: 1794150098843657257}
   stateMachine: {fileID: 575157283389842710}
---- !u!114 &3319717749863030193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745435679719867423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf4bd181b4741b8a58279929fc291ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallingGroundStatus: {fileID: 1794150098843657257}
 --- !u!212 &2076964897608588325 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5085910350445059474, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}

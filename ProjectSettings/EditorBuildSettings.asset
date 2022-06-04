@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tests/TheAbyss.unity
     guid: 8ba9110d3309cd84bb90c2e56e6cd9c8
+  - enabled: 1
+    path: Assets/Scenes/Tests/TheRuins.unity
+    guid: 41b946261ba521147b668e328ead583b
   m_configObjects: {}
