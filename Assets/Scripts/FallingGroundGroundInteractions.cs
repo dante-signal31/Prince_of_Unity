@@ -54,7 +54,7 @@ namespace Prince
         {
             _distanceToGroundBelow = fallingGroundCrashSensor.DistanceToGroundBelow;
             _groundBelow = fallingGroundCrashSensor.CrashingOverGround;
-            this.Log($"(FallingGroundGroundInteractions - {transform.root.name}) Distance to ground below: {_distanceToGroundBelow}.", showLogs);
+            this.Log($"(FallingGroundGroundInteractions - {transform.root.name}) Distance to ground below ({_groundBelow.name}): {_distanceToGroundBelow}.", showLogs);
         }
 
         /// <summary>

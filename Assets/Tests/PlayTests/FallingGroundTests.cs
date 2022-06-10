@@ -216,7 +216,7 @@ namespace Tests.PlayTests
             // Let movements perform.
             yield return new WaitForSeconds(3);
             // Assert Prince is crouching by hit and ground has crashed.
-            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Crouch);
+            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.HitByFallingGround);
             Assert.True(_fallingGround.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Crashed);
             // Assert Prince has suffered damage by hit.
             Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
@@ -244,12 +244,12 @@ namespace Tests.PlayTests
             // Let movements perform.
             yield return new WaitForSeconds(3);
             // Assert Prince is crouching by hit and ground has crashed.
-            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Crouch);
+            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.HitByFallingGround);
             Assert.True(_fallingGround2.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Crashed);
             // Assert ground has crashed at the level it should.
             float groundEndHeight = _fallingGround2.transform.position.y;
             float groundHeightDescended = groundStartingHeight - groundEndHeight;
-            Assert.True(Math.Abs(groundHeightDescended - 4.0f) < 0.04);
+            Assert.True(Math.Abs(groundHeightDescended - 3.54f) < 0.04);
             // Assert Prince has suffered damage by hit.
             Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;

@@ -14,7 +14,11 @@ namespace Prince
         [SerializeField] private CharacterStatus characterStatus;
         [Tooltip("Needed to signal state machine state changes related to health conditions.")]
         [SerializeField] private Animator stateMachine;
-        
+        [Tooltip("Needed to show damage when hit by a falling ground.")]
+        [SerializeField] private DamageEffect damageEffects;
+        [Tooltip("Needed to know if we are a guard or not.")]
+        [SerializeField] private FightingInteractions fightingInteractions;
+
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
@@ -95,9 +99,17 @@ namespace Prince
             else
             {
                 this.Log($"(HealthController - {transform.root.name}) Hit by falling ground. New current life: {Life}", showLogs);
-                // stateMachine.SetTrigger("Hit");
+                Invoke(nameof(ShowGroundHitEffect), 0.15f);
             }
-            
+        }
+
+        /// <summary>
+        /// Make Prince crouch and show damage signal.
+        /// </summary>
+        private void ShowGroundHitEffect()
+        {
+            stateMachine.SetTrigger("HitByFallingGround");
+            damageEffects.ShowFallingGroundHit(fightingInteractions.ImGuard);
         }
 
         private void FixedUpdate()

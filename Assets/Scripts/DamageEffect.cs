@@ -95,18 +95,29 @@ public class DamageEffect : MonoBehaviour
     /// </param>
     public void ShowSwordHit(bool hitOverGuard)
     {
-        StartCoroutine(ShowSwordHitAsync(hitOverGuard));
+        // StartCoroutine(ShowSwordHitAsync(hitOverGuard));
+        StartCoroutine(ShowHitAsync(hitOverGuard, DamageEffectType.UpDamage, "hit_by_sword"));
     }
-
-    private IEnumerator ShowSwordHitAsync(bool hitOverGuard)
+    
+    private IEnumerator ShowHitAsync(bool hitOverGuard, DamageEffectType effectType, string soundToPlay = null)
     {
         if (!hitOverGuard) ShowDamageFlash();
         yield return new WaitForSeconds(damageDelay);
-        ShowDamage(DamageEffectType.UpDamage);
-        soundController.PlaySound("hit_by_sword");
+        ShowDamage(effectType);
+        if (soundToPlay != null) soundController.PlaySound(soundToPlay);
         yield return new WaitForSeconds(damageTime);
         HideDamage();
     }
+
+    // private IEnumerator ShowSwordHitAsync(bool hitOverGuard)
+    // {
+    //     if (!hitOverGuard) ShowDamageFlash();
+    //     yield return new WaitForSeconds(damageDelay);
+    //     ShowDamage(DamageEffectType.UpDamage);
+    //     soundController.PlaySound("hit_by_sword");
+    //     yield return new WaitForSeconds(damageTime);
+    //     HideDamage();
+    // }
     
     /// <summary>
     /// Show damage produced falling landing.
@@ -116,18 +127,29 @@ public class DamageEffect : MonoBehaviour
     /// </param>
     public void ShowLandingHit(bool hitOverGuard)
     {
-        StartCoroutine(ShowLandingHitAsync(hitOverGuard));
+        StartCoroutine(ShowHitAsync(hitOverGuard, DamageEffectType.DownDamage));
     }
 
-    private IEnumerator ShowLandingHitAsync(bool hitOverGuard)
+    // private IEnumerator ShowLandingHitAsync(bool hitOverGuard)
+    // {
+    //     if (!hitOverGuard) ShowDamageFlash();
+    //     yield return new WaitForSeconds(damageDelay);
+    //     ShowDamage(DamageEffectType.DownDamage);
+    //     // In this case sound effects are called from animations, because those effects are
+    //     // different depending on animation.
+    //     // soundController.PlaySound("hit_by_sword");
+    //     yield return new WaitForSeconds(damageTime);
+    //     HideDamage();
+    // }
+    
+    /// <summary>
+    /// Show damage produced by falling ground.
+    /// </summary>
+    /// <param name="hitOverGuard">If true then we are hitting over a guard. Guards do not show
+    /// screen red tint when hit.
+    /// </param>
+    public void ShowFallingGroundHit(bool hitOverGuard)
     {
-        if (!hitOverGuard) ShowDamageFlash();
-        yield return new WaitForSeconds(damageDelay);
-        ShowDamage(DamageEffectType.DownDamage);
-        // In this case sound effects are called from animations, because those effects are
-        // different depending on animation.
-        // soundController.PlaySound("hit_by_sword");
-        yield return new WaitForSeconds(damageTime);
-        HideDamage();
+        StartCoroutine(ShowHitAsync(hitOverGuard, DamageEffectType.DownDamage));
     }
 }

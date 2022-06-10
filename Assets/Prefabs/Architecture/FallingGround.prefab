@@ -146,7 +146,7 @@ MonoBehaviour:
   fallingGroundStatus: {fileID: 1794150098843657257}
   stateMachine: {fileID: 575157283389842710}
   soundController: {fileID: 689670496724525407}
-  crashDistance: 0.2
+  crashDistance: 0.35
   showLogs: 1
 --- !u!114 &7856379183989504403
 MonoBehaviour:
@@ -452,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8368356934175673646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.906, z: 0}
+  m_LocalPosition: {x: 0, y: -1.424, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

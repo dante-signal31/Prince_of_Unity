@@ -37,7 +37,7 @@ namespace Prince
         /// <param name="characterHit">Character to apply damage.</param>
         public void OnCharacterHit(GameObject characterHit)
         {
-            int damage = (int)Mathf.Ceil(fallingHeightCounter.FallenHeight);
+            int damage = (int)Mathf.Ceil(fallingHeightCounter.FallenHeight/2);
             HealthController characterHitHealthController = characterHit.GetComponentInChildren<HealthController>();
             characterHitHealthController.GroundHit(damage);
             this.Log($"(FallingGroundCharacterInteractions - {transform.root.name}) Character hit wit {damage} damage.", showLogs);
