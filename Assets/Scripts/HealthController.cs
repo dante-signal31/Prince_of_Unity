@@ -93,20 +93,20 @@ namespace Prince
             if (characterStatus.IsDead)
             {
                 this.Log($"(HealthController - {transform.root.name}) Dead by falling ground.", showLogs);
-                // stateMachine.SetBool("isDead", true);
-                // stateMachine.SetTrigger("Hit");
+                stateMachine.SetBool("isDead", true);
+                Invoke(nameof(ShowFallingGroundHitEffect), 0.05f);
             } 
             else
             {
                 this.Log($"(HealthController - {transform.root.name}) Hit by falling ground. New current life: {Life}", showLogs);
-                Invoke(nameof(ShowGroundHitEffect), 0.15f);
+                Invoke(nameof(ShowFallingGroundHitEffect), 0.15f);
             }
         }
 
         /// <summary>
         /// Make Prince crouch and show damage signal.
         /// </summary>
-        private void ShowGroundHitEffect()
+        private void ShowFallingGroundHitEffect()
         {
             stateMachine.SetTrigger("HitByFallingGround");
             damageEffects.ShowFallingGroundHit(fightingInteractions.ImGuard);
