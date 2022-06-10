@@ -225,6 +225,33 @@ namespace Tests.PlayTests
         }
         
         /// <summary>
+        /// Test Guard is hit by a falling ground over its head, receiving one point of damage if
+        /// falling ground comes from one level above.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardReceivingHitFromOneLevelFallingGroundTest()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            _enemy.SetActive(true);
+            _prince.SetActive(false);
+            _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            AccessPrivateHelper.SetPrivateField(_fallingGround.GetComponentInChildren<FallingGroundStatus>(), 
+                "startFalling", true);
+            yield return null;
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Assert Guard has not changed his state.
+            Assert.True(_enemy.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Idle);
+            Assert.True(_fallingGround.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Crashed);
+            // Assert Guard has suffered damage by hit.
+            Assert.False(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth - 1 == endHealth);
+        }
+        
+        /// <summary>
         /// Test Prince is hit by a falling ground over its head, receiving two points of damage if
         /// falling ground comes from two levels above.
         /// </summary>
@@ -257,6 +284,38 @@ namespace Tests.PlayTests
         }
         
         /// <summary>
+        /// Test Guard is hit by a falling ground over its head, receiving two points of damage if
+        /// falling ground comes from two levels above.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardReceivingHitFromTwoLevelsFallingGroundTest()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            _enemy.SetActive(true);
+            _prince.SetActive(false);
+            _enemy.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            float groundStartingHeight = _fallingGround2.transform.position.y;
+            AccessPrivateHelper.SetPrivateField(_fallingGround2.GetComponentInChildren<FallingGroundStatus>(), 
+                "startFalling", true);
+            yield return null;
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Assert Guard has not changed his state.
+            Assert.True(_enemy.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Idle);
+            Assert.True(_fallingGround2.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Crashed);
+            // Assert ground has crashed at the level it should.
+            float groundEndHeight = _fallingGround2.transform.position.y;
+            float groundHeightDescended = groundStartingHeight - groundEndHeight;
+            Assert.True(Math.Abs(groundHeightDescended - 3.54f) < 0.04);
+            // Assert Guard has suffered damage by hit.
+            Assert.False(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth - 2 == endHealth);
+        }
+        
+        /// <summary>
         /// Test Prince is hit by a falling ground over its head, receiving three points of damage if
         /// falling ground comes from three levels above.
         /// </summary>
@@ -275,7 +334,7 @@ namespace Tests.PlayTests
             yield return null;
             // Let movements perform.
             yield return new WaitForSeconds(3);
-            // Assert Prince is crouching by hit and ground has crashed.
+            // Assert Prince is dead and ground has crashed.
             Assert.True(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
             Assert.True(_fallingGround3.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Crashed);
             // Assert ground has crashed at the level it should.
@@ -285,6 +344,38 @@ namespace Tests.PlayTests
             // Assert Prince is now dead.
             Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth - 3 == endHealth);
+        }
+        
+        /// <summary>
+        /// Test Guard is hit by a falling ground over its head, receiving three points of damage if
+        /// falling ground comes from three levels above.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardReceivingHitFromThreeLevelsFallingGroundTest()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            _enemy.SetActive(true);
+            _prince.SetActive(false);
+            _enemy.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            float groundStartingHeight = _fallingGround3.transform.position.y;
+            AccessPrivateHelper.SetPrivateField(_fallingGround3.GetComponentInChildren<FallingGroundStatus>(), 
+                "startFalling", true);
+            yield return null;
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Assert Guard is dead by hit and ground has crashed.
+            Assert.True(_enemy.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
+            Assert.True(_fallingGround3.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Crashed);
+            // Assert ground has crashed at the level it should.
+            float groundEndHeight = _fallingGround3.transform.position.y;
+            float groundHeightDescended = groundStartingHeight - groundEndHeight;
+            Assert.True(Math.Abs(groundHeightDescended - 5.61f) < 0.04);
+            // Assert Guard is now dead.
+            Assert.True(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
             Assert.True(startingHealth - 3 == endHealth);
         }
         

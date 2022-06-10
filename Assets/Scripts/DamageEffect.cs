@@ -150,6 +150,7 @@ public class DamageEffect : MonoBehaviour
     /// </param>
     public void ShowFallingGroundHit(bool hitOverGuard)
     {
-        StartCoroutine(ShowHitAsync(hitOverGuard, DamageEffectType.DownDamage));
+        DamageEffectType effectType = hitOverGuard? DamageEffectType.UpDamage: DamageEffectType.DownDamage;
+        StartCoroutine(ShowHitAsync(hitOverGuard, effectType));
     }
 }

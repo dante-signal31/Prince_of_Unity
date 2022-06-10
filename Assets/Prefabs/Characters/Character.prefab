@@ -390,6 +390,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStatus: {fileID: 82222986682491871}
   stateMachine: {fileID: 88322598493374997}
+  damageEffects: {fileID: 6359709207466570223}
+  fightingInteractions: {fileID: 1391425223428354020}
   showLogs: 1
 --- !u!1 &7528680167608715500
 GameObject:
