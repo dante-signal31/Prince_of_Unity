@@ -550,9 +550,9 @@ MonoBehaviour:
   characterStatus: {fileID: 82222986682491871}
   rigidBody2D: {fileID: 7284997314533658813}
   fightingInteractions: {fileID: 1391425223428354020}
-  groundSensors: {fileID: 0}
+  groundSensors: {fileID: 5852060714942834250}
   stateMachine: {fileID: 0}
-  soundController: {fileID: 0}
+  soundController: {fileID: 7454332378449417252}
   characterMovementProfile: {fileID: 0}
   showLogs: 0
 --- !u!1001 &143874079488135331

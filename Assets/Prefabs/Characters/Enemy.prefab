@@ -490,6 +490,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: stateMachine
+      value: 
+      objectReference: {fileID: 312590335524935766}
+    - target: {fileID: 5833813174139049050, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: characterMovementProfile
       value: 
       objectReference: {fileID: 11400000, guid: fbde1f9705352164aa31ad0b1ea06980, type: 2}

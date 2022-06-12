@@ -7,8 +7,6 @@ using UnityEditor;
 /// </summary>
 public class GroundSensors : MonoBehaviour
 {
-    // TODO: Raycasts distances should be calculated just once at awake. There's no point to calculate them at every frame.
-    
     [Header("WIRING:")]
     [Tooltip("Needed to set isFalling flag when ground is not detected any longer below feet.")]
     [SerializeField] private CharacterStatus characterStatus;
@@ -36,6 +34,13 @@ public class GroundSensors : MonoBehaviour
     private bool _wideSensorDistribution = false;
     
     private int _architectureLayerMask;
+
+    private float _forwardSensorDistance;
+    private float _rearSensorDistance;
+    private float _centerSensorDistance;
+    private Vector2 _forwardRayDirection;
+    private Vector2 _rearRayDirection;
+    private Vector2 _centerRayDirection;
     
     private GameObject _forwardGround;
     private GameObject _rearGround;
@@ -91,6 +96,11 @@ public class GroundSensors : MonoBehaviour
     /// </summary>
     public bool GroundBehind => RearGround != null;
     
+    /// <summary>
+    /// World position where character is touching ground.
+    /// </summary>
+    public Vector3 GroundTouchPoint { get; private set;}
+    
     enum SensorType
     {
         Forward,
@@ -101,6 +111,29 @@ public class GroundSensors : MonoBehaviour
     private void Awake()
     {
         _architectureLayerMask = LayerMask.GetMask("Architecture");
+        CalculateSensorDistances();
+        CalculateRayDirections();
+    }
+
+    /// <summary>
+    /// Calculate distances between starting an end sensor points.
+    /// </summary>
+    private void CalculateSensorDistances()
+    {
+        _forwardSensorDistance = Vector2.Distance(forwardSensorStart.position, forwardSensorEnd.position);
+        _centerSensorDistance = Vector2.Distance(centerSensorStart.position, centerSensorEnd.position);
+        _rearSensorDistance = Vector2.Distance(rearSensorStart.position, rearSensorEnd.position);
+        
+    }
+
+    /// <summary>
+    /// Calculate ray directions for every sensor.
+    /// </summary>
+    private void CalculateRayDirections()
+    {
+        _forwardRayDirection = (forwardSensorEnd.position - forwardSensorStart.position).normalized;
+        _centerRayDirection = (centerSensorEnd.position - centerSensorStart.position).normalized;
+        _rearRayDirection = (rearSensorEnd.position - rearSensorStart.position).normalized;
     }
 
     /// <summary>
@@ -109,11 +142,9 @@ public class GroundSensors : MonoBehaviour
     /// <returns>Ground detected or null otherwise.</returns>
     private GameObject DetectForward()
     {
-        Vector2 rayDirection = forwardSensorEnd.position - forwardSensorStart.position;
-        float forwardSensorDistance = Vector2.Distance(forwardSensorStart.position, forwardSensorEnd.position);
         RaycastHit2D hit = Physics2D.Raycast(forwardSensorStart.position, 
-            rayDirection, 
-            forwardSensorDistance, 
+            _forwardRayDirection, 
+            _forwardSensorDistance, 
             _architectureLayerMask);
         return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
     }
@@ -124,28 +155,34 @@ public class GroundSensors : MonoBehaviour
     /// <returns>Ground detected or null otherwise.</returns>
     private GameObject DetectRear()
     {
-        Vector2 rayDirection = rearSensorEnd.position - rearSensorStart.position;
-        float rearSensorDistance = Vector2.Distance(rearSensorStart.position, rearSensorEnd.position);
         RaycastHit2D hit = Physics2D.Raycast(rearSensorStart.position, 
-            rayDirection, 
-            rearSensorDistance, 
+            _rearRayDirection, 
+            _rearSensorDistance, 
             _architectureLayerMask);
         return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
     }
     
     /// <summary>
-    /// Return ground detected in back of character if any, or null otherwise.
+    /// Return ground detected below of character if any, or null otherwise.
     /// </summary>
     /// <returns>Ground detected or null otherwise.</returns>
     private GameObject DetectCenter()
     {
-        Vector2 rayDirection = centerSensorEnd.position - centerSensorStart.position;
-        float centerSensorDistance = Vector2.Distance(centerSensorStart.position, centerSensorEnd.position);
         RaycastHit2D hit = Physics2D.Raycast(centerSensorStart.position, 
-            rayDirection, 
-            centerSensorDistance, 
+            _centerRayDirection, 
+            _centerSensorDistance, 
             _architectureLayerMask);
-        return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
+        if (hit.collider != null)
+        {
+            GroundTouchPoint = hit.point;
+            return hit.collider.transform.root.gameObject;
+        }
+        else
+        {
+            GroundTouchPoint = Vector3.zero;
+            return null;
+        }
+        // return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
     }
     
     private void FixedUpdate()
@@ -187,8 +224,6 @@ public class GroundSensors : MonoBehaviour
                 if (!_wideSensorDistribution) SetWideModeSensors();
                 _wideSensorDistribution = true;
                 break;
-            // case CharacterStatus.States.Idle:
-            // case CharacterStatus.States.Sheathe:
             default:
                 if (_wideSensorDistribution) SetNormalModeSensors();
                 _wideSensorDistribution = false;
@@ -198,14 +233,6 @@ public class GroundSensors : MonoBehaviour
 
     private void SetWideModeSensors()
     {
-        // Vector3 currentPosition = forwardSensorStart.position;
-        // forwardSensorStart.position = new Vector3(currentPosition.x + forwardFightingModeXOffset,
-        //     currentPosition.y,
-        //     currentPosition.z);
-        // currentPosition = centerSensorStart.position;
-        // centerSensorStart.position = new Vector3(currentPosition.x + centerFightingModeXOffset,
-        //     currentPosition.y,
-        //     currentPosition.z);
         Vector3 currentPosition = forwardSensorStart.localPosition;
         forwardSensorStart.localPosition = new Vector3(currentPosition.x + forwardFightingModeXOffset,
             currentPosition.y,
@@ -218,14 +245,6 @@ public class GroundSensors : MonoBehaviour
     
     private void SetNormalModeSensors()
     {
-        // Vector3 currentPosition = forwardSensorStart.position;
-        // forwardSensorStart.position = new Vector3(currentPosition.x - forwardFightingModeXOffset,
-        //     currentPosition.y,
-        //     currentPosition.z);
-        // currentPosition = centerSensorStart.position;
-        // centerSensorStart.position = new Vector3(currentPosition.x - centerFightingModeXOffset,
-        //     currentPosition.y,
-        //     currentPosition.z);
         Vector3 currentPosition = forwardSensorStart.localPosition;
         forwardSensorStart.localPosition = new Vector3(currentPosition.x - forwardFightingModeXOffset,
             currentPosition.y,

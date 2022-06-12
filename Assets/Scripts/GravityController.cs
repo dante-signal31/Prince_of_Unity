@@ -16,7 +16,7 @@ namespace Prince
     {
         [Header("BASE-WIRING:")]
         [Tooltip("Needed to alter gravity affection on character.")]
-        [SerializeField] private Rigidbody2D rigidBody;
+        [SerializeField] protected Rigidbody2D rigidBody;
 
         //[Tooltip("Needed to know current character state.")]
         //[SerializeField] private CharacterStatus characterStatus;
@@ -61,12 +61,7 @@ namespace Prince
         protected void DisableGravity()
         {
             rigidBody.gravityScale = 0;
-            // Rigid body constraints must be set. Otherwise when this component is used with
-            // falling ground character pushes ground before its falling timer is up. Although
-            // falling ground gravity is disabled it can still be pushed by characters that have
-            // gravity enabled.
             _currentRigidbodyConstraints = rigidBody.constraints;
-            rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             rigidBody.velocity = Vector2.zero;
             stateMachine.SetBool("GravityEnabled", false);
             _isGravityEnabled = false;

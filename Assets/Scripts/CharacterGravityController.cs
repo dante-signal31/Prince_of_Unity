@@ -20,10 +20,9 @@ namespace Prince
 
             switch (stateMachineStatus.CurrentState)
             {
-                // TODO: Try to unify this first bunch of conditions with second one.
                 case CharacterStatus.States.Dead:
                 case CharacterStatus.States.DeadByFall:
-                    DisableGravity();
+                    if (GravityEnabled) DisableGravityAndMovement();
                     break;
                 case CharacterStatus.States.RunningJump:
                 case CharacterStatus.States.WalkingJump:
@@ -34,6 +33,28 @@ namespace Prince
                     if (!GravityEnabled) EnableGravity();
                     break;
             }
+        }
+        
+        /// <summary>
+        /// Disables gravity for this character.
+        /// </summary>
+        protected void DisableGravity()
+        {
+            base.DisableGravity();
+            // Rigid body constraints must be set. Otherwise when this component is used with
+            // character it can float away while gravity is disabled..
+            rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+        }
+        
+        /// <summary>
+        /// Disables gravity and movement for this character.
+        /// </summary>
+        protected void DisableGravityAndMovement()
+        {
+            base.DisableGravity();
+            // Rigid body constraints must be set. Otherwise when this component is used with
+            // character it can float away while gravity is disabled.
+            rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 }

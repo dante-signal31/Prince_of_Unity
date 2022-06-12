@@ -143,6 +143,16 @@ namespace Prince
         /// </summary>
         private void UpdatePosition()
         {
+            // Sometimes character falls so quickly that when DeadByFall state is activated,
+            // character is already below under ground collider surface, so we must fix that
+            // relocating character to ground collider touch point height.
+            if (characterStatus.CurrentState == CharacterStatus.States.DeadByFall)
+            {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x,
+                    groundSensors.GroundTouchPoint.y,
+                    gameObject.transform.position.z);
+            }
+            
             Vector2 yComponent = characterStatus.CurrentState switch
             {
                 // When jumping, gravity is disabled so any residual Y velocity makes character float away a bit.

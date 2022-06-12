@@ -106,7 +106,7 @@ namespace Tests.PlayTests
             // Assert Prince has not fallen.
             Assert.True(Math.Abs(heightError) < 0.04);
             // Assert falling ground has fallen.
-            Assert.True(Math.Abs(groundHeightDescended - 1.59f) < 0.04);
+            Assert.True(Math.Abs(groundHeightDescended - 1.48f) < 0.04);
         }
         
         /// <summary>
@@ -389,27 +389,24 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
-            
             _enemy.SetActive(true);
             _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
             // I want enemy to move.
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
-            
             float startingHeight = _enemy.transform.position.y;
             float groundStartingHeight = _fallingGround1.transform.position.y;
-            
+            // Let movement happen.
             yield return new WaitForSeconds(4);
-            
             float endHeight = _enemy.transform.position.y;
             float groundEndHeight = _fallingGround1.transform.position.y;
             float guardHeightDescended = startingHeight - endHeight;
             float groundHeightDescended = groundStartingHeight - groundEndHeight;
-            // Assert Guard has fallen fallen.
+            // Assert Guard has fallen.
             Assert.True(Math.Abs(guardHeightDescended - 2.0) < 0.04);
             // Assert falling ground has fallen.
-            Assert.True(Math.Abs(groundHeightDescended - 1.59f) < 0.04);
+            Assert.True(Math.Abs(groundHeightDescended - 1.48f) < 0.04);
         }
         
         /// <summary>
