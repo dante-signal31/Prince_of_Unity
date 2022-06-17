@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Tests.PlayTests
+namespace Tests.PlayTests.Tools.Scene
 {
     /// <summary>
     /// Tools to load and unload tests scenes.

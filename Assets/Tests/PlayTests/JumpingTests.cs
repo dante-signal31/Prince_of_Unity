@@ -3,6 +3,7 @@ using System.Collections;
 using NUnit.Framework;
 using Prince;
 using Tests.PlayTests.Tools.Lang;
+using Tests.PlayTests.Tools.Scene;
 using UnityEngine;
 using UnityEngine.TestTools;
 

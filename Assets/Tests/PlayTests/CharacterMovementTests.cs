@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using Tests.PlayTests.Tools.Lang;
+using Tests.PlayTests.Tools.Scene;
 
 namespace Tests.PlayTests
 {

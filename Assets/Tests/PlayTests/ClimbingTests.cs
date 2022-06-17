@@ -5,6 +5,7 @@ using Prince;
 using Tests.PlayTests.Tools.Lang;
 using UnityEngine;
 using UnityEngine.TestTools;
+using Tests.PlayTests.Tools.Scene;
 
 namespace Tests.PlayTests
 {
