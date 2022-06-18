@@ -1,6 +1,7 @@
 ﻿using System;
 using Prince;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Tests.PlayTests.Scripts
@@ -11,17 +12,18 @@ namespace Tests.PlayTests.Scripts
 
         public float RandomValue { get; private set; }
         
-        public class BoxEventArgs : EventArgs
+        public class BoxEvent : EventArgs
         {
             public float Value { get; set; }
 
-            public BoxEventArgs(float value)
+            public BoxEvent(float value)
             {
                 Value = value;
             }
         }
         
-        public event EventHandler<BoxEventArgs> BoxActivated;
+        public event EventHandler<BoxEvent> BoxActivated;
+        public UnityEvent<object, BoxEvent> uBoxActivated = new UnityEvent<object, BoxEvent>();
 
         /// <summary>
         /// Set current value.
@@ -37,9 +39,13 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         public void ActivateBox()
         {
-            BoxEventArgs args = new BoxEventArgs(RandomValue);
-            BoxActivated?.Invoke(this, args);
-            _eventBus.TriggerEvent(BoxActivated, args, this);
+            BoxEvent boxEventData = new BoxEvent(RandomValue);
+            // Call callbacks directly attached to local event.
+            BoxActivated?.Invoke(this, boxEventData);
+            // Call callbacks registered to event bus.
+            _eventBus.TriggerEvent(BoxActivated, boxEventData, this);
+            // Call callbacks registered to local UnityEvent.
+            uBoxActivated.Invoke(this, boxEventData);
         }
 
         private void Awake()

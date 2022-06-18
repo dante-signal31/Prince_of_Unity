@@ -5,6 +5,12 @@ using Random = UnityEngine.Random;
 
 namespace Tests.PlayTests.Scripts
 {
+    /// <summary>
+    /// Circle event receiver attaches to events through an event bus.
+    ///
+    /// This way circle event receiver does not need to know concrete event sources. Instead it only needs
+    /// to find event bus and subscribe to specific events.
+    /// </summary>
     public class CircleEventReceiver : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer sprite;
@@ -40,7 +46,7 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         /// <param name="sender">Event emitter.</param>
         /// <param name="color">Color chosen by emitter.</param>
-        public virtual void OnCircleActivated(object sender, CircleEventEmitter.CircleEventArgs args)
+        public virtual void OnCircleActivated(object sender, CircleEventEmitter.CircleEvent args)
         {
             SetColor(args.ActivationValue);
             Debug.Log("I'm receiver1, and I've been activated by circle.");
@@ -53,7 +59,7 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         /// <param name="sender">Event emitter.</param>
         /// <param name="args">Color chosen by emitter.</param>
-        public virtual void OnBoxActivated(object sender, BoxEventEmitter.BoxEventArgs args)
+        public virtual void OnBoxActivated(object sender, BoxEventEmitter.BoxEvent args)
         {
             SetRandomValue(args.Value);
             Debug.Log("I'm receiver1, and I've been activated by box.");
@@ -109,7 +115,7 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         private void RegisterCircleListener()
         {
-            _eventBus.AddListener<CircleEventEmitter.CircleEventArgs>(OnCircleActivated);
+            _eventBus.AddListener<CircleEventEmitter.CircleEvent>(OnCircleActivated);
         }
 
         /// <summary>
@@ -117,7 +123,7 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         private void UnRegisterCircleListener()
         {
-            _eventBus.RemoveListener<CircleEventEmitter.CircleEventArgs>(OnCircleActivated);
+            _eventBus.RemoveListener<CircleEventEmitter.CircleEvent>(OnCircleActivated);
         }
         
         /// <summary>
@@ -125,7 +131,7 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         private void RegisterBoxListener()
         {
-            _eventBus.AddListener<BoxEventEmitter.BoxEventArgs>(OnBoxActivated);
+            _eventBus.AddListener<BoxEventEmitter.BoxEvent>(OnBoxActivated);
         }
 
         /// <summary>
@@ -133,7 +139,7 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         private void UnRegisterBoxListener()
         {
-            _eventBus.RemoveListener<BoxEventEmitter.BoxEventArgs>(OnBoxActivated);
+            _eventBus.RemoveListener<BoxEventEmitter.BoxEvent>(OnBoxActivated);
         }
         
     }

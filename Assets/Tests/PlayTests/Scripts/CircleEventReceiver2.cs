@@ -9,7 +9,7 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         /// <param name="sender">Event emitter.</param>
         /// <param name="color">Color chosen by emitter.</param>
-        public override void OnCircleActivated(object sender, CircleEventEmitter.CircleEventArgs args)
+        public override void OnCircleActivated(object sender, CircleEventEmitter.CircleEvent args)
         {
             SetColor(args.ActivationValue);
             Debug.Log("I'm receiver2, and I've been activated by circle.");
@@ -22,7 +22,7 @@ namespace Tests.PlayTests.Scripts
         /// </summary>
         /// <param name="sender">Event emitter.</param>
         /// <param name="args">Color chosen by emitter.</param>
-        public override void OnBoxActivated(object sender, BoxEventEmitter.BoxEventArgs args)
+        public override void OnBoxActivated(object sender, BoxEventEmitter.BoxEvent args)
         {
             SetRandomValue(args.Value);
             Debug.Log("I'm receiver2, and I've been activated by box.");

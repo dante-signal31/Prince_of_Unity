@@ -1,6 +1,7 @@
 ﻿using System;
 using Prince;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Tests.PlayTests.Scripts
@@ -13,17 +14,18 @@ namespace Tests.PlayTests.Scripts
 
         public Color SpriteColor => sprite.color;
 
-        public class CircleEventArgs : EventArgs
+        public class CircleEvent : EventArgs
         {
             public Color ActivationValue { get; set; }
 
-            public CircleEventArgs(Color color)
+            public CircleEvent(Color color)
             {
                 ActivationValue = color;
             }
         }
 
-        public event EventHandler<CircleEventArgs> CircleActivated;
+        public event EventHandler<CircleEvent> CircleActivated;
+        public UnityEvent<object, CircleEvent> uCircleActivated = new UnityEvent<object, CircleEvent>();
 
         /// <summary>
         /// Set circle sprite color.
@@ -40,9 +42,13 @@ namespace Tests.PlayTests.Scripts
         public void ActivateCircle()
         {
             SetColor(new Color(Random.value, Random.value, Random.value, Random.value));
-            CircleEventArgs args = new CircleEventArgs(SpriteColor);
-            CircleActivated?.Invoke(this, new CircleEventArgs(SpriteColor));
-            _eventBus.TriggerEvent(CircleActivated, args, this);
+            CircleEvent circleEventData = new CircleEvent(SpriteColor);
+            // Call callbacks directly attached to local event.
+            CircleActivated?.Invoke(this, new CircleEvent(SpriteColor));
+            // Call callbacks registered to event bus.
+            _eventBus.TriggerEvent(CircleActivated, circleEventData, this);
+            // Call callbacks registered to local UnityEvent.
+            uCircleActivated.Invoke(this, circleEventData);
         }
 
         private void Awake()
