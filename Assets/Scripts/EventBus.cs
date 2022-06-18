@@ -7,9 +7,9 @@ namespace Prince
     /// <summary>
     /// Event bus component.
     ///
-    /// This component should be placed as a level manager so game objects can register their events and listeners here.
+    /// This component should be placed as a level manager so game objects can register their events and listeners here. Events should be triggered using this components method TriggerEvent.
     ///
-    /// Events should be triggered using this components method TriggerEvent.
+    /// Actually events are internally indexed using their EventArgs types.
     /// </summary>
     public class EventBus : MonoBehaviour
     {
