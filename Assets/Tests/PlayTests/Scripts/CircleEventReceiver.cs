@@ -10,6 +10,7 @@ namespace Tests.PlayTests.Scripts
         [SerializeField] private SpriteRenderer sprite;
 
         private EventBus _eventBus;
+        private bool _eventRegisteringRetryNeeded;
 
         public Color SpriteColor => sprite.color;
         public float RandomValue { get; private set; }
@@ -65,26 +66,75 @@ namespace Tests.PlayTests.Scripts
             SetRandomValue(Random.value);
         }
 
+        private void OnEnable()
+        {
+            // This OnEnable should act if game object is disabled, and later enabled again, while in game. But
+            // if game is just starting this registering in OnEnable may fail because event may have not been
+            // registered yet at event bus. So, in this specific case we retry registering again later at Start()
+            // when event should have been already registered.
+            try
+            {
+                RegisterCircleListener();
+                RegisterBoxListener();
+            }
+            catch (EventBus.NotExistingEvent ev)
+            {
+                _eventRegisteringRetryNeeded = true;
+            }
+            
+        }
+
+        private void OnDisable()
+        {
+            // OnDisable may be called while destroying game object. In that case is important remove this game objects
+            // listener from event bus to remove any reference from event bus to destroyed game object and let
+            // garbage collector dispose this game object.
+            UnRegisterCircleListener();
+            UnRegisterBoxListener();
+        }
+
         private void Start()
         {
-            RegisterCircleListener();
-            RegisterBoxListener();
+            if (_eventRegisteringRetryNeeded)
+            {
+                RegisterCircleListener();
+                RegisterBoxListener();
+                _eventRegisteringRetryNeeded = false;
+            }
         }
+
 
         /// <summary>
         /// Add circle listener to event bus.
         /// </summary>
-        public void RegisterCircleListener()
+        private void RegisterCircleListener()
         {
             _eventBus.AddListener<CircleEventEmitter.CircleEventArgs>(OnCircleActivated);
+        }
+
+        /// <summary>
+        /// Remove circle listener from event bus.
+        /// </summary>
+        private void UnRegisterCircleListener()
+        {
+            _eventBus.RemoveListener<CircleEventEmitter.CircleEventArgs>(OnCircleActivated);
         }
         
         /// <summary>
         /// Add box listener to event bus.
         /// </summary>
-        public void RegisterBoxListener()
+        private void RegisterBoxListener()
         {
             _eventBus.AddListener<BoxEventEmitter.BoxEventArgs>(OnBoxActivated);
         }
+
+        /// <summary>
+        /// Remove box listener from event bus.
+        /// </summary>
+        private void UnRegisterBoxListener()
+        {
+            _eventBus.RemoveListener<BoxEventEmitter.BoxEventArgs>(OnBoxActivated);
+        }
+        
     }
 }
