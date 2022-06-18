@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tests/TheRuins.unity
     guid: 41b946261ba521147b668e328ead583b
+  - enabled: 1
+    path: Assets/Scenes/Tests/TheEvent.unity
+    guid: e708f1dd4c682904fbb97d610a34f6f8
   m_configObjects: {}
