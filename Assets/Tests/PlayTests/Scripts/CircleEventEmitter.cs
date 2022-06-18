@@ -48,7 +48,7 @@ namespace Tests.PlayTests.Scripts
         private void Awake()
         {
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
-            _eventBus.RegisterEvent<CircleEventArgs>(CircleActivated);
+            _eventBus.RegisterEvent(CircleActivated);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace Tests.PlayTests.Scripts
         private void Awake()
         {
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
-            _eventBus.RegisterEvent<BoxEventArgs>(BoxActivated);
+            _eventBus.RegisterEvent(BoxActivated);
             SetValue(Random.value);
         }
     }
