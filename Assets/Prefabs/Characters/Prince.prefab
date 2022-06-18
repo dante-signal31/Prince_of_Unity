@@ -765,6 +765,24 @@ MonoBehaviour:
   inputController: {fileID: 2642550848936503470}
   sensors: {fileID: 7338974255637909718}
   characterStatus: {fileID: 3800712010592504634}
+--- !u!1 &1149491836488576031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4208924519771227386, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 3862621942988777701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6363931227657809856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149491836488576031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0fcbada35e049a681ea8b9a9866d186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStatus: {fileID: 3800712010592504634}
 --- !u!1 &1429522996310157924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2759692437259027073, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
