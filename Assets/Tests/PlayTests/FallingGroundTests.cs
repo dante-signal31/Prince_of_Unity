@@ -386,6 +386,8 @@ namespace Tests.PlayTests
         [UnityTest]
         public IEnumerator GuardActivatesFallingGroundTest()
         {
+            // TODO: Characters should not be hit by falling ground while they are falling too.
+            
             _cameraController.PlaceInRoom(_room00);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);

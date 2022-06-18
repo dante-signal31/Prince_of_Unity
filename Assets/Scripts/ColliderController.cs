@@ -113,7 +113,8 @@ public class ColliderController : MonoBehaviour
             case CharacterStatus.States.HardLanding:
             case CharacterStatus.States.Landing:
             case CharacterStatus.States.DeadByFall:
-                EnableColliders();
+                // EnableColliders();
+                EnableUsualCollider();
                 break;
         }
     }

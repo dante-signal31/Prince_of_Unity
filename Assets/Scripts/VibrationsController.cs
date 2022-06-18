@@ -4,11 +4,16 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// This component emit vibrations events depending on Prince states.
+    /// This component emits vibrations events depending on Prince states.
     /// </summary>
     public class VibrationsController : MonoBehaviour
     {
 
+        /// <summary>
+        /// Data model for a vibration event.
+        ///
+        /// Those vibrations are originated by Prince character falls over the ground making falling grounds tremble.
+        /// </summary>
         public class VibrationEvent : EventArgs
         {
             public Vector3 SourcePosition { get; private set; }
@@ -24,23 +29,25 @@ namespace Prince
         [Tooltip("Needed to know current character state.")] 
         [SerializeField] private CharacterStatus characterStatus;
 
-        public event EventHandler<VibrationEvent> Vibration;
-
         private EventBus _eventBus;
+        private bool _eventTriggered;
 
         /// <summary>
         /// Trigger vibration event both locally and through event bus.
         /// </summary>
         private void TriggerVibrationEvent()
         {
-            VibrationEvent eventArgs = new VibrationEvent(transform.root.position);
-            _eventBus.TriggerEvent(Vibration, eventArgs, this);
+            if (!_eventTriggered)
+            {
+                _eventBus.TriggerEvent(new VibrationEvent(transform.root.position), this);
+                _eventTriggered = true;
+            }
         }
         
         private void Awake()
         {
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
-            _eventBus.RegisterEvent(Vibration);
+            _eventBus.RegisterEvent<VibrationEvent>();
         }
 
         private void FixedUpdate()
@@ -52,6 +59,9 @@ namespace Prince
                 case CharacterStatus.States.DeadByFall:
                 case CharacterStatus.States.VerticalJumpEnd:
                     TriggerVibrationEvent();
+                    break;
+                default:
+                    _eventTriggered = false;
                     break;
             }
         }

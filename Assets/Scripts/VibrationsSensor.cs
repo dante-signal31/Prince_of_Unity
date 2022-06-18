@@ -22,7 +22,6 @@ namespace Prince
         private void Awake()
         {
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
-            _eventBus.AddListener<VibrationsController.VibrationEvent>(OnVibration);
         }
 
         private void Start()
@@ -58,13 +57,24 @@ namespace Prince
         /// <param name="eventArgs">Event data.</param>
         private void OnVibration(object sender, VibrationsController.VibrationEvent eventArgs)
         {
-            float distance = Vector3.Distance(transform.root.position, eventArgs.SourcePosition);
+            float distance = Vector3.Distance(transform.position, eventArgs.SourcePosition);
             if (distance <= activationDistance)
             {
                 stateMachine.SetTrigger("Tremble");
             }
         }
         
-        // TODO: Draw a helper circle to show activation distance on editor.
+#if UNITY_EDITOR
+        private void DrawActivationDistance(){
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, activationDistance);
+        }
+        
+
+        private void OnDrawGizmosSelected()
+        {
+            DrawActivationDistance();
+        }
+#endif
     }
 }
