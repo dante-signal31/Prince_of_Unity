@@ -43,7 +43,7 @@ namespace Tests.PlayTests.Scripts
             // Call callbacks directly attached to local event.
             BoxActivated?.Invoke(this, boxEventData);
             // Call callbacks registered to event bus.
-            _eventBus.TriggerEvent(BoxActivated, boxEventData, this);
+            _eventBus.TriggerEvent(boxEventData, this);
             // Call callbacks registered to local UnityEvent.
             uBoxActivated.Invoke(this, boxEventData);
         }
@@ -51,7 +51,7 @@ namespace Tests.PlayTests.Scripts
         private void Awake()
         {
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
-            _eventBus.RegisterEvent(BoxActivated);
+            _eventBus.RegisterEvent<BoxEvent>();
             SetValue(Random.value);
         }
     }

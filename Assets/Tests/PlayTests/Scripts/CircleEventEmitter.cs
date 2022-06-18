@@ -46,7 +46,7 @@ namespace Tests.PlayTests.Scripts
             // Call callbacks directly attached to local event.
             CircleActivated?.Invoke(this, new CircleEvent(SpriteColor));
             // Call callbacks registered to event bus.
-            _eventBus.TriggerEvent(CircleActivated, circleEventData, this);
+            _eventBus.TriggerEvent(circleEventData, this);
             // Call callbacks registered to local UnityEvent.
             uCircleActivated.Invoke(this, circleEventData);
         }
@@ -54,7 +54,7 @@ namespace Tests.PlayTests.Scripts
         private void Awake()
         {
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
-            _eventBus.RegisterEvent(CircleActivated);
+            _eventBus.RegisterEvent<CircleEvent>();
         }
     }
 }
