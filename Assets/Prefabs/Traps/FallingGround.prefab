@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 575157283389842710}
-  activationDistance: 3.5
+  tremblingActivationDistance: 2.5
+  fallingActivationDistance: 0.5
 --- !u!1 &3693338545090401580
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +712,10 @@ PrefabInstance:
       propertyPath: occluderSpriteRenderer
       value: 
       objectReference: {fileID: 2076964897608588325}
+    - target: {fileID: 284599470614737425, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1825764673919355825, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -755,21 +760,73 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3705784644128442189, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979141082175551210, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4459890820608295740, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646200731146364853, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4791579955942524328, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: m_Name
       value: FallingGround
       objectReference: {fileID: 0}
+    - target: {fileID: 4791579955942524328, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5085910350445059474, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5665421337026950242, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5982319584246824212, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: HollowBrick
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6418012875263767574, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422290944965228042, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512410439566608469, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629634752002054132, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810835854682013339, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6841064002900952881, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231729292084677894, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128293411865253365, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9084804724281271905, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: m_Sprite

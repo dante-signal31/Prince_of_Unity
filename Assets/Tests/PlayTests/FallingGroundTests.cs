@@ -433,10 +433,10 @@ namespace Tests.PlayTests
             // Assert nearer than 3 units falling grounds are trembling.
             Assert.True(_fallingGround.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Trembling);
             Assert.True(_fallingGround1.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Trembling);
-            Assert.True(_fallingGround2.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Trembling);
-            Assert.True(_fallingGround4.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Trembling);
             // Assert farther than 3 units falling grounds are not trembling.
+            Assert.True(_fallingGround2.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Idle);
             Assert.True(_fallingGround3.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Idle);
+            Assert.True(_fallingGround4.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Idle);
         }
         
         /// <summary>
@@ -456,13 +456,13 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1.5f);
             // Assert nearer than 3 units falling grounds are trembling.
-            Assert.True(_fallingGround.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Trembling);
-            Assert.True(_fallingGround1.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Trembling);
             Assert.True(_fallingGround2.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Trembling);
             Assert.True(_fallingGround4.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Trembling);
             // Assert farther than 3 units falling grounds are not trembling.
+            Assert.True(_fallingGround.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Idle);
+            Assert.True(_fallingGround1.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Idle);
             Assert.True(_fallingGround3.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Idle);
         }
         
