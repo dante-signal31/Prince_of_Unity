@@ -72,7 +72,7 @@ public class Climbable: MonoBehaviour
     public ClimbableStatus.ClimbingResult ClimbingResult => climbableStatus.LastClimbingResult;
     
     // /// <summary>
-    // /// Wheter this brick is playing character climbing animations.
+    // /// Whether this brick is playing character climbing animations.
     // /// </summary>
     // public bool PlayingAnimations { get; private set; }
 
@@ -169,6 +169,14 @@ public class Climbable: MonoBehaviour
     private void UpdateFlags()
     {
         stateMachine.SetBool("HollowBrick", HollowBrick);
+    }
+
+    /// <summary>
+    /// Used when climbed brick falls.
+    /// </summary>
+    public void AbortClimbing()
+    {
+        stateMachine.SetTrigger("Abort");
     }
 
 #if UNITY_EDITOR

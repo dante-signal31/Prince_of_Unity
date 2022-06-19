@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Prince
 {
+    /// <summary>
+    /// Component to manage falling ground interactions with characters.
+    /// </summary>
     public class FallingGroundCharacterInteractions : MonoBehaviour
     {
         [Header("WIRING")]
@@ -14,6 +17,10 @@ namespace Prince
         [SerializeField] private SoundController soundController;
         [Tooltip("Needed to know how much this ground has fallen.")]
         [SerializeField] private FallingGroundFallenHeightCounter fallingHeightCounter;
+        [Tooltip("Needed to know when a climbing is in progress.")]
+        [SerializeField] private ClimbableStatus climbableStatus;
+        [Tooltip("Needed to abort character climbing if he tries it while ground falls.")] 
+        [SerializeField] private Climbable climbable;
 
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -37,6 +44,7 @@ namespace Prince
         /// <param name="characterHit">Character to apply damage.</param>
         public void OnCharacterHit(GameObject characterHit)
         {
+            // TODO: Falling ground should not hurt a character that is falling along this ground.
             int damage = (int)Mathf.Ceil(fallingHeightCounter.FallenHeight/2);
             HealthController characterHitHealthController = characterHit.GetComponentInChildren<HealthController>();
             characterHitHealthController.GroundHit(damage);
@@ -48,13 +56,47 @@ namespace Prince
             switch (fallingGroundStatus.CurrentState)
             {
                 case FallingGroundStatus.FallingGroundStates.Falling:
-                    if (!_fallingSoundAlreadyPlayed)
-                    {
-                        soundController.PlaySound("ground_moving_2");
-                        _fallingSoundAlreadyPlayed = true;
-                    }
+                    playFallingSound();
+                    signalClimbingCharacterIfAny();
                     break;
             }
+        }
+
+        /// <summary>
+        /// If any character is climbing this brick when it falls we need to warn him so he can
+        /// update his state accordingly.
+        /// </summary>
+        private void signalClimbingCharacterIfAny()
+        {
+            switch (climbableStatus.CurrentState)
+            {
+                case ClimbableStatus.States.Hanging:
+                case ClimbableStatus.States.HangingBlocked:
+                case ClimbableStatus.States.HangingLong:
+                case ClimbableStatus.States.Climbing:
+                case ClimbableStatus.States.Descending:
+                    signalCharacterToEndHanging();
+                    break;
+                case ClimbableStatus.States.Inactive:
+                    break;
+            }
+        }
+
+        private void playFallingSound()
+        {
+            if (!_fallingSoundAlreadyPlayed)
+            {
+                soundController.PlaySound("ground_moving_2");
+                _fallingSoundAlreadyPlayed = true;
+            }
+        }
+
+        /// <summary>
+        /// Make character to end his hanging.
+        /// </summary>
+        private void signalCharacterToEndHanging()
+        {
+            climbable.AbortClimbing();
         }
     }
 }

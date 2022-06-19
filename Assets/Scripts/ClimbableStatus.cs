@@ -23,7 +23,7 @@ namespace Prince
             HangingBlocked,
             Inactive,
             Descending,
-            Hanged
+            // Hanged
         }
 
         /// <summary>

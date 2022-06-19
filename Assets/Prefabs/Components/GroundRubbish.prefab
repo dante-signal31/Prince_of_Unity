@@ -49,6 +49,7 @@ MonoBehaviour:
   placeableThingsSprites: {fileID: 0}
   thingsOverGroundSpriteRenderer: {fileID: 6310183615325228153}
   thingsOverGroundOccluderSpriteRenderer: {fileID: 3158546719077371896}
+  _shown: 0
 --- !u!1 &7492224634686458655
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,8 +121,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 27376785
-  m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingLayer: -1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -204,7 +205,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1808101567
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
