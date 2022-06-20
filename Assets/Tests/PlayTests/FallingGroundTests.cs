@@ -121,6 +121,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float startingHeight = _prince.transform.position.y;
             float groundStartingHeight = _fallingGround4.transform.position.y;
             string commandFile = @"Assets\Tests\TestResources\climbingTwoLevels";
@@ -149,6 +150,10 @@ namespace Tests.PlayTests
             float groundHeightDescended = groundStartingHeight - groundEndHeight;
             // Assert falling ground has fallen.
             Assert.True(Math.Abs(groundHeightDescended - 2.0f) < 0.04);
+            // Assert Prince has not suffered any damage.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
         }
         
         /// <summary>
@@ -385,8 +390,6 @@ namespace Tests.PlayTests
         [UnityTest]
         public IEnumerator GuardActivatesFallingGroundTest()
         {
-            // TODO: Characters should not be hit by falling ground while they are falling too.
-            
             _cameraController.PlaceInRoom(_room00);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
@@ -397,6 +400,7 @@ namespace Tests.PlayTests
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float startingHeight = _enemy.transform.position.y;
             float groundStartingHeight = _fallingGround1.transform.position.y;
             // Let movement happen.
@@ -409,6 +413,10 @@ namespace Tests.PlayTests
             Assert.True(Math.Abs(guardHeightDescended - 2.0) < 0.04);
             // Assert falling ground has fallen.
             Assert.True(Math.Abs(groundHeightDescended - 1.48f) < 0.04);
+            // Assert Guard has not suffered any damage.
+            Assert.False(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
         }
         
         /// <summary>

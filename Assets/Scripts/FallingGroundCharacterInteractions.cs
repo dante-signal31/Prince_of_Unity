@@ -44,11 +44,16 @@ namespace Prince
         /// <param name="characterHit">Character to apply damage.</param>
         public void OnCharacterHit(GameObject characterHit)
         {
-            // TODO: Falling ground should not hurt a character that is falling along this ground.
-            int damage = (int)Mathf.Ceil(fallingHeightCounter.FallenHeight/2);
-            HealthController characterHitHealthController = characterHit.GetComponentInChildren<HealthController>();
-            characterHitHealthController.GroundHit(damage);
-            this.Log($"(FallingGroundCharacterInteractions - {transform.root.name}) Character hit wit {damage} damage.", showLogs);
+            if (fallingGroundStatus.CurrentState == FallingGroundStatus.FallingGroundStates.Falling)
+            {
+                if (characterHit.GetComponentInChildren<CharacterStatus>().CurrentState != CharacterStatus.States.Falling)
+                {
+                    int damage = (int)Mathf.Ceil(fallingHeightCounter.FallenHeight/2);
+                    HealthController characterHitHealthController = characterHit.GetComponentInChildren<HealthController>();
+                    characterHitHealthController.GroundHit(damage);
+                    this.Log($"(FallingGroundCharacterInteractions - {transform.root.name}) Character hit wit {damage} damage.", showLogs);
+                }
+            }
         }
 
         private void Update()

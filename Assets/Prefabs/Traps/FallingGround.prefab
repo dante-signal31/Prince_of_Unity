@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disablingState: 4
-  waitingTime: 1
+  waitingTime: 0
 --- !u!114 &4663531053186463278
 MonoBehaviour:
   m_ObjectHideFlags: 0
