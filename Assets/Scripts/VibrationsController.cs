@@ -28,7 +28,9 @@ namespace Prince
         private EventBus _eventBus;
 
         /// <summary>
-        /// Trigger vibration event both locally and through event bus.
+        /// Trigger vibration event through event bus.
+        ///
+        /// This method is called from animation events.
         /// </summary>
         public void TriggerVibrationEvent()
         {
