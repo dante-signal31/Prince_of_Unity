@@ -124,21 +124,21 @@ namespace Tests.PlayTests
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float startingHeight = _prince.transform.position.y;
             float groundStartingHeight = _fallingGround4.transform.position.y;
-            string commandFile = @"Assets\Tests\TestResources\climbingTwoLevels";
+            string commandFile = @"Assets\Tests\TestResources\climbingToFallingGround";
             InputController inputController = _prince.GetComponent<InputController>();
-            yield return null;
+            yield return new WaitForSeconds(1.0f);
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(2.8f);
+            yield return new WaitForSeconds(2.9f);
             // Assert prince has climbed.
             float middleHeight = _prince.transform.position.y;
             float ascendedHeight = middleHeight - startingHeight;
-            Assert.True(Math.Abs(ascendedHeight - 2.0f) < 0.04);
+            Assert.True(Math.Abs(ascendedHeight - 2.0f) < 0.10);
             // Assert falling ground is still at its original position.
             float groundMiddleHeight = _fallingGround4.transform.position.y;
             float middleHeightError = groundMiddleHeight - groundStartingHeight;
-            Assert.True(Math.Abs(middleHeightError) < 0.04);
+            Assert.True(Math.Abs(middleHeightError) < 0.15);
             // Let ground fall.
             yield return new WaitForSeconds(2);
             // Assert Prince is now one level below (e.g. where he originally was)
