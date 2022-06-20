@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// This component emits vibrations events depending on Prince states.
+    /// This component emits events that affect falling ground and make it vibrate or fall.
     /// </summary>
     public class VibrationsController : MonoBehaviour
     {
@@ -24,24 +24,15 @@ namespace Prince
                 SourcePosition = position;
             }
         }
-
-        [Header("WIRING:")] 
-        [Tooltip("Needed to know current character state.")] 
-        [SerializeField] private CharacterStatus characterStatus;
-
+        
         private EventBus _eventBus;
-        private bool _eventTriggered;
 
         /// <summary>
         /// Trigger vibration event both locally and through event bus.
         /// </summary>
-        private void TriggerVibrationEvent()
+        public void TriggerVibrationEvent()
         {
-            if (!_eventTriggered)
-            {
-                _eventBus.TriggerEvent(new VibrationEvent(transform.root.position), this);
-                _eventTriggered = true;
-            }
+            _eventBus.TriggerEvent(new VibrationEvent(transform.root.position), this);
         }
         
         private void Awake()
@@ -49,21 +40,6 @@ namespace Prince
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
             _eventBus.RegisterEvent<VibrationEvent>();
         }
-
-        private void FixedUpdate()
-        {
-            switch (characterStatus.CurrentState)
-            {
-                case CharacterStatus.States.Landing:
-                case CharacterStatus.States.HardLanding:
-                case CharacterStatus.States.DeadByFall:
-                case CharacterStatus.States.VerticalJumpEnd:
-                    TriggerVibrationEvent();
-                    break;
-                default:
-                    _eventTriggered = false;
-                    break;
-            }
-        }
+        
     }
 }

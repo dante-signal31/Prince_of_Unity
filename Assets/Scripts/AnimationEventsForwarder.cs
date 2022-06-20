@@ -18,6 +18,8 @@ namespace Prince
                 [SerializeField] private SoundController soundController;
                 [Tooltip("Needed to play music at certain points of animation.")]
                 [SerializeField] private MusicController musicController;
+                [Tooltip("Needed to emit vibrations event.")] 
+                [SerializeField] private VibrationsController vibrationsController;
 
 ///////// My strike can be blocked.
                 public void StrikeStart()
@@ -65,6 +67,11 @@ namespace Prince
                 public void PlayMusic(string musicName)
                 {
                     musicController.PlayMusic(musicName);
+                }
+
+                public void EmitVibration()
+                {
+                    vibrationsController.TriggerVibrationEvent();
                 }
         }
 }

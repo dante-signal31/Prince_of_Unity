@@ -492,6 +492,10 @@ PrefabInstance:
       propertyPath: musicController
       value: 
       objectReference: {fileID: 5280617345999287367}
+    - target: {fileID: 8326000155993945185, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: vibrationsController
+      value: 
+      objectReference: {fileID: 6363931227657809856}
     - target: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: stateMachine
       value: 
@@ -782,7 +786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0fcbada35e049a681ea8b9a9866d186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStatus: {fileID: 3800712010592504634}
 --- !u!1 &1429522996310157924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2759692437259027073, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
