@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Prince
@@ -17,6 +18,10 @@ namespace Prince
         [Tooltip("Brick state machine. Needed to signal we are being climbed")] 
         [SerializeField] private Animator stateMachine;
 
+        [Header("CONFIGURATION:")] 
+        [Tooltip("Delay in seconds to signal climbing after detecting it.")]
+        [SerializeField] private float activationDelay;
+
         /// <summary>
         /// True if this brick is being climbed.
         /// </summary>
@@ -28,14 +33,27 @@ namespace Prince
         {
             if (IsBeingClimbed && !_climbingAlreadySignaled)
             {
-                stateMachine.SetBool("IsBeingClimbed", true);
-                _climbingAlreadySignaled = true;
+                StartCoroutine(SignalClimbing());
             } 
             else if (!IsBeingClimbed && _climbingAlreadySignaled)
             {
                 stateMachine.SetBool("IsBeingClimbed", false);
                 _climbingAlreadySignaled = false;
             }
+        }
+
+        /// <summary>
+        /// Signal to state machine that a climbing has been detected.
+        ///
+        /// State machine is warned after activationDelay seconds from detection. This way
+        /// we can let character climb partially before falling.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator SignalClimbing()
+        {
+            _climbingAlreadySignaled = true;
+            yield return new WaitForSeconds(activationDelay);
+            stateMachine.SetBool("IsBeingClimbed", true);
         }
     }
 }

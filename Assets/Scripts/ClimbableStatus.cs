@@ -31,7 +31,10 @@ namespace Prince
         /// </summary>
         private States _previousState;
         
-        private States _currentState;
+        // Let it have a default value of Inactive or falling ground may fall at initialization.
+        // I guess an enum is set by default to its 0 state that in this case is Hanging.
+        private States _currentState = States.Inactive;
+        
         /// <summary>
         /// Current animation state.
         /// </summary>

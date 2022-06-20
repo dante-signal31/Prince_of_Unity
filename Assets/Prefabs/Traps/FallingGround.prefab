@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 4185224459507936240}
   - component: {fileID: 8674069944541823673}
   - component: {fileID: 2179343689367423490}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: CharacterDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,6 +715,10 @@ PrefabInstance:
       propertyPath: ClimbableStatus
       value: 
       objectReference: {fileID: 886953448444165822}
+    - target: {fileID: -5304199100214260378, guid: f8e7d73ded60ae54f8074eb51576c2c5, type: 3}
+      propertyPath: activationDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2515913570562506884, guid: f8e7d73ded60ae54f8074eb51576c2c5, type: 3}
       propertyPath: m_Name
       value: ClimbingSensor
