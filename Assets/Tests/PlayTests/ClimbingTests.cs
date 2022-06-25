@@ -32,12 +32,15 @@ namespace Tests.PlayTests
         private GameObject _startPosition21;
         private GameObject _startPosition22;
         private GameObject _startPosition23;
+        private GameObject _startPosition24;
+        private GameObject _startPosition25;
 
         private CameraController _cameraController;
         private Room _room00;
         private Room _room01;
         private Room _room02;
         private Room _room10;
+        private Room _room20;
 
         private string _currentScene = "TheAbyss";
 
@@ -66,6 +69,8 @@ namespace Tests.PlayTests
             if (_startPosition21 == null) _startPosition21 = GameObject.Find("StartPosition21");
             if (_startPosition22 == null) _startPosition22 = GameObject.Find("StartPosition22");
             if (_startPosition23 == null) _startPosition23 = GameObject.Find("StartPosition23");
+            if (_startPosition24 == null) _startPosition24 = GameObject.Find("StartPosition24");
+            if (_startPosition25 == null) _startPosition25 = GameObject.Find("StartPosition25");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
@@ -76,6 +81,8 @@ namespace Tests.PlayTests
                 _room02 = GameObject.Find("Room_0_2").GetComponentInChildren<Room>();
             if (_room10 == null)
                 _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
+            if (_room20 == null)
+                _room20 = GameObject.Find("Room_2_0").GetComponentInChildren<Room>();
             
             _prince.SetActive(false);
             _enemy.SetActive(false);
@@ -761,6 +768,35 @@ namespace Tests.PlayTests
         Assert.True(Math.Abs(expectedLandingHeight - _prince.transform.position.y)< 0.15f);
         // Assert Prince is dead.
         Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+    }
+    
+    /// <summary>
+    /// Test we can hang while falling through one unit wide hole, stay hang for a while and let Prince fall
+    /// again through well of one unit wide.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator HangingWhileFallingButLetFallThroughNarrowHoleTest()
+    {
+        _cameraController.PlaceInRoom(_room20);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition24.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        Vector3 expectedPosition = _startPosition25.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\hangingWhileFallingAndFallingAgain";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(7);
+        // Assert Prince is at expected position.
+        Assert.True(Vector3.Distance(expectedPosition, _prince.transform.position)< 0.30f);
+        // Assert Prince is alive and has not lost any life point.
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
     }
     
     }

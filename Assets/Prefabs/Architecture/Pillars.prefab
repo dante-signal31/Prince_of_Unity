@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 394386856958684377}
   - component: {fileID: 4064436656881729115}
   - component: {fileID: 7909642023244660626}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: FrontPillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

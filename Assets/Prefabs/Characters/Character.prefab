@@ -172,6 +172,7 @@ MonoBehaviour:
   fightingInteractions: {fileID: 1391425223428354020}
   soundController: {fileID: 7454332378449417252}
   musicController: {fileID: 8994338604963863714}
+  vibrationsController: {fileID: 0}
 --- !u!1 &4124597107352935379
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,8 @@ namespace Prince
         private GameObject _fallingLedge;
         
         private int _architectureLayerMask;
+        private int _groundLayerMask;
+        private int _groundArchitectureLayerMask;
         private bool _fallingLedgeDetectionSuspended;
 
 
@@ -128,7 +130,11 @@ namespace Prince
         
         private void Awake()
         {
-            _architectureLayerMask = LayerMask.GetMask("Architecture");
+            // _architectureLayerMask = LayerMask.GetMask("Architecture");
+            // Layer used to find climbable surfaces.
+            _groundLayerMask = LayerMask.GetMask("Ground");
+            // Layer used to find jumping and climbing obstacles.
+            _groundArchitectureLayerMask = LayerMask.GetMask("Ground", "Architecture");
         }
         
         /// <summary>
@@ -137,12 +143,13 @@ namespace Prince
         /// <returns>Ledge detected or null otherwise.</returns>
         private GameObject DetectLedge()
         {
+            // TODO: Direction and distance should be calculated just once at awake for all sensors.
             Vector2 rayDirection = ledgeSensorEnd.position - ledgeSensorStart.position;
             float forwardSensorDistance = Vector2.Distance(ledgeSensorStart.position, ledgeSensorEnd.position);
             RaycastHit2D hit = Physics2D.Raycast(ledgeSensorStart.position, 
                 rayDirection, 
                 forwardSensorDistance, 
-                _architectureLayerMask);
+                _groundLayerMask);
             return (hit.collider != null)? hit.collider.transform.root.gameObject: null;
         }
         
@@ -157,7 +164,7 @@ namespace Prince
             RaycastHit2D hit = Physics2D.Raycast(roofSensorStart.position, 
                 rayDirection, 
                 forwardSensorDistance, 
-                _architectureLayerMask);
+                _groundArchitectureLayerMask);
             return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
         }
         
@@ -172,7 +179,7 @@ namespace Prince
             RaycastHit2D hit = Physics2D.Raycast(fallingLedgeSensorStart.position, 
                 rayDirection, 
                 forwardSensorDistance, 
-                _architectureLayerMask);
+                _groundLayerMask);
             return (hit.collider != null)? hit.collider.transform.root.gameObject: null;
         }
         

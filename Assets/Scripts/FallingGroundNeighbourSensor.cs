@@ -33,7 +33,7 @@ namespace Prince
 
         private void Awake()
         {
-            _architectureLayerMask = LayerMask.GetMask("Architecture");
+            _architectureLayerMask = LayerMask.GetMask("Architecture", "Ground");
             _raycastDistance = Vector2.Distance(fallingGroundNeighbourSensorStart.position, fallingGroundNeighbourSensorEnd.position);
         }
 

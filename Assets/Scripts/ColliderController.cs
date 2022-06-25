@@ -17,8 +17,8 @@ public class ColliderController : MonoBehaviour
     [Tooltip("Collider used when character moves with sword unsheathed.")]
     [SerializeField] private Collider2D fightingCollider;
     // TODO: fallingCollider is a trigger but I don't use yet, but I think it will be useful for falling after hanging in 1 unit wide holes.
-    [Tooltip("Collider used when character falls.")]
-    [SerializeField] private Collider2D fallingCollider;
+    // [Tooltip("Collider used when character falls.")]
+    // [SerializeField] private Collider2D fallingCollider;
 
     private CharacterStatus.States _currentState;
     
@@ -32,14 +32,14 @@ public class ColliderController : MonoBehaviour
             {
                 return usualCollider;
             }
-            else if (fightingCollider.enabled)
+            else 
             {
                 return fightingCollider;
             }
-            else
-            {
-                return fallingCollider;
-            }
+            // else
+            // {
+            //     return fallingCollider;
+            // }
         }
     }
     
@@ -82,7 +82,7 @@ public class ColliderController : MonoBehaviour
     {
         usualCollider.enabled = true;
         fightingCollider.enabled = false;
-        fallingCollider.enabled = false;
+        // fallingCollider.enabled = false;
     }
 
     /// <summary>
@@ -104,9 +104,9 @@ public class ColliderController : MonoBehaviour
                 EnableFightingCollider();
                 break;
             case CharacterStatus.States.FallStart:
-            // case CharacterStatus.States.Falling:
-                EnableFallingCollider();
-                break;
+            case CharacterStatus.States.Falling:
+            //     EnableFallingCollider();
+            //     break;
             case CharacterStatus.States.Dead:
                 DisableColliders();
                 break;
@@ -126,7 +126,7 @@ public class ColliderController : MonoBehaviour
     {
         usualCollider.enabled = true;
         fightingCollider.enabled = false;
-        fallingCollider.enabled = false;
+        // fallingCollider.enabled = false;
         _enabledCollider = ColliderTypes.Usual;
     }
 
@@ -137,20 +137,20 @@ public class ColliderController : MonoBehaviour
     {
         usualCollider.enabled = false;
         fightingCollider.enabled = true;
-        fallingCollider.enabled = false;
+        // fallingCollider.enabled = false;
         _enabledCollider = ColliderTypes.Fighting;
     }
 
-    /// <summary>
-    /// Enable FallingCollider and disable every other collider.
-    /// </summary>
-    private void EnableFallingCollider()
-    {
-        usualCollider.enabled = false;
-        fightingCollider.enabled = false;
-        fallingCollider.enabled = true;
-        // _enabledCollider = ColliderTypes.Falling;
-    }
+    // /// <summary>
+    // /// Enable FallingCollider and disable every other collider.
+    // /// </summary>
+    // private void EnableFallingCollider()
+    // {
+    //     usualCollider.enabled = false;
+    //     fightingCollider.enabled = false;
+    //     fallingCollider.enabled = true;
+    //     // _enabledCollider = ColliderTypes.Falling;
+    // }
 
     /// <summary>
     /// Disable both colliders.
@@ -161,7 +161,7 @@ public class ColliderController : MonoBehaviour
     {
         usualCollider.enabled = false;
         fightingCollider.enabled = false;
-        fallingCollider.enabled = false;
+        // fallingCollider.enabled = false;
     }
 
     /// <summary>
@@ -179,9 +179,9 @@ public class ColliderController : MonoBehaviour
             case ColliderTypes.Fighting:
                 EnableFightingCollider();
                 break;
-            case ColliderTypes.Falling:
-                EnableFallingCollider();
-                break;
+            // case ColliderTypes.Falling:
+            //     EnableFallingCollider();
+            //     break;
         }
     }
     

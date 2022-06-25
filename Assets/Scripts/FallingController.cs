@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Prince
 {
@@ -36,7 +37,16 @@ namespace Prince
         /// <summary>
         /// Whether this character is falling or not.
         /// </summary>
-        private bool IsFalling => characterStatus.IsFalling;
+        private bool IsFalling => characterStatus.CurrentState switch
+        {
+            // I cannot use CharacterStatus.IsFalling because it depends on whether it detects ground under our feet,
+            // so gives hanging as falling.
+            CharacterStatus.States.FallStart or
+            CharacterStatus.States.Falling or 
+            CharacterStatus.States.FallingSliding or 
+            CharacterStatus.States.VerticalFall => true,
+            _ => false
+        };
         /// <summary>
         /// Current character height.
         /// </summary>
@@ -168,15 +178,16 @@ namespace Prince
         {
             if (IsFalling)
             {
-                if (_totalFallingHeight <= safeHeight)
+                if ((_totalFallingHeight <= safeHeight) && (ExpectedLanding != LandingStates.Normal))
                 {
                     ExpectedLanding = LandingStates.Normal;
                 }
-                else if (_totalFallingHeight <= hurtHeight)
+                else if ((safeHeight < _totalFallingHeight) && (_totalFallingHeight <= hurtHeight) && 
+                         ExpectedLanding != LandingStates.Hard)
                 {
                     ExpectedLanding = LandingStates.Hard;
                 }
-                else if (_totalFallingHeight > hurtHeight)
+                else if ((_totalFallingHeight > hurtHeight) && (ExpectedLanding != LandingStates.Deadly))
                 {
                     ExpectedLanding = LandingStates.Deadly;
                 }
@@ -194,6 +205,7 @@ namespace Prince
                 {
                     _previouslyWasFalling = true;
                     _totalFallingHeight = 0;
+                    this.Log($"(FallingController - {transform.root.name}) Falling counter started.", showLogs);
                 }
 
                 _totalFallingHeight += _previousHeight - CurrentHeight;
@@ -203,6 +215,7 @@ namespace Prince
                 if (_previouslyWasFalling)
                 {
                     _previouslyWasFalling = false;
+                    this.Log($"(FallingController - {transform.root.name}) Falling counter stopped.", showLogs);
                 }
             }
             _previousHeight = CurrentHeight;

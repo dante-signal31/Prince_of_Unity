@@ -52,6 +52,8 @@ namespace Prince
             Climbing,
             Descending,
             HitByFallingGround,
+            FallingSliding,
+            VerticalFall,
         }
 
         public enum JumpingTypes

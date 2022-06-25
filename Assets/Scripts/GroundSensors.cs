@@ -110,7 +110,7 @@ public class GroundSensors : MonoBehaviour
 
     private void Awake()
     {
-        _architectureLayerMask = LayerMask.GetMask("Architecture");
+        _architectureLayerMask = LayerMask.GetMask("Ground");
         CalculateSensorDistances();
         CalculateRayDirections();
     }

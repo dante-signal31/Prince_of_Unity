@@ -119,7 +119,7 @@ public class FightingSensors : MonoBehaviour
         if (IsOurEnemy(other))
         {
             GameObject otherEnemy = GetRootGameObject(other);
-            if (CurrentEnemy.name == otherEnemy.name)
+            if (CurrentEnemy != null && CurrentEnemy.name == otherEnemy.name)
             {
                 CurrentEnemy = null;
                 stateMachine.SetBool("enemyInHittingRange", false);

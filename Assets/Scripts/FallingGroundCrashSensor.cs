@@ -36,7 +36,7 @@ public class FallingGroundCrashSensor : MonoBehaviour
 
     private void Awake()
     {
-        _architectureLayerMask = LayerMask.GetMask("Architecture");
+        _architectureLayerMask = LayerMask.GetMask("Ground");
         _raycastDistance = Vector2.Distance(fallingGroundCrashSensorStart.position, fallingGroundCrashSensorEnd.position);
     }
 
