@@ -211,7 +211,7 @@ namespace Tests.PlayTests
             // Let movements perform.
             yield return new WaitForSeconds(5);
             // Assert Prince has fallen to where we expected.
-            Assert.True(Vector3.Distance(expectedFinalPosition, _prince.transform.position) < 0.20);
+            Assert.True(Vector3.Distance(expectedFinalPosition, _prince.transform.position) < 0.30);
             // Assert Prince is dead.
             Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         }
