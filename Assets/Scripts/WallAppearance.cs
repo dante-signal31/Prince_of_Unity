@@ -40,6 +40,7 @@ public class WallAppearance : MonoBehaviour, IBorder
     public void ShowBorder(bool showIt)
     {
         _hasBorder = showIt;
+        UpdateAppearance();
     }
     
     /// <summary>
