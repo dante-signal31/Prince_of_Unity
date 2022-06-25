@@ -50,7 +50,10 @@ namespace Prince
         }
 
         /// <summary>
-        /// Get speed depending on state.
+        /// <p>Get speed depending on state.</p>
+        ///
+        /// <p>It also signals state machine if horizontal speed is bigger than zero
+        /// so it can adjust fallings.</p>
         /// </summary>
         /// <param name="state">State to get speed.</param>
         /// <returns>Speed for given state.</returns>
@@ -86,7 +89,7 @@ namespace Prince
                 CharacterStatus.States.VerticalJump => CharacterMovementProfile.VerticalJumpHorizontalSpeed,
                     _ => 0
             };
-            // return characterStatus.LookingRightWards? speed: speed * -1;
+            stateMachine.SetBool("HorizontalMovement", speed > 0);
             return speed;
         }
 

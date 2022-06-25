@@ -24,12 +24,14 @@ namespace Tests.PlayTests
         private GameObject _startPosition8;
         private GameObject _startPosition26;
         private GameObject _startPosition27;
+        private GameObject _startPosition28;
 
         private CameraController _cameraController;
         private Room _room00;
         private Room _room01;
         private Room _room02;
         private Room _room22;
+        private Room _room23;
 
         private string _currentScene = "TheAbyss";
 
@@ -50,6 +52,7 @@ namespace Tests.PlayTests
             if (_startPosition8 == null) _startPosition8 = GameObject.Find("StartPosition8");
             if (_startPosition26 == null) _startPosition26 = GameObject.Find("StartPosition26");
             if (_startPosition27 == null) _startPosition27 = GameObject.Find("StartPosition27");
+            if (_startPosition28 == null) _startPosition28 = GameObject.Find("StartPosition28");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
@@ -60,6 +63,8 @@ namespace Tests.PlayTests
                 _room02 = GameObject.Find("Room_0_2").GetComponentInChildren<Room>();
             if (_room22 == null)
                 _room22 = GameObject.Find("Room_2_2").GetComponentInChildren<Room>();
+            if (_room23 == null)
+                _room23 = GameObject.Find("Room_2_3").GetComponentInChildren<Room>();
             
             _prince.SetActive(false);
             _enemy.SetActive(false);
@@ -203,6 +208,32 @@ namespace Tests.PlayTests
             yield return null;
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            // Assert Prince has fallen to where we expected.
+            Assert.True(Vector3.Distance(expectedFinalPosition, _prince.transform.position) < 0.20);
+            // Assert Prince is dead.
+            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
+        
+        /// <summary>
+        /// Test that Prince falls vertically from a falling floor through a narrow hole.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator FallingFromFallingGroundThroughNarrowHoleTest()
+        {
+            _cameraController.PlaceInRoom(_room23);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition28.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            Vector3 expectedFinalPosition = _startPosition27.transform.position;
+            // string commandFile = @"Assets\Tests\TestResources\runningSequenceToHole";
+            Vector2 startPosition = _prince.transform.position;
+            // InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            // AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            // AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
             yield return new WaitForSeconds(5);
             // Assert Prince has fallen to where we expected.
