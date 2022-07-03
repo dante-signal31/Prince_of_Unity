@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba45d86ba334d728cf77ac2cfac0e92, type: 3}
+  m_Name: PortcullisSounds
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: portcullis_closing_fast
+    audioClip: {fileID: 8300000, guid: 234cdbc55263c1746a6a5cd26ca03d7a, type: 3}
+  - name: portcullis_closing_slowly
+    audioClip: {fileID: 8300000, guid: 4f76a02c70e09024a829080beaf8ba77, type: 3}
+  - name: portcullis_opening
+    audioClip: {fileID: 8300000, guid: a7e3b8339185912429617fe018834e40, type: 3}
+  - name: portcullis_end
+    audioClip: {fileID: 8300000, guid: 6e8fd256066025743824b1fc450765b8, type: 3}
