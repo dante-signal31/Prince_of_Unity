@@ -6,6 +6,7 @@ namespace Prince
     /// <summary>
     /// This component keeps current state from climbable state machine.
     /// </summary>
+    // TODO: Make this class implement IStateMachineStatus.
     public class ClimbableStatus : MonoBehaviour
     {
 

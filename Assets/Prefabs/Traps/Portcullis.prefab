@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e06a42f2dd34254bb173c631d64fec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portcullisStatus: {fileID: 6009968366644188564}
   curtainTransform: {fileID: 6454652902568786078}
   curtainCollider: {fileID: 3471625335761099234}
   colliderInitialYPosition: 5.65
@@ -476,6 +477,11 @@ MonoBehaviour:
   colliderMaximumHeight: 5.4
   openingHeight: 1.848
   closingHeight: 0
+  openingTime: 4
+  closingTime: 15.63
+  closingFastSequence: 0.5
+  autoClose: 1
+  autoCloseWaitingTime: 5
   initialOpening: 0
 --- !u!1 &7230053662013548171
 GameObject:
@@ -519,6 +525,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4252193061446873360}
+  - component: {fileID: 6009968366644188564}
   m_Layer: 0
   m_Name: Portcullis
   m_TagString: Untagged
@@ -545,6 +552,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6009968366644188564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815559101780994356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089e07166d97455899f30c2959b73abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 3861068644464275873}
+  initialState: 0
 --- !u!1 &8816960047057064902
 GameObject:
   m_ObjectHideFlags: 0
