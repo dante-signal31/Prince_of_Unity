@@ -131,6 +131,9 @@ namespace Prince
             StartCoroutine(OpenPortCullisAsync());
         }
 
+        /// <summary>
+        /// Coroutine to open the portcullis.
+        /// </summary>
         private IEnumerator OpenPortCullisAsync()
         {
             soundController.PlaySound("portcullis_opening");
@@ -166,6 +169,9 @@ namespace Prince
             StartCoroutine(ClosePortcullisSlowlyAsync());
         }
 
+        /// <summary>
+        /// Coroutine to slow close the portcullis.
+        /// </summary>
         private IEnumerator ClosePortcullisSlowlyAsync()
         {
             soundController.PlaySound("portcullis_closing_slowly");
@@ -201,6 +207,9 @@ namespace Prince
             StartCoroutine(ClosePortcullisFastAsync());
         }
         
+        /// <summary>
+        /// Coroutine to fast close the portcullis.
+        /// </summary>
         private IEnumerator ClosePortcullisFastAsync()
         {
             _timer.StartTimeMeasure();
@@ -233,6 +242,17 @@ namespace Prince
         public void setPortcullisOpen()
         {
             setOpening(1.0f);
+            if (autoClose) StartCoroutine(AutoClose());
+        }
+
+        /// <summary>
+        /// Coroutine to close the portcullis after autoclose waiting time.
+        /// </summary>
+        private IEnumerator AutoClose()
+        {
+            yield return new WaitForSeconds(autoCloseWaitingTime);
+            if (portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.Open)
+                stateMachine.SetTrigger("Close");
         }
 
         /// <summary>
