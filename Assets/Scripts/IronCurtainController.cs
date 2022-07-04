@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Threading;
 using UnityEngine;
 using Unity.VisualScripting;
@@ -11,10 +12,14 @@ namespace Prince
         [Header("WIRING:")] 
         [Tooltip("Needed to know current portcullis status.")]
         [SerializeField] private PortcullisStatus portcullisStatus;
+        [Tooltip("Needed to signal state machine state changes.")]
+        [SerializeField] private Animator stateMachine;
         [Tooltip("Needed to mode iron curtain.")]
         [SerializeField] private Transform curtainTransform;
         [Tooltip("Needed to block way when curtain is closed.")]
         [SerializeField] private BoxCollider2D curtainCollider;
+        [Tooltip("Needed to play portcullis sounds.")]
+        [SerializeField] private SoundController soundController;
 
 
         [Header("CONFIGURATION:")] 
@@ -33,7 +38,7 @@ namespace Prince
         [Tooltip("Duration in seconds of closing sequence.")]
         [SerializeField] private float closingTime;
         [Tooltip("Duration in seconds of closing fast sequence.")]
-        [SerializeField] private float closingFastSequence;
+        [SerializeField] private float closingFastTime;
         [Tooltip("Whether this door should close automatically after a time.")]
         [SerializeField] private bool autoClose;
         [Tooltip("Time to wait before starting closing sequence if autoClose is true.")]
@@ -44,6 +49,10 @@ namespace Prince
 
         private float _portcullisOpening;
         private PortcullisStatus.PortcullisStates _currentState = PortcullisStatus.PortcullisStates.Closed;
+        private float _openingNormalizedSpeed;
+        private float _closingNormalizedSpeed;
+        private float _closingNormalizedFastSpeed;
+        private SimpleTimer _timer = new SimpleTimer();
         
         /// <summary>
         /// Portcullis current opening. 0 closed and 1 open.
@@ -52,7 +61,32 @@ namespace Prince
             get => _portcullisOpening;
             private set => _portcullisOpening = Mathf.Clamp(value, 0, 1);
         }
+
+        /// <summary>
+        /// True if portcullis is fully open. False if not.
+        /// </summary>
+        public bool PortcullisOpen => Mathf.Abs(PortcullisOpening - 1) < 0.01;
         
+        /// <summary>
+        /// True if portcullis is fully closed. False if not.
+        /// </summary>
+        public bool PortcullisClosed => Mathf.Abs(PortcullisOpening - 0) < 0.01;
+
+        private void Awake()
+        {
+            calculateSpeeds();
+        }
+
+        /// <summary>
+        /// Calculate normalized opening and closing speeds depending on given parameters.
+        /// </summary>
+        private void calculateSpeeds()
+        {
+            _openingNormalizedSpeed = 1 / openingTime;
+            _closingNormalizedSpeed = 1 / closingTime;
+            _closingNormalizedFastSpeed = 1 / closingFastTime;
+        }
+
         // [Header("DEBUG:")]
         // [Tooltip("Show this component logs on console window.")]
         // [SerializeField] private bool showLogs;
@@ -92,17 +126,71 @@ namespace Prince
         /// <summary>
         /// Start an opening sequence.
         /// </summary>
-        public void openPortcullis()
+        public void OpenPortcullis()
         {
-            
+            StartCoroutine(OpenPortCullisAsync());
+        }
+
+        private IEnumerator OpenPortCullisAsync()
+        {
+            soundController.PlaySound("portcullis_opening");
+            _timer.StartTimeMeasure();
+            float previousTime = _timer.ElapsedTime;
+            float elapsedTime = 0;
+            while (portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.Opening)
+            {
+                if (PortcullisOpen)
+                {
+                    break;
+                }
+                else
+                {
+                    float newTime = _timer.ElapsedTime;
+                    elapsedTime = newTime - previousTime;
+                    setOpening(PortcullisOpening + _openingNormalizedSpeed * elapsedTime);
+                    previousTime = newTime;
+                }
+                yield return null;
+            }
+            soundController.PlaySound("portcullis_end");
+            if (portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.Opening) 
+                stateMachine.SetTrigger("OpeningEnded");
+            yield return null;
         }
 
         /// <summary>
         /// Start an slow closing sequence.
         /// </summary>
-        public void closePortcullisSlowly()
+        public void ClosePortcullisSlowly()
         {
-            
+            StartCoroutine(ClosePortcullisSlowlyAsync());
+        }
+
+        private IEnumerator ClosePortcullisSlowlyAsync()
+        {
+            soundController.PlaySound("portcullis_closing_slowly");
+            _timer.StartTimeMeasure();
+            float previousTime = _timer.ElapsedTime;
+            float elapsedTime = 0;
+            while (portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.ClosingSlow)
+            {
+                if (PortcullisClosed)
+                {
+                    break;
+                }
+                else
+                {
+                    float newTime = _timer.ElapsedTime;
+                    elapsedTime = newTime - previousTime;
+                    setOpening(PortcullisOpening - _closingNormalizedSpeed * elapsedTime);
+                    previousTime = newTime;
+                }
+                yield return null;
+            }
+            soundController.PlaySound("portcullis_end");
+            if (portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.ClosingSlow)
+                stateMachine.SetTrigger("ClosingEnded");
+            yield return null;
         }
 
         /// <summary>
@@ -110,7 +198,33 @@ namespace Prince
         /// </summary>
         public void closePortcullisFast()
         {
-            
+            StartCoroutine(ClosePortcullisFastAsync());
+        }
+        
+        private IEnumerator ClosePortcullisFastAsync()
+        {
+            _timer.StartTimeMeasure();
+            float previousTime = _timer.ElapsedTime;
+            float elapsedTime = 0;
+            while (portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.ClosingFast)
+            {
+                if (PortcullisClosed)
+                {
+                    break;
+                }
+                else
+                {
+                    float newTime = _timer.ElapsedTime;
+                    elapsedTime = newTime - previousTime;
+                    setOpening(PortcullisOpening - _closingNormalizedFastSpeed * elapsedTime);
+                    previousTime = newTime;
+                }
+                yield return null;
+            }
+            soundController.PlaySound("portcullis_closing_fast");
+            if (portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.ClosingFast) 
+                stateMachine.SetTrigger("ClosingEnded");
+            yield return null;
         }
 
         /// <summary>
@@ -133,18 +247,27 @@ namespace Prince
 
         private void FixedUpdate()
         {
+            UpdateTimerCounter();
+            ReactToStateChanges();
+        }
+
+        /// <summary>
+        /// At state changes trigger iron curtain movement methods.
+        /// </summary>
+        private void ReactToStateChanges()
+        {
             if (_currentState != portcullisStatus.CurrentState)
             {
                 switch (portcullisStatus.CurrentState)
                 {
                     case PortcullisStatus.PortcullisStates.Opening:
-                        openPortcullis();
+                        OpenPortcullis();
                         break;
                     case PortcullisStatus.PortcullisStates.ClosingFast:
                         closePortcullisFast();
                         break;
                     case PortcullisStatus.PortcullisStates.ClosingSlow:
-                        closePortcullisSlowly();
+                        ClosePortcullisSlowly();
                         break;
                     case PortcullisStatus.PortcullisStates.Open:
                         setPortcullisOpen();
@@ -153,8 +276,17 @@ namespace Prince
                         setPortcullisClosed();
                         break;
                 }
+
                 _currentState = portcullisStatus.CurrentState;
             }
+        }
+
+        /// <summary>
+        /// If we are measuring time, then update counter.
+        /// </summary>
+        private void UpdateTimerCounter()
+        {
+            _timer.UpdateElapsedTime(Time.fixedDeltaTime);
         }
 
         private void OnValidate()
