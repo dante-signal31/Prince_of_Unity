@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OpeningSwitchBorderLeftEdge
+  m_Controller: {fileID: 9100000, guid: 2f44a8066c415134494455bb60fc182e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: be428b1e77c9ff144ba52ccca81e26ea, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7ff5ef579edcfb644bbeedb734180e54, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e3742b5a9398276408d2189cd490f712, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b56f384b1c9a53e429406b6f70894a8f, type: 2}

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ClosingSwitchNoBorderLeftEdge
+  m_Controller: {fileID: 9100000, guid: 2f44a8066c415134494455bb60fc182e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: be428b1e77c9ff144ba52ccca81e26ea, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d773d5009faa27846a05eefc4e33dfd1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e3742b5a9398276408d2189cd490f712, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d90832cbb600ff14fba7e513f8ac51f0, type: 2}

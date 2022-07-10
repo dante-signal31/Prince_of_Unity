@@ -28,6 +28,8 @@ public class CharacterWeightSensor : MonoBehaviour
     // this way at least I have a chance to practice with UnityEvents.
     [Tooltip("Callbacks to activate when sensor is triggered.")]
     [SerializeField] private UnityEvent weightSensorActivated;
+    [Tooltip("Callbacks to activate when sensor is no longer triggered.")]
+    [SerializeField] private UnityEvent weightSensorDeactivated;
     
     /// <summary>
     /// <p>Reference to Characters game object that is over sensor.</p>
@@ -43,6 +45,7 @@ public class CharacterWeightSensor : MonoBehaviour
 
     private bool _countingTime = false;
     private float _elapsedTime = 0;
+    private bool _activated = false;
     
     // Start is called before the first frame update
     void Start()
@@ -60,6 +63,7 @@ public class CharacterWeightSensor : MonoBehaviour
             {
                 weightSensorActivated.Invoke();
                 CounterStop();
+                _activated = true;
             }
         }
     }
@@ -102,6 +106,12 @@ public class CharacterWeightSensor : MonoBehaviour
             if (CharactersOverSensor.Count == 0)
             {
                 CounterStop();
+            }
+
+            if (_activated)
+            {
+                weightSensorDeactivated.Invoke();
+                _activated = false;
             }
         }
     }
