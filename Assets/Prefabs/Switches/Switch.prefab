@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1759673356017191222}
   - component: {fileID: 1438821856770707573}
   - component: {fileID: 4774519590003916755}
+  - component: {fileID: 4115850695422595698}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -176,12 +177,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 4446326003252863473}
+  groundSpriteRenderer: {fileID: 3915438874819965140}
+  occluderSpriteRenderer: {fileID: 7547978479382031619}
+  noBorderSprite: {fileID: 0}
+  borderSprite: {fileID: 0}
+  noBorderLefEdgeSprite: {fileID: 0}
+  borderLeftEdgeSprite: {fileID: 0}
+  occluderSprite: {fileID: 0}
   ShowBorder: 0
   AtLeftEdge: 0
   AnimatorControllerBorder: {fileID: 0}
   AnimatorControllerBorderLeftEdge: {fileID: 0}
-  AnimatorControlleNoBorder: {fileID: 0}
+  AnimatorControllerNoBorder: {fileID: 0}
   AnimatorControllerNoBorderLeftEdge: {fileID: 0}
+--- !u!114 &4115850695422595698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3010512464147529229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b111d28dc49f42e08cfc75eee19015ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchStatus: {fileID: 1438821856770707573}
+  activated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3638873479465681740
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1721362060382985248}
+  - component: {fileID: 8030145431852262111}
   m_Layer: 0
   m_Name: Effects
   m_TagString: Untagged
@@ -259,6 +284,20 @@ Transform:
   m_Father: {fileID: 1652859669132903840}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8030145431852262111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605019912840753053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1847af77914439a6b1070352e526e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchStatus: {fileID: 1438821856770707573}
+  soundController: {fileID: 2511887790049168689}
 --- !u!1 &7599978133342401433
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +693,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4788543338495704051, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
   m_PrefabInstance: {fileID: 4922500199515474358}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2511887790049168689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1834021150071634809, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
+  m_PrefabInstance: {fileID: 4922500199515474358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d772b87ff42ca4bbb2f7954db8e6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5924834966302165077
 PrefabInstance:
   m_ObjectHideFlags: 0

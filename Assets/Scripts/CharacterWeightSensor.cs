@@ -63,7 +63,6 @@ public class CharacterWeightSensor : MonoBehaviour
             {
                 weightSensorActivated.Invoke();
                 CounterStop();
-                _activated = true;
             }
         }
     }
@@ -94,6 +93,7 @@ public class CharacterWeightSensor : MonoBehaviour
         {
             CharactersOverSensor.Add(detectedGameObject);
             CounterStart();
+            _activated = true;
         }
     }
 
@@ -106,12 +106,11 @@ public class CharacterWeightSensor : MonoBehaviour
             if (CharactersOverSensor.Count == 0)
             {
                 CounterStop();
-            }
-
-            if (_activated)
-            {
-                weightSensorDeactivated.Invoke();
-                _activated = false;
+                if (_activated)
+                {
+                    weightSensorDeactivated.Invoke();
+                    _activated = false;
+                }
             }
         }
     }

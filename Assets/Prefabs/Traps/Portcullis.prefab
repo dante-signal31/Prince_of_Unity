@@ -528,6 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4252193061446873360}
   - component: {fileID: 6009968366644188564}
+  - component: {fileID: 3333905770075801453}
   m_Layer: 0
   m_Name: Portcullis
   m_TagString: Untagged
@@ -568,6 +569,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 3861068644464275873}
   initialState: 0
+--- !u!114 &3333905770075801453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815559101780994356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158b615053034195be0ba35221fb95bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 3861068644464275873}
 --- !u!1 &8816960047057064902
 GameObject:
   m_ObjectHideFlags: 0
