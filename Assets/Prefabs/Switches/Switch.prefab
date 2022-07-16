@@ -375,7 +375,7 @@ Animator:
   m_GameObject: {fileID: 7642120759407601417}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f44a8066c415134494455bb60fc182e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -715,7 +715,7 @@ PrefabInstance:
     - target: {fileID: -5304199100214260378, guid: f8e7d73ded60ae54f8074eb51576c2c5, type: 3}
       propertyPath: stateMachine
       value: 
-      objectReference: {fileID: 7236466266717726543}
+      objectReference: {fileID: 4446326003252863473}
     - target: {fileID: -5304199100214260378, guid: f8e7d73ded60ae54f8074eb51576c2c5, type: 3}
       propertyPath: ClimbableStatus
       value: 
@@ -851,8 +851,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcee8d20f0a14445a8630b5e782e3fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &7236466266717726543 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2278039795481067900, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
-  m_PrefabInstance: {fileID: 8930689349177370163}
-  m_PrefabAsset: {fileID: 0}
