@@ -8,6 +8,7 @@ namespace Prince
     /// <summary>
     /// Component to activate things from this switch.
     /// </summary>
+    [ExecuteAlways]
     public class SwitchEvents : MonoBehaviour
     {
         [Header("WIRING:")] 
@@ -37,7 +38,22 @@ namespace Prince
         /// </summary>
         public Color GizmoColor => gizmoColor;
         #endif
-        
+
+        private void Awake()
+        {
+            if (Application.isPlaying)
+            {
+                // Play mode logic.
+            }
+            else
+            {
+                // Editor mode logic.
+                #if UNITY_EDITOR
+                UpdateListenerList();
+                #endif
+            }
+        }
+
         private bool _eventAlreadyTriggered;
         private void Update()
         {

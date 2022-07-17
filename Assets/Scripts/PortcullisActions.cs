@@ -12,6 +12,7 @@ namespace Prince
     /// IronCurtainController is way deep inside Portcullis game object, I need some kind
     /// of forwarder.
     /// </summary>
+    [ExecuteAlways]
     public class PortcullisActions : MonoBehaviour
     {
         [Header("WIRING:")] 
@@ -52,9 +53,29 @@ namespace Prince
         {
             stateMachine.SetTrigger("CloseFast");
         }
-        
-        #if UNITY_EDITOR
+
+        private void Awake()
+        {
+            if (Application.isPlaying)
+            {
+                // Play mode logic.
+            }
+            else
+            {
+                // Editor mode logic.
+#if UNITY_EDITOR
+                UpdateAllSwitchesList();
+#endif
+            }
+        }
+
+#if UNITY_EDITOR
         private void OnValidate()
+        {
+            UpdateAllSwitchesList();
+        }
+
+        private void UpdateAllSwitchesList()
         {
             UpdateClosingSwitchesList();
             UpdateOpeningSwitchesList();
