@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3010512464147529229, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
+      propertyPath: m_TagString
+      value: OpeningSwitch
+      objectReference: {fileID: 0}
     - target: {fileID: 3109078340507286874, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -111,6 +115,22 @@ PrefabInstance:
     - target: {fileID: 3915438874819965140, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115850695422595698, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
+      propertyPath: gizmoSize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115850695422595698, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
+      propertyPath: gizmoColor.b
+      value: 0.05585742
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115850695422595698, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
+      propertyPath: gizmoColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115850695422595698, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
+      propertyPath: gizmoColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4446326003252863473, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
       propertyPath: m_Controller

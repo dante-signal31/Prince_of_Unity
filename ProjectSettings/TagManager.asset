@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Guard
   - Sensor
+  - ClosingSwitch
+  - OpeningSwitch
   layers:
   - Default
   - TransparentFX

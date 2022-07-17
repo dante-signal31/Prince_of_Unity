@@ -582,6 +582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 3861068644464275873}
+  gizmoColor: {r: 0.011712074, g: 0, b: 1, a: 0.003921569}
+  gizmoSize: 0.3
 --- !u!1 &8816960047057064902
 GameObject:
   m_ObjectHideFlags: 0
