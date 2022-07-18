@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tests/TheTrap.unity
     guid: 3a02d51b7aeafa44596b5a62038ad9bd
+  - enabled: 1
+    path: Assets/Scenes/Tests/TheVideo2.unity
+    guid: dece55493c5d2094682702ac3511c994
   m_configObjects: {}

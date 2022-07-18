@@ -77,6 +77,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         UpdateCameraSettings();
+        // TODO: Probably I'm going to place this level camera at Room_0_0 at the beginning.
     }
 
     /// <summary>
