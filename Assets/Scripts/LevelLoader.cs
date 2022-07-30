@@ -18,6 +18,10 @@ namespace Prince
             public SceneAsset levelScene;
         }
 
+        [Header("WIRING:")] 
+        [Tooltip("Needed to show loading progress.")] 
+        [SerializeField] private LoadingScreen loadingScreen;
+
         [Header("CONFIGURATION:")] 
         [Tooltip("Loadable level list. Order is important.")] 
         [SerializeField] private Level[] gameLevels;
@@ -33,6 +37,9 @@ namespace Prince
         /// </summary>
         public int CurrentSceneIndex { get; private set; }
         
+        private AsyncOperation _loadingOperation = null;
+        private bool _showingLoadingScreen = false;
+
         /// <summary>
         /// Load scene of given name.
         /// </summary>
@@ -45,7 +52,7 @@ namespace Prince
                 if (level.levelName == sceneName)
                 {
                     CurrentSceneIndex = index;
-                    SceneManager.LoadScene(level.levelScene.name);
+                    _loadingOperation = SceneManager.LoadSceneAsync(level.levelScene.name);
                     this.Log($"(LevelManager - {transform.root.name}) Scene {level.levelScene.name} loaded.", showLogs);
                     break;
                 }
@@ -63,7 +70,7 @@ namespace Prince
         {
             CurrentSceneIndex = sceneIndex;
             Level level = gameLevels[sceneIndex];
-            SceneManager.LoadScene(level.levelScene.name);
+            _loadingOperation = SceneManager.LoadSceneAsync(level.levelScene.name);
             this.Log($"(LevelManager - {transform.root.name}) Scene {level.levelScene.name} loaded by index {sceneIndex}.", showLogs);
         }
 
@@ -74,6 +81,36 @@ namespace Prince
         {
             LoadScene(++CurrentSceneIndex);
             this.Log($"(LevelManager - {transform.root.name}) Next scene loaded by index {CurrentSceneIndex}.", showLogs);
+        }
+
+        private void Update()
+        {
+            if (_loadingOperation != null)
+            {
+                if (_loadingOperation.isDone)
+                {
+                    HideLoadScreen();
+                    return;
+                }
+                if (!_showingLoadingScreen)
+                {
+                    ShowLoadScreen();
+                }
+                loadingScreen.SetProgressBarValue(_loadingOperation.progress * loadingScreen.ProgressBarMaxValue);
+            }
+        }
+
+        private void ShowLoadScreen()
+        {
+            loadingScreen.ShowLoadingScreen();
+            _showingLoadingScreen = true;
+        }
+
+        private void HideLoadScreen()
+        {
+            loadingScreen.HideLoadingScreen();
+            _showingLoadingScreen = false;
+            _loadingOperation = null;
         }
     }
 }

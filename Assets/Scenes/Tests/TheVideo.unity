@@ -231,6 +231,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1055084662}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -318,6 +322,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7181eb99dea04816905b62dcb63ca00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1055084662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7188563415636898523, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+  m_PrefabInstance: {fileID: 926538359}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50affcbbfeff4f96af5571cafeb0cad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1852044917

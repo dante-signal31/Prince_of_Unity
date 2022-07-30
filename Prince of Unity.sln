@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayTests", "PlayTests.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests.csproj", "{fc43d7e0-2a3b-1d11-88b8-7adda18aeb67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{f0644952-a058-d239-9395-8d83cbfb5eeb}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorTests", "EditorTests.csproj", "{c776f1ad-e537-41f5-2648-217da9bea709}"
 EndProject
 Global
@@ -20,6 +22,8 @@ Global
 		{f0380da5-f360-37b8-e985-5cb228369bbb}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{fc43d7e0-2a3b-1d11-88b8-7adda18aeb67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{fc43d7e0-2a3b-1d11-88b8-7adda18aeb67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{f0644952-a058-d239-9395-8d83cbfb5eeb}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f0644952-a058-d239-9395-8d83cbfb5eeb}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c776f1ad-e537-41f5-2648-217da9bea709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{c776f1ad-e537-41f5-2648-217da9bea709}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
