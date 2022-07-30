@@ -206,6 +206,7 @@ MonoBehaviour:
   activated:
     m_PersistentCalls:
       m_Calls: []
+  showLogs: 0
   gizmoColor: {r: 0, g: 0, b: 0, a: 0}
   gizmoSize: 0
 --- !u!1 &3638873479465681740

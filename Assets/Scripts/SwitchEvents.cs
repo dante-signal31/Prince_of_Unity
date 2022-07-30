@@ -28,10 +28,19 @@ namespace Prince
         [SerializeField] private float gizmoSize;
         
         #if UNITY_EDITOR
+        private List<GameObject> _listeners = new List<GameObject>();
+
         /// <summary>
         /// List of listeners that have subscribed to this switch.
         /// </summary>
-        public List<GameObject> Listeners { get; private set; }
+        public List<GameObject> Listeners
+        {
+            get=> _listeners;
+            private set
+            {
+                _listeners = value;
+            }
+        }
 
         /// <summary>
         /// Color used to paint gizmos related to this game object.
@@ -74,14 +83,17 @@ namespace Prince
         /// </summary>
         private void UpdateListenerList()
         {
-            Listeners.Clear();
-            int listenerCount = activated.GetPersistentEventCount();
-            this.Log($"(SwitchEvents - {transform.root.name}) There are {listenerCount} listeners.", showLogs);
-            for (int i=0; i<listenerCount; i++)
+            if (activated != null)
             {
-                this.Log($"(SwitchEvents - {transform.root.name}) Listener {i} is of type {activated.GetPersistentTarget(i).GetType()}.", showLogs);
-                MonoBehaviour listener = (MonoBehaviour) activated.GetPersistentTarget(i);
-                Listeners.Add(listener.gameObject);
+                Listeners.Clear();
+                int listenerCount = activated.GetPersistentEventCount();
+                this.Log($"(SwitchEvents - {transform.root.name}) There are {listenerCount} listeners.", showLogs);
+                for (int i=0; i<listenerCount; i++)
+                {
+                    this.Log($"(SwitchEvents - {transform.root.name}) Listener {i} is of type {activated.GetPersistentTarget(i).GetType()}.", showLogs);
+                    MonoBehaviour listener = (MonoBehaviour) activated.GetPersistentTarget(i);
+                    Listeners.Add(listener.gameObject);
+                }
             }
         }
         
@@ -92,18 +104,21 @@ namespace Prince
 
         private void DrawConnectionsToListeners()
         {
-            if (Listeners.Count == 0) return;
-            gizmoColor.a = 1;
-            Gizmos.color = gizmoColor;
-            Gizmos.DrawCube(transform.position, new Vector3(gizmoSize, gizmoSize));
-            this.Log($"(SwitchEvents - {transform.root.name}) Drawing connections with {Listeners.Count} listeners.", showLogs);
-            foreach (GameObject listener in Listeners)
+            if (activated != null)
             {
-                this.Log(
-                    $"(SwitchEvents - {transform.root.name}) Drawing connections with listener from {transform.position} to {listener.transform.position}.",
-                    showLogs);
-                Gizmos.DrawSphere(listener.transform.position, gizmoSize / 2);
-                Gizmos.DrawLine(transform.position, listener.transform.position);
+                // if (Listeners.Count == 0) return;
+                gizmoColor.a = 1;
+                Gizmos.color = gizmoColor;
+                Gizmos.DrawCube(transform.position, new Vector3(gizmoSize, gizmoSize));
+                this.Log($"(SwitchEvents - {transform.root.name}) Drawing connections with {Listeners.Count} listeners.", showLogs);
+                foreach (GameObject listener in Listeners)
+                {
+                    this.Log(
+                        $"(SwitchEvents - {transform.root.name}) Drawing connections with listener from {transform.position} to {listener.transform.position}.",
+                        showLogs);
+                    Gizmos.DrawSphere(listener.transform.position, gizmoSize / 2);
+                    Gizmos.DrawLine(transform.position, listener.transform.position);
+                }
             }
         }
 
