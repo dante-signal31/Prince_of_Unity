@@ -6,14 +6,14 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// A simple forwarder to be placed at portcullis root transform.
+    /// A simple forwarder to be placed at gate root transform.
     ///
     /// At UnityEvent you can only associate methods from root transform game object. As
-    /// IronCurtainController is way deep inside Portcullis game object, I need some kind
+    /// IronCurtainController is way deep inside gate game object, I need some kind
     /// of forwarder.
     /// </summary>
     [ExecuteAlways]
-    public class PortcullisActions : MonoBehaviour
+    public class GateActions : MonoBehaviour
     {
         [Header("WIRING:")] 
         [Tooltip("Needed to operate iron curtain.")] 
@@ -31,7 +31,7 @@ namespace Prince
         #endif
         
         /// <summary>
-        /// Start portcullis opening sequence.
+        /// Start gate opening sequence.
         /// </summary>
         public void Open()
         {
@@ -39,7 +39,7 @@ namespace Prince
         }
 
         /// <summary>
-        /// Start portcullis closing sequence.
+        /// Start gate closing sequence.
         /// </summary>
         public void CloseSlowly()
         {
@@ -47,7 +47,7 @@ namespace Prince
         }
 
         /// <summary>
-        /// Start portcullis fast closing sequence.
+        /// Start gate fast closing sequence.
         /// </summary>
         public void CloseFast()
         {
@@ -82,7 +82,7 @@ namespace Prince
         }
 
         /// <summary>
-        /// Update list of switches that close this portcullis.
+        /// Update list of switches that close this gate.
         /// </summary>
         private void UpdateClosingSwitchesList()
         {
@@ -96,7 +96,7 @@ namespace Prince
         }
 
         /// <summary>
-        /// Update list of switches that close this portcullis.
+        /// Update list of switches that close this gate.
         /// </summary>
         private void UpdateOpeningSwitchesList()
         {
