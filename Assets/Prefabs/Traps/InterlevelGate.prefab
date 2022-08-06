@@ -208,6 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3174727654767844900}
+  - component: {fileID: 4501202247844594012}
   m_Layer: 0
   m_Name: Physics
   m_TagString: Untagged
@@ -230,6 +231,30 @@ Transform:
   m_Father: {fileID: 6462870250311606400}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4501202247844594012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669493737879781072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5449e87a504a49d78fbf111e75de8013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 4927835400452215663}
+  curtainTransform: {fileID: 617341096468528217}
+  soundController: {fileID: 2973966791840494024}
+  openingHeight: 1.358
+  closingHeight: 0
+  openingTime: 3.57
+  closingTime: 0
+  closingFastTime: 0.27
+  autoClose: 0
+  autoCloseWaitingTime: 0
+  initialOpening: 0
+  gateStatus: {fileID: 1390522041032875658}
 --- !u!1 &3909900856431284553
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +775,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 6397714984496952950}
     m_Modifications:
+    - target: {fileID: -1834021150071634809, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
+      propertyPath: audioClips
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b1724163c3897418c92bb2e2586e44, type: 2}
     - target: {fileID: 4788543338495704051, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -806,3 +835,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4788543338495704051, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
   m_PrefabInstance: {fileID: 5749294012529423695}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2973966791840494024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1834021150071634809, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
+  m_PrefabInstance: {fileID: 5749294012529423695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d772b87ff42ca4bbb2f7954db8e6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -20,7 +20,7 @@ namespace Prince
             Open,
             ClosingFast,
             Entering,
-            Entered
+            Entered,
         }
 
         public GateStates CurrentState { get; set; }

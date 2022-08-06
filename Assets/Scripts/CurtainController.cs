@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Prince
 {
+    [ExecuteAlways]
     public abstract class CurtainController<T>: MonoBehaviour
     {
         [Header("WIRING (CurtainController):")]
@@ -106,7 +107,6 @@ namespace Prince
         /// </summary>
         protected virtual IEnumerator OpenGateAsync()
         {
-            // soundController.PlaySound("portcullis_opening");
             _timer.StartTimeMeasure();
             float previousTime = _timer.ElapsedTime;
             float elapsedTime = 0;
@@ -125,7 +125,6 @@ namespace Prince
                 }
                 yield return null;
             }
-            // soundController.PlaySound("portcullis_end");
             if (IsOpening()) 
                 stateMachine.SetTrigger("OpeningEnded");
             yield return null;
@@ -144,7 +143,6 @@ namespace Prince
         /// </summary>
         protected virtual IEnumerator CloseGateSlowlyAsync()
         {
-            // soundController.PlaySound("portcullis_closing_slowly");
             _timer.StartTimeMeasure();
             float previousTime = _timer.ElapsedTime;
             float elapsedTime = 0;
@@ -163,7 +161,6 @@ namespace Prince
                 }
                 yield return null;
             }
-            // soundController.PlaySound("portcullis_end");
             if (IsClosingSlowly())
                 stateMachine.SetTrigger("ClosingEnded");
             yield return null;
@@ -200,7 +197,6 @@ namespace Prince
                 }
                 yield return null;
             }
-            // soundController.PlaySound("portcullis_closing_fast");
             if (IsClosingFast()) 
                 stateMachine.SetTrigger("ClosingEnded");
             yield return null;
@@ -248,8 +244,8 @@ namespace Prince
         {
             if (StateHasChanged())
             {
-                ReactToNewState(GateStatus.CurrentState);
                 CurrentState = GateStatus.CurrentState;
+                ReactToNewState(GateStatus.CurrentState);
             }
         }
 
