@@ -469,14 +469,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e06a42f2dd34254bb173c631d64fec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portcullisStatus: {fileID: 6009968366644188564}
   stateMachine: {fileID: 3861068644464275873}
   curtainTransform: {fileID: 6454652902568786078}
-  curtainCollider: {fileID: 3471625335761099234}
   soundController: {fileID: 4944335513117867755}
-  colliderInitialYPosition: 4.69
-  colliderMinimumHeight: 0.61
-  colliderMaximumHeight: 4.3
   openingHeight: 1.54
   closingHeight: 0.06
   openingTime: 3.627
@@ -485,6 +480,11 @@ MonoBehaviour:
   autoClose: 1
   autoCloseWaitingTime: 5
   initialOpening: 0
+  gateStatus: {fileID: 6009968366644188564}
+  curtainCollider: {fileID: 3471625335761099234}
+  colliderInitialYPosition: 4.69
+  colliderMinimumHeight: 0.61
+  colliderMaximumHeight: 4.3
 --- !u!1 &7230053662013548171
 GameObject:
   m_ObjectHideFlags: 0
