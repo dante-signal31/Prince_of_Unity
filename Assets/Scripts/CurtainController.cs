@@ -6,9 +6,7 @@ namespace Prince
 {
     public abstract class CurtainController<T>: MonoBehaviour
     {
-        [Header("WIRING (CurtainController):")] 
-        // [Tooltip("Needed to know current portcullis status.")]
-        // [SerializeField] protected IStateMachineStatus<T> gateStatus;
+        [Header("WIRING (CurtainController):")]
         [Tooltip("Needed to signal state machine state changes.")]
         [SerializeField] protected Animator stateMachine;
         [Tooltip("Needed to mode curtain.")]

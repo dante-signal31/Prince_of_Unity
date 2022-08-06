@@ -19,19 +19,10 @@ namespace Prince
         [SerializeField] private float colliderMinimumHeight;
         [Tooltip("Maximum Y size for curtain collider.")]
         [SerializeField] private float colliderMaximumHeight;
-        
-        private PortcullisStatus.PortcullisStates _currentState = PortcullisStatus.PortcullisStates.Closed;
 
         protected override IStateMachineStatus<PortcullisStatus.PortcullisStates> GateStatus => gateStatus;
 
-        protected override PortcullisStatus.PortcullisStates CurrentState
-        {
-            get=> _currentState;
-            set
-            {
-                _currentState = value;
-            }
-        }
+        protected override PortcullisStatus.PortcullisStates CurrentState { get; set; }
 
         /// <summary>
         /// <p>Set current opening for iron curtain.</p>
@@ -114,7 +105,7 @@ namespace Prince
 
         protected override void Awake()
         {
-            _currentState = PortcullisStatus.PortcullisStates.Closed;
+            CurrentState = PortcullisStatus.PortcullisStates.Closed;
             base.Awake();
         }
 
