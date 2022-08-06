@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Prince
 {
+    
+    /// <summary>
+    /// Specific functionality to open and close portcullis.
+    /// </summary>
     [ExecuteAlways]
     public class IronCurtainController : CurtainController<PortcullisStatus.PortcullisStates>
     {

@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Prince
 {
+    /// <summary>
+    /// Specific functionality to open and close interlevel gates.
+    /// </summary>
     [ExecuteAlways]
     public class InterlevelGateCurtainController : CurtainController<InterlevelGateStatus.GateStates>
     {

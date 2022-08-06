@@ -4,6 +4,14 @@ using UnityEngine;
 
 namespace Prince
 {
+    /// <summary>
+    /// Common functionality for gates.
+    ///
+    /// Open and close methods for gates like portcullis and inter level gates.
+    ///
+    /// Specific gates inherit from this class and implement some of it methods.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [ExecuteAlways]
     public abstract class CurtainController<T>: MonoBehaviour
     {
