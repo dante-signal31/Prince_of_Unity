@@ -54,6 +54,7 @@ namespace Prince
             HitByFallingGround,
             FallingSliding,
             VerticalFall,
+            EnteringInterlevelGate
         }
 
         public enum JumpingTypes

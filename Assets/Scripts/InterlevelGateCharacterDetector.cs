@@ -12,6 +12,8 @@ namespace Prince
         [Header("WIRING:")] 
         [Tooltip("Needed to know when gate is open.")]
         [SerializeField] private InterlevelGateStatus gateStatus;
+        [Tooltip("Needed to give it to Prince character when he is in front of gate.")]
+        [SerializeField] private InterlevelGateCharacterInteractions characterInteractions;
        
         /// <summary>
         /// Reference to detected Prince character while he stays in sensor volume.
@@ -30,7 +32,8 @@ namespace Prince
         {
             if (other.transform.root.gameObject.GetComponentInChildren<InterlevelGateInteractions>() != null)
             {
-                if (PrinceCharacter.InterlevelGateAvailable) PrinceCharacter.InterlevelGateAvailable = false;
+                if (PrinceCharacter != null && 
+                    PrinceCharacter.InterlevelGateAvailable) PrinceCharacter.InterlevelGate = null;
                 PrinceCharacter = null;
             }
         }
@@ -41,7 +44,7 @@ namespace Prince
                 !_princeAlreadyNoticedThatGateIsOpen && 
                 gateStatus.CurrentState == InterlevelGateStatus.GateStates.Open)
             {
-                PrinceCharacter.InterlevelGateAvailable = true;
+                PrinceCharacter.InterlevelGate = characterInteractions;
             }
         }
     }

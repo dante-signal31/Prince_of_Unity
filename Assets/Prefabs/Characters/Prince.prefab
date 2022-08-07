@@ -929,6 +929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e9ffc2f0514e3aa34000fd9b4bd4a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateMachine: {fileID: 3792878465186783984}
+  characterStatus: {fileID: 3800712010592504634}
 --- !u!114 &7254305074926980783 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
