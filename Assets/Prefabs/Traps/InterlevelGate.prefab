@@ -282,7 +282,7 @@ MonoBehaviour:
   closingHeight: 0
   openingTime: 3.57
   closingTime: 0
-  closingFastTime: 0.27
+  closingFastTime: 0.8
   autoClose: 0
   autoCloseWaitingTime: 0
   initialOpening: 0

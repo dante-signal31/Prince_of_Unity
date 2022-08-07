@@ -22,22 +22,27 @@ namespace Prince
         [Header("CONFIGURATION:")] 
         [Tooltip("Video to play.")] 
         [SerializeField] private VideoClip videoToPlay;
-        [Tooltip("Event to call when video gets its end.")] 
+        [Tooltip("Event to call when video gets its end. Used with level local game objects.")] 
         [SerializeField] private UnityEvent videoPlayingEnded;
+        [Tooltip("Load next level when video ends.")]
+        [SerializeField] private bool loadNextLevelAtEnd;
 
-        private Camera currentCamera;
+        private Camera _currentCamera;
+        private LevelLoader _levelLoader;
 
         private void Awake()
         {
             videoPlayer.loopPointReached += OnVideoPlayingEnded;
-            currentCamera = GameObject.Find("LevelCamera").GetComponentInChildren<Camera>();
-            videoPlayer.targetCamera = currentCamera;
+            _currentCamera = GameObject.Find("LevelCamera").GetComponentInChildren<Camera>();
+            videoPlayer.targetCamera = _currentCamera;
             videoPlayer.clip = videoToPlay;
+            _levelLoader = GameObject.Find("LevelLoader").GetComponentInChildren<LevelLoader>();
         }
 
         private void OnVideoPlayingEnded(VideoPlayer vp)
         {
             if (videoPlayingEnded != null) videoPlayingEnded.Invoke();
+            if (loadNextLevelAtEnd) _levelLoader.LoadNextScene();
         }
     }
 }
