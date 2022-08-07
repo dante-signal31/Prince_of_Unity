@@ -917,6 +917,18 @@ MonoBehaviour:
   groundSensors: {fileID: 7254305074926980783}
   soundController: {fileID: 5974537263132064961}
   showLogs: 0
+--- !u!114 &5393526413620301718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090742675517095982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e9ffc2f0514e3aa34000fd9b4bd4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7254305074926980783 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5852060714942834250, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}

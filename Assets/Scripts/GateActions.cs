@@ -15,6 +15,7 @@ namespace Prince
     [ExecuteAlways]
     public class GateActions : MonoBehaviour
     {
+        // TODO: Extract common behaviour with PortcullisActions.
         [Header("WIRING:")] 
         [Tooltip("Needed to operate iron curtain.")] 
         [SerializeField] private Animator stateMachine;
