@@ -69,7 +69,7 @@ namespace Tests.PlayTests
         /// Test Prince can go to next level through an interlevel gate.
         /// </summary>
         [UnityTest]
-        public IEnumerator CannotGoThroughClosedPortcullisTest()
+        public IEnumerator CanGoThroughInterlevelGate()
         {
             _cameraController.PlaceInRoom(_room20);
             _prince.SetActive(true);
@@ -82,7 +82,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(20);
+            yield return new WaitForSeconds(21);
             string endFinalLevelName = _levelLoader.CurrentSceneName;
             // Assert Prince has not gone through inter level gate to desired level.
             Assert.True(expectedFinalLevelName == endFinalLevelName);
