@@ -40,6 +40,16 @@ namespace Prince
             audioSource.Play();
             yield return null;
         }
+
+        /// <summary>
+        /// Get sound length in seconds.
+        /// </summary>
+        /// <param name="soundName">Name of sound.</param>
+        /// <returns>Length in seconds.</returns>
+        public float getSoundLength(string soundName)
+        {
+            return audioClips[soundName].length;
+        }
     }
 }
 

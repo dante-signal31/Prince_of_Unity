@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 6462870250311606400}
   - component: {fileID: 1390522041032875658}
   - component: {fileID: 3077000616754854836}
+  - component: {fileID: 6688907545456793276}
   m_Layer: 0
   m_Name: InterlevelGate
   m_TagString: Untagged
@@ -515,6 +516,21 @@ MonoBehaviour:
   stateMachine: {fileID: 4927835400452215663}
   gizmoColor: {r: 0.011764706, g: 0, b: 1, a: 0.003921569}
   gizmoSize: 0.3
+--- !u!114 &6688907545456793276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966323290480635402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d945551497b49978d32fdc43b37170d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateStatus: {fileID: 1390522041032875658}
+  soundController: {fileID: 2973966791840494024}
+  levelToLoad: 
 --- !u!1 &4142603680699648418
 GameObject:
   m_ObjectHideFlags: 0

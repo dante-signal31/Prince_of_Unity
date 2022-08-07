@@ -17,3 +17,5 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 633a1183600593b45b7c7de18dfb0818, type: 3}
   - name: opening
     audioClip: {fileID: 8300000, guid: 577c373d4d1b23c4fa9704a0cf774db5, type: 3}
+  - name: end_level_music
+    audioClip: {fileID: 8300000, guid: 9744a932044a2cb43a738936b3c643e4, type: 3}

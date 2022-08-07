@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tests/TheVideo2.unity
     guid: dece55493c5d2094682702ac3511c994
+  - enabled: 1
+    path: Assets/Scenes/Tests/TheDoors 2.unity
+    guid: b861a89b08ef18c4ca8ed959f4537347
+  - enabled: 1
+    path: Assets/Scenes/Tests/TheDoors.unity
+    guid: 1dea439f3d514f94e81c3988681a6620
   m_configObjects: {}
