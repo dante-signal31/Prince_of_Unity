@@ -33,9 +33,16 @@ namespace Prince
         /// <summary>
         /// Current scene index.
         ///
-        /// This index is the one of gameLevels, not the one of build settings.
+        /// This index is the one of gameLevels, here at LevelLoader, not the one of build settings.
         /// </summary>
         public int CurrentSceneIndex { get; private set; }
+        
+        /// <summary>
+        /// Current scene index.
+        ///
+        /// This name is the one of gameLevels, here at LevelLoader, not the one of build settings.
+        /// </summary>
+        public string CurrentSceneName { get; private set; }
         
         private AsyncOperation _loadingOperation = null;
         private bool _showingLoadingScreen = false;
@@ -52,6 +59,7 @@ namespace Prince
                 if (level.levelName == sceneName)
                 {
                     CurrentSceneIndex = index;
+                    CurrentSceneName = sceneName;
                     _loadingOperation = SceneManager.LoadSceneAsync(level.levelScene.name);
                     this.Log($"(LevelManager - {transform.root.name}) Scene {level.levelScene.name} loaded.", showLogs);
                     break;
