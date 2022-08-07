@@ -90,7 +90,6 @@ namespace Prince
                 if (_loadingOperation.isDone)
                 {
                     HideLoadScreen();
-                    // TODO: Signal level camera to focus over new level Room_0_0.
                     return;
                 }
                 if (!_showingLoadingScreen)

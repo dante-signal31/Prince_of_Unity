@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Prince;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This component controls level camera behaviour.
@@ -34,6 +35,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private int height;
     [Tooltip("How many units this camera should show as width.")]
     [SerializeField] private int width;
+    [Tooltip("In which room place this camera when level loads.")]
+    [SerializeField] private string defaultRoom = "Room_0_0";
 
     private bool _updateNeeded = false;
     private Flash[] _currentFlashSequence;
@@ -68,16 +71,34 @@ public class CameraController : MonoBehaviour
     /// </summary>
     private void FixPositionOffset()
     {
-        // camera.transform.localPosition = new Vector3((float)width / 2,
-        //         (float) height / 2,
-        //         camera.transform.localPosition.z);
         camera.transform.localPosition = new Vector3(0,0, camera.transform.localPosition.z);
     }
-    
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += PlaceAtDefaultRoom;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= PlaceAtDefaultRoom;
+    }
+
     private void Awake()
     {
         UpdateCameraSettings();
-        // TODO: Probably I'm going to place this level camera at Room_0_0 at the beginning.
+    }
+
+    /// <summary>
+    /// Place camera at default location.
+    ///
+    /// If current scene has no room with default name then do nothing.
+    /// </summary>
+    private void PlaceAtDefaultRoom(Scene _, LoadSceneMode __)
+    {
+        GameObject roomGameObject = GameObject.Find(defaultRoom);
+        Room room = roomGameObject != null ? roomGameObject.GetComponentInChildren<Room>() : null;
+        if (room != null) PlaceInRoom(room);
     }
 
     /// <summary>
