@@ -21,6 +21,10 @@ namespace Prince
         [Header("CONFIGURATION:")]
         [Tooltip("Order in layer when this sprite is translated to foreground layer.")]
         [SerializeField] private int foregroundOrderInLayer;
+        [Tooltip("Corpse to show in stabbing traps.")] 
+        [SerializeField] private Sprite stabbedCorpse;
+        [Tooltip("Corpse to show in cutting traps.")] 
+        [SerializeField] private Sprite cutCorpse;
 
         private bool _currentFacingIsRightWards;
         private float _spriteRendererOffset;
@@ -159,6 +163,25 @@ namespace Prince
         private void MakeSpriteVisible()
         {
             if (!SpriteVisible) spriteRenderer.enabled = true;
+        }
+
+        /// <summary>
+        /// Get corpse to show for this character at traps.
+        /// </summary>
+        /// <param name="corpseType">Killing mode of trap.</param>
+        /// <returns>Corpse to show at a trap of this mode.</returns>
+        public Sprite GetCorpseSprite(TrapInteractions.CorpseTypes corpseType)
+        {
+            switch (corpseType)
+            {
+                case TrapInteractions.CorpseTypes.Stabbed:
+                    return stabbedCorpse;
+                case TrapInteractions.CorpseTypes.Cut:
+                    return cutCorpse;
+                default:
+                    // We won't get here.
+                    return null;
+            }
         }
     }
 }

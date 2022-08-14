@@ -61,7 +61,7 @@ public class CharacterWeightSensor : MonoBehaviour
             _elapsedTime += Time.deltaTime;
             if (_elapsedTime >= activationTime)
             {
-                weightSensorActivated.Invoke();
+                if (weightSensorActivated != null) weightSensorActivated.Invoke();
                 CounterStop();
             }
         }
@@ -108,7 +108,7 @@ public class CharacterWeightSensor : MonoBehaviour
                 CounterStop();
                 if (_activated)
                 {
-                    weightSensorDeactivated.Invoke();
+                    if (weightSensorDeactivated != null) weightSensorDeactivated.Invoke();
                     _activated = false;
                 }
             }

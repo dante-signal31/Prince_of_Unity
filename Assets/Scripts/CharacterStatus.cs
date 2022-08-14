@@ -54,7 +54,8 @@ namespace Prince
             HitByFallingGround,
             FallingSliding,
             VerticalFall,
-            EnteringInterlevelGate
+            EnteringInterlevelGate,
+            KilledByTrap
         }
 
         public enum JumpingTypes
@@ -71,6 +72,8 @@ namespace Prince
         [SerializeField] private GravityController gravityController;
         [Tooltip("Needed to know if we hve ground under our feet.")]
         [SerializeField] private GroundSensors groundSensors;
+        [Tooltip("Needed to show other game objects if this is a guard or not.")] 
+        [SerializeField] private FightingInteractions fightingInteractions;
         
         [Header("CONFIGURATION:")]
         [Tooltip("Current character life.")]
@@ -219,6 +222,11 @@ namespace Prince
                 return (LookingRightWards) ? Vector2.right : Vector2.left;
             }
         }
+
+        /// <summary>
+        /// Whether this character is Prince or not.
+        /// </summary>
+        public bool IsPrince => !fightingInteractions.ImGuard;
         
         /// <summary>
         /// UpdateAnimator flags that depend on character status.

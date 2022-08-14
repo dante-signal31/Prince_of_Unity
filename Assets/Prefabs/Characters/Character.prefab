@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 1245777922232396092}
   - component: {fileID: 1391425223428354020}
   - component: {fileID: 2281631549126216618}
+  - component: {fileID: 3697509955330008405}
   m_Layer: 0
   m_Name: Interactions
   m_TagString: Untagged
@@ -394,6 +395,18 @@ MonoBehaviour:
   damageEffects: {fileID: 6359709207466570223}
   fightingInteractions: {fileID: 1391425223428354020}
   showLogs: 1
+--- !u!114 &3697509955330008405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6340411678766655691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d2e2a49aef248718bbdcd00527b6174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7528680167608715500
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +523,7 @@ MonoBehaviour:
   stateMachine: {fileID: 88322598493374997}
   gravityController: {fileID: 7973259305185711377}
   groundSensors: {fileID: 5852060714942834250}
+  fightingInteractions: {fileID: 0}
   life: 0
   maximumLife: 0
   hasSword: 0

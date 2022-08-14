@@ -105,6 +105,10 @@ PrefabInstance:
       propertyPath: lookingRightWards
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82222986682491871, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: fightingInteractions
+      value: 
+      objectReference: {fileID: 1594298939120450983}
     - target: {fileID: 88322598493374997, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Controller
       value: 
@@ -621,6 +625,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.517
       objectReference: {fileID: 0}
+    - target: {fileID: 9005965534505083571, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: cutCorpse
+      value: 
+      objectReference: {fileID: 21300000, guid: d2250f83e52307c4593d9c494718fea0, type: 3}
+    - target: {fileID: 9005965534505083571, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: stabbedCorpse
+      value: 
+      objectReference: {fileID: 21300000, guid: 1309aa52dac9f644483ade37995e6352, type: 3}
     - target: {fileID: 9170674402223616008, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Layer
       value: 6
