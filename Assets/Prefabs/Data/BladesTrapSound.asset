@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba45d86ba334d728cf77ac2cfac0e92, type: 3}
+  m_Name: BladesTrapSound
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: activated
+    audioClip: {fileID: 8300000, guid: e429cecc7b2160243ad00f32ed3a5741, type: 3}
+  - name: chaft
+    audioClip: {fileID: 8300000, guid: 9f96f01272761e340b65824c5a36ab5a, type: 3}

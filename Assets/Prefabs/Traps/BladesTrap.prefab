@@ -8,10 +8,50 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 905989530304701883, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Size.x
+      value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 905989530304701883, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Size.y
+      value: 2.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 905989530304701883, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3b08c90cfe17b8f46b04fea2481ca54a, type: 3}
+    - target: {fileID: 905989530304701883, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1580019558488762587, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e62eb2b09c2622146bcc92cb6e6df2fa, type: 3}
+    - target: {fileID: 1687047078068443355, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687047078068443355, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: killMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687047078068443355, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: loopWaitingTime
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926902770562282789, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 53d31230db020294da86ca14500f11af, type: 2}
+    - target: {fileID: 4168273417374914644, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Size.x
+      value: 0.35780716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4168273417374914644, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.613986
+      objectReference: {fileID: 0}
     - target: {fileID: 4730212839934310047, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -19,6 +59,38 @@ PrefabInstance:
     - target: {fileID: 4759583856683917541, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
       propertyPath: m_Name
       value: BladesTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496320649988620153, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Size.x
+      value: 7.976737
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496320649988620153, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6323075
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496320649988620153, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.018908978
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496320649988620153, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.2060063
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967110986666923396, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Size.x
+      value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967110986666923396, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Size.y
+      value: 2.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967110986666923396, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0817c78ee311be8409b438bdb2ea8417, type: 3}
+    - target: {fileID: 5967110986666923396, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7526663450981808345, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
       propertyPath: m_RootOrder
@@ -76,6 +148,45 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a781e5c787c611541ae0f6594a8ed34e, type: 3}
+    - target: {fileID: 9042753766578063082, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: audioClips
+      value: 
+      objectReference: {fileID: 11400000, guid: 64c287bf6da30564794ad0548382b748, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+--- !u!114 &322133114120884431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1687047078068443355, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+  m_PrefabInstance: {fileID: 1374136910149158932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525516db0980426bbac131e8d98540df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2697308176548445489 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3926902770562282789, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+  m_PrefabInstance: {fileID: 1374136910149158932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4772809838303575794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5849480474625537766, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+  m_PrefabInstance: {fileID: 1374136910149158932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4633427387581584107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772809838303575794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2565fe67045d40629535ab7a375582f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 2697308176548445489}
+  trapStatus: {fileID: 322133114120884431}

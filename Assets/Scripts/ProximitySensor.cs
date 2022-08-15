@@ -30,7 +30,7 @@ namespace Prince
         /// </summary>
         public HashSet<GameObject> CharactersDetected => sensor.CharactersOverSensor;
 
-        private HashSet<GameObject> _charactersCurrentlyDetected;
+        private HashSet<GameObject> _charactersCurrentlyDetected = new HashSet<GameObject>();
 
         /// <summary>
         /// Called when sensor activated event is triggered.
@@ -44,9 +44,10 @@ namespace Prince
         private void AddNewDetectedCharacters()
         {
             // I use a Linq query because I don't want to modify in place nor CharactersDetected nor _characterCurrentlyDetected.
-            IEnumerable<GameObject> newCharacters = from character in CharactersDetected
+            IEnumerable<GameObject> newCharactersIterator = from character in CharactersDetected
                 where !_charactersCurrentlyDetected.Contains(character)
                 select character;
+            HashSet<GameObject> newCharacters = new HashSet<GameObject>(newCharactersIterator);
             foreach (GameObject character in newCharacters)
             {
                 _charactersCurrentlyDetected.Add(character);
@@ -75,9 +76,10 @@ namespace Prince
         private void RemoveGoneCharacters()
         {
             // I use a Linq query because I don't want to modify in place nor CharactersDetected nor _characterCurrentlyDetected.
-            IEnumerable<GameObject> goneCharacters = from character in _charactersCurrentlyDetected
+            IEnumerable<GameObject> goneCharactersIterator = from character in _charactersCurrentlyDetected
                 where !CharactersDetected.Contains(character)
                 select character;
+            HashSet<GameObject> goneCharacters = new HashSet<GameObject>(goneCharactersIterator);
             foreach (GameObject character in goneCharacters)
             {
                 _charactersCurrentlyDetected.Remove(character);

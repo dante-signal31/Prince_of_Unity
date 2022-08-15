@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: trapStatus
       value: 
       objectReference: {fileID: 397870266362714869}
+    - target: {fileID: 3926902770562282789, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 1cbf196178d6e5e45b47664efdb98049, type: 2}
     - target: {fileID: 4730212839934310047, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
       propertyPath: m_Sprite
       value: 
