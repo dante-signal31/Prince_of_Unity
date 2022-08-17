@@ -17,6 +17,8 @@ namespace Prince
         [Header("WIRING:")] 
         [Tooltip("Needed to get corpse sprite configuration.")] 
         [SerializeField] private CharacterAppearance characterAppearance;
+        [Tooltip("Needed to signal tha character")]
+        [SerializeField] private Animator stateMachine;
         
         /// <summary>
         /// Call from trap to signal this character has been killed by that trap.
@@ -24,7 +26,7 @@ namespace Prince
         /// <exception cref="NotImplementedException"></exception>
         public void KilledByTrap()
         {
-            throw new NotImplementedException();
+            stateMachine.SetTrigger("KilledByTrap");
         }
 
         /// <summary>

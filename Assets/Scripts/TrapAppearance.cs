@@ -30,9 +30,9 @@ namespace Prince
             }
             else
             {
+                // By default corpses sprites look to right, but there is no need to flip them because 
+                // sprite renderers looking to left are already flipped in their editor configuration.
                 princeCorpseLookingLeft.sprite = corpse;
-                // By default corpses sprites look to right.
-                princeCorpseLookingLeft.flipY = true;
             }
         }
         
@@ -49,9 +49,9 @@ namespace Prince
             }
             else
             {
+                // By default corpses sprites look to right, but there is no need to flip them because 
+                // sprite renderers looking to left are already flipped in their editor configuration.
                 guardCorpseLookingLeft.sprite = corpse;
-                // By default corpses sprites look to right.
-                guardCorpseLookingLeft.flipY = true;
             }
         }
 

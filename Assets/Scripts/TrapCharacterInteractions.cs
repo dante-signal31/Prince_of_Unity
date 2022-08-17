@@ -17,14 +17,35 @@ namespace Prince
         [SerializeField] private TrapAppearance trapAppearance;
         [Tooltip("Needed to trigger damage effect when a character is killed.")] 
         [SerializeField] private TrapDamageEffect damageEffect;
+        [Tooltip("Needed to play chaft sound when a character is killed.")]
+        [SerializeField] private SoundController soundController;
 
+        private int _charactersInTrap;
+        
         /// <summary>
         /// Listener for killingSensor newCharacterEvent event.
         /// </summary>
-        /// <param name="character">New character detected.</param>
-        public void NewCharacterInKillingZone(GameObject character)
+        /// <param name="_">New character detected. (Currently not used)</param>
+        public void NewCharacterInKillingZone(GameObject _)
         {
-            if (trapStatus.CanKill)
+            _charactersInTrap++;
+        }
+
+        /// <summary>
+        /// Listener for killingSensor characterGone event.
+        /// </summary>
+        /// <param name="_">Character who has exited from killing zone. (Currently not used)</param>
+        public void CharacterGoneFromKillingZone(GameObject _)
+        {
+            if (_charactersInTrap > 0) _charactersInTrap--;
+        }
+
+        /// <summary>
+        /// Kill whoever is in trap kill zone.
+        /// </summary>
+        public void KillCharactersInKillingZone()
+        {
+            foreach (GameObject character in killingSensor.CharactersDetected)
             {
                 TrapInteractions characterTrapInteractions = character.GetComponentInChildren<TrapInteractions>();
                 CharacterStatus characterStatus = character.GetComponentInChildren<CharacterStatus>();
@@ -37,6 +58,16 @@ namespace Prince
                 }
                 trapAppearance.ShowCorpse(characterStatus.IsPrince, characterStatus.LookingRightWards, corpse);
                 characterTrapInteractions.KilledByTrap();
+                _charactersInTrap--;
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (trapStatus.CanKill && _charactersInTrap != 0)
+            {
+                KillCharactersInKillingZone();
+                // soundController.PlaySound("chaft");
             }
         }
     }

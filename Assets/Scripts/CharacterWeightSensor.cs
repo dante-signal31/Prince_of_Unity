@@ -88,6 +88,7 @@ public class CharacterWeightSensor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.isTrigger) return;
         GameObject detectedGameObject = GameObjectTools.Collider2GameObject(col);
         if (GameObjectTools.IsACharacter(detectedGameObject))
         {

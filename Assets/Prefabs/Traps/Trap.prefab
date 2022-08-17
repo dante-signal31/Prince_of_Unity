@@ -388,7 +388,19 @@ MonoBehaviour:
         m_CallState: 2
   characterGone:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4775824902168288267}
+        m_TargetAssemblyTypeName: Prince.TrapCharacterInteractions, GameAssembly
+        m_MethodName: CharacterGoneFromKillingZone
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2607891901983401599
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +658,7 @@ MonoBehaviour:
   soundController: {fileID: 9042753766578063082}
   killMode: 0
   loop: 0
+  loopWaitingTime: 0
 --- !u!1 &5849480474625537766
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +795,7 @@ MonoBehaviour:
   killingSensor: {fileID: 8216473252593402054}
   trapAppearance: {fileID: 886715562257527547}
   damageEffect: {fileID: 8522326702745126087}
+  soundController: {fileID: 9042753766578063082}
 --- !u!1 &6667991887634853919
 GameObject:
   m_ObjectHideFlags: 0

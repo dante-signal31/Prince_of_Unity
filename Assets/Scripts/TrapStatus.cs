@@ -30,11 +30,24 @@ namespace Prince
         [SerializeField] private float loopWaitingTime;
 
         public States CurrentState { get; set; }
-        
+
+        private bool _canKill;
+
         /// <summary>
         /// Whether this trap can kill a character at this moment.
         /// </summary>
-        public bool CanKill { get; set; }
+        public bool CanKill
+        {
+            get => _canKill;
+            private set
+            {
+                if (_canKill != value)
+                {
+                    _canKill = value;
+                    stateMachine.SetBool("CanKill", value);
+                }
+            }
+        }
 
         /// <summary>
         /// Which kind of corpse this trap generates.
@@ -42,6 +55,8 @@ namespace Prince
         public TrapInteractions.CorpseTypes KillMode => killMode;
 
         private bool _activationSoundAlreadyPlayed = false;
+
+        private bool _chaftSoundAlreadyPlayed;
 
         private bool _waiting;
         
@@ -53,8 +68,11 @@ namespace Prince
             get => _waiting;
             set
             {
-                _waiting = value;
-                if (!_waiting) stateMachine.SetTrigger("WaitingEnded");
+                if (_waiting != value)
+                {
+                    _waiting = value;
+                    if (!_waiting) stateMachine.SetTrigger("WaitingEnded");
+                }
             }
         }
 
@@ -73,9 +91,11 @@ namespace Prince
                         soundController.PlaySound("activated");
                         _activationSoundAlreadyPlayed = true;
                     }
+                    CanKill = true;
                     break;
                 case States.Deactivated:
                     _activationSoundAlreadyPlayed = false;
+                    CanKill = false;
                     break;
                 case States.Waiting:
                     if (!Waiting)
@@ -83,6 +103,7 @@ namespace Prince
                         Waiting = true;
                         StartCoroutine(SignalEndWaitingTime()); 
                     }
+                    CanKill = false;
                     break;
             }
         }

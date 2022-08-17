@@ -85,7 +85,7 @@ namespace Prince
         /// </param>
         public void ShowTrapHit(DamageEffectType effectType)
         {
-            StartCoroutine(ShowHitAsync(effectType, "killing"));
+            StartCoroutine(ShowHitAsync(effectType, "chaft"));
         }
         
         private IEnumerator ShowHitAsync(DamageEffectType effectType, string soundToPlay = null)

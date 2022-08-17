@@ -14,10 +14,5 @@ namespace Prince
         {
             soundController.PlaySound(clipName);
         }
-
-        public void CanKill(bool isLethal)
-        {
-            trapStatus.CanKill = isLethal;
-        }
     }
 }

@@ -157,6 +157,8 @@ MonoBehaviour:
   directionalComponents: {fileID: 3166921662542275327}
   spriteRenderer: {fileID: 7260485351124137714}
   foregroundOrderInLayer: 2
+  stabbedCorpse: {fileID: 0}
+  cutCorpse: {fileID: 0}
 --- !u!114 &8326000155993945185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2e2a49aef248718bbdcd00527b6174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterAppearance: {fileID: 9005965534505083571}
+  stateMachine: {fileID: 88322598493374997}
 --- !u!1 &7528680167608715500
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +470,7 @@ GameObject:
   - component: {fileID: 82222986682491871}
   - component: {fileID: 7284997314533658813}
   - component: {fileID: 5833813174139049050}
+  - component: {fileID: 7311409634462368616}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -570,6 +575,20 @@ MonoBehaviour:
   soundController: {fileID: 7454332378449417252}
   characterMovementProfile: {fileID: 0}
   showLogs: 0
+--- !u!114 &7311409634462368616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8774815387925293592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770f454b45dd4322821f9c518ebca4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disablingState: 44
+  waitingTime: 4
 --- !u!1001 &143874079488135331
 PrefabInstance:
   m_ObjectHideFlags: 0
