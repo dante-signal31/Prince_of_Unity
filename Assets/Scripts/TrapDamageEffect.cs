@@ -34,6 +34,7 @@ namespace Prince
         private void Awake()
         {
             rightDamageSpriteRenderer.sprite = damageSprite;
+            leftDamageSpriteRenderer.sprite = damageSprite;
             HideDamage();
         }
         
@@ -51,10 +52,10 @@ namespace Prince
             switch (effectType)
             {
                 case DamageEffectType.CharacterCameFromLeft:
-                    rightDamageSpriteRenderer.enabled = true;
+                    leftDamageSpriteRenderer.enabled = true;
                     break;
                 case DamageEffectType.CharacterCameFromRight:
-                    leftDamageSpriteRenderer.enabled = true;
+                    rightDamageSpriteRenderer.enabled = true;
                     break;
             }
         }
@@ -83,19 +84,21 @@ namespace Prince
         /// Show damage produced by a trap.
         /// </summary>
         /// </param>
-        public void ShowTrapHit(DamageEffectType effectType)
+        public void ShowTrapHit(DamageEffectType effectType, bool isPrince = true)
         {
-            StartCoroutine(ShowHitAsync(effectType, "chaft"));
+            StartCoroutine(ShowHitAsync(effectType, "chaft", isPrince));
         }
         
-        private IEnumerator ShowHitAsync(DamageEffectType effectType, string soundToPlay = null)
+        private IEnumerator ShowHitAsync(DamageEffectType effectType, string soundToPlay = null, bool isPrince = true)
         {
-            ShowDamageFlash();
+            if (isPrince) ShowDamageFlash();
             yield return new WaitForSeconds(damageDelay);
             ShowDamage(effectType);
             if (soundToPlay != null) soundController.PlaySound(soundToPlay);
             yield return new WaitForSeconds(damageTime);
             HideDamage();
         }
+        
+        
     }
 }

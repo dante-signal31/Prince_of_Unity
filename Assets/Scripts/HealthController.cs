@@ -126,7 +126,9 @@ namespace Prince
                         Life = 0;
                         this.Log($"(HealthController - {transform.root.name}) Deadly landing.", showLogs);
                         break;
-                    default:
+                    case CharacterStatus.States.KilledByTrap:
+                        Life = 0;
+                        this.Log($"(HealthController - {transform.root.name}) Killed by a trap.", showLogs);
                         break;
                 }
                 _oldState = characterStatus.CurrentState;

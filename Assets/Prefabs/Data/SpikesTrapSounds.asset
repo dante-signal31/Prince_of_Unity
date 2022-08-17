@@ -16,4 +16,4 @@ MonoBehaviour:
   - name: activated
     audioClip: {fileID: 8300000, guid: 917d11bdafbd52a41ba7f4bd850111d0, type: 3}
   - name: chaft
-    audioClip: {fileID: 8300000, guid: 008554ec5c91a1b4e9210ac7813101b4, type: 3}
+    audioClip: {fileID: 8300000, guid: 20effac9a23f5324e943dc4337e102f5, type: 3}

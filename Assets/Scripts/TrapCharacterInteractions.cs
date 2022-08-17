@@ -48,12 +48,15 @@ namespace Prince
                 TrapInteractions characterTrapInteractions = character.GetComponentInChildren<TrapInteractions>();
                 CharacterStatus characterStatus = character.GetComponentInChildren<CharacterStatus>();
                 Sprite corpse = characterTrapInteractions.GetKilledByTrapCorpse(trapStatus.KillMode);
-                if (characterStatus.IsPrince)
-                {
-                    damageEffect.ShowTrapHit(characterStatus.LookingRightWards? 
-                        TrapDamageEffect.DamageEffectType.CharacterCameFromLeft: 
-                        TrapDamageEffect.DamageEffectType.CharacterCameFromRight);
-                }
+                // if (characterStatus.IsPrince)
+                // {
+                //     damageEffect.ShowTrapHit(characterStatus.LookingRightWards? 
+                //         TrapDamageEffect.DamageEffectType.CharacterCameFromLeft: 
+                //         TrapDamageEffect.DamageEffectType.CharacterCameFromRight);
+                // }
+                damageEffect.ShowTrapHit(characterStatus.LookingRightWards? 
+                    TrapDamageEffect.DamageEffectType.CharacterCameFromLeft: 
+                    TrapDamageEffect.DamageEffectType.CharacterCameFromRight, characterStatus.IsPrince);
                 trapAppearance.ShowCorpse(characterStatus.IsPrince, characterStatus.LookingRightWards, corpse);
                 characterTrapInteractions.KilledByTrap();
                 _charactersInTrap--;

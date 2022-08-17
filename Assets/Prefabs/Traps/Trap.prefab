@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5390104245889511336}
   - component: {fileID: 768347370952258499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftDamageSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72080317891952661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.91, y: 0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -70,15 +70,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1808101567
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.875, y: 0.8125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5346187272538055081}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GuardCorpses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7298270670640649190}
   - component: {fileID: 4483199331927912785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundOverSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9157203856822846467}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PrinceCorpses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3541031974812932901}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8233902326853143392}
   - component: {fileID: 8522326702745126087}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrapDamageEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9021891637513242471}
   - component: {fileID: 8216473252593402054}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KillingSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9166425656117307285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sensors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5984059505656204089}
   - component: {fileID: 2285382931934382275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PrinceLeftCorpse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7494467267836030173}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CharacterCorpses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4614535894680400816}
   - component: {fileID: 6594067450295249397}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RangeSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7526663450981808345}
   - component: {fileID: 1687047078068443355}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 3926902770562282789}
   - component: {fileID: 1993837366974434440}
   - component: {fileID: 886715562257527547}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Appearance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3893173119862557210}
   - component: {fileID: 4775824902168288267}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interactions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +795,6 @@ MonoBehaviour:
   killingSensor: {fileID: 8216473252593402054}
   trapAppearance: {fileID: 886715562257527547}
   damageEffect: {fileID: 8522326702745126087}
-  soundController: {fileID: 9042753766578063082}
 --- !u!1 &6667991887634853919
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4982115037784559604}
   - component: {fileID: 6806239948230511107}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightDamageSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6667991887634853919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.93, y: 0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -866,15 +865,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1808101567
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.875, y: 0.8125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -890,7 +889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4887390370400133795}
   - component: {fileID: 905989530304701883}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FrontTrapSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7490750074186743332}
   - component: {fileID: 8027990100565855440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GuardLeftCorpse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2968763441774860659}
   - component: {fileID: 5967110986666923396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BackTrapSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1142,7 +1141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7972872383220243095}
   - component: {fileID: 3457152567048887030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GuardRightCorpse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1226,7 +1225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672615969901479813}
   - component: {fileID: 5362435684479690031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PrinceRightCorpse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1452,6 +1451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundEmitter
       objectReference: {fileID: 0}
+    - target: {fileID: 8031485622137189612, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
@@ -1599,6 +1602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterWeightSensor
       objectReference: {fileID: 0}
+    - target: {fileID: 9067484437758952239, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
@@ -1745,6 +1752,10 @@ PrefabInstance:
     - target: {fileID: 9067484437758952239, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: m_Name
       value: CharacterWeightSensor
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067484437758952239, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
