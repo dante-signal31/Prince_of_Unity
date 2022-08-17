@@ -17,8 +17,6 @@ namespace Prince
         [SerializeField] private TrapAppearance trapAppearance;
         [Tooltip("Needed to trigger damage effect when a character is killed.")] 
         [SerializeField] private TrapDamageEffect damageEffect;
-        [Tooltip("Needed to play chaft sound when a character is killed.")]
-        [SerializeField] private SoundController soundController;
 
         private int _charactersInTrap;
         
@@ -67,7 +65,6 @@ namespace Prince
             if (trapStatus.CanKill && _charactersInTrap != 0)
             {
                 KillCharactersInKillingZone();
-                // soundController.PlaySound("chaft");
             }
         }
     }
