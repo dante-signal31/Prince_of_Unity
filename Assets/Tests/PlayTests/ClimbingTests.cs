@@ -558,7 +558,7 @@ namespace Tests.PlayTests
         // Assert we are still hanged.
         Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
         // Let time pass while hanged.
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         // Now Prince should have climbed again to upper ground.
         Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
         // Assert Prince is at expected position.

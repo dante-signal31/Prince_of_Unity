@@ -77,7 +77,7 @@ namespace Tests.PlayTests
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
             // Assert Prince has advanced what we expected.
-            Assert.True(Math.Abs(error) < 0.04);
+            Assert.True(Math.Abs(error) < 0.10);
         }
         
         /// <summary>
@@ -103,7 +103,7 @@ namespace Tests.PlayTests
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
             // Assert Prince has advanced what we expected.
-            Assert.True(Math.Abs(error) < 0.04);
+            Assert.True(Math.Abs(error) < 0.10);
         }
         
         /// <summary>
@@ -116,7 +116,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
-            float expected_distance = 5.12f;
+            float expected_distance = 5.33f;
             float expected_end_distance = 0.04f;
             string commandFile = @"Assets\Tests\TestResources\turnWhileRunningSequence";
             Vector2 startPosition = _prince.transform.position;
@@ -138,7 +138,7 @@ namespace Tests.PlayTests
             advancedDistance = Vector2.Distance(startPosition, endPosition);
             error = advancedDistance - expected_end_distance;
             // Assert Prince has retreated what we expected.
-            Assert.True(Math.Abs(error) < 0.10);
+            Assert.True(Math.Abs(error) < 0.30);
         }
         
         /// <summary>
@@ -216,7 +216,7 @@ namespace Tests.PlayTests
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
             // Assert Prince has advanced what we expected.
-            Assert.True(Math.Abs(error) < 0.04);
+            Assert.True(Math.Abs(error) < 0.10);
         }
         
         /// <summary>
@@ -247,7 +247,7 @@ namespace Tests.PlayTests
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
             // Assert Prince has advanced what we expected.
-            Assert.True(Math.Abs(error) < 0.02);
+            Assert.True(Math.Abs(error) < 0.15);
         }
         
         /// <summary>
@@ -310,7 +310,7 @@ namespace Tests.PlayTests
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
             // Assert Guard has advanced what we expected.
-            Assert.True(Math.Abs(error) < 0.02);
+            Assert.True(Math.Abs(error) < 0.10);
         }
     }
 }
