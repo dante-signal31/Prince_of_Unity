@@ -27,12 +27,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Tests/TheVideo2.unity
     guid: dece55493c5d2094682702ac3511c994
   - enabled: 1
-    path: Assets/Scenes/Tests/TheDoors 2.unity
+    path: Assets/Scenes/Tests/TheDoors2.unity
     guid: b861a89b08ef18c4ca8ed959f4537347
   - enabled: 1
-    path: Assets/Scenes/Tests/TheDoors.unity
+    path: Assets/Scenes/Tests/TheDoors1.unity
     guid: 1dea439f3d514f94e81c3988681a6620
   - enabled: 1
     path: Assets/Scenes/Tests/TheVideo.unity
     guid: 63dba7441b3df6b4583cd80cc384393f
+  - enabled: 1
+    path: Assets/Scenes/Tests/TheDoors.unity
+    guid: b9a728ffe9a7a0849be2cd501395ec6d
   m_configObjects: {}
