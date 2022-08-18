@@ -8,6 +8,7 @@ TagManager:
   - Sensor
   - ClosingSwitch
   - OpeningSwitch
+  - GameManagers
   layers:
   - Default
   - TransparentFX

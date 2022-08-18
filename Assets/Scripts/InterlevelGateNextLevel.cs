@@ -20,7 +20,7 @@ namespace Prince
 
         private void Awake()
         {
-            _levelLoader = GameObject.Find("LevelManagers").GetComponentInChildren<LevelLoader>();
+            _levelLoader = GameObject.Find("GameManagers").GetComponentInChildren<LevelLoader>();
         }
 
         private void Update()
