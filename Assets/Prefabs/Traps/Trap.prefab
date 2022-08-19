@@ -333,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9021891637513242471}
   - component: {fileID: 8216473252593402054}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: KillingSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9166425656117307285}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sensors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4614535894680400816}
   - component: {fileID: 6594067450295249397}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RangeSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1604,7 +1604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9067484437758952239, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -1755,7 +1755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9067484437758952239, guid: 5f78789efcaacf1418a750733c6a331a, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

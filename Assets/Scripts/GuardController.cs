@@ -41,7 +41,25 @@ namespace Prince
         [SerializeField] private bool showLogs;
         
         private FightingProfile _fightingProfile;
-        private bool _engagingEnemy = false;
+        
+        public bool EngagingEnemy
+        {
+            get
+            {
+                switch (characterStatus.CurrentState)
+                {
+                    case CharacterStatus.States.Idle:
+                    case CharacterStatus.States.TurnBack:
+                    case CharacterStatus.States.Falling:
+                    case CharacterStatus.States.Dead:
+                    case CharacterStatus.States.KilledByTrap:
+                    case CharacterStatus.States.KilledBySword:
+                        return false;
+                    default:
+                        return true;
+                }
+            }
+        }
         private bool _movementAllowed = true;
         private bool _attackAllowed = true;
         private bool _blockAllowed = true;
@@ -75,11 +93,10 @@ namespace Prince
             
             if (enemyPursuer.PursuedEnemy != null)
             {
-                if (!_engagingEnemy)
+                if (!EngagingEnemy)
                 {
                     // Unsheathe.
                     inputController.Action();
-                    _engagingEnemy = true;
                 }
                 
                 // Must we block and incoming attack?
@@ -146,10 +163,9 @@ namespace Prince
             }
             else
             {
-                if (_engagingEnemy)
+                if (EngagingEnemy)
                 {
                     inputController.Sheathe();
-                    _engagingEnemy = true;
                 }
             }
             

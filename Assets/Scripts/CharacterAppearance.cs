@@ -108,6 +108,7 @@ namespace Prince
                     break;
                 case CharacterStatus.States.Climbing:
                 case CharacterStatus.States.Descending:
+                case CharacterStatus.States.KilledByTrap:
                     MakeSpriteInvisible();
                     break;
                 default:
