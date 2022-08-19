@@ -95,7 +95,7 @@ namespace Tests.PlayTests
         [UnityTest]
         public IEnumerator GuardKilledBySpikesTest()
         {
-            _cameraController.PlaceInRoom(_room10);
+            _cameraController.PlaceInRoom(_room20);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition8.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;

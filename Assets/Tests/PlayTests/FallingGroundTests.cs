@@ -195,11 +195,11 @@ namespace Tests.PlayTests
             // Assert Prince is now one level below (e.g. where he originally was)
             float endHeight = _prince.transform.position.y;
             float heightError = endHeight - startingHeight;
-            Assert.True(Math.Abs(heightError) < 0.04);
+            Assert.True(Math.Abs(heightError) < 0.10);
             // Assert falling ground has fallen.
             float groundEndHeight = _fallingGround4.transform.position.y;
             float groundHeightDescended = groundStartingHeight - groundEndHeight;
-            Assert.True(Math.Abs(groundHeightDescended - 1.49f) < 0.04);
+            Assert.True(Math.Abs(groundHeightDescended - 1.49f) < 0.10);
         }
         
         /// <summary>

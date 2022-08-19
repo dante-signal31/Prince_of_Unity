@@ -126,14 +126,14 @@ namespace Tests.PlayTests
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
             // Advance phase.
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(3.5f);
             Vector2 endPosition = _prince.transform.position;
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
             // Assert Prince has advanced what we expected.
             Assert.True(Math.Abs(error) < 0.10);
             // Retreat phase
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4);
             endPosition = _prince.transform.position;
             advancedDistance = Vector2.Distance(startPosition, endPosition);
             error = advancedDistance - expected_end_distance;
