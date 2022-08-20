@@ -204,5 +204,34 @@ namespace Tests.PlayTests
             // Assert Guard is dead.
             Assert.True(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
         }
+        
+        // Test that prince is killed by blades trap if retreats over it.
+        [UnityTest]
+        public IEnumerator PrinceKilledIfRetreatsOverBladesTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition7.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _enemy.SetActive(true);
+            // I want enemy to attack.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            // Place guard.
+            _enemy.transform.SetPositionAndRotation(_startPosition12.transform.position, Quaternion.identity);
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            // yield return new WaitForSeconds(1);
+            // Command sequence.
+            string commandFile = @"Assets\Tests\TestResources\unsheathe";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movement happen.
+            yield return new WaitForSeconds(5);
+            // Assert Prince is dead.
+            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
     }
 }

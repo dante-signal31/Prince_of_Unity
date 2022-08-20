@@ -88,7 +88,10 @@ public class CharacterWeightSensor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.isTrigger) return;
+        // Trigger volumes should not be detected to avoid fighting sensors to activate spikes.
+        // But falling collider should be detected although is a trigger to keep spikes up
+        // when a character is falling over them.
+        if (col.isTrigger && col.name != "FallingCollider") return;
         GameObject detectedGameObject = GameObjectTools.Collider2GameObject(col);
         if (GameObjectTools.IsACharacter(detectedGameObject))
         {

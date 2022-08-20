@@ -52,10 +52,10 @@ namespace Prince
             switch (effectType)
             {
                 case DamageEffectType.CharacterCameFromLeft:
-                    leftDamageSpriteRenderer.enabled = true;
+                    rightDamageSpriteRenderer.enabled = true;
                     break;
                 case DamageEffectType.CharacterCameFromRight:
-                    rightDamageSpriteRenderer.enabled = true;
+                    leftDamageSpriteRenderer.enabled = true;
                     break;
             }
         }

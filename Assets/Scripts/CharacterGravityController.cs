@@ -22,6 +22,8 @@ namespace Prince
             {
                 case CharacterStatus.States.Dead:
                 case CharacterStatus.States.DeadByFall:
+                case CharacterStatus.States.KilledByTrap:
+                case CharacterStatus.States.KilledBySword:
                     if (GravityEnabled) DisableGravityAndMovement();
                     break;
                 case CharacterStatus.States.RunningJump:
