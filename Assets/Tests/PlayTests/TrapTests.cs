@@ -233,5 +233,75 @@ namespace Tests.PlayTests
             // Assert Prince is dead.
             Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         }
+        
+        // Test that Prince is killed by spikes trap if retreats over it.
+        [UnityTest]
+        public IEnumerator PrinceKilledIfRetreatsOverSpikesTest()
+        {
+            _cameraController.PlaceInRoom(_room21);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition11.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            _enemy.SetActive(true);
+            _enemy.transform.SetPositionAndRotation(_startPosition10.transform.position, Quaternion.identity);
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            // I don't want enemy to move.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            // yield return new WaitForSeconds(1);
+            // Command sequence.
+            string commandFile = @"Assets\Tests\TestResources\unsheathe";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movement happen.
+            yield return new WaitForSeconds(5);
+            // Assert Prince is dead.
+            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
+        
+        // Test that Prince is killed by spikes trap if runs over it.
+        [UnityTest]
+        public IEnumerator PrinceKilledIfRunOverSpikesTest()
+        {
+            _cameraController.PlaceInRoom(_room20);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition8.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _enemy.SetActive(false);
+            // Command sequence.
+            string commandFile = @"Assets\Tests\TestResources\runningSequence";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movement happen.
+            yield return new WaitForSeconds(3);
+            // Assert Guard is dead.
+            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
+        
+        // Test that Prince is not killed by spikes trap if walks over it.
+        [UnityTest]
+        public IEnumerator PrinceSurvivesIfWalksOverSpikesTest()
+        {
+            _cameraController.PlaceInRoom(_room20);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition8.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _enemy.SetActive(false);
+            // Command sequence.
+            string commandFile = @"Assets\Tests\TestResources\walkingThreeSteps";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movement happen.
+            yield return new WaitForSeconds(8);
+            // Assert Guard is dead.
+            Assert.True(!_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
     }
 }
