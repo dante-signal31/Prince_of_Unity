@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SmallPotionAnimator
+  m_Controller: {fileID: 9100000, guid: 9e81a2b8f913f6742a7e804083d3ad55, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 6b03f36332da61a49b5ab198597019e2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6b03f36332da61a49b5ab198597019e2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7ba467bda453e5a40913153d5b162029, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 379116735ca4d4a4fbfba3db05bc4246, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: db9d9bcab2440914caa5481785a3c9d7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 91205df5a30e2fa40ac571d44bfd648c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8172403f713d78f459f0e73fd48bca6f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e5a517c8655c1ca4e9365b3835ca82fc, type: 2}

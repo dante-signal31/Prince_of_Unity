@@ -17,3 +17,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 05fefc6c9099c424d8daa7818b05a1ba, type: 3}
   - name: sword_victory
     audioClip: {fileID: 8300000, guid: 313948af7de1f07428dfd1e0fd3a1e70, type: 3}
+  - name: small_potion
+    audioClip: {fileID: 8300000, guid: 6f69b4eaf9f46f64f9421df4f9c8089e, type: 3}
+  - name: big_potion
+    audioClip: {fileID: 8300000, guid: 88538e5d9b4661446a99d659c89d4eb0, type: 3}

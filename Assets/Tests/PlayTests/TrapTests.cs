@@ -8,6 +8,7 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
+    // TODO: Prince should be able to jump over spikes while running. Add that option and its respective regression test.
     public class TrapTests
     {
         private GameObject _prince;

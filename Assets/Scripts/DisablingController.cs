@@ -20,7 +20,7 @@ namespace Prince
 
         private void Awake()
         {
-            _gameObjectStatus = transform.root.gameObject.GetComponentInChildren<IStateMachineStatus<T>>();
+            _gameObjectStatus = gameObject.GetComponentInChildren<IStateMachineStatus<T>>();
         }
 
         /// <summary>

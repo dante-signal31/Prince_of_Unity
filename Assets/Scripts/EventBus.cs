@@ -33,15 +33,20 @@ namespace Prince
 
         /// <summary>
         /// Add a new event to event table.
+        ///
+        /// Should be run at awake() of registering game object.
         /// </summary>
         /// <param name="eventArgsType">EventArgs concrete type.</param>
         public void RegisterEvent<T>()
         {
-            _eventTable[typeof(T)] = null;
+            if (!_eventTable.ContainsKey(typeof(T))) _eventTable[typeof(T)] = null;
         }
 
         /// <summary>
         /// Add a listener to an existing event.
+        ///
+        /// Should be run at start() of listening game objects. If awake() is used to register listeners then
+        /// race conditions may happen if a listener tries to add itself to event bus before events are registered.
         /// </summary>
         /// <param name="listener">Callback for this event.</param>
         /// <typeparam name="T">EventArgs concrete type.</typeparam>
