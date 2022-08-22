@@ -28,9 +28,14 @@ namespace Prince
             flashController.ShowFlashes();
         }
 
-        public void PlayMusic(string clip)
+        public void RaisePotionTakenEvent()
         {
-            _eventBus.TriggerEvent(new GameEvents.MusicEvent(clip), this);
+            _eventBus.TriggerEvent(new GameEvents.SmallPotionTaken(), this);
+        }
+
+        public void RaiseSwordTaken()
+        {
+            _eventBus.TriggerEvent(new GameEvents.SwordTaken(), this);
         }
 
         public void PlaySound(string clip)

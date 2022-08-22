@@ -18,7 +18,7 @@ namespace Prince
         public void Take(PickableInteractions taker)
         {
             stateMachine.SetBool("PrinceAtRight", BeingTakenFromRight(taker));
-            stateMachine.SetBool("Taken", true);
+            stateMachine.SetTrigger("Taken");
             flashController.ShowFlashes();
             DoSomethingOverTaker(taker);
         }

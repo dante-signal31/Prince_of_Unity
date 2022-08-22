@@ -16,12 +16,18 @@ namespace Prince
 
         private void Start()
         {
-            eventBus.AddListener<GameEvents.MusicEvent>(PlayMusic);
+            eventBus.AddListener<GameEvents.SmallPotionTaken>(OnSmallPotionTaken);
+            eventBus.AddListener<GameEvents.SwordTaken>(OnSwordTaken);
         }
 
-        private void PlayMusic(object _, GameEvents.MusicEvent ev)
+        private void OnSmallPotionTaken(object _, GameEvents.SmallPotionTaken __)
         {
-            soundController.PlaySound(ev.ClipToPlay);
+            soundController.PlaySound("small_potion");
+        }
+
+        private void OnSwordTaken(object _, GameEvents.SwordTaken __)
+        {
+            soundController.PlaySound("sword_victory");
         }
     }
 }
