@@ -21,6 +21,10 @@ namespace Tests.PlayTests
         private GameObject _startPosition4;
         private GameObject _startPosition5;
         private GameObject _startPosition6;
+        
+        private CameraController _cameraController;
+        private Room _room00;
+        private Room _room10;
 
         private string _currentScene = "TwoLevelPit";
         
@@ -37,6 +41,12 @@ namespace Tests.PlayTests
             if (_startPosition4 == null) _startPosition4 = GameObject.Find("StartPosition4");
             if (_startPosition5 == null) _startPosition5 = GameObject.Find("StartPosition5");
             if (_startPosition6 == null) _startPosition6 = GameObject.Find("StartPosition6");
+            if (_cameraController == null)
+                _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
+            if (_room00 == null)
+                _room00 = GameObject.Find("Room_0_0").GetComponentInChildren<Room>();
+            if (_room10 == null)
+                _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
 
             yield return new EnterPlayMode();
         }
@@ -63,6 +73,7 @@ namespace Tests.PlayTests
         {
             // Setup test.
             // LogAssert.ignoreFailingMessages = true;
+            _cameraController.PlaceInRoom(_room00);
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -90,6 +101,7 @@ namespace Tests.PlayTests
         {
             // Setup test.
             LogAssert.ignoreFailingMessages = true;
+            _cameraController.PlaceInRoom(_room00);
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -122,6 +134,7 @@ namespace Tests.PlayTests
         {
             // Setup test.
             // LogAssert.ignoreFailingMessages = true;
+            _cameraController.PlaceInRoom(_room00);
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.SetActive(true);
@@ -148,6 +161,7 @@ namespace Tests.PlayTests
         {
             // Setup test.
             // LogAssert.ignoreFailingMessages = true;
+            _cameraController.PlaceInRoom(_room00);
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -170,6 +184,7 @@ namespace Tests.PlayTests
         {
             // Setup test.
             // LogAssert.ignoreFailingMessages = true;
+            _cameraController.PlaceInRoom(_room00);
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0.5f;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -197,6 +212,7 @@ namespace Tests.PlayTests
         {
             // Setup test.
             // LogAssert.ignoreFailingMessages = true;
+            _cameraController.PlaceInRoom(_room00);
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.SetActive(true);

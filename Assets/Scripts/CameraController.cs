@@ -37,6 +37,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private int width;
     [Tooltip("In which room place this camera when level loads.")]
     [SerializeField] private string defaultRoom = "Room_0_0";
+    [Tooltip("Default background color.")]
+    [SerializeField] private Color defaultBackgroundColor;
 
     private bool _updateNeeded = false;
     private Flash[] _currentFlashSequence;
@@ -112,13 +114,14 @@ public class CameraController : MonoBehaviour
 
     private IEnumerator ShowFlashesAsync(Flash[] flashes)
     {
-        Color previousColor = camera.backgroundColor;
+        // Color previousColor = camera.backgroundColor;
         foreach (Flash flash in flashes)
         {
             yield return new WaitForSeconds(flash.startDelay);
             camera.backgroundColor = flash.flashColor;
             yield return new WaitForSeconds(flash.duration);
-            camera.backgroundColor = previousColor;
+            // camera.backgroundColor = previousColor;
+            camera.backgroundColor = defaultBackgroundColor;
         }
     }
 

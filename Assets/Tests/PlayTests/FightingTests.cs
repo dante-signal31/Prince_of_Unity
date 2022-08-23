@@ -280,7 +280,7 @@ namespace Tests.PlayTests
             Vector2 endPosition = _enemy.transform.position;
             float movedDistance = Vector2.Distance(startPosition, endPosition);
             float error = movedDistance - expected_distance;
-            Assert.True(Math.Abs(error) < 0.08);
+            Assert.True(Math.Abs(error) < 0.35);
             yield return null;
         }
     }

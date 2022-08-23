@@ -16,10 +16,17 @@ namespace Prince
         [Tooltip("Add listeners to be triggered when any pickable leaves range.")]
         [SerializeField] private UnityEvent<PickableCharacterInteractions> pickableLeftRange;
 
+        private HashSet<PickableCharacterInteractions> _pickableCharacterInteractionsSet =
+            new HashSet<PickableCharacterInteractions>();
+
         /// <summary>
         /// Set of pickables in range.
         /// </summary>
-        public HashSet<PickableCharacterInteractions> PickablesInRange { get; private set; }
+        public HashSet<PickableCharacterInteractions> PickablesInRange
+        {
+            get => _pickableCharacterInteractionsSet; 
+            private set => _pickableCharacterInteractionsSet = value;
+        }
         
         /// <summary>
         /// Whether we have any pickable in range to be taken.

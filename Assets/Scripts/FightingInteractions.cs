@@ -215,16 +215,41 @@ namespace Prince
         /// </summary>
         public void NoticeBlockSwordStarted()
         {
-            if (_currentEnemyInteractions != null) this.Log($"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} notice us he is going to block our attack.", showLogs);
+            if (_currentEnemyInteractions != null)
+                this.Log(
+                    $"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} notice us he is going to block our attack.",
+                    showLogs);
             if (StrikeBlockable)
             {
                 stateMachine.SetTrigger("Blocked");
                 StrikeBlockable = false;
-                this.Log($"(FightingInteractions - {transform.root.name}) Our attack has been blocked by {_currentEnemyInteractions.transform.root.name}.", showLogs);
+                if (_currentEnemyInteractions != null)
+                {
+                    this.Log(
+                        $"(FightingInteractions - {transform.root.name}) Our attack has been blocked by {_currentEnemyInteractions.transform.root.name}.",
+                        showLogs);
+                }
+                else
+                {
+                    this.Log(
+                        $"(FightingInteractions - {transform.root.name}) Our attack has been blocked by an enemy that now is out of range.",
+                        showLogs);
+                }
             }
             else
             {
-                this.Log($"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} blocks but we were not attacking him so actually nothing happens.", showLogs);
+                if (_currentEnemyInteractions != null)
+                {
+                    this.Log(
+                        $"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} blocks but we were not attacking him so actually nothing happens.",
+                        showLogs);
+                }
+                else
+                {
+                    this.Log(
+                        $"(FightingInteractions - {transform.root.name}) Near enemy blocks but we were not attacking him so actually nothing happens.",
+                        showLogs);
+                }
             }
         }
 

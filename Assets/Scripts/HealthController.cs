@@ -107,7 +107,8 @@ namespace Prince
         public void GroundHit(int damage)
         {
             //Life = Math.Clamp(Life - damage, 0, MaximumLife);
-            Life =- damage;
+            // Don't change for Life =- damage. Maybe because it is a property but if you do that way wrong things happen.
+            Life = Life - damage;
             if (characterStatus.IsDead)
             {
                 this.Log($"(HealthController - {transform.root.name}) Dead by falling ground.", showLogs);
