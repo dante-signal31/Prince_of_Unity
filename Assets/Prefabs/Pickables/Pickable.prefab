@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashController: {fileID: 6957193728373494617}
-  soundController: {fileID: 0}
+  soundController: {fileID: 5667150703586246404}
 --- !u!1 &5129192232878379940
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31570347ba4d4852a9b60c9c321670cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disablingState: 2
+  disablingState: 3
   waitingTime: 0
 --- !u!1 &7365064877757753898
 GameObject:
@@ -710,6 +710,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
+--- !u!114 &5667150703586246404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1834021150071634809, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
+  m_PrefabInstance: {fileID: 2894122355510066051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d772b87ff42ca4bbb2f7954db8e6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7664473702606094448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4788543338495704051, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}

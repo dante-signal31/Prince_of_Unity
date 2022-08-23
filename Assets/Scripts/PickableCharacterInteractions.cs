@@ -47,6 +47,7 @@ namespace Prince
             DoSomethingOverTaker(taker);
             yield return new WaitUntil(() => PickingAnimationEnded);
             taker.PickingAnimationEnded();
+            stateMachine.SetTrigger("Disable");
         }
 
         /// <summary>

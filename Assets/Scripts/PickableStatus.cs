@@ -8,7 +8,8 @@ namespace Prince
         {
             Idle,
             BeingTaken,
-            Taken
+            Taken,
+            Disabled
         }
 
         public States CurrentState { get; set; }

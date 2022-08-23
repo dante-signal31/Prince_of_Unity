@@ -215,6 +215,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
+--- !u!114 &4041133238554136839 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1523219834950454694, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
+  m_PrefabInstance: {fileID: 3258192820825365665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c408fb56a5354b94b5aa597b333292a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5405052272477664907 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7365064877757753898, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
@@ -234,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 8632356138984493711}
   flashController: {fileID: 5601219881778352120}
+  pickableStatus: {fileID: 4041133238554136839}
 --- !u!114 &5601219881778352120 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6957193728373494617, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
