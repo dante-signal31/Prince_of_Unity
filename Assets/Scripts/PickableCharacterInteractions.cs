@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Prince
 {
@@ -14,13 +15,17 @@ namespace Prince
         [SerializeField] private Animator stateMachine;
         [Tooltip("Needed to show flashes when this pickable is taken.")]
         [SerializeField] private PickableFlash flashController;
+        [Tooltip("Needed to know when picking animation is being played.")]
+        [SerializeField] private PickableStatus pickableStatus;
+
+        /// <summary>
+        /// Whether this pickable is still being playing it picking animation.
+        /// </summary>
+        protected bool PickingAnimationEnded => pickableStatus.CurrentState == PickableStatus.States.Taken;
         
         public void Take(PickableInteractions taker)
         {
-            stateMachine.SetBool("PrinceAtRight", BeingTakenFromRight(taker));
-            stateMachine.SetTrigger("Taken");
-            flashController.ShowFlashes();
-            DoSomethingOverTaker(taker);
+            StartCoroutine(TakePickable(taker));
         }
 
         /// <summary>
@@ -31,6 +36,17 @@ namespace Prince
         private bool BeingTakenFromRight(PickableInteractions taker)
         {
             return (taker.transform.position.x - transform.position.x) >= 0;
+        }
+
+        private IEnumerator TakePickable(PickableInteractions taker)
+        {
+            taker.PickingAnimationStarted();
+            stateMachine.SetBool("PrinceAtRight", BeingTakenFromRight(taker));
+            stateMachine.SetTrigger("Taken");
+            flashController.ShowFlashes();
+            DoSomethingOverTaker(taker);
+            yield return new WaitUntil(() => PickingAnimationEnded);
+            taker.PickingAnimationEnded();
         }
 
         /// <summary>

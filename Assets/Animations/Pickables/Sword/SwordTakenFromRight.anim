@@ -36,54 +36,41 @@ AnimationClip:
     path: Main
     classID: 1
     script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: CharacterAnimations
-    classID: 1
-    script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 07030e0eacc66a542a6b028ddbc1c399, type: 3}
     - time: 0.125
-      value: {fileID: 21300000, guid: af6c10eac2ba8c64f9e00806d22b8d82, type: 3}
+      value: {fileID: 21300000, guid: 07030e0eacc66a542a6b028ddbc1c399, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: e7072ad04fc1cd7479c8637fbd768a98, type: 3}
+      value: {fileID: 21300000, guid: 07030e0eacc66a542a6b028ddbc1c399, type: 3}
     - time: 0.375
-      value: {fileID: 21300000, guid: 2f1608449fce2764fa69fbe6a68cab30, type: 3}
+      value: {fileID: 21300000, guid: 07030e0eacc66a542a6b028ddbc1c399, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: a7b3244fcb652e04bb203a43c83e5df0, type: 3}
+      value: {fileID: 21300000, guid: af6c10eac2ba8c64f9e00806d22b8d82, type: 3}
     - time: 0.625
-      value: {fileID: 21300000, guid: 8981eddc874ee744bba11800c4453172, type: 3}
+      value: {fileID: 21300000, guid: e7072ad04fc1cd7479c8637fbd768a98, type: 3}
     - time: 0.75
-      value: {fileID: 21300000, guid: fd349cc8b8bacda40a7feda7ae392556, type: 3}
+      value: {fileID: 21300000, guid: 2f1608449fce2764fa69fbe6a68cab30, type: 3}
     - time: 0.875
-      value: {fileID: 21300000, guid: 4e40318796c916c4a9baa7184d4681fc, type: 3}
+      value: {fileID: 21300000, guid: a7b3244fcb652e04bb203a43c83e5df0, type: 3}
     - time: 1
-      value: {fileID: 21300000, guid: af7dabcec13927440b86027cd46258ce, type: 3}
+      value: {fileID: 21300000, guid: 8981eddc874ee744bba11800c4453172, type: 3}
     - time: 1.125
-      value: {fileID: 21300000, guid: ff0b6f933fe53cc45ba5a84a6481c0e9, type: 3}
+      value: {fileID: 21300000, guid: fd349cc8b8bacda40a7feda7ae392556, type: 3}
     - time: 1.25
-      value: {fileID: 21300000, guid: bb4900020c7c2b2429418256f63f75ac, type: 3}
+      value: {fileID: 21300000, guid: 4e40318796c916c4a9baa7184d4681fc, type: 3}
     - time: 1.375
-      value: {fileID: 21300000, guid: deb82484000d64c4890860ecd6e35de6, type: 3}
+      value: {fileID: 21300000, guid: af7dabcec13927440b86027cd46258ce, type: 3}
     - time: 1.5
-      value: {fileID: 21300000, guid: 70b8d8a37e93f33459f875ea13aba79e, type: 3}
+      value: {fileID: 21300000, guid: ff0b6f933fe53cc45ba5a84a6481c0e9, type: 3}
     - time: 1.625
+      value: {fileID: 21300000, guid: bb4900020c7c2b2429418256f63f75ac, type: 3}
+    - time: 1.75
+      value: {fileID: 21300000, guid: deb82484000d64c4890860ecd6e35de6, type: 3}
+    - time: 1.875
+      value: {fileID: 21300000, guid: 70b8d8a37e93f33459f875ea13aba79e, type: 3}
+    - time: 2
       value: {fileID: 21300000, guid: 58b274720b72a31478b550ec2302293a, type: 3}
     attribute: m_Sprite
     path: CharacterAnimations/Right
@@ -105,14 +92,6 @@ AnimationClip:
       isPPtrCurve: 0
       isIntCurve: 0
     - serializedVersion: 2
-      path: 938702226
-      attribute: 2086281974
-      script: {fileID: 0}
-      typeID: 1
-      customType: 0
-      isPPtrCurve: 0
-      isIntCurve: 0
-    - serializedVersion: 2
       path: 544877030
       attribute: 0
       script: {fileID: 0}
@@ -121,6 +100,9 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
     pptrCurveMapping:
+    - {fileID: 21300000, guid: 07030e0eacc66a542a6b028ddbc1c399, type: 3}
+    - {fileID: 21300000, guid: 07030e0eacc66a542a6b028ddbc1c399, type: 3}
+    - {fileID: 21300000, guid: 07030e0eacc66a542a6b028ddbc1c399, type: 3}
     - {fileID: 21300000, guid: 07030e0eacc66a542a6b028ddbc1c399, type: 3}
     - {fileID: 21300000, guid: af6c10eac2ba8c64f9e00806d22b8d82, type: 3}
     - {fileID: 21300000, guid: e7072ad04fc1cd7479c8637fbd768a98, type: 3}
@@ -140,7 +122,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.75
+    m_StopTime: 2.125
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -175,26 +157,21 @@ AnimationClip:
     path: Main
     classID: 1
     script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: CharacterAnimations
-    classID: 1
-    script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: ShowFlash
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.75
+    functionName: RaiseSwordTaken
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

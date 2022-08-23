@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disablingState: 2
-  waitingTime: 0.5
+  waitingTime: 0
 --- !u!1 &7365064877757753898
 GameObject:
   m_ObjectHideFlags: 0

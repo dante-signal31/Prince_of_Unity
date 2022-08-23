@@ -271,3 +271,50 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
+--- !u!114 &1696521265454794564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1523219834950454694, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
+  m_PrefabInstance: {fileID: 191633077042760418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c408fb56a5354b94b5aa597b333292a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &6364701672816116940 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6555876802056900142, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
+  m_PrefabInstance: {fileID: 191633077042760418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7071842810464197051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6957193728373494617, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
+  m_PrefabInstance: {fileID: 191633077042760418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a16cf269fb46a5b486cadbbb8dbfcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7249992999884398792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7365064877757753898, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
+  m_PrefabInstance: {fileID: 191633077042760418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &679839174070409019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7249992999884398792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c78cb07552849569d53a9880fa07051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateMachine: {fileID: 6364701672816116940}
+  flashController: {fileID: 7071842810464197051}
+  pickableStatus: {fileID: 1696521265454794564}

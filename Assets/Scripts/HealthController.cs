@@ -33,7 +33,8 @@ namespace Prince
         private int Life
         {
             get => characterStatus.Life;
-            set => characterStatus.Life = value;
+            //set => characterStatus.Life = value;
+            set => characterStatus.Life = Math.Clamp(value, 0, MaximumLife);
         }
 
         /// <summary>
@@ -44,9 +45,25 @@ namespace Prince
         private int MaximumLife
         {
             get => characterStatus.MaximumLife;
-            set => characterStatus.MaximumLife = value;
+            set => characterStatus.MaximumLife = (value > 0) ? value : 0;
         }
 
+        /// <summary>
+        /// Add a new health point.
+        /// </summary>
+        public void HealLifePoint()
+        {
+            Life++;
+        }
+
+        /// <summary>
+        /// Add a new maximum life point.
+        /// </summary>
+        public void AddMaximumLifePoint()
+        {
+            MaximumLife++;
+        }
+        
         /// <summary>
         /// Character has been hit by an enemy's sword.
         /// </summary>
@@ -89,7 +106,8 @@ namespace Prince
         /// <param name="damage">Damage amount to inflict to character.</param>
         public void GroundHit(int damage)
         {
-            Life = Math.Clamp(Life - damage, 0, MaximumLife);
+            //Life = Math.Clamp(Life - damage, 0, MaximumLife);
+            Life =- damage;
             if (characterStatus.IsDead)
             {
                 this.Log($"(HealthController - {transform.root.name}) Dead by falling ground.", showLogs);
