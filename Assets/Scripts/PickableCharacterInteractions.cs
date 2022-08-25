@@ -41,6 +41,10 @@ namespace Prince
         private IEnumerator TakePickable(PickableInteractions taker)
         {
             taker.PickingAnimationStarted();
+            // Wait until character has disabled its sprite to avoid a frame with two prince sprites, the one from
+            // character and the one from pickable. WaitUntil character is in TakingPickable state or skipping a frame
+            // does not seem to work, so I have to wait time between frames at 8 fps.
+            yield return new WaitForSeconds(0.125f);
             stateMachine.SetBool("PrinceAtRight", BeingTakenFromRight(taker));
             stateMachine.SetTrigger("Taken");
             flashController.ShowFlashes();

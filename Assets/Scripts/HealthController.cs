@@ -57,6 +57,14 @@ namespace Prince
         }
 
         /// <summary>
+        /// Set life point to its maximum.
+        /// </summary>
+        public void HealToFullLife()
+        {
+            Life = MaximumLife;
+        }
+
+        /// <summary>
         /// Add a new maximum life point.
         /// </summary>
         public void AddMaximumLifePoint()

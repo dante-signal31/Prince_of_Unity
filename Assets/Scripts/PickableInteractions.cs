@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Prince
 {
+    /// <summary>
+    /// Component attached to every pickable to interact with Prince when he takes this pickable.
+    /// </summary>
     public class PickableInteractions : MonoBehaviour
     {
         [Header("WIRING:")] 
@@ -16,6 +19,11 @@ namespace Prince
         [SerializeField] private PickableSensor pickableSensor;
         [Tooltip("Needed to set new life values.")]
         [SerializeField] private HealthController healthController;
+
+        /// <summary>
+        /// Whether Prince has entered in taking pickable state.
+        /// </summary>
+        public bool InTakingPickableState => characterStatus.CurrentState == CharacterStatus.States.TakingPickable;
 
         private bool _alreadyTakingSomething;
         private HashSet<PickableCharacterInteractions> _pickablesInRange;
@@ -34,7 +42,7 @@ namespace Prince
         public void EnhanceHealth()
         {
             healthController.AddMaximumLifePoint();
-            healthController.HealLifePoint();
+            healthController.HealToFullLife();
         }
 
         /// <summary>
