@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5667150703586246404, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
+      propertyPath: audioClips
+      value: 
+      objectReference: {fileID: 11400000, guid: f9a96cb212c352b42977c6039c157d5d, type: 2}
     - target: {fileID: 6116228365102026588, guid: 0d78defe7fda9ba48b08504957ac9589, type: 3}
       propertyPath: m_Name
       value: BigPotion
