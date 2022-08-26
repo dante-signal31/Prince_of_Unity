@@ -8,7 +8,6 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
-    // TODO: Prince should be able to jump over spikes while running. Add that option and its respective regression test.
     public class TrapTests
     {
         private GameObject _prince;
@@ -26,10 +25,12 @@ namespace Tests.PlayTests
         private GameObject _startPosition10;
         private GameObject _startPosition11;
         private GameObject _startPosition12;
+        private GameObject _startPosition16;
 
         private CameraController _cameraController;
         private LevelLoader _levelLoader;
         private Room _room00;
+        private Room _room01;
         private Room _room10;
         private Room _room20;
         private Room _room21;
@@ -55,12 +56,15 @@ namespace Tests.PlayTests
             if (_startPosition10 == null) _startPosition10 = GameObject.Find("StartPosition10");
             if (_startPosition11 == null) _startPosition11 = GameObject.Find("StartPosition11");
             if (_startPosition12 == null) _startPosition12 = GameObject.Find("StartPosition12");
+            if (_startPosition16 == null) _startPosition16 = GameObject.Find("StartPosition16");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_levelLoader == null)
                 _levelLoader = GameObject.Find("LevelLoader").GetComponentInChildren<LevelLoader>();
             if (_room00 == null)
                 _room00 = GameObject.Find("Room_0_0").GetComponentInChildren<Room>();
+            if (_room01 == null)
+                _room01 = GameObject.Find("Room_0_1").GetComponentInChildren<Room>();
             if (_room10 == null)
                 _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
             if (_room20 == null)
@@ -301,7 +305,28 @@ namespace Tests.PlayTests
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movement happen.
             yield return new WaitForSeconds(8);
-            // Assert Guard is dead.
+            // Assert Prince is alive.
+            Assert.True(!_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
+        
+        // Test that Prince is not killed by spikes trap if walks over it.
+        [UnityTest]
+        public IEnumerator PrinceSurvivesIfJumpsOverSpikesTest()
+        {
+            _cameraController.PlaceInRoom(_room01);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _enemy.SetActive(false);
+            // Command sequence.
+            string commandFile = @"Assets\Tests\TestResources\jumpingOverSpikes";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movement happen.
+            yield return new WaitForSeconds(8);
+            // Assert Prince is alive.
             Assert.True(!_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         }
     }

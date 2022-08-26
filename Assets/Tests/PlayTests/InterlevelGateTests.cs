@@ -8,7 +8,7 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
-    public class InterlevelGateTests
+    public class Z_InterlevelGateTests
     {
         private GameObject _prince;
 

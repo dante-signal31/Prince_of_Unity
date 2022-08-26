@@ -277,7 +277,7 @@ namespace Tests.PlayTests
             float advancedDistance = Vector2.Distance(startPosition, endPosition);
             float error = advancedDistance - expected_distance;
             // Assert Prince has retreated the distance we expected.
-            Assert.IsTrue(Math.Abs(error) < 0.02);
+            Assert.IsTrue(Math.Abs(error) < 0.10);
             yield return null;
         }
         

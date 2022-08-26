@@ -6,19 +6,19 @@ namespace Prince
     /// <summary>
     /// Trap component used to interact with characters.
     /// </summary>
-    public class TrapCharacterInteractions : MonoBehaviour
+    public abstract class TrapCharacterInteractions : MonoBehaviour
     {
         [Header("WIRING:")] 
         [Tooltip("Needed to know when a character enters killing range.")] 
-        [SerializeField] private TrapStatus trapStatus;
+        [SerializeField] protected TrapStatus trapStatus;
         [Tooltip("Needed to know who is in killing range.")] 
-        [SerializeField] private ProximitySensor killingSensor;
+        [SerializeField] protected ProximitySensor killingSensor;
         [Tooltip("Needed to update trap appearance.")]
-        [SerializeField] private TrapAppearance trapAppearance;
+        [SerializeField] protected TrapAppearance trapAppearance;
         [Tooltip("Needed to trigger damage effect when a character is killed.")] 
-        [SerializeField] private TrapDamageEffect damageEffect;
+        [SerializeField] protected TrapDamageEffect damageEffect;
 
-        private int _charactersInTrap;
+        protected int _charactersInTrap;
         
         /// <summary>
         /// Listener for killingSensor newCharacterEvent event.
@@ -41,24 +41,7 @@ namespace Prince
         /// <summary>
         /// Kill whoever is in trap kill zone.
         /// </summary>
-        public void KillCharactersInKillingZone()
-        {
-            foreach (GameObject character in killingSensor.CharactersDetected)
-            {
-                TrapInteractions characterTrapInteractions = character.GetComponentInChildren<TrapInteractions>();
-                CharacterStatus characterStatus = character.GetComponentInChildren<CharacterStatus>();
-                // The only way to get through spikes is walking, so in that case don't kill character.
-                if (characterStatus.CurrentState == CharacterStatus.States.Walk ||
-                    characterStatus.CurrentState == CharacterStatus.States.Idle) return;
-                Sprite corpse = characterTrapInteractions.GetKilledByTrapCorpse(trapStatus.KillMode);
-                damageEffect.ShowTrapHit(characterStatus.LookingRightWards? 
-                    TrapDamageEffect.DamageEffectType.CharacterCameFromLeft: 
-                    TrapDamageEffect.DamageEffectType.CharacterCameFromRight, characterStatus.IsPrince);
-                trapAppearance.ShowCorpse(characterStatus.IsPrince, characterStatus.LookingRightWards, corpse);
-                characterTrapInteractions.KilledByTrap();
-                _charactersInTrap--;
-            }
-        }
+        protected abstract void KillCharactersInKillingZone();
 
         private void FixedUpdate()
         {

@@ -374,7 +374,7 @@ MonoBehaviour:
   newCharacterDetected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4775824902168288267}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Prince.TrapCharacterInteractions, GameAssembly
         m_MethodName: NewCharacterInKillingZone
         m_Mode: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
   characterGone:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4775824902168288267}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Prince.TrapCharacterInteractions, GameAssembly
         m_MethodName: CharacterGoneFromKillingZone
         m_Mode: 0
@@ -756,7 +756,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3893173119862557210}
-  - component: {fileID: 4775824902168288267}
   m_Layer: 8
   m_Name: Interactions
   m_TagString: Untagged
@@ -779,22 +778,6 @@ Transform:
   m_Father: {fileID: 7526663450981808345}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4775824902168288267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5914071730842342364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 059ba332646146e1984e45498e323804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trapStatus: {fileID: 1687047078068443355}
-  killingSensor: {fileID: 8216473252593402054}
-  trapAppearance: {fileID: 886715562257527547}
-  damageEffect: {fileID: 8522326702745126087}
 --- !u!1 &6667991887634853919
 GameObject:
   m_ObjectHideFlags: 0
