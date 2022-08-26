@@ -1082,6 +1082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallSensor
       objectReference: {fileID: 0}
+    - target: {fileID: 2883343333313233696, guid: 19135bee534ef6b46a0983a7aadb69b0, type: 3}
+      propertyPath: m_TagString
+      value: Sensor
+      objectReference: {fileID: 0}
     - target: {fileID: 5091205098563645366, guid: 19135bee534ef6b46a0983a7aadb69b0, type: 3}
       propertyPath: showLogs
       value: 1
@@ -1109,6 +1113,10 @@ PrefabInstance:
     - target: {fileID: 978100193131311062, guid: 548796414dd82d149b6ea21412f37b4e, type: 3}
       propertyPath: m_Name
       value: PickableSensor
+      objectReference: {fileID: 0}
+    - target: {fileID: 978100193131311062, guid: 548796414dd82d149b6ea21412f37b4e, type: 3}
+      propertyPath: m_TagString
+      value: Sensor
       objectReference: {fileID: 0}
     - target: {fileID: 1914832915007916133, guid: 548796414dd82d149b6ea21412f37b4e, type: 3}
       propertyPath: pickableLeftRange.m_PersistentCalls.m_Calls.Array.size
