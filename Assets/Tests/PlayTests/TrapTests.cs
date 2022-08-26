@@ -325,7 +325,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movement happen.
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(5);
             // Assert Prince is alive.
             Assert.True(!_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         }

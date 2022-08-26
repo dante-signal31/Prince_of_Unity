@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapStatus: {fileID: 322133114120884431}
+  stateMachine: {fileID: 2697308176548445489}
   killingSensor: {fileID: 6996109881181046994}
   trapAppearance: {fileID: 2260759898677197551}
   damageEffect: {fileID: 7301611283663719635}

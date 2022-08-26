@@ -361,6 +361,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80dad9fadcc47d080e55570931c28c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2635509325426112267 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3926902770562282789, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
+  m_PrefabInstance: {fileID: 1363496154315883054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4683493338539987442 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5914071730842342364, guid: cdda8fa9e8f44714caa14a951688f243, type: 3}
@@ -379,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapStatus: {fileID: 397870266362714869}
+  stateMachine: {fileID: 2635509325426112267}
   killingSensor: {fileID: 6983634298675397352}
   trapAppearance: {fileID: 2207365920886075605}
   damageEffect: {fileID: 7253467748488906473}

@@ -576,7 +576,7 @@ namespace Tests.PlayTests
     [UnityTest]
     public IEnumerator DescendHangingNotHollowIncompleteTest()
     {
-        _cameraController.PlaceInRoom(_room00);
+        _cameraController.PlaceInRoom(_room10);
         _enemy.SetActive(false);
         _prince.SetActive(true);
         _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
@@ -613,7 +613,7 @@ namespace Tests.PlayTests
     [UnityTest]
     public IEnumerator DescendHangingNotHollowCompleteTest()
     {
-        _cameraController.PlaceInRoom(_room00);
+        _cameraController.PlaceInRoom(_room10);
         _enemy.SetActive(false);
         _prince.SetActive(true);
         _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
@@ -649,7 +649,7 @@ namespace Tests.PlayTests
     [UnityTest]
     public IEnumerator DescendHangingNotHollowAbortedTest()
     {
-        _cameraController.PlaceInRoom(_room00);
+        _cameraController.PlaceInRoom(_room10);
         _enemy.SetActive(false);
         _prince.SetActive(true);
         _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);

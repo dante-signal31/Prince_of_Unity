@@ -10,14 +10,42 @@ namespace Prince
     {
         [Header("WIRING:")] 
         [Tooltip("Needed to know when a character enters killing range.")] 
-        [SerializeField] protected TrapStatus trapStatus;
+        [SerializeField] private TrapStatus trapStatus;
+        [Tooltip("Needed to warn that every character in killing zone is invulnerable")] 
+        [SerializeField] private Animator stateMachine;
         [Tooltip("Needed to know who is in killing range.")] 
-        [SerializeField] protected ProximitySensor killingSensor;
+        [SerializeField] private ProximitySensor killingSensor;
         [Tooltip("Needed to update trap appearance.")]
-        [SerializeField] protected TrapAppearance trapAppearance;
+        [SerializeField] private TrapAppearance trapAppearance;
         [Tooltip("Needed to trigger damage effect when a character is killed.")] 
-        [SerializeField] protected TrapDamageEffect damageEffect;
+        [SerializeField] private TrapDamageEffect damageEffect;
 
+        /// <summary>
+        /// Whether this character is untouchable by this trap even being in kill zone.
+        /// </summary>
+        protected abstract bool InvulnerableCharacter(GameObject character);
+        
+        /// <summary>
+        /// Whether every character in killing zone is doing anything to be untouchable by this trap.
+        /// </summary>
+        private bool AllAreInvulnerableCharacters
+        {
+            get
+            {
+                foreach (GameObject character in killingSensor.CharactersDetected)
+                {
+                    if (!InvulnerableCharacter(character))
+                    {
+                        stateMachine.SetBool("AllAreInvulnerableCharacters", false);
+                        return false;
+                    }
+                }
+                stateMachine.SetBool("AllAreInvulnerableCharacters", true);
+                return true;
+            }
+            set { }
+        }
+        
         protected int _charactersInTrap;
         
         /// <summary>
@@ -41,11 +69,26 @@ namespace Prince
         /// <summary>
         /// Kill whoever is in trap kill zone.
         /// </summary>
-        protected abstract void KillCharactersInKillingZone();
+        private void KillCharactersInKillingZone()
+        {
+            foreach (GameObject character in killingSensor.CharactersDetected)
+            {
+                if (InvulnerableCharacter(character)) continue;
+                TrapInteractions characterTrapInteractions = character.GetComponentInChildren<TrapInteractions>();
+                CharacterStatus characterStatus = character.GetComponentInChildren<CharacterStatus>();
+                Sprite corpse = characterTrapInteractions.GetKilledByTrapCorpse(trapStatus.KillMode);
+                damageEffect.ShowTrapHit(characterStatus.LookingRightWards? 
+                    TrapDamageEffect.DamageEffectType.CharacterCameFromLeft: 
+                    TrapDamageEffect.DamageEffectType.CharacterCameFromRight, characterStatus.IsPrince);
+                trapAppearance.ShowCorpse(characterStatus.IsPrince, characterStatus.LookingRightWards, corpse);
+                characterTrapInteractions.KilledByTrap();
+                _charactersInTrap--;
+            }
+        }
 
         private void FixedUpdate()
         {
-            if (trapStatus.CanKill && _charactersInTrap != 0)
+            if (!AllAreInvulnerableCharacters && trapStatus.CanKill && _charactersInTrap != 0)
             {
                 KillCharactersInKillingZone();
             }
