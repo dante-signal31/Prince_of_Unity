@@ -77,19 +77,21 @@ namespace Prince
         [SerializeField] private FightingInteractions fightingInteractions;
         
         [Header("CONFIGURATION:")]
-        [Tooltip("Current character life.")]
+        [Tooltip("Current character life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
         [SerializeField] private int life;
-        [Tooltip("Current character maximum life.")]
+        [Tooltip("Current character maximum life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
         [SerializeField] private int maximumLife;
-        [Tooltip("This character has already a sword o should look for it first?")]
-        [SerializeField] private bool hasSword;
+        // [Tooltip("This character has already a sword o should look for it first?")]
+        // [SerializeField] private bool hasSword;
         [Tooltip("Is this character looking rightwards?")]
         [SerializeField] private bool lookingRightWards;
         
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
-
+        
+        private EventBus _eventBus;
+        private PrinceStatus _princePersistentStatus;
         private bool _isFalling;
         
         /// <summary>
@@ -173,6 +175,8 @@ namespace Prince
             set
             {
                 life = Math.Clamp(value, 0, maximumLife);
+                if (_eventBus != null && _eventBus.HasRegisteredEvent<GameEvents.CharacterLifeUpdated>()) 
+                    _eventBus.TriggerEvent(new GameEvents.CharacterLifeUpdated(Life, MaximumLife), this.gameObject);
                 // Added check to get rid of "Animator is not playing an AnimatorController" warning.
                 if (stateMachine.isActiveAndEnabled) stateMachine.SetBool("isDead", IsDead);
             }
@@ -191,13 +195,14 @@ namespace Prince
                 
             }
         }
-    
+
+        private bool _hasSword;
         public bool HasSword
         {
-            get => hasSword;
+            get => _hasSword;
             set
             {
-                hasSword = value;
+                _hasSword = value;
                 // Added check to get rid of "Animator is not playing an AnimatorController" warning.
                 if (stateMachine.isActiveAndEnabled) stateMachine.SetBool("hasSword", value);
             }
@@ -243,6 +248,18 @@ namespace Prince
         private void Awake()
         {
             UpdateStateMachineFlags();
+            _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
+            _princePersistentStatus = GameObject.Find("GameManagers").GetComponentInChildren<PrinceStatus>();
+        }
+
+        private void Start()
+        {
+            if (IsPrince)
+            {
+                MaximumLife = _princePersistentStatus.CurrentPlayerMaximumLife;
+                Life = _princePersistentStatus.CurrentPlayerLife;
+                HasSword = _princePersistentStatus.HasSword;
+            }
         }
 
         private void FixedUpdate()
@@ -255,7 +272,7 @@ namespace Prince
             // Inspector can change only fields. So we update properties in case of field change.
             Life = life;
             MaximumLife = maximumLife;
-            HasSword = hasSword;
+            // HasSword = hasSword;
             LookingRightWards = lookingRightWards;
         }
     }

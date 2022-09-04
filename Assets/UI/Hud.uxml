@@ -1,0 +1,29 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Hud.uss?fileID=7433441132597879392&amp;guid=267bea3c66c67c5449f6394ee7b7404e&amp;type=3#Hud" />
+    <ui:VisualElement name="HubBar" picking-mode="Ignore" style="justify-content: space-between; align-items: center; flex-direction: row; bottom: 0; top: auto; flex-grow: 1; height: auto; width: 100%; max-height: none; min-height: auto; flex-shrink: 0; position: absolute; right: auto; background-color: rgb(0, 0, 0); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+        <ui:VisualElement name="PrinceBar" style="flex-direction: row; min-width: auto; min-height: auto; max-width: none; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-left: 5px; margin-right: 0; margin-top: 0; margin-bottom: 0;">
+            <ui:VisualElement name="life1" class="LifePoint" style="background-image: none; width: auto; height: auto; min-width: 24px;" />
+            <ui:VisualElement name="life2" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life3" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life4" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life5" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life6" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life8" class="LifePoint" style="background-image: none; width: auto; height: auto;">
+                <ui:VisualElement name="life7" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="TextBar" style="align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 1; -unity-text-align: upper-center; font-size: 25px; -unity-font: none;">
+            <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="TextMessage" style="color: rgb(255, 255, 255); -unity-font: url(&apos;project://database/Assets/Fonts/8Bit/8-BIT%20WONDER.TTF?fileID=12800000&amp;guid=db1d5ce0fed42cc429d022a3c67d547e&amp;type=3#8-BIT WONDER&apos;); -unity-font-definition: none;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="EnemyBar" style="flex-direction: row-reverse; margin-right: 5px;">
+            <ui:VisualElement name="life1" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life2" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life3" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life4" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life5" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life6" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life7" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life8" class="LifePoint" style="background-image: none; width: 6px; height: 5px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

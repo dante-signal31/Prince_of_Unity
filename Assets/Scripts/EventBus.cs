@@ -99,6 +99,16 @@ namespace Prince
                 throw new NotExistingEvent(typeof(T).Name);
             }
         }
+
+        /// <summary>
+        /// Whether event bus has already registered this event.
+        /// </summary>
+        /// <typeparam name="T">Event we are asking for.</typeparam>
+        /// <returns>True is this event has been registered and we can add listeners to it.</returns>
+        public bool HasRegisteredEvent<T>()
+        {
+            return _eventTable.ContainsKey(typeof(T));
+        }
         
     }
 }

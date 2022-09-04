@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Prince
@@ -25,7 +26,9 @@ namespace Prince
         [Header("CONFIGURATION:")] 
         [Tooltip("Loadable level list. Order is important.")] 
         [SerializeField] private Level[] gameLevels;
-        
+        // [Tooltip("Event listener to notify when a new level is loaded.")]
+        // [SerializeField] private UnityEvent<Level> levelLoaded;
+
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
@@ -98,6 +101,7 @@ namespace Prince
                 if (_loadingOperation.isDone)
                 {
                     HideLoadScreen();
+                    // if (levelLoaded != null) levelLoaded.Invoke(gameLevels[CurrentSceneIndex]);
                     return;
                 }
                 if (!_showingLoadingScreen)

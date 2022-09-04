@@ -14,6 +14,25 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public class SwordTaken : EventArgs { }
 
+    public class CharacterLifeUpdated : EventArgs
+    {
+        /// <summary>
+        /// New current life.
+        /// </summary>
+        public int CurrentLife { get; private set; }
+        
+        /// <summary>
+        /// New maximum life.
+        /// </summary>
+        public int MaximumLife { get; private set; }
+        
+        public CharacterLifeUpdated(int currentLife, int maximumLife)
+        {
+            CurrentLife = currentLife;
+            MaximumLife = maximumLife;
+        }
+    }
+
     [Header("WIRING:")] 
     [Tooltip("Needed to register game wide events.")]
     [SerializeField] private EventBus eventBus;
@@ -22,5 +41,6 @@ public class GameEvents : MonoBehaviour
     {
         eventBus.RegisterEvent<SmallPotionTaken>();
         eventBus.RegisterEvent<SwordTaken>();
+        eventBus.RegisterEvent<CharacterLifeUpdated>();
     }
 }
