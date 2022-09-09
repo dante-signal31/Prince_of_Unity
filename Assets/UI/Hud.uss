@@ -6,4 +6,6 @@
     margin-right: 6px;
     margin-top: 7px;
     margin-bottom: 7px;
+    flex-shrink: 0;
+    flex-grow: 1;
 }

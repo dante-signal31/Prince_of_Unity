@@ -195,37 +195,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5434717135037926810, guid: 2a01084e155bbf0419e7e99c33025d54, type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 5158264402147272084}
+    - target: {fileID: 5434717135037926810, guid: 2a01084e155bbf0419e7e99c33025d54, type: 3}
+      propertyPath: eventBus
+      value: 
+      objectReference: {fileID: 4775544547063931650}
+    - target: {fileID: 5434717135037926810, guid: 2a01084e155bbf0419e7e99c33025d54, type: 3}
+      propertyPath: showLogs
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434717135037926810, guid: 2a01084e155bbf0419e7e99c33025d54, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 9158769348632850578}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a01084e155bbf0419e7e99c33025d54, type: 3}
---- !u!1 &1273667783472056507 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4274789353354624632, guid: 2a01084e155bbf0419e7e99c33025d54, type: 3}
-  m_PrefabInstance: {fileID: 3098441760635156163}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2950858006549955804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273667783472056507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0354226269b4ac58a59683acd2b5f67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hud: {fileID: 5158264402147272084}
-  eventBus: {fileID: 4775544547063931650}
-  princeLifePoint: {fileID: 21300000, guid: a6e596df80304114abdc0490bb990e31, type: 3}
-  princeHollowLifePoint: {fileID: 21300000, guid: f9796c572f78d864ca28a429bdaa4ff2, type: 3}
-  enemyLifePoint: {fileID: 21300000, guid: 02ebcf085b439944ab786d32c3cfe7fe, type: 3}
 --- !u!114 &5158264402147272084 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7884173993406829399, guid: 2a01084e155bbf0419e7e99c33025d54, type: 3}
   m_PrefabInstance: {fileID: 3098441760635156163}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273667783472056507}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
@@ -535,5 +529,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7d772b87ff42ca4bbb2f7954db8e6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9158769348632850578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1596231432691072832, guid: a5b1a904df3e8c846940523e39d7954c, type: 3}
+  m_PrefabInstance: {fileID: 7583085635412561874}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3409395f00918f94c9ec23a9441b9bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

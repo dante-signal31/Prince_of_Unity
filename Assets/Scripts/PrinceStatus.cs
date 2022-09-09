@@ -58,12 +58,12 @@ namespace Prince
         /// <summary>
         /// Listener for listener update events.
         /// </summary>
-        /// <param name="sender">Sender game object.</param>
+        /// <param name="sender">Sender game object. Usually a character monobehaviour</param>
         /// <param name="ev">Event data.</param>
         private void OnLifeUpdated(object sender, GameEvents.CharacterLifeUpdated ev)
         {
             // We only keep track of Prince across levels.
-            CharacterStatus senderStatus = ((GameObject) sender).transform.root.gameObject.GetComponentInChildren<CharacterStatus>();
+            CharacterStatus senderStatus = ((MonoBehaviour) sender).transform.root.gameObject.GetComponentInChildren<CharacterStatus>();
             if (senderStatus != null && senderStatus.IsPrince)
             {
                 CurrentPlayerMaximumLife = ev.MaximumLife;

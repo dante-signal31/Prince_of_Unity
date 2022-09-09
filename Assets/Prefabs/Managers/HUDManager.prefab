@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4780806270685063300}
   - component: {fileID: 7884173993406829399}
+  - component: {fileID: 5434717135037926810}
   m_Layer: 0
   m_Name: HUDManager
   m_TagString: Untagged
@@ -48,3 +49,22 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 92f896f6285bca74aa9b8f74d59ec35f, type: 3}
   m_SortingOrder: 0
+--- !u!114 &5434717135037926810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274789353354624632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0354226269b4ac58a59683acd2b5f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hud: {fileID: 0}
+  eventBus: {fileID: 0}
+  cameraController: {fileID: 0}
+  princeLifePoint: {fileID: 21300000, guid: a6e596df80304114abdc0490bb990e31, type: 3}
+  princeHollowLifePoint: {fileID: 21300000, guid: f9796c572f78d864ca28a429bdaa4ff2, type: 3}
+  enemyLifePoint: {fileID: 21300000, guid: 02ebcf085b439944ab786d32c3cfe7fe, type: 3}
+  showLogs: 0

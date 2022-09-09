@@ -18,8 +18,21 @@ namespace Prince
         [SerializeField] private Room upRoomNeighbour;
         [Tooltip("Room that is at right side of this one.")]
         [SerializeField] private Room rightRoomNeighbour;
+        [Tooltip("Needed to know if an enemy is present at current room.")]
+        [SerializeField] private PopulationSensor populationSensor;
 
         private Vector3 _roomDimensions = new Vector3(10, 6, 0);
+
+        /// <summary>
+        /// Enemy present at current room.
+        /// </summary>
+        public GameObject EnemyInTheRoom => populationSensor.EnemyCharacter;
+
+        /// <summary>
+        /// Whether there is an enemy present at current room.
+        /// </summary>
+        public bool IsThereAnEnemyInTheRoom => populationSensor.EnemyCharacter != null;
+        
         public GameObject LevelCamera {get; private set; }
 
         private void Awake()

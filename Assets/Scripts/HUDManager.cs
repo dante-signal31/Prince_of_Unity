@@ -7,6 +7,9 @@ namespace Prince
 {
     /// <summary>
     /// Component to display Prince life, message text and Enemy life in HUD bar.
+    ///
+    /// Be aware that this HUD is only ready to show just one enemy life at a time, so at level design you must check
+    /// only an enemy can attack Prince at the same time.
     /// </summary>
     public class HUDManager : MonoBehaviour
     {
@@ -15,6 +18,8 @@ namespace Prince
         [SerializeField] private UIDocument hud;
         [Tooltip("Needed to add listeners")]
         [SerializeField] private EventBus eventBus;
+        [Tooltip("Needed to know if an enemy is present at current screen.")] 
+        [SerializeField] private CameraController cameraController;
 
         [Header("CONFIGURATION:")] 
         [Tooltip("Sprite to show as Prince life point.")]
@@ -50,6 +55,8 @@ namespace Prince
         private void Start()
         {
             eventBus.AddListener<GameEvents.CharacterLifeUpdated>(OnCharacterLifeUpdated);
+            eventBus.AddListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
+            eventBus.AddListener<GameEvents.GuardLeftTheRoom>(OnGuardLeftTheRoom);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
         }
 
@@ -99,12 +106,13 @@ namespace Prince
         /// <summary>
         /// Listener for character update events.
         /// </summary>
-        /// <param name="sender">Sender of event.</param>
+        /// <param name="sender">Sender of event. Usually a character monobehaviour.</param>
         /// <param name="ev">Event data.</param>
         public void OnCharacterLifeUpdated(object sender, GameEvents.CharacterLifeUpdated ev)
         {
+            GameObject senderGameObject = ((MonoBehaviour)sender).transform.root.gameObject;
             CharacterStatus characterStatus =
-                ((GameObject)sender).transform.root.gameObject.GetComponentInChildren<CharacterStatus>();
+                senderGameObject.GetComponentInChildren<CharacterStatus>();
             if (characterStatus != null)
             {
                 if (characterStatus.IsPrince)
@@ -113,10 +121,43 @@ namespace Prince
                 }
                 else
                 {
-                    SetEnemyLife(ev.CurrentLife);
+                    if (senderGameObject == cameraController.CurrentRoom.EnemyInTheRoom) SetEnemyLife(ev.CurrentLife);
                 }
             }
         }
+
+        /// <summary>
+        /// Listener for guard entered a room events.
+        /// </summary>
+        /// <param name="sender">Sender of event. Usually a room monobehaviour.</param>
+        /// <param name="ev">Event data.</param>
+        public void OnGuardEnteredTheRoom(object sender, GameEvents.GuardEnteredTheRoom ev)
+        {
+            GameObject senderGameObject = ((MonoBehaviour)sender).transform.root.gameObject;
+            Room senderRoom = senderGameObject.GetComponentInChildren<Room>();
+            if (senderRoom != null && cameraController.CurrentRoom == senderRoom)
+            {
+                GameObject guardGameObject = ev.Guard;
+                SetEnemyLife(guardGameObject.GetComponentInChildren<CharacterStatus>().Life);
+            }
+        }
+        
+        /// <summary>
+        /// Listener for guard left a room events.
+        /// </summary>
+        /// <param name="sender">Sender of event. Usually a room.</param>
+        /// <param name="ev">Event data.</param>
+        public void OnGuardLeftTheRoom(object sender, GameEvents.GuardEnteredTheRoom ev)
+        {
+            GameObject senderGameObject = ((MonoBehaviour)sender).transform.root.gameObject;
+            Room senderRoom = senderGameObject.GetComponentInChildren<Room>();
+            if (senderRoom != null && cameraController.CurrentRoom == senderRoom)
+            {
+                SetEnemyLife(0);
+            }
+        }
+        
+        
 
         /// <summary>
         /// Update Prince life bar.
@@ -140,6 +181,12 @@ namespace Prince
             if (maximumLife < 1)
             {
                 this.Log($"(HUDManager - {transform.root.name}) Hud not updated because a maximum Prince life under 1 requested.", showLogs);
+                return;
+            }
+
+            if (maximumLife > _princeLifes.Length)
+            {
+                this.Log($"(HUDManager - {transform.root.name}) Hud not updated because a maximum Prince life over hud maximum has been requested.", showLogs);
                 return;
             }
             

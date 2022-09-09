@@ -8,9 +8,8 @@
             <ui:VisualElement name="life4" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
             <ui:VisualElement name="life5" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
             <ui:VisualElement name="life6" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
-            <ui:VisualElement name="life8" class="LifePoint" style="background-image: none; width: auto; height: auto;">
-                <ui:VisualElement name="life7" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
-            </ui:VisualElement>
+            <ui:VisualElement name="life7" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
+            <ui:VisualElement name="life8" class="LifePoint" style="background-image: none; width: auto; height: auto;" />
         </ui:VisualElement>
         <ui:VisualElement name="TextBar" style="align-items: center; justify-content: center; flex-shrink: 0; flex-grow: 1; -unity-text-align: upper-center; font-size: 25px; -unity-font: none;">
             <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="TextMessage" style="color: rgb(255, 255, 255); -unity-font: url(&apos;project://database/Assets/Fonts/8Bit/8-BIT%20WONDER.TTF?fileID=12800000&amp;guid=db1d5ce0fed42cc429d022a3c67d547e&amp;type=3#8-BIT WONDER&apos;); -unity-font-definition: none;" />

@@ -14,6 +14,9 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public class SwordTaken : EventArgs { }
 
+    /// <summary>
+    /// This event is raised every time a character changes his life points.
+    /// </summary>
     public class CharacterLifeUpdated : EventArgs
     {
         /// <summary>
@@ -33,6 +36,29 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This event is raised every time a guard enters a room.
+    /// </summary>
+    public class GuardEnteredTheRoom : EventArgs
+    {
+        public GameObject Guard { get; private set; }
+
+        public GuardEnteredTheRoom(GameObject guard)
+        {
+            Guard = guard;
+        }
+    }
+
+    /// <summary>
+    /// This event is raised every time a guards enters a room.
+    /// </summary>
+    public class GuardLeftTheRoom : GuardEnteredTheRoom
+    {
+        public GuardLeftTheRoom(GameObject guard): base(guard) { }
+    }
+    
+    
+
     [Header("WIRING:")] 
     [Tooltip("Needed to register game wide events.")]
     [SerializeField] private EventBus eventBus;
@@ -42,5 +68,7 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<SmallPotionTaken>();
         eventBus.RegisterEvent<SwordTaken>();
         eventBus.RegisterEvent<CharacterLifeUpdated>();
+        eventBus.RegisterEvent<GuardEnteredTheRoom>();
+        eventBus.RegisterEvent<GuardLeftTheRoom>();
     }
 }

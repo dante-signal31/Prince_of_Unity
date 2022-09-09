@@ -176,7 +176,7 @@ namespace Prince
             {
                 life = Math.Clamp(value, 0, maximumLife);
                 if (_eventBus != null && _eventBus.HasRegisteredEvent<GameEvents.CharacterLifeUpdated>()) 
-                    _eventBus.TriggerEvent(new GameEvents.CharacterLifeUpdated(Life, MaximumLife), this.gameObject);
+                    _eventBus.TriggerEvent(new GameEvents.CharacterLifeUpdated(Life, MaximumLife), this);
                 // Added check to get rid of "Animator is not playing an AnimatorController" warning.
                 if (stateMachine.isActiveAndEnabled) stateMachine.SetBool("isDead", IsDead);
             }
