@@ -120,7 +120,7 @@ namespace Tests.PlayTests
             float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
             float difference = Math.Abs(separationDistance - maximumApproachDistance);
             // Assert enemy is at hitting range of Prince.
-            Assert.IsTrue(difference < 0.2f);
+            Assert.IsTrue(difference < 0.3f);
             yield return null;
         }
         

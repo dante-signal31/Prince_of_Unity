@@ -49,6 +49,8 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             // I dont want enemy to move or defend by itself.
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
@@ -88,6 +90,8 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             yield return null;
             float expected_distance = 0.68f;
@@ -122,6 +126,8 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
@@ -147,6 +153,8 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
@@ -174,6 +182,8 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             int startLife = _prince.GetComponent<CharacterStatus>().Life;
             InputController inputController = _prince.GetComponent<InputController>();
@@ -203,6 +213,8 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             int startLife = _prince.GetComponent<CharacterStatus>().Life;
             InputController inputController = _prince.GetComponent<InputController>();
@@ -234,6 +246,8 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             InputController inputController = _prince.GetComponent<InputController>();
             string commandFile = @"Assets\Tests\TestResources\attackingGuard";
@@ -257,6 +271,8 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             // I dont want enemy to move, but I want him to be a perfect defender.
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;

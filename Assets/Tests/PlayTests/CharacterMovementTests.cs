@@ -229,6 +229,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
             // I dont want enemy to move.
             _enemy.GetComponentInChildren<GuardController>().enabled = false;
@@ -260,6 +261,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             // I dont want enemy to move.
             _enemy.GetComponentInChildren<GuardController>().enabled = false;
             // I don't want EnemyPursuer clutter logs.

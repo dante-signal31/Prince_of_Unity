@@ -22,6 +22,7 @@ namespace Prince
 
         private void OnTriggerEnter2D(Collider2D col)
         {
+            if (col.tag == "Sensor") return;
             GameObject character = col.transform.root.gameObject;
             CharacterStatus characterStatus = character.GetComponentInChildren<CharacterStatus>();
             if (characterStatus != null && !characterStatus.IsPrince)
@@ -33,6 +34,7 @@ namespace Prince
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            if (other.tag == "Sensor") return;
             GameObject character = other.transform.root.gameObject;
             CharacterStatus characterStatus = character.GetComponentInChildren<CharacterStatus>();
             if (characterStatus != null && !character.GetComponentInChildren<CharacterStatus>().IsPrince)

@@ -83,6 +83,8 @@ namespace Tests.PlayTests
             yield return TestSceneManager.UnLoadScene(_currentScene);
         }
 
+        // TODO: Test that enemy bar dissapears when Prince leaves room.
+        
         // Test that guard is killed by blades trap if walks over it.
         [UnityTest]
         public IEnumerator GuardKilledByBladesTest()
@@ -133,6 +135,8 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition10.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition11.transform.position, Quaternion.identity);
             _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
@@ -161,6 +165,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition10.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             _enemy.SetActive(false);
             // _enemy.transform.SetPositionAndRotation(_startPosition11.transform.position, Quaternion.identity);
             // _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
@@ -189,6 +194,8 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition12.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.SetActive(true);
             // I don't want enemy to move.
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
@@ -218,6 +225,8 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition7.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.SetActive(true);
             // I want enemy to attack.
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
@@ -247,6 +256,8 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition11.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _enemy.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition10.transform.position, Quaternion.identity);
             _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
@@ -275,6 +286,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition8.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             _enemy.SetActive(false);
             // Command sequence.
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
@@ -296,6 +308,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition8.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             _enemy.SetActive(false);
             // Command sequence.
             string commandFile = @"Assets\Tests\TestResources\walkingThreeSteps";
@@ -317,6 +330,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             _enemy.SetActive(false);
             // Command sequence.
             string commandFile = @"Assets\Tests\TestResources\jumpingOverSpikes";

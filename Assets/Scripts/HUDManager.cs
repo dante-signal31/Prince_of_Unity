@@ -219,6 +219,12 @@ namespace Prince
         /// <param name="currentLife">Current enemy life bar.</param>
         private void SetEnemyLife(int currentLife)
         {
+            if (currentLife > _enemyLifes.Length)
+            {
+                this.Log($"(HUDManager - {transform.root.name}) Hud not updated because a maximum guard life over hud maximum has been requested.", showLogs);
+                return;
+            }
+            
             // Active life points.
             for (int i = 0; i < currentLife; i++)
             {

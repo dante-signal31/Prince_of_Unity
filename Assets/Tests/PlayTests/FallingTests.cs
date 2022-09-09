@@ -89,6 +89,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
@@ -143,6 +144,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float expectedFinalHeight = 0.32f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
@@ -286,6 +288,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             _enemy.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
             int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
@@ -321,6 +324,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             _enemy.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
             int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
@@ -356,6 +360,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             _enemy.transform.SetPositionAndRotation(_startPosition7.transform.position, Quaternion.identity);
             int startingHealth = _enemy.GetComponentInChildren<CharacterStatus>().Life;
@@ -390,6 +395,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             _enemy.transform.SetPositionAndRotation(_startPosition8.transform.position, Quaternion.identity);
             float startingHeight = _enemy.transform.position.y;

@@ -260,6 +260,10 @@ namespace Prince
                 Life = _princePersistentStatus.CurrentPlayerLife;
                 HasSword = _princePersistentStatus.HasSword;
             }
+            else
+            {
+                HasSword = true;
+            }
         }
 
         private void FixedUpdate()

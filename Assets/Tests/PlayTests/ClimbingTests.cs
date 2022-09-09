@@ -108,6 +108,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition18.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingOneLevel";
@@ -138,6 +139,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition17.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingTwoLevels";
@@ -168,6 +170,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition16.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingAborted";
@@ -198,6 +201,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition16.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingKeepHanged";
@@ -234,6 +238,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition16.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingKeepHangedAndFall";
@@ -270,6 +275,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition20.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition20.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingKeepHanged";
@@ -306,6 +312,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition20.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition20.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingKeepHangedAndFall";
@@ -342,6 +349,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition18.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingAfterHanged";
@@ -378,6 +386,7 @@ namespace Tests.PlayTests
             _prince.transform.SetPositionAndRotation(_startPosition20.transform.position, Quaternion.identity);
             CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
             princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
             Vector3 expectedLandingPosition = _startPosition21.transform.position;  
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             string commandFile = @"Assets\Tests\TestResources\climbingAfterHanged";
@@ -414,6 +423,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition19.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\descendOneLevel";
@@ -444,6 +454,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition17.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition16.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\descendTwoLevels";
@@ -474,6 +485,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition19.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\descendKeepHanged";
@@ -510,6 +522,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition19.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndFall";
@@ -546,6 +559,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition5.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndClimb";
@@ -582,6 +596,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition21.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\descendKeepHanged";
@@ -619,6 +634,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition20.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndFall";
@@ -655,6 +671,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition21.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndClimb";
@@ -691,6 +708,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition22.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition23.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\hangingWhileFallingAndClimbing";
@@ -721,6 +739,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition12.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = true;
+        princeStatus.Life = 3;
         Vector3 expectedLandingPosition = _startPosition13.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\hangingWhileRunningJumpingAndClimbing";
@@ -755,6 +774,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition22.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         float expectedLandingHeight = _startPosition19.transform.position.y;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\hangingWhileFallingAndFallingAgain";
@@ -783,6 +803,7 @@ namespace Tests.PlayTests
         _prince.transform.SetPositionAndRotation(_startPosition24.transform.position, Quaternion.identity);
         CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
         princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
         Vector3 expectedPosition = _startPosition25.transform.position;  
         int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         string commandFile = @"Assets\Tests\TestResources\hangingWhileFallingAndFallingAgain";

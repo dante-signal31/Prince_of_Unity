@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 981857320912456607}
   - component: {fileID: 3308030317798600346}
   - component: {fileID: 2151663868386451872}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RightSensor
-  m_TagString: Untagged
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 530655381683071078}
   m_Layer: 0
   m_Name: PopulationSensor
-  m_TagString: Untagged
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,9 +237,9 @@ GameObject:
   - component: {fileID: 1597417503799634786}
   - component: {fileID: 7567732089975064681}
   - component: {fileID: 875319754412493476}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: UpSensor
-  m_TagString: Untagged
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

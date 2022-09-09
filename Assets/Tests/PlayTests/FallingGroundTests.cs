@@ -121,6 +121,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float startingHeight = _prince.transform.position.y;
             float groundStartingHeight = _fallingGround4.transform.position.y;
@@ -167,6 +168,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition6.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float startingHeight = _prince.transform.position.y;
             float groundStartingHeight = _fallingGround4.transform.position.y;
@@ -214,6 +216,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             AccessPrivateHelper.SetPrivateField(_fallingGround.GetComponentInChildren<FallingGroundStatus>(), 
                 "startFalling", true);
@@ -268,6 +271,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float groundStartingHeight = _fallingGround2.transform.position.y;
             AccessPrivateHelper.SetPrivateField(_fallingGround2.GetComponentInChildren<FallingGroundStatus>(), 
@@ -332,6 +336,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             float groundStartingHeight = _fallingGround3.transform.position.y;
             AccessPrivateHelper.SetPrivateField(_fallingGround3.GetComponentInChildren<FallingGroundStatus>(), 
@@ -394,6 +399,7 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             _enemy.SetActive(true);
             _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
             // I want enemy to move.
