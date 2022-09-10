@@ -29,11 +29,13 @@ namespace Prince
         
         private Room _externalRoom;
         private CameraController _levelCamera;
+        private EventBus _eventBus;
         
         private void Start()
         {
             SetExternalRoom();
             _levelCamera = currentRoom.LevelCamera.GetComponentInChildren<CameraController>();
+            _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
         }
 
         /// <summary>
@@ -92,6 +94,7 @@ namespace Prince
                     _levelCamera.PlaceInRoom(_externalRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player seems to be leaving from me.", showLogs);
                 }
+                _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(), this);
             }
         }
 
@@ -122,6 +125,7 @@ namespace Prince
                     _levelCamera.PlaceInRoom(currentRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player finally is entering in me.", showLogs);
                 }
+                _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(), this);
             }
         }
         

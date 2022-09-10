@@ -56,8 +56,13 @@ public class GameEvents : MonoBehaviour
     {
         public GuardLeftTheRoom(GameObject guard): base(guard) { }
     }
-    
-    
+
+    /// <summary>
+    /// This event is raised every time Prince changes of room.
+    /// </summary>
+    public class PrinceEnteredNewRoom : EventArgs { }
+
+
 
     [Header("WIRING:")] 
     [Tooltip("Needed to register game wide events.")]
@@ -70,5 +75,6 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<CharacterLifeUpdated>();
         eventBus.RegisterEvent<GuardEnteredTheRoom>();
         eventBus.RegisterEvent<GuardLeftTheRoom>();
+        eventBus.RegisterEvent<PrinceEnteredNewRoom>();
     }
 }

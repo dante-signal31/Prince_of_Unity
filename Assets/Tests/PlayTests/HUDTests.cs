@@ -28,6 +28,7 @@ namespace Tests.PlayTests
         private GameObject _startPosition12;
         private GameObject _startPosition16;
         private GameObject _startPosition19;
+        private GameObject _startPosition20;
         private GameObject _startPosition29;
 
         private CameraController _cameraController;
@@ -61,6 +62,7 @@ namespace Tests.PlayTests
             if (_startPosition12 == null) _startPosition12 = GameObject.Find("StartPosition12");
             if (_startPosition16 == null) _startPosition16 = GameObject.Find("StartPosition16");
             if (_startPosition19 == null) _startPosition19 = GameObject.Find("StartPosition19");
+            if (_startPosition20 == null) _startPosition20 = GameObject.Find("StartPosition20");
             if (_startPosition29 == null) _startPosition29 = GameObject.Find("StartPosition29");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
@@ -195,7 +197,7 @@ namespace Tests.PlayTests
             _cameraController.PlaceInRoom(_room00);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition29.transform.position, Quaternion.identity);
-            _enemy.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
             _enemy.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition10.transform.position, Quaternion.identity);
             _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
@@ -203,11 +205,43 @@ namespace Tests.PlayTests
             VisualElement[] enemyLifes = AccessPrivateHelper.GetPrivateField<VisualElement[]>(hudManager, "_enemyLifes");
             Sprite enemyLifePoint = AccessPrivateHelper.GetPrivateField<Sprite>(hudManager, "enemyLifePoint");
             // Assert enemy life is not shown because he is out of current room.
+            yield return new WaitForSeconds(0.5f);
             Assert.True(enemyLifes[0].style.backgroundImage.value == null);
             // Wait for enemy to enter room.
             yield return new WaitForSeconds(3.0f);
             // Assert enemy life is shown because he is in current room.
             Assert.True(enemyLifes[0].style.backgroundImage == new StyleBackground(enemyLifePoint));
+
+        }
+        
+        // Test that guard life is properly represented at HUD when he appears at the room and not before.
+        [UnityTest]
+        public IEnumerator GuardLifesDisappearWhenPrinceLeavesRoomTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition20.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _enemy.SetActive(true);
+            _enemy.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            HUDManager hudManager = GameObject.Find("HUDManager").GetComponentInChildren<HUDManager>();
+            VisualElement[] enemyLifes = AccessPrivateHelper.GetPrivateField<VisualElement[]>(hudManager, "_enemyLifes");
+            Sprite enemyLifePoint = AccessPrivateHelper.GetPrivateField<Sprite>(hudManager, "enemyLifePoint");
+            // Assert enemy life is shown because he is in current room.
+            yield return new WaitForSeconds(1.0f);
+            Assert.True(enemyLifes[0].style.backgroundImage == new StyleBackground(enemyLifePoint));
+            // Ask for Prince movement.
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            string commandFile = @"Assets\Tests\TestResources\runningSequence";
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Wait movement to perform.
+            yield return new WaitForSeconds(3.0f);
+            // Assert enemy life is not shown because he is no longer in current room.
+            Assert.True(enemyLifes[0].style.backgroundImage.value == null);
 
         }
     }

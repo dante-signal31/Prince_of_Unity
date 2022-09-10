@@ -57,6 +57,7 @@ namespace Prince
             eventBus.AddListener<GameEvents.CharacterLifeUpdated>(OnCharacterLifeUpdated);
             eventBus.AddListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
             eventBus.AddListener<GameEvents.GuardLeftTheRoom>(OnGuardLeftTheRoom);
+            eventBus.AddListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
         }
 
@@ -124,6 +125,24 @@ namespace Prince
                     if (senderGameObject == cameraController.CurrentRoom.EnemyInTheRoom) SetEnemyLife(ev.CurrentLife);
                 }
             }
+        }
+
+        /// <summary>
+        /// Listener to update enemy bar if Prince leaves current room.
+        /// </summary>
+        /// <param name="sender">Sender of event. Usually a camera changer gate monobehaviour.</param>
+        /// <param name="_">Event data. In this case actually empty.</param>
+        public void OnPrinceEnteredNewRoom(object sender, GameEvents.PrinceEnteredNewRoom _)
+        {
+            GameObject enemyInTheRoom = cameraController.CurrentRoom.EnemyInTheRoom;
+            if (enemyInTheRoom == null)
+            {
+                SetEnemyLife(0);
+            }
+            else
+            {
+                SetEnemyLife(enemyInTheRoom.GetComponentInChildren<CharacterStatus>().Life);
+            } 
         }
 
         /// <summary>
