@@ -82,9 +82,7 @@ namespace Tests.PlayTests
         {
             yield return TestSceneManager.UnLoadScene(_currentScene);
         }
-
-        // TODO: Test that enemy bar dissapears when Prince leaves room.
-        
+ 
         // Test that guard is killed by blades trap if walks over it.
         [UnityTest]
         public IEnumerator GuardKilledByBladesTest()
