@@ -8,7 +8,7 @@ namespace Prince
     public class GameConfiguration : MonoBehaviour
     {
         [Header("GAME:")]
-        [Tooltip("Total time in minutes to complete game.")]
+        [Tooltip("Total time in seconds to complete game.")]
         [SerializeField] private int gameTotalTime;
 
         [Header("PLAYER:")] 
@@ -20,9 +20,9 @@ namespace Prince
         [SerializeField] private bool startsWithSword;
 
         /// <summary>
-        /// Total time un minutes to complete game.
+        /// Total time in seconds to complete game.
         /// </summary>
-        public int GameTotalTime => gameTotalTime;
+        public float GameTotalTime => gameTotalTime;
 
         /// <summary>
         /// Maximum life to start with.

@@ -33,6 +33,11 @@ namespace Prince
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
 
+        /// <summary>
+        /// Current message displayed on bar.
+        /// </summary>
+        public string CurrentMessage => _textBar.text;
+
         private VisualElement _rootVisualElement;
         private VisualElement[] _princeLifes;
         private VisualElement[] _enemyLifes;
@@ -102,6 +107,25 @@ namespace Prince
         public void SetMessage(string text)
         {
             _textBar.text = text;
+        }
+
+        /// <summary>
+        /// Remove any text from message bar.
+        /// </summary>
+        public void ClearMessage()
+        {
+            SetMessage("");
+        }
+
+        /// <summary>
+        /// Set text bar message just for a time.
+        /// </summary>
+        /// <param name="text">Message to display at text bar.</param>
+        /// <param name="timeInSeconds">Time to show message.</param>
+        public void SetMessageForATime(string text, float timeInSeconds)
+        {
+            SetMessage(text);
+            Invoke(nameof(ClearMessage), timeInSeconds);
         }
 
         /// <summary>

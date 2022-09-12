@@ -31,10 +31,29 @@ namespace Prince
             public float elapsedPercentage;
             [Tooltip("Event to trigger when elapsed seconds are reached.")] 
             public UnityEvent eventToTrigger;
-
+            
             public int CompareTo(PlannedEvent other)
             {
                 return elapsedSeconds.CompareTo(other.elapsedSeconds);
+            }
+
+            /// <summary>
+            /// Make planned event coherent between their elapsedSeconds and elapsedPercentage data.
+            ///
+            /// By coherent I mean calculating elapsedSeconds for each planned event with GameTotalTimePercentage triggeringType
+            /// and calculating elapsedPercentage for each planned event with ElapsedSeconds treiggeringType.
+            /// </summary>
+            public void Normalize(float gameTotalTime)
+            {
+                switch (triggeringType)
+                {
+                    case TriggeringTimeTypes.ElapsedSeconds:
+                        elapsedPercentage = (elapsedSeconds / gameTotalTime) * 100;
+                        break;
+                    case TriggeringTimeTypes.GameTotalTimePercentage:
+                        elapsedSeconds = (elapsedPercentage / 100) * gameTotalTime;
+                        break;
+                }
             }
         }
 
@@ -50,7 +69,24 @@ namespace Prince
         
         private void Awake()
         {
+            // Normalize first to make every planned event elapsedSeconds coherent with those set by percentage.
+            // After normalizing, every elapsedSeconds will be correct and can be used as index to sort planned events.
+            NormalizePlannedEvents();
             plannedEvents.Sort();
+        }
+
+        /// <summary>
+        /// Make every planned event coherent between their elapsedSeconds and elapsedPercentage data.
+        ///
+        /// By coherent I mean calculating elapsedSeconds for each planned event with GameTotalTimePercentage triggeringType
+        /// and calculating elapsedPercentage for each planned event with ElapsedSeconds treiggeringType.
+        /// </summary>
+        private void NormalizePlannedEvents()
+        {
+            foreach (PlannedEvent plannedEvent in plannedEvents)
+            {
+                plannedEvent.Normalize(gameConfiguration.GameTotalTime);
+            }
         }
         
         /// <summary>
@@ -58,21 +94,27 @@ namespace Prince
         /// </summary>
         public float ElapsedSeconds { get; private set; }
 
+        /// <summary>
+        /// Elapsed game percentage since the beginning of game.
+        /// </summary>
+        public float ElapsedGamePercentage => ((ElapsedSeconds / gameConfiguration.GameTotalTime) * 100);
+
         private void FixedUpdate()
         {
             ElapsedSeconds += Time.deltaTime;
-            if (plannedEvents[_eventIndex].elapsedSeconds <= ElapsedSeconds)
+            if (_eventIndex < plannedEvents.Count && plannedEvents[_eventIndex].elapsedSeconds <= ElapsedSeconds)
             {
                 if (plannedEvents[_eventIndex].eventToTrigger != null)
                 {
                     plannedEvents[_eventIndex].eventToTrigger.Invoke();
                 }
+                _eventIndex++;
             }
         }
 
         private void OnValidate()
         {
-            plannedEvents.Sort();
+            // plannedEvents.Sort();
         }
     }
 }

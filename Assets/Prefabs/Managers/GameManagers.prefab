@@ -245,11 +245,11 @@ PrefabInstance:
       objectReference: {fileID: 8885964369088698335}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[0].elapsedSeconds
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[0].triggeringType
@@ -305,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[3].eventToTrigger.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[0].eventToTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -409,6 +409,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[3].eventToTrigger.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
+      propertyPath: plannedEvents.Array.data[3].eventToTrigger.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
@@ -545,6 +549,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[3].eventToTrigger.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
+      propertyPath: plannedEvents.Array.data[3].eventToTrigger.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
