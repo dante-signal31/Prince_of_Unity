@@ -44,5 +44,10 @@ namespace Prince
             if (videoPlayingEnded != null) videoPlayingEnded.Invoke();
             if (loadNextLevelAtEnd) _levelLoader.LoadNextScene();
         }
+
+        public void SkipVideo()
+        {
+            videoPlayer.time = videoToPlay.length;
+        }
     }
 }

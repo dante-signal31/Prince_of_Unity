@@ -1,0 +1,34 @@
+{
+    "name": "VideoActions",
+    "maps": [
+        {
+            "name": "VideoPlayingActions",
+            "id": "44f44c4d-4e8c-4d77-80d5-6e17b01c9e81",
+            "actions": [
+                {
+                    "name": "SkipClip",
+                    "type": "Button",
+                    "id": "51a915e4-50f7-4a97-9bf4-b60281cb3c68",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "94465f4e-e785-423e-a846-683218820c68",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkipClip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
