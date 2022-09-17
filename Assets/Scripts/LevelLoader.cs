@@ -22,10 +22,14 @@ namespace Prince
         [Header("WIRING:")] 
         [Tooltip("Needed to show loading progress.")] 
         [SerializeField] private LoadingScreen loadingScreen;
+        [Tooltip("Needed to print level name at message bar.")] 
+        [SerializeField] private HUDManager hudManager;
 
         [Header("CONFIGURATION:")] 
         [Tooltip("Loadable level list. Order is important.")] 
         [SerializeField] private Level[] gameLevels;
+        [Tooltip("Time to show level name when loaded.")]
+        [SerializeField] private float levelMessageTime;
         // [Tooltip("Event listener to notify when a new level is loaded.")]
         // [SerializeField] private UnityEvent<Level> levelLoaded;
 
@@ -101,6 +105,7 @@ namespace Prince
                 if (_loadingOperation.isDone)
                 {
                     HideLoadScreen();
+                    hudManager.SetMessageForATime(CurrentSceneName, levelMessageTime);
                     // if (levelLoaded != null) levelLoaded.Invoke(gameLevels[CurrentSceneIndex]);
                     return;
                 }
