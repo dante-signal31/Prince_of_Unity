@@ -43,6 +43,17 @@ namespace Prince
             eventBus.AddListener<GameEvents.CharacterLifeUpdated>(OnLifeUpdated);
         }
 
+        // private void OnEnable()
+        // {
+        //     
+        // }
+
+        private void OnDisable()
+        {
+            eventBus.RemoveListener<GameEvents.SwordTaken>(OnSwordTaken);
+            eventBus.RemoveListener<GameEvents.CharacterLifeUpdated>(OnLifeUpdated);
+        }
+
         private void GetStartingConfiguration()
         {
             CurrentPlayerMaximumLife = gameConfiguration.PlayerMaximumStartingLife;

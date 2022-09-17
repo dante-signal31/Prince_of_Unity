@@ -29,19 +29,37 @@ namespace Prince
 
         private Camera _currentCamera;
         private LevelLoader _levelLoader;
+        private EventBus _eventBus;
+        private bool _startEventTriggered;
 
         private void Awake()
+        {
+            SetUpVideoPlayer();
+            _levelLoader = GameObject.Find("LevelLoader").GetComponentInChildren<LevelLoader>();
+            _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
+        }
+
+        private void SetUpVideoPlayer()
         {
             videoPlayer.loopPointReached += OnVideoPlayingEnded;
             _currentCamera = GameObject.Find("LevelCamera").GetComponentInChildren<Camera>();
             videoPlayer.targetCamera = _currentCamera;
             videoPlayer.clip = videoToPlay;
-            _levelLoader = GameObject.Find("LevelLoader").GetComponentInChildren<LevelLoader>();
+        }
+
+        private void Update()
+        {
+            if (!_startEventTriggered)
+            {
+                _eventBus.TriggerEvent(new GameEvents.VideoPlayStart(videoToPlay), this);
+                _startEventTriggered = true;
+            }
         }
 
         private void OnVideoPlayingEnded(VideoPlayer vp)
         {
             if (videoPlayingEnded != null) videoPlayingEnded.Invoke();
+            _eventBus.TriggerEvent(new GameEvents.VideoPlayEnd(videoToPlay), this);
             if (loadNextLevelAtEnd) _levelLoader.LoadNextScene();
         }
 

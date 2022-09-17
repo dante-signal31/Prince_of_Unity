@@ -208,7 +208,7 @@ namespace Tests.PlayTests
             // Let enemy attack Prince..
             _enemy.GetComponentInChildren<GuardController>().enabled = true;
             _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
-            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0.2f;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0.3f;
             _enemy.SetActive(true);
             _prince.SetActive(true);

@@ -1,6 +1,7 @@
 using System;
 using Prince;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GameEvents : MonoBehaviour
 {
@@ -52,15 +53,41 @@ public class GameEvents : MonoBehaviour
     /// <summary>
     /// This event is raised every time a guards enters a room.
     /// </summary>
-    public class GuardLeftTheRoom : GuardEnteredTheRoom
+    public class NoGuardInTheRoom : GuardEnteredTheRoom
     {
-        public GuardLeftTheRoom(GameObject guard): base(guard) { }
+        public NoGuardInTheRoom(GameObject guard): base(guard) { }
     }
 
     /// <summary>
     /// This event is raised every time Prince changes of room.
     /// </summary>
     public class PrinceEnteredNewRoom : EventArgs { }
+
+    /// <summary>
+    /// This event is raised to announce a video clip is being played.
+    /// </summary>
+    public class VideoPlayStart : EventArgs
+    {
+        public VideoClip Clip { get; private set; }
+
+        public VideoPlayStart(VideoClip clip)
+        {
+            Clip = clip;
+        }
+    }
+    
+    /// <summary>
+    /// This event is raised when a video that was being played reached its end.
+    /// </summary>
+    public class VideoPlayEnd : VideoPlayStart
+    {
+        public VideoPlayEnd(VideoClip clip): base(clip){}
+    }
+
+    /// <summary>
+    /// This event is raised when Prince is present at current scene.
+    /// </summary>
+    public class PrinceInTheScene : EventArgs { }
 
 
 
@@ -74,7 +101,10 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<SwordTaken>();
         eventBus.RegisterEvent<CharacterLifeUpdated>();
         eventBus.RegisterEvent<GuardEnteredTheRoom>();
-        eventBus.RegisterEvent<GuardLeftTheRoom>();
+        eventBus.RegisterEvent<NoGuardInTheRoom>();
         eventBus.RegisterEvent<PrinceEnteredNewRoom>();
+        eventBus.RegisterEvent<VideoPlayStart>();
+        eventBus.RegisterEvent<VideoPlayEnd>();
+        eventBus.RegisterEvent<PrinceInTheScene>();
     }
 }

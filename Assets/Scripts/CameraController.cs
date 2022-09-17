@@ -29,6 +29,8 @@ public class CameraController : MonoBehaviour
     [Header("WIRING:")]
     [Tooltip("This prefab camera component.")]
     [SerializeField] private Camera camera;
+    [Tooltip("Needed to signal if there is any guard in current room.")]
+    [SerializeField] private EventBus eventBus;
     
     [Header("CONFIGURATION:")]
     [Tooltip("How many units this camera should show as height.")]

@@ -198,6 +198,8 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition29.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1.0f;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0.0f;
             _enemy.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition10.transform.position, Quaternion.identity);
             _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;

@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Video;
 
 namespace Prince
 {
@@ -44,9 +45,12 @@ namespace Prince
         private Label _textBar;
         private PrinceStatus _princePersistentStatus;
 
+        private EventBus _eventBus;
+
         private void Awake()
         {
             _princePersistentStatus = GameObject.Find("GameManagers").GetComponentInChildren<PrinceStatus>();
+            _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
         }
 
         private void OnEnable()
@@ -57,14 +61,28 @@ namespace Prince
             _enemyLifes = GetLifeElements("EnemyBar");
         }
 
+        private void OnDisable()
+        {
+            eventBus.RemoveListener<GameEvents.CharacterLifeUpdated>(OnCharacterLifeUpdated);
+            eventBus.RemoveListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
+            eventBus.RemoveListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
+            eventBus.RemoveListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
+            eventBus.RemoveListener<GameEvents.VideoPlayStart>(OnVideoPlayStart);
+            eventBus.RemoveListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
+        }
+
         private void Start()
         {
             eventBus.AddListener<GameEvents.CharacterLifeUpdated>(OnCharacterLifeUpdated);
             eventBus.AddListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
-            eventBus.AddListener<GameEvents.GuardLeftTheRoom>(OnGuardLeftTheRoom);
+            eventBus.AddListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
             eventBus.AddListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
+            eventBus.AddListener<GameEvents.VideoPlayStart>(OnVideoPlayStart);
+            eventBus.AddListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
         }
+        
+        
 
         /// <summary>
         /// Get life point placeholders array.
@@ -90,6 +108,15 @@ namespace Prince
         }
 
         /// <summary>
+        /// Listener for VidePlayStart events.
+        /// </summary>
+        /// <param name="_">Actually not used here.</param>
+        private void OnVideoPlayStart(object _, GameEvents.VideoPlayStart __)
+        {
+            HideHud();
+        }
+
+        /// <summary>
         /// Show hud.
         ///
         /// Nedd to be used after video scenes.
@@ -97,6 +124,15 @@ namespace Prince
         public void ShowHud()
         {
             _rootVisualElement.visible = true;
+        }
+
+        /// <summary>
+        /// Listener for PrinceInTheScene events.
+        /// </summary>
+        /// <param name="_">Actually not used here.</param>
+        private void OnPrinceInTheScene(object _, GameEvents.PrinceInTheScene __)
+        {
+            ShowHud();
         }
         
         
@@ -190,7 +226,7 @@ namespace Prince
         /// </summary>
         /// <param name="sender">Sender of event. Usually a room.</param>
         /// <param name="ev">Event data.</param>
-        public void OnGuardLeftTheRoom(object sender, GameEvents.GuardEnteredTheRoom ev)
+        public void OnNoGuardInTheRoom(object sender, GameEvents.GuardEnteredTheRoom _)
         {
             GameObject senderGameObject = ((MonoBehaviour)sender).transform.root.gameObject;
             Room senderRoom = senderGameObject.GetComponentInChildren<Room>();

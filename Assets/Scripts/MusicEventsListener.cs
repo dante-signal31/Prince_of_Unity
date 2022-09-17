@@ -20,6 +20,17 @@ namespace Prince
             eventBus.AddListener<GameEvents.SwordTaken>(OnSwordTaken);
         }
 
+        // private void OnEnable()
+        // {
+        //     
+        // }
+
+        private void OnDisable()
+        {
+            eventBus.RemoveListener<GameEvents.SmallPotionTaken>(OnSmallPotionTaken);
+            eventBus.RemoveListener<GameEvents.SwordTaken>(OnSwordTaken);
+        }
+
         private void OnSmallPotionTaken(object _, GameEvents.SmallPotionTaken __)
         {
             soundController.PlaySound("small_potion");

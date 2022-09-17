@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20e42c179c041aabca3b249002dc0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTotalTime: 10
+  gameTotalTime: 3600
   maximumStartingLife: 3
   startingLife: 3
   startsWithSword: 0
@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 8885964369088698335}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[0].elapsedSeconds
@@ -933,6 +933,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1596231432691072832, guid: a5b1a904df3e8c846940523e39d7954c, type: 3}
+      propertyPath: eventBus
+      value: 
+      objectReference: {fileID: 4775544547063931650}
     - target: {fileID: 9017267094668325258, guid: a5b1a904df3e8c846940523e39d7954c, type: 3}
       propertyPath: m_Name
       value: LevelCamera

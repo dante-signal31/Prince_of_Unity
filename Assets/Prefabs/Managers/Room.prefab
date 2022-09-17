@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab8678886d74ad8a2213c24edafa5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sensorBox: {fileID: 7779037651280210181}
 --- !u!1 &2699955305923477378
 GameObject:
   m_ObjectHideFlags: 0

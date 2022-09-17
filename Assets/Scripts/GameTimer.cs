@@ -69,6 +69,16 @@ namespace Prince
         
         private void Awake()
         {
+            ReindexPlannedEventsList();
+        }
+
+        /// <summary>
+        /// Normalize elapsedSeconds and sort the entire list depending on elapsedSeconds.
+        ///
+        /// When you update list with new elements.
+        /// </summary>
+        private void ReindexPlannedEventsList()
+        {
             // Normalize first to make every planned event elapsedSeconds coherent with those set by percentage.
             // After normalizing, every elapsedSeconds will be correct and can be used as index to sort planned events.
             NormalizePlannedEvents();
@@ -112,9 +122,12 @@ namespace Prince
             }
         }
 
-        private void OnValidate()
+        /// <summary>
+        /// Set timer to zero.
+        /// </summary>
+        public void ResetTimer()
         {
-            // plannedEvents.Sort();
+            ElapsedSeconds = 0;
         }
     }
 }
