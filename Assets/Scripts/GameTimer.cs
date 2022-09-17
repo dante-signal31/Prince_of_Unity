@@ -60,8 +60,8 @@ namespace Prince
         [Header("WIRING:")] 
         [Tooltip("Needed to know game total time.")]
         [SerializeField] private GameConfiguration gameConfiguration;
-        
-        [Header("CONFIGURATION:")] 
+
+        [Header("CONFIGURATION:")]
         [Tooltip("List of events to trigger at specified moments.")]
         [SerializeField] private List<PlannedEvent> plannedEvents;
 
@@ -109,6 +109,11 @@ namespace Prince
         /// </summary>
         public float ElapsedGamePercentage => ((ElapsedSeconds / gameConfiguration.GameTotalTime) * 100);
 
+        /// <summary>
+        /// How much time leaves to complete the game.
+        /// </summary>
+        public float RemainingSeconds => gameConfiguration.GameTotalTime - ElapsedSeconds;
+
         private void FixedUpdate()
         {
             ElapsedSeconds += Time.deltaTime;
@@ -129,5 +134,6 @@ namespace Prince
         {
             ElapsedSeconds = 0;
         }
+        
     }
 }

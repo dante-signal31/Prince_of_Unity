@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5550367965966929283}
+  - component: {fileID: 5401533415894061048}
   - component: {fileID: 5141783170685605079}
   m_Layer: 0
   m_Name: GameTimer
@@ -32,6 +33,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5401533415894061048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906408796411067908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97aa65f1bbd4a14a1435e435f9e5ad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameTimer: {fileID: 5141783170685605079}
+  hudManager: {fileID: 0}
+  messageTime: 3
 --- !u!114 &5141783170685605079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,3 +61,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConfiguration: {fileID: 0}
+  plannedEvents: []

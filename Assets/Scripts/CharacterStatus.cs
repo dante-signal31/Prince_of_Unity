@@ -260,6 +260,7 @@ namespace Prince
                 MaximumLife = _princePersistentStatus.CurrentPlayerMaximumLife;
                 Life = _princePersistentStatus.CurrentPlayerLife;
                 HasSword = _princePersistentStatus.HasSword;
+                SceneManager.sceneLoaded += TriggerPrinceInTheScene;
             }
             else
             {
@@ -275,14 +276,14 @@ namespace Prince
             _eventBus.TriggerEvent(new GameEvents.PrinceInTheScene(), this);
         }
 
-        private void OnEnable()
-        {
-            SceneManager.sceneLoaded += TriggerPrinceInTheScene;
-        }
+        // private void OnEnable()
+        // {
+        //     SceneManager.sceneLoaded += TriggerPrinceInTheScene;
+        // }
 
         private void OnDisable()
         {
-            SceneManager.sceneLoaded += TriggerPrinceInTheScene;
+            if (IsPrince) SceneManager.sceneLoaded -= TriggerPrinceInTheScene;
         }
 
         private void FixedUpdate()
