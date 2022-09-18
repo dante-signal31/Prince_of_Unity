@@ -81,6 +81,7 @@ namespace Prince
             // eventBus.AddListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
+            ShowHudIfLevelsAskIt();
         }
         
         
@@ -114,6 +115,11 @@ namespace Prince
         /// <param name="_">Actually not used here.</param>
         /// <param name="__">Actually not used here.</param>
         private void OnLevelLoaded(object _, GameEvents.LevelLoaded __)
+        {
+            ShowHudIfLevelsAskIt();
+        }
+
+        private void ShowHudIfLevelsAskIt()
         {
             LevelConfiguration currentLevelConfiguration =
                 GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>();

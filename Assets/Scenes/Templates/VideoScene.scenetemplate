@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: VideoScene
+  m_EditorClassIdentifier: 
+  templateScene: {fileID: 102900000, guid: 63dba7441b3df6b4583cd80cc384393f, type: 3}
+  templateName: VideoScene
+  description: 'Scene to play a video at full screen.
+
+
+    When scene loads, the
+    video is automatically started.
+
+
+    This scene components can be configured
+    to load next level at LevelLoader when vido ends.
+
+
+    Be aware that this scene
+    does not include a GameManagers assuming it will come from a previous level.
+    If that is not your case you should at to the level by yourself.  '
+  preview: {fileID: 0}
+  dependencies:
+  - dependency: {fileID: 1237631515598875391, guid: 8300b04fe9f55984582cb61b68f5baac, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 3431661615248912242, guid: f5e7ddf047d01f04ab2f2b1937bfc4d1, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 701623450550555277, guid: 8cbce7486c0c633419482a9bdc5b5c47, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: -944628639613478452, guid: 1410b84e4fa0c27489743138fe6a2f0d, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2096961383616795754, guid: 72d470ae4f1f5634599f05c41e9f38df, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 40265a896a0f341bb956e90c59025a29, type: 3}
+    instantiationMode: 1
+  templatePipeline: {fileID: 0}
+  badge: {fileID: 0}
+  addToDefaults: 0

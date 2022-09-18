@@ -102,6 +102,19 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This event is raised when time to read a text screen ends.
+    /// </summary>
+    public class TextScreenTimeout : EventArgs
+    {
+        public string LevelName { get; }
+        
+        public TextScreenTimeout(string levelName)
+        {
+            LevelName = levelName;
+        }
+    }
+
 
 
     [Header("WIRING:")] 
@@ -120,5 +133,6 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<VideoPlayEnd>();
         // eventBus.RegisterEvent<PrinceInTheScene>();
         eventBus.RegisterEvent<LevelLoaded>();
+        eventBus.RegisterEvent<TextScreenTimeout>();
     }
 }

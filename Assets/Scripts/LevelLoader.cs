@@ -56,6 +56,16 @@ namespace Prince
         private AsyncOperation _loadingOperation = null;
         private bool _showingLoadingScreen = false;
 
+        private void Start()
+        {
+            eventBus.AddListener<GameEvents.TextScreenTimeout>(OnTextScreenTimeout);
+        }
+
+        private void OnTextScreenTimeout(object _, GameEvents.TextScreenTimeout __)
+        {
+            LoadNextScene();
+        }
+
         /// <summary>
         /// Load scene of given name.
         /// </summary>
