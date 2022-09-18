@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3071512933337866708, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: showLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3071512933337866708, guid: e866b69ef7673114a8f60db4ee3d6c48, type: 3}
       propertyPath: HollowBrick

@@ -47,4 +47,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OpeningVideo.unity
     guid: 3030121e22d14424d9fed564b77f457c
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 3097bee1ca6cfcb409ad1c4fc8628146
+  - enabled: 1
+    path: Assets/Scenes/Interlude1Video.unity
+    guid: 2f90e198c98bd3045be455206496ef92
+  - enabled: 1
+    path: Assets/Scenes/Interlude2Video.unity
+    guid: 052fe94370e50c947ba581dc53f2887b
+  - enabled: 1
+    path: Assets/Scenes/Interlude3Video.unity
+    guid: 59a7b81dd6cca764fbcfc021bd3fd594
+  - enabled: 1
+    path: Assets/Scenes/HappyEndingVideo.unity
+    guid: b12605f2f44012848801dbccc531fac4
+  - enabled: 1
+    path: Assets/Scenes/BadEndingVideo.unity
+    guid: db5a1adbb8598be4489bd3bf58e71087
   m_configObjects: {}

@@ -17,7 +17,7 @@ namespace Prince
 
         private bool _alreadyNoticed = false;
         
-        private void Update()
+        private void FixedUpdate()
         {
             switch (fallingGroundStatus.CurrentState)
             {

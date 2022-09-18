@@ -72,5 +72,6 @@ public class PillarsAppearance : MonoBehaviour, IBorder
     public void ShowBorder(bool showIt)
     {
         hasBorder = showIt;
+        UpdateAppearance();
     }
 }
