@@ -260,7 +260,7 @@ namespace Prince
                 MaximumLife = _princePersistentStatus.CurrentPlayerMaximumLife;
                 Life = _princePersistentStatus.CurrentPlayerLife;
                 HasSword = _princePersistentStatus.HasSword;
-                SceneManager.sceneLoaded += TriggerPrinceInTheScene;
+                // SceneManager.sceneLoaded += TriggerPrinceInTheScene;
             }
             else
             {
@@ -268,23 +268,23 @@ namespace Prince
             }
         }
 
-        private void TriggerPrinceInTheScene(Scene _, LoadSceneMode __)
-        {
-            // I first tried to run it from Start() but oddly errored because this start() was called before 
-            // GameEvents Awake() method, so PrinceInTheScene() was invoked before being actually registered.
-            // To fix that I had to trigger event when this game object receives sceneLoaded event().
-            _eventBus.TriggerEvent(new GameEvents.PrinceInTheScene(), this);
-        }
+        // private void TriggerPrinceInTheScene(Scene _, LoadSceneMode __)
+        // {
+        //     // I first tried to run it from Start() but oddly errored because this start() was called before 
+        //     // GameEvents Awake() method, so PrinceInTheScene() was invoked before being actually registered.
+        //     // To fix that I had to trigger event when this game object receives sceneLoaded event().
+        //     _eventBus.TriggerEvent(new GameEvents.PrinceInTheScene(), this);
+        // }
 
         // private void OnEnable()
         // {
         //     SceneManager.sceneLoaded += TriggerPrinceInTheScene;
         // }
 
-        private void OnDisable()
-        {
-            if (IsPrince) SceneManager.sceneLoaded -= TriggerPrinceInTheScene;
-        }
+        // private void OnDisable()
+        // {
+        //     if (IsPrince) SceneManager.sceneLoaded -= TriggerPrinceInTheScene;
+        // }
 
         private void FixedUpdate()
         {

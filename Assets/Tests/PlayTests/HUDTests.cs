@@ -216,7 +216,7 @@ namespace Tests.PlayTests
 
         }
         
-        // Test that guard life is properly represented at HUD when he appears at the room and not before.
+        // Test that guard life dissapears when Price goes to a different room.
         [UnityTest]
         public IEnumerator GuardLifesDisappearWhenPrinceLeavesRoomTest()
         {

@@ -1236,6 +1236,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6243058650354189308, guid: f06d52703a31ae3459fb5fa57a416c0e, type: 3}
+      propertyPath: eventBus
+      value: 
+      objectReference: {fileID: 4775544547063931650}
+    - target: {fileID: 6243058650354189308, guid: f06d52703a31ae3459fb5fa57a416c0e, type: 3}
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 7031278100399717209}

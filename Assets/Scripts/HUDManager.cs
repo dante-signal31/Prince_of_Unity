@@ -67,8 +67,8 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
             eventBus.RemoveListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
             eventBus.RemoveListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
-            eventBus.RemoveListener<GameEvents.VideoPlayStart>(OnVideoPlayStart);
-            eventBus.RemoveListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
+            // eventBus.RemoveListener<GameEvents.VideoPlayStart>(OnVideoPlayStart);
+            // eventBus.RemoveListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
         }
 
         private void Start()
@@ -77,8 +77,9 @@ namespace Prince
             eventBus.AddListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
             eventBus.AddListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
             eventBus.AddListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
-            eventBus.AddListener<GameEvents.VideoPlayStart>(OnVideoPlayStart);
-            eventBus.AddListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
+            // eventBus.AddListener<GameEvents.VideoPlayStart>(OnVideoPlayStart);
+            // eventBus.AddListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
+            eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
         }
         
@@ -108,13 +109,32 @@ namespace Prince
         }
 
         /// <summary>
-        /// Listener for VidePlayStart events.
+        /// Listener on LevelLoaded events.
         /// </summary>
         /// <param name="_">Actually not used here.</param>
-        private void OnVideoPlayStart(object _, GameEvents.VideoPlayStart __)
+        /// <param name="__">Actually not used here.</param>
+        private void OnLevelLoaded(object _, GameEvents.LevelLoaded __)
         {
-            HideHud();
+            LevelConfiguration currentLevelConfiguration =
+                GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>();
+            if (currentLevelConfiguration.ShowHudBarAtStart)
+            {
+                ShowHud();
+            }
+            else
+            {
+                HideHud();
+            }
         }
+
+        // /// <summary>
+        // /// Listener for VideoPlayStart events.
+        // /// </summary>
+        // /// <param name="_">Actually not used here.</param>
+        // private void OnVideoPlayStart(object _, GameEvents.VideoPlayStart __)
+        // {
+        //     HideHud();
+        // }
 
         /// <summary>
         /// Show hud.
@@ -126,14 +146,14 @@ namespace Prince
             _rootVisualElement.visible = true;
         }
 
-        /// <summary>
-        /// Listener for PrinceInTheScene events.
-        /// </summary>
-        /// <param name="_">Actually not used here.</param>
-        private void OnPrinceInTheScene(object _, GameEvents.PrinceInTheScene __)
-        {
-            ShowHud();
-        }
+        // /// <summary>
+        // /// Listener for PrinceInTheScene events.
+        // /// </summary>
+        // /// <param name="_">Actually not used here.</param>
+        // private void OnPrinceInTheScene(object _, GameEvents.PrinceInTheScene __)
+        // {
+        //     ShowHud();
+        // }
         
         
         /// <summary>
@@ -188,7 +208,7 @@ namespace Prince
         }
 
         /// <summary>
-        /// Listener to update enemy bar if Prince leaves current room.
+        /// Listener to update enemy bar if Prince enters a new room.
         /// </summary>
         /// <param name="sender">Sender of event. Usually a camera changer gate monobehaviour.</param>
         /// <param name="_">Event data. In this case actually empty.</param>

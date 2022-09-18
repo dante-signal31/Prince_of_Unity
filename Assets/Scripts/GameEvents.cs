@@ -89,6 +89,19 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public class PrinceInTheScene : EventArgs { }
 
+    /// <summary>
+    /// This event is raised when LevelLoader loads a new level.
+    /// </summary>
+    public class LevelLoaded : EventArgs
+    {
+        public string LevelName { get; }
+
+        public LevelLoaded(string levelName)
+        {
+            LevelName = levelName;
+        }
+    }
+
 
 
     [Header("WIRING:")] 
@@ -105,6 +118,7 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<PrinceEnteredNewRoom>();
         eventBus.RegisterEvent<VideoPlayStart>();
         eventBus.RegisterEvent<VideoPlayEnd>();
-        eventBus.RegisterEvent<PrinceInTheScene>();
+        // eventBus.RegisterEvent<PrinceInTheScene>();
+        eventBus.RegisterEvent<LevelLoaded>();
     }
 }

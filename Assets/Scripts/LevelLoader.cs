@@ -24,6 +24,8 @@ namespace Prince
         [SerializeField] private LoadingScreen loadingScreen;
         [Tooltip("Needed to print level name at message bar.")] 
         [SerializeField] private HUDManager hudManager;
+        [Tooltip("Needed to trigger level loaded events.")]
+        [SerializeField] private EventBus eventBus;
 
         [Header("CONFIGURATION:")] 
         [Tooltip("Loadable level list. Order is important.")] 
@@ -106,6 +108,7 @@ namespace Prince
                 {
                     HideLoadScreen();
                     hudManager.SetMessageForATime(CurrentSceneName, levelMessageTime);
+                    eventBus.TriggerEvent(new GameEvents.LevelLoaded(CurrentSceneName), this);
                     // if (levelLoaded != null) levelLoaded.Invoke(gameLevels[CurrentSceneIndex]);
                     return;
                 }
