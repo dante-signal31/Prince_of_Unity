@@ -380,7 +380,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.data[0].levelName
@@ -392,11 +392,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.data[2].levelName
-      value: TheDoors
+      value: Level 1
       objectReference: {fileID: 0}
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.data[3].levelName
-      value: Opening
+      value: Interlude 1
       objectReference: {fileID: 0}
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.data[0].levelScene
@@ -409,11 +409,11 @@ PrefabInstance:
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.data[2].levelScene
       value: 
-      objectReference: {fileID: 102900000, guid: b9a728ffe9a7a0849be2cd501395ec6d, type: 3}
+      objectReference: {fileID: 102900000, guid: 3097bee1ca6cfcb409ad1c4fc8628146, type: 3}
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.data[3].levelScene
       value: 
-      objectReference: {fileID: 102900000, guid: 3030121e22d14424d9fed564b77f457c, type: 3}
+      objectReference: {fileID: 102900000, guid: 2f90e198c98bd3045be455206496ef92, type: 3}
     - target: {fileID: 583374348244097365, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: m_RootOrder
       value: 3
