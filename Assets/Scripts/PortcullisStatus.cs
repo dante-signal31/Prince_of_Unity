@@ -5,6 +5,7 @@ namespace Prince
 {
     public class PortcullisStatus : MonoBehaviour, IStateMachineStatus<PortcullisStatus.PortcullisStates>
     {
+        // TODO: Portcullis should disable climbable while closed or closing. Otherwise Prince could pass a portcullis climbing.
         [Header("WIRING:")]
         [Tooltip("Needed to set initial state.")]
         [SerializeField] private Animator stateMachine;

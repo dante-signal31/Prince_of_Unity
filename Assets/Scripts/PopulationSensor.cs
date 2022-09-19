@@ -8,6 +8,7 @@ namespace Prince
     /// </summary>
     public class PopulationSensor : MonoBehaviour
     {
+        // TODO: Population sensor should detect when Prince enters a room climbing, because CameraChangerGate won't detect it and won't change main camera.
         [Header("WIRING:")] 
         [Tooltip("Needed to find characters that might already be inside sensor when it is created.")]
         [SerializeField] private BoxCollider2D sensorBox;

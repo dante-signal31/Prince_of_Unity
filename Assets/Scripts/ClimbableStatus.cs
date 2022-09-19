@@ -9,7 +9,7 @@ namespace Prince
     // TODO: Make this class implement IStateMachineStatus.
     public class ClimbableStatus : MonoBehaviour
     {
-
+        // TODO: If you are at the room bottom and hang you should change camera to room below. 
         [Header("WIRING:")] 
         [Tooltip("Needed to signal state machine when climbing is abortable.")]
         [SerializeField] private Animator stateMachine;
