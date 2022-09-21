@@ -10,6 +10,7 @@ namespace Prince
     /// </summary>
     public class GameTimer : MonoBehaviour
     {
+        // TODO: GameTimer should not count time while videos are played.
         public enum TriggeringTimeTypes
         {
             ElapsedSeconds,
