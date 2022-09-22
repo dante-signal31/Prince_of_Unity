@@ -59,9 +59,15 @@ namespace Prince
         private void Start()
         {
             eventBus.AddListener<GameEvents.TextScreenTimeout>(OnTextScreenTimeout);
+            eventBus.AddListener<GameEvents.GameEnded>(OnGameEnded);
         }
 
         private void OnTextScreenTimeout(object _, GameEvents.TextScreenTimeout __)
+        {
+            LoadScene("Opening");
+        }
+
+        private void OnGameEnded(object _, GameEvents.GameEnded __)
         {
             LoadScene("Opening");
         }

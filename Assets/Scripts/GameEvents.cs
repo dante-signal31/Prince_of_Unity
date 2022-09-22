@@ -115,6 +115,11 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This event raises when game has ended.
+    /// </summary>
+    public class GameEnded : EventArgs { }
+
 
 
     [Header("WIRING:")] 
@@ -134,5 +139,6 @@ public class GameEvents : MonoBehaviour
         // eventBus.RegisterEvent<PrinceInTheScene>();
         eventBus.RegisterEvent<LevelLoaded>();
         eventBus.RegisterEvent<TextScreenTimeout>();
+        eventBus.RegisterEvent<GameEnded>();
     }
 }
