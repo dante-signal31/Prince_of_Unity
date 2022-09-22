@@ -63,7 +63,7 @@ namespace Prince
 
         private void OnTextScreenTimeout(object _, GameEvents.TextScreenTimeout __)
         {
-            LoadScene("Level 1");
+            LoadScene("Opening");
         }
 
         /// <summary>
