@@ -251,6 +251,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 583374348244097365}
     m_Modifications:
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
+      propertyPath: eventBus
+      value: 
+      objectReference: {fileID: 4775544547063931650}
+    - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: gameConfiguration
       value: 
       objectReference: {fileID: 8885964369088698335}

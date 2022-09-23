@@ -10,7 +10,6 @@ namespace Prince
     /// </summary>
     public class GameTimer : MonoBehaviour
     {
-        // TODO: GameTimer should not count time while videos are played.
         // TODO: Implement an ingame pause.
         public enum TriggeringTimeTypes
         {
@@ -33,7 +32,7 @@ namespace Prince
             public float elapsedPercentage;
             [Tooltip("Event to trigger when elapsed seconds are reached.")] 
             public UnityEvent eventToTrigger;
-            
+
             public int CompareTo(PlannedEvent other)
             {
                 return elapsedSeconds.CompareTo(other.elapsedSeconds);
@@ -62,16 +61,35 @@ namespace Prince
         [Header("WIRING:")] 
         [Tooltip("Needed to know game total time.")]
         [SerializeField] private GameConfiguration gameConfiguration;
-
+        [Tooltip("Needed to know when a level is loaded.")]
+        [SerializeField] private EventBus eventBus;
+        
         [Header("CONFIGURATION:")]
         [Tooltip("List of events to trigger at specified moments.")]
         [SerializeField] private List<PlannedEvent> plannedEvents;
 
-        private int _eventIndex;
+        /// <summary>
+        /// Whether this counter is currently enabled and counting time.
+        /// </summary>
+        public bool TimerEnabled { get; private set; }
         
+        private int _eventIndex;
+
         private void Awake()
         {
             ReindexPlannedEventsList();
+        }
+
+        private void Start()
+        {
+            eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+        }
+
+        private void OnLevelLoaded(object sender, GameEvents.LevelLoaded ev)
+        {
+            LevelConfiguration levelConfiguration =
+                GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>();
+            TimerEnabled = levelConfiguration.TimeCounterEnabled;
         }
 
         /// <summary>
@@ -118,7 +136,7 @@ namespace Prince
 
         private void FixedUpdate()
         {
-            ElapsedSeconds += Time.deltaTime;
+            if (TimerEnabled) ElapsedSeconds += Time.deltaTime;
             if (_eventIndex < plannedEvents.Count && plannedEvents[_eventIndex].elapsedSeconds <= ElapsedSeconds)
             {
                 if (plannedEvents[_eventIndex].eventToTrigger != null)
