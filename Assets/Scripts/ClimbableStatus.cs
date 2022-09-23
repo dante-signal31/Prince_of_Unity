@@ -47,6 +47,21 @@ namespace Prince
                 _currentState = value;
             } 
         }
+
+        private bool _climbingClear;
+        
+        /// <summary>
+        /// True if there is no obstacle blocking a potential climbing.
+        /// </summary>
+        public bool ClimbingClear
+        {
+            get => _climbingClear;
+            set
+            {
+                _climbingClear = value;
+                stateMachine.SetBool("ClimbingClear", value);
+            }
+        }
         
         private bool _climbingAbortable;
     

@@ -49,6 +49,7 @@ namespace Prince
         public bool ClimbingAbortable => ((_climbable != null) && (_climbable.ClimbingAbortable));
         
         private Climbable _climbable;
+        private ClimbableStatus _climbableStatus;
         private bool _climbAborted;
         private bool _actionPushed;
         private bool _jumpPushed;
@@ -127,6 +128,7 @@ namespace Prince
             _climbable = fallingHanging
                 ? ceilingSensors.FallingLedge.GetComponentInChildren<Climbable>()
                 : ceilingSensors.Ledge.GetComponentInChildren<Climbable>();
+            _climbableStatus = _climbable.transform.root.gameObject.GetComponentInChildren<ClimbableStatus>();
             if (_climbable != null)
             {
                 this.Log($"(ClimberInteractions - {transform.root.name}) Starting climbing. " +
@@ -179,7 +181,9 @@ namespace Prince
         /// </summary>
         public void JumpReleased()
         {
-            if ((ClimbingInProgress) && (_climbable.ClimbingAbortable))
+            if ((ClimbingInProgress) && 
+                ((_climbable.ClimbingAbortable) || 
+                 (!_climbableStatus.ClimbingClear)))
             {
                 _climbable.JumpPushed(false);
                 if (!_actionPushed) _climbAborted = true;
@@ -216,6 +220,7 @@ namespace Prince
         private IEnumerator Descend()
         {
             _climbable = groundSensors.CenterGround.GetComponentInChildren<Climbable>();
+            _climbableStatus = _climbable.transform.root.gameObject.GetComponentInChildren<ClimbableStatus>();
             if (_climbable != null)
             {
                 this.Log($"(ClimberInteractions - {transform.root.name}) Starting descend.", showLogs);

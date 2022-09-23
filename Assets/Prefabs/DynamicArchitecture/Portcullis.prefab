@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 4252193061446873360}
   - component: {fileID: 6009968366644188564}
   - component: {fileID: 3333905770075801453}
+  - component: {fileID: 2558972305053931882}
   m_Layer: 0
   m_Name: Portcullis
   m_TagString: Untagged
@@ -584,6 +585,22 @@ MonoBehaviour:
   stateMachine: {fileID: 3861068644464275873}
   gizmoColor: {r: 0.011712074, g: 0, b: 1, a: 0.003921569}
   gizmoSize: 0.3
+--- !u!114 &2558972305053931882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7815559101780994356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d16f0ee7604485380fa55c13981503f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portcullisStatus: {fileID: 6009968366644188564}
+  climbableComponent: {fileID: 6455972966397087670}
+  ironCurtainController: {fileID: 2253502765323715384}
+  minimumOpening: 0.5
 --- !u!1 &8816960047057064902
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +873,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2828904969617846887, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.261
+      objectReference: {fileID: 0}
     - target: {fileID: 4791579955942524328, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
       propertyPath: m_Name
       value: Ground
@@ -863,6 +884,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+--- !u!1 &6455972966397087670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3979141082175551210, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+  m_PrefabInstance: {fileID: 7971519286896441692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8644357953468019437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1825764673919355825, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}

@@ -17,12 +17,16 @@ namespace Tests.PlayTests
         private GameObject _startPosition2;
         private GameObject _startPosition3;
         private GameObject _startPosition4;
+        private GameObject _startPosition17;
+        private GameObject _startPosition18;
 
         private GameObject _portcullis;
         private GameObject _portcullis2;
+        private GameObject _portcullis3;
         
         private CameraController _cameraController;
         private Room _room00;
+        private Room _room01;
         private Room _room10;
         // private Room _room02;
 
@@ -36,14 +40,19 @@ namespace Tests.PlayTests
             if (_prince == null) _prince = GameObject.Find("Prince");
             if (_portcullis == null) _portcullis = GameObject.Find("Portcullis");
             if (_portcullis2 == null) _portcullis2 = GameObject.Find("Portcullis2");
+            if (_portcullis3 == null) _portcullis3 = GameObject.Find("Portcullis3");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
             if (_startPosition3 == null) _startPosition3 = GameObject.Find("StartPosition3");
             if (_startPosition4 == null) _startPosition4 = GameObject.Find("StartPosition4");
+            if (_startPosition17 == null) _startPosition17 = GameObject.Find("StartPosition17");
+            if (_startPosition18 == null) _startPosition18 = GameObject.Find("StartPosition18");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
                 _room00 = GameObject.Find("Room_0_0").GetComponentInChildren<Room>();
+            if (_room01 == null)
+                _room01 = GameObject.Find("Room_0_1").GetComponentInChildren<Room>();
             if (_room10 == null)
                 _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
 
@@ -102,6 +111,113 @@ namespace Tests.PlayTests
             Vector3 endPosition = _prince.transform.position;
             // Assert Prince has gone through portcullis.
             Assert.True(Vector3.Distance(expectedFinalPosition, endPosition) < 0.30);
+        }
+        
+        /// <summary>
+        /// Test Prince can not climb through a closed portcullis.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CannotClimbThroughClosedPortcullisTest()
+        {
+            _cameraController.PlaceInRoom(_room01);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition17.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            PortcullisStatus portcullisStatus = _portcullis3.GetComponentInChildren<PortcullisStatus>();
+            AccessPrivateHelper.SetPrivateField(_portcullis3.GetComponentInChildren<PortcullisStatus>(), "initialState", PortcullisStatus.PortcullisStates.Closed);
+            AccessPrivateHelper.AccessPrivateMethod(portcullisStatus, "SetInitialState");
+            Vector3 expectedFinalPosition = _startPosition17.transform.position;
+            string commandFile = @"Assets\Tests\TestResources\climbingOneLevel";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            Vector3 endPosition = _prince.transform.position;
+            // Assert Prince has not gone through portcullis.
+            Assert.True(Vector3.Distance(expectedFinalPosition, endPosition) < 0.50);
+        }
+        
+        /// <summary>
+        /// Test Prince can climb through a open portcullis.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CanClimbThroughOpenPortcullisTest()
+        {
+            _cameraController.PlaceInRoom(_room01);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition17.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            PortcullisStatus portcullisStatus = _portcullis3.GetComponentInChildren<PortcullisStatus>();
+            AccessPrivateHelper.SetPrivateField(portcullisStatus, "initialState", PortcullisStatus.PortcullisStates.Open);
+            AccessPrivateHelper.AccessPrivateMethod(portcullisStatus, "SetInitialState");
+            yield return null;
+            Vector3 expectedFinalPosition = _startPosition18.transform.position;
+            string commandFile = @"Assets\Tests\TestResources\climbingOneLevel";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            Vector3 endPosition = _prince.transform.position;
+            // Assert Prince has not gone through portcullis.
+            Assert.True(Vector3.Distance(expectedFinalPosition, endPosition) < 0.50);
+        }
+        
+        /// <summary>
+        /// Test Prince can climb through a portcullis closing slow if he is quick enough.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CanClimbThroughClosingSlowPortcullisTest()
+        {
+            _cameraController.PlaceInRoom(_room01);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition17.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            PortcullisStatus portcullisStatus = _portcullis3.GetComponentInChildren<PortcullisStatus>();
+            AccessPrivateHelper.SetPrivateField(portcullisStatus, "initialState", PortcullisStatus.PortcullisStates.Open);
+            AccessPrivateHelper.AccessPrivateMethod(portcullisStatus, "SetInitialState");
+            yield return null;
+            Vector3 expectedFinalPosition = _startPosition18.transform.position;
+            string commandFile = @"Assets\Tests\TestResources\climbingOneLevel";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return new WaitForSeconds(8);
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            Vector3 endPosition = _prince.transform.position;
+            // Assert Prince has not gone through portcullis.
+            Assert.True(Vector3.Distance(expectedFinalPosition, endPosition) < 0.50);
+        }
+        
+        /// <summary>
+        /// Test Prince can climb through a portcullis closing slow if he is not quick enough.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CannotClimbThroughTooClosedPortcullisTest()
+        {
+            _cameraController.PlaceInRoom(_room01);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition17.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            PortcullisStatus portcullisStatus = _portcullis3.GetComponentInChildren<PortcullisStatus>();
+            AccessPrivateHelper.SetPrivateField(portcullisStatus, "initialState", PortcullisStatus.PortcullisStates.Open);
+            AccessPrivateHelper.AccessPrivateMethod(portcullisStatus, "SetInitialState");
+            yield return null;
+            Vector3 expectedFinalPosition = _startPosition17.transform.position;
+            string commandFile = @"Assets\Tests\TestResources\climbingOneLevel";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return new WaitForSeconds(12);
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            Vector3 endPosition = _prince.transform.position;
+            // Assert Prince has not gone through portcullis.
+            Assert.True(Vector3.Distance(expectedFinalPosition, endPosition) < 0.50);
         }
         
         /// <summary>
