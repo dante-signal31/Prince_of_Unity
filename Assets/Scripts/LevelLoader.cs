@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,8 +31,10 @@ namespace Prince
         [Header("CONFIGURATION:")] 
         [Tooltip("Loadable level list. Order is important.")] 
         [SerializeField] private Level[] gameLevels;
-        [Tooltip("Time to show level name when loaded.")]
+        [Tooltip("Time in seconds to show level name when loaded.")]
         [SerializeField] private float levelMessageTime;
+        [Tooltip("Delay in seconds to show level message.")]
+        [SerializeField] private float delayToShowLevelMessage;
         // [Tooltip("Event listener to notify when a new level is loaded.")]
         // [SerializeField] private UnityEvent<Level> levelLoaded;
 
@@ -55,6 +58,7 @@ namespace Prince
         
         private AsyncOperation _loadingOperation = null;
         private bool _showingLoadingScreen = false;
+        private bool _levelNameAlreadyShown = false;
 
         private void Start()
         {
@@ -103,6 +107,7 @@ namespace Prince
         {
             CurrentSceneIndex = sceneIndex;
             Level level = gameLevels[sceneIndex];
+            CurrentSceneName = level.levelName;
             _loadingOperation = SceneManager.LoadSceneAsync(level.levelScene.name);
             this.Log($"(LevelManager - {transform.root.name}) Scene {level.levelScene.name} loaded by index {sceneIndex}.", showLogs);
         }
@@ -120,20 +125,34 @@ namespace Prince
         {
             if (_loadingOperation != null)
             {
-                if (_loadingOperation.isDone)
+                if (_loadingOperation.isDone && !_levelNameAlreadyShown)
                 {
                     HideLoadScreen();
-                    hudManager.SetMessageForATime(CurrentSceneName, levelMessageTime);
+                    StartCoroutine(ShowLevelNameAtMessageBar());
                     eventBus.TriggerEvent(new GameEvents.LevelLoaded(CurrentSceneName), this);
-                    // if (levelLoaded != null) levelLoaded.Invoke(gameLevels[CurrentSceneIndex]);
+                    _levelNameAlreadyShown = true;
                     return;
                 }
                 if (!_showingLoadingScreen)
                 {
                     ShowLoadScreen();
+                    _levelNameAlreadyShown = false;
                 }
                 loadingScreen.SetProgressBarValue(_loadingOperation.progress * loadingScreen.ProgressBarMaxValue);
             }
+        }
+
+        /// <summary>
+        /// Show level name at message bar after a delay.
+        ///
+        /// Delay is used because otherwise loading operation is done before hud is enabled again. So we must give
+        /// hud a time (this delay) to activate itself an prepare to be ready to print messages again.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator ShowLevelNameAtMessageBar()
+        {
+            yield return new WaitForSeconds(delayToShowLevelMessage);
+            hudManager.SetMessageForATime(CurrentSceneName, levelMessageTime);
         }
 
         private void ShowLoadScreen()

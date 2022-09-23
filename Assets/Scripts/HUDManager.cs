@@ -168,7 +168,8 @@ namespace Prince
         /// <param name="text">Message to display at text bar.</param>
         public void SetMessage(string text)
         {
-            _textBar.text = text;
+            if (_rootVisualElement.visible)
+                _textBar.text = text;
         }
 
         /// <summary>
@@ -186,8 +187,11 @@ namespace Prince
         /// <param name="timeInSeconds">Time to show message.</param>
         public void SetMessageForATime(string text, float timeInSeconds)
         {
-            SetMessage(text);
-            Invoke(nameof(ClearMessage), timeInSeconds);
+            if (_rootVisualElement.visible)
+            {
+                SetMessage(text);
+                Invoke(nameof(ClearMessage), timeInSeconds);
+            }
         }
 
         /// <summary>
