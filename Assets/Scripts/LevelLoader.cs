@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 namespace Prince
 {
     // TODO: Add an event to GameTimer to load Bad Ending scene when time expires.
+    // TODO: Play music at level 1 start.
     /// <summary>
     /// Component to manage level loading.
     /// </summary>
