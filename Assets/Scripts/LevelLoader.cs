@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 namespace Prince
 {
-    // TODO: Play music at level 1 start.
     /// <summary>
     /// Component to manage level loading.
     /// </summary>
