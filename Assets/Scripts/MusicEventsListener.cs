@@ -18,6 +18,7 @@ namespace Prince
         {
             eventBus.AddListener<GameEvents.SmallPotionTaken>(OnSmallPotionTaken);
             eventBus.AddListener<GameEvents.SwordTaken>(OnSwordTaken);
+            eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
         }
 
         // private void OnEnable()
@@ -29,6 +30,7 @@ namespace Prince
         {
             eventBus.RemoveListener<GameEvents.SmallPotionTaken>(OnSmallPotionTaken);
             eventBus.RemoveListener<GameEvents.SwordTaken>(OnSwordTaken);
+            eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
         }
 
         private void OnSmallPotionTaken(object _, GameEvents.SmallPotionTaken __)
@@ -39,6 +41,21 @@ namespace Prince
         private void OnSwordTaken(object _, GameEvents.SwordTaken __)
         {
             soundController.PlaySound("sword_victory");
+        }
+
+        private void OnLevelLoaded(object _, GameEvents.LevelLoaded ev)
+        {
+            switch (ev.LevelName)
+            {
+                case "Level 1":
+                    Invoke(nameof(PlayLevel1Intro), 2);
+                    break;
+            }
+        }
+
+        private void PlayLevel1Intro()
+        {
+            soundController.PlaySound("level1_intro");
         }
     }
 }
