@@ -26,11 +26,11 @@ namespace Prince
             Descending,
             // Hanged
         }
-
-        /// <summary>
-        /// State before current one.
-        /// </summary>
-        private States _previousState;
+        
+        // State before current one.
+        // Let it have a default value of Inactive to avoid triggering a PrinceClimbingEnded event just at the first 
+        // iteration of Update().
+        public States PreviousState { get; private set; } = States.Inactive;
         
         // Let it have a default value of Inactive or falling ground may fall at initialization.
         // I guess an enum is set by default to its 0 state that in this case is Hanging.
@@ -43,7 +43,7 @@ namespace Prince
             get => _currentState;
             set
             {
-                _previousState = _currentState;
+                PreviousState = _currentState;
                 _currentState = value;
             } 
         }
@@ -101,9 +101,9 @@ namespace Prince
             {
                 return CurrentState switch
                 {
-                    States.Inactive when (_previousState == States.Climbing && !ClimbingAbortable)=> ClimbingResult.Climbed,
-                    States.Inactive when (_previousState == States.Climbing && ClimbingAbortable)=> ClimbingResult.Descended,
-                    States.Inactive when (_previousState != States.Climbing)=> ClimbingResult.Descended,
+                    States.Inactive when (PreviousState == States.Climbing && !ClimbingAbortable)=> ClimbingResult.Climbed,
+                    States.Inactive when (PreviousState == States.Climbing && ClimbingAbortable)=> ClimbingResult.Descended,
+                    States.Inactive when (PreviousState != States.Climbing)=> ClimbingResult.Descended,
                     _ => ClimbingResult.Uncertain
                 };
             }
@@ -131,7 +131,7 @@ namespace Prince
                 }
             }
         }
-
+        
         private void Start()
         {
             animationController.PlaceAnimation(LookingRightWards);

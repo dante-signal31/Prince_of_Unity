@@ -10,24 +10,47 @@ namespace Prince
     {
         // TODO: Population sensor should detect when Prince enters a room climbing, because CameraChangerGate won't detect it and won't change main camera.
         [Header("WIRING:")] 
-        [Tooltip("Needed to find characters that might already be inside sensor when it is created.")]
+        [Tooltip("Needed to find guards that might already be inside sensor when it is created.")]
         [SerializeField] private BoxCollider2D sensorBox;
         
         /// <summary>
         /// Enemy present at current room.
         /// </summary>
         public GameObject EnemyCharacter { get; private set; }
+        
+        /// <summary>
+        /// Prince present at current room.
+        /// </summary>
+        public bool PrinceClimbedInRoom { get; private set; }
 
         private EventBus _eventBus;
 
         private void Awake()
         {
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
+            PrinceClimbedInRoom = false;
         }
 
         private void Start()
         {
             RegisterInitialPopulation();
+            _eventBus.AddListener<GameEvents.PrinceHanged>(OnPrinceHanged);
+            _eventBus.AddListener<GameEvents.PrinceClimbingEnded>(OnPrinceClimbingEnded);
+        }
+
+        public void OnPrinceHanged(object sender, GameEvents.PrinceHanged ev)
+        {
+            PrinceClimbedInRoom = PrinceInSensor(ev.Position);
+        }
+
+        public void OnPrinceClimbingEnded(object sender, GameEvents.PrinceClimbingEnded ev)
+        {
+            PrinceClimbedInRoom = PrinceInSensor(ev.Position);
+        }
+
+        private bool PrinceInSensor(Vector3 princePosition)
+        {
+            return sensorBox.OverlapPoint(princePosition);
         }
 
         /// <summary>

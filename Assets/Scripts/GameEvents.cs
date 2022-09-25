@@ -116,6 +116,27 @@ public class GameEvents : MonoBehaviour
     }
 
     /// <summary>
+    /// This event is raised when Prince hangs from a climbable.
+    /// </summary>
+    public class PrinceHanged : EventArgs
+    {
+        public Vector3 Position { get; }
+
+        public PrinceHanged(Vector3 position)
+        {
+            Position = position;
+        }
+    }
+
+    /// <summary>
+    /// This event is raised when Prince ends his climbing or descending from a climbable.
+    /// </summary>
+    public class PrinceClimbingEnded : PrinceHanged
+    {
+        public PrinceClimbingEnded(Vector3 position) : base(position) { }
+    }
+
+    /// <summary>
     /// This event raises when game has ended.
     /// </summary>
     public class GameEnded : EventArgs { }
@@ -140,5 +161,7 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<LevelLoaded>();
         eventBus.RegisterEvent<TextScreenTimeout>();
         eventBus.RegisterEvent<GameEnded>();
+        eventBus.RegisterEvent<PrinceHanged>();
+        eventBus.RegisterEvent<PrinceClimbingEnded>();
     }
 }

@@ -96,9 +96,12 @@ public class Climbable: MonoBehaviour
     /// </summary>
     public Transform LeftDescendingTransform => descendingPointLeft;
     
+    private EventBus _eventBus;
+    
     private void Awake()
     {
         UpdateFlags();
+        _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
     }
 
     /// <summary>
@@ -177,6 +180,34 @@ public class Climbable: MonoBehaviour
     public void AbortClimbing()
     {
         stateMachine.SetTrigger("Abort");
+    }
+
+    private void Update()
+    {
+        switch (climbableStatus.CurrentState)
+        {
+            case ClimbableStatus.States.Inactive:
+                // TODO: Refine this. This is going to works for climbing, but not for descending because is going to change camera up when it should change down.
+                if (climbableStatus.PreviousState != ClimbableStatus.States.Inactive)
+                {
+                    Vector3 climbingPosition = climbableStatus.LookingRightWards
+                        ? grabbingPointLeft.position
+                        : grabbingPointRight.position; 
+                    _eventBus.TriggerEvent(new GameEvents.PrinceClimbingEnded(climbingPosition), this); 
+                }
+                break;
+            case ClimbableStatus.States.Hanging:
+                if (climbableStatus.PreviousState != ClimbableStatus.States.Hanging)
+                {
+                    Vector3 hangingPosition = climbableStatus.LookingRightWards
+                        ? descendingPointLeft.position
+                        : descendingPointRight.position;
+                    _eventBus.TriggerEvent(new GameEvents.PrinceHanged(hangingPosition), this);
+                }
+                break;
+            default:
+                break;
+        }
     }
 
 #if UNITY_EDITOR

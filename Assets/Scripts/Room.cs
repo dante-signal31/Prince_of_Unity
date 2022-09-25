@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Prince
 {
@@ -35,9 +36,12 @@ namespace Prince
         
         public GameObject LevelCamera {get; private set; }
 
+        private CameraController _cameraController;
+
         private void Awake()
         {
             LevelCamera = GameObject.Find("LevelCamera");
+            _cameraController = LevelCamera.GetComponentInChildren<CameraController>();
         }
 
         /// <summary>
@@ -67,6 +71,11 @@ namespace Prince
         public bool IsActiveRoom()
         {
             return ((LevelCamera != null) && (LevelCamera.transform.position == RoomCameraPosition));
+        }
+
+        private void Update()
+        {
+            if (populationSensor.PrinceClimbedInRoom && !IsActiveRoom()) _cameraController.PlaceInRoom(this);
         }
 
 #if UNITY_EDITOR
