@@ -221,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 88322598493374997}
   climbingInteractions: {fileID: 0}
-  showLogs: 1
+  showLogs: 0
 --- !u!1 &4208924519771227386
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +531,6 @@ MonoBehaviour:
   fightingInteractions: {fileID: 0}
   life: 0
   maximumLife: 0
-  hasSword: 0
   lookingRightWards: 1
   showLogs: 0
 --- !u!50 &7284997314533658813

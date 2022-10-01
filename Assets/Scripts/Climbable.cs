@@ -97,6 +97,7 @@ public class Climbable: MonoBehaviour
     public Transform LeftDescendingTransform => descendingPointLeft;
     
     private EventBus _eventBus;
+    private bool _princeClimbingEndedAlreadyTriggered = false;
     
     private void Awake()
     {
@@ -184,28 +185,42 @@ public class Climbable: MonoBehaviour
 
     private void Update()
     {
+        Vector3 climbingPosition;
+        Vector3 hangingPosition;
+        
         switch (climbableStatus.CurrentState)
         {
-            case ClimbableStatus.States.Inactive:
-                // TODO: Refine this. This is going to works for climbing, but not for descending because is going to change camera up when it should change down.
-                if (climbableStatus.PreviousState != ClimbableStatus.States.Inactive)
+            // Move camera if we have climbed or descended.
+            case ClimbableStatus.States.Inactive when climbableStatus.PreviousState != ClimbableStatus.States.Inactive:
+                if (_princeClimbingEndedAlreadyTriggered) break;
+                if (climbableStatus.PreviousState == ClimbableStatus.States.Climbing)
                 {
-                    Vector3 climbingPosition = climbableStatus.LookingRightWards
+                    climbingPosition = climbableStatus.LookingRightWards
                         ? grabbingPointLeft.position
                         : grabbingPointRight.position; 
                     _eventBus.TriggerEvent(new GameEvents.PrinceClimbingEnded(climbingPosition), this); 
                 }
-                break;
-            case ClimbableStatus.States.Hanging:
-                if (climbableStatus.PreviousState != ClimbableStatus.States.Hanging)
+                else
                 {
-                    Vector3 hangingPosition = climbableStatus.LookingRightWards
+                    hangingPosition = climbableStatus.LookingRightWards
                         ? descendingPointLeft.position
                         : descendingPointRight.position;
                     _eventBus.TriggerEvent(new GameEvents.PrinceHanged(hangingPosition), this);
                 }
+                _princeClimbingEndedAlreadyTriggered = true;
+                break;
+            // Move camera if we are hanging.
+            case ClimbableStatus.States.Hanging when climbableStatus.PreviousState != ClimbableStatus.States.Hanging:
+                // if (climbableStatus.PreviousState != ClimbableStatus.States.Hanging)
+                // {
+                    hangingPosition = climbableStatus.LookingRightWards
+                        ? descendingPointLeft.position
+                        : descendingPointRight.position;
+                    _eventBus.TriggerEvent(new GameEvents.PrinceHanged(hangingPosition), this);
+                // }
                 break;
             default:
+                _princeClimbingEndedAlreadyTriggered = false;
                 break;
         }
     }

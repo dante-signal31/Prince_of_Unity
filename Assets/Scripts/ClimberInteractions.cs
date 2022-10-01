@@ -124,7 +124,6 @@ namespace Prince
         /// <param name="fallingHanging">True if character is falling when he tries to grab the ledge.</param>
         private IEnumerator Climb(bool fallingHanging = false)
         {
-            // TODO: When we climb from a room to one above room changer trigger may not be activated. We must find a way to activate proper room.
             _climbable = fallingHanging
                 ? ceilingSensors.FallingLedge.GetComponentInChildren<Climbable>()
                 : ceilingSensors.Ledge.GetComponentInChildren<Climbable>();

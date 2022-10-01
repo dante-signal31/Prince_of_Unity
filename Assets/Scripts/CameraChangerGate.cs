@@ -83,18 +83,18 @@ namespace Prince
                 if (IsPlayerOutOfCurrentRoom(other))
                 {
                     // Player is entering in current room.
-                    // _levelCamera.transform.position = currentRoom.RoomCameraPosition;
                     _levelCamera.PlaceInRoom(currentRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player seems to be entering in me.", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(currentRoom), this);
                 }
                 else
                 {
                     // Player is leaving current room.
-                    // _levelCamera.transform.position = _externalRoom.RoomCameraPosition;
                     _levelCamera.PlaceInRoom(_externalRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player seems to be leaving from me.", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(_externalRoom), this);
                 }
-                _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(), this);
+                
             }
         }
 
@@ -114,18 +114,24 @@ namespace Prince
                 if (IsPlayerOutOfCurrentRoom(other))
                 {
                     // Player is returning to his former room.
-                    // _levelCamera.transform.position = _externalRoom.RoomCameraPosition;
-                    _levelCamera.PlaceInRoom(_externalRoom);
-                    this.Log($"(CameraChangerGate - {transform.root.name}) Player is returning to his former room.", showLogs);
+                    if (_levelCamera.CurrentRoom != _externalRoom)
+                    {
+                        _levelCamera.PlaceInRoom(_externalRoom);
+                        _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(_externalRoom), this);
+                    }
+                    this.Log($"(CameraChangerGate - {transform.root.name}) Player is finally leaving from me.", showLogs);
                 }
                 else
                 {
                     // Player is finally entering in current room.
-                    // _levelCamera.transform.position = currentRoom.RoomCameraPosition;
-                    _levelCamera.PlaceInRoom(currentRoom);
+                    if (_levelCamera.CurrentRoom != currentRoom)
+                    {
+                        _levelCamera.PlaceInRoom(currentRoom);
+                        _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(currentRoom), this);
+                    }
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player finally is entering in me.", showLogs);
                 }
-                _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(), this);
+                
             }
         }
         

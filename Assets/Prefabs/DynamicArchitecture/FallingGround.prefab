@@ -178,7 +178,7 @@ MonoBehaviour:
   fallingHeightCounter: {fileID: 6658354330959168871}
   climbableStatus: {fileID: 886953448444165822}
   climbable: {fileID: 667486995698433187}
-  showLogs: 1
+  showLogs: 0
 --- !u!114 &7409662024876000200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   stateMachine: {fileID: 575157283389842710}
   soundController: {fileID: 689670496724525407}
   crashDistance: 0.35
-  showLogs: 1
+  showLogs: 0
 --- !u!114 &7856379183989504403
 MonoBehaviour:
   m_ObjectHideFlags: 0

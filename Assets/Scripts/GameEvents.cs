@@ -61,7 +61,15 @@ public class GameEvents : MonoBehaviour
     /// <summary>
     /// This event is raised every time Prince changes of room.
     /// </summary>
-    public class PrinceEnteredNewRoom : EventArgs { }
+    public class PrinceEnteredNewRoom : EventArgs
+    {
+        public Room NewRoom { get; }
+
+        public PrinceEnteredNewRoom(Room newRoom)
+        {
+            NewRoom = newRoom;
+        }
+    }
 
     /// <summary>
     /// This event is raised to announce a video clip is being played.

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Prince
 {
@@ -8,10 +9,15 @@ namespace Prince
     /// </summary>
     public class PopulationSensor : MonoBehaviour
     {
-        // TODO: Population sensor should detect when Prince enters a room climbing, because CameraChangerGate won't detect it and won't change main camera.
         [Header("WIRING:")] 
         [Tooltip("Needed to find guards that might already be inside sensor when it is created.")]
         [SerializeField] private BoxCollider2D sensorBox;
+        // [Tooltip("Needed to know if Prince leaves this room.")]
+        // [SerializeField] private Room currentRoom;
+
+        [Header("CONFIGURATION:")]
+        [Tooltip("Event triggered when Prince climbs or descends into room.")]
+        [SerializeField] private UnityEvent princeClimbedInRoom;
         
         /// <summary>
         /// Enemy present at current room.
@@ -21,14 +27,14 @@ namespace Prince
         /// <summary>
         /// Prince present at current room.
         /// </summary>
-        public bool PrinceClimbedInRoom { get; private set; }
+        // public bool PrinceClimbedInRoom { get; private set; }
 
         private EventBus _eventBus;
 
         private void Awake()
         {
             _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
-            PrinceClimbedInRoom = false;
+            // PrinceClimbedInRoom = false;
         }
 
         private void Start()
@@ -36,17 +42,37 @@ namespace Prince
             RegisterInitialPopulation();
             _eventBus.AddListener<GameEvents.PrinceHanged>(OnPrinceHanged);
             _eventBus.AddListener<GameEvents.PrinceClimbingEnded>(OnPrinceClimbingEnded);
+            // _eventBus.AddListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceLeftRoom);
+        }
+        
+        private void OnDisable()
+        {
+            _eventBus.RemoveListener<GameEvents.PrinceHanged>(OnPrinceHanged);
+            _eventBus.RemoveListener<GameEvents.PrinceClimbingEnded>(OnPrinceClimbingEnded);
+            // _eventBus.RemoveListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceLeftRoom);
         }
 
         public void OnPrinceHanged(object sender, GameEvents.PrinceHanged ev)
         {
-            PrinceClimbedInRoom = PrinceInSensor(ev.Position);
+            // PrinceClimbedInRoom = PrinceInSensor(ev.Position);
+            if (PrinceInSensor(ev.Position) && princeClimbedInRoom != null)
+                princeClimbedInRoom.Invoke();
         }
 
         public void OnPrinceClimbingEnded(object sender, GameEvents.PrinceClimbingEnded ev)
         {
-            PrinceClimbedInRoom = PrinceInSensor(ev.Position);
+            // PrinceClimbedInRoom = PrinceInSensor(ev.Position);
+            if (PrinceInSensor(ev.Position) && princeClimbedInRoom != null)
+                princeClimbedInRoom.Invoke();
         }
+
+        // public void OnPrinceLeftRoom(object sender, GameEvents.PrinceEnteredNewRoom ev)
+        // {
+        //     if (ev.NewRoom != currentRoom)
+        //     {
+        //         PrinceClimbedInRoom = false;
+        //     }
+        // }
 
         private bool PrinceInSensor(Vector3 princePosition)
         {

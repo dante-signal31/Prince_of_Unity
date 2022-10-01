@@ -35,6 +35,8 @@ namespace Tests.PlayTests
         private GameObject _startPosition24;
         private GameObject _startPosition25;
         private GameObject _startPosition30;
+        private GameObject _startPosition31;
+        private GameObject _startPosition32;
 
         private CameraController _cameraController;
         private Room _room00;
@@ -73,6 +75,8 @@ namespace Tests.PlayTests
             if (_startPosition24 == null) _startPosition24 = GameObject.Find("StartPosition24");
             if (_startPosition25 == null) _startPosition25 = GameObject.Find("StartPosition25");
             if (_startPosition30 == null) _startPosition30 = GameObject.Find("StartPosition30");
+            if (_startPosition31 == null) _startPosition31 = GameObject.Find("StartPosition31");
+            if (_startPosition32 == null) _startPosition32 = GameObject.Find("StartPosition32");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
@@ -852,7 +856,77 @@ namespace Tests.PlayTests
         Assert.True(_cameraController.CurrentRoom == _room01);
     }
     
-    // TODO: Add a test for camera changing when climbing.
+    /// <summary>
+    /// Test that when we descend in a room border camera changes camera to room below.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendHangingChangesCameraTest()
+    {
+        _cameraController.PlaceInRoom(_room02);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition32.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendOneLevel";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(6);
+        // Assert camera now its at room below.
+        Assert.True(_cameraController.CurrentRoom == _room01);
+    }
+    
+    /// <summary>
+    /// Test that when we descend in a room border camera changes camera to room below.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendKeepHangingAndFallChangesCameraTest()
+    {
+        _cameraController.PlaceInRoom(_room02);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition32.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndFall";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(9);
+        // Assert camera now its at room below.
+        Assert.True(_cameraController.CurrentRoom == _room01);
+    }
+    
+    /// <summary>
+    /// Test that when we descend in a room border camera changes camera to room below.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator ClimbChangesCameraTest()
+    {
+        _cameraController.PlaceInRoom(_room01);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition31.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\climbingOneLevel";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert camera now its at room above.
+        Assert.True(_cameraController.CurrentRoom == _room02);
+    }
     
     }
 }
