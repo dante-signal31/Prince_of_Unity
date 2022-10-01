@@ -82,8 +82,6 @@ namespace Prince
         [SerializeField] private int life;
         [Tooltip("Current character maximum life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
         [SerializeField] private int maximumLife;
-        // [Tooltip("This character has already a sword o should look for it first?")]
-        // [SerializeField] private bool hasSword;
         [Tooltip("Is this character looking rightwards?")]
         [SerializeField] private bool lookingRightWards;
         
@@ -243,7 +241,6 @@ namespace Prince
             stateMachine.SetBool("hasSword", HasSword);
             stateMachine.SetBool("isDead", IsDead);
             stateMachine.SetBool("lookingRightWards", LookingRightWards);
-            //stateMachine.SetBool("OnGround", !IsFalling);
         }
 
         private void Awake()
@@ -260,31 +257,12 @@ namespace Prince
                 MaximumLife = _princePersistentStatus.CurrentPlayerMaximumLife;
                 Life = _princePersistentStatus.CurrentPlayerLife;
                 HasSword = _princePersistentStatus.HasSword;
-                // SceneManager.sceneLoaded += TriggerPrinceInTheScene;
             }
             else
             {
                 HasSword = true;
             }
         }
-
-        // private void TriggerPrinceInTheScene(Scene _, LoadSceneMode __)
-        // {
-        //     // I first tried to run it from Start() but oddly errored because this start() was called before 
-        //     // GameEvents Awake() method, so PrinceInTheScene() was invoked before being actually registered.
-        //     // To fix that I had to trigger event when this game object receives sceneLoaded event().
-        //     _eventBus.TriggerEvent(new GameEvents.PrinceInTheScene(), this);
-        // }
-
-        // private void OnEnable()
-        // {
-        //     SceneManager.sceneLoaded += TriggerPrinceInTheScene;
-        // }
-
-        // private void OnDisable()
-        // {
-        //     if (IsPrince) SceneManager.sceneLoaded -= TriggerPrinceInTheScene;
-        // }
 
         private void FixedUpdate()
         {
@@ -296,7 +274,6 @@ namespace Prince
             // Inspector can change only fields. So we update properties in case of field change.
             Life = life;
             MaximumLife = maximumLife;
-            // HasSword = hasSword;
             LookingRightWards = lookingRightWards;
         }
     }

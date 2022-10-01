@@ -73,11 +73,6 @@ namespace Prince
             return ((LevelCamera != null) && (LevelCamera.transform.position == RoomCameraPosition));
         }
 
-        // private void Update()
-        // {
-        //     // if (populationSensor.PrinceClimbedInRoom && !IsActiveRoom()) _cameraController.PlaceInRoom(this);
-        // }
-
         public void OnPrinceClimbedInRoom()
         {
             if (!IsActiveRoom()) _cameraController.PlaceInRoom(this);

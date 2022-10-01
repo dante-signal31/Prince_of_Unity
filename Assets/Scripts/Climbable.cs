@@ -211,13 +211,10 @@ public class Climbable: MonoBehaviour
                 break;
             // Move camera if we are hanging.
             case ClimbableStatus.States.Hanging when climbableStatus.PreviousState != ClimbableStatus.States.Hanging:
-                // if (climbableStatus.PreviousState != ClimbableStatus.States.Hanging)
-                // {
                     hangingPosition = climbableStatus.LookingRightWards
                         ? descendingPointLeft.position
                         : descendingPointRight.position;
                     _eventBus.TriggerEvent(new GameEvents.PrinceHanged(hangingPosition), this);
-                // }
                 break;
             default:
                 _princeClimbingEndedAlreadyTriggered = false;
