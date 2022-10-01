@@ -10,6 +10,7 @@ namespace Prince
     /// </summary>
     public class FallingController : MonoBehaviour
     {
+        // TODO: At level 1 first fall should take just one life point but sometimes it takes 3.
         [Header("WIRING:")]
         [Tooltip("Needed to detect falling.")]
         [SerializeField] private CharacterStatus characterStatus;
