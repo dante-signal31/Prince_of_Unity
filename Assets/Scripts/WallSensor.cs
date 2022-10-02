@@ -11,6 +11,7 @@ namespace Prince
     [RequireComponent(typeof(Collider2D))]
     public class WallSensor : MonoBehaviour
     {
+        // TODO: At level 1 Room_-1_-1 you trespass wall when falling to trap hole.
         [Header("WIRING:")]
         [Tooltip("Needed to signal we are touching a wall.")]
         [SerializeField] private Animator stateMachine;
