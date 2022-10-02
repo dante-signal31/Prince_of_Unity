@@ -9,6 +9,7 @@ using UnityEngine;
 /// </summary>
 public class ColliderController : MonoBehaviour
 {
+    // TODO: While running jumping collider should not activate ground switches.
     [Header("WIRING:")]
     [Tooltip("Needed to follow character states progress.")]
     [SerializeField] private CharacterStatus characterStatus;
@@ -16,7 +17,6 @@ public class ColliderController : MonoBehaviour
     [SerializeField] private Collider2D usualCollider;
     [Tooltip("Collider used when character moves with sword unsheathed.")]
     [SerializeField] private Collider2D fightingCollider;
-    // TODO: fallingCollider is a trigger but I don't use yet, but I think it will be useful for falling after hanging in 1 unit wide holes.
     [Tooltip("Collider used when character falls.")]
     [SerializeField] private Collider2D fallingCollider;
 
