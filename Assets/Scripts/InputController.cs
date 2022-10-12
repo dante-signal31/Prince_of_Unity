@@ -189,5 +189,10 @@ namespace Prince
         {
             ExecuteCommand(Command.CommandType.WalkLeftWithSword);
         }
+
+        public void SkipToNextLevel()
+        {
+            ExecuteCommand(Command.CommandType.SkipToNextLevel);
+        }
     }
 }

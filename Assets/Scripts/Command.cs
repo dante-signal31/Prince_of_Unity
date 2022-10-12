@@ -30,6 +30,7 @@ namespace Prince
             Stand,
             CrouchWalk,
             StopJump,
+            SkipToNextLevel,
         }
 
         [SerializeField] private float _delay;

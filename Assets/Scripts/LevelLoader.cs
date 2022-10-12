@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace Prince

@@ -49,6 +49,60 @@
                     "processors": "",
                     "interactions": "Hold(duration=0.1,pressPoint=1)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SkipToNextLevel",
+                    "type": "Button",
+                    "id": "97fb3632-f48a-4e42-8094-df3956e55b48",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ExtraBarOfLife",
+                    "type": "Button",
+                    "id": "4f7395ce-7c1c-4714-8a50-b0a2c787c9d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HealLifePoint",
+                    "type": "Button",
+                    "id": "a559fa24-e248-415c-8c87-2abce3590973",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "KillAllGuardsInRoom",
+                    "type": "Button",
+                    "id": "c8bc978b-a315-4a99-8d96-9d12af475d46",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "IncreaseTime",
+                    "type": "Button",
+                    "id": "e7802dca-831c-44d4-9e11-12f11ce13d59",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DecreaseTime",
+                    "type": "Button",
+                    "id": "0cb4e9ef-2913-455f-a042-1fc765f2e000",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -148,6 +202,94 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Ctrl + L",
+                    "id": "5b48fba6-5a30-42be-b900-648883468136",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkipToNextLevel",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "d107b43a-1498-4b70-b926-f3a6f895e0b4",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SkipToNextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "87d8ddd2-b535-423c-b37d-017a38b81db8",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SkipToNextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "59fd16f0-e1ee-41d8-a08f-0cb2ba36586c",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExtraBarOfLife",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46fcde8a-5107-4cc7-97e4-ad7fbb14e6f9",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HealLifePoint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62810b76-1aaf-43b9-a1e2-e42629312b39",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillAllGuardsInRoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e01b4a2a-1c70-41d5-aca9-0509c6dc0847",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ea48cef-fa7a-4cda-b666-0b8181c30c16",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseTime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

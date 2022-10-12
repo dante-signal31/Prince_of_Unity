@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.Video;
 
 namespace Prince
@@ -63,9 +64,9 @@ namespace Prince
             if (loadNextLevelAtEnd) _levelLoader.LoadNextScene();
         }
 
-        public void SkipVideo()
+        public void SkipVideo(InputAction.CallbackContext ctx)
         {
-            videoPlayer.time = videoToPlay.length;
+            if (ctx.started) videoPlayer.time = videoToPlay.length;
         }
     }
 }

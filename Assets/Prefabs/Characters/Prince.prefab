@@ -778,6 +778,42 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bff49b8c-fced-45f4-94c7-4ef9a932b146
     m_ActionName: FightingActionMap/Left[/Keyboard/a,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: SkipToNextLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 97fb3632-f48a-4e42-8094-df3956e55b48
+    m_ActionName: PrinceActionMap/SkipToNextLevel[/Keyboard/shift,/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f7395ce-7c1c-4714-8a50-b0a2c787c9d8
+    m_ActionName: PrinceActionMap/ExtraBarOfLife
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a559fa24-e248-415c-8c87-2abce3590973
+    m_ActionName: PrinceActionMap/HealLifePoint
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c8bc978b-a315-4a99-8d96-9d12af475d46
+    m_ActionName: PrinceActionMap/KillAllGuardsInRoom
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e7802dca-831c-44d4-9e11-12f11ce13d59
+    m_ActionName: PrinceActionMap/IncreaseTime
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0cb4e9ef-2913-455f-a042-1fc765f2e000
+    m_ActionName: PrinceActionMap/DecreaseTime
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: PrinceActionMap

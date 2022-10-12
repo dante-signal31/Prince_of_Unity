@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Prince
@@ -28,6 +29,12 @@ namespace Prince
         [SerializeField] private bool showLogs;
         
         private CommandSequence _commandQueue = new CommandSequence();
+        private LevelLoader _levelLoader;
+
+        private void Awake()
+        {
+            _levelLoader = GameObject.Find("GameManagers").GetComponentInChildren<LevelLoader>();
+        }
 
         /// <summary>
         /// Add a command to pending commands to execute queue.
@@ -117,7 +124,10 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed WalkRight at {Time.time}", showLogs);
                     stateMachine.SetTriggerOneFrame("WalkRight", this);
                     break;
-                
+                case Command.CommandType.SkipToNextLevel:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed cheat SkipToNextLevel at {Time.time}", showLogs);
+                    _levelLoader.LoadNextScene();
+                    break;
             }
             yield return null;
         }

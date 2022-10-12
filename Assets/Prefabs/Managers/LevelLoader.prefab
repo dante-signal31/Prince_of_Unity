@@ -48,8 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 3794283581742642432}
   hudManager: {fileID: 0}
+  eventBus: {fileID: 0}
   gameLevels: []
   levelMessageTime: 3
+  delayToShowLevelMessage: 0
   showLogs: 0
 --- !u!114 &3794283581742642432
 MonoBehaviour:

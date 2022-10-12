@@ -176,5 +176,14 @@ namespace Prince
             if (context.canceled) inputController.Stop();
         }
         
+        /// <summary>
+        /// Event listener for SkipToNextLevel input command.
+        /// </summary>
+        /// <param name="ctx"></param>
+        public void SkipToNextLevel(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started) inputController.SkipToNextLevel();
+        }
+        
     }
 }
