@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Prince
@@ -176,13 +177,39 @@ namespace Prince
             if (context.canceled) inputController.Stop();
         }
         
-        /// <summary>
-        /// Event listener for SkipToNextLevel input command.
-        /// </summary>
-        /// <param name="ctx"></param>
         public void SkipToNextLevel(InputAction.CallbackContext ctx)
         {
             if (ctx.started) inputController.SkipToNextLevel();
+        }
+
+        // TODO: Implement AddExtraBarOfLife cheat key.
+        public void AddExtraBarOfLife(InputAction.CallbackContext ctx)
+        {
+            throw new NotImplementedException();
+        }
+        
+        // TODO: Implement HealLifePoint cheat key.
+        public void HealLifePoint(InputAction.CallbackContext ctx)
+        {
+            throw new NotImplementedException();
+        }
+        
+        // TODO: Implement KillGuardInRoom cheat key.
+        public void KillGuardInRoom(InputAction.CallbackContext ctx)
+        {
+            throw new NotImplementedException();
+        }
+        
+        // TODO: Implement IncreaseTime cheat key.
+        public void IncreaseTime(InputAction.CallbackContext ctx)
+        {
+            throw new NotImplementedException();
+        }
+        
+        // TODO: Implement DecreaseTime cheat key.
+        public void DecreaseTime(InputAction.CallbackContext ctx)
+        {
+            throw new NotImplementedException();
         }
         
     }

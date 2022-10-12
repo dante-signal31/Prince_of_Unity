@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ExtraBarOfLife",
+                    "name": "AddExtraBarOfLife",
                     "type": "Button",
                     "id": "4f7395ce-7c1c-4714-8a50-b0a2c787c9d8",
                     "expectedControlType": "Button",
@@ -78,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "KillAllGuardsInRoom",
+                    "name": "KillGuardInRoom",
                     "type": "Button",
                     "id": "c8bc978b-a315-4a99-8d96-9d12af475d46",
                     "expectedControlType": "Button",
@@ -245,7 +245,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ExtraBarOfLife",
+                    "action": "AddExtraBarOfLife",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -267,7 +267,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "KillAllGuardsInRoom",
+                    "action": "KillGuardInRoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
