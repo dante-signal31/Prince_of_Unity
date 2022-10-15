@@ -1052,6 +1052,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 5982319584246824212, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
+      propertyPath: HollowBrick
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 11d8c22ab5bbe8e4d88ec8cd68a71ec2, type: 3}
@@ -5394,6 +5398,10 @@ PrefabInstance:
     - target: {fileID: 8968975185886265860, guid: ff23976a7b79ddc4983bf06b9ab185ef, type: 3}
       propertyPath: m_Name
       value: Columns (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079887508491475836, guid: ff23976a7b79ddc4983bf06b9ab185ef, type: 3}
+      propertyPath: HollowBrick
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -11862,6 +11870,10 @@ PrefabInstance:
     - target: {fileID: 8968975185886265860, guid: ff23976a7b79ddc4983bf06b9ab185ef, type: 3}
       propertyPath: m_Name
       value: Columns
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079887508491475836, guid: ff23976a7b79ddc4983bf06b9ab185ef, type: 3}
+      propertyPath: HollowBrick
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
