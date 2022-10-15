@@ -1178,6 +1178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventBus: {fileID: 4775544547063931650}
   soundController: {fileID: 8238086025989210717}
+  deadMusicDelay: 1
 --- !u!4 &8314197954223689328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4342316534958041811, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
@@ -1247,6 +1248,10 @@ PrefabInstance:
       propertyPath: hudManager
       value: 
       objectReference: {fileID: 7031278100399717209}
+    - target: {fileID: 6243058650354189308, guid: f06d52703a31ae3459fb5fa57a416c0e, type: 3}
+      propertyPath: reloadAfterDeadDelay
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f06d52703a31ae3459fb5fa57a416c0e, type: 3}

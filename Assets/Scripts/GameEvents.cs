@@ -149,6 +149,11 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public class GameEnded : EventArgs { }
 
+    /// <summary>
+    /// This event is raised when Prince deads.
+    /// </summary>
+    public class PrinceDead : EventArgs { }
+
 
 
     [Header("WIRING:")] 
@@ -171,5 +176,6 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<GameEnded>();
         eventBus.RegisterEvent<PrinceHanged>();
         eventBus.RegisterEvent<PrinceClimbingEnded>();
+        eventBus.RegisterEvent<PrinceDead>();
     }
 }

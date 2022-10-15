@@ -28,8 +28,22 @@ namespace Tests.PlayTests.Tools.Scene
             if (SceneManager.GetSceneByName(scene).isLoaded)
             {
                 AsyncOperation asyncUnLoad = SceneManager.UnloadSceneAsync(scene, UnloadSceneOptions.None);
-                yield return new WaitUntil(() => asyncUnLoad.isDone);
+                if (asyncUnLoad != null)
+                    yield return new WaitUntil(() => asyncUnLoad.isDone);
+                else
+                {
+                    yield break;
+                }
             }
+        }
+
+        /// <summary>
+        /// Unload current scene.
+        /// </summary>
+        public static IEnumerator UnLoadCurrentScene()
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            yield return UnLoadScene(currentSceneName);
         }
 
         /// <summary>
@@ -38,7 +52,8 @@ namespace Tests.PlayTests.Tools.Scene
         /// <param name="scene">String name of scene.</param>
         public static IEnumerator LoadScene(string scene)
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+            // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
             yield return new WaitUntil(() => asyncLoad.isDone);
         }
     }

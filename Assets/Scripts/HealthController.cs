@@ -24,7 +24,7 @@ namespace Prince
         [SerializeField] private bool showLogs;
 
         private CharacterStatus.States _oldState;
-        // private EventBus _eventBus;
+        private EventBus _eventBus;
         
         /// <summary>
         /// Current character life.
@@ -34,11 +34,10 @@ namespace Prince
         private int Life
         {
             get => characterStatus.Life;
-            //set => characterStatus.Life = value;
             set
             {
                 characterStatus.Life = Math.Clamp(value, 0, MaximumLife);
-                // _eventBus.TriggerEvent(new GameEvents.CharacterLifeUpdated(characterStatus.Life, characterStatus.MaximumLife), this);
+                if (characterStatus.IsPrince && characterStatus.IsDead) _eventBus.TriggerEvent(new GameEvents.PrinceDead(), this);
             }
         }
 
@@ -53,10 +52,10 @@ namespace Prince
             set => characterStatus.MaximumLife = (value > 0) ? value : 0;
         }
 
-        // private void Awake()
-        // {
-        //     _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
-        // }
+        private void Awake()
+        {
+            _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
+        }
 
         /// <summary>
         /// Add a new health point.

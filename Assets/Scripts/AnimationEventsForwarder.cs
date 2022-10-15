@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,14 @@ namespace Prince
                 [Tooltip("Needed to emit vibrations event.")] 
                 [SerializeField] private VibrationsController vibrationsController;
 
-///////// My strike can be blocked.
+                private EventBus _eventBus;
+
+                private void Awake()
+                {
+                    _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
+                }
+
+                ///////// My strike can be blocked.
                 public void StrikeStart()
                 {
                     fightingInteractions.StrikeStart();
@@ -67,6 +75,14 @@ namespace Prince
                 public void PlayMusic(string musicName)
                 {
                     musicController.PlayMusic(musicName);
+                }
+
+                public void EmitEvent(string name)
+                {
+                    switch (name)
+                    {
+                        
+                    }
                 }
 
                 public void EmitVibration()

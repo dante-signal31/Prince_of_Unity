@@ -8,7 +8,7 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
-    public class TestCheatKeys : MonoBehaviour
+    public class TestCheatKeys
     {
         private GameObject _prince;
 
@@ -52,7 +52,9 @@ namespace Tests.PlayTests
         [UnityTearDown]
         public IEnumerator TearDown()
         {
-            yield return TestSceneManager.UnLoadScene(_currentScene);
+            // Remove GameManagers to avoid having multiple instances of it in the next test.
+            GameObject.Destroy(GameObject.Find("GameManagers"));
+            yield return TestSceneManager.UnLoadCurrentScene();
         }
 
         /// <summary>

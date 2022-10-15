@@ -14,23 +14,24 @@ namespace Prince
         [Tooltip("Needed to play requested music.")]
         [SerializeField] private SoundController soundController;
 
+        [Header("CONFIGURATION:")] 
+        [Tooltip("Time in seconds to delay playing dead music start.")] 
+        [SerializeField] private float deadMusicDelay;
+
         private void Start()
         {
             eventBus.AddListener<GameEvents.SmallPotionTaken>(OnSmallPotionTaken);
             eventBus.AddListener<GameEvents.SwordTaken>(OnSwordTaken);
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.AddListener<GameEvents.PrinceDead>(OnPrinceDead);
         }
-
-        // private void OnEnable()
-        // {
-        //     
-        // }
 
         private void OnDisable()
         {
             eventBus.RemoveListener<GameEvents.SmallPotionTaken>(OnSmallPotionTaken);
             eventBus.RemoveListener<GameEvents.SwordTaken>(OnSwordTaken);
             eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.RemoveListener<GameEvents.PrinceDead>(OnPrinceDead);
         }
 
         private void OnSmallPotionTaken(object _, GameEvents.SmallPotionTaken __)
@@ -56,6 +57,16 @@ namespace Prince
         private void PlayLevel1Intro()
         {
             soundController.PlaySound("level1_intro");
+        }
+
+        private void OnPrinceDead(object _, GameEvents.PrinceDead __)
+        {
+            Invoke(nameof(PlayDeadMusic), deadMusicDelay);
+        }
+
+        private void PlayDeadMusic()
+        { 
+            soundController.PlaySound("regular_death");
         }
     }
 }

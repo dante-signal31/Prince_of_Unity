@@ -81,6 +81,8 @@ namespace Tests.PlayTests
         [UnityTearDown]
         public IEnumerator TearDown()
         {
+            // Remove GameManagers to avoid having multiple instances of it in the next test.
+            GameObject.Destroy(GameObject.Find("GameManagers"));
             yield return TestSceneManager.UnLoadScene(_currentScene);
         }
 

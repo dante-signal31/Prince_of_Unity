@@ -98,6 +98,7 @@ public class Climbable: MonoBehaviour
     
     private EventBus _eventBus;
     private bool _princeClimbingEndedAlreadyTriggered = false;
+    private bool _princeHangedAlreadyTriggered = false;
     
     private void Awake()
     {
@@ -211,13 +212,16 @@ public class Climbable: MonoBehaviour
                 break;
             // Move camera if we are hanging.
             case ClimbableStatus.States.Hanging when climbableStatus.PreviousState != ClimbableStatus.States.Hanging:
-                    hangingPosition = climbableStatus.LookingRightWards
-                        ? descendingPointLeft.position
-                        : descendingPointRight.position;
-                    _eventBus.TriggerEvent(new GameEvents.PrinceHanged(hangingPosition), this);
+                if (_princeHangedAlreadyTriggered) break;
+                hangingPosition = climbableStatus.LookingRightWards
+                    ? descendingPointLeft.position
+                    : descendingPointRight.position;
+                _eventBus.TriggerEvent(new GameEvents.PrinceHanged(hangingPosition), this);
+                _princeHangedAlreadyTriggered = true;
                 break;
             default:
                 _princeClimbingEndedAlreadyTriggered = false;
+                _princeHangedAlreadyTriggered = false;
                 break;
         }
     }

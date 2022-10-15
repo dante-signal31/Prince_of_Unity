@@ -38,6 +38,8 @@ namespace Prince
         [SerializeField] private float delayToShowLevelMessage;
         // [Tooltip("Event listener to notify when a new level is loaded.")]
         // [SerializeField] private UnityEvent<Level> levelLoaded;
+        [Tooltip("Time in seconds to reload level after been killed.")] 
+        [SerializeField] private float reloadAfterDeadDelay;
 
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -65,6 +67,14 @@ namespace Prince
         {
             eventBus.AddListener<GameEvents.TextScreenTimeout>(OnTextScreenTimeout);
             eventBus.AddListener<GameEvents.GameEnded>(OnGameEnded);
+            eventBus.AddListener<GameEvents.PrinceDead>(OnPrinceDead);
+        }
+
+        private void OnDisable()
+        {
+            eventBus.RemoveListener<GameEvents.TextScreenTimeout>(OnTextScreenTimeout);
+            eventBus.RemoveListener<GameEvents.GameEnded>(OnGameEnded);
+            eventBus.RemoveListener<GameEvents.PrinceDead>(OnPrinceDead);
         }
 
         private void OnTextScreenTimeout(object _, GameEvents.TextScreenTimeout __)
@@ -75,6 +85,12 @@ namespace Prince
         private void OnGameEnded(object _, GameEvents.GameEnded __)
         {
             LoadScene("Opening");
+        }
+
+        private void OnPrinceDead(object _, GameEvents.PrinceDead __)
+        {
+            // Invoke(nameof(ReloadScene), reloadAfterDeadDelay);
+            StartCoroutine(ReloadScene(reloadAfterDeadDelay));
         }
 
         /// <summary>
@@ -120,6 +136,18 @@ namespace Prince
         {
             LoadScene(++CurrentSceneIndex);
             this.Log($"(LevelManager - {transform.root.name}) Next scene loaded by index {CurrentSceneIndex}.", showLogs);
+        }
+
+        public IEnumerator ReloadScene(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            ReloadScene();
+        }
+        
+        public void ReloadScene()
+        {
+            LoadScene(CurrentSceneIndex);
+            this.Log($"(LevelManager - {transform.root.name}) Scene reloaded.", showLogs);
         }
 
         private void Update()

@@ -27,7 +27,7 @@ namespace Tests.PlayTests
         public IEnumerator Setup()
         {
             yield return TestSceneManager.ReLoadScene(_currentScene);
-            
+
             if (_prince == null) _prince = GameObject.Find("Prince");
             if (_enemy == null) _enemy = GameObject.Find("Enemy");
             if (_levelCamera == null) _levelCamera = GameObject.Find("LevelCamera");
@@ -46,6 +46,8 @@ namespace Tests.PlayTests
         [UnityTearDown]
         public IEnumerator TearDown()
         {
+            // Remove GameManagers to avoid having multiple instances of it in the next test.
+            GameObject.Destroy(GameObject.Find("GameManagers"));
             yield return TestSceneManager.UnLoadScene(_currentScene);
         }
         
@@ -70,6 +72,7 @@ namespace Tests.PlayTests
             Room room10 = GameObject.Find("Room_1_0").GetComponent<Room>();
             CameraController cameraController = _levelCamera.GetComponentInChildren<CameraController>();
             cameraController.PlaceInRoom(room00);
+            yield return new WaitForSeconds(1);
             // Check starting conditions are right.
             Assert.True(cameraController.CurrentRoom.Name == "Room_0_0");
             Assert.True(room00.IsActiveRoom());

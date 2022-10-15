@@ -18,10 +18,11 @@ namespace Prince
         [Tooltip("Tag of game object that should be instanced just once in the scene.")]
         [SerializeField] private string prefabTagThatShouldBeUnique;
         
-        private void Start()
-        {
-            DestroyRepeatedInstances();
-        }
+        // private void Start()
+        // private void Awake()
+        // {
+        //     DestroyRepeatedInstances();
+        // }
 
         private void DestroyRepeatedInstances()
         {
@@ -29,8 +30,10 @@ namespace Prince
                 new List<GameObject>(GameObject.FindGameObjectsWithTag(prefabTagThatShouldBeUnique));
             if (instancedObjects.Count > 1)
             {
-                // Be aware that we skip first instance to let it live.
-                List<GameObject> repeatedInstancesToRemove = instancedObjects.GetRange(1, instancedObjects.Count - 1);
+                // // Be aware that we skip first instance to let it live.
+                // List<GameObject> repeatedInstancesToRemove = instancedObjects.GetRange(1, instancedObjects.Count - 1);
+                // We keep the most recent appearance of this instance and remove older ones.
+                List<GameObject> repeatedInstancesToRemove = instancedObjects.GetRange(0, instancedObjects.Count - 1);
                 foreach (GameObject instance in repeatedInstancesToRemove)
                 {
                     Destroy(instance);
