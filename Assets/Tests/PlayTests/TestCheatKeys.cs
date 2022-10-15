@@ -8,7 +8,7 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
-    public class Z_InterlevelGateTests
+    public class TestCheatKeys : MonoBehaviour
     {
         private GameObject _prince;
 
@@ -54,29 +54,28 @@ namespace Tests.PlayTests
         {
             yield return TestSceneManager.UnLoadScene(_currentScene);
         }
-        
+
         /// <summary>
-        /// Test Prince can go to next level through an interlevel gate.
+        /// Test Prince can use cheat key to skip level.
         /// </summary>
         [UnityTest]
-        public IEnumerator CanGoThroughInterlevelGate()
+        public IEnumerator CanSkipLevel()
         {
             _cameraController.PlaceInRoom(_room00);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
             string expectedFinalLevelName = "doors1";
-            string commandFile = @"Assets\Tests\TestResources\enterInterlevelGate";
+            string commandFile = @"Assets\Tests\TestResources\useSkipLevelCheatKey";
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(25);
+            yield return new WaitForSeconds(4);
             string endFinalLevelName = _levelLoader.CurrentSceneName;
             // Assert Prince has not gone through inter level gate to desired level.
             Assert.True(expectedFinalLevelName == endFinalLevelName);
         }
-        
     }
 }
