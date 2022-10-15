@@ -8,6 +8,7 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
+    // TODO: Add regression test for SkipLevel cheat key.
     public class Z_InterlevelGateTests
     {
         private GameObject _prince;
