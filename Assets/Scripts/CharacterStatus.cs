@@ -190,6 +190,8 @@ namespace Prince
                 {
                     maximumLife = value;
                     life = Math.Clamp(life, 0, maximumLife);
+                    if (_eventBus != null && _eventBus.HasRegisteredEvent<GameEvents.CharacterLifeUpdated>()) 
+                        _eventBus.TriggerEvent(new GameEvents.CharacterLifeUpdated(Life, MaximumLife), this);
                 }
                 
             }
@@ -204,6 +206,17 @@ namespace Prince
                 _hasSword = value;
                 // Added check to get rid of "Animator is not playing an AnimatorController" warning.
                 if (stateMachine.isActiveAndEnabled) stateMachine.SetBool("hasSword", value);
+                if (_eventBus != null && _eventBus.HasRegisteredEvent<GameEvents.SwordTaken>() &&
+                    _eventBus.HasRegisteredEvent<GameEvents.SwordLost>())
+                {
+                    if (_hasSword)
+                        _eventBus.TriggerEvent(new GameEvents.SwordTaken(), this);
+                    else
+                    {
+                        _eventBus.TriggerEvent(new GameEvents.SwordLost(), this);
+                    }
+                } 
+                    
             }
         }
     
@@ -262,6 +275,29 @@ namespace Prince
             {
                 HasSword = true;
             }
+        }
+
+        private void OnEnable()
+        {
+            _eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+        }
+
+        private void OnDisable()
+        {
+            _eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+        }
+
+
+        /// <summary>
+        /// Listener for LevelReloaded events.
+        /// </summary>
+        /// <param name="_">Sender of this event. Usually a LevelLoader.</param>
+        /// <param name="__">Event data.</param>
+        private void OnLevelReloaded(object _, GameEvents.LevelReloaded __)
+        {
+            MaximumLife = _princePersistentStatus.LevelStartsStats.MaximumLife;
+            Life = _princePersistentStatus.LevelStartsStats.CurrentLife;
+            HasSword = _princePersistentStatus.LevelStartsStats.HasSword;
         }
 
         private void FixedUpdate()

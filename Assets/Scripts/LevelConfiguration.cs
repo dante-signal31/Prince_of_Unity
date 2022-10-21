@@ -12,6 +12,8 @@ namespace Prince
         [SerializeField] private bool showHudBarAtStart;
         [Tooltip("Whether time counter should be activated in this level.")] 
         [SerializeField] private bool timeCounterEnabled;
+        [Tooltip("Whether Prince status should be saved when this level is loaded.")] 
+        [SerializeField] private bool savePrinceStatusWhenLevelLoaded;
 
         /// <summary>
         /// Whether this scene should show HUD bar when it is loaded.
@@ -22,5 +24,10 @@ namespace Prince
         /// Whether time counter should be active in this scene. This should be false at video scenes.
         /// </summary>
         public bool TimeCounterEnabled => timeCounterEnabled;
+
+        /// <summary>
+        /// Whether Prince status should be saved when this level is loaded. This should be false at video scenes.
+        /// </summary>
+        public bool SavePrinceStatusWhenLevelLoaded => savePrinceStatusWhenLevelLoaded;
     }
 }

@@ -19,10 +19,10 @@ namespace Prince
         [SerializeField] private string prefabTagThatShouldBeUnique;
         
         // private void Start()
-        // private void Awake()
-        // {
-        //     DestroyRepeatedInstances();
-        // }
+        private void Awake()
+        {
+            DestroyRepeatedInstances();
+        }
 
         private void DestroyRepeatedInstances()
         {

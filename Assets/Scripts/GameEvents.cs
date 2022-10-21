@@ -14,6 +14,11 @@ public class GameEvents : MonoBehaviour
     /// This event is raised by sword when it is taken by Prince.
     /// </summary>
     public class SwordTaken : EventArgs { }
+    
+    /// <summary>
+    /// This event is raised when Prince is killed at first level after taking sword.
+    /// </summary>
+    public class SwordLost : EventArgs {}
 
     /// <summary>
     /// This event is raised every time a character changes his life points.
@@ -111,6 +116,14 @@ public class GameEvents : MonoBehaviour
     }
 
     /// <summary>
+    /// This event is raised when LevelLoader reloads current level.
+    /// </summary>
+    public class LevelReloaded : LevelLoaded
+    {
+        public LevelReloaded(string levelName):base(levelName){}
+    }
+
+    /// <summary>
     /// This event is raised when time to read a text screen ends.
     /// </summary>
     public class TextScreenTimeout : EventArgs
@@ -164,6 +177,7 @@ public class GameEvents : MonoBehaviour
     {
         eventBus.RegisterEvent<SmallPotionTaken>();
         eventBus.RegisterEvent<SwordTaken>();
+        eventBus.RegisterEvent<SwordLost>();
         eventBus.RegisterEvent<CharacterLifeUpdated>();
         eventBus.RegisterEvent<GuardEnteredTheRoom>();
         eventBus.RegisterEvent<NoGuardInTheRoom>();
@@ -172,6 +186,7 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<VideoPlayEnd>();
         // eventBus.RegisterEvent<PrinceInTheScene>();
         eventBus.RegisterEvent<LevelLoaded>();
+        eventBus.RegisterEvent<LevelReloaded>();
         eventBus.RegisterEvent<TextScreenTimeout>();
         eventBus.RegisterEvent<GameEnded>();
         eventBus.RegisterEvent<PrinceHanged>();

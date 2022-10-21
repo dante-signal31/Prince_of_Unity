@@ -62,6 +62,7 @@ namespace Prince
         private AsyncOperation _loadingOperation = null;
         private bool _showingLoadingScreen = false;
         private bool _levelNameAlreadyShown = false;
+        private int _previousSceneIndex;
 
         private void Start()
         {
@@ -104,6 +105,7 @@ namespace Prince
             {
                 if (level.levelName == sceneName)
                 {
+                    _previousSceneIndex = CurrentSceneIndex;
                     CurrentSceneIndex = index;
                     CurrentSceneName = sceneName;
                     _loadingOperation = SceneManager.LoadSceneAsync(level.levelScene.name);
@@ -116,12 +118,14 @@ namespace Prince
 
         /// <summary>
         /// Load scene of given index.
-        ///
+        /// 
         /// This index is the one of gameLevels, not the one of build settings.
         /// </summary>
         /// <param name="sceneName">Index of scene to load.</param>
+        /// <param name="isReloading">Whether the scene to loas</param>
         public void LoadScene(int sceneIndex)
         {
+            _previousSceneIndex = CurrentSceneIndex;
             CurrentSceneIndex = sceneIndex;
             Level level = gameLevels[sceneIndex];
             CurrentSceneName = level.levelName;
@@ -138,12 +142,20 @@ namespace Prince
             this.Log($"(LevelManager - {transform.root.name}) Next scene loaded by index {CurrentSceneIndex}.", showLogs);
         }
 
+        /// <summary>
+        /// Coroutine to reload current scene after given delay.
+        /// </summary>
+        /// <param name="delay">Delay in seconds.</param>
         public IEnumerator ReloadScene(float delay)
         {
             yield return new WaitForSeconds(delay);
             ReloadScene();
         }
         
+        /// <summary>
+        /// Reload current scene at once.
+        /// </summary>
+        /// <param name="delay">Delay in seconds.</param>
         public void ReloadScene()
         {
             LoadScene(CurrentSceneIndex);
@@ -158,7 +170,14 @@ namespace Prince
                 {
                     HideLoadScreen();
                     StartCoroutine(ShowLevelNameAtMessageBar());
-                    eventBus.TriggerEvent(new GameEvents.LevelLoaded(CurrentSceneName), this);
+                    if (CurrentSceneIndex == _previousSceneIndex)
+                    {
+                        eventBus.TriggerEvent(new GameEvents.LevelReloaded(CurrentSceneName), this);
+                    }
+                    else
+                    {
+                        eventBus.TriggerEvent(new GameEvents.LevelLoaded(CurrentSceneName), this);
+                    }
                     _levelNameAlreadyShown = true;
                     return;
                 }

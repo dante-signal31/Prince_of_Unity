@@ -74,22 +74,46 @@ namespace Prince
         public bool TimerEnabled { get; private set; }
         
         private int _eventIndex;
+        private PrinceStatus _princePersistentStatus;
 
         private void Awake()
         {
             ReindexPlannedEventsList();
+            _princePersistentStatus = GameObject.Find("GameManagers").GetComponentInChildren<PrinceStatus>();
         }
 
         private void Start()
         {
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
         }
 
-        private void OnLevelLoaded(object sender, GameEvents.LevelLoaded ev)
+        private void OnDisable()
+        {
+            eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+        }
+
+        /// <summary>
+        /// Listener for LevelLoaded events.
+        /// </summary>
+        /// <param name="_">Sender of this event. Usually a LevelLoader.</param>
+        /// <param name="__">Event data.</param>
+        private void OnLevelLoaded(object _, GameEvents.LevelLoaded __)
         {
             LevelConfiguration levelConfiguration =
                 GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>();
             TimerEnabled = levelConfiguration.TimeCounterEnabled;
+        }
+
+        /// <summary>
+        /// Listener for LevelReloaded events.
+        /// </summary>
+        /// <param name="_">Sender of this event. Usually a LevelLoader.</param>
+        /// <param name="__">Event data.</param>
+        private void OnLevelReloaded(object _, GameEvents.LevelReloaded __)
+        {
+            ElapsedSeconds = _princePersistentStatus.LevelStartsStats.ElapsedSeconds;
         }
 
         /// <summary>

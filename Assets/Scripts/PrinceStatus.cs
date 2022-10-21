@@ -4,13 +4,22 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// Component to follow Prince status across game.
+    /// GameManagers component to follow Prince status across game.
     ///
     /// While in scene you can ask to Prince character for his data, but that game object is destroyed and recreated
     /// each time level changes. So a game management component is needed to keep his data across levels.
     /// </summary>
     public class PrinceStatus : MonoBehaviour
     {
+        
+        public struct Stats
+        {
+            public int MaximumLife;
+            public int CurrentLife;
+            public float ElapsedSeconds;
+            public bool HasSword;
+        }
+        
         [Header("WIRING:")]
         [Tooltip("Needed to get player starting configuration.")]
         [SerializeField] private GameConfiguration gameConfiguration;
@@ -31,6 +40,13 @@ namespace Prince
         /// Whether player has a sword or not.
         /// </summary>
         public bool HasSword { get; private set; }
+
+        private Stats _levelStartStats = new Stats();
+        
+        /// <summary>
+        /// Prince stats when he started current level.
+        /// </summary>
+        public Stats LevelStartsStats => _levelStartStats;
         
         private void Awake()
         {
@@ -40,7 +56,9 @@ namespace Prince
         private void Start()
         {
             eventBus.AddListener<GameEvents.SwordTaken>(OnSwordTaken);
+            eventBus.AddListener<GameEvents.SwordLost>(OnSwordLost);
             eventBus.AddListener<GameEvents.CharacterLifeUpdated>(OnLifeUpdated);
+            eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
         }
 
         // private void OnEnable()
@@ -51,7 +69,9 @@ namespace Prince
         private void OnDisable()
         {
             eventBus.RemoveListener<GameEvents.SwordTaken>(OnSwordTaken);
+            eventBus.RemoveListener<GameEvents.SwordLost>(OnSwordLost);
             eventBus.RemoveListener<GameEvents.CharacterLifeUpdated>(OnLifeUpdated);
+            eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
         }
 
         private void GetStartingConfiguration()
@@ -64,6 +84,11 @@ namespace Prince
         private void OnSwordTaken(object _, GameEvents.SwordTaken __)
         {
             HasSword = true;
+        }
+
+        private void OnSwordLost(object _, GameEvents.SwordLost __)
+        {
+            HasSword = false;
         }
 
         /// <summary>
@@ -81,6 +106,25 @@ namespace Prince
                 CurrentPlayerLife = Mathf.Clamp(ev.CurrentLife, 0, CurrentPlayerMaximumLife);
             }
         }
-        
+
+        /// <summary>
+        /// Listener for LevelLoaded events.
+        /// </summary>
+        /// <param name="_">Sender game object. Usually a LevelLoader monobehaviour.</param>
+        /// <param name="__"></param>
+        private void OnLevelLoaded(object _, GameEvents.LevelLoaded __)
+        {
+            bool shouldSavePrinceStats = GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>()
+                .SavePrinceStatusWhenLevelLoaded;
+            if (shouldSavePrinceStats)
+            {
+                CharacterStatus prince = GameObject.Find("Prince").GetComponentInChildren<CharacterStatus>();
+                _levelStartStats.CurrentLife = prince.Life;
+                _levelStartStats.MaximumLife = prince.MaximumLife;
+                _levelStartStats.HasSword = HasSword;
+                GameTimer timer = GameObject.Find("GameManagers").GetComponentInChildren<GameTimer>();
+                _levelStartStats.ElapsedSeconds = timer.ElapsedSeconds;
+            }
+        }
     }
 }
