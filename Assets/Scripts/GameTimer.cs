@@ -114,6 +114,22 @@ namespace Prince
         private void OnLevelReloaded(object _, GameEvents.LevelReloaded __)
         {
             ElapsedSeconds = _princePersistentStatus.LevelStartsStats.ElapsedSeconds;
+            UpdateEventIndex();
+        }
+
+        /// <summary>
+        /// Update event index location.
+        ///
+        /// You should use this function only if you have subtracted time to elapsedSeconds.
+        /// </summary>
+        private void UpdateEventIndex()
+        {
+            _eventIndex = 0;
+            foreach (PlannedEvent plannedEvent in plannedEvents)
+            {
+                if (plannedEvent.elapsedSeconds > ElapsedSeconds) break;
+                _eventIndex++;
+            }
         }
 
         /// <summary>
