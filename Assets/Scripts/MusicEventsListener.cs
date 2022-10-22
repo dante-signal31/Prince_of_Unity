@@ -23,6 +23,7 @@ namespace Prince
             eventBus.AddListener<GameEvents.SmallPotionTaken>(OnSmallPotionTaken);
             eventBus.AddListener<GameEvents.SwordTaken>(OnSwordTaken);
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelLoaded);
             eventBus.AddListener<GameEvents.PrinceDead>(OnPrinceDead);
         }
 
@@ -31,6 +32,7 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.SmallPotionTaken>(OnSmallPotionTaken);
             eventBus.RemoveListener<GameEvents.SwordTaken>(OnSwordTaken);
             eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelLoaded);
             eventBus.RemoveListener<GameEvents.PrinceDead>(OnPrinceDead);
         }
 
