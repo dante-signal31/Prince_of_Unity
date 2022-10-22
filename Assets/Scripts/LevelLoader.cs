@@ -80,7 +80,7 @@ namespace Prince
 
         private void OnTextScreenTimeout(object _, GameEvents.TextScreenTimeout __)
         {
-            LoadScene("Opening");
+            if (CurrentSceneName != "Opening") LoadScene("Opening");
         }
 
         private void OnGameEnded(object _, GameEvents.GameEnded __)
@@ -138,7 +138,7 @@ namespace Prince
         /// </summary>
         public void LoadNextScene()
         {
-            LoadScene(++CurrentSceneIndex);
+            LoadScene(CurrentSceneIndex+1);
             this.Log($"(LevelManager - {transform.root.name}) Next scene loaded by index {CurrentSceneIndex}.", showLogs);
         }
 
@@ -173,10 +173,12 @@ namespace Prince
                     if (CurrentSceneIndex == _previousSceneIndex)
                     {
                         eventBus.TriggerEvent(new GameEvents.LevelReloaded(CurrentSceneName), this);
+                        this.Log($"(LevelManager - {transform.root.name}) Scene {CurrentSceneName} reloaded event triggered.", showLogs);
                     }
                     else
                     {
                         eventBus.TriggerEvent(new GameEvents.LevelLoaded(CurrentSceneName), this);
+                        this.Log($"(LevelManager - {transform.root.name}) Scene {CurrentSceneName} loaded event triggered.", showLogs);
                     }
                     _levelNameAlreadyShown = true;
                     return;

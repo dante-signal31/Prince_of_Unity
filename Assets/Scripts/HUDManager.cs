@@ -67,8 +67,7 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
             eventBus.RemoveListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
             eventBus.RemoveListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
-            // eventBus.RemoveListener<GameEvents.VideoPlayStart>(OnVideoPlayStart);
-            // eventBus.RemoveListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
+            eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
         }
 
         private void Start()
@@ -77,8 +76,6 @@ namespace Prince
             eventBus.AddListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
             eventBus.AddListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
             eventBus.AddListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
-            // eventBus.AddListener<GameEvents.VideoPlayStart>(OnVideoPlayStart);
-            // eventBus.AddListener<GameEvents.PrinceInTheScene>(OnPrinceInTheScene);
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
             ShowHudIfLevelsAskIt();
@@ -114,22 +111,24 @@ namespace Prince
         /// </summary>
         /// <param name="_">Actually not used here.</param>
         /// <param name="__">Actually not used here.</param>
-        private void OnLevelLoaded(object _, GameEvents.LevelLoaded __)
+        private void OnLevelLoaded(object _, GameEvents.LevelLoaded ev)
         {
-            ShowHudIfLevelsAskIt();
+            ShowHudIfLevelsAskIt(ev.LevelName);
         }
 
-        private void ShowHudIfLevelsAskIt()
+        private void ShowHudIfLevelsAskIt(string levelName = "")
         {
             LevelConfiguration currentLevelConfiguration =
                 GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>();
             if (currentLevelConfiguration.ShowHudBarAtStart)
             {
                 ShowHud();
+                this.Log($"(HUDManager - {transform.root.name}) Hud shown in this level {levelName}.", showLogs);
             }
             else
             {
                 HideHud();
+                this.Log($"(HUDManager - {transform.root.name}) Hud not shown in this level {levelName}.", showLogs);
             }
         }
 

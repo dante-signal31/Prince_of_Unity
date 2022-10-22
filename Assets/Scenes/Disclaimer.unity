@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManagers
       objectReference: {fileID: 0}
+    - target: {fileID: 7031278100399717209, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: showLogs
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7825166158574165442, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: plannedEvents.Array.size
       value: 12
@@ -512,8 +516,16 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8885964369088698335, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: startingLife
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885964369088698335, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameTotalTime
       value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885964369088698335, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: maximumStartingLife
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

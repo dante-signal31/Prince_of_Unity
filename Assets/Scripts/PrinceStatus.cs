@@ -59,6 +59,7 @@ namespace Prince
             eventBus.AddListener<GameEvents.SwordLost>(OnSwordLost);
             eventBus.AddListener<GameEvents.CharacterLifeUpdated>(OnLifeUpdated);
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
         }
 
         // private void OnEnable()
@@ -72,6 +73,7 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.SwordLost>(OnSwordLost);
             eventBus.RemoveListener<GameEvents.CharacterLifeUpdated>(OnLifeUpdated);
             eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
         }
 
         private void GetStartingConfiguration()
@@ -111,20 +113,31 @@ namespace Prince
         /// Listener for LevelLoaded events.
         /// </summary>
         /// <param name="_">Sender game object. Usually a LevelLoader monobehaviour.</param>
-        /// <param name="__"></param>
+        /// <param name="__">Event data.</param>
         private void OnLevelLoaded(object _, GameEvents.LevelLoaded __)
         {
             bool shouldSavePrinceStats = GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>()
                 .SavePrinceStatusWhenLevelLoaded;
             if (shouldSavePrinceStats)
             {
-                CharacterStatus prince = GameObject.Find("Prince").GetComponentInChildren<CharacterStatus>();
-                _levelStartStats.CurrentLife = prince.Life;
-                _levelStartStats.MaximumLife = prince.MaximumLife;
+                _levelStartStats.MaximumLife = CurrentPlayerMaximumLife;
+                _levelStartStats.CurrentLife = CurrentPlayerLife;
                 _levelStartStats.HasSword = HasSword;
                 GameTimer timer = GameObject.Find("GameManagers").GetComponentInChildren<GameTimer>();
                 _levelStartStats.ElapsedSeconds = timer.ElapsedSeconds;
             }
+        }
+
+        /// <summary>
+        /// Listener for LevelReloaded events.
+        /// </summary>
+        /// <param name="_">Sender game object. Usually a LevelLoader monobehaviour.</param>
+        /// <param name="__">Event data.</param>
+        private void OnLevelReloaded(object _, GameEvents.LevelReloaded __)
+        {
+            CurrentPlayerMaximumLife = _levelStartStats.MaximumLife;
+            CurrentPlayerLife = _levelStartStats.CurrentLife;
+            HasSword = _levelStartStats.HasSword;
         }
     }
 }

@@ -267,27 +267,33 @@ namespace Prince
         {
             if (IsPrince)
             {
-                MaximumLife = _princePersistentStatus.CurrentPlayerMaximumLife;
-                Life = _princePersistentStatus.CurrentPlayerLife;
+                // I cannot assign directly from _princePersistentStatus to Life and MaximumLife
+                // because those properties assign values under the hood to _princePersistentStatus.
+                int _maximumLife = _princePersistentStatus.CurrentPlayerMaximumLife;
+                int currentLife = _princePersistentStatus.CurrentPlayerLife;
+                MaximumLife = _maximumLife;
+                Life = currentLife;
                 HasSword = _princePersistentStatus.HasSword;
+                this.Log($"(CharacterStatus - {transform.root.name}) Starting stats set.", showLogs);
             }
             else
             {
                 HasSword = true;
             }
+            this.Log($"(CharacterStatus - {transform.root.name}) Started.", showLogs);
         }
-
+        
         private void OnEnable()
         {
             _eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
         }
-
+        
         private void OnDisable()
         {
             _eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
         }
-
-
+        
+        
         /// <summary>
         /// Listener for LevelReloaded events.
         /// </summary>
@@ -295,9 +301,13 @@ namespace Prince
         /// <param name="__">Event data.</param>
         private void OnLevelReloaded(object _, GameEvents.LevelReloaded __)
         {
-            MaximumLife = _princePersistentStatus.LevelStartsStats.MaximumLife;
-            Life = _princePersistentStatus.LevelStartsStats.CurrentLife;
-            HasSword = _princePersistentStatus.LevelStartsStats.HasSword;
+            if (IsPrince)
+            {
+                MaximumLife = _princePersistentStatus.LevelStartsStats.MaximumLife;
+                Life = _princePersistentStatus.LevelStartsStats.CurrentLife;
+                HasSword = _princePersistentStatus.LevelStartsStats.HasSword;
+                this.Log($"(CharacterStatus - {transform.root.name}) Starting stats reloaded.", showLogs);
+            }
         }
 
         private void FixedUpdate()
