@@ -356,6 +356,14 @@ PrefabInstance:
       propertyPath: showHudBarAtStart
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6717682901453213457, guid: 72d470ae4f1f5634599f05c41e9f38df, type: 3}
+      propertyPath: timeCounterEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717682901453213457, guid: 72d470ae4f1f5634599f05c41e9f38df, type: 3}
+      propertyPath: savePrinceStatusWhenLevelLoaded
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7264411766673067002, guid: 72d470ae4f1f5634599f05c41e9f38df, type: 3}
       propertyPath: m_RootOrder
       value: 1

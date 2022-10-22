@@ -263,6 +263,7 @@ namespace Prince
             _princePersistentStatus = GameObject.Find("GameManagers").GetComponentInChildren<PrinceStatus>();
         }
 
+        
         private void Start()
         {
             if (IsPrince)
@@ -275,6 +276,9 @@ namespace Prince
                 Life = currentLife;
                 HasSword = _princePersistentStatus.HasSword;
                 this.Log($"(CharacterStatus - {transform.root.name}) Starting stats set.", showLogs);
+                if (_eventBus.HasRegisteredEvent<GameEvents.LevelReloaded>())
+                    _eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+
             }
             else
             {
@@ -282,15 +286,17 @@ namespace Prince
             }
             this.Log($"(CharacterStatus - {transform.root.name}) Started.", showLogs);
         }
+
         
-        private void OnEnable()
-        {
-            _eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
-        }
+        // private void OnEnable()
+        // {
+        //     _eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+        // }
         
         private void OnDisable()
         {
-            _eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+            if (IsPrince && _eventBus.HasRegisteredEvent<GameEvents.LevelReloaded>()) 
+                _eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
         }
         
         
