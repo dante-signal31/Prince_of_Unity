@@ -76,7 +76,7 @@ namespace Tests.PlayTests
             // Let movements perform.
             yield return new WaitForSeconds(25);
             string endFinalLevelName = _levelLoader.CurrentSceneName;
-            // Assert Prince has not gone through inter level gate to desired level.
+            // Assert Prince has gone through inter level gate to desired level.
             Assert.True(expectedFinalLevelName == endFinalLevelName);
         }
         

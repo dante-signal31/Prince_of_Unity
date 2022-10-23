@@ -92,6 +92,7 @@ namespace Prince
         private EventBus _eventBus;
         private PrinceStatus _princePersistentStatus;
         private bool _isFalling;
+        private bool _gameManagersAvailable;
         
         /// <summary>
         /// Whether this character is falling or not.
@@ -259,14 +260,18 @@ namespace Prince
         private void Awake()
         {
             UpdateStateMachineFlags();
-            _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
-            _princePersistentStatus = GameObject.Find("GameManagers").GetComponentInChildren<PrinceStatus>();
+            _gameManagersAvailable = GameObject.Find("GameManagers") != null;
+            if (_gameManagersAvailable)
+            {
+                _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
+                _princePersistentStatus = GameObject.Find("GameManagers").GetComponentInChildren<PrinceStatus>();
+            }
         }
 
         
         private void Start()
         {
-            if (IsPrince)
+            if (_gameManagersAvailable && IsPrince)
             {
                 // I cannot assign directly from _princePersistentStatus to Life and MaximumLife
                 // because those properties assign values under the hood to _princePersistentStatus.
@@ -278,7 +283,6 @@ namespace Prince
                 this.Log($"(CharacterStatus - {transform.root.name}) Starting stats set.", showLogs);
                 if (_eventBus.HasRegisteredEvent<GameEvents.LevelReloaded>())
                     _eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
-
             }
             else
             {
@@ -295,7 +299,7 @@ namespace Prince
         
         private void OnDisable()
         {
-            if (IsPrince && _eventBus.HasRegisteredEvent<GameEvents.LevelReloaded>()) 
+            if (_eventBus != null && IsPrince && _eventBus.HasRegisteredEvent<GameEvents.LevelReloaded>()) 
                 _eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
         }
         

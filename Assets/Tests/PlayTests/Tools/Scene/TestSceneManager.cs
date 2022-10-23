@@ -52,7 +52,7 @@ namespace Tests.PlayTests.Tools.Scene
         /// <param name="scene">String name of scene.</param>
         public static IEnumerator LoadScene(string scene)
         {
-            // AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+            //AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
             yield return new WaitUntil(() => asyncLoad.isDone);
         }

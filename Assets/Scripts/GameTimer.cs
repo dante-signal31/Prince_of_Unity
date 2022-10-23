@@ -86,6 +86,7 @@ namespace Prince
         {
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+            ActivateTimer();
         }
 
         private void OnDisable()
@@ -101,9 +102,17 @@ namespace Prince
         /// <param name="__">Event data.</param>
         private void OnLevelLoaded(object _, GameEvents.LevelLoaded __)
         {
+            ActivateTimer();
+        }
+
+        /// <summary>
+        /// Enable timer if there is a level configuration that allows it or disable it otherwise.
+        /// </summary>
+        private void ActivateTimer()
+        {
             LevelConfiguration levelConfiguration =
                 GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>();
-            TimerEnabled = levelConfiguration.TimeCounterEnabled;
+            TimerEnabled = (levelConfiguration != null) && levelConfiguration.TimeCounterEnabled;
         }
 
         /// <summary>
