@@ -30,10 +30,12 @@ namespace Prince
         
         private CommandSequence _commandQueue = new CommandSequence();
         private LevelLoader _levelLoader;
+        private EventBus _eventBus;
 
         private void Awake()
         {
             _levelLoader = GameObject.Find("GameManagers").GetComponentInChildren<LevelLoader>();
+            _eventBus = GameObject.Find("GameManagers").GetComponentInChildren<EventBus>();
         }
 
         /// <summary>
@@ -127,6 +129,10 @@ namespace Prince
                 case Command.CommandType.SkipToNextLevel:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed cheat SkipToNextLevel at {Time.time}", showLogs);
                     _levelLoader.LoadNextScene();
+                    break;
+                case Command.CommandType.Pause:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed pause at {Time.time}", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.PauseKeyPressed(), this);
                     break;
             }
             yield return null;

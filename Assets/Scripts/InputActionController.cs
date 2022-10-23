@@ -211,6 +211,11 @@ namespace Prince
         {
             throw new NotImplementedException();
         }
+
+        public void Pause(InputAction.CallbackContext context)
+        {
+            if (context.performed) inputController.Pause();
+        }
         
     }
 }

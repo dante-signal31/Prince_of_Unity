@@ -194,5 +194,10 @@ namespace Prince
         {
             ExecuteCommand(Command.CommandType.SkipToNextLevel);
         }
+
+        public void Pause()
+        {
+            ExecuteCommand(Command.CommandType.Pause);
+        }
     }
 }

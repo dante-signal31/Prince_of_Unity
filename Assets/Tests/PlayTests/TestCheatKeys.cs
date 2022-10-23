@@ -79,5 +79,29 @@ namespace Tests.PlayTests
             // Assert Prince has not gone through inter level gate to desired level.
             Assert.True(expectedFinalLevelName == endFinalLevelName);
         }
+        
+        /// <summary>
+        /// Test Prince can use cheat key to pause play.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CanPauseGame()
+        {
+            // TODO: End pause game test.
+            _cameraController.PlaceInRoom(_room00);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            string expectedFinalLevelName = "doors1";
+            string commandFile = @"Assets\Tests\TestResources\useSkipLevelCheatKey";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            string endFinalLevelName = _levelLoader.CurrentSceneName;
+            // Assert Prince has not gone through inter level gate to desired level.
+            Assert.True(expectedFinalLevelName == endFinalLevelName);
+        }
     }
 }

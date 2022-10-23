@@ -10,7 +10,6 @@ namespace Prince
     /// </summary>
     public class GameTimer : MonoBehaviour
     {
-        // TODO: Implement an ingame pause.
         public enum TriggeringTimeTypes
         {
             ElapsedSeconds,
@@ -67,11 +66,23 @@ namespace Prince
         [Header("CONFIGURATION:")]
         [Tooltip("List of events to trigger at specified moments.")]
         [SerializeField] private List<PlannedEvent> plannedEvents;
+        [Tooltip("Event triggered to announce timer is paused.")]
+        [SerializeField] private UnityEvent timerPaused;
+        [Tooltip("Event triggered to announce timer is resumed.")]
+        [SerializeField] private UnityEvent timerResumed;
+        
 
+        private bool _timerEnabled;
         /// <summary>
         /// Whether this counter is currently enabled and counting time.
         /// </summary>
-        public bool TimerEnabled { get; private set; }
+        public bool TimerEnabled { 
+            get=> _timerEnabled;
+            private set
+            {
+                _timerEnabled = value;
+            } 
+        }
         
         private int _eventIndex;
         private PrinceStatus _princePersistentStatus;
@@ -86,13 +97,15 @@ namespace Prince
         {
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+            eventBus.AddListener<GameEvents.PauseKeyPressed>(OnPauseKeyPressed);
             ActivateTimer();
         }
 
         private void OnDisable()
         {
-            eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
+            eventBus.RemoveListener<GameEvents.PauseKeyPressed>(OnPauseKeyPressed);
         }
 
         /// <summary>
@@ -103,6 +116,24 @@ namespace Prince
         private void OnLevelLoaded(object _, GameEvents.LevelLoaded __)
         {
             ActivateTimer();
+        }
+
+        /// <summary>
+        /// Listener for PauseKeyPressed events.
+        /// </summary>
+        /// <param name="_">Sender of this event. Usually a LevelLoader.</param>
+        /// <param name="__">Event data.</param>
+        private void OnPauseKeyPressed(object _, GameEvents.PauseKeyPressed __)
+        {
+            TimerEnabled = !TimerEnabled;
+            if (TimerEnabled)
+            {
+                if (timerResumed != null) timerResumed.Invoke();
+            }
+            else
+            {
+                if (timerPaused != null) timerPaused.Invoke();
+            }
         }
 
         /// <summary>

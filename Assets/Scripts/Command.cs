@@ -31,6 +31,7 @@ namespace Prince
             CrouchWalk,
             StopJump,
             SkipToNextLevel,
+            Pause,
         }
 
         [SerializeField] private float _delay;

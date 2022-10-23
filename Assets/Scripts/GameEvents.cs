@@ -167,6 +167,20 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public class PrinceDead : EventArgs { }
 
+    /// <summary>
+    /// This event is raised when pause key is pressed. 
+    /// </summary>
+    public class PauseKeyPressed : EventArgs { }
+
+    // /// <summary>
+    // /// This event is raised whenever timer is disabled.
+    // /// </summary>
+    // public class TimerPaused : EventArgs { }
+    //
+    // /// <summary>
+    // /// This event is raised whenever timer is enabled.
+    // /// </summary>
+    // public class TimerResumed: EventArgs {}
 
 
     [Header("WIRING:")] 
@@ -192,5 +206,8 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<PrinceHanged>();
         eventBus.RegisterEvent<PrinceClimbingEnded>();
         eventBus.RegisterEvent<PrinceDead>();
+        eventBus.RegisterEvent<PauseKeyPressed>();
+        // eventBus.RegisterEvent<TimerPaused>();
+        // eventBus.RegisterEvent<TimerResumed>();
     }
 }

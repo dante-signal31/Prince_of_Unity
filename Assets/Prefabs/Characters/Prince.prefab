@@ -814,6 +814,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0cb4e9ef-2913-455f-a042-1fc765f2e000
     m_ActionName: PrinceActionMap/DecreaseTime
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3b638a24-80e4-49f1-a5ce-f045b2b3c619
+    m_ActionName: PrinceActionMap/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: PrinceActionMap

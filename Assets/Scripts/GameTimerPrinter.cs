@@ -60,5 +60,25 @@ namespace Prince
                 yield return new WaitForSeconds(1.0f);
             }
         }
+        
+        /// <summary>
+        /// Listener for GameTimer TimerPaused events.
+        /// </summary>
+        /// <param name="sender">Sender of event. Usually a GameTimer.</param>
+        /// <param name="ev">Event data.</param>
+        public void OnGameTimerPaused()
+        {
+            hudManager.SetMessage("GAME PAUSED");
+        }
+
+        /// <summary>
+        /// Listener for GameTimer TimerResumed events.
+        /// </summary>
+        /// <param name="sender">Sender of event. Usually a GameTimer.</param>
+        /// <param name="ev">Event data.</param>
+        public void OnGameTimerResumed()
+        {
+            hudManager.SetMessage("");
+        }
     }
 }
