@@ -9,7 +9,6 @@ using UnityEngine;
 /// </summary>
 public class ColliderController : MonoBehaviour
 {
-    // TODO: While running jumping collider should not activate ground switches.
     [Header("WIRING:")]
     [Tooltip("Needed to follow character states progress.")]
     [SerializeField] private CharacterStatus characterStatus;

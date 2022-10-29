@@ -46,7 +46,17 @@ public class CharacterWeightSensor : MonoBehaviour
     private bool _countingTime = false;
     private float _elapsedTime = 0;
     private bool _activated = false;
-    
+
+    /// <summary>
+    /// Character states that should not activate this sensor.
+    /// </summary>
+    private HashSet<CharacterStatus.States>
+        dontActivateInTheseCharacterStates = new HashSet<CharacterStatus.States>
+        {
+            CharacterStatus.States.RunningJump,
+            CharacterStatus.States.WalkingJump
+        };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +105,7 @@ public class CharacterWeightSensor : MonoBehaviour
         GameObject detectedGameObject = GameObjectTools.Collider2GameObject(col);
         if (GameObjectTools.IsACharacter(detectedGameObject))
         {
+            if (GameObjectTools.CharacterInState(detectedGameObject, dontActivateInTheseCharacterStates)) return;
             CharactersOverSensor.Add(detectedGameObject);
             CounterStart();
             _activated = true;
@@ -106,6 +117,7 @@ public class CharacterWeightSensor : MonoBehaviour
         GameObject detectedGameObject = GameObjectTools.Collider2GameObject(other);
         if (GameObjectTools.IsACharacter(detectedGameObject))
         {
+            if (GameObjectTools.CharacterInState(detectedGameObject, dontActivateInTheseCharacterStates)) return;
             CharactersOverSensor.Remove(detectedGameObject);
             if (CharactersOverSensor.Count == 0)
             {
