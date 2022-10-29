@@ -24,6 +24,8 @@ namespace Tests.PlayTests
         
         private CameraController _cameraController;
         private LevelLoader _levelLoader;
+        private EventBus _eventBus;
+        private GameTimer _gameTimer;
         private Room _room00;
         private Room _room10;
         private Room _room20;
@@ -41,6 +43,10 @@ namespace Tests.PlayTests
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_levelLoader == null)
                 _levelLoader = GameObject.Find("LevelLoader").GetComponentInChildren<LevelLoader>();
+            if (_eventBus == null)
+                _eventBus = GameObject.Find("EventBus").GetComponentInChildren<EventBus>();
+            if (_gameTimer == null)
+                _gameTimer = GameObject.Find("GameTimer").GetComponentInChildren<GameTimer>();
             if (_room00 == null)
                 _room00 = GameObject.Find("Room_0_0").GetComponentInChildren<Room>();
 
@@ -91,17 +97,27 @@ namespace Tests.PlayTests
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            yield return null;
+            // I have to launch level loaded event to force game timer to activate.
+            _eventBus.TriggerEvent(new GameEvents.LevelLoaded(_currentScene), this);
             string expectedFinalLevelName = "doors1";
-            string commandFile = @"Assets\Tests\TestResources\useSkipLevelCheatKey";
+            string commandFile = @"Assets\Tests\TestResources\usePauseKey";
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
-            // Let movements perform.
-            yield return new WaitForSeconds(4);
-            string endFinalLevelName = _levelLoader.CurrentSceneName;
-            // Assert Prince has not gone through inter level gate to desired level.
-            Assert.True(expectedFinalLevelName == endFinalLevelName);
+            yield return new WaitForSecondsRealtime(2);
+            // Game is paused.
+            float startingTime = _gameTimer.ElapsedSeconds;
+            // Let time pass.
+            yield return new WaitForSecondsRealtime(2);
+            float currentTime = _gameTimer.ElapsedSeconds;
+            // As game is still paused, elapsed time should not have been incremented.
+            Assert.True(startingTime == currentTime);
+            yield return new WaitForSecondsRealtime(3);
+            currentTime = _gameTimer.ElapsedSeconds;
+            // As game has been unpaused, so elapsed time should have been incremented.
+            Assert.True(startingTime < currentTime);
         }
     }
 }

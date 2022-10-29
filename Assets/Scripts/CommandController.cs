@@ -149,7 +149,8 @@ namespace Prince
             {
                 Command command = PopCommand();
                 this.Log($"(CommandController - {transform.root.name}) Replay recorded command {command.Action} with delay {command.Delay}", showLogs);
-                yield return new WaitForSeconds(command.Delay);
+                // Don't use usual WaitForSeconds or you won't be able to unpause game after calling a pause command. 
+                yield return new WaitForSecondsRealtime(command.Delay);
                 StartCoroutine(ExecuteCommand(command));
             }
         }
