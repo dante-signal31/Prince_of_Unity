@@ -6,7 +6,8 @@ namespace Prince
     /// <summary>
     /// Component to manage switch visual appearance. 
     /// </summary>
-    public class SwitchAppearance : MonoBehaviour
+    [ExecuteAlways]
+    public class SwitchAppearance : MonoBehaviour, IBorder
     {
         [Header("WIRING:")] 
         [Tooltip("Needed to change animation depending of parameters set.")]
@@ -22,7 +23,7 @@ namespace Prince
         
         [Header("CONFIGURATION:")] 
         [Tooltip("Has this brick a hole at right so its border is visible?")]
-        [SerializeField] private bool ShowBorder;
+        [SerializeField] private bool hasBorder;
         [Tooltip("Has this brick a hole at left?")]
         [SerializeField] private bool AtLeftEdge;
         [Tooltip("Animation controller for different parameter options.")] 
@@ -31,6 +32,7 @@ namespace Prince
         [SerializeField] private AnimatorOverrideController AnimatorControllerNoBorder;
         [SerializeField] private AnimatorOverrideController AnimatorControllerNoBorderLeftEdge;
         
+        private bool _appearanceUpdateNeeded = false;
 
         private void Awake()
         {
@@ -39,7 +41,7 @@ namespace Prince
 
         private void UpdateAnimationController()
         {
-            switch ((ShowBorder, AtLeftEdge))
+            switch ((hasBorder, AtLeftEdge))
             {
                 case (true, false):
                     stateMachine.runtimeAnimatorController = AnimatorControllerBorder;
@@ -56,9 +58,9 @@ namespace Prince
             }
         }
 
-        private void UpdateEditorPreviewSprites()
+        private void UpdateAppearance()
         {
-            switch ((ShowBorder, AtLeftEdge))
+            switch ((hasBorder, AtLeftEdge))
             {
                 case (true, false):
                     groundSpriteRenderer.sprite = borderSprite;
@@ -79,7 +81,32 @@ namespace Prince
 
         private void OnValidate()
         {
-            UpdateEditorPreviewSprites();
+            _appearanceUpdateNeeded = true;
+        }
+        
+        /// <summary>
+        /// Update appearance if needed.
+        /// </summary>
+        private void LateUpdate()
+        {
+            #if UNITY_EDITOR
+            if (_appearanceUpdateNeeded)
+            {
+                UpdateAppearance();
+                _appearanceUpdateNeeded = false; 
+            }
+            #endif
+        }
+
+        public bool IsBorderShown()
+        {
+            return hasBorder;
+        }
+        
+        public void ShowBorder(bool showIt)
+        {
+            hasBorder = showIt;
+            UpdateAnimationController();
         }
     }
 }

@@ -121,6 +121,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4115850695422595698, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
+      propertyPath: gizmoColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115850695422595698, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
       propertyPath: gizmoColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -179,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 4774519590003916755, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
       propertyPath: AnimatorControllerBorder
       value: 
-      objectReference: {fileID: 22100000, guid: 8eeecb03bc77b3744a02fe34ad0a0959, type: 2}
+      objectReference: {fileID: 22100000, guid: ed3f19fc5d61b1e468f35598ee5bd1a4, type: 2}
     - target: {fileID: 4774519590003916755, guid: 78c6c8a08a210dc48b3b1a4fa52601f7, type: 3}
       propertyPath: AnimatorControllerNoBorder
       value: 
