@@ -118,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2819728724196024923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.36, y: -1.67, z: 0}
+  m_LocalPosition: {x: 1.5, y: -1.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -371,6 +371,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3559858551553117145}
     m_Modifications:
     - target: {fileID: -1834021150071634809, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
@@ -426,6 +427,7 @@ PrefabInstance:
       value: SoundEmitter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
 --- !u!114 &1441344115346039213 stripped
 MonoBehaviour:

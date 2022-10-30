@@ -94,12 +94,24 @@ public class ColliderController : MonoBehaviour
     {
         switch (currentState)
         {
-            case CharacterStatus.States.Idle:
-                EnableUsualCollider();
-                break;
-            case CharacterStatus.States.Unsheathe:
+            // case CharacterStatus.States.Idle:
+            //     EnableUsualCollider();
+            //     break;
             case CharacterStatus.States.RunningStart:
+            case CharacterStatus.States.Running:
+            case CharacterStatus.States.RunningEnd:
+            case CharacterStatus.States.Unsheathe:
+            case CharacterStatus.States.RunningJumpImpulse:
+            case CharacterStatus.States.RunningJump:
             case CharacterStatus.States.WalkingJumpStart:
+            case CharacterStatus.States.WalkingJump:
+            case CharacterStatus.States.WalkingJumpEnd:
+            case CharacterStatus.States.AdvanceSword:
+            case CharacterStatus.States.Retreat:
+            case CharacterStatus.States.AttackWithSword:
+            case CharacterStatus.States.BlockSword:
+            case CharacterStatus.States.BlockedSword:
+            case CharacterStatus.States.IdleSword:
                 EnableFightingCollider();
                 break;
             case CharacterStatus.States.FallStart:
@@ -111,10 +123,10 @@ public class ColliderController : MonoBehaviour
             case CharacterStatus.States.Dead:
                 DisableColliders();
                 break;
-            case CharacterStatus.States.HardLanding:
-            case CharacterStatus.States.Landing:
-            case CharacterStatus.States.DeadByFall:
-                // EnableColliders();
+            // case CharacterStatus.States.HardLanding:
+            // case CharacterStatus.States.Landing:
+            // case CharacterStatus.States.DeadByFall:
+            default:
                 EnableUsualCollider();
                 break;
         }
@@ -125,6 +137,7 @@ public class ColliderController : MonoBehaviour
     /// </summary>
     private void EnableUsualCollider()
     {
+        if (_enabledCollider == ColliderTypes.Usual) return;
         usualCollider.enabled = true;
         fightingCollider.enabled = false;
         fallingCollider.enabled = false;
@@ -136,6 +149,7 @@ public class ColliderController : MonoBehaviour
     /// </summary>
     private void EnableFightingCollider()
     {
+        if (_enabledCollider == ColliderTypes.Fighting) return;
         usualCollider.enabled = false;
         fightingCollider.enabled = true;
         fallingCollider.enabled = false;
@@ -147,6 +161,7 @@ public class ColliderController : MonoBehaviour
     /// </summary>
     private void EnableFallingCollider()
     {
+        if (_enabledCollider == ColliderTypes.Falling) return;
         usualCollider.enabled = false;
         fightingCollider.enabled = false;
         fallingCollider.enabled = true;
