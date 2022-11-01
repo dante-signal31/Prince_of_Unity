@@ -9,6 +9,7 @@ using UnityEngine;
 /// </summary>
 public class ColliderController : MonoBehaviour
 {
+    // TODO: Implement a jumping collider that should not touch ground, to avoid jumping movement to get stuck.
     [Header("WIRING:")]
     [Tooltip("Needed to follow character states progress.")]
     [SerializeField] private CharacterStatus characterStatus;
