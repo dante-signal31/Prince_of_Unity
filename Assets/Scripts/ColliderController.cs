@@ -9,7 +9,6 @@ using UnityEngine;
 /// </summary>
 public class ColliderController : MonoBehaviour
 {
-    // TODO: Implement a jumping collider that should not touch ground, to avoid jumping movement to get stuck.
     [Header("WIRING:")]
     [Tooltip("Needed to follow character states progress.")]
     [SerializeField] private CharacterStatus characterStatus;
@@ -19,6 +18,8 @@ public class ColliderController : MonoBehaviour
     [SerializeField] private Collider2D fightingCollider;
     [Tooltip("Collider used when character falls.")]
     [SerializeField] private Collider2D fallingCollider;
+    [Tooltip(("Collider used when character is jumping horizontally."))] 
+    [SerializeField] private Collider2D horizontalJumpingCollider;
 
     private CharacterStatus.States _currentState;
     
@@ -35,6 +36,10 @@ public class ColliderController : MonoBehaviour
             else if (fightingCollider.enabled)
             {
                 return fightingCollider;
+            } 
+            else if (horizontalJumpingCollider.enabled)
+            {
+                return horizontalJumpingCollider;
             }
             else
             {
@@ -56,7 +61,8 @@ public class ColliderController : MonoBehaviour
     {
         Usual,
         Fighting,
-        Falling
+        Falling,
+        HorizontalJumping
     }
 
     private ColliderTypes _enabledCollider;
@@ -83,6 +89,7 @@ public class ColliderController : MonoBehaviour
         usualCollider.enabled = true;
         fightingCollider.enabled = false;
         fallingCollider.enabled = false;
+        horizontalJumpingCollider.enabled = false;
     }
 
     /// <summary>
@@ -103,9 +110,9 @@ public class ColliderController : MonoBehaviour
             case CharacterStatus.States.RunningEnd:
             case CharacterStatus.States.Unsheathe:
             case CharacterStatus.States.RunningJumpImpulse:
-            case CharacterStatus.States.RunningJump:
+            // case CharacterStatus.States.RunningJump:
             case CharacterStatus.States.WalkingJumpStart:
-            case CharacterStatus.States.WalkingJump:
+            // case CharacterStatus.States.WalkingJump:
             case CharacterStatus.States.WalkingJumpEnd:
             case CharacterStatus.States.AdvanceSword:
             case CharacterStatus.States.Retreat:
@@ -124,9 +131,10 @@ public class ColliderController : MonoBehaviour
             case CharacterStatus.States.Dead:
                 DisableColliders();
                 break;
-            // case CharacterStatus.States.HardLanding:
-            // case CharacterStatus.States.Landing:
-            // case CharacterStatus.States.DeadByFall:
+            case CharacterStatus.States.RunningJump:
+            case CharacterStatus.States.WalkingJump:
+                EnableHorizontalJumpCollider();
+                break;
             default:
                 EnableUsualCollider();
                 break;
@@ -142,6 +150,7 @@ public class ColliderController : MonoBehaviour
         usualCollider.enabled = true;
         fightingCollider.enabled = false;
         fallingCollider.enabled = false;
+        horizontalJumpingCollider.enabled = false;
         _enabledCollider = ColliderTypes.Usual;
     }
 
@@ -154,6 +163,7 @@ public class ColliderController : MonoBehaviour
         usualCollider.enabled = false;
         fightingCollider.enabled = true;
         fallingCollider.enabled = false;
+        horizontalJumpingCollider.enabled = false;
         _enabledCollider = ColliderTypes.Fighting;
     }
 
@@ -166,7 +176,21 @@ public class ColliderController : MonoBehaviour
         usualCollider.enabled = false;
         fightingCollider.enabled = false;
         fallingCollider.enabled = true;
+        horizontalJumpingCollider.enabled = false;
         _enabledCollider = ColliderTypes.Falling;
+    }
+    
+    /// <summary>
+    /// Enable horizontalJumpingCollider and disable every other collider.
+    /// </summary>
+    private void EnableHorizontalJumpCollider()
+    {
+        if (_enabledCollider == ColliderTypes.HorizontalJumping) return;
+        usualCollider.enabled = false;
+        fightingCollider.enabled = false;
+        fallingCollider.enabled = false;
+        horizontalJumpingCollider.enabled = true;
+        _enabledCollider = ColliderTypes.HorizontalJumping;
     }
 
     /// <summary>
@@ -179,6 +203,7 @@ public class ColliderController : MonoBehaviour
         usualCollider.enabled = false;
         fightingCollider.enabled = false;
         fallingCollider.enabled = false;
+        horizontalJumpingCollider.enabled = false;
     }
 
     /// <summary>
@@ -198,6 +223,9 @@ public class ColliderController : MonoBehaviour
                 break;
             case ColliderTypes.Falling:
                 EnableFallingCollider();
+                break;
+            case ColliderTypes.HorizontalJumping:
+                EnableHorizontalJumpCollider();
                 break;
         }
     }
