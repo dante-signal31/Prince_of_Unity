@@ -74,6 +74,7 @@ namespace Prince
 
                 public void PlayMusic(string musicName)
                 {
+                    // TODO: Music should be played at MusicEventListener.
                     musicController.PlayMusic(musicName);
                 }
 
