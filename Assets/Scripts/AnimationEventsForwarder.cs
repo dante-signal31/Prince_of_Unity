@@ -74,17 +74,18 @@ namespace Prince
 
                 public void PlayMusic(string musicName)
                 {
-                    // TODO: Music should be played at MusicEventListener.
                     musicController.PlayMusic(musicName);
                 }
 
-                public void EmitEvent(string name)
-                {
-                    switch (name)
-                    {
-                        
-                    }
-                }
+                // public void EmitEvent(string name)
+                // {
+                //     switch (name)
+                //     {
+                //         case "SwordTaken":
+                //             _eventBus.TriggerEvent(new GameEvents.SwordTaken(), this);
+                //             break;
+                //     }
+                // }
 
                 public void EmitVibration()
                 {

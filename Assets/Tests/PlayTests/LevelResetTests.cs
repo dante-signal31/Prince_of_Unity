@@ -74,6 +74,8 @@ namespace Tests.PlayTests
             string commandFile = @"Assets\Tests\TestResources\runToTheTrapRoom";
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
+            // As we are not taking a sword we must launch SwordTaken manually to male PrinceStatus update.
+            _eventBus.TriggerEvent(new GameEvents.SwordTaken(), this);
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.

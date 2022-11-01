@@ -207,17 +207,12 @@ namespace Prince
                 _hasSword = value;
                 // Added check to get rid of "Animator is not playing an AnimatorController" warning.
                 if (stateMachine.isActiveAndEnabled) stateMachine.SetBool("hasSword", value);
-                if (_eventBus != null && _eventBus.HasRegisteredEvent<GameEvents.SwordTaken>() &&
-                    _eventBus.HasRegisteredEvent<GameEvents.SwordLost>())
+                if (_eventBus != null && _eventBus.HasRegisteredEvent<GameEvents.SwordLost>())
                 {
-                    if (_hasSword)
-                        _eventBus.TriggerEvent(new GameEvents.SwordTaken(), this);
-                    else
-                    {
-                        _eventBus.TriggerEvent(new GameEvents.SwordLost(), this);
-                    }
+                    // SwordTaken event is triggered from sword pickable (PickableEventsForwarder) to sync music with taking animation.
+                    if (!_hasSword) _eventBus.TriggerEvent(new GameEvents.SwordLost(), this);
                 } 
-                    
+                
             }
         }
     

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// Component attached to every pickable to interact with Prince when he takes this pickable.
+    /// Prince component to interact with pickables.
     /// </summary>
     public class PickableInteractions : MonoBehaviour
     {
