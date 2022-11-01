@@ -13,7 +13,6 @@ using UnityEngine;
 public class Climbable: MonoBehaviour
 {
     // TODO: Climbable should disable its points by the side they have a brick. Otherwise a falling character could hang from a climbable under a ground.
-    // TODO: When a climbable falls while Prince is climbing sometimes Prince does not go to falling state.
     [Header("WIRING:")]
     [Tooltip("Needed to signal character actions to animations state machine.")]
     [SerializeField] private Animator stateMachine;
