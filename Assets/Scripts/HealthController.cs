@@ -9,7 +9,6 @@ namespace Prince
     /// </summary>
     public class HealthController : MonoBehaviour
     {
-        // TODO: Prince is respawned too soon after death, he reappears before level is reloaded.
         [Header("WIRING:")]
         [Tooltip("Needed to get and update current life.")]
         [SerializeField] private CharacterStatus characterStatus;
