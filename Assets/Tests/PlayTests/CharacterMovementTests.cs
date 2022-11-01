@@ -66,7 +66,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
-            float expected_distance = 4.13f;
+            float expected_distance = 4.35f;
             string commandFile = @"Assets\Tests\TestResources\runningSequence";
             Vector2 startPosition = _prince.transform.position;
             InputController inputController = _prince.GetComponent<InputController>();
@@ -118,7 +118,7 @@ namespace Tests.PlayTests
             _enemy.SetActive(false);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
-            float expected_distance = 5.33f;
+            float expected_distance = 5.48f;
             float expected_end_distance = 0.04f;
             string commandFile = @"Assets\Tests\TestResources\turnWhileRunningSequence";
             Vector2 startPosition = _prince.transform.position;

@@ -95,7 +95,7 @@ namespace Tests.PlayTests
             float startingHeight = _prince.transform.position.y;
             float startingHorizontalPosition = _prince.transform.position.x;
             int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
-            float expectedAdvancedHorizontalPosition = 10.8f;
+            float expectedAdvancedHorizontalPosition = 10.46f;
             string commandFile = @"Assets\Tests\TestResources\runningJumpingSequence";
             InputController inputController = _prince.GetComponent<InputController>();
             yield return null;
