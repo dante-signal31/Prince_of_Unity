@@ -6,8 +6,7 @@ namespace Prince
     /// <summary>
     /// This component keeps current state from climbable state machine.
     /// </summary>
-    // TODO: Make this class implement IStateMachineStatus.
-    public class ClimbableStatus : MonoBehaviour
+    public class ClimbableStatus : MonoBehaviour, IStateMachineStatus<ClimbableStatus.States>
     {
         [Header("WIRING:")] 
         [Tooltip("Needed to signal state machine when climbing is abortable.")]
