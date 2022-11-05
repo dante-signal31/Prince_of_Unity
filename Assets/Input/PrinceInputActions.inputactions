@@ -305,7 +305,7 @@
                 {
                     "name": "",
                     "id": "9f477758-f0a8-4300-943f-fe82bc690f4f",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
