@@ -12,7 +12,6 @@ using UnityEngine;
 /// </summary>
 public class Climbable: MonoBehaviour
 {
-    // TODO: Climbable should disable its points by the side they have a brick. Otherwise a falling character could hang from a climbable under a ground.
     [Header("WIRING:")]
     [Tooltip("Needed to signal character actions to animations state machine.")]
     [SerializeField] private Animator stateMachine;
