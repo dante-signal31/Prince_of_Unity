@@ -12,6 +12,7 @@ using UnityEngine;
 /// </summary>
 public class Climbable: MonoBehaviour
 {
+    // TODO: grabbingPointLeft should be relocated. I think is too at the border.
     [Header("WIRING:")]
     [Tooltip("Needed to signal character actions to animations state machine.")]
     [SerializeField] private Animator stateMachine;
