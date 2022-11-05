@@ -165,6 +165,15 @@ namespace Prince
             }
         }
         
+        private Vector2 _ledgeSensorRayDirection;
+        private Vector2 _roofSensorRayDirection;
+        private Vector2 _roofWhileFallingSensorRayDirection;
+        private Vector2 _fallingLedgeSensorRayDirection;
+        private float _ledgeSensorDistance;
+        private float _roofSensorDistance;
+        private float _roofWhileFallingSensorDistance;
+        private float _fallingLedgeSensorDistance;
+        
         private void Awake()
         {
             // _architectureLayerMask = LayerMask.GetMask("Architecture");
@@ -172,6 +181,24 @@ namespace Prince
             _groundLayerMask = LayerMask.GetMask("Ground");
             // Layer used to find jumping and climbing obstacles.
             _groundArchitectureLayerMask = LayerMask.GetMask("Ground", "Architecture");
+            SetupRayDirections();
+            SetupRayDistances();
+        }
+
+        private void SetupRayDirections()
+        {
+            _ledgeSensorRayDirection = (ledgeSensorEnd.position - ledgeSensorStart.position).normalized;
+            _roofSensorRayDirection = (roofSensorEnd.position - roofSensorStart.position).normalized;
+            _roofWhileFallingSensorRayDirection = (roofWhileFallingSensorEnd.position - roofWhileFallingSensorStart.position).normalized;
+            _fallingLedgeSensorRayDirection = (fallingLedgeSensorEnd.position - fallingLedgeSensorStart.position).normalized;
+        }
+
+        private void SetupRayDistances()
+        {
+            _ledgeSensorDistance = Vector2.Distance(ledgeSensorStart.position, ledgeSensorEnd.position);
+            _roofSensorDistance = Vector2.Distance(roofSensorStart.position, roofSensorEnd.position);
+            _roofWhileFallingSensorDistance = Vector2.Distance(roofWhileFallingSensorStart.position, roofWhileFallingSensorEnd.position);
+            _fallingLedgeSensorDistance = Vector2.Distance(fallingLedgeSensorStart.position, fallingLedgeSensorEnd.position);
         }
         
         /// <summary>
@@ -180,12 +207,9 @@ namespace Prince
         /// <returns>Ledge detected or null otherwise.</returns>
         private GameObject DetectLedge()
         {
-            // TODO: Direction and distance should be calculated just once at awake for all sensors.
-            Vector2 rayDirection = ledgeSensorEnd.position - ledgeSensorStart.position;
-            float forwardSensorDistance = Vector2.Distance(ledgeSensorStart.position, ledgeSensorEnd.position);
             RaycastHit2D hit = Physics2D.Raycast(ledgeSensorStart.position, 
-                rayDirection, 
-                forwardSensorDistance, 
+                _ledgeSensorRayDirection, 
+                _ledgeSensorDistance, 
                 _groundLayerMask);
             return (hit.collider != null)? hit.collider.transform.root.gameObject: null;
         }
@@ -196,11 +220,9 @@ namespace Prince
         /// <returns>Roof detected or null otherwise.</returns>
         private GameObject DetectRoof()
         {
-            Vector2 rayDirection = roofSensorEnd.position - roofSensorStart.position;
-            float forwardSensorDistance = Vector2.Distance(roofSensorStart.position, roofSensorEnd.position);
             RaycastHit2D hit = Physics2D.Raycast(roofSensorStart.position, 
-                rayDirection, 
-                forwardSensorDistance, 
+                _roofSensorRayDirection, 
+                _roofSensorDistance, 
                 _groundArchitectureLayerMask);
             return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
         }
@@ -211,11 +233,9 @@ namespace Prince
         /// <returns>Roof detected or null otherwise.</returns>
         private GameObject DetectRoofWhileFalling()
         {
-            Vector2 rayDirection = roofWhileFallingSensorEnd.position - roofWhileFallingSensorStart.position;
-            float forwardSensorDistance = Vector2.Distance(roofWhileFallingSensorStart.position, roofWhileFallingSensorEnd.position);
             RaycastHit2D hit = Physics2D.Raycast(roofWhileFallingSensorStart.position, 
-                rayDirection, 
-                forwardSensorDistance, 
+                _roofWhileFallingSensorRayDirection, 
+                _roofWhileFallingSensorDistance, 
                 _groundArchitectureLayerMask);
             return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
         }
@@ -226,11 +246,9 @@ namespace Prince
         /// <returns>Falling ledge detected or null otherwise.</returns>
         private GameObject DetectFallingLedge()
         {
-            Vector2 rayDirection = fallingLedgeSensorEnd.position - fallingLedgeSensorStart.position;
-            float forwardSensorDistance = Vector2.Distance(fallingLedgeSensorStart.position, fallingLedgeSensorEnd.position);
             RaycastHit2D hit = Physics2D.Raycast(fallingLedgeSensorStart.position, 
-                rayDirection, 
-                forwardSensorDistance, 
+                _fallingLedgeSensorRayDirection, 
+                _fallingLedgeSensorDistance, 
                 _groundLayerMask);
             return (hit.collider != null)? hit.collider.transform.root.gameObject: null;
         }
