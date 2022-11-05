@@ -17,6 +17,8 @@ namespace Prince
         [SerializeField] private Transform roofSensorEnd;
         [SerializeField] private Transform fallingLedgeSensorStart;
         [SerializeField] private Transform fallingLedgeSensorEnd;
+        [SerializeField] private Transform roofWhileFallingSensorStart;
+        [SerializeField] private Transform roofWhileFallingSensorEnd;
 
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -24,6 +26,7 @@ namespace Prince
         
         private GameObject _ledge;
         private GameObject _roof;
+        private GameObject _roofWhileFalling;
         private GameObject _fallingLedge;
         
         private int _architectureLayerMask;
@@ -36,7 +39,8 @@ namespace Prince
         {
             Ledge,
             Roof,
-            FallingLedge
+            FallingLedge,
+            FallingRoof
         };
         
         /// <summary>
@@ -46,8 +50,17 @@ namespace Prince
         
         /// <summary>
         /// Whether we have a ceiling over our head.
+        ///
+        /// Don't use this value while Prince is falling. In that case use <see cref="RoofOverHeadWhileFalling"/>
         /// </summary>
         public bool RoofOverHead => _roof != null;
+        
+        /// <summary>
+        /// Whether we have a ceiling over our head (detected by falling sensor).
+        ///
+        /// While Prince is falling you should use this value instead of <see cref="RoofOverHead"/> one.
+        /// </summary>
+        public bool RoofOverHeadWhileFalling => _roofWhileFalling != null;
         
         /// <summary>
         /// Whether we have a ledge we can grab to while we are falling.
@@ -98,6 +111,30 @@ namespace Prince
                     else
                     {
                         this.Log($"(CeilingSensors - {transform.root.name}) Open space over our heads.", showLogs);
+                    }
+                }
+            }
+        }
+        
+        /// <summary>
+        /// The game object we have over our head while falling.
+        /// </summary>
+        public GameObject RoofWhileFalling
+        {
+            get=> _roofWhileFalling;
+            private set
+            {
+                if (value != _roofWhileFalling)
+                {
+                    stateMachine.SetBool("RoofOverHeadWhileFalling", (value != null));
+                    _roofWhileFalling = value;
+                    if (value != null)
+                    {
+                        this.Log($"(CeilingSensors - {transform.root.name}) Roof over our heads while falling.", showLogs);
+                    }
+                    else
+                    {
+                        this.Log($"(CeilingSensors - {transform.root.name}) Open space over our heads while falling.", showLogs);
                     }
                 }
             }
@@ -169,6 +206,21 @@ namespace Prince
         }
         
         /// <summary>
+        /// Return roof detected above of character while falling if any, or null otherwise.
+        /// </summary>
+        /// <returns>Roof detected or null otherwise.</returns>
+        private GameObject DetectRoofWhileFalling()
+        {
+            Vector2 rayDirection = roofWhileFallingSensorEnd.position - roofWhileFallingSensorStart.position;
+            float forwardSensorDistance = Vector2.Distance(roofWhileFallingSensorStart.position, roofWhileFallingSensorEnd.position);
+            RaycastHit2D hit = Physics2D.Raycast(roofWhileFallingSensorStart.position, 
+                rayDirection, 
+                forwardSensorDistance, 
+                _groundArchitectureLayerMask);
+            return (hit.collider != null) ? hit.collider.transform.root.gameObject: null;
+        }
+        
+        /// <summary>
         /// Return falling ledge detected in front and above of character if any, or null otherwise.
         /// </summary>
         /// <returns>Falling ledge detected or null otherwise.</returns>
@@ -188,6 +240,7 @@ namespace Prince
             Ledge = DetectLedge();
             Roof = DetectRoof();
             FallingLedge = DetectFallingLedge();
+            RoofWhileFalling = DetectRoofWhileFalling();
         }
 
         /// <summary>
@@ -232,12 +285,18 @@ namespace Prince
                         Gizmos.DrawCube(fallingLedgeSensorStart.position, gizmoSize);
                         Gizmos.DrawSphere(fallingLedgeSensorEnd.position, gizmoRadius);
                         break;
+                    case SensorType.FallingRoof:
+                        Gizmos.color = Color.yellow;
+                        Gizmos.DrawCube(roofWhileFallingSensorStart.position, gizmoSize);
+                        Gizmos.DrawSphere(roofWhileFallingSensorEnd.position, gizmoRadius);
+                        break;
                 }
                 Gizmos.color = sensorType switch
                 {
                     SensorType.Ledge => (LedgeReachable) ? Color.green : Color.red,
                     SensorType.Roof => (RoofOverHead) ? Color.green : Color.red,
                     SensorType.FallingLedge => (FallingLedgeReachable) ? Color.green : Color.red,
+                    SensorType.FallingRoof => (RoofOverHeadWhileFalling) ? Color.green : Color.red
                 };
                 switch (sensorType)
                 {
@@ -250,6 +309,9 @@ namespace Prince
                     case SensorType.FallingLedge:
                         Gizmos.DrawLine(fallingLedgeSensorStart.position, fallingLedgeSensorEnd.position);
                         break;
+                    case SensorType.FallingRoof:
+                        Gizmos.DrawLine(roofWhileFallingSensorStart.position, roofWhileFallingSensorEnd.position);
+                        break;
                 }
             }
             
@@ -258,6 +320,7 @@ namespace Prince
                 DrawSensor(SensorType.Ledge);
                 DrawSensor(SensorType.Roof);
                 DrawSensor(SensorType.FallingLedge);
+                DrawSensor(SensorType.FallingRoof);
             }
 #endif
         

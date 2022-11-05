@@ -1341,13 +1341,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4626958727457293318, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.007
+      objectReference: {fileID: 0}
     - target: {fileID: 4717703927975044621, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: m_Name
       value: CeilingSensors
       objectReference: {fileID: 0}
+    - target: {fileID: 5242077451262680543, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6233207680221786698, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.264
+      value: -0.291
       objectReference: {fileID: 0}
     - target: {fileID: 6295542199889217454, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: showLogs
@@ -1364,6 +1372,10 @@ PrefabInstance:
     - target: {fileID: 8245138073941359341, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.658
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541690416553958344, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.863
       objectReference: {fileID: 0}
     - target: {fileID: 8956223768473571339, guid: 00c851d508efddb488c4a5e71d45b512, type: 3}
       propertyPath: m_LocalPosition.y
