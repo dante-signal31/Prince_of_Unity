@@ -198,16 +198,14 @@ namespace Prince
             throw new NotImplementedException();
         }
         
-        // TODO: Implement IncreaseTime cheat key.
         public void IncreaseTime(InputAction.CallbackContext ctx)
         {
-            throw new NotImplementedException();
+            if (ctx.started) inputController.IncreaseTime();
         }
         
-        // TODO: Implement DecreaseTime cheat key.
         public void DecreaseTime(InputAction.CallbackContext ctx)
         {
-            throw new NotImplementedException();
+            if (ctx.started) inputController.DecreaseTime();
         }
 
         public void Pause(InputAction.CallbackContext context)

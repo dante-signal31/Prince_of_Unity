@@ -155,5 +155,58 @@ namespace Tests.PlayTests
             Assert.True(startingLife + 1 == currentLife);
             Assert.True(startingMaximumLife + 1 == currentMaximumLife);
         }
+        
+        /// <summary>
+        /// Test Prince can use cheat key to increase time.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CanIncreaseTime()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            yield return null;
+            // I have to launch level loaded event to force game timer to activate.
+            _eventBus.TriggerEvent(new GameEvents.LevelLoaded(_currentScene), this);
+            yield return new WaitForSecondsRealtime(1);
+            float startingElapsedTime = GameObject.Find("GameManagers").GetComponentInChildren<GameTimer>().ElapsedSeconds;
+            string commandFile = @"Assets\Tests\TestResources\useIncreaseTimeCheatKeys";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            yield return new WaitForSecondsRealtime(1);
+            // Only maximum life value should have increased.
+            float currentElapsedTime = GameObject.Find("GameManagers").GetComponentInChildren<GameTimer>().ElapsedSeconds;
+            Assert.True(currentElapsedTime < startingElapsedTime);
+        }
+        
+        /// <summary>
+        /// Test Prince can use cheat key to decrease time.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CanDecreaseTime()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            yield return null;
+            // I have to launch level loaded event to force game timer to activate.
+            _eventBus.TriggerEvent(new GameEvents.LevelLoaded(_currentScene), this);
+            yield return new WaitForSecondsRealtime(1);
+            // float startingElapsedTime = GameObject.Find("GameManagers").GetComponentInChildren<GameTimer>().ElapsedSeconds;
+            string commandFile = @"Assets\Tests\TestResources\useDecreaseTimeCheatKeys";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            yield return new WaitForSecondsRealtime(2);
+            // Only maximum life value should have increased.
+            float currentElapsedTime = GameObject.Find("GameManagers").GetComponentInChildren<GameTimer>().ElapsedSeconds;
+            Assert.True(currentElapsedTime >= 60);
+            Assert.True(currentElapsedTime < 120);
+        }
     }
 }

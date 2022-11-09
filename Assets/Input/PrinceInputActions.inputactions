@@ -325,26 +325,70 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "e01b4a2a-1c70-41d5-aca9-0509c6dc0847",
-                    "path": "",
+                    "name": "Ctrl + I",
+                    "id": "41b43863-4d77-4aab-a86f-172339503137",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseTime",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "ba83be1d-fbfc-41fc-9112-029a0d1cc8dc",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "IncreaseTime",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "1bee9bb2-66bb-473d-9fe5-2743ace731af",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Ctrl + D",
+                    "id": "b9f29fed-a4f1-418b-acd2-929ad2bacd8c",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseTime",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "5ea48cef-fa7a-4cda-b666-0b8181c30c16",
-                    "path": "",
+                    "name": "modifier",
+                    "id": "ccc094af-b676-421c-b7bb-5061e87f2db5",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "DecreaseTime",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "0ffb77f7-8271-4594-9481-a5d5245c6344",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

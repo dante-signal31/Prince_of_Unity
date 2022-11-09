@@ -144,6 +144,14 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed heal life point at {Time.time}", showLogs);
                     characterStatus.Life++;
                     break;
+                case Command.CommandType.IncreaseTime:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed increase time at {Time.time}", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.TimeIncreased(), this);
+                    break;
+                case Command.CommandType.DecreaseTime:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed decrease time at {Time.time}", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.TimeDecreased(), this);
+                    break;
             }
             yield return null;
         }

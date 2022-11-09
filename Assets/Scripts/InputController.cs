@@ -209,5 +209,15 @@ namespace Prince
         {
             ExecuteCommand(Command.CommandType.HealLifePoint);
         }
+
+        public void IncreaseTime()
+        {
+            ExecuteCommand(Command.CommandType.IncreaseTime);
+        }
+
+        public void DecreaseTime()
+        {
+            ExecuteCommand(Command.CommandType.DecreaseTime);
+        }
     }
 }

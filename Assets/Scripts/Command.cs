@@ -34,6 +34,8 @@ namespace Prince
             Pause,
             AddExtraBarOfLife,
             HealLifePoint,
+            IncreaseTime,
+            DecreaseTime,
         }
 
         [SerializeField] private float _delay;

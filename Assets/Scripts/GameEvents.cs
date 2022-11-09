@@ -171,6 +171,16 @@ public class GameEvents : MonoBehaviour
     /// This event is raised when pause key is pressed. 
     /// </summary>
     public class PauseKeyPressed : EventArgs { }
+    
+    /// <summary>
+    /// This event is raised when time increase cheat key is used.
+    /// </summary>
+    public class TimeIncreased: EventArgs {}
+    
+    /// <summary>
+    /// This event is raised when time decrease cheat key is used.
+    /// </summary>
+    public class TimeDecreased: EventArgs {}
 
     // /// <summary>
     // /// This event is raised whenever timer is disabled.
@@ -198,7 +208,6 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<PrinceEnteredNewRoom>();
         eventBus.RegisterEvent<VideoPlayStart>();
         eventBus.RegisterEvent<VideoPlayEnd>();
-        // eventBus.RegisterEvent<PrinceInTheScene>();
         eventBus.RegisterEvent<LevelLoaded>();
         eventBus.RegisterEvent<LevelReloaded>();
         eventBus.RegisterEvent<TextScreenTimeout>();
@@ -207,7 +216,7 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<PrinceClimbingEnded>();
         eventBus.RegisterEvent<PrinceDead>();
         eventBus.RegisterEvent<PauseKeyPressed>();
-        // eventBus.RegisterEvent<TimerPaused>();
-        // eventBus.RegisterEvent<TimerResumed>();
+        eventBus.RegisterEvent<TimeIncreased>();
+        eventBus.RegisterEvent<TimeDecreased>();
     }
 }
