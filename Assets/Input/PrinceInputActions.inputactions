@@ -248,26 +248,70 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "59fd16f0-e1ee-41d8-a08f-0cb2ba36586c",
-                    "path": "",
+                    "name": "Ctrl + T",
+                    "id": "7aeddef6-9cc5-4436-8ee1-b6f784da8af5",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddExtraBarOfLife",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "5eeab5fb-e206-46cb-9c14-ac80fc593f6c",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "AddExtraBarOfLife",
                     "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "b78cb12c-21a4-41c5-9aef-f5c63b309cce",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddExtraBarOfLife",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Ctrl+H",
+                    "id": "205d5554-92c8-4683-bb4e-7f483d231dec",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HealLifePoint",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "46fcde8a-5107-4cc7-97e4-ad7fbb14e6f9",
-                    "path": "",
+                    "name": "modifier",
+                    "id": "73446063-b667-4447-b7ef-9529aba24314",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "HealLifePoint",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "c6383c6b-9e48-403d-924e-04749ea16cbd",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HealLifePoint",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

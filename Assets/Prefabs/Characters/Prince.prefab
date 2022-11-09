@@ -269,6 +269,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5250694692991532468, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: characterStatus
+      value: 
+      objectReference: {fileID: 3800712010592504634}
+    - target: {fileID: 5250694692991532468, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: climbingInteractions
       value: 
       objectReference: {fileID: 447640868358498204}
@@ -795,11 +799,35 @@ MonoBehaviour:
     m_ActionId: 97fb3632-f48a-4e42-8094-df3956e55b48
     m_ActionName: PrinceActionMap/SkipToNextLevel[/Keyboard/shift,/Keyboard/l]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: AddExtraBarOfLife
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4f7395ce-7c1c-4714-8a50-b0a2c787c9d8
     m_ActionName: PrinceActionMap/ExtraBarOfLife
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: HealLifePoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a559fa24-e248-415c-8c87-2abce3590973
     m_ActionName: PrinceActionMap/HealLifePoint
   - m_PersistentCalls:

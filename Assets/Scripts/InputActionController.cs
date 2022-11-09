@@ -181,17 +181,15 @@ namespace Prince
         {
             if (ctx.started) inputController.SkipToNextLevel();
         }
-
-        // TODO: Implement AddExtraBarOfLife cheat key.
+        
         public void AddExtraBarOfLife(InputAction.CallbackContext ctx)
         {
-            throw new NotImplementedException();
+            if (ctx.started) inputController.AddExtraBarOfLife();
         }
         
-        // TODO: Implement HealLifePoint cheat key.
         public void HealLifePoint(InputAction.CallbackContext ctx)
         {
-            throw new NotImplementedException();
+            if (ctx.started) inputController.HealLifePoint();
         }
         
         // TODO: Implement KillGuardInRoom cheat key.

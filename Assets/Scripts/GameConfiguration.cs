@@ -14,6 +14,8 @@ namespace Prince
         [Header("PLAYER:")] 
         [Tooltip("Maximum starting life.")] 
         [SerializeField] private int maximumStartingLife;
+        [Tooltip("Maximum life roof (i.e maximum life units that can be shown on hud).")]
+        [SerializeField] private int maximumLifeRoof;
         [Tooltip("Starting life.")] 
         [SerializeField] private int startingLife;
         [Tooltip("Whether player starts game with a sword.")] 
@@ -28,6 +30,11 @@ namespace Prince
         /// Maximum life to start with.
         /// </summary>
         public int PlayerMaximumStartingLife => maximumStartingLife;
+
+        /// <summary>
+        /// Maximum life roof (i.e maximum life units that can be shown on hud).
+        /// </summary>
+        public int PlayerMaximumLifeRoof => maximumLifeRoof;
 
         /// <summary>
         /// Current life to start with.

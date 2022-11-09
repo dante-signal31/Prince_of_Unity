@@ -78,8 +78,10 @@ namespace Prince
         [SerializeField] private FightingInteractions fightingInteractions;
         
         [Header("CONFIGURATION:")]
+        // TODO: Add message bar to warn not to use this field for Prince.
         [Tooltip("Current character life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
         [SerializeField] private int life;
+        // TODO: Add message bar to warn not to use this field for Prince.
         [Tooltip("Current character maximum life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
         [SerializeField] private int maximumLife;
         [Tooltip("Is this character looking rightwards?")]
@@ -93,6 +95,7 @@ namespace Prince
         private PrinceStatus _princePersistentStatus;
         private bool _isFalling;
         private bool _gameManagersAvailable;
+        private int _lifesRoof;
         
         /// <summary>
         /// Whether this character is falling or not.
@@ -189,7 +192,7 @@ namespace Prince
             {
                 if (value > 0)
                 {
-                    maximumLife = value;
+                    maximumLife = IsPrince? Math.Clamp(value, 0, _lifesRoof): value;
                     life = Math.Clamp(life, 0, maximumLife);
                     if (_eventBus != null && _eventBus.HasRegisteredEvent<GameEvents.CharacterLifeUpdated>()) 
                         _eventBus.TriggerEvent(new GameEvents.CharacterLifeUpdated(Life, MaximumLife), this);
@@ -268,6 +271,7 @@ namespace Prince
         {
             if (_gameManagersAvailable && IsPrince)
             {
+                _lifesRoof = _princePersistentStatus.MaximumLifeRoof;
                 // I cannot assign directly from _princePersistentStatus to Life and MaximumLife
                 // because those properties assign values under the hood to _princePersistentStatus.
                 int _maximumLife = _princePersistentStatus.CurrentPlayerMaximumLife;

@@ -32,6 +32,8 @@ namespace Prince
             StopJump,
             SkipToNextLevel,
             Pause,
+            AddExtraBarOfLife,
+            HealLifePoint,
         }
 
         [SerializeField] private float _delay;

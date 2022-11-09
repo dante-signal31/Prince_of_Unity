@@ -199,5 +199,15 @@ namespace Prince
         {
             ExecuteCommand(Command.CommandType.Pause);
         }
+
+        public void AddExtraBarOfLife()
+        {
+            ExecuteCommand(Command.CommandType.AddExtraBarOfLife);
+        }
+
+        public void HealLifePoint()
+        {
+            ExecuteCommand(Command.CommandType.HealLifePoint);
+        }
     }
 }

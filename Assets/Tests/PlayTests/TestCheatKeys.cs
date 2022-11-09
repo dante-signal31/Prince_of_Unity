@@ -92,7 +92,6 @@ namespace Tests.PlayTests
         [UnityTest]
         public IEnumerator CanPauseGame()
         {
-            // TODO: End pause game test.
             _cameraController.PlaceInRoom(_room00);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
@@ -118,6 +117,43 @@ namespace Tests.PlayTests
             currentTime = _gameTimer.ElapsedSeconds;
             // As game has been unpaused, so elapsed time should have been incremented.
             Assert.True(startingTime < currentTime);
+        }
+        
+        
+        /// <summary>
+        /// Test Prince can use cheat key to increment life and maximum life.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CanUseLifeCheatKeys()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            yield return null;
+            int startingLife = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            int startingMaximumLife = _prince.GetComponentInChildren<CharacterStatus>().MaximumLife;
+            // I have to launch level loaded event to force game timer to activate.
+            _eventBus.TriggerEvent(new GameEvents.LevelLoaded(_currentScene), this);
+            string expectedFinalLevelName = "doors1";
+            string commandFile = @"Assets\Tests\TestResources\useLifeCheatKeys";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            yield return new WaitForSecondsRealtime(2);
+            // Only maximum life value should have increased.
+            int currentLife = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            int currentMaximumLife = _prince.GetComponentInChildren<CharacterStatus>().MaximumLife;
+            Assert.True(startingLife == currentLife);
+            Assert.True(startingMaximumLife + 1 == currentMaximumLife);
+            // Let time pass.
+            yield return new WaitForSecondsRealtime(2);
+            // Now only current value should have incremented.
+            currentLife = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            currentMaximumLife = _prince.GetComponentInChildren<CharacterStatus>().MaximumLife;
+            Assert.True(startingLife + 1 == currentLife);
+            Assert.True(startingMaximumLife + 1 == currentMaximumLife);
         }
     }
 }

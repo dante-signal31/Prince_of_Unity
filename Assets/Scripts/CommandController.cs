@@ -23,6 +23,8 @@ namespace Prince
         [Tooltip("Needed to signal changes in climbing/hangings conditions.")] 
         // Enemy does not climb, so he will keep this value to null.
         [SerializeField] private ClimberInteractions climbingInteractions;
+        [Tooltip("Needed to increment life through cheat keys.")] 
+        [SerializeField] private CharacterStatus characterStatus;
 
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -133,6 +135,14 @@ namespace Prince
                 case Command.CommandType.Pause:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed pause at {Time.time}", showLogs);
                     _eventBus.TriggerEvent(new GameEvents.PauseKeyPressed(), this);
+                    break;
+                case Command.CommandType.AddExtraBarOfLife:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed add extra bar of life at {Time.time}", showLogs);
+                    characterStatus.MaximumLife++;
+                    break;
+                case Command.CommandType.HealLifePoint:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed heal life point at {Time.time}", showLogs);
+                    characterStatus.Life++;
                     break;
             }
             yield return null;

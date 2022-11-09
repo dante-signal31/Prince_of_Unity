@@ -37,6 +37,13 @@ namespace Prince
         public int CurrentPlayerLife { get; private set; }
         
         /// <summary>
+        /// <p>Roof for maximum life.</p>
+        ///
+        /// <p>i.e the maximum life units that can be shown on HUD.</p>
+        /// </summary>
+        public int MaximumLifeRoof { get; private set; }
+        
+        /// <summary>
         /// Whether player has a sword or not.
         /// </summary>
         public bool HasSword { get; private set; }
@@ -81,6 +88,7 @@ namespace Prince
             CurrentPlayerMaximumLife = gameConfiguration.PlayerMaximumStartingLife;
             CurrentPlayerLife = gameConfiguration.PlayerStartingLife;
             HasSword = gameConfiguration.PlayerStartsWithSword;
+            MaximumLifeRoof = gameConfiguration.PlayerMaximumLifeRoof;
         }
 
         private void OnSwordTaken(object _, GameEvents.SwordTaken __)
