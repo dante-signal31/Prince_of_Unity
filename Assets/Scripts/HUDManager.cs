@@ -74,7 +74,6 @@ namespace Prince
 
         private void Start()
         {
-            // TODO: Show a message when increment/decrement cheat key is pressed.
             eventBus.AddListener<GameEvents.CharacterLifeUpdated>(OnCharacterLifeUpdated);
             eventBus.AddListener<GameEvents.GuardEnteredTheRoom>(OnGuardEnteredTheRoom);
             eventBus.AddListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
