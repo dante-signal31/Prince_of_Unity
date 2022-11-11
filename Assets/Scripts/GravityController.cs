@@ -12,7 +12,7 @@ namespace Prince
     /// be directly attached to a game object. Instead you must subclass it, specifying its generic type and
     /// that subclass can then be directly attached to a game object.
     /// </summary>
-    public class GravityController: MonoBehaviour
+    public abstract class GravityController: MonoBehaviour
     {
         [Header("BASE-WIRING:")]
         [Tooltip("Needed to alter gravity affection on character.")]
@@ -49,12 +49,8 @@ namespace Prince
             _isGravityEnabled = stateMachine.GetBool("GravityEnabled");
         }
 
-        private void FixedUpdate()
-        {
-            throw new NotImplementedException(
-                "This class should not be used directly. Use one of its children instead.");
-        }
-
+        // private abstract void FixedUpdate();
+        
         /// <summary>
         /// Deactivate gravity affection over this character.
         /// </summary>

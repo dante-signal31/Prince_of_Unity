@@ -72,7 +72,7 @@ namespace Prince
         [Header("WIRING:")]
         [Tooltip("Needed to set state machine parameters depending on status.")]
         [SerializeField] private Animator stateMachine;
-        [Tooltip("Needed to know is enabled and we can fall.")]
+        [Tooltip("Needed to know if gravity is enabled and we can fall.")]
         [SerializeField] private GravityController gravityController;
         [Tooltip("Needed to know if we hve ground under our feet.")]
         [SerializeField] private GroundSensors groundSensors;
