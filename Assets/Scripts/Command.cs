@@ -36,6 +36,7 @@ namespace Prince
             HealLifePoint,
             IncreaseTime,
             DecreaseTime,
+            KillCurrentGuard
         }
 
         [SerializeField] private float _delay;

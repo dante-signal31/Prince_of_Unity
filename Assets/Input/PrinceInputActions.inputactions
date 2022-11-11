@@ -314,15 +314,37 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "62810b76-1aaf-43b9-a1e2-e42629312b39",
-                    "path": "",
+                    "name": "Ctrl + M",
+                    "id": "56dc4213-ec0d-4d94-9fb4-1e1d1a20edf3",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillGuardInRoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "0954ac8d-a9a2-4e00-b333-b695f392c522",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "KillGuardInRoom",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "af33943c-c945-4112-99ba-fb3483f37da4",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillGuardInRoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "Ctrl + I",

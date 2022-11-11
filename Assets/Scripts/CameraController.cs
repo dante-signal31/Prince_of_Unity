@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     [Header("WIRING:")]
     [Tooltip("This prefab camera component.")]
     [SerializeField] private Camera camera;
-    [Tooltip("Needed to signal if there is any guard in current room.")]
+    [Tooltip("Needed to signal current guard if kill cheat key has been pressed..")]
     [SerializeField] private EventBus eventBus;
     
     [Header("CONFIGURATION:")]
@@ -86,11 +86,27 @@ public class CameraController : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= PlaceAtDefaultRoom;
+        if (eventBus.HasRegisteredEvent<GameEvents.KillCurrentGuardKeyPressed>()) 
+            eventBus.RemoveListener<GameEvents.KillCurrentGuardKeyPressed>(OnKillCurrentGuardKeyPressed);
+    }
+    
+    private void OnKillCurrentGuardKeyPressed(object sender, GameEvents.KillCurrentGuardKeyPressed e)
+    {
+        if (CurrentRoom.IsThereAnEnemyInTheRoom)
+        {
+            CurrentRoom.EnemyInTheRoom.GetComponentInChildren<HealthController>().KilledByCheatKey();
+        }
     }
 
     private void Awake()
     {
         UpdateCameraSettings();
+    }
+
+    private void Start()
+    {
+        if (eventBus.HasRegisteredEvent<GameEvents.KillCurrentGuardKeyPressed>()) 
+            eventBus.AddListener<GameEvents.KillCurrentGuardKeyPressed>(OnKillCurrentGuardKeyPressed);
     }
 
     /// <summary>

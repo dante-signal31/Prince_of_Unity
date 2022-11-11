@@ -11,6 +11,7 @@ namespace Tests.PlayTests
     public class JumpingOverSwitchTests
     {
         private GameObject _prince;
+        private GameObject _enemy;
 
         private GameObject _startPosition1;
         private GameObject _startPosition2;
@@ -37,6 +38,7 @@ namespace Tests.PlayTests
             yield return TestSceneManager.ReLoadScene(_currentScene);
             
             if (_prince == null) _prince = GameObject.Find("Prince");
+            if (_enemy == null) _enemy = GameObject.Find("Enemy");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
             if (_cameraController == null)
@@ -49,6 +51,7 @@ namespace Tests.PlayTests
                 _room00 = GameObject.Find("Room_0_0").GetComponentInChildren<Room>();
 
             _prince.SetActive(false);
+            _enemy.SetActive(false);
 
             yield return new EnterPlayMode();
         }

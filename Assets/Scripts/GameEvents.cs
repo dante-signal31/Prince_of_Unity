@@ -182,6 +182,11 @@ public class GameEvents : MonoBehaviour
     /// </summary>
     public class TimeDecreaseKeyPressed: EventArgs {}
 
+    /// <summary>
+    /// This event is raised when kill current guard cheat key is used.
+    /// </summary>
+    public class KillCurrentGuardKeyPressed : EventArgs { }
+
     // /// <summary>
     // /// This event is raised whenever timer is disabled.
     // /// </summary>
@@ -218,5 +223,6 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<PauseKeyPressed>();
         eventBus.RegisterEvent<TimeIncreaseKeyPressed>();
         eventBus.RegisterEvent<TimeDecreaseKeyPressed>();
+        eventBus.RegisterEvent<KillCurrentGuardKeyPressed>();
     }
 }

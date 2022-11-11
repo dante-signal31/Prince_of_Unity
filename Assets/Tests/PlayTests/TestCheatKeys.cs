@@ -11,6 +11,7 @@ namespace Tests.PlayTests
     public class TestCheatKeys
     {
         private GameObject _prince;
+        private GameObject _enemy;
 
         private GameObject _startPosition1;
         private GameObject _startPosition2;
@@ -38,6 +39,7 @@ namespace Tests.PlayTests
             yield return TestSceneManager.ReLoadScene(_currentScene);
             
             if (_prince == null) _prince = GameObject.Find("Prince");
+            if (_enemy == null) _enemy = GameObject.Find("Enemy");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
@@ -51,6 +53,7 @@ namespace Tests.PlayTests
                 _room00 = GameObject.Find("Room_0_0").GetComponentInChildren<Room>();
 
             _prince.SetActive(false);
+            _enemy.SetActive(false);
 
             yield return new EnterPlayMode();
         }
@@ -154,6 +157,35 @@ namespace Tests.PlayTests
             currentMaximumLife = _prince.GetComponentInChildren<CharacterStatus>().MaximumLife;
             Assert.True(startingLife + 1 == currentLife);
             Assert.True(startingMaximumLife + 1 == currentMaximumLife);
+        }
+        
+        /// <summary>
+        /// Test Prince can use cheat key to kill current guard.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator CanUseKillCurrentGuardCheatKeys()
+        {
+            _cameraController.PlaceInRoom(_room00);
+            _prince.SetActive(true);
+            _enemy.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            yield return null;
+            int startingLife = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            // I have to launch level loaded event to force game timer to activate.
+            _eventBus.TriggerEvent(new GameEvents.LevelLoaded(_currentScene), this);
+            string commandFile = @"Assets\Tests\TestResources\useKillGuardCheatKeys";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            yield return new WaitForSecondsRealtime(2);
+            // Only maximum life value should have increased.
+            int currentLife = _enemy.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingLife != currentLife);
+            Assert.True(currentLife == 0);
+            Assert.True(_enemy.GetComponentInChildren<CharacterStatus>().IsDead);
+
         }
         
         /// <summary>

@@ -152,6 +152,10 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed decrease time at {Time.time}", showLogs);
                     _eventBus.TriggerEvent(new GameEvents.TimeDecreaseKeyPressed(), this);
                     break;
+                case Command.CommandType.KillCurrentGuard:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed kill current guard at {Time.time}", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.KillCurrentGuardKeyPressed(), this);
+                    break;
             }
             yield return null;
         }

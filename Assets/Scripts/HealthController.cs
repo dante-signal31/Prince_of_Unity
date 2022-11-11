@@ -80,6 +80,17 @@ namespace Prince
         {
             MaximumLife++;
         }
+
+        /// <summary>
+        /// Kill at once current character.
+        ///
+        /// Used to kill guards through cheat keys.
+        /// </summary>
+        public void KilledByCheatKey()
+        {
+            Life = 0;
+            stateMachine.SetTrigger("KilledByCheatKey");
+        }
         
         /// <summary>
         /// Character has been hit by an enemy's sword.

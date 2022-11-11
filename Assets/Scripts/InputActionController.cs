@@ -192,10 +192,9 @@ namespace Prince
             if (ctx.started) inputController.HealLifePoint();
         }
         
-        // TODO: Implement KillGuardInRoom cheat key.
         public void KillGuardInRoom(InputAction.CallbackContext ctx)
         {
-            throw new NotImplementedException();
+            if (ctx.started) inputController.KillCurrentGuard();
         }
         
         public void IncreaseTime(InputAction.CallbackContext ctx)

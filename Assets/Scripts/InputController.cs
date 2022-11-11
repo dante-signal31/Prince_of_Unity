@@ -219,5 +219,10 @@ namespace Prince
         {
             ExecuteCommand(Command.CommandType.DecreaseTime);
         }
+
+        public void KillCurrentGuard()
+        {
+            ExecuteCommand(Command.CommandType.KillCurrentGuard);
+        }
     }
 }
