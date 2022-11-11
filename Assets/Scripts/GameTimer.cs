@@ -98,8 +98,8 @@ namespace Prince
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelReloaded);
             eventBus.AddListener<GameEvents.PauseKeyPressed>(OnPauseKeyPressed);
-            eventBus.AddListener<GameEvents.TimeIncreased>(OnTimeIncreased);
-            eventBus.AddListener<GameEvents.TimeDecreased>(OnTimeDecreased);
+            eventBus.AddListener<GameEvents.TimeIncreaseKeyPressed>(OnTimeIncreased);
+            eventBus.AddListener<GameEvents.TimeDecreaseKeyPressed>(OnTimeDecreased);
             ActivateTimer();
         }
 
@@ -108,8 +108,8 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelReloaded);
             eventBus.RemoveListener<GameEvents.PauseKeyPressed>(OnPauseKeyPressed);
-            eventBus.RemoveListener<GameEvents.TimeIncreased>(OnTimeIncreased);
-            eventBus.RemoveListener<GameEvents.TimeDecreased>(OnTimeDecreased);
+            eventBus.RemoveListener<GameEvents.TimeIncreaseKeyPressed>(OnTimeIncreased);
+            eventBus.RemoveListener<GameEvents.TimeDecreaseKeyPressed>(OnTimeDecreased);
         }
 
         /// <summary>
@@ -162,22 +162,22 @@ namespace Prince
         }
 
         /// <summary>
-        /// Listener for TimeIncreased events.
+        /// Listener for TimeIncreaseKeyPressed events.
         /// </summary>
         /// <param name="_">Sender of this event. Usually a LevelLoader.</param>
         /// <param name="__">Event data.</param>
-        private void OnTimeIncreased(object _, GameEvents.TimeIncreased __)
+        private void OnTimeIncreased(object _, GameEvents.TimeIncreaseKeyPressed __)
         {
             float newElapsedSeconds = ElapsedSeconds - 60;
             ElapsedSeconds = Math.Clamp(newElapsedSeconds, 0, float.MaxValue);
         }
         
         /// <summary>
-        /// Listener for TimeDecreased events.
+        /// Listener for TimeDecreaseKeyPressed events.
         /// </summary>
         /// <param name="_">Sender of this event. Usually a LevelLoader.</param>
         /// <param name="__">Event data.</param>
-        private void OnTimeDecreased(object _, GameEvents.TimeDecreased __)
+        private void OnTimeDecreased(object _, GameEvents.TimeDecreaseKeyPressed __)
         {
             ElapsedSeconds += 60;
         }

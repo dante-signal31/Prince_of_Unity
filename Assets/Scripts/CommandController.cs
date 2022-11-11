@@ -146,11 +146,11 @@ namespace Prince
                     break;
                 case Command.CommandType.IncreaseTime:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed increase time at {Time.time}", showLogs);
-                    _eventBus.TriggerEvent(new GameEvents.TimeIncreased(), this);
+                    _eventBus.TriggerEvent(new GameEvents.TimeIncreaseKeyPressed(), this);
                     break;
                 case Command.CommandType.DecreaseTime:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed decrease time at {Time.time}", showLogs);
-                    _eventBus.TriggerEvent(new GameEvents.TimeDecreased(), this);
+                    _eventBus.TriggerEvent(new GameEvents.TimeDecreaseKeyPressed(), this);
                     break;
             }
             yield return null;

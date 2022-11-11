@@ -175,12 +175,12 @@ public class GameEvents : MonoBehaviour
     /// <summary>
     /// This event is raised when time increase cheat key is used.
     /// </summary>
-    public class TimeIncreased: EventArgs {}
+    public class TimeIncreaseKeyPressed: EventArgs {}
     
     /// <summary>
     /// This event is raised when time decrease cheat key is used.
     /// </summary>
-    public class TimeDecreased: EventArgs {}
+    public class TimeDecreaseKeyPressed: EventArgs {}
 
     // /// <summary>
     // /// This event is raised whenever timer is disabled.
@@ -216,7 +216,7 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<PrinceClimbingEnded>();
         eventBus.RegisterEvent<PrinceDead>();
         eventBus.RegisterEvent<PauseKeyPressed>();
-        eventBus.RegisterEvent<TimeIncreased>();
-        eventBus.RegisterEvent<TimeDecreased>();
+        eventBus.RegisterEvent<TimeIncreaseKeyPressed>();
+        eventBus.RegisterEvent<TimeDecreaseKeyPressed>();
     }
 }
