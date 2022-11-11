@@ -5,16 +5,16 @@ using UnityEngine.Events;
 
 namespace Editor
 {
-    [UnityEditor.CustomPropertyDrawer(typeof(GameTimer.PlannedEvent))]
-    public class PlannedEventDrawer : UnityEditor.PropertyDrawer
+    [CustomPropertyDrawer(typeof(GameTimer.PlannedEvent))]
+    public class PlannedEventDrawer : PropertyDrawer
     {
         private float _lineCount;
         private float _initialHeight;
         readonly float _lineHeight = EditorGUIUtility.singleLineHeight;
         private float CurrentHeight => _initialHeight + (_lineCount * (_lineHeight + EditorGUIUtility.standardVerticalSpacing));
         
-        public override void OnGUI(Rect position, UnityEditor.SerializedProperty property,
-            UnityEngine.GUIContent label)
+        public override void OnGUI(Rect position, SerializedProperty property,
+            GUIContent label)
         {
             // Using BeginProperty / EndProperty on the parent property means that
             // prefab override logic works on the entire property.
@@ -72,7 +72,7 @@ namespace Editor
         }
 
         // Needed to return global property size to parents like lists drawers.
-        public override float GetPropertyHeight(UnityEditor.SerializedProperty property, UnityEngine.GUIContent label)
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             // Here I use my own local lineCount because if I use global _lineCount it gets messy at lists
             // with multiple items.

@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -76,13 +78,12 @@ namespace Prince
         [SerializeField] private GroundSensors groundSensors;
         [Tooltip("Needed to show other game objects if this is a guard or not.")] 
         [SerializeField] private FightingInteractions fightingInteractions;
-        
         [Header("CONFIGURATION:")]
-        // TODO: Add message bar to warn not to use this field for Prince.
         [Tooltip("Current character life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
+        [HelpBar("USE ONLY WITH GUARDS. For Prince use PrinceStatus.", MessageType.Warning)]
         [SerializeField] private int life;
-        // TODO: Add message bar to warn not to use this field for Prince.
         [Tooltip("Current character maximum life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
+        [HelpBar("USE ONLY WITH GUARDS. For Prince use PrinceStatus.", MessageType.Warning)]
         [SerializeField] private int maximumLife;
         [Tooltip("Is this character looking rightwards?")]
         [SerializeField] private bool lookingRightWards;
