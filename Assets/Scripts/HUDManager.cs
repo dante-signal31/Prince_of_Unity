@@ -68,6 +68,8 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
             eventBus.RemoveListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
             eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.RemoveListener<GameEvents.TimeIncreaseKeyPressed>(OnTimeIncreaseKeyPressed);
+            eventBus.RemoveListener<GameEvents.TimeDecreaseKeyPressed>(OnTimeDecreaseKeyPressed);
         }
 
         private void Start()
@@ -78,6 +80,8 @@ namespace Prince
             eventBus.AddListener<GameEvents.NoGuardInTheRoom>(OnNoGuardInTheRoom);
             eventBus.AddListener<GameEvents.PrinceEnteredNewRoom>(OnPrinceEnteredNewRoom);
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
+            eventBus.AddListener<GameEvents.TimeIncreaseKeyPressed>(OnTimeIncreaseKeyPressed);
+            eventBus.AddListener<GameEvents.TimeDecreaseKeyPressed>(OnTimeDecreaseKeyPressed);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
             ShowHudIfLevelsAskIt();
         }
@@ -111,10 +115,30 @@ namespace Prince
         /// Listener on LevelLoaded events.
         /// </summary>
         /// <param name="_">Actually not used here.</param>
-        /// <param name="__">Actually not used here.</param>
+        /// <param name="ev">Event data.</param>
         private void OnLevelLoaded(object _, GameEvents.LevelLoaded ev)
         {
             ShowHudIfLevelsAskIt(ev.LevelName);
+        }
+
+        /// <summary>
+        /// Listener on TimeIncreaseKeyPressed events.
+        /// </summary>
+        /// <param name="_">Actually not used here.</param>
+        /// <param name="__">Actually not used here.</param>
+        private void OnTimeIncreaseKeyPressed(object _, GameEvents.TimeIncreaseKeyPressed __)
+        {
+            SetMessageForATime("TIME LEFT INCREASED 1 MINUTE", 5);
+        }
+        
+        /// <summary>
+        /// Listener on TimeDecreaseKeyPressed events.
+        /// </summary>
+        /// <param name="_">Actually not used here.</param>
+        /// <param name="__">Actually not used here.</param>
+        private void OnTimeDecreaseKeyPressed(object _, GameEvents.TimeDecreaseKeyPressed __)
+        {
+            SetMessageForATime("TIME LEFT REDUCED 1 MINUTE", 5);
         }
 
         private void ShowHudIfLevelsAskIt(string levelName = "")
