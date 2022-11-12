@@ -1194,6 +1194,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1677265200587083427, guid: 19135bee534ef6b46a0983a7aadb69b0, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4629036
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677265200587083427, guid: 19135bee534ef6b46a0983a7aadb69b0, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.069362655
+      objectReference: {fileID: 0}
     - target: {fileID: 2883343333313233696, guid: 19135bee534ef6b46a0983a7aadb69b0, type: 3}
       propertyPath: m_Name
       value: WallSensor

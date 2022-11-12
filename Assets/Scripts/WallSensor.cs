@@ -19,6 +19,11 @@ namespace Prince
         [Tooltip("Show this component logs on console window.")]
         [SerializeField] private bool showLogs;
 
+        /// <summary>
+        /// Whether this sensor is touching an architecture brick.
+        /// </summary>
+        public bool isTouchingWall { get; private set; }
+        
         private int _architectureLayer;
 
         private void Awake()
@@ -31,6 +36,7 @@ namespace Prince
             if (col.gameObject.layer == _architectureLayer)
             {
                 stateMachine.SetBool("TouchingWall", true);
+                isTouchingWall = true;
                 this.Log($"(WallSensor - {transform.root.name}) Touching a wall.", showLogs);
             }
         }
@@ -40,6 +46,7 @@ namespace Prince
             if (other.gameObject.layer == _architectureLayer)
             {
                 stateMachine.SetBool("TouchingWall", false);
+                isTouchingWall = false;
                 this.Log($"(WallSensor - {transform.root.name}) No longer touching a wall.", showLogs);
             }
         }
