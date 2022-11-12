@@ -125,6 +125,7 @@ namespace Prince
                     else 
                     {
                         _isFalling = false;
+                        stateMachine.ResetTrigger("Fall");
                         this.Log($"(CharacterStatus - {transform.root.name}) We are landing.", showLogs);
                     }
                 }

@@ -153,6 +153,9 @@ namespace Prince
                 else if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Climbed)
                 {
                     UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
+                    // If we don't wait until sensors feel ground again we could get a bogus fall from idle state. This
+                    // could happen when we climb from a hang after a fall.
+                    yield return new WaitUntil(() => groundSensors.GroundBelow);
                     stateMachine.SetTrigger("ClimbingFinished");
                     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
                 }
