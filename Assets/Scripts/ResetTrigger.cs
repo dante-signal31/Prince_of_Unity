@@ -7,6 +7,7 @@ namespace Prince
     /// </summary>
     public class ResetTrigger : StateMachineBehaviour
     {
+        // TODO: Add an enum to define when to reset trigger (on enter, exit or update).
         [Tooltip("Trigger to reset when this state is entered.")]
         [SerializeField] private string triggerToReset;
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo,
