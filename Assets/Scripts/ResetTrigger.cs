@@ -7,20 +7,26 @@ namespace Prince
     /// </summary>
     public class ResetTrigger : StateMachineBehaviour
     {
-        // TODO: Add an enum to define when to reset trigger (on enter, exit or update).
         [Tooltip("Trigger to reset when this state is entered.")]
         [SerializeField] private string triggerToReset;
+
+        [Tooltip("Reset trigger when state is entered.")]
+        [SerializeField] private bool resetOnEnter = true;
+        [Tooltip("Reset trigger when state is left.")]
+        [SerializeField] private bool resetOnExit;
+
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo,
             int layerIndex)
         {
-            animator.ResetTrigger(triggerToReset);
+            if (resetOnEnter) animator.ResetTrigger(triggerToReset);
         }
 
-        // public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo,
-        //     int layerIndex)
-        // {
-        // }
-        //
+        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo,
+            int layerIndex)
+        {
+            if (resetOnExit) animator.ResetTrigger(triggerToReset);
+        }
+        
         // public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo,
         //     int layerIndex)
         // {

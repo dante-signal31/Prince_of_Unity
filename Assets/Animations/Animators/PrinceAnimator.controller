@@ -2258,6 +2258,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerToReset: Stop
+  resetOnEnter: 1
+  resetOnExit: 1
 --- !u!1107 &-2934647815615209367
 AnimatorStateMachine:
   serializedVersion: 6
@@ -2671,6 +2673,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerToReset: StopJump
+  resetOnEnter: 1
+  resetOnExit: 0
 --- !u!1102 &-2003736285906668680
 AnimatorState:
   serializedVersion: 6
@@ -3279,6 +3283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerToReset: Stand
+  resetOnEnter: 1
+  resetOnExit: 0
 --- !u!114 &-363289622865593585
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6052,6 +6058,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerToReset: Jump
+  resetOnEnter: 1
+  resetOnExit: 0
 --- !u!1101 &7858478110878694987
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
