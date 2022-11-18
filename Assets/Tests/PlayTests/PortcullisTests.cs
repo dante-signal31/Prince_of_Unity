@@ -19,10 +19,12 @@ namespace Tests.PlayTests
         private GameObject _startPosition4;
         private GameObject _startPosition17;
         private GameObject _startPosition18;
+        private GameObject _startPosition19;
 
         private GameObject _portcullis;
         private GameObject _portcullis2;
         private GameObject _portcullis3;
+        private GameObject _openingSwitch;
         
         private CameraController _cameraController;
         private Room _room00;
@@ -47,8 +49,11 @@ namespace Tests.PlayTests
             if (_startPosition4 == null) _startPosition4 = GameObject.Find("StartPosition4");
             if (_startPosition17 == null) _startPosition17 = GameObject.Find("StartPosition17");
             if (_startPosition18 == null) _startPosition18 = GameObject.Find("StartPosition18");
+            if (_startPosition19 == null) _startPosition19 = GameObject.Find("StartPosition19");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
+            if (_openingSwitch == null)
+                _openingSwitch = GameObject.Find("OpeningSwitch (2)");
             if (_room00 == null)
                 _room00 = GameObject.Find("Room_0_0").GetComponentInChildren<Room>();
             if (_room01 == null)
@@ -269,6 +274,29 @@ namespace Tests.PlayTests
             Assert.True(portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.Opening);
             yield return new WaitForSeconds(3);
             Assert.True(portcullisStatus.CurrentState == PortcullisStatus.PortcullisStates.Open);
+        }
+        
+        /// <summary>
+        /// Test Prince can jump from a switch and that switch deactivated.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator JumpFromSwitchDeactivatesItTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _prince.SetActive(true);
+            SwitchStatus switchStatus = _openingSwitch.GetComponentInChildren<SwitchStatus>();
+            _prince.transform.SetPositionAndRotation(_startPosition19.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            string commandFile = @"Assets\Tests\TestResources\walkingJumpingSequence";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(0.5f);
+            Assert.True(switchStatus.CurrentState == SwitchStatus.States.Activated);
+            yield return new WaitForSeconds(4);
+            Assert.True(switchStatus.CurrentState == SwitchStatus.States.Idle);
         }
     }
 }

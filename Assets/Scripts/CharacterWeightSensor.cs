@@ -46,6 +46,7 @@ public class CharacterWeightSensor : MonoBehaviour
     private bool _countingTime = false;
     private float _elapsedTime = 0;
     private bool _activated = false;
+    private BoxCollider2D _sensorBox;
 
     /// <summary>
     /// Character states that should not activate this sensor.
@@ -56,6 +57,11 @@ public class CharacterWeightSensor : MonoBehaviour
             CharacterStatus.States.RunningJump,
             CharacterStatus.States.WalkingJump
         };
+
+    private void Awake()
+    {
+        _sensorBox = GetComponent<BoxCollider2D>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -118,16 +124,45 @@ public class CharacterWeightSensor : MonoBehaviour
         if (GameObjectTools.IsACharacter(detectedGameObject))
         {
             if (GameObjectTools.CharacterInState(detectedGameObject, dontActivateInTheseCharacterStates)) return;
-            CharactersOverSensor.Remove(detectedGameObject);
-            if (CharactersOverSensor.Count == 0)
+            RemoveGameObjectFromSensor(detectedGameObject);
+        }
+    }
+
+    /// <summary>
+    /// Remove given object from detected game object list.
+    /// </summary>
+    /// <param name="gameObjectToRemove">Game objet to remove from sensor.</param>
+    private void RemoveGameObjectFromSensor(GameObject gameObjectToRemove)
+    {
+        CharactersOverSensor.Remove(gameObjectToRemove);
+        if (CharactersOverSensor.Count == 0)
+        {
+            CounterStop();
+            if (_activated)
             {
-                CounterStop();
-                if (_activated)
+                if (weightSensorDeactivated != null) weightSensorDeactivated.Invoke();
+                _activated = false;
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        // If Prince jumps from a switch then his collider is disabled so OnTriggerExit is not called. We must
+        // check if our CharacterOverSensor list is actually up to date.
+        HashSet<GameObject> detectedCharacters = new HashSet<GameObject>(CharactersOverSensor);
+        foreach (GameObject o in detectedCharacters)
+        {
+            foreach (Collider2D col in o.GetComponentsInChildren<Collider2D>())
+            {
+                if (col.isTrigger && col.name != "FallingCollider") continue;
+                if (_sensorBox.IsTouching(col))
                 {
-                    if (weightSensorDeactivated != null) weightSensorDeactivated.Invoke();
-                    _activated = false;
+                    _activated = true;
+                    return;
                 }
             }
+            RemoveGameObjectFromSensor(o);
         }
     }
 }
