@@ -209,7 +209,7 @@ public class GroundSensors : MonoBehaviour
             case CharacterStatus.States.Unsheathe:
             case CharacterStatus.States.RunningJumpImpulse:
             case CharacterStatus.States.RunningJump:
-            case CharacterStatus.States.WalkingJumpStart:
+            // case CharacterStatus.States.WalkingJumpStart:
             case CharacterStatus.States.WalkingJump:
             case CharacterStatus.States.WalkingJumpEnd:
             case CharacterStatus.States.AdvanceSword:

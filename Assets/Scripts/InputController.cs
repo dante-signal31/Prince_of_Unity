@@ -88,7 +88,7 @@ namespace Prince
             float waitingTime = (_isRecording) ? GetElapsedTime() : 0;
             Command command = new Command(waitingTime, commandType);
             if (_isRecording) _recordedCommandSequence.PushCommand(command);
-            StartCoroutine(commandController.ExecuteCommand(command));
+            if (gameObject.activeSelf) StartCoroutine(commandController.ExecuteCommand(command));
         }
 
         private void OnApplicationQuit()
