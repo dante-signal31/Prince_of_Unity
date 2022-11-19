@@ -7,6 +7,7 @@ namespace Prince
     /// </summary>
     public class SpikesCharacterInteractions: TrapCharacterInteractions
     {
+        // TODO: If prince is ending a vertical jump it should not be killed.
         protected override bool InvulnerableCharacter(GameObject character)
         {
             CharacterStatus characterStatus = character.GetComponentInChildren<CharacterStatus>();
