@@ -18,7 +18,7 @@ MonoBehaviour:
   BlockSwordSpeed: -0.738
   MaximumRunningSpeed: 2.93
   MaximumWalkingSpeed: 1.3
-  MaximumStandingSpeed: 1
+  MaximumStandingSpeed: 1.3
   MaximumCrouchWalkingSpeed: 4
   FallingHorizontalSpeed: 1
   RunningJumpingImpulseSpeed: 3.32
