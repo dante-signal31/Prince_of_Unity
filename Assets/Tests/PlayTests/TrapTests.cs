@@ -26,6 +26,7 @@ namespace Tests.PlayTests
         private GameObject _startPosition11;
         private GameObject _startPosition12;
         private GameObject _startPosition16;
+        private GameObject _startPosition20;
 
         private CameraController _cameraController;
         private LevelLoader _levelLoader;
@@ -57,6 +58,7 @@ namespace Tests.PlayTests
             if (_startPosition11 == null) _startPosition11 = GameObject.Find("StartPosition11");
             if (_startPosition12 == null) _startPosition12 = GameObject.Find("StartPosition12");
             if (_startPosition16 == null) _startPosition16 = GameObject.Find("StartPosition16");
+            if (_startPosition20 == null) _startPosition20 = GameObject.Find("StartPosition20");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_levelLoader == null)
@@ -318,6 +320,28 @@ namespace Tests.PlayTests
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movement happen.
             yield return new WaitForSeconds(8);
+            // Assert Prince is alive.
+            Assert.True(!_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
+        
+        // Test that Prince is not killed by spikes trap if vertical jumps over it.
+        [UnityTest]
+        public IEnumerator PrinceSurvivesIfVerticalJumpsOverSpikesTest()
+        {
+            _cameraController.PlaceInRoom(_room20);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition20.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _enemy.SetActive(false);
+            // Command sequence.
+            string commandFile = @"Assets\Tests\TestResources\verticalJumpingSequence";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movement happen.
+            yield return new WaitForSeconds(4);
             // Assert Prince is alive.
             Assert.True(!_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         }
