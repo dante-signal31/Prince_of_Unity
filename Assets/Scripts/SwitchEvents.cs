@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 namespace Prince
 {
+    // TODO: Switches accumulate triggered but not run events. If while door opening you press opening switch again
+    // that opening triggered get accumulated and if you press a closing switch that closing events get consumed
+    // by accumulated opening trigger so door keeps opening. It should be fixed.
+    
     /// <summary>
     /// Component to activate things from this switch.
     /// </summary>
