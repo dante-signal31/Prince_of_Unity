@@ -29,6 +29,7 @@ AnimatorState:
   - {fileID: -3802305569844113302}
   m_StateMachineBehaviours:
   - {fileID: 7771362885121086636}
+  - {fileID: -269270284946343861}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -77,7 +78,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -20, y: -180, z: 0}
+  m_AnyStatePosition: {x: 10, y: -190, z: 0}
   m_EntryPosition: {x: 370, y: -80, z: 0}
   m_ExitPosition: {x: 700, y: -110, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -371,6 +372,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateToUpdate: 4
   showLogs: 0
+--- !u!114 &-269270284946343861
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c1e69a798a40439362e0ee3e8decd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerToReset: Open
+  resetOnEnter: 0
+  resetOnExit: 1
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
