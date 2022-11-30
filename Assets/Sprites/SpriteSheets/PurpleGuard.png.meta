@@ -1,0 +1,1295 @@
+fileFormatVersion: 2
+guid: 283f09eef2b76884395a542901deb6e4
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PurpleGuard_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 477
+        width: 58
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044e727ae470a8f4baf7892aca5b9aee
+      internalID: -457856171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 460
+        width: 54
+        height: 50
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdfc38603da637848ad066d33eac2c57
+      internalID: 570638716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_2
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 471
+        width: 51
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6954e21406787843a98a1ec06f9e118
+      internalID: 370004693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 474
+        width: 50
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f473cd4d67f184185f10aace6521f4
+      internalID: 1807550299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_4
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 474
+        width: 22
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d33f67e9f0b3ce43b618007829451a1
+      internalID: 1945092614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 437
+        width: 53
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeabd6ee52c97b84da0ac7394c7e9e7a
+      internalID: 85979258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_6
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 417
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a9d0cfc18c41194bb5a47234688d568
+      internalID: 492522199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_7
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 454
+        width: 48
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea27bb1759c62c246a297e2812cc360d
+      internalID: -890632980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 433
+        width: 48
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c6e3293d4a89fb448d379bc1842c7c9
+      internalID: -867909816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_10
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 435
+        width: 22
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f6f63e4d1c5e9c4aa815671d7cd608e
+      internalID: -515022465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 394
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9743f8b548bf2134aae1e3e8faf4ad74
+      internalID: -1872602636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_12
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 411
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a7361d64bfec6418d8186715a804c7
+      internalID: -414938602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_13
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 429
+        width: 20
+        height: 22
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a98fa0dffae1d488063e492a4c185b
+      internalID: 546894454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_14
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 390
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a5bcaf0ea98dd43a2ce0d86a738a80
+      internalID: -1686136151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_15
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 400
+        width: 20
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd7051659d0678488b4e6b3e13895a1
+      internalID: -80083509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_16
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 374
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f33cc308746f8da4cb45aa5dbf068c55
+      internalID: -1368337917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_17
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 369
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b21302955baaf745a564ac13ed63cb8
+      internalID: -1486953577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_19
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 392
+        width: 19
+        height: 35
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c1a37f89406c1418974b7a715227c7
+      internalID: 2133745624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_20
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 372
+        width: 28
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f251bc6f491c945b769bb58ec95fe2
+      internalID: 824004559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_21
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 352
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a39458fe002d4409406de39e163881
+      internalID: -915272848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_23
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 350
+        width: 14
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1540673499a08746ae75a86ba338895
+      internalID: 2078380919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_24
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 350
+        width: 46
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e1913a0e65157b4fa3768a920b91e3f
+      internalID: -901828785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_25
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 332
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81635b2dc1efebc408c3bed2ad3e1ad5
+      internalID: 1951858078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_27
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 327
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf271d29d5ece449b2b84f3436488db
+      internalID: -285470901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_29
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 326
+        width: 41
+        height: 43
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02182cbe2e7ee994491e7b7eda35ff92
+      internalID: 1031836379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_30
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 310
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce30f1076baf2fc478fcf332af83fa04
+      internalID: -1662075141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_32
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 310
+        width: 46
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4871cb5f6ec1f6e44bb020c7e66d96d2
+      internalID: 573915240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_33
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 290
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4907da45dd60b784787a1bb415581161
+      internalID: 27865803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_35
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 280
+        width: 44
+        height: 43
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff78b3031dfd5c54a8d8f1a928818d32
+      internalID: -846036622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_36
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 287
+        width: 43
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126ee3603ae26d349a089394babb4140
+      internalID: 659354168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_38
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 268
+        width: 44
+        height: 39
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567ee10043c480344b97a1e828cdb1fb
+      internalID: -1175556509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_39
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 271
+        width: 43
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b806160133c8ffd4b897675d87a85c6f
+      internalID: -729865309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_42
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 227
+        width: 44
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17bf3bc03c52c0a4c8981bdd83e93414
+      internalID: -518103206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_43
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 249
+        width: 44
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714691866207ec1469407e84dd7cef08
+      internalID: -1161569938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_44
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 238
+        width: 43
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f49623a68c24d84ab7b0f6fda2f2c89
+      internalID: -545956650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 241
+        width: 39
+        height: 27
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54a4620f8b62d4045b2df158c2a24ab6
+      internalID: 378324284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_47
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 247
+        width: 43
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d16d16b609ade4c9b2f0c47df6d8ca
+      internalID: -1507482614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_48
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 207
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89a83c4600067d449bb9aefefbf72d56
+      internalID: -105977262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_50
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 225
+        width: 38
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dcba09144238e4458a37a39e4a30764
+      internalID: 823726267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_51
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 201
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836b25bb4a1b31c4ab569bb4db3a7533
+      internalID: 1879134915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_52
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 207
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb9fd1c36080804ba54b6cdae6691e9
+      internalID: 342453165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_53
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 185
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c6c3d0617aab0947ace30d74082567a
+      internalID: -1994942673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_55
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 168
+        width: 36
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29cb7b88ef4f06c4fa3d02ee3d6e8b95
+      internalID: 1925034108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_56
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 187
+        width: 35
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e765f925d1beab04f9d24325d0dba916
+      internalID: -689158227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_57
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 141
+        width: 34
+        height: 42
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a9108c4629806546afc65c3120e9b07
+      internalID: 322150492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_58
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 144
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129f79b45cea1aa46ae0a91af14d146a
+      internalID: -827535991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_59
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 158
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f4647fd7501c144adcd7f3d9a3f5ee
+      internalID: -901010124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_60
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 164
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aedee04b3e3116d4694e8a5c08a331f9
+      internalID: 2114408543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_61
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 167
+        width: 31
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8dea442b0ed2d54e931348f5983ddaa
+      internalID: -1373947826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_62
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 125
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da8ddef41e1b3714b84131f6d98573f2
+      internalID: -239670982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PurpleGuard_63
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 145
+        width: 31
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43cff027bcfc35e44afebdd092c0be84
+      internalID: -921345678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PurpleGuard_21: -915272848
+      PurpleGuard_0: -457856171
+      PurpleGuard_50: 823726267
+      PurpleGuard_14: -1686136151
+      PurpleGuard_31: 1946269284
+      PurpleGuard_32: 573915240
+      PurpleGuard_60: 2114408543
+      PurpleGuard_12: -414938602
+      PurpleGuard_8: -867909816
+      PurpleGuard_16: -1368337917
+      PurpleGuard_34: -1510182793
+      PurpleGuard_45: -98631121
+      PurpleGuard_44: -545956650
+      PurpleGuard_28: -1370369284
+      PurpleGuard_51: 1879134915
+      PurpleGuard_58: -827535991
+      PurpleGuard_55: 1925034108
+      PurpleGuard_2: 370004693
+      PurpleGuard_38: -1175556509
+      PurpleGuard_20: 824004559
+      PurpleGuard_24: -901828785
+      PurpleGuard_54: 540575213
+      PurpleGuard_59: -901010124
+      PurpleGuard_42: -518103206
+      PurpleGuard_25: 1951858078
+      PurpleGuard_6: 492522199
+      PurpleGuard_30: -1662075141
+      PurpleGuard_41: -1271778964
+      PurpleGuard_56: -689158227
+      PurpleGuard_46: 378324284
+      PurpleGuard_1: 570638716
+      PurpleGuard_23: 2078380919
+      PurpleGuard_22: -1762889582
+      PurpleGuard_39: -729865309
+      PurpleGuard_13: 546894454
+      PurpleGuard_33: 27865803
+      PurpleGuard_15: -80083509
+      PurpleGuard_37: 845049062
+      PurpleGuard_43: -1161569938
+      PurpleGuard_49: -863460514
+      PurpleGuard_35: -846036622
+      PurpleGuard_52: 342453165
+      PurpleGuard_4: 1945092614
+      PurpleGuard_19: 2133745624
+      PurpleGuard_3: 1807550299
+      PurpleGuard_9: 1411320972
+      PurpleGuard_11: -1872602636
+      PurpleGuard_17: -1486953577
+      PurpleGuard_53: -1994942673
+      PurpleGuard_48: -105977262
+      PurpleGuard_7: -890632980
+      PurpleGuard_27: -285470901
+      PurpleGuard_61: -1373947826
+      PurpleGuard_36: 659354168
+      PurpleGuard_47: -1507482614
+      PurpleGuard_40: 307465010
+      PurpleGuard_29: 1031836379
+      PurpleGuard_63: -921345678
+      PurpleGuard_18: 277983156
+      PurpleGuard_62: -239670982
+      PurpleGuard_10: -515022465
+      PurpleGuard_5: 85979258
+      PurpleGuard_26: -1607059797
+      PurpleGuard_57: 322150492
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
