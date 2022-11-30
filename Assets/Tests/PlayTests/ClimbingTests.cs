@@ -13,6 +13,8 @@ namespace Tests.PlayTests
     {
         private GameObject _prince;
         private GameObject _enemy;
+        private GameObject _potion1;
+        private GameObject _potion2;
         
         private GameObject _startPosition1;
         private GameObject _startPosition2;
@@ -54,6 +56,8 @@ namespace Tests.PlayTests
             
             if (_prince == null) _prince = GameObject.Find("Prince");
             if (_enemy == null) _enemy = GameObject.Find("Enemy");
+            if (_potion1 == null) _potion1 = GameObject.Find("SmallPotion1");
+            if (_potion2 == null) _potion2 = GameObject.Find("SmallPotion2");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
             if (_startPosition3 == null) _startPosition3 = GameObject.Find("StartPosition3");
@@ -92,6 +96,8 @@ namespace Tests.PlayTests
             
             _prince.SetActive(false);
             _enemy.SetActive(false);
+            _potion1.SetActive(false);
+            _potion2.SetActive(false);
 
             yield return new EnterPlayMode();
         }
@@ -383,6 +389,47 @@ namespace Tests.PlayTests
         }
         
         /// <summary>
+        /// Test we can hang in a hollow brick and that we can climb from hanging. Everything should be done near a potion
+        /// without taking it.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator ClimbingHangingNearAPickableDoesNotTakeItTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _potion1.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition16.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            princeStatus.Life = 3;
+            Vector3 expectedLandingPosition = _startPosition18.transform.position;  
+            int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\climbingAfterHanged";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(4);
+            // Assert we are still climbing.
+            Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Let time pass while hanged.
+            yield return new WaitForSeconds(4);
+            // Now Prince should have climbed to upper ground.
+            Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            // Assert Prince keeps his life.
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+            int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            Assert.True(startingHealth == endHealth);
+            // Assert potion is still active.
+            Assert.True(_potion1.activeSelf);
+        }
+        
+        /// <summary>
         /// Test we can hang in a not hollow brick and that we can climb from hanging.
         /// </summary>
         [UnityTest]
@@ -553,6 +600,47 @@ namespace Tests.PlayTests
         Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
         Assert.True(startingHealth == endHealth);
+    }
+    
+    /// <summary>
+    /// Test we can keep hanged while descending and after we can leave as fall. Everything should be done near a potion
+    /// without taking it.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator DescendHangingNearAPickableDoesNotTakeIt()
+    {
+        _cameraController.PlaceInRoom(_room00);
+        _enemy.SetActive(false);
+        _prince.SetActive(true);
+        _potion2.SetActive(true);
+        _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
+        CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+        princeStatus.LookingRightWards = false;
+        princeStatus.Life = 3;
+        Vector3 expectedLandingPosition = _startPosition19.transform.position;  
+        int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        string commandFile = @"Assets\Tests\TestResources\descendKeepHangedAndFall";
+        InputController inputController = _prince.GetComponent<InputController>();
+        yield return null;
+        AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+        AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+        // Let movements perform.
+        yield return new WaitForSeconds(4);
+        // Assert we are still hanged.
+        Assert.True(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Let time pass while hanged.
+        yield return new WaitForSeconds(4);
+        // Now Prince should have fallen to below ground.
+        Assert.False(_prince.GetComponentInChildren<ClimberInteractions>().ClimbingInProgress);
+        // Assert Prince is at expected position.
+        Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.15f);
+        Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+        // Assert Prince keeps his life.
+        Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+        Assert.True(startingHealth == endHealth);
+        // Assert potion is still active.
+        Assert.True(_potion2.activeSelf);
     }
     
     /// <summary>

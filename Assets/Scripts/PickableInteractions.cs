@@ -10,7 +10,6 @@ namespace Prince
     /// </summary>
     public class PickableInteractions : MonoBehaviour
     {
-        // TODO: Pickable should not be activated when Prince climbs or descends near it.
         [Header("WIRING:")] 
         [Tooltip("Needed to know when we are picking something.")] 
         [SerializeField] private CharacterStatus characterStatus;

@@ -79,16 +79,18 @@ namespace Prince
                     (value.GetComponentInChildren<Climbable>() != null) && 
                     (value != _ledge))
                 {
-                    stateMachine.SetBool("LedgeReachable", true);
+                    // stateMachine.SetBool("LedgeReachable", true);
                     _ledge = value;
                     this.Log($"(CeilingSensors - {transform.root.name}) Ledge detected.", showLogs);
                 }
                 else if ((value == null) && (_ledge != null))
                 {
-                    stateMachine.SetBool("LedgeReachable", false);
+                    // stateMachine.SetBool("LedgeReachable", false);
                     _ledge = null;
                     this.Log($"(CeilingSensors - {transform.root.name}) Ledge no longer reachable.", showLogs);
                 }
+                if (LedgeReachable != stateMachine.GetBool("LedgeReachable")) 
+                    stateMachine.SetBool("LedgeReachable", LedgeReachable);
             }
         }
         
@@ -185,6 +187,11 @@ namespace Prince
             SetupRayDistances();
         }
 
+        // private void Start()
+        // {
+        //     UpdateSensor();
+        // }
+
         private void SetupRayDirections()
         {
             _ledgeSensorRayDirection = (ledgeSensorEnd.position - ledgeSensorStart.position).normalized;
@@ -254,6 +261,11 @@ namespace Prince
         }
         
         private void FixedUpdate()
+        {
+            UpdateSensor();
+        }
+
+        private void UpdateSensor()
         {
             Ledge = DetectLedge();
             Roof = DetectRoof();
