@@ -15,8 +15,6 @@ namespace Prince
         [SerializeField] private CharacterStatus characterStatus;
         [Tooltip("Needed to modify sprites depending on conditions.")]
         [SerializeField] private Transform character;
-        // [Tooltip("Needed to modify sprites depending on conditions.")]
-        // [SerializeField] private Transform directionalComponents;
         [Tooltip("Needed to change sprite layer in certain conditions.")]
         [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -29,28 +27,11 @@ namespace Prince
         [SerializeField] private Sprite cutCorpse;
 
         private bool _currentFacingIsRightWards;
-        // private float _spriteRendererOffset;
-        
+
         private bool SpriteVisible => spriteRenderer.enabled;
 
         private void FlipCharacter(bool rightWards)
         {
-            // // First versions flipped the entire Character transform. Problem was that at turning while running
-            // // a kind of ghosting appeared. First frame of running animation appeared looking apposite than
-            // // character current animation. It was just a frame but it was very apparent. I think it might be
-            // // caused by some sprite renderer buffer issue (it has that frame already buffered and rendered it
-            // // although the entire gameobject was looking the other way round).
-            // //
-            // // A partial workaround I've found is using SpriteRendered built-in flipX() method and flip by
-            // // transform only those gameobject components that really need it. So those component have been
-            // // moved to DirectionalComponents transform.
-            // //
-            // // This work around is partially effective. Frame ghosting still happens but it is less likely.
-            // // Hopefully this will be fixed in any further Unity version.
-            // // TODO: Reimplement flip by transform only, as I've fixed ghosting using empty animations.
-            // FlipSpriteRenderer(rightWards);
-            // CorrectSpriteRendererOffset(rightWards);
-            // FlipDirectionalComponents(rightWards);
             Vector3 currentScale = character.localScale;
             float x = rightWards ? Math.Abs(currentScale.x) : Math.Abs(currentScale.x) * -1;
             currentScale = new Vector3( x,
@@ -59,51 +40,11 @@ namespace Prince
             character.localScale = currentScale;
         }
 
-        // private void FlipDirectionalComponents(bool rightWards)
-        // {
-        //     Vector3 currentScale = directionalComponents.localScale;
-        //     float x = rightWards ? Math.Abs(currentScale.x) : Math.Abs(currentScale.x) * -1;
-        //     currentScale = new Vector3(x,
-        //         currentScale.y,
-        //         currentScale.z);
-        //     directionalComponents.localScale = currentScale;
-        // }
-        //
-        // private void FlipSpriteRenderer(bool rightWards)
-        // {
-        //     // Sprite rendered disabling actually is not needed but I think it makes frame ghosting
-        //     // less likely.
-        //     spriteRenderer.enabled = false;
-        //     spriteRenderer.flipX = !rightWards;
-        //     spriteRenderer.enabled = true;
-        // }
-
-        // /// <summary>
-        // /// Sprite flips using SpriteRenderer transform as it axis instead of current gameobject
-        // /// transform. So when flipped an offset appears that must be corrected.
-        // /// </summary>
-        // /// <param name="rightWards"></param>
-        // private void CorrectSpriteRendererOffset(bool rightWards)
-        // {
-        //     if (rightWards) transform.position = new Vector3(transform.root.position.x + _spriteRendererOffset,
-        //         transform.position.y,
-        //         transform.position.z);
-        //     else transform.position = new Vector3(transform.root.position.x - _spriteRendererOffset,
-        //         transform.position.y,
-        //         transform.position.z);
-        // }
-
         private void Awake()
         {
             _currentFacingIsRightWards = characterStatus.LookingRightWards;
-            // GetInitialSpriteRendererOffset(_currentFacingIsRightWards);
             FlipCharacter(_currentFacingIsRightWards);
         }
-
-        // private void GetInitialSpriteRendererOffset(bool rightWards)
-        // {
-        //     _spriteRendererOffset = rightWards ? transform.position.x - transform.root.position.x : transform.root.position.x - transform.position.x;
-        // }
 
         private void Update()
         {
