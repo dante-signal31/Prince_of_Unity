@@ -13,6 +13,8 @@ namespace Tests.PlayTests
     {
         private GameObject _prince;
         private GameObject _enemy;
+        private GameObject _potion1;
+        private GameObject _potion2;
         
         private GameObject _startPosition1;
         private GameObject _startPosition2;
@@ -42,6 +44,8 @@ namespace Tests.PlayTests
             
             if (_prince == null) _prince = GameObject.Find("Prince");
             if (_enemy == null) _enemy = GameObject.Find("Enemy");
+            if (_potion1 == null) _potion1 = GameObject.Find("SmallPotion1");
+            if (_potion2 == null) _potion2 = GameObject.Find("SmallPotion2");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
             if (_startPosition3 == null) _startPosition3 = GameObject.Find("StartPosition3");
@@ -68,6 +72,8 @@ namespace Tests.PlayTests
             
             _prince.SetActive(false);
             _enemy.SetActive(false);
+            _potion1.SetActive(false);
+            _potion2.SetActive(false);
 
             yield return new EnterPlayMode();
         }
@@ -120,6 +126,7 @@ namespace Tests.PlayTests
             _cameraController.PlaceInRoom(_room00);
             _enemy.SetActive(false);
             _prince.SetActive(true);
+            
             _prince.transform.SetPositionAndRotation(_startPosition5.transform.position, Quaternion.identity);
             Vector3 expectedPosition = _startPosition5.transform.position;
             _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = true;
@@ -287,6 +294,7 @@ namespace Tests.PlayTests
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
@@ -323,6 +331,7 @@ namespace Tests.PlayTests
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
@@ -359,6 +368,7 @@ namespace Tests.PlayTests
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition3.transform.position, Quaternion.identity);
@@ -394,6 +404,7 @@ namespace Tests.PlayTests
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition4.transform.position, Quaternion.identity);

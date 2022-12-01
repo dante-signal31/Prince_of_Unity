@@ -54,7 +54,7 @@ namespace Tests.PlayTests
         }
 
         /// <summary>
-        /// Test level is reloaded after Prince death with Prince starting stats a that level..
+        /// Test level is reloaded after Prince death with Prince starting stats a that level.
         /// </summary>
         [UnityTest]
         public IEnumerator ReloadedLevelGetsStartingStatsTest()

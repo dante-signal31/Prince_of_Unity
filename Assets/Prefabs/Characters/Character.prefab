@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStatus: {fileID: 82222986682491871}
-  directionalComponents: {fileID: 3166921662542275327}
+  character: {fileID: 5539811472104328280}
   spriteRenderer: {fileID: 7260485351124137714}
   foregroundOrderInLayer: 2
   stabbedCorpse: {fileID: 0}
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 88322598493374997}
   climbingInteractions: {fileID: 0}
+  characterStatus: {fileID: 0}
   showLogs: 0
 --- !u!1 &4208924519771227386
 GameObject:
