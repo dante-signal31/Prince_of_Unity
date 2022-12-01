@@ -141,7 +141,1078 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PinkGuard_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 477
+        width: 58
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d97275973d85441b136dc2b0990248
+      internalID: 1933419957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 460
+        width: 54
+        height: 50
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a6a177b21d65240bc596c34b9c2455
+      internalID: -1247404714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_2
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 471
+        width: 51
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 358ab32243610344eb6ee53938fa61d7
+      internalID: -1034741818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 474
+        width: 50
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55859b80d2f332458b274e86074f3e3
+      internalID: 665369288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_4
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 474
+        width: 22
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f50a8120a324a74d858a8f41d560296
+      internalID: 2106386923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 437
+        width: 53
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3a4ceff836f3d4f91edb37d7852924
+      internalID: -317010945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_6
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 417
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f81b18692c019c44bb7fb1930b08bd30
+      internalID: -911771890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_7
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 454
+        width: 48
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 035c50b4489d758458d1ec031e5cc0e0
+      internalID: 186762252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 433
+        width: 37
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06b5fe67b488c0f4fbbc4d234e399e3b
+      internalID: 320689588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_10
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 435
+        width: 22
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db76cc2b09a5ea4ea3a254f38bc2e64
+      internalID: -630563088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 394
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2fad6e710c72b428b7db32f45f8e81
+      internalID: 247149242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_12
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 411
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bcadaf989e9f5141975eca2f9d0645a
+      internalID: -1809103456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_13
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 429
+        width: 20
+        height: 22
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b63f2a00c10ca44aa7469320ba276c7
+      internalID: 111723901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_14
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 390
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d8fc3ef5348ee42bf794e9d228f6f6
+      internalID: 1363112226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_15
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 400
+        width: 20
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 960f39056280ea64d80cc3fa31198211
+      internalID: -2028741503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_16
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 374
+        width: 46
+        height: 40
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbfc41ee41f026440acc6297b6a4a7c7
+      internalID: 1903840083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_17
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 369
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d834c5c43611f42b9054af8e4dff26
+      internalID: -1627841391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_19
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 392
+        width: 19
+        height: 35
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3da13dd494a8339448d89082bd59b612
+      internalID: -568148831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_20
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 372
+        width: 28
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e2362cee2f101a4d86e42d49c2fd4ae
+      internalID: 1740230798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_21
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 352
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41e68c4b14762340ae5d8ca2af4d043
+      internalID: 609658304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_23
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 350
+        width: 14
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f75388e5c2a156242a6563de85f9fb22
+      internalID: -1719153051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_24
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 350
+        width: 46
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba7ceb9d5665af46b5d68d968c70f7d
+      internalID: -425419397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_25
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 332
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43281a41e719a8b4b930372af63d1335
+      internalID: 247360794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_27
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 327
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 337e36329145f684782702309889a2a4
+      internalID: 1002666100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_29
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 326
+        width: 41
+        height: 43
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6228fe4d5c5c9f647ac6aef1be0bc885
+      internalID: -213298301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_30
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 310
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30cc3291e1811bf4ba9d0d3eeeb55cbe
+      internalID: -582926312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_32
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 310
+        width: 46
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855ecc622fafeb640a279f9031cdf68c
+      internalID: 1392030249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_33
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 290
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5feaabffc786324793ccc369d1d414f
+      internalID: 783870479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_35
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 280
+        width: 44
+        height: 43
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed5cce24621d1e2498bc9d497b7b2fed
+      internalID: 515988066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_36
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 287
+        width: 43
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6f0ab5f348268b4692bfcb82f5468d5
+      internalID: 1970412752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_38
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 268
+        width: 45
+        height: 39
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 383ba03182a64d64991abf2ff2fee6f9
+      internalID: 297695037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_39
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 271
+        width: 43
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df5f813df125a63418e9ca209f6bc5c8
+      internalID: 387772090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_42
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 227
+        width: 44
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6181356e75e0c4f843819d7f09f418
+      internalID: -1634494158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_43
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 249
+        width: 44
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc54e9ed2ca6164091a7a23259c2974
+      internalID: 355424010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_44
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 238
+        width: 43
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202768275783c9f45b4e63eb4af8b1b4
+      internalID: -1419312582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 241
+        width: 39
+        height: 27
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4321d435bebc2324dac930f745f02886
+      internalID: 2111928578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_47
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 247
+        width: 43
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced54b33154c1fa4ea4b938efc9e73f6
+      internalID: -2138138124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_48
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 207
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c1f13057c5ec346937799613e73c9d
+      internalID: -1745242878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_50
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 225
+        width: 38
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5367fd50b6591bf4eb5bc1fce9f3c4b0
+      internalID: 992220834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_51
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 201
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f1c8f2281d53b4e86a0512a642a3ec
+      internalID: 2046573655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_52
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 207
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0f91ff0b611474a92c14ec20161bd0
+      internalID: 740167556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_53
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 185
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933d2f99100017c489cf1a3efe75bef5
+      internalID: -161200909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_55
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 168
+        width: 36
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabc2ecd491c65d4c81ee9bf6d00d7a4
+      internalID: 1404367112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_56
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 187
+        width: 35
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29ae8d1a5f9d46b4fb81edb483dab93f
+      internalID: -1798905340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_57
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 141
+        width: 34
+        height: 42
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3eda42e36de3dd4894b7a31639a4a23
+      internalID: -353891725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_58
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 144
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d470de39ad7d94ab39c54f93d6a9e2
+      internalID: -997516295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_59
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 158
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048dd3763e2294a4393375b636e11fdf
+      internalID: 872018471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_60
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 164
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38be4ee956f677449bb32cca08918fc
+      internalID: -1953551115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_61
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 167
+        width: 31
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9328e118bd3c2fd49bcd65deec09ad8c
+      internalID: -970902563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_62
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 125
+        width: 35
+        height: 40
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703d3a4b264cd504eae8fd866b0166e4
+      internalID: 1278181881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkGuard_63
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 145
+        width: 31
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88cf412c0d0464845945ddd6647d1d40
+      internalID: -1007466449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -152,7 +1223,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PinkGuard_35: 515988066
+      PinkGuard_46: 2111928578
+      PinkGuard_38: 297695037
+      PinkGuard_56: -1798905340
+      PinkGuard_30: -582926312
+      PinkGuard_2: -1034741818
+      PinkGuard_13: 111723901
+      PinkGuard_45: 441374314
+      PinkGuard_31: 597547472
+      PinkGuard_26: -669047877
+      PinkGuard_20: 1740230798
+      PinkGuard_28: 570508086
+      PinkGuard_7: 186762252
+      PinkGuard_29: -213298301
+      PinkGuard_40: 1301025104
+      PinkGuard_14: 1363112226
+      PinkGuard_55: 1404367112
+      PinkGuard_51: 2046573655
+      PinkGuard_1: -1247404714
+      PinkGuard_33: 783870479
+      PinkGuard_49: 359752666
+      PinkGuard_60: -1953551115
+      PinkGuard_22: 1959253066
+      PinkGuard_48: -1745242878
+      PinkGuard_6: -911771890
+      PinkGuard_41: 509870325
+      PinkGuard_18: -550308585
+      PinkGuard_52: 740167556
+      PinkGuard_53: -161200909
+      PinkGuard_12: -1809103456
+      PinkGuard_15: -2028741503
+      PinkGuard_36: 1970412752
+      PinkGuard_8: 320689588
+      PinkGuard_57: -353891725
+      PinkGuard_5: -317010945
+      PinkGuard_62: 1278181881
+      PinkGuard_11: 247149242
+      PinkGuard_54: -555782234
+      PinkGuard_63: -1007466449
+      PinkGuard_27: 1002666100
+      PinkGuard_59: 872018471
+      PinkGuard_32: 1392030249
+      PinkGuard_44: -1419312582
+      PinkGuard_37: -640127369
+      PinkGuard_16: 1903840083
+      PinkGuard_3: 665369288
+      PinkGuard_61: -970902563
+      PinkGuard_19: -568148831
+      PinkGuard_10: -630563088
+      PinkGuard_42: -1634494158
+      PinkGuard_39: 387772090
+      PinkGuard_9: -1059181462
+      PinkGuard_47: -2138138124
+      PinkGuard_50: 992220834
+      PinkGuard_25: 247360794
+      PinkGuard_58: -997516295
+      PinkGuard_24: -425419397
+      PinkGuard_4: 2106386923
+      PinkGuard_34: -1514355562
+      PinkGuard_23: -1719153051
+      PinkGuard_17: -1627841391
+      PinkGuard_43: 355424010
+      PinkGuard_0: 1933419957
+      PinkGuard_21: 609658304
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

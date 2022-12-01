@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Vizier
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 512
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+      enableAlphaDilation: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 82b4aff04a44283449f2131a6fa04910, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 18d1c560ed5ed874fa931e27ef1721dc, type: 3}
+  - {fileID: 21300000, guid: f7606ca0cdf611749bbdfcdb239f75fc, type: 3}
+  - {fileID: 21300000, guid: adc06c015c0133049b24a817128681e8, type: 3}
+  - {fileID: 21300000, guid: 52ae7be2667be094aa2674d3a32a0ed2, type: 3}
+  - {fileID: 21300000, guid: 1b1526131ab76d64b8aa5aafbe3762a1, type: 3}
+  - {fileID: 21300000, guid: b047e5439ca491e449851af3067c2aa9, type: 3}
+  - {fileID: 21300000, guid: dd76b7837aaad7d4d9ece7eb8237fda2, type: 3}
+  - {fileID: 21300000, guid: f8e7d4a34dcbd8a47874e325bfb7555d, type: 3}
+  - {fileID: 21300000, guid: 1cabd7142aad14b459db8bfdd21c94ba, type: 3}
+  - {fileID: 21300000, guid: 15bc038562dc8754db9ed2d932cd9e2c, type: 3}
+  - {fileID: 21300000, guid: 8442e6c5219ab674889ddebaf510b109, type: 3}
+  - {fileID: 21300000, guid: 8b7637c55ec0406489dcb508c5b7b240, type: 3}
+  - {fileID: 21300000, guid: a7fe0cc5f0becc544b86cb7532ffb748, type: 3}
+  - {fileID: 21300000, guid: cacaea0671555b946abe2a4d0c571638, type: 3}
+  - {fileID: 21300000, guid: 48fb82762d832d248ab6792db8239d2a, type: 3}
+  - {fileID: 21300000, guid: 940655c6eb333694b850dbf659c823b6, type: 3}
+  - {fileID: 21300000, guid: b3ca9a57e200bfb42a858d3482f85464, type: 3}
+  - {fileID: 21300000, guid: 089e33778f9d21a48ad106ada406db4b, type: 3}
+  - {fileID: 21300000, guid: 3108fa774d8341141946919a710f5dad, type: 3}
+  - {fileID: 21300000, guid: f128ec77bded8f54cbc6639525169392, type: 3}
+  - {fileID: 21300000, guid: c127300974af19c4fa687bd3eea324f3, type: 3}
+  - {fileID: 21300000, guid: a95b7eb97f747d146bd1b2756321dce3, type: 3}
+  - {fileID: 21300000, guid: 3094860a764bc6545abb2995b34033da, type: 3}
+  - {fileID: 21300000, guid: 6af4935af5398694b8eb0756f9541e8c, type: 3}
+  - {fileID: 21300000, guid: efe7b86a12d26a54b9ad5bfdd8aa0c58, type: 3}
+  - {fileID: 21300000, guid: 6e33f9aa5b35b574f8e4e998b6e9bc09, type: 3}
+  - {fileID: 21300000, guid: 5504d01bc8dd69242a4482f780c524f1, type: 3}
+  - {fileID: 21300000, guid: 4b26543b8d389e541949b87c00b08b1a, type: 3}
+  - {fileID: 21300000, guid: 2adf2a4b7a3346f48bbafb33f911c4cb, type: 3}
+  - {fileID: 21300000, guid: 5b066aeb2694b7f4bb05440b5fc95114, type: 3}
+  - {fileID: 21300000, guid: fec2e19c3b05b7844a68c66e37ce8719, type: 3}
+  - {fileID: 21300000, guid: 032677fe2ccfa28469eac4be34804f93, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - res784
+  - res774_with_sword
+  - res773_with_sword
+  - res754_with_sword
+  - res765_with_sword
+  - res764
+  - res761_with_sword
+  - res757_with_sword
+  - res775
+  - res752
+  - res759_with_sword
+  - res782
+  - res756_with_sword
+  - res760_with_sword_flipped
+  - res767_with_sword
+  - res753_with_sword
+  - res783
+  - res766_with_sword
+  - res760_with_sword
+  - res758_with_sword_flipped
+  - res768_with_sword
+  - res779
+  - res763_with_sword
+  - res769_with_sword
+  - res758_with_sword
+  - res770_with_sword
+  - res762_with_sword
+  - res780
+  - res755_with_sword
+  - res772_with_sword
+  - res781
+  - res771_with_sword
+  m_RenderDataMap: {}
+  m_Tag: Vizier
+  m_IsVariant: 0

@@ -141,7 +141,1078 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: YellowGuard_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 477
+        width: 58
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e78bc2b1f0be134e970caf47eefd872
+      internalID: -229763142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 460
+        width: 54
+        height: 50
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8cddca883e75794687018622d5dfb0c
+      internalID: 576378317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_2
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 471
+        width: 51
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0cb43d417828c94a9239ec19888b09c
+      internalID: 637376736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 474
+        width: 50
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4ade0dcc68c2146b1daee8f8e54ee5
+      internalID: -147218515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_4
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 474
+        width: 22
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e057745cbf1725f429ec73bc8fad8c7c
+      internalID: 537246663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 437
+        width: 53
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3891cdcb1ae9bb498414afb0229939e
+      internalID: 275215116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_6
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 417
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8123f5024d826194a946697c3cb6b58c
+      internalID: 444740077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_7
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 454
+        width: 48
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 440a09495221c0c4e800c154a26fe73d
+      internalID: -720126115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 433
+        width: 48
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3adf69e8ae0bb640ae488ea77942e20
+      internalID: 1075121917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_10
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 435
+        width: 22
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e70d87b0b66341b46ab2f35bcc0699f3
+      internalID: -200506609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 394
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e40b67cbbca14b3478e84efb157d457b
+      internalID: 1779518423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_12
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 411
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07026eb26a681d34e9966c2b0f50de7f
+      internalID: -297501840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_13
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 429
+        width: 20
+        height: 22
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1218346bb4997c4d984f4eedf629932
+      internalID: -1699760439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_14
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 390
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a6349ea0b27c644bd1f62de68af298
+      internalID: -609894681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_15
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 400
+        width: 20
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5983f6746d743429c28349e96ad762
+      internalID: -1293472734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_16
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 374
+        width: 46
+        height: 40
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc50642c5e3fb964897e5d9e2d022855
+      internalID: -1850476533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_17
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 369
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe39b80e77e3d24ebb242f9d6f04c82
+      internalID: -46024532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_19
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 392
+        width: 19
+        height: 35
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ee5f3a224c99d4b85108c7bddcb3c1
+      internalID: -82315016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_20
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 372
+        width: 28
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9067e588db206b64ca039d50d3c87049
+      internalID: 2041693705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_21
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 352
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4cb6e548e82dff46bb2eca410c0dbaa
+      internalID: 1282020868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_23
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 350
+        width: 14
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd2e26d1010247948a0d22369f41251a
+      internalID: -778331475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_24
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 350
+        width: 46
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ce674d861e13cb458d9e7d5558468a8
+      internalID: -422311472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_25
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 332
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47b30f35fdd4f14d9685f8550624f18
+      internalID: 1535899814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_27
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 327
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b48a5d127a10fa74ab713ec78133a956
+      internalID: -1579407150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_29
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 326
+        width: 41
+        height: 43
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4603f44a109d3745aff5d79fbd91107
+      internalID: -1205685318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_30
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 310
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612fc898df9211745872dc63713b95f9
+      internalID: -261757811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_32
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 310
+        width: 46
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690c72e962f467a45b6bf5e0967de6a4
+      internalID: 164713184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_33
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 290
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20bbae2e143dc634681ea8f02927d63a
+      internalID: -2035396905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_35
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 280
+        width: 44
+        height: 43
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95cdd6ebb7177084bbad124cd5da5980
+      internalID: 221816804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_36
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 287
+        width: 43
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0536a5465d7ae14dacab577202ba6cd
+      internalID: 1090585614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_38
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 268
+        width: 44
+        height: 39
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7075d3aac3176ba4ea730fa4754f5e49
+      internalID: -1537719226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_39
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 271
+        width: 43
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55d9a414c53fdb4bac2fd280623b3d1
+      internalID: 1080712733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_42
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 227
+        width: 44
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e9bb0c48f5ae14dbfda7450cdcd002
+      internalID: -1696096546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_43
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 249
+        width: 44
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0621b1a2c4585c046a10fbd2cc79ade3
+      internalID: 1748780958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_44
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 238
+        width: 43
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f757674f6949e9c4a8b3257754650509
+      internalID: -1678288150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 241
+        width: 39
+        height: 27
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bc7623b65e8cd74db2a17885094040d
+      internalID: -856554508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_47
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 247
+        width: 43
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16d8f060348a96742944558448ba33c9
+      internalID: -1681439120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_48
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 207
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7251b05d273e8054f96e7c535c3cc5d1
+      internalID: -1076681049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_50
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 225
+        width: 38
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e394c6a91b49e489dc53369652af57
+      internalID: -910902501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_51
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 201
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db1fe5a638623714d854693bc9d4630d
+      internalID: -1504525361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_52
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 207
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e703b3eafc9591469b9f392a617d01a
+      internalID: -419621221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_53
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 185
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a92d07bf7306bc408fac1520a578279
+      internalID: 1917105668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_55
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 168
+        width: 36
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba674ad78d5ff2f49bf1169be399d324
+      internalID: -1162908876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_56
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 187
+        width: 35
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff2528a6adafc8e4d99adec7261316b0
+      internalID: 116867978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_57
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 141
+        width: 34
+        height: 42
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d92a6dae862293408e4742de4235034
+      internalID: -1385446663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_58
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 144
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f10deb07db55b844bcb207b364a32ef
+      internalID: -309243663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_59
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 158
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eb6eb68a49a0b140adfb1518f14b8d9
+      internalID: 393815900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_60
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 164
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a45f3f267fb31340ae4d6b19ca44669
+      internalID: 1191851079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_61
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 167
+        width: 31
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69a977d2604356d439fae2ea8d39ce2c
+      internalID: 281996151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_62
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 125
+        width: 35
+        height: 40
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1cfc25eac5ec04883ad611f96b090e
+      internalID: 18753610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowGuard_63
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 145
+        width: 31
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a95add7991eb184e92b770b083eae3f
+      internalID: -1603233269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -152,7 +1223,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      YellowGuard_9: -2032963405
+      YellowGuard_13: -1699760439
+      YellowGuard_27: -1579407150
+      YellowGuard_42: -1696096546
+      YellowGuard_49: -1295801102
+      YellowGuard_56: 116867978
+      YellowGuard_21: 1282020868
+      YellowGuard_11: 1779518423
+      YellowGuard_31: -543696774
+      YellowGuard_55: -1162908876
+      YellowGuard_29: -1205685318
+      YellowGuard_44: -1678288150
+      YellowGuard_22: 1787160749
+      YellowGuard_40: 342760367
+      YellowGuard_10: -200506609
+      YellowGuard_4: 537246663
+      YellowGuard_46: -856554508
+      YellowGuard_53: 1917105668
+      YellowGuard_30: -261757811
+      YellowGuard_5: 275215116
+      YellowGuard_23: -778331475
+      YellowGuard_34: 1422472556
+      YellowGuard_0: -229763142
+      YellowGuard_8: 1075121917
+      YellowGuard_41: 1822699670
+      YellowGuard_32: 164713184
+      YellowGuard_43: 1748780958
+      YellowGuard_47: -1681439120
+      YellowGuard_16: -1850476533
+      YellowGuard_26: -1890840567
+      YellowGuard_51: -1504525361
+      YellowGuard_58: -309243663
+      YellowGuard_7: -720126115
+      YellowGuard_57: -1385446663
+      YellowGuard_14: -609894681
+      YellowGuard_15: -1293472734
+      YellowGuard_17: -46024532
+      YellowGuard_62: 18753610
+      YellowGuard_28: -1221884448
+      YellowGuard_48: -1076681049
+      YellowGuard_18: 598926770
+      YellowGuard_12: -297501840
+      YellowGuard_33: -2035396905
+      YellowGuard_6: 444740077
+      YellowGuard_25: 1535899814
+      YellowGuard_59: 393815900
+      YellowGuard_37: 86720091
+      YellowGuard_3: -147218515
+      YellowGuard_45: 11498818
+      YellowGuard_52: -419621221
+      YellowGuard_54: -1271245524
+      YellowGuard_19: -82315016
+      YellowGuard_36: 1090585614
+      YellowGuard_63: -1603233269
+      YellowGuard_35: 221816804
+      YellowGuard_60: 1191851079
+      YellowGuard_50: -910902501
+      YellowGuard_24: -422311472
+      YellowGuard_20: 2041693705
+      YellowGuard_38: -1537719226
+      YellowGuard_1: 576378317
+      YellowGuard_39: 1080712733
+      YellowGuard_2: 637376736
+      YellowGuard_61: 281996151
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

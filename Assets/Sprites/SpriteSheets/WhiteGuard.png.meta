@@ -141,7 +141,1078 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: WhiteGuard_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 477
+        width: 58
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524e94fcbfa76494a80bcd5ab1a307c6
+      internalID: -473020573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 460
+        width: 54
+        height: 50
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 360579a883751614b8214b5f11a2e1d3
+      internalID: 283878217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_2
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 471
+        width: 51
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25741ec22fa8b8c4bbd02d766c46e926
+      internalID: 2091629089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 474
+        width: 50
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14c5934c64ed2f478bb435edcb322d5
+      internalID: 1119017824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_4
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 474
+        width: 22
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdda49c0345b3ed4f90a350bae3a5fa9
+      internalID: 1572454758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 437
+        width: 53
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51afe55f8e7a4c84689f85f3966f38e3
+      internalID: 1252421934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_6
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 417
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72268768d28a67a4d926b7cc963be1f6
+      internalID: -90427378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_7
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 454
+        width: 48
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50547d64728ed3249a6aebf59c015e68
+      internalID: -1175710702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 433
+        width: 48
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c66f9f1c6482f074e999be097efc9721
+      internalID: 785402267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_10
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 435
+        width: 22
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e41ef42f48c3c4696321a401df399b
+      internalID: 1756216966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 394
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653ab9e9a89d1d74dafc8588f010faf8
+      internalID: -1875820070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_12
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 411
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bbad3e189985fd44b4b421bf3ff30f9
+      internalID: -623090386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_13
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 429
+        width: 20
+        height: 22
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c522000c82d719e43a1a98052988ea2c
+      internalID: -1612757191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_14
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 390
+        width: 46
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4913ed1db7bb4474eb86e4e9a4fe2649
+      internalID: 1906195107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_15
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 400
+        width: 20
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93735a5b0ca7f544b8f22c0ae061e39
+      internalID: -747318666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_16
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 374
+        width: 46
+        height: 40
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4039a21661bb2d44a86906c6189cd180
+      internalID: -1538242575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_17
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 369
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3bef52774aa5c4d9fa58ee375de030
+      internalID: -1761066641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_19
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 392
+        width: 19
+        height: 35
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c14336815446ec4eb6c4690b2c45cec
+      internalID: -330772863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_20
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 372
+        width: 28
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecdfa355443af9e449a037a0788dd31c
+      internalID: 1361241089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_21
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 352
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64aeda4861ed1844a9533e81c2faeef6
+      internalID: -55491178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_23
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 350
+        width: 14
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a609b1114e74d44497b100f24fa9dd6
+      internalID: 2092046034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_24
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 350
+        width: 46
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 077d5c34ed1951446a5b39fba623e5d6
+      internalID: 901111322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_25
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 332
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a5e1846dcf0ba343b118f5d361d079e
+      internalID: 1515377001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_27
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 327
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cfb353ede7ff6241bf4de61d5065ebf
+      internalID: -69169681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_29
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 326
+        width: 41
+        height: 43
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04afea8c831ef9141b05661113ef311a
+      internalID: -1118305756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_30
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 310
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a69959426157947a5ed0b46a34bd92
+      internalID: 1570328763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_32
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 310
+        width: 46
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad1aeda7972e451498868799231297a9
+      internalID: -1865794276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_33
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 290
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6b18a16e0e9d14890e4e9b9117f50d
+      internalID: -605210449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_35
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 280
+        width: 44
+        height: 43
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1afd77064ad4f054cad26f1482cbfe6f
+      internalID: -1678874323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_36
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 287
+        width: 43
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a5d9e5e70e08c4a9159a132bd20141
+      internalID: 1953652751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_38
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 268
+        width: 44
+        height: 39
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3b868f3798b2d4a9ad029dda6f1de8
+      internalID: 137586575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_39
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 271
+        width: 43
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 792c44def6b1a5c4a8f4a432949faa11
+      internalID: 138418607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_42
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 227
+        width: 44
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b2087d3694df341863a29c3e3253d2
+      internalID: 70465405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_43
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 249
+        width: 44
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad688958c5d85ab4e945ce2f7613b0c4
+      internalID: 1076921135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_44
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 238
+        width: 43
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1be729bc300cd334895439f6b996f626
+      internalID: 1334716029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 241
+        width: 39
+        height: 27
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b87bd402461b1a4286a1d95c3be997d
+      internalID: -1447319315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_47
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 247
+        width: 43
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96617e16e3bbb6043b9f87d04b3e8ee3
+      internalID: -1501815656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_48
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 207
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78ad25f8efbd59d46a8b5c760b81485b
+      internalID: 235243947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_50
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 225
+        width: 38
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f2aa05f87e8e2743b3024b89aa05f20
+      internalID: 1445349799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_51
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 201
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd404edf6dd67cf44a348e7782fd4879
+      internalID: -1643614219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_52
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 207
+        width: 38
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221fc0c202200b049a5259a1da690a07
+      internalID: 1129547794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_53
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 185
+        width: 44
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0adbf2ffba3713045a4cd307c50446ea
+      internalID: -1712483714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_55
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 168
+        width: 36
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 461ec9db0b2e3244682f430eba6b80a6
+      internalID: -219014911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_56
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 187
+        width: 35
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fe480e75def03146b2dc484f89d51a3
+      internalID: -765808535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_57
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 141
+        width: 34
+        height: 42
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da53819c223b6d24697a675debe848ad
+      internalID: 1556908315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_58
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 144
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7f39f5e3920df479a52de5657725ab
+      internalID: -299144930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_59
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 158
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d04688478a849fa4a910fbe9ac734ece
+      internalID: 1341835489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_60
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 164
+        width: 35
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17046756c4784eb45a46ada55966ca89
+      internalID: -233798611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_61
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 167
+        width: 31
+        height: 37
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd454ef5cb3496b43bdd891bc9e868a9
+      internalID: -2135864116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_62
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 125
+        width: 35
+        height: 40
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fb1802f89251e9408bf6dc98f896d65
+      internalID: 913893496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteGuard_63
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 145
+        width: 31
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e671d5b42aeaf444aa31e3ef719ee120
+      internalID: 445769889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -152,7 +1223,71 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WhiteGuard_45: 1482614017
+      WhiteGuard_39: 138418607
+      WhiteGuard_59: 1341835489
+      WhiteGuard_7: -1175710702
+      WhiteGuard_44: 1334716029
+      WhiteGuard_38: 137586575
+      WhiteGuard_27: -69169681
+      WhiteGuard_32: -1865794276
+      WhiteGuard_33: -605210449
+      WhiteGuard_56: -765808535
+      WhiteGuard_25: 1515377001
+      WhiteGuard_52: 1129547794
+      WhiteGuard_29: -1118305756
+      WhiteGuard_23: 2092046034
+      WhiteGuard_3: 1119017824
+      WhiteGuard_5: 1252421934
+      WhiteGuard_41: 607850211
+      WhiteGuard_63: 445769889
+      WhiteGuard_43: 1076921135
+      WhiteGuard_21: -55491178
+      WhiteGuard_0: -473020573
+      WhiteGuard_54: -704491131
+      WhiteGuard_19: -330772863
+      WhiteGuard_16: -1538242575
+      WhiteGuard_34: -167952684
+      WhiteGuard_17: -1761066641
+      WhiteGuard_13: -1612757191
+      WhiteGuard_28: -301035082
+      WhiteGuard_8: 785402267
+      WhiteGuard_22: -2136621020
+      WhiteGuard_1: 283878217
+      WhiteGuard_53: -1712483714
+      WhiteGuard_6: -90427378
+      WhiteGuard_9: -897859689
+      WhiteGuard_18: -153837722
+      WhiteGuard_42: 70465405
+      WhiteGuard_49: 1741372231
+      WhiteGuard_46: -1447319315
+      WhiteGuard_14: 1906195107
+      WhiteGuard_35: -1678874323
+      WhiteGuard_31: -1776613423
+      WhiteGuard_60: -233798611
+      WhiteGuard_57: 1556908315
+      WhiteGuard_62: 913893496
+      WhiteGuard_24: 901111322
+      WhiteGuard_12: -623090386
+      WhiteGuard_20: 1361241089
+      WhiteGuard_40: -1656418267
+      WhiteGuard_51: -1643614219
+      WhiteGuard_30: 1570328763
+      WhiteGuard_2: 2091629089
+      WhiteGuard_50: 1445349799
+      WhiteGuard_36: 1953652751
+      WhiteGuard_10: 1756216966
+      WhiteGuard_48: 235243947
+      WhiteGuard_55: -219014911
+      WhiteGuard_61: -2135864116
+      WhiteGuard_37: -1447836090
+      WhiteGuard_4: 1572454758
+      WhiteGuard_47: -1501815656
+      WhiteGuard_15: -747318666
+      WhiteGuard_26: -1503172480
+      WhiteGuard_11: -1875820070
+      WhiteGuard_58: -299144930
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
