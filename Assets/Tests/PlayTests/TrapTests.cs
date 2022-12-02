@@ -27,12 +27,14 @@ namespace Tests.PlayTests
         private GameObject _startPosition12;
         private GameObject _startPosition16;
         private GameObject _startPosition20;
+        private GameObject _startPosition21;
 
         private CameraController _cameraController;
         private LevelLoader _levelLoader;
         private Room _room00;
         private Room _room01;
         private Room _room10;
+        private Room _room11;
         private Room _room20;
         private Room _room21;
 
@@ -59,6 +61,7 @@ namespace Tests.PlayTests
             if (_startPosition12 == null) _startPosition12 = GameObject.Find("StartPosition12");
             if (_startPosition16 == null) _startPosition16 = GameObject.Find("StartPosition16");
             if (_startPosition20 == null) _startPosition20 = GameObject.Find("StartPosition20");
+            if (_startPosition21 == null) _startPosition21 = GameObject.Find("StartPosition21");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_levelLoader == null)
@@ -69,6 +72,8 @@ namespace Tests.PlayTests
                 _room01 = GameObject.Find("Room_0_1").GetComponentInChildren<Room>();
             if (_room10 == null)
                 _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
+            if (_room11 == null)
+                _room11 = GameObject.Find("Room_1_1").GetComponentInChildren<Room>();
             if (_room20 == null)
                 _room20 = GameObject.Find("Room_2_0").GetComponentInChildren<Room>();
             if (_room21 == null)
@@ -342,6 +347,31 @@ namespace Tests.PlayTests
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movement happen.
             yield return new WaitForSeconds(4);
+            // Assert Prince is alive.
+            Assert.True(!_prince.GetComponentInChildren<CharacterStatus>().IsDead);
+        }
+        
+        // Test that Prince is not killed by spikes trap if descends from it.
+        [UnityTest]
+        public IEnumerator PrinceSurvivesIfDescendsFromSpikesTest()
+        {
+            _cameraController.PlaceInRoom(_room11);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition21.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _enemy.SetActive(false);
+            // Command sequence.
+            string commandFile = @"Assets\Tests\TestResources\descendOneLevel";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movement happen.
+            yield return new WaitForSeconds(4);
+            // Assert Prince has descended.
+            float newHeight = _prince.transform.position.y;
+            Assert.True(Mathf.Abs(_startPosition21.transform.position.y - newHeight) > 1.9f);
             // Assert Prince is alive.
             Assert.True(!_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         }
