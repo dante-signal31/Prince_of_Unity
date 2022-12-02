@@ -10,6 +10,10 @@ namespace Prince
         [Header("GAME:")]
         [Tooltip("Total time in seconds to complete game.")]
         [SerializeField] private int gameTotalTime;
+        [Tooltip("Show game in full screen.")]
+        [SerializeField] private bool fullScreen;
+        [Tooltip("Screen resolution for game.")]
+        [SerializeField] private ScreenResolution.ScreenResolutions screenResolution;
 
         [Header("PLAYER:")] 
         [Tooltip("Maximum starting life.")] 
@@ -25,6 +29,16 @@ namespace Prince
         /// Total time in seconds to complete game.
         /// </summary>
         public float GameTotalTime => gameTotalTime;
+
+        /// <summary>
+        /// Whether to show this game in full screen.
+        /// </summary>
+        public bool FullScreen => fullScreen;
+
+        /// <summary>
+        /// Screen resolution for the game.
+        /// </summary>
+        public ScreenResolution.ScreenResolutions ScreenResolution => screenResolution;
 
         /// <summary>
         /// Maximum life to start with.
@@ -45,5 +59,6 @@ namespace Prince
         /// Whether player starts game with a sword.
         /// </summary>
         public bool PlayerStartsWithSword => startsWithSword;
+        
     }
 }

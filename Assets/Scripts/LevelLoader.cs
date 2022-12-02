@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
-using UnityEditor;
+// using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace Prince
@@ -18,7 +16,7 @@ namespace Prince
         public struct Level
         {
             public string levelName;
-            public SceneAsset levelScene;
+            public string levelSceneName;
         }
 
         [Header("WIRING:")] 
@@ -108,8 +106,8 @@ namespace Prince
                     _previousSceneIndex = CurrentSceneIndex;
                     CurrentSceneIndex = index;
                     CurrentSceneName = sceneName;
-                    _loadingOperation = SceneManager.LoadSceneAsync(level.levelScene.name);
-                    this.Log($"(LevelManager - {transform.root.name}) Scene {level.levelScene.name} loaded.", showLogs);
+                    _loadingOperation = SceneManager.LoadSceneAsync(level.levelSceneName);
+                    this.Log($"(LevelManager - {transform.root.name}) Scene {level.levelSceneName} loaded.", showLogs);
                     break;
                 }
                 index++;
@@ -129,8 +127,8 @@ namespace Prince
             CurrentSceneIndex = sceneIndex;
             Level level = gameLevels[sceneIndex];
             CurrentSceneName = level.levelName;
-            _loadingOperation = SceneManager.LoadSceneAsync(level.levelScene.name);
-            this.Log($"(LevelManager - {transform.root.name}) Scene {level.levelScene.name} loaded by index {sceneIndex}.", showLogs);
+            _loadingOperation = SceneManager.LoadSceneAsync(level.levelSceneName);
+            this.Log($"(LevelManager - {transform.root.name}) Scene {level.levelSceneName} loaded by index {sceneIndex}.", showLogs);
         }
 
         /// <summary>

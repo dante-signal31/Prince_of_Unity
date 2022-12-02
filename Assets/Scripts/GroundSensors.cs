@@ -1,6 +1,5 @@
 using Prince;
 using UnityEngine;
-using UnityEditor;
 
 /// <summary>
 /// Component to manage character sensors to detect nearby ground.

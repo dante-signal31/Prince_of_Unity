@@ -372,6 +372,10 @@ PrefabInstance:
       value: Bad Ending
       objectReference: {fileID: 0}
     - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[11].levelName
+      value: Prueba
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameLevels.Array.data[1].levelScene
       value: 
       objectReference: {fileID: 102900000, guid: 3030121e22d14424d9fed564b77f457c, type: 3}
@@ -411,6 +415,54 @@ PrefabInstance:
       propertyPath: gameLevels.Array.data[10].levelScene
       value: 
       objectReference: {fileID: 102900000, guid: db5a1adbb8598be4489bd3bf58e71087, type: 3}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[0].levelSceneName
+      value: Assets/Scenes/Disclaimer.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[1].levelSceneName
+      value: Assets/Scenes/OpeningVideo.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[2].levelSceneName
+      value: Assets/Scenes/Level1.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[3].levelSceneName
+      value: Assets/Scenes/Interlude1Video.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[4].levelSceneName
+      value: Assets/Scenes/Level2.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[5].levelSceneName
+      value: Assets/Scenes/Interlude2Video.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[6].levelSceneName
+      value: Assets/Scenes/Level3.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[7].levelSceneName
+      value: Assets/Scenes/Interlude3Video.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[8].levelSceneName
+      value: Assets/Scenes/Level4.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[9].levelSceneName
+      value: Assets/Scenes/HappyEndingVideo.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[10].levelSceneName
+      value: Assets/Scenes/BadEndingVideo.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 128673940560184359, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: gameLevels.Array.data[11].levelSceneName
+      value: Interlude1Video
+      objectReference: {fileID: 0}
     - target: {fileID: 583374348244097365, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: m_RootOrder
       value: 2

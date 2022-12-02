@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
 namespace Prince
@@ -12,7 +13,11 @@ namespace Prince
     //
     // So, the only solution I've found is to take custom properties definitions to Scripts folder, and
     // leave it corresponding property drawer at Editor folder.
+    //
+    // Problem them is that any script outside Editor folder that uses "using UnityEditor" makes the final
+    // build fail. So I've wrapped the entire scrip in an "#if UNITY_EDITOR".
     
+
     /// <summary>
     /// Show a help box at inspector with a message about decorated field.
     /// </summary>
@@ -28,3 +33,4 @@ namespace Prince
         }
     }
 }
+# endif

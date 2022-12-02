@@ -1,8 +1,8 @@
 using System;
-using System.ComponentModel;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Prince
 {
@@ -80,10 +80,14 @@ namespace Prince
         [SerializeField] private FightingInteractions fightingInteractions;
         [Header("CONFIGURATION:")]
         [Tooltip("Current character life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
+#if UNITY_EDITOR
         [HelpBar("USE ONLY WITH GUARDS. For Prince use PrinceStatus.", MessageType.Warning)]
+#endif
         [SerializeField] private int life;
         [Tooltip("Current character maximum life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
+#if UNITY_EDITOR
         [HelpBar("USE ONLY WITH GUARDS. For Prince use PrinceStatus.", MessageType.Warning)]
+#endif
         [SerializeField] private int maximumLife;
         [Tooltip("Is this character looking rightwards?")]
         [SerializeField] private bool lookingRightWards;

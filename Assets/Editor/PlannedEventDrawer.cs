@@ -1,7 +1,6 @@
 ﻿using Prince;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Editor
 {
@@ -25,8 +24,8 @@ namespace Editor
             int originalIndent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
             
-            // Calculate rects. I want to show first trigerringType combo and after a property field showing
-            // only the one that is needed for this trigerring type.
+            // Calculate rects. I want to show first triggeringType combo and after a property field showing
+            // only the one that is needed for this triggering type.
             _initialHeight = position.y;
             Rect triggeringTypeRect = new Rect(position.x, CurrentHeight, position.width, _lineHeight);
             _lineCount++;
