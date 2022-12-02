@@ -269,13 +269,13 @@ namespace Prince
         /// </summary>
         private void BlockAttack()
         {
-            // // If we are yet blocking just skip.
-            // if (characterStatus.CurrentState == CharacterStatus.States.BlockSword)
-            // {
-            //     this.Log(
-            //         $"(GuardController - {transform.root.name}) We're already blocking an incoming attack so we do nothing.", showLogs);
-            //     return;
-            // }
+            // If we are yet blocking just skip.
+            if (characterStatus.CurrentState == CharacterStatus.States.BlockSword)
+            {
+                this.Log(
+                    $"(GuardController - {transform.root.name}) We're already blocking an incoming attack so we do nothing.", showLogs);
+                return;
+            }
             
             // We need to block, but will we have defense skill enough?
             if (Random.value < _fightingProfile.defense)

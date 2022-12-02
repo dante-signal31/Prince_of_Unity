@@ -104,22 +104,22 @@ namespace Prince
                 this.Log($"(FightingInteractions - {transform.root.name}) Noticing {_currentEnemyInteractions.transform.root.name} that I'm going to attack him.", showLogs);
                 _currentEnemyInteractions.NoticeStrikeStart();
                 this.Log($"(FightingInteractions - {transform.root.name}) Starting attack against {_currentEnemyInteractions.transform.root.name}", showLogs);
-                _strikeMissed = false;
-                StrikeBlockable = true;
+                // _strikeMissed = false;
+                // StrikeBlockable = true;
             }
             else
             {
-                this.Log($"(FightingInteractions - {transform.root.name}) Doing a missed attack", showLogs);
-                _strikeMissed = true;
-                StrikeBlockable = false;
+                this.Log($"(FightingInteractions - {transform.root.name}) Doing an apparently missed attack", showLogs);
+                // _strikeMissed = true;
+                // StrikeBlockable = false;
             }
-            // _strikeMissed = false;
-            // StrikeBlockable = true;
+            _strikeMissed = false;
+            StrikeBlockable = true;
             _elapsedBlockingTime = 0;
         }
 
         /// <summary>
-        /// Method used by enemies to signal us they're starting an attack.
+        /// Method used by enemies to signal us they're starting an attack over us.
         ///
         /// Since this moment, we have an small chance to block his attack. 
         /// </summary>
@@ -205,6 +205,7 @@ namespace Prince
             {
                 this.Log($"(FightingInteractions - {transform.root.name}) Noticing {_currentEnemyInteractions.transform.root.name} we are going to block his attack.", showLogs);
                 _currentEnemyInteractions.NoticeBlockSwordStarted();
+                BlockingStrikePossible = false;
             }
             this.Log($"(FightingInteractions - {transform.root.name}) We have a chance to counter attack after blocking an strike.", showLogs);
             CounterAttackPossible = true;

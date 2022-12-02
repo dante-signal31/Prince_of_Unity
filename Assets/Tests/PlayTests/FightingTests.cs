@@ -281,7 +281,8 @@ namespace Tests.PlayTests
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 1;
             yield return null;
-            float expected_distance = 0.3885f;
+            // float expected_distance = 0.3885f;
+            float expected_distance = 0;
             string commandFile = @"Assets\Tests\TestResources\oneSwordHit";
             Vector2 startPosition = _enemy.transform.position;
             int startLife = _enemy.GetComponent<CharacterStatus>().Life;
