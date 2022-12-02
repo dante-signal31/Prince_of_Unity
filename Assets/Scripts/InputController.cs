@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Prince
 {
@@ -23,8 +24,8 @@ namespace Prince
         [SerializeField] private CommandController commandController;
         
         [Header("CONFIGURATION:")]
-        [Header("Command recording. ONLY FOR TESTING")]
-        [Tooltip("ONLY FOR TESTING. If set to Recording, every command sent to character will be recorded in given file.")]
+        [Tooltip("ONLY FOR TESTING. Command recording: If set to Recording, every command sent to character will be recorded in given file.")]
+        [HelpBar("ONLY FOR TESTING. If set to Recording, every command sent to character will be recorded in given file.", MessageType.Warning)]
         [SerializeField] private InputControllerStates recordCommandAction;
         [Tooltip("Where recorded commands should be recorded.")]
         [SerializeField] private string recordedCommandsFile;
