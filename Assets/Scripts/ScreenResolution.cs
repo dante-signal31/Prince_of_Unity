@@ -13,7 +13,7 @@ namespace Prince
             r640_480,
             r800_600,
             r1920_1080,
-            r2560_1440    
+            r2560_1080    
         }
 
         [Header("WIRING")]
@@ -47,8 +47,8 @@ namespace Prince
                     return new Dimension(800, 600);
                 case ScreenResolutions.r1920_1080:
                     return new Dimension(1920, 1080);
-                case ScreenResolutions.r2560_1440:
-                    return new Dimension(2560, 1440);
+                case ScreenResolutions.r2560_1080:
+                    return new Dimension(2560, 1080);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(resolution), resolution, null);
             }
