@@ -511,6 +511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManagers
       objectReference: {fileID: 0}
+    - target: {fileID: 5158264402147272084, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: m_PanelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 9738df1942203524692d883d34e55788, type: 2}
     - target: {fileID: 7031278100399717209, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: showLogs
       value: 1
@@ -574,6 +578,10 @@ PrefabInstance:
     - target: {fileID: 8885964369088698335, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: gameTotalTime
       value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885964369088698335, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: screenResolution
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8885964369088698335, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: maximumStartingLife
