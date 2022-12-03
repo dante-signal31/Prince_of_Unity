@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 namespace Prince
 {
+    // TODO: With defense at 1 Guard is still receiving a hit if you attack it several times.
+    
     /// <summary>
     /// This is the main guard AI. Its main goal is get near Prince and fight with him to death.
     /// </summary>

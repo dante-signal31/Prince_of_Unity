@@ -4,6 +4,8 @@ using UnityEngine.UIElements;
 
 namespace Prince
 {
+    // TODO: Loading bar is not disappearing when first level starts in built version.
+    
     /// <summary>
     /// Component to update loading screen progress bar.
     /// </summary>

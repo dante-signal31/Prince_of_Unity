@@ -6,6 +6,8 @@ using UnityEngine.Video;
 
 namespace Prince
 {
+    // TODO: HUD is not showing in built version.
+    
     /// <summary>
     /// Component to display Prince life, message text and Enemy life in HUD bar.
     ///
