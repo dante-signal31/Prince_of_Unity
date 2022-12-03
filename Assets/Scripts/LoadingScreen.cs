@@ -4,8 +4,6 @@ using UnityEngine.UIElements;
 
 namespace Prince
 {
-    // TODO: Loading bar is not disappearing when first level starts in built version.
-    
     /// <summary>
     /// Component to update loading screen progress bar.
     /// </summary>
@@ -16,23 +14,30 @@ namespace Prince
         [SerializeField] private UIDocument loadingScreenUI;
         
         private ProgressBar _progressBar;
+        private VisualElement _container;
         
         public float ProgressBarMaxValue => _progressBar.highValue;
-        
+
         private void OnEnable()
         {
-            _progressBar = (ProgressBar) loadingScreenUI.rootVisualElement.Q(name: "LoadingProgress");
+            _progressBar = (ProgressBar)loadingScreenUI.rootVisualElement.Q(name: "LoadingProgress");
+            _container = loadingScreenUI.rootVisualElement.Q(name: "Container");
+        }
+
+        private void Start()
+        {
+            _container.visible = false;
         }
 
         public void ShowLoadingScreen()
         {
-            loadingScreenUI.enabled = true;
             ResetProgressBar();
+            _container.visible = true;
         }
 
         public void HideLoadingScreen()
         {
-            loadingScreenUI.enabled = false;
+            _container.visible = false;
         }
 
         /// <summary>

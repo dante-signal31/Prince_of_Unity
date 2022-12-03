@@ -52,6 +52,7 @@ MonoBehaviour:
   gameLevels: []
   levelMessageTime: 3
   delayToShowLevelMessage: 0
+  reloadAfterDeadDelay: 0
   showLogs: 0
 --- !u!114 &3794283581742642432
 MonoBehaviour:
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5400126537308713819}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 

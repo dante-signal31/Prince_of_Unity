@@ -571,6 +571,10 @@ PrefabInstance:
       propertyPath: plannedEvents.Array.data[11].eventToTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8069573099943303684, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
+      propertyPath: m_PanelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 9738df1942203524692d883d34e55788, type: 2}
     - target: {fileID: 8885964369088698335, guid: 08b7d6610eeefae4199ff66dc43329a3, type: 3}
       propertyPath: startingLife
       value: 3
