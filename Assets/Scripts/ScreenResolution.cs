@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Prince
 {
+    // TODO: Mouse cursor should be hidden when game starts.
     /// <summary>
     /// This manager components manages game screen resolution.
     /// </summary>
