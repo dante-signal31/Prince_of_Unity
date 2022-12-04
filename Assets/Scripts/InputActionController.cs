@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 
 namespace Prince
 {
-    // TODO: Add a key to leave game at built version.
-    
     // TODO: Sometimes, after a running jump input looses and stop trigger an Princes keeps running with no key pressed.
     
     /// <summary>
