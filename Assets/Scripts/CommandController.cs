@@ -106,6 +106,7 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed Stop at {Time.time}", showLogs);
                     // stateMachine.SetTriggerOneFrame("Stop", this);
                     stateMachine.SetTrigger("Stop");
+                    if (stateMachine.GetBool("RunHoldPressed")) stateMachine.SetBool("RunHoldPressed", false);
                     break;
                 case Command.CommandType.StopAction:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed StopAction at {Time.time}", showLogs);
@@ -114,11 +115,15 @@ namespace Prince
                     break;
                 case Command.CommandType.RunLeft:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed RunLeft at {Time.time}", showLogs);
+                    // Must keep RunLeft trigger for turning backs.
                     stateMachine.SetTriggerOneFrame("RunLeft", this);
+                    stateMachine.SetBool("RunHoldPressed", true);
                     break;
                 case Command.CommandType.RunRight:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed RunRight at {Time.time}", showLogs);
+                    // Must keep RunRight trigger for turning backs.
                     stateMachine.SetTriggerOneFrame("RunRight", this);
+                    stateMachine.SetBool("RunHoldPressed", true);
                     break;
                 case Command.CommandType.WalkLeft:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed WalkLeft at {Time.time}", showLogs);

@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 
 namespace Prince
 {
-    // TODO: Sometimes, after a running jump input looses and stop trigger an Princes keeps running with no key pressed.
-    
     /// <summary>
     /// <p>This component translates Input events received from a Player Input to an InputController.
     /// InputController translates those calls to Commands and send them to a CommandController to
@@ -55,8 +53,8 @@ namespace Prince
 
             if (context.canceled)
             {
-                if (!(_actionPressed ||
-                      characterStatus.CurrentState == CharacterStatus.States.CrouchWalking)) 
+                // if (!(_actionPressed || characterStatus.CurrentState == CharacterStatus.States.CrouchWalking)) 
+                if (characterStatus.CurrentState != CharacterStatus.States.CrouchWalking)
                     inputController.Stop();
             }
         }
