@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4342316534958041811}
   - component: {fileID: 1394228132446919159}
+  - component: {fileID: 3704973975269164307}
+  - component: {fileID: 7189122836829915769}
   m_Layer: 0
   m_Name: GameEvents
   m_TagString: Untagged
@@ -45,3 +47,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventBus: {fileID: 0}
+--- !u!114 &3704973975269164307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5825628476288309200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b299452f72947729e74da7f2070215a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventBus: {fileID: 0}
+--- !u!114 &7189122836829915769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5825628476288309200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7979050bda5546cab4358012a9c29423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventBus: {fileID: 0}
+  soundController: {fileID: 0}
+  deadMusicDelay: 0

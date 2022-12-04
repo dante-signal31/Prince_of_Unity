@@ -1299,6 +1299,10 @@ PrefabInstance:
       propertyPath: eventBus
       value: 
       objectReference: {fileID: 4775544547063931650}
+    - target: {fileID: 3704973975269164307, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
+      propertyPath: eventBus
+      value: 
+      objectReference: {fileID: 4775544547063931650}
     - target: {fileID: 4342316534958041811, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1347,42 +1351,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameEvents
       objectReference: {fileID: 0}
+    - target: {fileID: 7189122836829915769, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
+      propertyPath: eventBus
+      value: 
+      objectReference: {fileID: 4775544547063931650}
+    - target: {fileID: 7189122836829915769, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
+      propertyPath: deadMusicDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189122836829915769, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
+      propertyPath: soundController
+      value: 
+      objectReference: {fileID: 8238086025989210717}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
---- !u!1 &2304221398125671283 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5825628476288309200, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
-  m_PrefabInstance: {fileID: 5702391781823538339}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7907378276587227525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2304221398125671283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7979050bda5546cab4358012a9c29423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventBus: {fileID: 4775544547063931650}
-  soundController: {fileID: 8238086025989210717}
-  deadMusicDelay: 1
---- !u!114 &4276917760289986438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2304221398125671283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b299452f72947729e74da7f2070215a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventBus: {fileID: 4775544547063931650}
 --- !u!4 &8314197954223689328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4342316534958041811, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
