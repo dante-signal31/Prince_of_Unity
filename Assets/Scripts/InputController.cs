@@ -230,5 +230,20 @@ namespace Prince
         {
             ExecuteCommand(Command.CommandType.KillCurrentGuard);
         }
+
+        public void Quit()
+        {
+            ExecuteCommand(Command.CommandType.Quit);
+        }
+
+        public void Confirm()
+        {
+            ExecuteCommand(Command.CommandType.Confirm);
+        }
+
+        public void Cancel()
+        {
+            ExecuteCommand(Command.CommandType.Cancel);
+        }
     }
 }

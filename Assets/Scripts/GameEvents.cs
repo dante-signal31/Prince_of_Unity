@@ -186,6 +186,21 @@ public class GameEvents : MonoBehaviour
     /// This event is raised when kill current guard cheat key is used.
     /// </summary>
     public class KillCurrentGuardKeyPressed : EventArgs { }
+    
+    /// <summary>
+    /// This event is raised when user ask to leave the game.
+    /// </summary>
+    public class QuitRequested: EventArgs { }
+
+    /// <summary>
+    /// This event is raised when user confirms when asked.
+    /// </summary>
+    public class UserConfirmation : EventArgs { }
+    
+    /// <summary>
+    /// This event is raised when user cancels what initially asked.
+    /// </summary>
+    public class UserCancelation : EventArgs { }
 
     // /// <summary>
     // /// This event is raised whenever timer is disabled.
@@ -224,5 +239,8 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<TimeIncreaseKeyPressed>();
         eventBus.RegisterEvent<TimeDecreaseKeyPressed>();
         eventBus.RegisterEvent<KillCurrentGuardKeyPressed>();
+        eventBus.RegisterEvent<QuitRequested>();
+        eventBus.RegisterEvent<UserConfirmation>();
+        eventBus.RegisterEvent<UserCancelation>();
     }
 }

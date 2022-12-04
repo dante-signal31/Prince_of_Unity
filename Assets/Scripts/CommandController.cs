@@ -156,6 +156,18 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed kill current guard at {Time.time}", showLogs);
                     _eventBus.TriggerEvent(new GameEvents.KillCurrentGuardKeyPressed(), this);
                     break;
+                case Command.CommandType.Quit:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed quit application at {Time.time}", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.QuitRequested(), this);
+                    break;
+                case Command.CommandType.Confirm:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed user confirmation at {Time.time}", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.UserConfirmation(), this);
+                    break;
+                case Command.CommandType.Cancel:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed user cancelation at {Time.time}", showLogs);
+                    _eventBus.TriggerEvent(new GameEvents.UserCancelation(), this);
+                    break;
             }
             yield return null;
         }

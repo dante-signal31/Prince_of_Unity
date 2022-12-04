@@ -894,6 +894,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3b638a24-80e4-49f1-a5ce-f045b2b3c619
     m_ActionName: PrinceActionMap/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: Quit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 576beaa1-f4b3-47f0-ab45-229ca4191ec5
+    m_ActionName: PrinceActionMap/Quit[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: Confirm
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c53fe2ac-18c8-4ed5-a35f-ac801f7fb637
+    m_ActionName: PrinceActionMap/Confirm[/Keyboard/y]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: Cancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2fd491f9-c8cb-46d3-9e9f-2b3f885e0f4c
+    m_ActionName: PrinceActionMap/Cancel[/Keyboard/n]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: PrinceActionMap

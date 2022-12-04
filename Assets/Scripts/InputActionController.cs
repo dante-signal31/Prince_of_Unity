@@ -216,5 +216,20 @@ namespace Prince
             if (context.performed) inputController.Pause();
         }
         
+        public void Quit(InputAction.CallbackContext context)
+        {
+            if (context.performed) inputController.Quit();
+        }
+        
+        public void Confirm(InputAction.CallbackContext context)
+        {
+            if (context.performed) inputController.Confirm();
+        }
+        
+        public void Cancel(InputAction.CallbackContext context)
+        {
+            if (context.performed) inputController.Cancel();
+        }
+        
     }
 }

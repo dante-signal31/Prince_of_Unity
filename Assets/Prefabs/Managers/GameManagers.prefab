@@ -1154,7 +1154,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3970732430689832343, guid: 2cce4b22b1ad10e4e94f91a49d7f9dd2, type: 3}
       propertyPath: m_Name
-      value: ScreenManager
+      value: Screen
       objectReference: {fileID: 0}
     - target: {fileID: 7425753968476545872, guid: 2cce4b22b1ad10e4e94f91a49d7f9dd2, type: 3}
       propertyPath: m_RootOrder
@@ -1370,6 +1370,19 @@ MonoBehaviour:
   eventBus: {fileID: 4775544547063931650}
   soundController: {fileID: 8238086025989210717}
   deadMusicDelay: 1
+--- !u!114 &4276917760289986438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304221398125671283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b299452f72947729e74da7f2070215a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventBus: {fileID: 4775544547063931650}
 --- !u!4 &8314197954223689328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4342316534958041811, guid: e0fe0b8d68e8f0145a3356f72616368f, type: 3}
@@ -1465,11 +1478,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 231689601881010479, guid: a5b1a904df3e8c846940523e39d7954c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 231689601881010479, guid: a5b1a904df3e8c846940523e39d7954c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 231689601881010479, guid: a5b1a904df3e8c846940523e39d7954c, type: 3}
       propertyPath: m_LocalPosition.z

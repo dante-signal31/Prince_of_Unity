@@ -72,6 +72,8 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.RemoveListener<GameEvents.TimeIncreaseKeyPressed>(OnTimeIncreaseKeyPressed);
             eventBus.RemoveListener<GameEvents.TimeDecreaseKeyPressed>(OnTimeDecreaseKeyPressed);
+            eventBus.RemoveListener<GameEvents.QuitRequested>(OnQuitRequested);
+            eventBus.RemoveListener<GameEvents.UserCancelation>(OnUserCancelation);
         }
 
         private void Start()
@@ -83,12 +85,12 @@ namespace Prince
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.AddListener<GameEvents.TimeIncreaseKeyPressed>(OnTimeIncreaseKeyPressed);
             eventBus.AddListener<GameEvents.TimeDecreaseKeyPressed>(OnTimeDecreaseKeyPressed);
+            eventBus.AddListener<GameEvents.QuitRequested>(OnQuitRequested);
+            eventBus.AddListener<GameEvents.UserCancelation>(OnUserCancelation);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
             ShowHudIfLevelsAskIt();
         }
         
-        
-
         /// <summary>
         /// Get life point placeholders array.
         ///
@@ -372,6 +374,28 @@ namespace Prince
                     _enemyLifes[i].style.backgroundImage = null;
                 }
             }
+        }
+        
+        /// <summary>
+        /// Listener for quit requested events.
+        /// </summary>
+        /// <param name="sender">Sender of event. Usually a character monobehaviour.</param>
+        /// <param name="_">Event data. Actually not used here.</param>
+        private void OnQuitRequested(object sender, GameEvents.QuitRequested _)
+        {
+            this.Log($"(HUDManager - {transform.root.name}) Quit requested by user. Asking for confirmation.", showLogs);
+            SetMessage("PRESS Y TO QUIT GAME OR N TO CANCEL");
+        }
+        
+        /// <summary>
+        /// Listener for user cancelation events.
+        /// </summary>
+        /// <param name="sender">Sender of event. Usually a character monobehaviour.</param>
+        /// <param name="_">Event data. Actually not used here.</param>
+        private void OnUserCancelation(object sender, GameEvents.UserCancelation _)
+        {
+            this.Log($"(HUDManager - {transform.root.name}) User canceled his quit request.", showLogs);
+            SetMessage("");
         }
     }
 }
