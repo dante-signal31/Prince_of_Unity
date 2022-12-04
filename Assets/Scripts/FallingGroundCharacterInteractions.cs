@@ -8,6 +8,8 @@ namespace Prince
     /// </summary>
     public class FallingGroundCharacterInteractions : MonoBehaviour
     {
+        // TODO: Falling ground sometimes falls without giving back to Prince a signal to stop his climbing and fall, so Prince simple stays invisible. Must fix that.
+        
         [Header("WIRING")]
         [Tooltip("Needed to know current falling ground state")]
         [SerializeField] private FallingGroundStatus fallingGroundStatus;
