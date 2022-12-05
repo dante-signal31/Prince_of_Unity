@@ -55,6 +55,11 @@ namespace Prince
                 {
                     fightingInteractions.CounterAttackChanceEnded();
                 }
+                
+                public void BlockSwordEnded()
+                {
+                    fightingInteractions.BlockSwordEnded();
+                }
 
 //////// My attack has been blocked but my enemy counterattacks, now I have an small chance to block him.        
                 public void BlockedSwordStarted()

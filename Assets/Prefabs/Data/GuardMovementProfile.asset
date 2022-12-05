@@ -21,3 +21,10 @@ MonoBehaviour:
   MaximumStandingSpeed: 0
   MaximumCrouchWalkingSpeed: 0
   FallingHorizontalSpeed: 0
+  RunningJumpingImpulseSpeed: 0
+  RunningJumpingSpeed: 0
+  FallingHorizontalSpeedAfterRunningJump: 0
+  WalkingJumpingSpeed: 0
+  WalkingJumpingEndSpeed: 0
+  FallingHorizontalSpeedAfterWalkingJump: 0
+  VerticalJumpHorizontalSpeed: 0

@@ -212,6 +212,14 @@ namespace Prince
         }
 
         /// <summary>
+        /// Signal enemy we'have ended our blocking movement, so he can try to attack us again. 
+        /// </summary>
+        public void BlockSwordEnded()
+        {
+            if (_currentEnemyInteractions != null) _currentEnemyInteractions.NoticeBlockSwordEnded();
+        }
+
+        /// <summary>
         /// Method used by enemies to signal us they've blocked our attack.
         /// </summary>
         public void NoticeBlockSwordStarted()
@@ -236,6 +244,10 @@ namespace Prince
                         $"(FightingInteractions - {transform.root.name}) Our attack has been blocked by an enemy that now is out of range.",
                         showLogs);
                 }
+                this.Log(
+                    $"(FightingInteractions - {transform.root.name}) Our attack has been blocked so we won't we able to strike again until enemy has ended his blocking movement..",
+                    showLogs);
+                stateMachine.SetBool("StrikeAllowed", false);
             }
             else
             {
@@ -252,6 +264,21 @@ namespace Prince
                         showLogs);
                 }
             }
+        }
+
+        /// <summary>
+        /// Method used by enemies to signal us they've ended their blocking movement.
+        /// </summary>
+        public void NoticeBlockSwordEnded()
+        {
+            if (_currentEnemyInteractions != null)
+            {
+                this.Log(
+                    $"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} notice us he has ended his blocking movement, so we have permission to attack him again.",
+                    showLogs);
+                stateMachine.SetBool("StrikeAllowed", true);
+            }
+                
         }
 
         /// <summary>

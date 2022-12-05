@@ -752,6 +752,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Strike
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: StrikeAllowed
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8464191508557194690}
   m_Solo: 0
@@ -804,6 +807,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Strike
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: StrikeAllowed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6684095160207137907}
@@ -1425,6 +1431,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: GravityEnabled
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 1
+    m_Controller: {fileID: 0}
+  - m_Name: StrikeAllowed
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
