@@ -101,43 +101,9 @@ namespace Prince
                     inputController.Action();
                 }
                 
-                // Must we block and incoming attack?
-                if (_blockAllowed && fightingInteractions.BlockingStrikePossible &&
-                    (characterStatus.CurrentState == CharacterStatus.States.BlockSword ||
-                     characterStatus.CurrentState == CharacterStatus.States.CounterBlockSword))
-                {
-                    // Enemy attack is being already blocked so do nothing until we leave block state.
-                    this.Log(
-                        $"(GuardController - {transform.root.name}) We're already blocking an incoming attack so we do nothing.", showLogs);
-                    // return;
-                } 
-                else if (_blockAllowed && fightingInteractions.BlockingStrikePossible &&
-                           characterStatus.CurrentState == CharacterStatus.States.BlockedSword)
-                {
-                    // Our strike was blocked and our enemy is counter attacking so we perform defense check.
-                    this.Log($"(GuardController - {transform.root.name}) We have been blocked and our enemy tries a counter attack. Checking if I can counter block.", showLogs);
-                    BlockAttack();
-                }
-                else if (_blockAllowed && fightingInteractions.BlockingStrikePossible)
-                {
-                    // Attack has not been blocked yet so we perform defense check.
-                    this.Log($"(GuardController - {transform.root.name}) I've being attacked. Checking if I can block attack.", showLogs);
-                    BlockAttack();
-                } 
-                else if (fightingInteractions.BlockingStrikePossible)
-                {
-                    // If we get here then we are under attack but we failed defense check so we can only wait for the hit.
-                    this.Log($"(GuardController - {transform.root.name}) I've being attacked, but I cannot block because I failed a defense test.", showLogs);
-                }
-                
-                // If we have blocked an enemy attack we have a chance to counter attack.
-                if (fightingInteractions.CounterAttackPossible && _attackAllowed && fightingSensor.EnemyAtHittingRange)
-                {
-                    this.Log($"(GuardController - {transform.root.name}) Trying to counter attack.", showLogs);
-                    fightingInteractions.CounterAttackStarted();
-                    AttackEnemy();
-                    return;
-                }
+                // TryToBlockAttack();
+
+                // TryToCounterAttack();
 
                 // We can't approach nearer. May be Prince is unreachable or he is already at hitting range.
                 if (fightingSensor.EnemyAtHittingRange)
@@ -171,6 +137,62 @@ namespace Prince
                 }
             }
             
+        }
+
+        /// <summary>
+        /// <p>Listener for CounterAttackChance <see cref="FightingInteractions"/> events.</p>
+        ///
+        /// <p>If we have blocked an enemy attack we have a chance to counter attack.</p>
+        /// </summary>
+        public void TryToCounterAttack()
+        {
+            if (fightingInteractions.CounterAttackPossible && _attackAllowed && fightingSensor.EnemyAtHittingRange)
+            {
+                this.Log($"(GuardController - {transform.root.name}) Trying to counter attack.", showLogs);
+                fightingInteractions.CounterAttackStarted();
+                AttackEnemy();
+            }
+        }
+
+        /// <summary>
+        /// Listener for iAmBeingAttacked <see cref="FightingInteractions"/> events.
+        /// </summary>
+        public void TryToBlockAttack()
+        {
+            // Must we block and incoming attack?
+            if (_blockAllowed && fightingInteractions.BlockingStrikePossible &&
+                (characterStatus.CurrentState == CharacterStatus.States.BlockSword ||
+                 characterStatus.CurrentState == CharacterStatus.States.CounterBlockSword))
+            {
+                // Enemy attack is being already blocked so do nothing until we leave block state.
+                this.Log(
+                    $"(GuardController - {transform.root.name}) We're already blocking an incoming attack so we do nothing.",
+                    showLogs);
+                // return;
+            }
+            else if (_blockAllowed && fightingInteractions.BlockingStrikePossible &&
+                     characterStatus.CurrentState == CharacterStatus.States.BlockedSword)
+            {
+                // Our strike was blocked and our enemy is counter attacking so we perform defense check.
+                this.Log(
+                    $"(GuardController - {transform.root.name}) We have been blocked and our enemy tries a counter attack. Checking if I can counter block.",
+                    showLogs);
+                BlockAttack();
+            }
+            else if (_blockAllowed && fightingInteractions.BlockingStrikePossible)
+            {
+                // Attack has not been blocked yet so we perform defense check.
+                this.Log($"(GuardController - {transform.root.name}) I've being attacked. Checking if I can block attack.",
+                    showLogs);
+                BlockAttack();
+            }
+            else if (fightingInteractions.BlockingStrikePossible)
+            {
+                // If we get here then we are under attack but we failed defense check so we can only wait for the hit.
+                this.Log(
+                    $"(GuardController - {transform.root.name}) I've being attacked, but I cannot block because I failed a defense test.",
+                    showLogs);
+            }
         }
 
         /// <summary>

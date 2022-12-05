@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 
 namespace Prince
@@ -22,10 +23,16 @@ namespace Prince
         [SerializeField] private DamageEffect damageEffects;
         [Tooltip("Needed to update health when hit.")]
         [SerializeField] private HealthController healthController;
-        
+
         [Header("CONFIGURATION:")]
         [Tooltip("This component is in a guard?")]
         [SerializeField] private bool iAmGuard;
+        
+        [Header("EVENTS:")]
+        [Tooltip("Event launched when this character is being attacked and has a chance to block the attack.")]
+        [SerializeField] private UnityEvent iAmBeingAttacked;
+        [Tooltip(("Event launched to signal we, as defenders, have a chance to counter attack after been blocked."))]
+        [SerializeField] private UnityEvent counterAttackChance;
 
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -40,13 +47,36 @@ namespace Prince
         /// Used by attacker to track he has an attack on course.
         /// </summary>
         public bool StrikeBlockable { get; private set; }
-        
+
+        private bool _blockingStrikePossible;
         /// <summary>
         /// Used by defender to track an attack is on its way and he has a chance to block it.
         /// </summary>
-        public bool BlockingStrikePossible { get; private set; } 
-        
-        public bool CounterAttackPossible { get; private set; }
+        public bool BlockingStrikePossible { 
+            get=> _blockingStrikePossible;
+            private set
+            {
+                bool previousValue = _blockingStrikePossible;
+                _blockingStrikePossible = value;
+                if (_blockingStrikePossible && _blockingStrikePossible != previousValue && iAmBeingAttacked != null) iAmBeingAttacked.Invoke();
+            } 
+        }
+
+        private bool _counterAttackPossible;
+
+        /// <summary>
+        /// Used by defender to signal that after blocking an attack he still has a chance to counter attack.
+        /// </summary>
+        public bool CounterAttackPossible
+        {
+            get=> _counterAttackPossible;
+            private set
+            {
+                bool previousValue = _blockingStrikePossible;
+                _counterAttackPossible = value;
+                if (_counterAttackPossible && _counterAttackPossible != previousValue && counterAttackChance != null) counterAttackChance.Invoke();
+            }
+        }
         
 
         private FightingInteractions _currentEnemyInteractions;
