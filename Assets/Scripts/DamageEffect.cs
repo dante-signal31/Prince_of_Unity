@@ -10,6 +10,8 @@ using UnityEngine;
 /// </summary>
 public class DamageEffect : MonoBehaviour
 {
+    // TODO: Damage effect doesn't happen after the first time. Must fix it.
+    
     [Header("WIRING:")]
     [Tooltip("Needed to show up damage sprite.")]
     [SerializeField] private SpriteRenderer upDamageSprite;
