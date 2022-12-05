@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Prince
 {
     /// <summary>
-    /// Component that handles climbing, hanging and descending interactions with Climbable game objects.
+    /// Prince component that handles climbing, hanging and descending interactions with Climbable game objects.
     /// </summary>
     public class ClimberInteractions : MonoBehaviour
     {
@@ -152,10 +152,11 @@ namespace Prince
                 // If we tried to climb and ended up the brick (climbed) then everything was ok.
                 else if (_climbable.ClimbingResult == ClimbableStatus.ClimbingResult.Climbed)
                 {
-                    UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
+                    Vector3 newPosition = UpdateCharacterPosition(hangingLedge, ClimbingOptions.Climb);
                     // If we don't wait until sensors feel ground again we could get a bogus fall from idle state. This
                     // could happen when we climb from a hang after a fall.
-                    yield return new WaitUntil(() => groundSensors.GroundBelow);
+                    yield return new WaitUntil(() => this.transform.position == newPosition);
+                    yield return null;
                     stateMachine.SetTrigger("ClimbingFinished");
                     this.Log($"(ClimberInteractions - {transform.root.name}) Climbing finished.", showLogs);
                 }
@@ -255,7 +256,7 @@ namespace Prince
         /// <param name="hangingLedge">The side we are climbing or descending.</param>
         /// <param name="climbingOption">Whether we are climbing or descending.</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private void UpdateCharacterPosition(Climbable.HangableLedges hangingLedge, ClimbingOptions climbingOption)
+        private Vector3 UpdateCharacterPosition(Climbable.HangableLedges hangingLedge, ClimbingOptions climbingOption)
         {
             Vector3 newPosition = hangingLedge switch {
                 Climbable.HangableLedges.Left => (climbingOption == ClimbingOptions.Climb)
@@ -266,7 +267,9 @@ namespace Prince
                     : _climbable.RightDescendingTransform.position,
                 _ => throw new ArgumentOutOfRangeException(nameof(hangingLedge), hangingLedge, null)
             };
-            characterTransform.position = new Vector3(newPosition.x, newPosition.y, characterTransform.position.z);
+            Vector3 newCharacterPosition = new Vector3(newPosition.x, newPosition.y, characterTransform.position.z);
+            characterTransform.position = newCharacterPosition;
+            return newCharacterPosition;
         }
 
     }

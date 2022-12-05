@@ -26,6 +26,7 @@ namespace Tests.PlayTests
         private CameraController _cameraController;
         private Room _room00;
         private Room _room01;
+        private Room _room10;
         // private Room _room02;
 
         private GameObject _fallingGround;
@@ -33,6 +34,7 @@ namespace Tests.PlayTests
         private GameObject _fallingGround2;
         private GameObject _fallingGround3;
         private GameObject _fallingGround4;
+        private GameObject _startPosition9;
 
         private string _currentScene = "TheRuins";
 
@@ -51,12 +53,15 @@ namespace Tests.PlayTests
             if (_startPosition6 == null) _startPosition6 = GameObject.Find("StartPosition6");
             if (_startPosition7 == null) _startPosition7 = GameObject.Find("StartPosition7");
             if (_startPosition8 == null) _startPosition8 = GameObject.Find("StartPosition8");
+            if (_startPosition9 == null) _startPosition9 = GameObject.Find("StartPosition9");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
                 _room00 = GameObject.Find("Room_0_0").GetComponentInChildren<Room>();
             if (_room01 == null)
                 _room01 = GameObject.Find("Room_0_1").GetComponentInChildren<Room>();
+            if (_room10 == null)
+                _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
             // if (_room02 == null)
             //     _room02 = GameObject.Find("Room_0_2").GetComponentInChildren<Room>();
             
@@ -501,6 +506,30 @@ namespace Tests.PlayTests
             yield return new WaitForSeconds(3);
             // Assert falling ground has crashed.
             Assert.True(_fallingGround4.GetComponentInChildren<FallingGroundStatus>().CurrentState == FallingGroundStatus.FallingGroundStates.Crashed);
+        }
+        
+        /// <summary>
+        /// Test that when we hang and climb a falling ground Prince falls too.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceFallsWithFallingGroundTest()
+        {
+            _cameraController.PlaceInRoom(_room10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition9.transform.position, Quaternion.identity);
+            CharacterStatus princeStatus = _prince.GetComponentInChildren<CharacterStatus>();
+            princeStatus.LookingRightWards = false;
+            // int startingHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
+            string commandFile = @"Assets\Tests\TestResources\runingHangingAndClimbing";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(7);
+            // Assert Prince has fallen and now is dead.
+            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
         }
     }
 }
