@@ -79,8 +79,8 @@ namespace Prince
 
             if (context.canceled)
             {
-                if (!(_actionPressed ||
-                      characterStatus.CurrentState == CharacterStatus.States.CrouchWalking))
+                // if (!(_actionPressed || characterStatus.CurrentState == CharacterStatus.States.CrouchWalking))
+                if (characterStatus.CurrentState != CharacterStatus.States.CrouchWalking)
                     inputController.Stop();
             }
         }
