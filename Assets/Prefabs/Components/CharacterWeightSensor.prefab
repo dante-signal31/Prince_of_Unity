@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6474297121670515530}
   m_Layer: 0
   m_Name: CharacterWeightSensor
-  m_TagString: Untagged
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,3 +71,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e549702102d0142b05f8e2dd4b5ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activationTime: 0
+  weightSensorActivated:
+    m_PersistentCalls:
+      m_Calls: []
+  weightSensorDeactivated:
+    m_PersistentCalls:
+      m_Calls: []

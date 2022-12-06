@@ -44,6 +44,11 @@ namespace Prince
                 {
                     fightingInteractions.StrikeHit();
                 }
+                
+                public void StrikeEnd()
+                {
+                    fightingInteractions.StrikeEnd();
+                }
 
 //////// I block my enemy attack and now I have chance to counter attack.
                 public void BlockSwordStarted()
@@ -62,9 +67,9 @@ namespace Prince
                 }
 
 //////// My attack has been blocked but my enemy counterattacks, now I have an small chance to block him.        
-                public void BlockedSwordStarted()
+                public void CounterBlockSwordChanceStarted()
                 {
-                    fightingInteractions.BlockedSwordStarted();
+                    fightingInteractions.CounterBlockSwordChanceStarted();
                 }
 
                 public void CounterBlockSwordChanceEnded()

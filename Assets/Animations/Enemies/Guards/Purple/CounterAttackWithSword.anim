@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CounterAttackWithSword
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -39,6 +39,7 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
     pptrCurveMapping:
     - {fileID: 21300000, guid: f82c1eed3b62a2b4aa7e28042a180ac0, type: 3}
   m_AnimationClipSettings:
@@ -68,6 +69,13 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: StrikeStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: CounterAttackChanceEnded
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BlockedSwordPurpleGuard
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -45,6 +45,7 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
     pptrCurveMapping:
     - {fileID: 21300000, guid: d9ca2ccbad25da046a39496ef42ad590, type: 3}
     - {fileID: 21300000, guid: 4c27ea21e3da97746bebf5d5f3a96b0a, type: 3}
@@ -76,7 +77,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: BlockedSwordStarted
+    functionName: CounterBlockSwordChanceStarted
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -89,7 +90,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.125
+  - time: 0
+    functionName: BlockingChanceEnded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.375
     functionName: CounterBlockSwordChanceEnded
     data: 
     objectReferenceParameter: {fileID: 0}

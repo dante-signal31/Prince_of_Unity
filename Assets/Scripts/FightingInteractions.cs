@@ -23,6 +23,8 @@ namespace Prince
         [SerializeField] private DamageEffect damageEffects;
         [Tooltip("Needed to update health when hit.")]
         [SerializeField] private HealthController healthController;
+        [Tooltip("Needed to jnow in which state we are.")]
+        [SerializeField] private CharacterStatus characterStatus;
 
         [Header("CONFIGURATION:")]
         [Tooltip("This component is in a guard?")]
@@ -58,6 +60,7 @@ namespace Prince
             {
                 bool previousValue = _blockingStrikePossible;
                 _blockingStrikePossible = value;
+                stateMachine.SetBool("BlockingStrikePossible", _blockingStrikePossible);
                 if (_blockingStrikePossible && _blockingStrikePossible != previousValue && iAmBeingAttacked != null) iAmBeingAttacked.Invoke();
             } 
         }
@@ -74,10 +77,54 @@ namespace Prince
             {
                 bool previousValue = _blockingStrikePossible;
                 _counterAttackPossible = value;
+                stateMachine.SetBool("CounterAttackPossible", _counterAttackPossible);
                 if (_counterAttackPossible && _counterAttackPossible != previousValue && counterAttackChance != null) counterAttackChance.Invoke();
             }
         }
+
+        /// <summary>
+        /// Whether this character still has a chance to counter block an incoming attack after being blocked himself.
+        /// </summary>
+        public bool CounterBlockPossible
+        {
+            get => stateMachine.GetBool("CounterBlockPossible");
+            set
+            {
+                stateMachine.SetBool("CounterBlockPossible", value);
+            }
+        }
         
+        /// <summary>
+        /// Whether this character can trigger a new attack from its own point of view.
+        ///
+        /// If this character is already attacking, then he cannot attack again until
+        /// attacking movement ends or its blocked.
+        /// </summary>
+        public bool StrikeAllowedByMe
+        {
+            get=> stateMachine.GetBool("StrikeAllowedByMe");
+            
+            private set
+            {
+                stateMachine.SetBool("StrikeAllowedByMe", value);
+            }
+        }
+        
+        /// <summary>
+        /// <p>Whether defender allows this character to trigger a new attack.</p>
+        ///
+        /// <p> Id defender is doing a blocking movement, then attacker cannot trigger
+        /// a new attack until blocking movement ends.</p>
+        /// </summary>
+        public bool StrikeAllowedByDefender
+        {
+            get=> stateMachine.GetBool("StrikeAllowedByDefender");
+            
+            private set
+            {
+                stateMachine.SetBool("StrikeAllowedByDefender", value);
+            }
+        }
 
         private FightingInteractions _currentEnemyInteractions;
         private bool _strikeMissed = false;
@@ -114,14 +161,27 @@ namespace Prince
             //
             // To fix that, at once both character are at hitting range we check that StrikeBlockable variable from attacker
             // and BlockingStrikePossible are synced. Attacker is who performs that synchronization.
-            if (_currentEnemyInteractions != null)
-            {
-                if (StrikeBlockable && !_currentEnemyInteractions.BlockingStrikePossible) _currentEnemyInteractions.NoticeStrikeStart();
-            }
+            // if (_currentEnemyInteractions != null)
+            // {
+            //     if (StrikeBlockable && !_currentEnemyInteractions.BlockingStrikePossible) _currentEnemyInteractions.NoticeStrikeStart();
+            // }
 
             // Another edge case. If defender loses contact with his attacker while waiting for an attack he should
             // reset his BlockingStrikePossible flag to avoid useless defense test and blocks.
-            if (_currentEnemyInteractions == null && BlockingStrikePossible) BlockingStrikePossible = false;
+            if (_currentEnemyInteractions == null && BlockingStrikePossible) 
+                BlockingStrikePossible = false;
+            
+            // I don't know why but sometimes, during a violent combat, StrikeAllowedByDefender
+            // of both opponents get out of sync and both of then stay to false, so none of them
+            // can hit the other. A workaround of that problem is to set other opponent to true
+            // once IdleSword is got.
+            if (_currentEnemyInteractions != null &&
+                characterStatus.CurrentState == CharacterStatus.States.IdleSword)
+            {
+                _currentEnemyInteractions.StrikeAllowedByDefender = true;
+                StrikeAllowedByMe = true;
+            }
+                
         }
 
         /// <summary>
@@ -145,6 +205,8 @@ namespace Prince
             }
             _strikeMissed = false;
             StrikeBlockable = true;
+            // Until we end current strike we cannot start a new one.
+            StrikeAllowedByMe = false;
             _elapsedBlockingTime = 0;
         }
 
@@ -231,10 +293,12 @@ namespace Prince
         /// </summary>
         public void BlockSwordStarted()
         {
-            if (_currentEnemyInteractions != null && BlockingStrikePossible)
+            if (_currentEnemyInteractions != null)
             {
                 this.Log($"(FightingInteractions - {transform.root.name}) Noticing {_currentEnemyInteractions.transform.root.name} we are going to block his attack.", showLogs);
                 _currentEnemyInteractions.NoticeBlockSwordStarted();
+                // As we have already started our blocking movement, set BlockingStrikePossible to false
+                // to not to start a new blocking movement until finishing current one.
                 BlockingStrikePossible = false;
             }
             this.Log($"(FightingInteractions - {transform.root.name}) We have a chance to counter attack after blocking an strike.", showLogs);
@@ -277,7 +341,7 @@ namespace Prince
                 this.Log(
                     $"(FightingInteractions - {transform.root.name}) Our attack has been blocked so we won't we able to strike again until enemy has ended his blocking movement..",
                     showLogs);
-                stateMachine.SetBool("StrikeAllowed", false);
+                StrikeAllowedByDefender = false;
             }
             else
             {
@@ -306,20 +370,20 @@ namespace Prince
                 this.Log(
                     $"(FightingInteractions - {transform.root.name}) {_currentEnemyInteractions.transform.root.name} notice us he has ended his blocking movement, so we have permission to attack him again.",
                     showLogs);
-                stateMachine.SetBool("StrikeAllowed", true);
+                StrikeAllowedByDefender = true;
             }
                 
         }
-
-        /// <summary>
-        /// We used our chance to counter attack after blocking an enemy attack.
-        /// </summary>
-        public void CounterAttackStarted()
-        {
-            CounterAttackPossible = false;
-            BlockingStrikePossible = false;
-            this.Log($"(FightingInteractions - {transform.root.name}) We have used our chance to counter attack. (CounterAttackPossible set to {CounterAttackPossible})", showLogs);
-        }
+        
+        //
+        // /// <summary>
+        // /// We used our chance to counter attack after blocking an enemy attack.
+        // /// </summary>
+        // public void CounterAttackStarted()
+        // {
+        //     BlockingStrikePossible = false;
+        //     this.Log($"(FightingInteractions - {transform.root.name}) We have used our chance to counter attack. (CounterAttackPossible set to {CounterAttackPossible})", showLogs);
+        // }
 
         /// <summary>
         /// Our chance to counter attack after blocking an enemy attack has ended.
@@ -335,10 +399,10 @@ namespace Prince
         /// Our attack was blocked, and enemy may be going to strike us back. We still
         /// have an small chance to block that attack.
         /// </summary>
-        public void BlockedSwordStarted()
+        public void CounterBlockSwordChanceStarted()
         {
             this.Log($"(FightingInteractions - {transform.root.name}) Our attack was blocked.", showLogs);
-            // BlockingStrikePossible = true;
+            CounterBlockPossible = true;
         }
 
         /// <summary>
@@ -347,7 +411,15 @@ namespace Prince
         public void CounterBlockSwordChanceEnded()
         {
             this.Log($"(FightingInteractions - {transform.root.name}) Our chance to counter block has ended.", showLogs);
-            // BlockingStrikePossible = false;
+            CounterBlockPossible = false;
+        }
+
+        /// <summary>
+        /// Our strike has ended and we can start a new one.
+        /// </summary>
+        public void StrikeEnd()
+        {
+            StrikeAllowedByMe = true;
         }
     }
 }
