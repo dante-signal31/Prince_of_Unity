@@ -90,8 +90,7 @@ public class FightingSensors : MonoBehaviour
         if (!imGuard && otherTag == "Guard") return true;
         if (!imGuard && otherTag == "Player") return false;
         
-        // We aren't going to get here.
-        throw new Exception("You should have not got at this point of code");
+        // If we get here then we have detected nor a Character nor a Sensor, but possibly some architecture brick.
         return false; 
     }
 

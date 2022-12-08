@@ -668,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 312590335524935766}
     - target: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: hittingZoneTolerance
-      value: 0.365
+      value: 0.447
       objectReference: {fileID: 0}
     - target: {fileID: 8774815387925293592, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Name

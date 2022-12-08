@@ -105,6 +105,7 @@ namespace Tests.PlayTests
             LogAssert.ignoreFailingMessages = true;
             _cameraController.PlaceInRoom(_room00);
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 1;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _enemy.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
@@ -119,8 +120,9 @@ namespace Tests.PlayTests
             // Assert enemy has fallen through hole.
             Assert.IsTrue(fallenDistance > 1.0f);
             float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
-            float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
-            float difference = Math.Abs(separationDistance - maximumApproachDistance);
+            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
+            // float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
+            float difference = Math.Abs(separationDistance - hittingRange);
             // Assert enemy is at hitting range of Prince.
             Assert.IsTrue(difference < 0.3f);
             yield return null;
@@ -147,9 +149,9 @@ namespace Tests.PlayTests
             // Let chase happen.
             yield return new WaitForSeconds(5);
             float separationDistance = _prince.transform.position.x - _enemy.transform.position.x;
-            // float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
-            float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
-            float difference = Math.Abs(separationDistance - maximumApproachDistance);
+            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
+            // float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
+            float difference = Math.Abs(separationDistance - hittingRange);
             // Assert enemy is at hitting range of Prince.
             Assert.IsTrue(difference < 0.25f);
             yield return null;
@@ -225,8 +227,9 @@ namespace Tests.PlayTests
             // Let chase happen.
             yield return new WaitForSeconds(4);
             float separationDistance = Math.Abs(_prince.transform.position.x - _enemy.transform.position.x);
-            float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
-            float difference = Math.Abs(separationDistance - maximumApproachDistance);
+            float hittingRange = _enemy.GetComponentInChildren<FightingSensors>().HittingRange;
+            // float maximumApproachDistance = _enemy.GetComponentInChildren<FightingSensors>().MaximumApproachDistance;
+            float difference = Math.Abs(separationDistance - hittingRange);
             // Assert enemy is at hitting range of Prince.
             Assert.IsTrue(difference < 0.2f);
             yield return null;
