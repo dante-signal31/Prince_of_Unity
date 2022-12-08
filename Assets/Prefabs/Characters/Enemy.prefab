@@ -69,6 +69,7 @@ MonoBehaviour:
   fightingSensor: {fileID: 8963627455871625809}
   fightingInteractions: {fileID: 1594298939120450983}
   characterStatus: {fileID: 309445386847498652}
+  stateMachine: {fileID: 312590335524935766}
   stopTime: 0.5
   stopAttackTime: 1
   stopBlockTime: 0.5
@@ -190,12 +191,72 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: characterStatus
+      value: 
+      objectReference: {fileID: 309445386847498652}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: fightingSensors
       value: 
       objectReference: {fileID: 8963627455871625809}
     - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: hittingZoneTolerance
       value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: iAmBeingAttacked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: counterAttackChance.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: iAmBeingAttacked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: iAmBeingAttacked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6358967624518504285}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: counterAttackChance.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: counterAttackChance.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6358967624518504285}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: iAmBeingAttacked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: iAmBeingAttacked.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryToBlockAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: counterAttackChance.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: counterAttackChance.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryToCounterAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: iAmBeingAttacked.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Prince.GuardController, GameAssembly
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: counterAttackChance.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Prince.GuardController, GameAssembly
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: iAmBeingAttacked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: counterAttackChance.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1786895955714426400, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_LocalPosition.x
@@ -215,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Size.x
-      value: 1.876924
+      value: 1.6000521
       objectReference: {fileID: 0}
     - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Size.y
@@ -223,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Offset.x
-      value: 0.9386827
+      value: 0.8002467
       objectReference: {fileID: 0}
     - target: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Offset.y
@@ -359,7 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5167775872429732071, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Size.x
-      value: 0.6433922
+      value: 0.73492
       objectReference: {fileID: 0}
     - target: {fileID: 5167775872429732071, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Size.y
@@ -371,7 +432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5167775872429732071, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Offset.x
-      value: 0.4283039
+      value: 0.4740678
       objectReference: {fileID: 0}
     - target: {fileID: 5167775872429732071, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: m_Offset.y

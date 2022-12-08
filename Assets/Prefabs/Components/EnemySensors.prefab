@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7463754286281646920}
   m_Layer: 0
   m_Name: EnemySensors
-  m_TagString: Untagged
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,6 @@ MonoBehaviour:
   forwardSensorEnd: {fileID: 4021435712553895255}
   rearSensorStart: {fileID: 5030812289256890511}
   rearSensorEnd: {fileID: 3394390992355089755}
-  _isGuard: 0
 --- !u!1 &4151244906207871022
 GameObject:
   m_ObjectHideFlags: 0

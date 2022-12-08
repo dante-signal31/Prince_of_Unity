@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -5304199100214260378}
   m_Layer: 0
   m_Name: ClimbingSensor
-  m_TagString: Untagged
+  m_TagString: Sensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 65
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-5304199100214260378
 MonoBehaviour:
@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClimbableStatus: {fileID: 0}
   stateMachine: {fileID: 0}
+  activationDelay: 0

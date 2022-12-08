@@ -500,6 +500,21 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-5497447597298247871
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c1e69a798a40439362e0ee3e8decd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerToReset: Strike
+  resetOnEnter: 1
+  resetOnExit: 0
 --- !u!1101 &-5488311944941454658
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -632,6 +647,8 @@ AnimatorState:
   - {fileID: -6820329546207536789}
   m_StateMachineBehaviours:
   - {fileID: 3976992350134890216}
+  - {fileID: -5497447597298247871}
+  - {fileID: 2420701160771891292}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -753,7 +770,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Strike
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: StrikeAllowed
+    m_ConditionEvent: CounterAttackPossible
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8464191508557194690}
@@ -809,7 +826,10 @@ AnimatorStateTransition:
     m_ConditionEvent: Strike
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: StrikeAllowed
+    m_ConditionEvent: StrikeAllowedByDefender
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: StrikeAllowedByMe
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6684095160207137907}
@@ -1098,6 +1118,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Block
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: BlockingStrikePossible
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3976236592807710698}
   m_Solo: 0
@@ -1270,6 +1293,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Block
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: BlockingStrikePossible
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3976236592807710698}
   m_Solo: 0
@@ -1277,9 +1303,9 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0
-  m_HasExitTime: 0
+  m_TransitionOffset: 0.175
+  m_ExitTime: 1
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -1346,30 +1372,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: enemySeen
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: enemySeenForward
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: enemySeenRear
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: enemyInHittingRange
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: MaximumApproachToEnemyReached
     m_Type: 4
     m_DefaultFloat: 0
@@ -1424,7 +1426,37 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: RunHoldPressed
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: ActionHoldPressed
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: enemySeen
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: enemySeenForward
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: enemySeenRear
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: enemyInHittingRange
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1436,7 +1468,37 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 1
     m_Controller: {fileID: 0}
-  - m_Name: StrikeAllowed
+  - m_Name: StrikeAllowedByDefender
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 1
+    m_Controller: {fileID: 0}
+  - m_Name: StrikeAllowedByMe
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 1
+    m_Controller: {fileID: 0}
+  - m_Name: BlockingStrikePossible
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: CounterAttackPossible
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: CounterBlockPossible
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: DummyDisablingBool
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1580,6 +1642,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Block
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: BlockingStrikePossible
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3976236592807710698}
   m_Solo: 0
@@ -1604,6 +1669,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Block
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: BlockingStrikePossible
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3976236592807710698}
@@ -1880,6 +1948,21 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &2420701160771891292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c1e69a798a40439362e0ee3e8decd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerToReset: Block
+  resetOnEnter: 1
+  resetOnExit: 0
 --- !u!114 &2589066391774419388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2523,6 +2606,12 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Block
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: BlockingStrikePossible
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: CounterBlockPossible
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3888514082893935422}

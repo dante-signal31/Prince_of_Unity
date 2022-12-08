@@ -119,6 +119,8 @@ public class ColliderController : MonoBehaviour
             case CharacterStatus.States.AttackWithSword:
             case CharacterStatus.States.BlockSword:
             case CharacterStatus.States.BlockedSword:
+            case CharacterStatus.States.CounterBlockSword:
+            case CharacterStatus.States.CounterAttackWithSword:
             case CharacterStatus.States.IdleSword:
                 EnableFightingCollider();
                 break;

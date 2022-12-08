@@ -61,8 +61,8 @@ namespace Prince
                     break;
                 case Command.CommandType.Strike:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Execute strike at {Time.time}", showLogs);
-                    stateMachine.SetTriggerOneFrame("Strike", this);
-                    // stateMachine.SetTrigger("Strike");
+                    // stateMachine.SetTriggerOneFrame("Strike", this);
+                    stateMachine.SetTrigger("Strike");
                     break;
                 case Command.CommandType.WalkRightWithSword:
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Execute  walk right with sword at {Time.time}", showLogs);

@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AttackWithSword
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -51,6 +51,7 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
     pptrCurveMapping:
     - {fileID: 21300000, guid: cf71ecf95fc2f5a4fa7f0c1146a59a98, type: 3}
     - {fileID: 21300000, guid: 1842a5e5f7534634ba667939e069bee7, type: 3}
@@ -91,7 +92,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.125
+  - time: 0.25
+    functionName: BlockSwordEnded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.375
     functionName: BlockingChanceEnded
     data: 
     objectReferenceParameter: {fileID: 0}

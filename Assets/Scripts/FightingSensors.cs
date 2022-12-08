@@ -91,6 +91,7 @@ public class FightingSensors : MonoBehaviour
         if (!imGuard && otherTag == "Player") return false;
         
         // We aren't going to get here.
+        throw new Exception("You should have not got at this point of code");
         return false; 
     }
 

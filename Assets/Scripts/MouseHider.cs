@@ -8,7 +8,9 @@ namespace Prince
     {
         private void Start()
         {
+#if !UNITY_EDITOR
             Cursor.visible = false;
+#endif
         }
     }
 }
