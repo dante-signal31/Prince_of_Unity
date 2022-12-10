@@ -2,6 +2,7 @@
 
 namespace Prince
 {
+    // TODO: Guard corpses should show correct corpse depending on guard color.
     /// <summary>
     /// This component manages sprites shown by a trap.
     /// </summary>

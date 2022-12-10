@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 namespace Prince
 {
+    // TODO: After fighting all flags and trigger should return to its starting setup.
+    
     /// <summary>
     /// This is the main interface to communicate with current enemy while sword fighting.
     ///
