@@ -2,6 +2,8 @@
 
 namespace Prince
 {
+    // TODO: Take from game the music that is played when Prince is defeated by a guard.
+    
     /// <summary>
     /// This component let gameobjects ask to level camera sound controller to play
     /// specific music clips.
