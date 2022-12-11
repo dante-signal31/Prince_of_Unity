@@ -48,6 +48,40 @@ SpriteAtlas:
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 18d1c560ed5ed874fa931e27ef1721dc: 21300000
+    - f7606ca0cdf611749bbdfcdb239f75fc: 21300000
+    - adc06c015c0133049b24a817128681e8: 21300000
+    - 52ae7be2667be094aa2674d3a32a0ed2: 21300000
+    - 1b1526131ab76d64b8aa5aafbe3762a1: 21300000
+    - b047e5439ca491e449851af3067c2aa9: 21300000
+    - dd76b7837aaad7d4d9ece7eb8237fda2: 21300000
+    - f8e7d4a34dcbd8a47874e325bfb7555d: 21300000
+    - 1cabd7142aad14b459db8bfdd21c94ba: 21300000
+    - 15bc038562dc8754db9ed2d932cd9e2c: 21300000
+    - 8442e6c5219ab674889ddebaf510b109: 21300000
+    - 8b7637c55ec0406489dcb508c5b7b240: 21300000
+    - a7fe0cc5f0becc544b86cb7532ffb748: 21300000
+    - cacaea0671555b946abe2a4d0c571638: 21300000
+    - 48fb82762d832d248ab6792db8239d2a: 21300000
+    - 940655c6eb333694b850dbf659c823b6: 21300000
+    - b3ca9a57e200bfb42a858d3482f85464: 21300000
+    - 089e33778f9d21a48ad106ada406db4b: 21300000
+    - 3108fa774d8341141946919a710f5dad: 21300000
+    - f128ec77bded8f54cbc6639525169392: 21300000
+    - c127300974af19c4fa687bd3eea324f3: 21300000
+    - a95b7eb97f747d146bd1b2756321dce3: 21300000
+    - 3094860a764bc6545abb2995b34033da: 21300000
+    - 6af4935af5398694b8eb0756f9541e8c: 21300000
+    - efe7b86a12d26a54b9ad5bfdd8aa0c58: 21300000
+    - 6e33f9aa5b35b574f8e4e998b6e9bc09: 21300000
+    - 5504d01bc8dd69242a4482f780c524f1: 21300000
+    - 4b26543b8d389e541949b87c00b08b1a: 21300000
+    - 2adf2a4b7a3346f48bbafb33f911c4cb: 21300000
+    - 5b066aeb2694b7f4bb05440b5fc95114: 21300000
+    - fec2e19c3b05b7844a68c66e37ce8719: 21300000
+    - b824686e29c239640ac2fae7b026ad74: 21300000
+    - 032677fe2ccfa28469eac4be34804f93: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 18d1c560ed5ed874fa931e27ef1721dc, type: 3}
@@ -81,6 +115,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2adf2a4b7a3346f48bbafb33f911c4cb, type: 3}
   - {fileID: 21300000, guid: 5b066aeb2694b7f4bb05440b5fc95114, type: 3}
   - {fileID: 21300000, guid: fec2e19c3b05b7844a68c66e37ce8719, type: 3}
+  - {fileID: 21300000, guid: b824686e29c239640ac2fae7b026ad74, type: 3}
   - {fileID: 21300000, guid: 032677fe2ccfa28469eac4be34804f93, type: 3}
   m_PackedSpriteNamesToIndex:
   - res784
@@ -114,6 +149,7 @@ SpriteAtlas:
   - res755_with_sword
   - res772_with_sword
   - res781
+  - res759_with_sword_flipped
   - res771_with_sword
   m_RenderDataMap: {}
   m_Tag: Vizier

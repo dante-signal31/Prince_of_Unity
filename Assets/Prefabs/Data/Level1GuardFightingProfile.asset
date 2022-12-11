@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6a99ba4b6894f9aa1e84a4cce17d6c0, type: 3}
-  m_Name: PurpleGuardFightingProfile
+  m_Name: Level1GuardFightingProfile
   m_EditorClassIdentifier: 
-  boldness: 1
-  attack: 0.502
-  defense: 0.725
+  boldness: 0.9
+  attack: 0.3
+  defense: 0.15

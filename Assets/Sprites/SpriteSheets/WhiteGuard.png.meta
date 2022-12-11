@@ -25,7 +25,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -948,8 +948,8 @@ TextureImporter:
         y: 225
         width: 38
         height: 10
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.2631579, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1247,21 +1247,21 @@ TextureImporter:
       WhiteGuard_0: -473020573
       WhiteGuard_54: -704491131
       WhiteGuard_19: -330772863
+      WhiteGuard_17: -1761066641
       WhiteGuard_16: -1538242575
       WhiteGuard_34: -167952684
-      WhiteGuard_17: -1761066641
+      WhiteGuard_46: -1447319315
       WhiteGuard_13: -1612757191
-      WhiteGuard_28: -301035082
       WhiteGuard_8: 785402267
+      WhiteGuard_28: -301035082
       WhiteGuard_22: -2136621020
       WhiteGuard_1: 283878217
       WhiteGuard_53: -1712483714
       WhiteGuard_6: -90427378
       WhiteGuard_9: -897859689
-      WhiteGuard_18: -153837722
       WhiteGuard_42: 70465405
       WhiteGuard_49: 1741372231
-      WhiteGuard_46: -1447319315
+      WhiteGuard_18: -153837722
       WhiteGuard_14: 1906195107
       WhiteGuard_35: -1678874323
       WhiteGuard_31: -1776613423
@@ -1288,7 +1288,7 @@ TextureImporter:
       WhiteGuard_26: -1503172480
       WhiteGuard_11: -1875820070
       WhiteGuard_58: -299144930
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 

@@ -18,19 +18,21 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - curve:
+  - serializedVersion: 2
+    curve:
     - time: 0
-      value: {fileID: 21300000, guid: d9ca2ccbad25da046a39496ef42ad590, type: 3}
+      value: {fileID: 570638716, guid: 283f09eef2b76884395a542901deb6e4, type: 3}
     - time: 0.125
-      value: {fileID: 21300000, guid: 4c27ea21e3da97746bebf5d5f3a96b0a, type: 3}
+      value: {fileID: -901828785, guid: 283f09eef2b76884395a542901deb6e4, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 83f87893ec56a7e4797a2510d32bcc93, type: 3}
+      value: {fileID: -827535991, guid: 283f09eef2b76884395a542901deb6e4, type: 3}
     - time: 0.375
-      value: {fileID: 21300000, guid: d6de803ddd6cca14aa0a965c435af988, type: 3}
+      value: {fileID: -414938602, guid: 283f09eef2b76884395a542901deb6e4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
+    flags: 2
   m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
@@ -46,11 +48,12 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
       isIntCurve: 0
+      isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: d9ca2ccbad25da046a39496ef42ad590, type: 3}
-    - {fileID: 21300000, guid: 4c27ea21e3da97746bebf5d5f3a96b0a, type: 3}
-    - {fileID: 21300000, guid: 83f87893ec56a7e4797a2510d32bcc93, type: 3}
-    - {fileID: 21300000, guid: d6de803ddd6cca14aa0a965c435af988, type: 3}
+    - {fileID: 570638716, guid: 283f09eef2b76884395a542901deb6e4, type: 3}
+    - {fileID: -901828785, guid: 283f09eef2b76884395a542901deb6e4, type: 3}
+    - {fileID: -827535991, guid: 283f09eef2b76884395a542901deb6e4, type: 3}
+    - {fileID: -414938602, guid: 283f09eef2b76884395a542901deb6e4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -61,7 +64,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -84,15 +87,15 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: PlaySound
-    data: blocked_sword
+    functionName: BlockingChanceEnded
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0
-    functionName: BlockingChanceEnded
-    data: 
+    functionName: PlaySound
+    data: blocked_sword
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
