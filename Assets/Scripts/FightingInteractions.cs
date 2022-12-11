@@ -5,7 +5,7 @@ using UnityEngine.Events;
 namespace Prince
 {
     // TODO: After fighting all flags and trigger should return to its starting setup.
-    // TODO: Prince cannot unsheathe if he is too close to guard.
+    // TODO: Prince cannot unsheathe if he is too close to guard. Must fix it.
     
     /// <summary>
     /// This is the main interface to communicate with current enemy while sword fighting.

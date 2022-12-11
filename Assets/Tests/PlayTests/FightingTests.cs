@@ -9,7 +9,6 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
-    // TODO: Add a test for guard defending with perfect defense.
     public class FightingTests
     {
         private GameObject _prince;
@@ -26,7 +25,7 @@ namespace Tests.PlayTests
             yield return TestSceneManager.ReLoadScene(_currentScene);
 
             if (_prince == null) _prince = GameObject.Find("Prince");
-            if (_enemy == null) _enemy = GameObject.Find("Enemy");
+            if (_enemy == null) _enemy = GameObject.Find("Enemy-Level_1");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
 
@@ -301,6 +300,41 @@ namespace Tests.PlayTests
             float movedDistance = Vector2.Distance(startPosition, endPosition);
             float error = movedDistance - expected_distance;
             Assert.True(Math.Abs(error) < 0.35);
+            yield return null;
+        }
+        
+        /// <summary>
+        /// Test guard is invulnerable when his defense is 1.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator GuardBlockEveryStrikeWhenDefenseOneTest()
+        {
+            // Setup test.
+            LogAssert.ignoreFailingMessages = true;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            // I dont want enemy to move, but I want him to be a perfect defender.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 1;
+            yield return null;
+            // float expected_distance = 0.3885f;
+            float expected_distance = 0;
+            string commandFile = @"Assets\Tests\TestResources\massiveSwordHit";
+            int startLife = _enemy.GetComponent<CharacterStatus>().Life;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(15);
+            // Assert Guard has not lost any life point.
+            int endLife = _enemy.GetComponent<CharacterStatus>().Life;
+            Assert.True(startLife == endLife);
             yield return null;
         }
     }
