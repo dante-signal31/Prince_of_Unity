@@ -9,6 +9,7 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
+    // TODO: Add a test for guard defending with perfect defense.
     public class FightingTests
     {
         private GameObject _prince;
