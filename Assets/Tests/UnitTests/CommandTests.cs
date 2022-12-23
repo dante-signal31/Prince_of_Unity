@@ -6,6 +6,8 @@ using UnityEngine.TestTools;
 using Prince;
 using Tests.UnitTests.Tools.Fs;
 using UnityEditor;
+using UnityEngine.Assertions;
+using Assert = NUnit.Framework.Assert;
 
 namespace Tests.UnitTests
 {
