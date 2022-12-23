@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Editor
 {
+    // TODO: Migrate to new UI Toolkit support.
+    
     [CustomPropertyDrawer(typeof(GameTimer.PlannedEvent))]
     public class PlannedEventDrawer : PropertyDrawer
     {

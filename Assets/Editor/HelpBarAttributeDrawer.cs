@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Editor
 {
+    // TODO: Migrate to new UI Toolkit support.
     // /// <summary>
     // /// Show a help box at inspector with a message about decorated field.
     // /// </summary>

@@ -514,6 +514,7 @@ namespace Tests.PlayTests
         [UnityTest]
         public IEnumerator PrinceFallsWithFallingGroundTest()
         {
+            // TODO: Sometimes Prince survives when falls in this test. Must fix it.
             _cameraController.PlaceInRoom(_room10);
             _enemy.SetActive(false);
             _prince.SetActive(true);

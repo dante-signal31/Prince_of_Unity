@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Editor
 {
+    // TODO: Migrate to new UI Toolkit support.
+    
     /// <summary>
     /// <p>This property drawer is needed because I want to drag and drop scene assets to inspector. Problem is
     /// that SceneAssets are under UnityEditor namespace. Remember that final build fails if you use UnityEditor
