@@ -126,6 +126,7 @@ SpriteAtlas:
     - 928646fa94d8694488fdf517c5dd2206: 21300000
     - 10468ffada4fc924cb19e14946a895d5: 21300000
     - 21a6650bc01e7eb48ade5534899ca73e: 21300000
+    - c26c961b3de5dc4459db3d5b5fe7ff67: 21300000
     - 4479b91b3c3d7a943a6e4e7e9f541ee5: 21300000
     - 3023d54b9630a424ca6cb2632089cb7c: 21300000
     - 2cbc6b7b613e6e04ba4841da4a776a0d: 21300000
@@ -238,6 +239,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 928646fa94d8694488fdf517c5dd2206, type: 3}
   - {fileID: 21300000, guid: 10468ffada4fc924cb19e14946a895d5, type: 3}
   - {fileID: 21300000, guid: 21a6650bc01e7eb48ade5534899ca73e, type: 3}
+  - {fileID: 21300000, guid: c26c961b3de5dc4459db3d5b5fe7ff67, type: 3}
   - {fileID: 21300000, guid: 4479b91b3c3d7a943a6e4e7e9f541ee5, type: 3}
   - {fileID: 21300000, guid: 3023d54b9630a424ca6cb2632089cb7c, type: 3}
   - {fileID: 21300000, guid: 2cbc6b7b613e6e04ba4841da4a776a0d, type: 3}
@@ -349,6 +351,7 @@ SpriteAtlas:
   - _Switch_closer_activated_no_border_normalized
   - blade_down_blood_1_normalized
   - _Iron_curtain_left_3_normalized_full_lowered
+  - _Window_normalized
   - _Front_Column_normalized
   - _Wall_normalized_variant_5
   - _Portcullis_frontpillar_2_normalized
