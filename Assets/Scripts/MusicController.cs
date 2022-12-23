@@ -20,10 +20,10 @@ namespace Prince
         /// <summary>
         /// Play an specific music audio clip.
         /// </summary>
-        /// <param name="name">Music audio clip name.</param>
-        public void PlayMusic(string name)
+        /// <param name="_name">Music audio clip name.</param>
+        public void PlayMusic(string _name)
         {
-            _cameraSoundController.PlaySound(name);
+            _cameraSoundController.PlaySound(_name);
         }
     }
 }
