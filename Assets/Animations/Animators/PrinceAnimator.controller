@@ -1977,6 +1977,20 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-4278171984178640541
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9036f45e34144758aa0d57f72e03bb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolToReset: CounterBlockPossible
+  defaultValue: 0
 --- !u!114 &-3979891300309910256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2457,6 +2471,11 @@ AnimatorState:
   - {fileID: -2066702904753906919}
   - {fileID: 7543730773209955410}
   - {fileID: -4850951846322124747}
+  - {fileID: -2223333182717483955}
+  - {fileID: -1548827786114114406}
+  - {fileID: 7291782073028871204}
+  - {fileID: 7421545385197561681}
+  - {fileID: -4278171984178640541}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -2674,6 +2693,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-2223333182717483955
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9036f45e34144758aa0d57f72e03bb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolToReset: StrikeAllowedByDefender
+  defaultValue: 1
 --- !u!1102 &-2196917822800530664
 AnimatorState:
   serializedVersion: 6
@@ -2892,6 +2925,20 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-1548827786114114406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9036f45e34144758aa0d57f72e03bb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolToReset: StrikeAllowedByMe
+  defaultValue: 1
 --- !u!114 &-1509964918956708823
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5999,6 +6046,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &7291782073028871204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9036f45e34144758aa0d57f72e03bb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolToReset: BlockingStrikePossible
+  defaultValue: 0
 --- !u!1109 &7300240969722908578
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -6131,6 +6192,20 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &7421545385197561681
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9036f45e34144758aa0d57f72e03bb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boolToReset: CounterAttackPossible
+  defaultValue: 0
 --- !u!1101 &7530970683271439256
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
