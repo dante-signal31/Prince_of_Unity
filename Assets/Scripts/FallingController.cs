@@ -152,6 +152,16 @@ namespace Prince
                 damageEffect.ShowLandingHit(fightingInteractions.ImGuard);
                 _damageAlreadyShown = true;
             }
+
+            // If we are not hardLanding but _damageAlreadyShown is still true, it means
+            // character has stood after a hard landing so _damageAlreadyShown should be
+            // reset to false.
+            if (!(characterStatus.CurrentState == CharacterStatus.States.HardLanding ||
+                  characterStatus.CurrentState == CharacterStatus.States.DeadByFall) &&
+                _damageAlreadyShown)
+            {
+                _damageAlreadyShown = false;
+            }
         }
 
         /// <summary>
