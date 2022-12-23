@@ -25,7 +25,7 @@ namespace Tests.PlayTests
             yield return TestSceneManager.ReLoadScene(_currentScene);
 
             if (_prince == null) _prince = GameObject.Find("Prince");
-            if (_enemy == null) _enemy = GameObject.Find("Enemy-Level_1");
+            if (_enemy == null) _enemy = GameObject.Find("Enemy");
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
 
