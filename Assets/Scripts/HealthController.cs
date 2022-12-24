@@ -37,7 +37,8 @@ namespace Prince
             set
             {
                 characterStatus.Life = Math.Clamp(value, 0, MaximumLife);
-                if (characterStatus.IsPrince && characterStatus.IsDead) _eventBus.TriggerEvent(new GameEvents.PrinceDead(), this);
+                if (characterStatus.IsPrince && characterStatus.IsDead) 
+                    _eventBus.TriggerEvent(new GameEvents.PrinceDead(characterStatus.IsFighting), this);
             }
         }
 

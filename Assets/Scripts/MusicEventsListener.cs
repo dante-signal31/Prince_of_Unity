@@ -61,14 +61,26 @@ namespace Prince
             soundController.PlaySound("level1_intro");
         }
 
-        private void OnPrinceDead(object _, GameEvents.PrinceDead __)
+        private void OnPrinceDead(object _, GameEvents.PrinceDead ev)
         {
-            Invoke(nameof(PlayDeadMusic), deadMusicDelay);
+            if (ev.DeadBySword)
+            {
+                Invoke(nameof(PlayDeadBySwordMusic), deadMusicDelay);
+            }
+            else
+            {
+                Invoke(nameof(PlayDeadMusic), deadMusicDelay);
+            }
         }
 
         private void PlayDeadMusic()
         { 
             soundController.PlaySound("regular_death");
+        }
+
+        private void PlayDeadBySwordMusic()
+        {
+            soundController.PlaySound("fight_death");
         }
     }
 }

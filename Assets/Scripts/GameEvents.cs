@@ -165,7 +165,15 @@ public class GameEvents : MonoBehaviour
     /// <summary>
     /// This event is raised when Prince deads.
     /// </summary>
-    public class PrinceDead : EventArgs { }
+    public class PrinceDead : EventArgs
+    {
+        public bool DeadBySword { get; }
+
+        public PrinceDead(bool deadBySword = false)
+        {
+            DeadBySword = deadBySword;
+        }
+    }
 
     /// <summary>
     /// This event is raised when pause key is pressed. 

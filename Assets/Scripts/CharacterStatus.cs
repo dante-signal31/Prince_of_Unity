@@ -226,7 +226,32 @@ namespace Prince
         }
     
         public bool IsDead => (Life == 0);
-    
+
+        public bool IsFighting
+        {
+            get
+            {
+                switch (CurrentState)
+                {
+                    case States.AdvanceSword:
+                    case States.Unsheathe:
+                    case States.Sheathe:
+                    case States.Retreat:
+                    case States.BlockedSword:
+                    case States.BlockSword:
+                    case States.IdleSword:
+                    case States.AttackWithSword:
+                    case States.CounterBlockSword:
+                    case States.CounterAttackWithSword:
+                    case States.HitBySword:
+                    case States.KilledBySword:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
+
         public bool LookingRightWards
         {
             get => lookingRightWards;

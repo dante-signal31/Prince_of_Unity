@@ -36,8 +36,10 @@ namespace Prince
         [SerializeField] private float delayToShowLevelMessage;
         // [Tooltip("Event listener to notify when a new level is loaded.")]
         // [SerializeField] private UnityEvent<Level> levelLoaded;
-        [Tooltip("Time in seconds to reload level after been killed.")] 
+        [Tooltip("Time in seconds to reload level after dying out of a fight.")] 
         [SerializeField] private float reloadAfterDeadDelay;
+        [Tooltip("Time in seconds to reload level after being killed in a fight.")]
+        [SerializeField] private float reloadAfterDeadBySwordDelay;
 
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
@@ -86,10 +88,17 @@ namespace Prince
             LoadScene("Opening");
         }
 
-        private void OnPrinceDead(object _, GameEvents.PrinceDead __)
+        private void OnPrinceDead(object _, GameEvents.PrinceDead ev)
         {
             // Invoke(nameof(ReloadScene), reloadAfterDeadDelay);
-            StartCoroutine(ReloadScene(reloadAfterDeadDelay));
+            if (ev.DeadBySword)
+            {
+                StartCoroutine(ReloadScene(reloadAfterDeadBySwordDelay));
+            }
+            else
+            {
+                StartCoroutine(ReloadScene(reloadAfterDeadDelay));
+            }
         }
 
         /// <summary>

@@ -23,3 +23,5 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 88538e5d9b4661446a99d659c89d4eb0, type: 3}
   - name: level1_intro
     audioClip: {fileID: 8300000, guid: 24c26b4517870c6429f807f7db92b18c, type: 3}
+  - name: fight_death
+    audioClip: {fileID: 8300000, guid: 8407227756a68174da33d969c1e23d0f, type: 3}
