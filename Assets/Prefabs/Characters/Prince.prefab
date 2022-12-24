@@ -969,6 +969,166 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2fd491f9-c8cb-46d3-9e9f-2b3f885e0f4c
     m_ActionName: PrinceActionMap/Cancel[/Keyboard/n]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: SkipToNextLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 87b63704-c9d9-4331-b0d6-a15851c9a92f
+    m_ActionName: FightingActionMap/SkipToNextLevel[/Keyboard/ctrl,/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: Cancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d5615fb5-0ae5-42ea-97d2-c7aab1674ecb
+    m_ActionName: FightingActionMap/Cancel[/Keyboard/n]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: AddExtraBarOfLife
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 56244b21-126b-4033-b254-b7d587235a81
+    m_ActionName: FightingActionMap/AddExtraBarOfLife[/Keyboard/ctrl,/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: HealLifePoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c83f699a-0f44-40fa-9867-b6ac3b81d333
+    m_ActionName: FightingActionMap/HealLifePoint[/Keyboard/ctrl,/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: KillGuardInRoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b7eb47ab-7259-4b9b-a1bc-c3f387cebcca
+    m_ActionName: FightingActionMap/KillGuardInRoom[/Keyboard/ctrl,/Keyboard/m]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: IncreaseTime
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6fc1d777-52eb-4ecd-8ee0-4b9e414e7230
+    m_ActionName: FightingActionMap/IncreaseTime[/Keyboard/ctrl,/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: DecreaseTime
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d39f2e13-fc79-4d35-8c47-137a79474ef6
+    m_ActionName: FightingActionMap/DecreaseTime[/Keyboard/ctrl,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e1f21edd-bc68-457e-a284-bfed0ad2614f
+    m_ActionName: FightingActionMap/Pause[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: Quit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bff96ed9-f371-430e-b3cd-34e663ac6739
+    m_ActionName: FightingActionMap/Quit[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2555740834043721919}
+        m_TargetAssemblyTypeName: Prince.InputActionController, GameAssembly
+        m_MethodName: Confirm
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3369ea53-4d26-4113-9178-3c85fcf02a95
+    m_ActionName: FightingActionMap/Confirm[/Keyboard/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: PrinceActionMap
