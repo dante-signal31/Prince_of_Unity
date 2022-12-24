@@ -6,8 +6,6 @@ using UnityEngine;
 
 namespace Prince
 {
-    // TODO: Include controller support.
-
     /// <summary>
     /// <p>This component translates Input calls received from a InputActionController, or an AI controller,
     /// to commands. Those commands are sent to a CommandController which is intended to submit them to

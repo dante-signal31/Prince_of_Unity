@@ -166,6 +166,17 @@
                 },
                 {
                     "name": "",
+                    "id": "dc4ce5d7-1b38-4218-8ab2-3253c7b2a139",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Move right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "35c028e2-3215-4bb8-a54c-ff4d76479a03",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -182,6 +193,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Move left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3883853-25d3-4d20-8c05-ab93434d0dc8",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Move left",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -210,6 +232,17 @@
                 },
                 {
                     "name": "",
+                    "id": "daa476e8-18c2-41ab-845a-55c9895ec360",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Duck",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "981fbb15-83d2-476d-9adc-34897512134a",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -232,11 +265,33 @@
                 },
                 {
                     "name": "",
+                    "id": "791fe663-d7e9-4b3b-aa82-eca8f815e8dc",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "472c1c26-8de2-49eb-926a-2715addc8332",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6aaabe1-6325-48ff-8ace-68869cc4b473",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -275,6 +330,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Button With One Modifier",
+                    "id": "0bad9de8-cfc4-46be-9f2e-d52525999fdb",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkipToNextLevel",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "c4b35c0a-59f7-4352-968b-ee7b78093ec7",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SkipToNextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "98076501-3c36-4fa1-b38f-e199b3358a28",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SkipToNextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Ctrl + T",
                     "id": "7aeddef6-9cc5-4436-8ee1-b6f784da8af5",
                     "path": "OneModifier",
@@ -303,6 +391,39 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "AddExtraBarOfLife",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "f8e15b9c-705e-44e0-ae35-7eda21b2ce71",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddExtraBarOfLife",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "5e7eeff4-b8db-4c11-b14c-c152726f4d27",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "AddExtraBarOfLife",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "10aea786-fb9b-468a-9eb9-f79067c8eac5",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "AddExtraBarOfLife",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -341,6 +462,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Button With One Modifier",
+                    "id": "7ce77708-e8fc-45f3-98e6-24f9d9cf5bef",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HealLifePoint",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "6da5bc3e-4a46-4ee8-b518-a85d486133c6",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HealLifePoint",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "189ba9d0-b291-40d9-9c1f-b61f15eff2c3",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HealLifePoint",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Ctrl + M",
                     "id": "56dc4213-ec0d-4d94-9fb4-1e1d1a20edf3",
                     "path": "OneModifier",
@@ -369,6 +523,39 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "KillGuardInRoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "25ea4292-cfae-4e4f-9461-3637ec449fa6",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillGuardInRoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "5a6220d7-5c48-4237-a794-1a349cd02b70",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "KillGuardInRoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "ba79e9bf-c42c-4c12-8b04-ac4647cdacb5",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "KillGuardInRoom",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -407,6 +594,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Button With One Modifier",
+                    "id": "299b7128-d1fe-43e5-af5a-e5ad4047e565",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseTime",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "fdf0d158-a717-4722-b7c6-778ad3137be1",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "IncreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "3369aceb-892b-4ed8-aa99-ec6decd885bf",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "IncreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "Ctrl + D",
                     "id": "b9f29fed-a4f1-418b-acd2-929ad2bacd8c",
                     "path": "OneModifier",
@@ -440,12 +660,56 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Button With One Modifier",
+                    "id": "7488b521-0481-4bba-82f9-1800495db0e5",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseTime",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "9e15c9f1-6fe3-472b-8168-d462a65d9fff",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DecreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "3da43cd8-813e-4362-bca0-da82d3d1e055",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DecreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "9f477758-f0a8-4300-943f-fe82bc690f4f",
                     "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "def112a5-4083-4377-84ec-3ffea0381161",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -463,6 +727,17 @@
                 },
                 {
                     "name": "",
+                    "id": "aaf393b5-1b52-438e-8a82-b2feca1bfb6b",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9cda90c3-f067-4b6f-a91f-9965bd4af48c",
                     "path": "<Keyboard>/y",
                     "interactions": "",
@@ -474,11 +749,33 @@
                 },
                 {
                     "name": "",
+                    "id": "ad1f84f4-fa2e-440d-a4f3-f8b8e559eda0",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2995af26-85d9-4a4a-afa1-52d4b32976c3",
                     "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9711ffe2-75a1-4414-a218-8ca1a4c9163c",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -538,15 +835,6 @@
                     "name": "SkipToNextLevel",
                     "type": "Button",
                     "id": "87b63704-c9d9-4331-b0d6-a15851c9a92f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Cancel",
-                    "type": "Button",
-                    "id": "d5615fb5-0ae5-42ea-97d2-c7aab1674ecb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -619,6 +907,15 @@
                     "name": "Confirm",
                     "type": "Button",
                     "id": "3369ea53-4d26-4113-9178-3c85fcf02a95",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "d5615fb5-0ae5-42ea-97d2-c7aab1674ecb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -924,17 +1221,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "e254fb18-82b5-4b34-acdc-b1df8f55bb83",
-                    "path": "<Keyboard>/n",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "Ctrl + L",
                     "id": "6ad6ec21-6fb1-4537-9c9c-556f294d2c78",
                     "path": "OneModifier",
@@ -966,6 +1252,314 @@
                     "action": "SkipToNextLevel",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "79708a67-c02c-4501-9080-05d788bd0d8e",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Strike",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b204aa9e-ec3b-4a18-a7a0-216fba96f903",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66a4b330-a40a-4239-a2e2-6cc5569f9c93",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Sheathe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f4fac78-bfae-4a06-aa32-052cae5b60ee",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "WalkRightWithSword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9d5ecd88-6ac2-4bd4-ad35-1ac5743ec5e8",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "WalkLeftWithSword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "7df54deb-e8ca-4c14-a1d5-a7431e91e5cd",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkipToNextLevel",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "5f411fd0-7f7d-493c-bbad-6f1076749a4b",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SkipToNextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "462245da-1e29-40e1-a70a-44608be2c25e",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SkipToNextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "d08a64c6-1242-4c9e-9990-24407ce477e7",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddExtraBarOfLife",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "1257aacc-555a-4ad3-a732-e3bc2d881232",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "AddExtraBarOfLife",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "a4bf71c9-7d8e-4245-bbd8-816bca20a804",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "AddExtraBarOfLife",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "10c80baa-5555-461a-8863-8e42800e9e36",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HealLifePoint",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "1a52db72-4b6e-46c4-b92d-824b190e5f08",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HealLifePoint",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "93be8658-295e-4bfb-8a0d-11edd2c01a39",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HealLifePoint",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "4b0da131-3bdb-49ac-bc35-a99615d1c1fc",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KillGuardInRoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "94fb866a-16b3-4bb2-bf3a-1013a80a1d6d",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "KillGuardInRoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "18fe77ff-43d7-41f3-8804-6c74bb32e6e5",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "KillGuardInRoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "2f89b0ea-be28-424a-a710-caede82e68ea",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IncreaseTime",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "9176b8b9-e395-4afc-8210-caeba9059b16",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "IncreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "e3c9244a-6df8-4422-9cf3-2aabf3aabca1",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "IncreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "45d6aebc-4a61-47d7-8b78-5b46ff0445ca",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DecreaseTime",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "5359a9ec-ca26-4c15-87c4-1e02dc6067fd",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DecreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "1c5679d3-ae56-432d-8765-6275b468c601",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DecreaseTime",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "2a46ed71-0f1d-4a10-8cda-f94ea38ed360",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ab5615a-96ab-4d4b-8287-802e94dd4426",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6167d334-cc9f-40d9-a1b1-57f7dd885e74",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e254fb18-82b5-4b34-acdc-b1df8f55bb83",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1917bd56-ce69-45ad-9405-8b476f58f55d",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
