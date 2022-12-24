@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Prince
 {
+    // TODO: Sometimes when falling character touches wall with his back, so it activates slide falling animation which looks odd. Must fix it. 
     /// <summary>
     /// This component detects when Prince touches a wall.
     ///
