@@ -64,6 +64,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1556908315, guid: 76d6a8f172e83674586e985c50d86ac3, type: 3}
+    - target: {fileID: 7038333864755274929, guid: 9a302315328437844b5d142339c5c01b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760871672303546608, guid: 9a302315328437844b5d142339c5c01b, type: 3}
+      propertyPath: cutCorpse
+      value: 
+      objectReference: {fileID: -1175710702, guid: 76d6a8f172e83674586e985c50d86ac3, type: 3}
+    - target: {fileID: 8760871672303546608, guid: 9a302315328437844b5d142339c5c01b, type: 3}
+      propertyPath: stabbedCorpse
+      value: 
+      objectReference: {fileID: -1447319315, guid: 76d6a8f172e83674586e985c50d86ac3, type: 3}
     - target: {fileID: 8982758987201149019, guid: 9a302315328437844b5d142339c5c01b, type: 3}
       propertyPath: m_Name
       value: Enemy-Level_4
