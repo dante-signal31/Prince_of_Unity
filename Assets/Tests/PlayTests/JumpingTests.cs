@@ -9,6 +9,7 @@ using UnityEngine.TestTools;
 
 namespace Tests.PlayTests
 {
+    // TODO: When walkingJumping from upper legde of room00 of first level, Prince falls to room below. Must fix it.
     public class JumpingTests : MonoBehaviour
     {
         private GameObject _prince;
