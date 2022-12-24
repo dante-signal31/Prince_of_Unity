@@ -12,6 +12,7 @@ namespace Tests.PlayTests
     public class PortcullisTests
     {
         private GameObject _prince;
+        private GameObject _enemy;
 
         private GameObject _startPosition1;
         private GameObject _startPosition2;
@@ -40,6 +41,7 @@ namespace Tests.PlayTests
             yield return TestSceneManager.ReLoadScene(_currentScene);
             
             if (_prince == null) _prince = GameObject.Find("Prince");
+            if (_enemy == null) _enemy = GameObject.Find("Enemy");
             if (_portcullis == null) _portcullis = GameObject.Find("Portcullis");
             if (_portcullis2 == null) _portcullis2 = GameObject.Find("Portcullis2");
             if (_portcullis3 == null) _portcullis3 = GameObject.Find("Portcullis3");
@@ -62,6 +64,7 @@ namespace Tests.PlayTests
                 _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
 
             _prince.SetActive(false);
+            _enemy.SetActive(false);
 
             yield return new EnterPlayMode();
         }
