@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Prince
 {
+    // TODO: When character climbs after a falling hanging it lands over upper ledge. Must fix it.
+    
     /// <summary>
     /// Prince component that handles climbing, hanging and descending interactions with Climbable game objects.
     /// </summary>
