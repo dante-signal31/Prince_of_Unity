@@ -26,7 +26,7 @@ namespace Prince
         /// <summary>
         /// Disable current game object.
         /// </summary>
-        private void DisableGameObject()
+        protected virtual void DisableGameObject()
         {
             gameObject.SetActive(false);
         }

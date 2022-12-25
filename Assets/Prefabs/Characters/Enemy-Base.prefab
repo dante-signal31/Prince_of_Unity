@@ -714,6 +714,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8774815387925293592, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6095111500176580641}
+    - targetCorrespondingSourceObject: {fileID: 8774815387925293592, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2360016548371404433}
   m_SourcePrefab: {fileID: 100100000, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
 --- !u!114 &309445386847498652 stripped
 MonoBehaviour:
@@ -747,7 +750,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1391425223428354020, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
   m_PrefabInstance: {fileID: 391606109120057923}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5950074769035934344}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7132215fec42f8946a17ad007e653de8, type: 3}
@@ -758,9 +761,24 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 2179013083815870541, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
   m_PrefabInstance: {fileID: 391606109120057923}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4346748354275395984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4124597107352935379, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 391606109120057923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4541415283098392249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4208924519771227386, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 391606109120057923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5300207349595692571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5539811472104328280, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 391606109120057923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5950074769035934344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6340411678766655691, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
   m_PrefabInstance: {fileID: 391606109120057923}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &6078154809529529353 stripped
@@ -774,6 +792,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd150563f8621e4799d6fef3f218ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6133487279785471954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5796631354318011793, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 391606109120057923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6137508733859146352 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5783620289349908531, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
@@ -796,6 +819,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d772b87ff42ca4bbb2f7954db8e6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7860044788347820719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7528680167608715500, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+  m_PrefabInstance: {fileID: 391606109120057923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8963627455871625809 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
@@ -825,3 +853,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightingProfile: {fileID: 11400000, guid: 3955ddc5215c2bd4b97ea5fb57f3086a, type: 2}
+--- !u!114 &2360016548371404433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982758987201149019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84221689cd9040d4b6f316369c31d4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disablingState: 13
+  waitingTime: 0.3
+  componentsToDisable:
+  - {fileID: 4346748354275395984}
+  - {fileID: 5950074769035934344}
+  - {fileID: 4541415283098392249}
+  - {fileID: 6133487279785471954}
+  - {fileID: 7860044788347820719}
+  - {fileID: 3624765049714166479}

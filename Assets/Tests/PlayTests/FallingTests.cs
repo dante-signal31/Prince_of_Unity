@@ -419,7 +419,7 @@ namespace Tests.PlayTests
             AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
             AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
             // Let movements perform.
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(5);
             // Assert we have fallen enough.
             float currentHeight = _enemy.transform.position.y;
             Assert.True((startingHeight - currentHeight) > 6f);

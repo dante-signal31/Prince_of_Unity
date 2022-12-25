@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace Prince
 {
-    /// TODO: Guards components stay active after he dies. Must fix it.
     /// <summary>
     /// This component keeps every variable about Character general state.
     /// </summary>
