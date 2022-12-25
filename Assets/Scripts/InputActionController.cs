@@ -154,8 +154,19 @@ namespace Prince
             if (context.performed)
             {
                 inputController.Sheathe();
-                playerInput.SwitchCurrentActionMap("PrinceActionMap");
             }
+        }
+
+        /// <summary>
+        /// Called from sheathe animation to switch input action map when animation ends.
+        /// </summary>
+        public void OnSheathed()
+        {
+            // I cannot call this from InputActionController.Seathe() because when fighting is
+            // finished seathing state is automatically triggered, so this
+            // InputActionController.Sheathed() is not called. So I have to put this in its own
+            // method to be called when sheating animation ends.
+            playerInput.SwitchCurrentActionMap("PrinceActionMap");
         }
 
         public void Strike(InputAction.CallbackContext context)

@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 namespace Prince
 {
-    /// TODO: After killing a guard I cannot move again. Must fix it.
     /// <summary>
     /// This is the main interface to communicate with current enemy while sword fighting.
     ///

@@ -337,5 +337,44 @@ namespace Tests.PlayTests
             Assert.True(startLife == endLife);
             yield return null;
         }
+        
+        /// <summary>
+        /// Test Prince can run after a fighting.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceCanRunAfterFightingTest()
+        {
+            // Setup test.
+            LogAssert.ignoreFailingMessages = true;
+            // Let enemy attack Prince..
+            _enemy.GetComponentInChildren<GuardController>().enabled = true;
+            _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            InputController inputController = _prince.GetComponent<InputController>();
+            string commandFile = @"Assets\Tests\TestResources\attackingGuard";
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(11);
+            Assert.IsTrue(_enemy.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
+            float currentPrincePositionX = _prince.transform.position.x;
+            commandFile = @"Assets\Tests\TestResources\runningSequence";
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Check Prince has advanced.
+            Assert.True(_prince.transform.position.x - currentPrincePositionX > 1.0f);
+            yield return null;
+        }
     }
 }

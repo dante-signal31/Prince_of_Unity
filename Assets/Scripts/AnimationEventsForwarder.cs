@@ -21,6 +21,8 @@ namespace Prince
                 [SerializeField] private MusicController musicController;
                 [Tooltip("Needed to emit vibrations event.")] 
                 [SerializeField] private VibrationsController vibrationsController;
+                [Tooltip("Needed to signal that sheathe animation has ended.")]
+                [SerializeField] private InputActionController inputActionController;
 
                 private EventBus _eventBus;
 
@@ -100,6 +102,12 @@ namespace Prince
                 public void EmitVibration()
                 {
                     vibrationsController.TriggerVibrationEvent();
+                }
+                
+                public void SheatheEnded()
+                {
+                    // Guards have no InputActionController so they keep this field null.
+                    if (inputActionController != null) inputActionController.OnSheathed();
                 }
         }
 }

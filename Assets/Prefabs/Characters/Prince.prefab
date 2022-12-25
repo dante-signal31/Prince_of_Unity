@@ -520,6 +520,10 @@ PrefabInstance:
       propertyPath: vibrationsController
       value: 
       objectReference: {fileID: 6363931227657809856}
+    - target: {fileID: 8326000155993945185, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
+      propertyPath: inputActionController
+      value: 
+      objectReference: {fileID: 2555740834043721919}
     - target: {fileID: 8721906775669078034, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: stateMachine
       value: 
