@@ -1453,6 +1453,10 @@ PrefabInstance:
       propertyPath: stateMachine
       value: 
       objectReference: {fileID: 3792878465186783984}
+    - target: {fileID: 5091205098563645366, guid: 19135bee534ef6b46a0983a7aadb69b0, type: 3}
+      propertyPath: characterStatus
+      value: 
+      objectReference: {fileID: 3800712010592504634}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
