@@ -28,12 +28,15 @@ namespace Tests.PlayTests
         private GameObject _startPosition13;
         private GameObject _startPosition14;
         private GameObject _startPosition15;
+        private GameObject _startPosition33;
+        private GameObject _startPosition34;
 
         private CameraController _cameraController;
         private Room _room00;
         private Room _room01;
         private Room _room02;
         private Room _room10;
+        private Room _room_10;
 
         private string _currentScene = "TheAbyss";
 
@@ -57,6 +60,8 @@ namespace Tests.PlayTests
             if (_startPosition13 == null) _startPosition13 = GameObject.Find("StartPosition13");
             if (_startPosition14 == null) _startPosition14 = GameObject.Find("StartPosition14");
             if (_startPosition15 == null) _startPosition15 = GameObject.Find("StartPosition15");
+            if (_startPosition33 == null) _startPosition33 = GameObject.Find("StartPosition33");
+            if (_startPosition34 == null) _startPosition34 = GameObject.Find("StartPosition34");
             if (_cameraController == null)
                 _cameraController = GameObject.Find("LevelCamera").GetComponentInChildren<CameraController>();
             if (_room00 == null)
@@ -67,6 +72,8 @@ namespace Tests.PlayTests
                 _room02 = GameObject.Find("Room_0_2").GetComponentInChildren<Room>();
             if (_room10 == null)
                 _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
+            if (_room_10 == null)
+                _room_10 = GameObject.Find("Room_-1_0").GetComponentInChildren<Room>();
             
             _prince.SetActive(false);
             _enemy.SetActive(false);
@@ -173,6 +180,31 @@ namespace Tests.PlayTests
             Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
             Assert.True(startingHealth == endHealth);
+        }
+        
+        /// <summary>
+        /// Test that walking jumping against wall detects ground and lands properly.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator WalkingJumpingAgainstWallTest()
+        {
+            _cameraController.PlaceInRoom(_room_10);
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition33.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().LookingRightWards = false;
+            Vector3 expectedLandingPosition = _startPosition34.transform.position;
+            yield return null;
+            string commandFile = @"Assets\Tests\TestResources\leftWalkingJumpingSequence";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(5);
+            // Assert Prince is at expected position.
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.30f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
         }
         
         /// <summary>
