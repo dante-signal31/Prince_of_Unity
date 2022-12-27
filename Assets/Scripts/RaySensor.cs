@@ -69,7 +69,7 @@ namespace Prince
 
         private void Awake()
         {
-            _rayDirection = GetRayDirection();
+            // _rayDirection = GetRayDirection();
             _rayDistance = GetRayDistance();
             _layerMask = GetLayerMask();
         }
@@ -92,7 +92,7 @@ namespace Prince
         private void FixedUpdate()
         {
             RaycastHit2D hit = Physics2D.Raycast(startPoint.position, 
-                _rayDirection, 
+                GetRayDirection(), 
                 _rayDistance, 
                 _layerMask);
             DetectedCollider = hit.collider;
