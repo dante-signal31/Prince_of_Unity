@@ -9,7 +9,7 @@ namespace Prince
     /// <p>Generic component for ray sensors.</p>
     ///
     /// <p>Just place it and give it the layer were you want to detect colliders. It will emit
-    /// a colliderDetecter whenever one is hit by ray and a noColliderDetected event when
+    /// a colliderDetected event whenever one is hit by ray and a noColliderDetected event when
     /// ray is clear. </p>s
     /// </summary>
     public class RaySensor : MonoBehaviour
