@@ -62,9 +62,9 @@
         <ui:Label tabindex="-1" text="Complete build size" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
         <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="CompleteBuildSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
     </ui:VisualElement>
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-shrink: 0; margin-top: 35px;">
         <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="Last refreshed: " display-tooltip-when-elided="true" style="flex-shrink: 1; -unity-font-style: bold-and-italic;" />
+            <ui:Label tabindex="-1" text="Last refreshed: " display-tooltip-when-elided="true" style="flex-shrink: 0; -unity-font-style: bold-and-italic;" />
             <ui:Label tabindex="-1" text="DATE" display-tooltip-when-elided="true" name="LastRefreshDate" style="-unity-font-style: italic;" />
         </ui:VisualElement>
         <ui:Button text="REFRESH" display-tooltip-when-elided="true" name="RefreshButton" style="align-self: center; justify-content: space-around; align-items: auto; flex-direction: row; right: auto; left: auto; bottom: auto; flex-grow: 1;" />
