@@ -8,7 +8,6 @@ namespace Prince
     public class GameConfiguration : MonoBehaviour
     {
         // TODO: Try to reduce game build size footprint. 100 MB seems excessive.
-        // TODO: Create a window to show latest build report sizes. It will work as a custom editor window example and as a tool to optimize build sizes.
         
         [Header("GAME:")]
         [Tooltip("Total time in seconds to complete game.")]
