@@ -38,46 +38,46 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level4.unity
     guid: 4b5e0b537ea7c4c41a78ff4d307d7101
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TwoLevelPit.unity
     guid: 90c0ca48090f9834b97847736c8466c0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/ThePit.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheAbyss.unity
     guid: 8ba9110d3309cd84bb90c2e56e6cd9c8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheRuins.unity
     guid: 41b946261ba521147b668e328ead583b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheEvent.unity
     guid: e708f1dd4c682904fbb97d610a34f6f8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheTrap.unity
     guid: 3a02d51b7aeafa44596b5a62038ad9bd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheVideo2.unity
     guid: dece55493c5d2094682702ac3511c994
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheDoors2.unity
     guid: b861a89b08ef18c4ca8ed959f4537347
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheDoors1.unity
     guid: 1dea439f3d514f94e81c3988681a6620
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheVideo.unity
     guid: 63dba7441b3df6b4583cd80cc384393f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheDoors.unity
     guid: b9a728ffe9a7a0849be2cd501395ec6d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/GateToVideo.unity
     guid: 14e5f536c8c868a409c6b67909e4f0e2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/DoorToTrap.unity
     guid: 0254847401fc08a43a0a6cda5ed0708a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tests/TheRoomWithTheTrap.unity
     guid: 43f53755a4f1bab48bb855c81e254ad0
   m_configObjects: {}

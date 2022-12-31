@@ -1,0 +1,72 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/UI/BuildSizesReport.uss?fileID=7433441132597879392&amp;guid=222c4a9172c240047ad690311ed25bf7&amp;type=3#BuildSizesReport" />
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
+        <ui:Label tabindex="-1" text="Build sizes report:" display-tooltip-when-elided="true" enable-rich-text="true" style="-unity-font-style: bold;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Textures" display-tooltip-when-elided="true" style="flex-grow: 0; flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="TexturesSize" style="align-self: auto; flex-grow: 1; align-items: stretch; flex-direction: column; justify-content: flex-start; left: auto; -unity-text-align: upper-center;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="TexturesPercentage" style="flex-grow: 0; flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Meshes" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="MeshesSize" style="align-self: auto; left: auto; flex-grow: 1; -unity-text-align: upper-center;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="MeshesPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Animations" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="AnimationsSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="AnimationsPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Sounds" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="SoundsSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="SoundsPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Shaders" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="ShadersSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="ShadersPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Other assets" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="OtherAssetsSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="OtherAssetsPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Levels" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="LevelsSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="LevelsPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Scripts" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="ScriptsSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="ScriptsPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Included DLLs" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="IncludedDLLsSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="DLLsPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="File headers" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="FileHeadersSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="FileHeadersPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Total user assets" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="TotalUserAssetsSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="TotalUserAssetsPercentage" style="flex-shrink: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
+        <ui:Label tabindex="-1" text="Complete build size" display-tooltip-when-elided="true" style="flex-shrink: 1;" />
+        <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="CompleteBuildSize" style="flex-grow: 1; -unity-text-align: upper-center; align-items: stretch;" />
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:Label tabindex="-1" text="Last refreshed: " display-tooltip-when-elided="true" style="flex-shrink: 1; -unity-font-style: bold-and-italic;" />
+            <ui:Label tabindex="-1" text="DATE" display-tooltip-when-elided="true" name="LastRefreshDate" style="-unity-font-style: italic;" />
+        </ui:VisualElement>
+        <ui:Button text="REFRESH" display-tooltip-when-elided="true" name="RefreshButton" style="align-self: center; justify-content: space-around; align-items: auto; flex-direction: row; right: auto; left: auto; bottom: auto; flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>
