@@ -9,9 +9,9 @@
         <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="TexturesPercentage" style="flex-grow: 0; flex-shrink: 1; -unity-text-align: middle-right;" />
     </ui:VisualElement>
     <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: stretch; justify-content: space-between;">
-        <ui:Label tabindex="-1" text="Meshes" display-tooltip-when-elided="true" style="flex-shrink: 1; -unity-text-align: middle-left;" />
+        <ui:Label tabindex="-1" text="Meshes" display-tooltip-when-elided="true" style="flex-shrink: 1; -unity-text-align: middle-left; flex-grow: 0;" />
         <ui:Label tabindex="-1" text="XX MB" display-tooltip-when-elided="true" name="MeshesSize" style="align-self: auto; left: auto; flex-grow: 1; -unity-text-align: middle-center;" />
-        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="MeshesPercentage" style="flex-shrink: 1; -unity-text-align: middle-left;" />
+        <ui:Label tabindex="-1" text="XX.X%" display-tooltip-when-elided="true" name="MeshesPercentage" style="flex-shrink: 0.35; -unity-text-align: middle-left;" />
     </ui:VisualElement>
     <ui:VisualElement style="flex-grow: 0; background-color: rgba(171, 171, 171, 0.39); flex-direction: row; align-items: stretch; justify-content: space-between; -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
         <ui:Label tabindex="-1" text="Animations" display-tooltip-when-elided="true" style="flex-shrink: 1; -unity-text-align: middle-left;" />
