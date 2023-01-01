@@ -5,21 +5,7 @@ using UnityEngine;
 namespace Editor
 {
     // TODO: Migrate to new UI Toolkit support.
-    // /// <summary>
-    // /// Show a help box at inspector with a message about decorated field.
-    // /// </summary>
-    // public class HelpBarAttribute : PropertyAttribute
-    // {
-    //     public string Message;
-    //     public MessageType MessageLevel;
-    //
-    //     public HelpBarAttribute(string message, MessageType messageLevel)
-    //     {
-    //         Message = message;
-    //         MessageLevel = messageLevel;
-    //     }
-    // }
-    
+
     [CustomPropertyDrawer(typeof(HelpBarAttribute))]
     public class HelpBarAttributeDrawer : PropertyDrawer
     {
