@@ -79,6 +79,8 @@ namespace Prince
         [Tooltip("Needed to show other game objects if this is a guard or not.")] 
         [SerializeField] private FightingInteractions fightingInteractions;
         [Header("CONFIGURATION:")]
+        [Tooltip("Is this character looking rightwards?")]
+        [SerializeField] private bool lookingRightWards;
         [Tooltip("Current character life. ONLY USEFUL FOR GUARDS. Prince life is set through PrinceStatus game manager.")]
 #if UNITY_EDITOR
         [HelpBar("USE ONLY WITH GUARDS. For Prince use PrinceStatus.", MessageType.Warning)]
@@ -89,8 +91,6 @@ namespace Prince
         [HelpBar("USE ONLY WITH GUARDS. For Prince use PrinceStatus.", MessageType.Warning)]
 #endif
         [SerializeField] private int maximumLife;
-        [Tooltip("Is this character looking rightwards?")]
-        [SerializeField] private bool lookingRightWards;
         
         [Header("DEBUG:")]
         [Tooltip("Show this component logs on console window.")]
