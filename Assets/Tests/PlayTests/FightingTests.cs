@@ -47,7 +47,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardHitBySwordMovementTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
@@ -83,7 +83,7 @@ namespace Tests.PlayTests
         public IEnumerator PrinceHitBySwordMovementTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             // Let enemy attack Prince..
             _enemy.GetComponentInChildren<GuardController>().enabled = true;
             _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
@@ -119,7 +119,7 @@ namespace Tests.PlayTests
         public IEnumerator PrinceDeadIfDoesNotFightFightTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             // Let enemy attack Prince..
             _enemy.GetComponentInChildren<GuardController>().enabled = true;
             _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
@@ -146,7 +146,7 @@ namespace Tests.PlayTests
         public IEnumerator PrinceDeadBySwordFightTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             // Let enemy attack Prince..
             _enemy.GetComponentInChildren<GuardController>().enabled = true;
             _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
@@ -175,7 +175,7 @@ namespace Tests.PlayTests
         public IEnumerator PrinceAliveByInactiveSwordFightTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             // Let enemy attack Prince..
             _enemy.GetComponentInChildren<GuardController>().enabled = true;
             _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
@@ -206,7 +206,7 @@ namespace Tests.PlayTests
         public IEnumerator PrinceWoundedBySwordFightTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             // Let enemy attack Prince..
             _enemy.GetComponentInChildren<GuardController>().enabled = true;
             _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
@@ -238,7 +238,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardDeadBySwordFightTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             // Let enemy attack Prince..
             _enemy.GetComponentInChildren<GuardController>().enabled = true;
             _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;
@@ -269,7 +269,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardBlockStrikeTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
@@ -310,8 +310,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardBlockEveryStrikeWhenDefenseOneTest()
         {
             // Setup test.
-            // TODO: Try to remove ignoreFailingMessages.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             _enemy.SetActive(true);
             _prince.SetActive(true);
             _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
@@ -374,7 +373,7 @@ namespace Tests.PlayTests
         public IEnumerator PrinceCanRunAfterFightingTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             // Let enemy attack Prince..
             _enemy.GetComponentInChildren<GuardController>().enabled = true;
             _enemy.GetComponentInChildren<EnemyPursuer>().enabled = true;

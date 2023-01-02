@@ -102,7 +102,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardJumpToHoleWhenChasingTest()
         {
             // Setup test.
-            LogAssert.ignoreFailingMessages = true;
+            // LogAssert.ignoreFailingMessages = true;
             _cameraController.PlaceInRoom(_room00);
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 1;
             _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 1;
