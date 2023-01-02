@@ -72,6 +72,7 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.TimeDecreaseKeyPressed>(OnTimeDecreaseKeyPressed);
             eventBus.RemoveListener<GameEvents.QuitRequested>(OnQuitRequested);
             eventBus.RemoveListener<GameEvents.UserCancelation>(OnUserCancelation);
+            eventBus.RemoveListener<GameEvents.SwordTaken>(OnSwordTaken);
         }
 
         private void Start()
@@ -85,10 +86,21 @@ namespace Prince
             eventBus.AddListener<GameEvents.TimeDecreaseKeyPressed>(OnTimeDecreaseKeyPressed);
             eventBus.AddListener<GameEvents.QuitRequested>(OnQuitRequested);
             eventBus.AddListener<GameEvents.UserCancelation>(OnUserCancelation);
+            eventBus.AddListener<GameEvents.SwordTaken>(OnSwordTaken);
             SetPrinceLife(_princePersistentStatus.CurrentPlayerLife, _princePersistentStatus.CurrentPlayerMaximumLife);
             ShowHudIfLevelsAskIt();
         }
-        
+
+        /// <summary>
+        /// Listener for SwordTaken events.
+        /// </summary>
+        /// <param name="_">Sender. Actually not used here.</param>
+        /// <param name="ev">Event data. Actually not used here.</param>
+        private void OnSwordTaken(object _, GameEvents.SwordTaken __)
+        {
+            SetMessageForATime("NOW YOU HAVE A SWORD", 5);
+        }
+
         /// <summary>
         /// Get life point placeholders array.
         ///

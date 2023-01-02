@@ -245,5 +245,10 @@ namespace Prince
         {
             ExecuteCommand(Command.CommandType.Cancel);
         }
+
+        public void GetSword()
+        {
+            ExecuteCommand(Command.CommandType.GetSword);
+        }
     }
 }

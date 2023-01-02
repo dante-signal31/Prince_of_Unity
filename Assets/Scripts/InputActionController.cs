@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 
 namespace Prince
 {
-    // TODO: Add a cheat key to get sword.
-    
     /// <summary>
     /// <p>This component translates Input events received from a Player Input to an InputController.
     /// InputController translates those calls to Commands and send them to a CommandController to
@@ -238,6 +236,12 @@ namespace Prince
         public void Cancel(InputAction.CallbackContext context)
         {
             if (context.performed) inputController.Cancel();
+        }
+
+        // Only called from cheat key.
+        public void GetSword(InputAction.CallbackContext context)
+        {
+            if (context.performed) inputController.GetSword();
         }
         
     }

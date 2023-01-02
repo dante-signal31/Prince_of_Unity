@@ -105,6 +105,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "GetSword",
+                    "type": "Button",
+                    "id": "66ca584d-ced5-4364-ad98-58ed38f7013d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "3b638a24-80e4-49f1-a5ce-f045b2b3c619",
@@ -354,7 +363,7 @@
                 {
                     "name": "Button",
                     "id": "98076501-3c36-4fa1-b38f-e199b3358a28",
-                    "path": "<Gamepad>/rightStick/up",
+                    "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -420,7 +429,7 @@
                 {
                     "name": "Button",
                     "id": "10aea786-fb9b-468a-9eb9-f79067c8eac5",
-                    "path": "<Gamepad>/rightStick/left",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -486,7 +495,7 @@
                 {
                     "name": "Button",
                     "id": "189ba9d0-b291-40d9-9c1f-b61f15eff2c3",
-                    "path": "<Gamepad>/rightStick/down",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -552,7 +561,7 @@
                 {
                     "name": "Button",
                     "id": "ba79e9bf-c42c-4c12-8b04-ac4647cdacb5",
-                    "path": "<Gamepad>/rightStick/right",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -618,7 +627,7 @@
                 {
                     "name": "Button",
                     "id": "3369aceb-892b-4ed8-aa99-ec6decd885bf",
-                    "path": "<Gamepad>/leftStick/up",
+                    "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -684,7 +693,7 @@
                 {
                     "name": "Button",
                     "id": "3da43cd8-813e-4362-bca0-da82d3d1e055",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -779,6 +788,72 @@
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Ctrl + E",
+                    "id": "496a48c5-a90f-432a-9386-f9dd75e0d311",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetSword",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "ced11699-d4b3-4840-9aa7-545a7be9f484",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "GetSword",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "15d1ca83-15fc-431e-ae11-d2f5b5455a6c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "GetSword",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button With One Modifier",
+                    "id": "89f6319b-0080-4283-9b33-7c01ddc11bb3",
+                    "path": "ButtonWithOneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetSword",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "d0b7cb67-5c90-410c-a0c2-7ff7d75f5bb9",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GetSword",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Button",
+                    "id": "d1337c9b-739a-420a-82f6-bd58e4b88084",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetSword",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

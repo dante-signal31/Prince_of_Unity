@@ -310,6 +310,7 @@ namespace Tests.PlayTests
         public IEnumerator GuardBlockEveryStrikeWhenDefenseOneTest()
         {
             // Setup test.
+            // TODO: Try to remove ignoreFailingMessages.
             LogAssert.ignoreFailingMessages = true;
             _enemy.SetActive(true);
             _prince.SetActive(true);
@@ -335,6 +336,34 @@ namespace Tests.PlayTests
             // Assert Guard has not lost any life point.
             int endLife = _enemy.GetComponent<CharacterStatus>().Life;
             Assert.True(startLife == endLife);
+            yield return null;
+        }
+        
+        /// <summary>
+        /// Test Prince get sword chat key works.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceGetSwordCheatKeyTest()
+        {
+            // Setup test.
+            // LogAssert.ignoreFailingMessages = true;
+            _enemy.SetActive(false);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = false;
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            yield return null;
+            Assert.False(_prince.GetComponentInChildren<CharacterStatus>().HasSword);
+            string commandFile = @"Assets\Tests\TestResources\getSwordCheatKey";
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Assert Prince now has a sword.
+            Assert.True(_prince.GetComponentInChildren<CharacterStatus>().HasSword);
             yield return null;
         }
         

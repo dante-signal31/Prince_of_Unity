@@ -39,7 +39,8 @@ namespace Prince
             KillCurrentGuard,
             Quit,
             Confirm,
-            Cancel
+            Cancel,
+            GetSword
         }
 
         [SerializeField] private float _delay;

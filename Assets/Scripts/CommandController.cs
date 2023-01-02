@@ -173,6 +173,11 @@ namespace Prince
                     this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed user cancelation at {Time.time}", showLogs);
                     _eventBus.TriggerEvent(new GameEvents.UserCancelation(), this);
                     break;
+                case Command.CommandType.GetSword:
+                    this.Log($"(CommandController - {transform.parent.transform.gameObject.name}) Executed cheat key for get sword at {Time.time}", showLogs);
+                    characterStatus.HasSword = true;
+                    _eventBus.TriggerEvent(new GameEvents.SwordTaken(), this);
+                    break;
             }
             yield return null;
         }
