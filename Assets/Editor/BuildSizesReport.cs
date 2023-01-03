@@ -9,8 +9,6 @@ using UnityEngine.UIElements;
 
 namespace Editor
 {
-    // TODO: Customize an inspector to show UIElements usage over monobehaviours.
-    
     /// <summary>
     /// Every line in build report is parsed to one of this structs.
     /// </summary>
