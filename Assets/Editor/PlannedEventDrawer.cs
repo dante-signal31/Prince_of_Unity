@@ -160,6 +160,8 @@ namespace Editor
         {
             parentContainer.Clear();
 
+            // I could have used property binding here, but I've done manual sync because 
+            // with binding console registered errors when I removed events from time events list.
             switch (selectedTimeType)
             {
                 case GameTimer.TriggeringTimeTypes.ElapsedSeconds:

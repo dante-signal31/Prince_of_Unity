@@ -372,11 +372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[12].elapsedSeconds
-      value: 4
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[12].triggeringType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[0].elapsedPercentage
@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[12].elapsedPercentage
-      value: 69.2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: timerPaused.m_PersistentCalls.m_Calls.Array.size
@@ -1100,7 +1100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[12].eventToTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Dummy Ending
+      value: Bad Ending
       objectReference: {fileID: 0}
     - target: {fileID: 5141783170685605079, guid: d1334d80bfa35af419652e91ad76809e, type: 3}
       propertyPath: plannedEvents.Array.data[0].eventToTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
