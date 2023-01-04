@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace Prince
 {
+    // TODO: Interlevel gate closing sound is out rather out of sinch. Must fix it.
+    
     public class InterlevelGateStatus : MonoBehaviour, IStateMachineStatus<InterlevelGateStatus.GateStates>
     {
         [Header("WIRING:")]
