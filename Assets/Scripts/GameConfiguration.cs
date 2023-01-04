@@ -4,6 +4,8 @@ namespace Prince
 {
     // TODO: Create a windows installer.
     
+    // TODO: Add project README.
+    
     /// <summary>
     /// This component gather every game specific configuration to start game with.
     /// </summary>
