@@ -7,8 +7,6 @@ namespace Prince
     /// </summary>
     public class GameConfiguration : MonoBehaviour
     {
-        // TODO: Try to reduce game build size footprint. 100 MB seems excessive.
-        
         [Header("GAME:")]
         [Tooltip("Total time in seconds to complete game.")]
         [SerializeField] private int gameTotalTime;
