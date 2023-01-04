@@ -65,7 +65,7 @@ I'm currently working in some wiki pages, here at github, to explain how to use 
 
 Nowadays, the game has support for keyboard and gamepad input.
 
-# Developers
+## Developers
 
 If you clone this project and want to run the game from Unity make sure to run it
 from *Disclaimer* scene. Data persistence across scene is got using a game manager that 
