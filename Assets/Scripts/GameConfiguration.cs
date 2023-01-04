@@ -7,9 +7,7 @@ namespace Prince
     // TODO: Add project README.
     
     // TODO: Create wiki pages with game instructions.
-    
-    // TODO: Create account at itchio to uploads the game installer.
-    
+
     /// <summary>
     /// This component gather every game specific configuration to start game with.
     /// </summary>
