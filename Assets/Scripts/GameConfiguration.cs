@@ -3,9 +3,7 @@
 namespace Prince
 {
     // TODO: Create a windows installer.
-
-    // TODO: Create wiki pages with game instructions.
-
+    
     /// <summary>
     /// This component gather every game specific configuration to start game with.
     /// </summary>

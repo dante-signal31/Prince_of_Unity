@@ -68,7 +68,7 @@ the game from inside Unity.
 
 ## Usage
 
-I'm currently working in some wiki pages, here at github, to explain how to use the game.
+See current [usage instructions](https://github.com/dante-signal31/Prince_of_Unity/wiki/Usage) at this homepage wiki.
 
 Nowadays, the game has support for keyboard and gamepad input.
 
@@ -81,7 +81,7 @@ so every other level does not have it as it is expected it will be taken from pr
 
 Testing scenes have their own game managers so they can be run on their own.
 
-Feel free to propose any pull request, just make sure that existing tests pass correctly and 
+Feel free to propose any pull request. Just make sure that existing tests pass correctly and 
 that any new functionality comes with new tests to cover it.
 
 All the codebase is covered with an open source BSD-3 license, so you have plenty of room to 
