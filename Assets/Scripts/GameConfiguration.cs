@@ -3,8 +3,6 @@
 namespace Prince
 {
     // TODO: Create a windows installer.
-    
-    // TODO: Add some images to readme.
 
     // TODO: Create wiki pages with game instructions.
 

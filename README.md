@@ -1,6 +1,9 @@
 ﻿# Prince of Unity
 
-A hobbyist black box demo remake of Jordan Mechner's classic *Prince of Persia* (1989).
+Developed with Unity, this game is a hobbyist black box demo remake of Jordan Mechner's 
+classic *Prince of Persia* (1989).
+
+![Prince of Persia main title](Screenshots/Main_title.png)
 
 ## Why to remake Prince of Persia?
 
@@ -37,6 +40,8 @@ resulting codebase.
 
 I've really enjoyed my experience developing in Unity in contrast with my experience with Unreal.
 
+![Prince running](Screenshots/Level_1_screenshot_1.png)
+
 ## What you'll find in Prince of Unity?
 
 I've implemented only the first three levels of the original game, and a freely inspired
@@ -50,6 +55,8 @@ The game is functional. I've ended Alpha testing phase and I'm about to enter Be
 family&friends). That means you can play with this game comfortably but you may still find some 
 bugs. Please, fill me an issue through this page with any bug you may find so I can fix it in 
 further versions.
+
+![Prince fighting](Screenshots/Level_2_screenshot_1.png)
 
 ## Installation
 
