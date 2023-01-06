@@ -4,9 +4,7 @@ using UnityEngine;
 namespace Prince
 {
     // TODO: Check if music should be played when guards deads.
-    
-    // TODO: Try to reduce game footprint compressing sounds.
-    
+
     /// <summary>
     /// Listens for music events and plays required clip at level camera sound controller.
     /// </summary>
