@@ -109,5 +109,10 @@ namespace Prince
                     // Guards have no InputActionController so they keep this field null.
                     if (inputActionController != null) inputActionController.OnSheathed();
                 }
+
+                public void GuardDead()
+                {
+                    _eventBus.TriggerEvent(new GameEvents.GuardDead(), this);
+                }
         }
 }

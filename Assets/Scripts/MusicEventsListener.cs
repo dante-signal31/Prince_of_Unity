@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace Prince
 {
-    // TODO: Check if music should be played when guards deads.
-
     /// <summary>
     /// Listens for music events and plays required clip at level camera sound controller.
     /// </summary>
@@ -27,6 +25,7 @@ namespace Prince
             eventBus.AddListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.AddListener<GameEvents.LevelReloaded>(OnLevelLoaded);
             eventBus.AddListener<GameEvents.PrinceDead>(OnPrinceDead);
+            eventBus.AddListener<GameEvents.GuardDead>(OnGuardDead);
         }
 
         private void OnDisable()
@@ -36,6 +35,7 @@ namespace Prince
             eventBus.RemoveListener<GameEvents.LevelLoaded>(OnLevelLoaded);
             eventBus.RemoveListener<GameEvents.LevelReloaded>(OnLevelLoaded);
             eventBus.RemoveListener<GameEvents.PrinceDead>(OnPrinceDead);
+            eventBus.RemoveListener<GameEvents.GuardDead>(OnGuardDead);
         }
 
         private void OnSmallPotionTaken(object _, GameEvents.SmallPotionTaken __)
@@ -83,6 +83,11 @@ namespace Prince
         private void PlayDeadBySwordMusic()
         {
             soundController.PlaySound("fight_death");
+        }
+
+        private void OnGuardDead(object _, GameEvents.GuardDead __)
+        {
+            soundController.PlaySound("sword_victory");
         }
     }
 }

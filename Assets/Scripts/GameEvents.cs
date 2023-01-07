@@ -174,6 +174,11 @@ public class GameEvents : MonoBehaviour
             DeadBySword = deadBySword;
         }
     }
+    
+    /// <summary>
+    /// This event is raised when a guard dies.
+    /// </summary>
+    public class GuardDead : EventArgs {}
 
     /// <summary>
     /// This event is raised when pause key is pressed. 
@@ -243,6 +248,7 @@ public class GameEvents : MonoBehaviour
         eventBus.RegisterEvent<PrinceHanged>();
         eventBus.RegisterEvent<PrinceClimbingEnded>();
         eventBus.RegisterEvent<PrinceDead>();
+        eventBus.RegisterEvent<GuardDead>();
         eventBus.RegisterEvent<PauseKeyPressed>();
         eventBus.RegisterEvent<TimeIncreaseKeyPressed>();
         eventBus.RegisterEvent<TimeDecreaseKeyPressed>();
