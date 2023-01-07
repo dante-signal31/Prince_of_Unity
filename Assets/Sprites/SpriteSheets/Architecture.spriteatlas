@@ -107,6 +107,7 @@ SpriteAtlas:
     - f4fa3027b352ac3479c029c5971532f4: 21300000
     - 2ba5fc37e63708843899b179cb70ea47: 21300000
     - d1aad5477c78d5649989a46518d2e72f: 21300000
+    - 3436037713253d14d8f2388d345d9487: 21300000
     - 99301a8777398ed4da3f65420dfa6acc: 21300000
     - a9e64db7d152d504a8195c79811a9f49: 21300000
     - a781e5c787c611541ae0f6594a8ed34e: 21300000
@@ -220,6 +221,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f4fa3027b352ac3479c029c5971532f4, type: 3}
   - {fileID: 21300000, guid: 2ba5fc37e63708843899b179cb70ea47, type: 3}
   - {fileID: 21300000, guid: d1aad5477c78d5649989a46518d2e72f, type: 3}
+  - {fileID: 21300000, guid: 3436037713253d14d8f2388d345d9487, type: 3}
   - {fileID: 21300000, guid: 99301a8777398ed4da3f65420dfa6acc, type: 3}
   - {fileID: 21300000, guid: a9e64db7d152d504a8195c79811a9f49, type: 3}
   - {fileID: 21300000, guid: a781e5c787c611541ae0f6594a8ed34e, type: 3}
@@ -332,6 +334,7 @@ SpriteAtlas:
   - flame_4_n
   - _Switch_closer_deactivated_no_border_normalized
   - _Wall_normalized_variant_10
+  - _Back_pillar_border5_normalized
   - _Iron_curtain_right_3_normalized_full_lowered
   - _Spikes_ground_occluder
   - _Ground_border_5_normalized

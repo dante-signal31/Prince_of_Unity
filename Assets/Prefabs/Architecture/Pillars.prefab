@@ -134,7 +134,7 @@ MonoBehaviour:
   hasBorder: 1
   groundSpriteRenderer: {fileID: 5800345586800529250}
   groundNoBorderSprite: {fileID: 21300000, guid: f5ceaeead73c1bf469963d16e2d860e2, type: 3}
-  groundBorderSprite: {fileID: 21300000, guid: 530b85f381decc3489f9a85ae13ea4dd, type: 3}
+  groundBorderSprite: {fileID: 21300000, guid: 3436037713253d14d8f2388d345d9487, type: 3}
 --- !u!1 &3899886055143143909
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +339,7 @@ SpriteRenderer:
   m_SortingLayerID: 27376785
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 530b85f381decc3489f9a85ae13ea4dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3436037713253d14d8f2388d345d9487, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
