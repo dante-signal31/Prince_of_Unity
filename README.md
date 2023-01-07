@@ -86,3 +86,7 @@ that any new functionality comes with new tests to cover it.
 
 All the codebase is covered with an open source BSD-3 license, so you have plenty of room to 
 play with that codebase. 
+
+## Feedback
+
+Author: Dante Signal31 e-mail: dante.signal31@gmail.com
