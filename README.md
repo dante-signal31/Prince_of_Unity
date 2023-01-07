@@ -3,7 +3,7 @@
 Developed with Unity, this game is a hobbyist black box demo remake of Jordan Mechner's 
 classic *Prince of Persia* (1989).
 
-![Prince of Persia main title](Screenshots/Cover_image.png)
+![Prince of Persia main title](Screenshots/Cover_image_big.png)
 
 ## Why to remake Prince of Persia?
 
