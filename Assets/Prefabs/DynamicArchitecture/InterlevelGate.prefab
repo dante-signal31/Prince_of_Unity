@@ -287,6 +287,7 @@ MonoBehaviour:
   autoCloseWaitingTime: 0
   initialOpening: 0
   gateStatus: {fileID: 1390522041032875658}
+  closingFastSoundDelay: 0.8
 --- !u!1 &3909900856431284553
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +413,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4927835400452215663
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -429,7 +430,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &2493046586820417442
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -905,6 +906,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -940,7 +960,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 6397714984496952950}
     m_Modifications:
     - target: {fileID: -1834021150071634809, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
@@ -996,7 +1016,9 @@ PrefabInstance:
       value: SoundEmitter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
 --- !u!4 &990170396869381820 stripped
 Transform:

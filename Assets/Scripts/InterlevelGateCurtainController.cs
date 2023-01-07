@@ -12,6 +12,10 @@ namespace Prince
         [Header("WIRING (InterlevelGateCurtainController)")] 
         [Tooltip("Needed to know current state.")] 
         [SerializeField] private InterlevelGateStatus gateStatus;
+
+        [Header("CONFIGURATION (InterlevelGateCurtainController)")] 
+        [Tooltip("Delay to sync closing fast sound with curtain position.")]
+        [SerializeField] private float closingFastSoundDelay;
         
         protected override IStateMachineStatus<InterlevelGateStatus.GateStates> GateStatus => gateStatus;
         protected override InterlevelGateStatus.GateStates CurrentState { get; set; }
@@ -49,8 +53,13 @@ namespace Prince
         /// </summary>
         protected override IEnumerator CloseGateFastAsync()
         {
-            soundController.PlaySound("closing_fast");
+            Invoke(nameof(PlayClosingFastSound), closingFastSoundDelay);
             yield return base.CloseGateFastAsync();
+        }
+
+        private void PlayClosingFastSound()
+        {
+            soundController.PlaySound("closing_fast");
         }
 
         public override bool IsOpening()
