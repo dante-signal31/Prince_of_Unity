@@ -3,7 +3,7 @@
 Developed with Unity, this game is a hobbyist black box demo remake of Jordan Mechner's 
 classic *Prince of Persia* (1989).
 
-![Prince of Persia main title](Screenshots/Main_title.png)
+![Prince of Persia main title](Screenshots/Cover_image.png)
 
 ## Why to remake Prince of Persia?
 
@@ -18,14 +18,14 @@ learning purposes as far I keep it free and open source.
 
 ## Why to use Unity?
 
-I made a first attempt with Unreal. That engine is great but I felt they put the focus in 3D 
-gaming while 2D developments was like a second class citizen. Its Blueprints system is brilliant, 
-but I missed coding but the C++ alternative was not an alternative as I hate that language. Besides 
-all those things, I made all possible mistakes a developer can do with a codebase: no functional test,
-no cohesion, too much coupling, too much repeated code. You have to pay every sin and after nearly a 
-year working in that project it was an spaghetti nightmare where I was spending more time finding 
-and fixing regression errors than actually implementing the new functionality that caused those 
-regression errors.
+I made a [first attempt with Unreal](https://github.com/dante-signal31/PrinceOfUnreal). That engine 
+is great but I felt they put the focus in 3D gaming while 2D developments was like a second class 
+citizen. Its Blueprints system is brilliant, but I missed coding but the C++ alternative was not 
+an alternative as I hate that language. Besides all those things, I made all possible mistakes a 
+developer can do with a codebase: no functional test, no cohesion, too much coupling, too much 
+repeated code. You have to pay every sin and after nearly a year working in that project it was 
+an spaghetti nightmare where I was spending more time finding and fixing regression errors than 
+actually implementing the new functionality that caused those regression errors.
 
 Finally, I decided to thrash that implementation and start it again from scratch using Unity.
 
@@ -60,11 +60,14 @@ further versions.
 
 ## Installation
 
-I'm currently working in a windows installable. When I have it ready I will make it available
-through itch.io.
+You can find a windows installer at [Itch.io project page](https://dantesignal31.itch.io/prince-of-unity).
 
-While that happens you can still go the developer way and clone this repository and run 
-the game from inside Unity.
+I'm currently working in a linux installer. When I have it ready I will make it available
+through itch.io too.
+
+If you like the developer way, just clone this repository and run the game from inside Unity, but 
+in this case refer to [developer section](https://github.com/dante-signal31/Prince_of_Unity#developers) at this 
+page to find out how to run properly the game inside Unity editor.
 
 ## Usage
 
