@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Prince of Unity"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.0.1.beta"
 #define MyAppPublisher "DLab Ninja"
 #define MyAppURL "https://github.com/dante-signal31/Prince_of_Unity"
 #define MyAppExeName "Prince of Unity.exe"
@@ -25,7 +25,7 @@ LicenseFile=F:\Desarrollos\PrinceOfUnity\Prince of Unity\LICENSE
 PrivilegesRequired=lowest
 OutputDir=F:\Desarrollos\PrinceOfUnity\Prince of Unity\Installers\Windows
 OutputBaseFilename=PoU_setup
-SetupIconFile=F:\Desarrollos\PrinceOfUnity\Prince of Unity\Icons\Running_icon.ico
+SetupIconFile=F:\Desarrollos\PrinceOfUnity\Prince of Unity\Assets\Icons\Running_icon.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
