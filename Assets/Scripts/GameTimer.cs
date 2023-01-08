@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 namespace Prince
 {
+    // TODO: When game is restarted after finishing it, starting time is the remaining of the finished last level. Must fix it.
+    
     /// <summary>
     /// Game component to keep track of time passed and launch events at specified moments.
     /// </summary>
