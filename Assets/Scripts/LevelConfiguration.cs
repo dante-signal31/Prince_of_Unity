@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Prince
 {
@@ -12,6 +13,9 @@ namespace Prince
         [SerializeField] private bool showHudBarAtStart;
         [Tooltip("Whether time counter should be activated in this level.")] 
         [SerializeField] private bool timeCounterEnabled;
+        [FormerlySerializedAs("timeResetCounter")]
+        [Tooltip("Whether time counter should be reset when this level loads.")]
+        [SerializeField] private bool timeCounterReset;
         [Tooltip("Whether Prince status should be saved when this level is loaded.")] 
         [SerializeField] private bool savePrinceStatusWhenLevelLoaded;
 
@@ -24,6 +28,11 @@ namespace Prince
         /// Whether time counter should be active in this scene. This should be false at video scenes.
         /// </summary>
         public bool TimeCounterEnabled => timeCounterEnabled;
+
+        /// <summary>
+        /// Whether time counter should be reset when this scene loads.
+        /// </summary>
+        public bool TimeCounterReset => timeCounterReset;
 
         /// <summary>
         /// Whether Prince status should be saved when this level is loaded. This should be false at video scenes.

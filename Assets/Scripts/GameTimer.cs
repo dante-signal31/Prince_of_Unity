@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 namespace Prince
 {
-    // TODO: When game is restarted after finishing it, starting time is the remaining of the finished last level. Must fix it.
-    
     /// <summary>
     /// Game component to keep track of time passed and launch events at specified moments.
     /// </summary>
@@ -149,7 +147,15 @@ namespace Prince
         {
             LevelConfiguration levelConfiguration =
                 GameObject.Find("LevelSpecifics").GetComponentInChildren<LevelConfiguration>();
-            TimerEnabled = (levelConfiguration != null) && levelConfiguration.TimeCounterEnabled;
+            if (levelConfiguration != null)
+            {
+                TimerEnabled = levelConfiguration.TimeCounterEnabled;
+                if (levelConfiguration.TimeCounterReset)
+                {
+                    ElapsedSeconds = 0;
+                    UpdateEventIndex();
+                }
+            }
         }
 
         /// <summary>
