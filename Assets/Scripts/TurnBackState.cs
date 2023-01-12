@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Prince;
 using UnityEngine;
 
 namespace Prince

@@ -1,7 +1,8 @@
-// Customize ground bricks appearance.
-
 using UnityEngine;
 
+/// <summary>
+/// Customize ground bricks appearance.
+/// </summary>
 [ExecuteAlways]
 public class GroundAppearance : MonoBehaviour, IBorder
 {

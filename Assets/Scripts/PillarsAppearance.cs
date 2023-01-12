@@ -1,7 +1,8 @@
-// Customize pillars brick appearance.
-
 using UnityEngine;
 
+/// <summary>
+/// Customize pillars brick appearance.
+/// </summary>
 [ExecuteAlways]
 public class PillarsAppearance : MonoBehaviour, IBorder
 {

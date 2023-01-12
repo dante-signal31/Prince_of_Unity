@@ -1,9 +1,10 @@
-// When you have many prefabs together with the same idle animation playing it is
-// odd if they appear in sync. So this component randomize idle animation start
-// to avoid that effect.
-
 using UnityEngine;
 
+/// <summary>
+/// When you have many prefabs together with the same idle animation playing it is
+/// odd if they appear in sync. So this component randomize idle animation start
+/// to avoid that effect.
+/// </summary>
 public class AnimationStartRandomizer : MonoBehaviour
 {
     [SerializeField] private Animator animator;

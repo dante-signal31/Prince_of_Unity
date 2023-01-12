@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.TextCore.Text;
+﻿using UnityEngine;
 
 namespace Prince
 {
