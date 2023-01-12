@@ -636,7 +636,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Ctrl + D",
+                    "name": "Ctrl + J",
                     "id": "b9f29fed-a4f1-418b-acd2-929ad2bacd8c",
                     "path": "OneModifier",
                     "interactions": "",
@@ -660,7 +660,7 @@
                 {
                     "name": "binding",
                     "id": "0ffb77f7-8271-4594-9481-a5d5245c6344",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
