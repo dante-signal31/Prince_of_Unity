@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Prince of Unity"
-#define MyAppVersion "1.0.2.beta"
+#define MyAppVersion "1.0.2"
 #define MyAppPublisher "DLab Ninja"
 #define MyAppURL "https://github.com/dante-signal31/Prince_of_Unity"
 #define MyAppExeName "Prince of Unity.exe"
