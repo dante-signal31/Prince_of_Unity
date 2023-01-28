@@ -57,7 +57,16 @@ namespace Prince
         private void Start()
         {
             Dimension screenDimension = GetResolutionDimensions(gameConfiguration.ScreenResolution);
+#if UNITY_EDITOR || UNITY_STANDALONE_LINUX
+            // On Linux FullScreenMode stretches image, ignoring set resolution. So, I have to play
+            // game in windowed mode. But in windowed mode you must count the window bar so in a full hd
+            // screen (1080p) the lower side of the window stays under screen lower border. To avoid that
+            // in Linux I keep the game windowed at 720p, until a find a better solution.
+            if (screenDimension.Height > 720) screenDimension = new Dimension(1280, 720);
+            Screen.SetResolution(screenDimension.Width, screenDimension.Height, FullScreenMode.Windowed);
+#else
             Screen.SetResolution(screenDimension.Width, screenDimension.Height, gameConfiguration.FullScreen);
+#endif
         }
     }
 }
