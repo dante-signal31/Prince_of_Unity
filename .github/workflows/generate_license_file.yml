@@ -1,0 +1,26 @@
+name: generate_license_file
+
+on:
+  workflow_dispatch: {}
+
+# Created alf file should be uploaded to https://license.unity3d.com/manual
+# There you'll get an ulf license file. From that file you'll get
+# these data for github secrets:
+# UNITY_LICENSE
+# UNITY_EMAIL --> Add here the email address that you use to login to unity.
+# UNITY_EMAIL --> Add here the password that you use to login to unity.
+jobs:
+  activation:
+    name: Request manual activation file 🔑
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request manual activation file
+        id: getManualLicenseFile
+        uses: game-ci/unity-request-activation-file@v2
+      
+      # Upload artifact (Unity_v20XX.X.XXXX.alf)
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ steps.getManualLicenseFile.outputs.filePath }}
+          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
