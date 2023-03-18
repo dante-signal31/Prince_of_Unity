@@ -8,7 +8,7 @@ on:
 # these data for github secrets:
 # UNITY_LICENSE
 # UNITY_EMAIL --> Add here the email address that you use to login to unity.
-# UNITY_EMAIL --> Add here the password that you use to login to unity.
+# UNITY_PASSWORD --> Add here the password that you use to login to unity.
 jobs:
   activation:
     name: Request manual activation file 🔑
