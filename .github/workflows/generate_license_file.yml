@@ -1,6 +1,7 @@
 name: generate_license_file
 
 on:
+  # I want to be able to run this workflow only manually from the Actions tab.
   workflow_dispatch: {}
 
 # Created alf file should be uploaded to https://license.unity3d.com/manual
