@@ -29,7 +29,7 @@ namespace Tests.PlayTests
             if (_startPosition1 == null) _startPosition1 = GameObject.Find("StartPosition1");
             if (_startPosition2 == null) _startPosition2 = GameObject.Find("StartPosition2");
 
-            yield return new EnterPlayMode();
+            // yield return new EnterPlayMode();
         }
 
         [UnityTearDown]

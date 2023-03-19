@@ -48,7 +48,7 @@ namespace Tests.PlayTests
             if (_room10 == null)
                 _room10 = GameObject.Find("Room_1_0").GetComponentInChildren<Room>();
 
-            yield return new EnterPlayMode();
+            // yield return new EnterPlayMode();
         }
 
         [UnityTearDown]

@@ -74,7 +74,7 @@ namespace Tests.PlayTests
     //         AccessPrivateHelper.AccessPrivateMethod(_gameTimer, "ReindexPlannedEventsList", null);
     //         _gameTimer.ResetTimer();
     //         
-    //         yield return new EnterPlayMode();
+    //         // yield return new EnterPlayMode();
     //     }
     //     
     //     [UnityTearDown]

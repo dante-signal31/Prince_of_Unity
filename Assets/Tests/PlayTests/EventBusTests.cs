@@ -30,7 +30,7 @@ namespace Tests.PlayTests
             if (_receiver3 == null) _receiver3= GameObject.Find("Receiver3");
             if (_receiver4 == null) _receiver4= GameObject.Find("Receiver4");
 
-            yield return new EnterPlayMode();
+            // yield return new EnterPlayMode();
         }
         
         [UnityTearDown]

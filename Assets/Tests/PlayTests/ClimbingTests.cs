@@ -99,7 +99,7 @@ namespace Tests.PlayTests
             _potion1.SetActive(false);
             _potion2.SetActive(false);
 
-            yield return new EnterPlayMode();
+            // yield return new EnterPlayMode();
         }
 
         [UnityTearDown]
