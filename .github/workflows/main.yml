@@ -16,6 +16,12 @@ jobs:
       - name: Get source code.
         uses: actions/checkout@v3
       
+      - name: Show current path and contents.
+        shell: bash
+        run: |
+          pwd
+          ls
+      
       - name: Cache generated files.
         uses: actions/cache@v3
         with:
@@ -26,7 +32,16 @@ jobs:
       
       - name: Run tests.
         uses: game-ci/unity-test-runner@v2
+        id: testRunner
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          GITHUB_TOKEN: ${{ secrets.GHUB_TOKEN }}
+          githubToken: ${{ secrets.GHUB_TOKEN }}
+          artifactsPath: testsResults
+
+      - name: Store tests results to allow further assessment.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test results
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
