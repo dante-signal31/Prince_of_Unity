@@ -36,6 +36,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          testMode: playmode
           githubToken: ${{ secrets.GHUB_TOKEN }}
           artifactsPath: testsResults
 
