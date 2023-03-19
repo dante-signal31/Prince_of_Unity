@@ -39,7 +39,7 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           testMode: playmode
-          githubToken: ${{ secrets.GHUB_TOKEN }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
           artifactsPath: testsResults
 
       - name: Store tests results to allow further assessment.
