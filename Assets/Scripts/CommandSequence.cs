@@ -116,8 +116,11 @@ namespace Prince
         public static CommandSequence Load(string filePathname)
         {
             string filePathnameWithExtension = Path.ChangeExtension(filePathname, FileExtension);
-            Debug.Log($"(CommandSequence) Loading commands from {filePathnameWithExtension}");
-            string jsonString = File.ReadAllText(filePathnameWithExtension);
+            string absoluteFilePathname = Path.GetFullPath(filePathnameWithExtension);
+            // Debug.Log($"(CommandSequence) Loading commands from {filePathnameWithExtension}");
+            Debug.Log($"(CommandSequence) Loading commands from {absoluteFilePathname}");
+            // string jsonString = File.ReadAllText(filePathnameWithExtension);
+            string jsonString = File.ReadAllText(absoluteFilePathname);
             CommandSequence sequence = UnWrapCommandQueue(jsonString);
             return sequence;
         }
