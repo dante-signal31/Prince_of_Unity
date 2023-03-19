@@ -80,7 +80,7 @@ namespace Tests.PlayTests
     //     [UnityTearDown]
     //     public IEnumerator TearDown()
     //     {
-    //         yield return TestSceneManager.UnLoadScene(_currentScene);
+    //         // yield return TestSceneManager.UnLoadScene(_currentScene);
     //     }
     //
     //     // Test that timer executes expected functions at configured times.

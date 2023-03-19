@@ -89,7 +89,8 @@ namespace Tests.PlayTests
         {
             // Remove GameManagers to avoid having multiple instances of it in the next test.
             GameObject.Destroy(GameObject.Find("GameManagers"));
-            yield return TestSceneManager.UnLoadScene(_currentScene);
+            // yield return TestSceneManager.UnLoadScene(_currentScene);
+            yield return null;
         }
 
         // Test that Prince life is properly represented at HUD.

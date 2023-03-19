@@ -53,7 +53,7 @@ namespace Tests.PlayTests.Tools.Scene
         public static IEnumerator LoadScene(string scene)
         {
             //AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
             yield return new WaitUntil(() => asyncLoad.isDone);
         }
     }
