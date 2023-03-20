@@ -81,7 +81,7 @@ namespace Tests.PlayTests
 
             _prince.SetActive(false);
 
-            yield return new EnterPlayMode();
+            // yield return new EnterPlayMode();
         }
         
         [UnityTearDown]
@@ -89,7 +89,8 @@ namespace Tests.PlayTests
         {
             // Remove GameManagers to avoid having multiple instances of it in the next test.
             GameObject.Destroy(GameObject.Find("GameManagers"));
-            yield return TestSceneManager.UnLoadScene(_currentScene);
+            // yield return TestSceneManager.UnLoadScene(_currentScene);
+            yield return null;
         }
  
         // Test that guard is killed by blades trap if walks over it.

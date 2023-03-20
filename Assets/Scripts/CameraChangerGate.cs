@@ -82,14 +82,14 @@ namespace Prince
                 if (IsPlayerOutOfCurrentRoom(other))
                 {
                     // Player is entering in current room.
-                    _levelCamera.PlaceInRoom(currentRoom);
+                    if (_levelCamera!= null) _levelCamera.PlaceInRoom(currentRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player seems to be entering in me.", showLogs);
                     _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(currentRoom), this);
                 }
                 else
                 {
                     // Player is leaving current room.
-                    _levelCamera.PlaceInRoom(_externalRoom);
+                    if (_levelCamera!= null) _levelCamera.PlaceInRoom(_externalRoom);
                     this.Log($"(CameraChangerGate - {transform.root.name}) Player seems to be leaving from me.", showLogs);
                     _eventBus.TriggerEvent(new GameEvents.PrinceEnteredNewRoom(_externalRoom), this);
                 }

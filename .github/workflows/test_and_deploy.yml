@@ -1,0 +1,66 @@
+name: test_and_deploy
+
+# Trigger this workflow when a change is pushed to staging.
+on:
+  push:
+    branches: [ staging ]
+  pull_request:
+    branches: [ staging ]
+
+  # I want to be able to run this workflow manually from the Actions tab.
+  workflow_dispatch: {}
+
+jobs:  
+  tests:
+    name: Run unit and functional tests.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+      
+      - name: Show current path and contents.
+        shell: bash
+        run: |
+          pwd
+          ls
+      
+      - name: Cache generated files.
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+      
+      - name: Run tests.
+        uses: game-ci/unity-test-runner@v2
+        id: testRunner
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          testMode: playmode
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          artifactsPath: testsResults
+
+      - name: Store tests results to allow further assessment.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test results
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
+
+  merge_staging_and_master:
+    name: If tests passed then merge staging branch with master one.
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Merge staging -> uat
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: staging
+          target_branch: master
+          github_token: ${{secrets.GHUB_TOKEN}}
+

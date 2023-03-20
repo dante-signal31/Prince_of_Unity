@@ -74,13 +74,13 @@ namespace Tests.PlayTests
     //         AccessPrivateHelper.AccessPrivateMethod(_gameTimer, "ReindexPlannedEventsList", null);
     //         _gameTimer.ResetTimer();
     //         
-    //         yield return new EnterPlayMode();
+    //         // yield return new EnterPlayMode();
     //     }
     //     
     //     [UnityTearDown]
     //     public IEnumerator TearDown()
     //     {
-    //         yield return TestSceneManager.UnLoadScene(_currentScene);
+    //         // yield return TestSceneManager.UnLoadScene(_currentScene);
     //     }
     //
     //     // Test that timer executes expected functions at configured times.

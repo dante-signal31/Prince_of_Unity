@@ -116,8 +116,17 @@ namespace Prince
         public static CommandSequence Load(string filePathname)
         {
             string filePathnameWithExtension = Path.ChangeExtension(filePathname, FileExtension);
-            Debug.Log($"(CommandSequence) Loading commands from {filePathnameWithExtension}");
-            string jsonString = File.ReadAllText(filePathnameWithExtension);
+            string absoluteFilePathname = Path.GetFullPath(filePathnameWithExtension);
+            
+#if UNITY_STANDALONE_LINUX
+            // Test paths are coded using Windows standard, if we are at linux we must change paths.
+            absoluteFilePathname = absoluteFilePathname.Replace('\\', '/');
+#endif
+            
+            // Debug.Log($"(CommandSequence) Loading commands from {filePathnameWithExtension}");
+            Debug.Log($"(CommandSequence) Loading commands from {absoluteFilePathname}");
+            // string jsonString = File.ReadAllText(filePathnameWithExtension);
+            string jsonString = File.ReadAllText(absoluteFilePathname);
             CommandSequence sequence = UnWrapCommandQueue(jsonString);
             return sequence;
         }

@@ -37,7 +37,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &88322598493374997
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -54,7 +54,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &7260485351124137714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   soundController: {fileID: 7454332378449417252}
   musicController: {fileID: 8994338604963863714}
   vibrationsController: {fileID: 0}
+  inputActionController: {fileID: 0}
 --- !u!1 &4124597107352935379
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,8 +346,15 @@ MonoBehaviour:
   soundEmitter: {fileID: 7454332378449417252}
   damageEffects: {fileID: 6359709207466570223}
   healthController: {fileID: 2281631549126216618}
+  characterStatus: {fileID: 0}
   iAmGuard: 0
-  showLogs: 1
+  iAmBeingAttacked:
+    m_PersistentCalls:
+      m_Calls: []
+  counterAttackChance:
+    m_PersistentCalls:
+      m_Calls: []
+  showLogs: 0
 --- !u!114 &2281631549126216618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +371,7 @@ MonoBehaviour:
   stateMachine: {fileID: 88322598493374997}
   damageEffects: {fileID: 6359709207466570223}
   fightingInteractions: {fileID: 1391425223428354020}
-  showLogs: 1
+  showLogs: 0
 --- !u!114 &3697509955330008405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,9 +506,9 @@ MonoBehaviour:
   gravityController: {fileID: 7973259305185711377}
   groundSensors: {fileID: 5852060714942834250}
   fightingInteractions: {fileID: 0}
+  lookingRightWards: 1
   life: 0
   maximumLife: 0
-  lookingRightWards: 1
   showLogs: 0
 --- !u!50 &7284997314533658813
 Rigidbody2D:
@@ -519,6 +527,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -562,7 +576,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 7956368920170832525}
     m_Modifications:
     - target: {fileID: 4788543338495704051, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
@@ -614,7 +628,9 @@ PrefabInstance:
       value: SoundEmitter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f53d1aab6c3c5a54ba64c4ec9024ddb8, type: 3}
 --- !u!4 &4867114102132026192 stripped
 Transform:
@@ -637,7 +653,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 8120205002041218569}
     m_Modifications:
     - target: {fileID: 196651389810745074, guid: c95218e57f6137b418fddce00174ab49, type: 3}
@@ -725,7 +741,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8392564293191268382}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c95218e57f6137b418fddce00174ab49, type: 3}
 --- !u!4 &1001053490465594160 stripped
 Transform:
@@ -778,7 +796,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 3314638672175299456}
     m_Modifications:
     - target: {fileID: 1745294260854197706, guid: c49dcf50b601bb748a58b1d7a4651328, type: 3}
@@ -850,7 +868,9 @@ PrefabInstance:
       value: 0.004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c49dcf50b601bb748a58b1d7a4651328, type: 3}
 --- !u!4 &5722944529123301528 stripped
 Transform:
@@ -862,7 +882,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 8120205002041218569}
     m_Modifications:
     - target: {fileID: 3626297558726316604, guid: 328cea4343c4bf74c9cc39a21f3cfcf9, type: 3}
@@ -938,7 +958,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 328cea4343c4bf74c9cc39a21f3cfcf9, type: 3}
 --- !u!4 &6784542123023916 stripped
 Transform:
@@ -970,7 +992,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 7956368920170832525}
     m_Modifications:
     - target: {fileID: 6770086924521068725, guid: 11f84f1d07262f24ab738fca1628d83e, type: 3}
@@ -1030,7 +1052,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11f84f1d07262f24ab738fca1628d83e, type: 3}
 --- !u!4 &5932239455237854860 stripped
 Transform:
@@ -1053,7 +1077,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TransformParent: {fileID: 8120205002041218569}
     m_Modifications:
     - target: {fileID: 1921060690161498085, guid: 6adae4bd66714334d8e68459dfeaf354, type: 3}
@@ -1113,7 +1137,9 @@ PrefabInstance:
       value: Sensor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6adae4bd66714334d8e68459dfeaf354, type: 3}
 --- !u!61 &2179013083815870541 stripped
 BoxCollider2D:

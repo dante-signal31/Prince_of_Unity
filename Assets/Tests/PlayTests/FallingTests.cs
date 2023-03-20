@@ -75,7 +75,7 @@ namespace Tests.PlayTests
             _potion1.SetActive(false);
             _potion2.SetActive(false);
 
-            yield return new EnterPlayMode();
+            // yield return new EnterPlayMode();
         }
         
         [UnityTearDown]
@@ -83,7 +83,8 @@ namespace Tests.PlayTests
         {
             // Remove GameManagers to avoid having multiple instances of it in the next test.
             GameObject.Destroy(GameObject.Find("GameManagers"));
-            yield return TestSceneManager.UnLoadScene(_currentScene);
+            // yield return TestSceneManager.UnLoadScene(_currentScene);
+            yield return null;
         }
 
         /// <summary>

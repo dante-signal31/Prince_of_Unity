@@ -74,7 +74,8 @@ namespace Prince
 
         public void OnPrinceClimbedInRoom()
         {
-            if (!IsActiveRoom()) _cameraController.PlaceInRoom(this);
+            if (!IsActiveRoom()) 
+                if (_cameraController != null) _cameraController.PlaceInRoom(this);
         }
 
 #if UNITY_EDITOR
