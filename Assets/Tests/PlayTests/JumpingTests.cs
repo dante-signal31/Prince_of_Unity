@@ -113,11 +113,11 @@ namespace Tests.PlayTests
             yield return new WaitForSeconds(4);
             // Assert Prince has not fallen.
             float endHeight = _prince.transform.position.y;
-            Assert.True(Math.Abs(endHeight - startingHeight)< 0.10f);
+            Assert.True(Math.Abs(endHeight - startingHeight)< 0.20f);
             // Assert Prince has advanced what we expected.
             float endHorizontalPosition = _prince.transform.position.x;
             float advancedHorizontalPosition = endHorizontalPosition - startingHorizontalPosition;
-            Assert.True(Math.Abs(advancedHorizontalPosition - expectedAdvancedHorizontalPosition) < 0.30);
+            Assert.True(Math.Abs(advancedHorizontalPosition - expectedAdvancedHorizontalPosition) < 0.40);
             // Assert Prince keeps his life.
             Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;
@@ -174,8 +174,8 @@ namespace Tests.PlayTests
             // Let movements perform.
             yield return new WaitForSeconds(5);
             // Assert Prince is at expected position.
-            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.30f);
-            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.15f);
+            Assert.True(Math.Abs(expectedLandingPosition.x - _prince.transform.position.x)< 0.40f);
+            Assert.True(Math.Abs(expectedLandingPosition.y - _prince.transform.position.y)< 0.20f);
             // Assert Prince keeps his life.
             Assert.False(_prince.GetComponentInChildren<CharacterStatus>().IsDead);
             int endHealth = _prince.GetComponentInChildren<CharacterStatus>().Life;

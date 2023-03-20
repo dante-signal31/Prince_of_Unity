@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281631549126216618, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: showLogs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2281631549126216618, guid: 62214b62e435ed345a2a399ad6a64990, type: 3}
       propertyPath: damageEffects
@@ -648,7 +648,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 621672ab34827924791773342cd5deab, type: 3}
   m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
