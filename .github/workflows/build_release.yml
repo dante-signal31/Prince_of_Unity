@@ -1,0 +1,34 @@
+name: build_release
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build_windows:
+    name: Build release for windows.
+    runs-on: windows-latest
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Cache generated files.
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      - name: Build game for windows.
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: StandaloneWindows64
+          unityVersion: auto
+      
+      - name: Upload Build
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: build
