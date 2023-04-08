@@ -29,7 +29,7 @@ jobs:
           buildName: Prince of Unity
           targetPlatform: StandaloneWindows64
           unityVersion: auto
-          versioning: semantic
+          versioning: Semantic
           
       - name: Upload Build
         uses: actions/upload-artifact@v2
@@ -63,7 +63,7 @@ jobs:
           targetPlatform: StandaloneLinux64
           unityVersion: auto
           buildsPath: build_linux
-          versioning: semantic
+          versioning: Semantic
           
 
       - name: Upload Build
