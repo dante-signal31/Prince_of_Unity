@@ -104,6 +104,12 @@ jobs:
           name: LinuxBuild
           path: Build
 
+      - name: Remove unused build folder.
+        run: rm -rf Build/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
+      
+      - name: Change executable permission.
+        run: chmod 755 Build/'Prince of Unity'
+      
       - name: Get folder structure and path.
         run: |
           pwd
