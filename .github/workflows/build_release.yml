@@ -6,7 +6,7 @@ on:
 jobs:
   build_windows:
     name: Build release for windows.
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     steps:
       - name: Get source code.
         uses: actions/checkout@v3
