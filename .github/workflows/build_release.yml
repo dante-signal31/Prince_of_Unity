@@ -26,9 +26,11 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
+          buildName: Prince of Unity
           targetPlatform: StandaloneWindows64
           unityVersion: auto
-      
+          versioning: semantic
+          
       - name: Upload Build
         uses: actions/upload-artifact@v2
         with:
@@ -57,9 +59,12 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
+          buildName: Prince of Unity
           targetPlatform: StandaloneLinux64
           unityVersion: auto
           buildsPath: build_linux
+          versioning: semantic
+          
 
       - name: Upload Build
         uses: actions/upload-artifact@v2
