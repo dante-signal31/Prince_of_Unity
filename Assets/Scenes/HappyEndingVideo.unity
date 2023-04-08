@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 39431262220568042, guid: 8cbce7486c0c633419482a9bdc5b5c47, type: 3}
       propertyPath: videoToPlay
       value: 
-      objectReference: {fileID: 32900000, guid: 5cfcf7b437b43f34c8aed1dceda1573a, type: 3}
+      objectReference: {fileID: 32900000, guid: cfbb72a9be2ac874381a4e684fdcb810, type: 3}
     - target: {fileID: 39431262220568042, guid: 8cbce7486c0c633419482a9bdc5b5c47, type: 3}
       propertyPath: loadNextLevelAtEnd
       value: 0
