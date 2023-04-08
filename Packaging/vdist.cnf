@@ -10,7 +10,7 @@ fpm_args = --maintainer dante.signal31@gmail.com -a native --url
     Persia (1989)."
     --license BSD-3 --category net
 compile_python = False
-output_folder = ./Dist
+output_folder = ./Installers/Linux
 after_install = packaging/postinst.sh
 after_remove = packaging/postuninst.sh
 
