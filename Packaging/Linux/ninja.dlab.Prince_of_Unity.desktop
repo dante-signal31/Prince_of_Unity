@@ -1,0 +1,16 @@
+# Written conforming with: https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
+#
+[Desktop Entry]
+X-AppInstall-Package=ninja.dlab.Prince_of_Unity
+X-AppInstall-Section=universe
+
+# This is not game version but Desktop Entry Specification this file complies with.
+Version=1.5
+
+Type=Application
+Name=Prince of Unity
+GenericName=Platform Game
+Comment=A Prince of Persia demo made using Unity.
+Icon=/usr/share/games/Prince_of_Unity/Prince_of_Unity_icon.png
+Exec=/usr/share/games/Prince_of_Unity/'Prince of Unity'
+Categories=Game;PlatformGame;

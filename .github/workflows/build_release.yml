@@ -94,6 +94,19 @@ jobs:
     name: Create linux installer.
     needs: build_linux
     runs-on: ubuntu-latest
+    env:
+      app: Prince_of_Unity
+      architecture: amd64
+      source_directory: Build
+      package_install_root: /usr/share/games/Prince_of_Unity
+      output_folder: Installers/Linux
+      after_install: Packaging/Linux/postinst.sh
+      after_remove: Packaging/Linux/postuninst.sh
+      maintainer: dante.signal31@gmail.com
+      url: https://github.com/dante-signal31/Prince_of_Unity
+      description: Developed with Unity, this game is a hobbyist black box demo remake of Jordan Mechner's classic Prince of Persia (1989).
+      license: BSD-3
+      category: games
     steps:
       - name: Get source code.
         uses: actions/checkout@v3
@@ -107,8 +120,20 @@ jobs:
       - name: Remove unused build folder.
         run: rm -rf Build/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
       
-      - name: Change executable permission.
-        run: chmod 755 Build/'Prince of Unity'
+      - name: Change executable and folders permissions.
+        run: | 
+          chmod 755 Build/'Prince of Unity'
+          chmod 755 Build/'Prince of Unity_Data'
+          chmod 755 Build/'Prince of Unity_Data'/il2cpp_data
+          chmod 755 Build/'Prince of Unity_Data'/il2cpp_data/Metadata
+          chmod 755 Build/'Prince of Unity_Data'/il2cpp_data/Resources
+          chmod 755 Build/'Prince of Unity_Data'/Resources
+      
+      - name: Copy executable icon.
+        run: cp Asset/Icons/Running_icon.png Build/Prince_of_Unity_icon.png
+        
+      - name: Copy desktop entry.
+        run: cp Packaging/Linux/ninja.dlab.Prince_of_Unity.desktop Build/.
       
       - name: Get folder structure and path.
         run: |
