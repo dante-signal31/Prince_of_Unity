@@ -1,7 +1,7 @@
 app=Prince_of_Unity
 version=$1
 architecture=amd64
-source_directory=Build
+source_directory=./
 package_install_root=/usr/share/games/Prince_of_Unity
 output_folder=Installers/Linux
 after_install=Packaging/Linux/postinst.sh
@@ -29,11 +29,13 @@ echo "Calling fpm with this parameters: $fpm_parameters"
 #mkdir -p $temp_dir/$package_install_root
 #cp -r $source_directory/* $temp_dir/$package_install_root/.
 
-fpm -s dir -t deb -n $app \
+#cd Build
+
+fpm -s dir -t deb -C Build -n $app \
 -p $output_folder -v "$version" \
 --prefix $package_install_root \
 --description "$description" \
 --after-install $after_install --after-remove $after_remove \
 --maintainer $maintainer -a $architecture --url $url \
 --license $license --category $category \
-$source_directory/*
+$source_directory

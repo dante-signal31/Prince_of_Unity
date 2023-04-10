@@ -4,4 +4,4 @@
 ln -s /usr/share/games/Prince_of_Unity/Prince_of_Unity /usr/games/Prince_of_Unity
 
 # Copy desktop entry
-cp /usr/share/games/Prince_of_Unity/ninja.dlab.Prince_of_Unity.desktop /usr/share/app-install/desktop/ninja.dlab.Prince_of_Unity
+cp /usr/share/games/Prince_of_Unity/ninja.dlab.Prince_of_Unity.desktop /usr/share/app-install/desktop/ninja.dlab.Prince_of_Unity.desktop

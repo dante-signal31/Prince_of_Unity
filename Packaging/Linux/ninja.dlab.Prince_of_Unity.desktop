@@ -1,12 +1,8 @@
 # Written conforming with: https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
 #
 [Desktop Entry]
-X-AppInstall-Package=ninja.dlab.Prince_of_Unity
-X-AppInstall-Section=universe
-
 # This is not game version but Desktop Entry Specification this file complies with.
 Version=1.5
-
 Type=Application
 Name=Prince of Unity
 GenericName=Platform Game
