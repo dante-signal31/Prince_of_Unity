@@ -60,3 +60,12 @@ fpm -s dir -t deb -C Build -n $app \
 --maintainer $maintainer -a $architecture --url $url \
 --license $license --category $category \
 $source_directory
+
+fpm -s dir -t rpm -C Build -n $app \
+-p $output_folder -v "$version" \
+--prefix $package_install_root \
+--description "$description" \
+--after-install $after_install --after-remove $after_remove \
+--maintainer $maintainer -a $architecture --url $url \
+--license $license --category $category \
+$source_directory
