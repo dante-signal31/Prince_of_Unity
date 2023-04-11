@@ -40,6 +40,8 @@ jobs:
   build_linux:
     name: Build release for linux.
     runs-on: ubuntu-latest
+    outputs: 
+      build_version: ${{ steps.LinuxBuilder.outputs.buildVersion }}
     steps:
       - name: Get source code.
         uses: actions/checkout@v3
@@ -54,6 +56,7 @@ jobs:
 
       - name: Build game for linux.
         uses: game-ci/unity-builder@v2
+        id: LinuxBuilder
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -95,9 +98,10 @@ jobs:
     needs: build_linux
     runs-on: ubuntu-latest
     env:
-      app: Prince_of_Unity
+      app: prince-of-unity
+      version: ${{ needs.build_.outputs.build_version }}
       architecture: amd64
-      source_directory: Build
+      source_directory: ./
       package_install_root: /usr/share/games/Prince_of_Unity
       output_folder: Installers/Linux
       after_install: Packaging/Linux/postinst.sh
@@ -134,8 +138,33 @@ jobs:
         
       - name: Copy desktop entry.
         run: cp Packaging/Linux/ninja.dlab.Prince_of_Unity.desktop Build/.
-      
-      - name: Get folder structure and path.
-        run: |
-          pwd
-          ls -R
+        
+      - name: Create DEB package.
+        uses: bpicode/github-action-fpm@master
+        with:
+          fpm_args: $source_directory
+          fpm_opts: "-s dir -t deb -C Build -n $app \
+            -p $output_folder -v $version \
+            --prefix $package_install_root \
+            --description \"$description\" \
+            --after-install $after_install --after-remove $after_remove \
+            --maintainer $maintainer -a $architecture --url $url \
+            --license $license --category $category"
+
+      - name: Create RPM package.
+        uses: bpicode/github-action-fpm@master
+        with:
+          fpm_args: $source_directory
+          fpm_opts: "-s dir -t rpm -C Build -n $app \
+            -p $output_folder -v $version \
+            --prefix $package_install_root \
+            --description \"$description\" \
+            --after-install $after_install --after-remove $after_remove \
+            --maintainer $maintainer -a $architecture --url $url \
+            --license $license --category $category"
+
+      - name: Upload Linux packages.
+        uses: actions/upload-artifact@v3
+        with:
+          name: LinuxPackages
+          path: $output_folder
