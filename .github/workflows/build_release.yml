@@ -134,7 +134,7 @@ jobs:
           chmod 755 Build/'Prince of Unity_Data'/Resources
       
       - name: Copy executable icon.
-        run: cp Asset/Icons/Running_icon.png Build/Prince_of_Unity_icon.png
+        run: cp Assets/Icons/Running_icon.png Build/Prince_of_Unity_icon.png
         
       - name: Copy desktop entry.
         run: cp Packaging/Linux/ninja.dlab.Prince_of_Unity.desktop Build/.
