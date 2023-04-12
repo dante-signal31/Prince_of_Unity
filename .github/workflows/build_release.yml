@@ -148,7 +148,7 @@ jobs:
             --prefix ${{ env.package_install_root }} \
             --description "${{ env.description }}" \
             --after-install ${{ env.after_install }} --after-remove ${{ env.after_remove }} \
-            --maintainer ${{ env.maintainer }} -a ${{ env.architecture --url ${{ env.url }} \
+            --maintainer ${{ env.maintainer }} -a ${{ env.architecture }} --url ${{ env.url }} \
             --license ${{ env.license }} --category ${{ env.category }}'
 
 #      - name: Create RPM package.
