@@ -67,7 +67,7 @@ jobs:
           unityVersion: auto
           buildsPath: build_linux
           versioning: Semantic
-        
+
       - name: Upload Build
         uses: actions/upload-artifact@v3
         with:
@@ -123,7 +123,7 @@ jobs:
 
       - name: Remove unused build folder.
         run: rm -rf Build/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
-      
+
       - name: Change executable and folders permissions.
         run: | 
           chmod 755 Build/'Prince of Unity'
@@ -132,36 +132,36 @@ jobs:
           chmod 755 Build/'Prince of Unity_Data'/il2cpp_data/Metadata
           chmod 755 Build/'Prince of Unity_Data'/il2cpp_data/Resources
           chmod 755 Build/'Prince of Unity_Data'/Resources
-      
+
       - name: Copy executable icon.
         run: cp Assets/Icons/Running_icon.png Build/Prince_of_Unity_icon.png
-        
+
       - name: Copy desktop entry.
         run: cp Packaging/Linux/ninja.dlab.Prince_of_Unity.desktop Build/.
-        
+
       - name: Create DEB package.
         uses: bpicode/github-action-fpm@master
         with:
-          fpm_args: $source_directory
-          fpm_opts: "-s dir -t deb -C Build -n $app \
-            -p $output_folder -v $version \
-            --prefix $package_install_root \
-            --description \"$description\" \
-            --after-install $after_install --after-remove $after_remove \
-            --maintainer $maintainer -a $architecture --url $url \
-            --license $license --category $category"
+          fpm_args: ${{ env.source_directory }}
+          fpm_opts: "-s dir -t deb -C Build -n ${{ env.app }} \
+            -p ${{ env.output_folder }} -v ${{ env.version }}\
+            --prefix ${{ env.package_install_root }} \
+            --description \"${{ env.description \" \
+            --after-install ${{ env.after_install }} --after-remove ${{ env.after_remove }} \
+            --maintainer ${{ env.maintainer }} -a ${{ env.architecture --url ${{ env.url }} \
+            --license ${{ env.license }} --category ${{ env.category }}"
 
-      - name: Create RPM package.
-        uses: bpicode/github-action-fpm@master
-        with:
-          fpm_args: $source_directory
-          fpm_opts: "-s dir -t rpm -C Build -n $app \
-            -p $output_folder -v $version \
-            --prefix $package_install_root \
-            --description \"$description\" \
-            --after-install $after_install --after-remove $after_remove \
-            --maintainer $maintainer -a $architecture --url $url \
-            --license $license --category $category"
+#      - name: Create RPM package.
+#        uses: bpicode/github-action-fpm@master
+#        with:
+#          fpm_args: $source_directory
+#          fpm_opts: "-s dir -t rpm -C Build -n $app \
+#            -p $output_folder -v $version \
+#            --prefix $package_install_root \
+#            --description \"$description\" \
+#            --after-install $after_install --after-remove $after_remove \
+#            --maintainer $maintainer -a $architecture --url $url \
+#            --license $license --category $category"
 
       - name: Upload Linux packages.
         uses: actions/upload-artifact@v3
