@@ -80,26 +80,17 @@ jobs:
           path: build_linux/StandaloneLinux64
 
 
-  create_windows_installer:
-    name: Create windows installer.
+  generate_windows_installer_configuration:
+    name: Generate windows installer configuration from template.
     needs: build_windows
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
     env:
-      output_folder: 
+      windows_installer_folder: Installers\Windows
+    outputs:
+      windows_installer_folder: ${{ env.windows_installer_folder }}
     steps:
       - name: Get source code.
         uses: actions/checkout@v3
-
-      - name: Download windows build.
-        uses: actions/download-artifact@v3
-        with:
-          name: WindowsBuild
-          path: Build
-
-      - name: Get folder structure and path.
-        run: |
-          pwd
-          ls -R
 
       - name: Generate an Inno Setup config file.
         uses: cuchi/jinja2-action@v1.2.0
@@ -109,13 +100,47 @@ jobs:
           strict: true
           variables: |
             app_name="Prince of Unity"
-            app_version=${{ env.version }}
+            app_version=${{ needs.build_windows.outputs.build_version }}
             app_publisher="DLab Ninja"
             app_url="https://github.com/dante-signal31/Prince_of_Unity"
             app_exe_name="Prince of Unity.exe"
             app_installer_name="PoU_setup"
             app_icon="Assets\Icons\Running_icon.ico"
-            app_output_dir="Installers\Windows"
+            app_output_dir=${{ env.windows_installer_folder }}
+      
+      - name: Upload generated configuration.
+        uses: actions/upload-artifact@v3
+        with:
+          name: WindowsInstallerConfiguration
+          path: Packaging/Windows/rendered_windows_iss_script.iss
+            
+    
+  create_windows_installer:
+    name: Create windows installer.
+    needs: generate_windows_installer_configuration
+    runs-on: windows-2019
+    env:
+      output_folder: Installers\Windows
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Download windows build.
+        uses: actions/download-artifact@v3
+        with:
+          name: WindowsInstallerConfiguration
+          path: Build
+      
+      - name: Download generated windows installer configuration.
+        uses: actions/download-artifact@v3
+        with:
+          name: WindowsBuild
+          path: Packaging/Windows/
+
+      - name: Get folder structure and path.
+        run: |
+          pwd
+          ls -R
             
       - name: Run Inno Setup to create Windows installer.
         uses: nadeemjazmawe/inno-setup-action-cli@v6.0.5
@@ -126,7 +151,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: WindowsPackage
-          path: ${{ env.output_folder }}
+          path: ${{ needs.generate_windows_installer_configuration.outputs.windows_installer_folder }}
 
 
   create_linux_installer:
