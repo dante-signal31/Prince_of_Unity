@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       app: prince-of-unity
-      version: ${{ needs.build_.outputs.build_version }}
+      version: ${{ needs.build_linux.outputs.build_version }}
       architecture: amd64
       source_directory: ./
       package_install_root: /usr/share/games/Prince_of_Unity
