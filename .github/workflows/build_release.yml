@@ -154,8 +154,8 @@ jobs:
           path: ${{ needs.generate_windows_installer_configuration.outputs.windows_installer_folder }}
 
 
-  create_linux_installer:
-    name: Create linux installer.
+  create_linux_installers:
+    name: Create linux installers packages.
     needs: build_linux
     runs-on: ubuntu-latest
     env:
