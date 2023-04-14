@@ -148,20 +148,14 @@ jobs:
           fpm_args: ${{ env.source_directory }}
           fpm_opts: '-s dir -t deb -C Build -n ${{ env.app }} -p ${{ env.output_folder }} -v ${{ env.version }} --prefix ${{ env.package_install_root }} --description "${{ env.description }}" --after-install ${{ env.after_install }} --after-remove ${{ env.after_remove }} --maintainer ${{ env.maintainer }} -a ${{ env.architecture }} --url ${{ env.url }} --license ${{ env.license }} --category ${{ env.category }}'
 
-#      - name: Create RPM package.
-#        uses: bpicode/github-action-fpm@master
-#        with:
-#          fpm_args: $source_directory
-#          fpm_opts: "-s dir -t rpm -C Build -n $app \
-#            -p $output_folder -v $version \
-#            --prefix $package_install_root \
-#            --description \"$description\" \
-#            --after-install $after_install --after-remove $after_remove \
-#            --maintainer $maintainer -a $architecture --url $url \
-#            --license $license --category $category"
+      - name: Create DEB package.
+        uses: bpicode/github-action-fpm@master
+        with:
+          fpm_args: ${{ env.source_directory }}
+          fpm_opts: '-s dir -t rpm -C Build -n ${{ env.app }} -p ${{ env.output_folder }} -v ${{ env.version }} --prefix ${{ env.package_install_root }} --description "${{ env.description }}" --after-install ${{ env.after_install }} --after-remove ${{ env.after_remove }} --maintainer ${{ env.maintainer }} -a ${{ env.architecture }} --url ${{ env.url }} --license ${{ env.license }} --category ${{ env.category }}'
 
       - name: Upload Linux packages.
         uses: actions/upload-artifact@v3
         with:
           name: LinuxPackages
-          path: $output_folder
+          path: ${{ env.output_folder }}
