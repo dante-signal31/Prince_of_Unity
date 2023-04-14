@@ -138,6 +138,9 @@ jobs:
 
       - name: Copy desktop entry.
         run: cp Packaging/Linux/ninja.dlab.Prince_of_Unity.desktop Build/.
+      
+      - name: Create package output folders.
+        run: mkdir -p ${{ env.output_folder }}
 
       - name: Create DEB package.
         uses: bpicode/github-action-fpm@master
