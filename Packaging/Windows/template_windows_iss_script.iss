@@ -56,5 +56,5 @@ Name: "{autoprograms}\{{ IssVar(MyAppName) }}"; Filename: "{app}\{{ IssVar(MyApp
 Name: "{autodesktop}\{{ IssVar(MyAppName) }}"; Filename: "{app}\{{ IssVar(MyAppExeName) }}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{{ IssVar(MyAppExeName) }}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\{{ IssVar(MyAppExeName) }}"; Description: "{cm:LaunchProgram,{{'{#'}}StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
