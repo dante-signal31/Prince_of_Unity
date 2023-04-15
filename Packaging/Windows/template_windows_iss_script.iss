@@ -6,7 +6,7 @@ It happens that ISS uses the same syntax for variables than Jinja for
 comments, so I have to use a Jinja macro for those variables 
 #}
 {% macro IssVar(name) -%}
-    {#{{ name }}}
+    {{'{#'}}{{ name }}}
 {%- endmacro %}
 
 #define MyAppName {{ app_name }}
