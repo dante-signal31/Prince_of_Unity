@@ -224,7 +224,7 @@ jobs:
   
   deploy_to_packagecloud:
     name: Upload packages to PackageCloud Repository.
-    needs: create_linux_installer
+    needs: create_linux_installers
     runs-on: ubuntu-latest
     steps:
       - name: Retrieve generated packages.
