@@ -98,13 +98,13 @@ jobs:
           output_file: Packaging/Windows/rendered_windows_iss_script.iss
           strict: true
           variables: |
-            app_name="Prince of Unity"
+            app_name=Prince of Unity
             app_version=1.0.1
-            app_publisher="DLab Ninja"
-            app_url="https://github.com/dante-signal31/Prince_of_Unity"
-            app_exe_name="Prince of Unity.exe"
-            app_installer_name="PoU_setup"
-            app_icon="Assets\Icons\Running_icon.ico"
+            app_publisher=DLab Ninja
+            app_url=https://github.com/dante-signal31/Prince_of_Unity
+            app_exe_name=Prince of Unity.exe
+            app_installer_name=PoU_setup
+            app_icon=Assets\Icons\Running_icon.ico
             app_output_dir=${{ env.windows_installer_folder }}
       
       - name: Upload generated configuration.
