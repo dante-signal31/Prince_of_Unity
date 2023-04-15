@@ -82,7 +82,6 @@ jobs:
 
   generate_windows_installer_configuration:
     name: Generate windows installer configuration from template.
-#    needs: build_windows
     runs-on: ubuntu-latest
     env:
       windows_installer_folder: Installers\Windows
@@ -100,7 +99,6 @@ jobs:
           strict: true
           variables: |
             app_name="Prince of Unity"
-#            app_version=${{ needs.build_windows.outputs.build_version }}
             app_version=1.0.1
             app_publisher="DLab Ninja"
             app_url="https://github.com/dante-signal31/Prince_of_Unity"
