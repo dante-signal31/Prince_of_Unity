@@ -128,13 +128,13 @@ jobs:
       - name: Download windows build.
         uses: actions/download-artifact@v3
         with:
-          name: WindowsInstallerConfiguration
+          name: WindowsBuild
           path: Build
 
       - name: Download generated windows installer configuration.
         uses: actions/download-artifact@v3
         with:
-          name: WindowsBuild
+          name: WindowsInstallerConfiguration
           path: Packaging/Windows/
 
       - name: Get folder structure and path.
