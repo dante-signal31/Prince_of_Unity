@@ -245,3 +245,39 @@ jobs:
           packages: package_dist/
           rpmdists: fedora/37
           debdists: ubuntu/jammy
+
+
+  deploy_to_itchio:
+    name: Deploy installers to itch.io.
+    needs: [create_linux_installers, create_windows_installer]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download generated Windows installer.
+        uses: actions/download-artifact@v3
+        with:
+          name: WindowsPackage
+          path: Installers/Windows
+        
+      - name: Deploy Windows installer to itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
+          CHANNEL: windows
+          ITCH_GAME: prince-of-unity
+          ITCH_USER: dante.signal31
+          PACKAGE: Installers/Windows
+
+      - name: Download generated Linux installers.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxPackage
+          path: Installers/Linux
+
+      - name: Deploy Linux installer to itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
+          CHANNEL: linux
+          ITCH_GAME: prince-of-unity
+          ITCH_USER: dante.signal31
+          PACKAGE: Installers/Linux
