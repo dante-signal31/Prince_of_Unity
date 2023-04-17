@@ -22,12 +22,12 @@ jobs:
           restore-keys: |
             Library-
             
-      - name: Store current folder in an environment path.
-        id: ProjectFolderFinder
-        shell: bash
-        run: |
-          echo "project_folder=$(cwd)" >> GITHUB_OUTPUT
-          echo ${{ env.project_folder }}
+#      - name: Store current folder in an environment path.
+#        id: ProjectFolderFinder
+#        shell: bash
+#        run: |
+#          echo "project_folder=$(cwd)" >> GITHUB_OUTPUT
+#          echo ${{ env.project_folder }}
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
