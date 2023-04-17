@@ -24,11 +24,10 @@ jobs:
             
       - name: Store current folder in an environment path.
         id: ProjectFolderFinder
-        # Remember we're in a windows runner, so needed command is in powershell.
-        shell: pwsh
+        shell: bash
         run: |
-          echo "project_folder=$pwd" >> $env:GITHUB_OUTPUT
-          echo $project_folder
+          echo "project_folder=$pwd" >> GITHUB_OUTPUT
+          echo ${{ env.project_folder }}
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
