@@ -26,7 +26,7 @@ jobs:
         id: ProjectFolderFinder
         shell: bash
         run: |
-          echo "project_folder=$(cwd)" >> $GITHUB_OUTPUT
+          echo "project_folder=$(pwd)" >> $GITHUB_OUTPUT
           echo "Current project folder: ${{ env.project_folder }}"
 
       - name: Build game for windows.
