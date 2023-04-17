@@ -28,6 +28,7 @@ jobs:
         shell: pwsh
         run: |
           echo "project_folder=$pwd" >> $env:GITHUB_OUTPUT
+          echo $project_folder
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
