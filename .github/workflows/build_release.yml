@@ -9,6 +9,7 @@ jobs:
     runs-on: windows-2019
     outputs:
       build_version: ${{ steps.WindowsBuilder.outputs.buildVersion }}
+      project_folder: ${{ steps.ProjectFolderFinder.outputs.project_folder }}
     steps:
       - name: Get source code.
         uses: actions/checkout@v3
@@ -20,6 +21,13 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
+            
+      - name: Store current folder in an environment path.
+        id: ProjectFolderFinder
+        # Remember we're in a windows runner, so needed command is in powershell.
+        shell: pwsh
+        run: |
+          echo "project_folder=$pwd" >> $env:GITHUB_OUTPUT
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
@@ -107,6 +115,7 @@ jobs:
             app_installer_name=PoU_setup
             app_icon=Assets\Icons\Running_icon.ico
             app_output_dir=${{ env.windows_installer_folder }}
+            project_folder=${{ needs.buildWindows.outputs.project_folder }}
       
       - name: Upload generated configuration.
         uses: actions/upload-artifact@v3
@@ -141,7 +150,7 @@ jobs:
         run: |
           pwd
           ls -R
-
+      
       - name: Run Inno Setup to create Windows installer.
         uses: nadeemjazmawe/inno-setup-action-cli@v6.0.5
         with:

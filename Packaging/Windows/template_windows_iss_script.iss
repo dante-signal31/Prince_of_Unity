@@ -17,6 +17,7 @@ comments, so I have to use a Jinja macro for those variables
 #define MyAppExeName "{{ app_exe_name }}"
 #define MyAppIcon "{{ app_icon }}"
 #define MyAppOutputDir "{{ app_output_dir }}"
+#define MyProjectFolder "{{ project_folder }}"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -30,12 +31,12 @@ AppSupportURL={{ IssVar("MyAppURL") }}
 AppUpdatesURL={{ IssVar("MyAppURL") }}
 DefaultDirName={autopf}\{{ IssVar("MyAppName") }}
 DisableProgramGroupPage=yes
-LicenseFile=LICENSE
+LicenseFile={{ IssVar("MyProjectFolder") }}\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
-OutputDir={{ IssVar("MyAppOutputDir") }}
+OutputDir={{ IssVar("MyProjectFolder") }}\{{ IssVar("MyAppOutputDir") }}
 OutputBaseFilename={{ IssVar("MyAppInstallerName") }}
-SetupIconFile={{ IssVar("MyAppIcon") }}
+SetupIconFile={{ IssVar("MyProjectFolder") }}\{{ IssVar("MyAppIcon") }}
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -47,8 +48,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "Build\{{ IssVar("MyAppExeName") }}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{{ IssVar("MyProjectFolder") }}\Build\{{ IssVar("MyAppExeName") }}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{{ IssVar("MyProjectFolder") }}\Build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
