@@ -26,7 +26,9 @@ jobs:
         id: ProjectFolderFinder
         shell: bash
         run: |
-          echo "project_folder=$(pwd)" >> $GITHUB_OUTPUT
+          base_folder=$(pwd)
+          echo "Project folder: $base_folder"
+          echo "project_folder=$base_folder" >> $GITHUB_OUTPUT
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
@@ -101,7 +103,7 @@ jobs:
       
       - name: Show project folder.
         shell: bash
-        run: echo ${{ needs.build_windows.output.project_folder }}
+        run: echo ${{ needs.build_windows.outputs.project_folder }}
 
       - name: Generate an Inno Setup config file.
         uses: cuchi/jinja2-action@v1.2.0
@@ -142,6 +144,10 @@ jobs:
         with:
           name: WindowsBuild
           path: Build
+
+      - name: Remove unused build folder.
+        shell: bash
+        run: rm -rf Build/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
 
       - name: Download generated windows installer configuration.
         uses: actions/download-artifact@v3
