@@ -27,7 +27,6 @@ jobs:
         shell: bash
         run: |
           echo "project_folder=$(pwd)" >> $GITHUB_OUTPUT
-          echo "Current project folder: ${{ outputs.project_folder }}"
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
