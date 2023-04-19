@@ -8,8 +8,8 @@ jobs:
     name: Build release for windows.
     runs-on: windows-2019
     outputs:
-      build_version: ${{ steps.WindowsBuilder.outputs.buildVersion }}
       project_folder: ${{ steps.ProjectFolderFinder.outputs.projectFolder }}
+      build_version: ${{ steps.WindowsBuilder.outputs.buildVersion }}
     steps:
       - name: Get source code.
         uses: actions/checkout@v3
