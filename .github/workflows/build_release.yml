@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-2019
     outputs:
       build_version: ${{ steps.WindowsBuilder.outputs.buildVersion }}
-      project_folder: ${{ steps.ProjectFolderFinder.outputs.project_folder }}
+      project_folder: ${{ steps.ProjectFolderFinder.outputs.projectFolder }}
     steps:
       - name: Get source code.
         uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
         run: |
           $base_folder=pwd
           echo "Project folder: $base_folder"
-          echo "project_folder=$base_folder" >> $env::GITHUB_OUTPUT
+          echo "projectFolder=$base_folder" >> $env::GITHUB_OUTPUT
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
