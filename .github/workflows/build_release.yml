@@ -24,11 +24,11 @@ jobs:
             
       - name: Store current folder in an environment path.
         id: ProjectFolderFinder
-        shell: bash
+        shell: pwsh
         run: |
-          base_folder=$(pwd)
+          $base_folder=pwd
           echo "Project folder: $base_folder"
-          echo "project_folder=$base_folder" >> $GITHUB_OUTPUT
+          echo "project_folder=$base_folder" >> $env::GITHUB_OUTPUT
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
