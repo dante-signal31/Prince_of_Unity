@@ -20,6 +20,7 @@ comments, so I have to use a Jinja macro for those variables
 #define MyProjectFolder "{{ project_folder }}"
 
 [Setup]
+SourceDir={{ IssVar("MyProjectFolder") }}
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{'{{'}}07EAADDF-6FC4-468F-A275-77FF4A726C77}
@@ -31,7 +32,6 @@ AppSupportURL={{ IssVar("MyAppURL") }}
 AppUpdatesURL={{ IssVar("MyAppURL") }}
 DefaultDirName={autopf}\{{ IssVar("MyAppName") }}
 DisableProgramGroupPage=yes
-SourceDir={{ IssVar("MyProjectFolder") }}
 LicenseFile={{ IssVar("MyProjectFolder") }}\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
