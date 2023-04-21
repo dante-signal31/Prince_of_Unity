@@ -31,6 +31,7 @@ AppSupportURL={{ IssVar("MyAppURL") }}
 AppUpdatesURL={{ IssVar("MyAppURL") }}
 DefaultDirName={autopf}\{{ IssVar("MyAppName") }}
 DisableProgramGroupPage=yes
+SourceDir={{ IssVar("MyProjectFolder") }}
 LicenseFile={{ IssVar("MyProjectFolder") }}\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
