@@ -162,10 +162,14 @@ jobs:
           name: WindowsInstallerConfiguration
           path: Packaging/Windows/
 
-      - name: Get folder structure and path.
-        run: |
-          pwd
-          ls -R
+      - name: Get path.
+        run: pwd
+      
+      - name: Get folder structure.
+        # Bash ls -R output is cleaner than Powershell's.
+        shell: bash
+        run: ls -R
+        
       
       - name: Run Inno Setup to create Windows installer.
         uses: nadeemjazmawe/inno-setup-action-cli@v6.0.5
