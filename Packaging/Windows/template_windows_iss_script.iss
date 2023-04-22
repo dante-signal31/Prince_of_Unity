@@ -32,13 +32,16 @@ AppSupportURL={{ IssVar("MyAppURL") }}
 AppUpdatesURL={{ IssVar("MyAppURL") }}
 DefaultDirName={autopf}\{{ IssVar("MyAppName") }}
 DisableProgramGroupPage=yes
-LicenseFile={{ IssVar("MyProjectFolder") }}\LICENSE
+;LicenseFile={{ IssVar("MyProjectFolder") }}\LICENSE
+LicenseFile=D:\a\Prince_of_Unity\Prince_of_Unity\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 ;OutputDir=.\{{ IssVar("MyAppOutputDir") }}
 OutputDir=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppOutputDir") }}
 OutputBaseFilename={{ IssVar("MyAppInstallerName") }}
-SetupIconFile={{ IssVar("MyProjectFolder") }}\{{ IssVar("MyAppIcon") }}
+;SetupIconFile={{ IssVar("MyProjectFolder") }}\{{ IssVar("MyAppIcon") }}
+SetupIconFile=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppIcon") }}
+
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
