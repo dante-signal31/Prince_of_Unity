@@ -48,7 +48,7 @@ jobs:
 #        shell: bash
 #        run: rm -rf build_windows/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'
         shell: cmd
-        run: rmdir .\build_windows/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame' /s /q
+        run: rmdir .\build_windows\'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame' /s /q
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
