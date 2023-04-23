@@ -46,7 +46,7 @@ jobs:
 
       - name: Remove unused build folder.
         shell: bash
-        run: rm -rf build_windows/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame
+        run: rm -rf build_windows/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'
 #        shell: cmd
 #        run: rmdir .\Build\'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame' /s /q
 
