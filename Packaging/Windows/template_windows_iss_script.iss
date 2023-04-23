@@ -33,14 +33,17 @@ AppUpdatesURL={{ IssVar("MyAppURL") }}
 DefaultDirName={autopf}\{{ IssVar("MyAppName") }}
 DisableProgramGroupPage=yes
 ;LicenseFile={{ IssVar("MyProjectFolder") }}\LICENSE
-LicenseFile=D:\a\Prince_of_Unity\Prince_of_Unity\LICENSE
+;LicenseFile=D:\a\Prince_of_Unity\Prince_of_Unity\LICENSE
+LicenseFile=..\..\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 ;OutputDir=.\{{ IssVar("MyAppOutputDir") }}
-OutputDir=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppOutputDir") }}
+;OutputDir=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppOutputDir") }}
+OutputDir=..\..\{{ IssVar("MyAppOutputDir") }}
 OutputBaseFilename={{ IssVar("MyAppInstallerName") }}
 ;SetupIconFile={{ IssVar("MyProjectFolder") }}\{{ IssVar("MyAppIcon") }}
-SetupIconFile=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppIcon") }}
+;SetupIconFile=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppIcon") }}
+SetupIconFile=..\..\{{ IssVar("MyAppIcon") }}
 
 Compression=lzma
 SolidCompression=yes
@@ -53,8 +56,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "{{ IssVar("MyProjectFolder") }}\Build\{{ IssVar("MyAppExeName") }}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{{ IssVar("MyProjectFolder") }}\Build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+;Source: "{{ IssVar("MyProjectFolder") }}\Build\{{ IssVar("MyAppExeName") }}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\Build\{{ IssVar("MyAppExeName") }}"; DestDir: "{app}"; Flags: ignoreversion
+;Source: "{{ IssVar("MyProjectFolder") }}\Build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\Build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

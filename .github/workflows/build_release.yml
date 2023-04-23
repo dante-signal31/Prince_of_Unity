@@ -46,7 +46,7 @@ jobs:
 
       - name: Remove unused build folder.
         shell: bash
-        run: rm -rf Build/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
+        run: rm -rf Build/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame/
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
