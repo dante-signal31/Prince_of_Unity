@@ -46,7 +46,7 @@ jobs:
 
       - name: Remove unused build folder.
         shell: bash
-        run: rm -rf Build/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame
+        run: rm -rf ./Build/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
@@ -96,91 +96,87 @@ jobs:
 #          path: build_linux/StandaloneLinux64
 
 
-  generate_windows_installer_configuration:
-    name: Generate windows installer configuration from template.
-    needs: build_windows
-    runs-on: ubuntu-latest
-    env:
-      windows_installer_folder: Installers\Windows
-    outputs:
-      windows_installer_folder: ${{ env.windows_installer_folder }}
-    steps:
-      - name: Get source code.
-        uses: actions/checkout@v3
-      
-      - name: Show project folder.
-        shell: bash
-        run: echo ${{ needs.build_windows.outputs.project_folder }}
-
-      - name: Generate an Inno Setup config file.
-        uses: cuchi/jinja2-action@v1.2.0
-        with:
-          template: Packaging/Windows/template_windows_iss_script.iss
-          output_file: Packaging/Windows/rendered_windows_iss_script.iss
-          strict: true
-          variables: |
-            app_name=Prince of Unity
-            app_version=${{ needs.build_windows.outputs.build_version }}
-            app_publisher=DLab Ninja
-            app_url=https://github.com/dante-signal31/Prince_of_Unity
-            app_exe_name=Prince of Unity.exe
-            app_installer_name=PoU_setup
-            app_icon=Assets\Icons\Running_icon.ico
-            app_output_dir=${{ env.windows_installer_folder }}
-            project_folder=${{ needs.build_windows.outputs.project_folder }}
-      
-      - name: Upload generated configuration.
-        uses: actions/upload-artifact@v3
-        with:
-          name: WindowsInstallerConfiguration
-          path: Packaging/Windows/rendered_windows_iss_script.iss
-            
-    
-  create_windows_installer:
-    name: Create windows installer.
-    needs: generate_windows_installer_configuration
-    runs-on: windows-2019
-    env:
-      output_folder: Installers\Windows
-    steps:
-      - name: Get source code.
-        uses: actions/checkout@v3
-
-      - name: Download windows build.
-        uses: actions/download-artifact@v3
-        with:
-          name: WindowsBuild
-          path: Build
-
-#      - name: Remove unused build folder.
+#  generate_windows_installer_configuration:
+#    name: Generate windows installer configuration from template.
+#    needs: build_windows
+#    runs-on: ubuntu-latest
+#    env:
+#      windows_installer_folder: Installers\Windows
+#    outputs:
+#      windows_installer_folder: ${{ env.windows_installer_folder }}
+#    steps:
+#      - name: Get source code.
+#        uses: actions/checkout@v3
+#      
+#      - name: Show project folder.
 #        shell: bash
-#        run: rm -rf Build/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
-
-      - name: Download generated windows installer configuration.
-        uses: actions/download-artifact@v3
-        with:
-          name: WindowsInstallerConfiguration
-          path: Packaging/Windows/
-
-      - name: Get path.
-        run: pwd
-      
-      - name: Get folder structure.
-        # Bash ls -R output is cleaner than Powershell's.
-        shell: bash
-        run: ls -R
-        
-      
-      - name: Run Inno Setup to create Windows installer.
-        uses: nadeemjazmawe/inno-setup-action-cli@v6.0.5
-        with:
-          filepath: Packaging/Windows/rendered_windows_iss_script.iss
-
-      - name: Upload Windows package.
-        uses: actions/upload-artifact@v3
-        with:
-          name: WindowsPackage
-          path: ${{ needs.generate_windows_installer_configuration.outputs.windows_installer_folder }}
+#        run: echo ${{ needs.build_windows.outputs.project_folder }}
+#
+#      - name: Generate an Inno Setup config file.
+#        uses: cuchi/jinja2-action@v1.2.0
+#        with:
+#          template: Packaging/Windows/template_windows_iss_script.iss
+#          output_file: Packaging/Windows/rendered_windows_iss_script.iss
+#          strict: true
+#          variables: |
+#            app_name=Prince of Unity
+#            app_version=${{ needs.build_windows.outputs.build_version }}
+#            app_publisher=DLab Ninja
+#            app_url=https://github.com/dante-signal31/Prince_of_Unity
+#            app_exe_name=Prince of Unity.exe
+#            app_installer_name=PoU_setup
+#            app_icon=Assets\Icons\Running_icon.ico
+#            app_output_dir=${{ env.windows_installer_folder }}
+#            project_folder=${{ needs.build_windows.outputs.project_folder }}
+#      
+#      - name: Upload generated configuration.
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: WindowsInstallerConfiguration
+#          path: Packaging/Windows/rendered_windows_iss_script.iss
+#            
+#    
+#  create_windows_installer:
+#    name: Create windows installer.
+#    needs: generate_windows_installer_configuration
+#    runs-on: windows-2019
+#    env:
+#      output_folder: Installers\Windows
+#    steps:
+#      - name: Get source code.
+#        uses: actions/checkout@v3
+#
+#      - name: Download windows build.
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: WindowsBuild
+#          path: Build
+#
+#      - name: Download generated windows installer configuration.
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: WindowsInstallerConfiguration
+#          path: Packaging/Windows/
+#
+#      - name: Get path.
+#        run: pwd
+#      
+#      - name: Get folder structure.
+#        # Bash ls -R output is cleaner than Powershell's.
+#        shell: bash
+#        run: ls -R
+#        
+#      
+#      - name: Run Inno Setup to create Windows installer.
+#        uses: nadeemjazmawe/inno-setup-action-cli@v6.0.5
+#        with:
+#          filepath: Packaging/Windows/rendered_windows_iss_script.iss
+#
+#      - name: Upload Windows package.
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: WindowsPackage
+#          path: ${{ needs.generate_windows_installer_configuration.outputs.windows_installer_folder }}
 
 
 #  create_linux_installers:
