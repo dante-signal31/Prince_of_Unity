@@ -46,7 +46,7 @@ jobs:
 
       - name: Remove unused build folder.
         shell: bash
-        run: rm -rf Build/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame/
+        run: rm -rf Build/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
@@ -123,7 +123,7 @@ jobs:
             app_version=${{ needs.build_windows.outputs.build_version }}
             app_publisher=DLab Ninja
             app_url=https://github.com/dante-signal31/Prince_of_Unity
-            app_exe_name='Prince of Unity.exe'
+            app_exe_name=Prince of Unity.exe
             app_installer_name=PoU_setup
             app_icon=Assets\Icons\Running_icon.ico
             app_output_dir=${{ env.windows_installer_folder }}
