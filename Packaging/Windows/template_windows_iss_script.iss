@@ -37,6 +37,7 @@ DisableProgramGroupPage=yes
 LicenseFile=..\..\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=dialog
 ;OutputDir=.\{{ IssVar("MyAppOutputDir") }}
 ;OutputDir=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppOutputDir") }}
 OutputDir=..\..\{{ IssVar("MyAppOutputDir") }}

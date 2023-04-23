@@ -23,6 +23,7 @@ DisableProgramGroupPage=yes
 LicenseFile=F:\Desarrollos\PrinceOfUnity\Prince of Unity\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=F:\Desarrollos\PrinceOfUnity\Prince of Unity\Installers\Windows
 OutputBaseFilename=PoU_setup
 SetupIconFile=F:\Desarrollos\PrinceOfUnity\Prince of Unity\Assets\Icons\Running_icon.ico
