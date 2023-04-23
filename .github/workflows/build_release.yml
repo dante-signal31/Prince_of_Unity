@@ -45,8 +45,10 @@ jobs:
           versioning: Semantic
 
       - name: Remove unused build folder.
-        shell: bash
-        run: rm -rf ./Build/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame
+#        shell: bash
+#        run: rm -rf ./Build/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame
+        shell: pwsh
+        run: rmdir .\Build\Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame /s /q
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
