@@ -48,7 +48,7 @@ jobs:
 #        shell: bash
 #        run: rm -rf ./Build/Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame
         shell: pwsh
-        run: rmdir .\Build\Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame /s /q
+        run: rmdir .\Build\'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame' /s /q
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
