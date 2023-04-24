@@ -49,6 +49,7 @@ jobs:
           name: Test results
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
+
   merge_staging_and_master:
     name: If tests passed then merge staging branch with master one.
     runs-on: ubuntu-latest
@@ -64,3 +65,293 @@ jobs:
           target_branch: master
           github_token: ${{secrets.GHUB_TOKEN}}
 
+
+  build_windows:
+    name: Build release for windows.
+    runs-on: windows-2019
+    needs: merge_staging_and_master
+    outputs:
+      build_version: ${{ steps.WindowsBuilder.outputs.buildVersion }}
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Cache generated files.
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      - name: Build game for windows.
+        uses: game-ci/unity-builder@v2
+        id: WindowsBuilder
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          buildName: Prince of Unity
+          targetPlatform: StandaloneWindows64
+          unityVersion: auto
+          buildsPath: build_windows
+          versioning: Semantic
+
+      - name: Remove unused build folder.
+        shell: bash
+        run: rm -rf build_windows/StandaloneWindows64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'
+
+      - name: Upload Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: WindowsBuild
+          path: build_windows/StandaloneWindows64
+
+
+  build_linux:
+    name: Build release for linux.
+    runs-on: ubuntu-latest
+    needs: merge_staging_and_master
+    outputs:
+      build_version: ${{ steps.LinuxBuilder.outputs.buildVersion }}
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Cache generated files.
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      - name: Build game for linux.
+        uses: game-ci/unity-builder@v2
+        id: LinuxBuilder
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          buildName: Prince of Unity
+          targetPlatform: StandaloneLinux64
+          unityVersion: auto
+          buildsPath: build_linux
+          versioning: Semantic
+
+      - name: Remove unused build folder.
+        # Use sudo or you won't be able to remove the folder because it's root owned.
+        run: |
+          sudo rm -rf build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
+
+      - name: Upload Build
+        uses: actions/upload-artifact@v3
+        with:
+          name: LinuxBuild
+          path: build_linux/StandaloneLinux64
+
+
+  generate_windows_installer_configuration:
+    name: Generate windows installer configuration from template.
+    needs: build_windows
+    runs-on: ubuntu-latest
+    env:
+      windows_installer_folder: Installers\Windows
+    outputs:
+      windows_installer_folder: ${{ env.windows_installer_folder }}
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Generate an Inno Setup config file.
+        uses: cuchi/jinja2-action@v1.2.0
+        with:
+          template: Packaging/Windows/template_windows_iss_script.iss
+          output_file: Packaging/Windows/rendered_windows_iss_script.iss
+          strict: true
+          variables: |
+            app_name=Prince of Unity
+            app_version=${{ needs.build_windows.outputs.build_version }}
+            app_publisher=DLab Ninja
+            app_url=https://github.com/dante-signal31/Prince_of_Unity
+            app_exe_name=Prince of Unity.exe
+            app_installer_name=PoU_setup
+            app_icon=Assets\Icons\Running_icon.ico
+            app_output_dir=${{ env.windows_installer_folder }}
+
+      - name: Upload generated configuration.
+        uses: actions/upload-artifact@v3
+        with:
+          name: WindowsInstallerConfiguration
+          path: Packaging/Windows/rendered_windows_iss_script.iss
+
+
+  create_windows_installer:
+    name: Create windows installer.
+    needs: generate_windows_installer_configuration
+    runs-on: windows-2019
+    env:
+      output_folder: Installers\Windows
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Download windows build.
+        uses: actions/download-artifact@v3
+        with:
+          name: WindowsBuild
+          path: Build
+
+      - name: Download generated windows installer configuration.
+        uses: actions/download-artifact@v3
+        with:
+          name: WindowsInstallerConfiguration
+          path: Packaging/Windows/
+
+      - name: Get path.
+        run: pwd
+
+      - name: Get folder structure.
+        # Bash ls -R output is cleaner than Powershell's.
+        shell: bash
+        run: ls -R
+
+
+      - name: Run Inno Setup to create Windows installer.
+        uses: nadeemjazmawe/inno-setup-action-cli@v6.0.5
+        with:
+          filepath: Packaging/Windows/rendered_windows_iss_script.iss
+
+      - name: Upload Windows package.
+        uses: actions/upload-artifact@v3
+        with:
+          name: WindowsPackage
+          path: ${{ needs.generate_windows_installer_configuration.outputs.windows_installer_folder }}
+
+
+  create_linux_installers:
+    name: Create linux installers packages.
+    needs: build_linux
+    runs-on: ubuntu-latest
+    env:
+      app: prince-of-unity
+      version: ${{ needs.build_linux.outputs.build_version }}
+      architecture: amd64
+      source_directory: ./
+      package_install_root: /usr/share/games/Prince_of_Unity
+      output_folder: Installers/Linux
+      after_install: Packaging/Linux/postinst.sh
+      after_remove: Packaging/Linux/postuninst.sh
+      maintainer: dante.signal31@gmail.com
+      url: https://github.com/dante-signal31/Prince_of_Unity
+      description: Developed with Unity, this game is a hobbyist black box demo remake of Jordan Mechner's classic Prince of Persia (1989).
+      license: BSD-3
+      category: games
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Download linux build.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxBuild
+          path: Build
+
+      - name: Change executable and folders permissions.
+        run: |
+          chmod 755 Build/'Prince of Unity'
+          chmod 755 Build/'Prince of Unity_Data'
+          chmod 755 Build/'Prince of Unity_Data'/il2cpp_data
+          chmod 755 Build/'Prince of Unity_Data'/il2cpp_data/Metadata
+          chmod 755 Build/'Prince of Unity_Data'/il2cpp_data/Resources
+          chmod 755 Build/'Prince of Unity_Data'/Resources
+
+      - name: Copy executable icon.
+        run: cp Assets/Icons/Running_icon.png Build/Prince_of_Unity_icon.png
+
+      - name: Copy desktop entry.
+        run: cp Packaging/Linux/ninja.dlab.Prince_of_Unity.desktop Build/.
+
+      - name: Create package output folders.
+        run: mkdir -p ${{ env.output_folder }}
+
+      - name: Create DEB package.
+        uses: bpicode/github-action-fpm@master
+        with:
+          fpm_args: ${{ env.source_directory }}
+          fpm_opts: '-s dir -t deb -C Build -n ${{ env.app }} -p ${{ env.output_folder }} -v ${{ env.version }} --prefix ${{ env.package_install_root }} --description "${{ env.description }}" --after-install ${{ env.after_install }} --after-remove ${{ env.after_remove }} --maintainer ${{ env.maintainer }} -a ${{ env.architecture }} --url ${{ env.url }} --license ${{ env.license }} --category ${{ env.category }}'
+
+      - name: Create DEB package.
+        uses: bpicode/github-action-fpm@master
+        with:
+          fpm_args: ${{ env.source_directory }}
+          fpm_opts: '-s dir -t rpm -C Build -n ${{ env.app }} -p ${{ env.output_folder }} -v ${{ env.version }} --prefix ${{ env.package_install_root }} --description "${{ env.description }}" --after-install ${{ env.after_install }} --after-remove ${{ env.after_remove }} --maintainer ${{ env.maintainer }} -a ${{ env.architecture }} --url ${{ env.url }} --license ${{ env.license }} --category ${{ env.category }}'
+
+      - name: Upload Linux packages.
+        uses: actions/upload-artifact@v3
+        with:
+          name: LinuxPackages
+          path: ${{ env.output_folder }}
+
+
+  deploy_to_packagecloud:
+    name: Upload packages to PackageCloud Repository.
+    needs: create_linux_installers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve generated packages.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxPackages
+          path: package_dist/
+
+      - name: Show on log downloaded packages.
+        shell: bash
+        run: ls package_dist/
+
+      - name: Upload packages to PackageCloud.
+        uses: golift/upload-packagecloud@v1
+        with:
+          userrepo: dante-signal31/prince-of-unity
+          apitoken: ${{ secrets.PACKAGECLOUD_TOKEN }}
+          packages: package_dist/
+          rpmdists: fedora/37
+          debdists: ubuntu/jammy
+
+
+  deploy_to_itchio:
+    name: Deploy installers to itch.io.
+    needs: [create_linux_installers, create_windows_installer]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download generated Windows installer.
+        uses: actions/download-artifact@v3
+        with:
+          name: WindowsPackage
+          path: Installers/Windows
+
+      - name: Deploy Windows installer to itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
+          CHANNEL: windows
+          ITCH_GAME: prince-of-unity
+          ITCH_USER: dante.signal31
+          PACKAGE: Installers/Windows
+
+      - name: Download generated Linux installers.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxPackage
+          path: Installers/Linux
+
+      - name: Deploy Linux installer to itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
+          CHANNEL: linux
+          ITCH_GAME: prince-of-unity
+          ITCH_USER: dante.signal31
+          PACKAGE: Installers/Linux
