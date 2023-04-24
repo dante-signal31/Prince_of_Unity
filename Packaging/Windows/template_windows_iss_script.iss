@@ -17,7 +17,7 @@ comments, so I have to use a Jinja macro for those variables
 #define MyAppExeName "{{ app_exe_name }}"
 #define MyAppIcon "{{ app_icon }}"
 #define MyAppOutputDir "{{ app_output_dir }}"
-#define MyProjectFolder "{{ project_folder }}"
+;#define MyProjectFolder "{{ project_folder }}"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
