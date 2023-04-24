@@ -94,7 +94,7 @@ jobs:
 
       - name: Remove unused build folder.
         run: |
-          rm -rf build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
+          sudo rm -rf build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
