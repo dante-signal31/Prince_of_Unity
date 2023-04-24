@@ -20,7 +20,6 @@ comments, so I have to use a Jinja macro for those variables
 #define MyProjectFolder "{{ project_folder }}"
 
 [Setup]
-;SourceDir={{ IssVar("MyProjectFolder") }}
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{'{{'}}07EAADDF-6FC4-468F-A275-77FF4A726C77}
@@ -32,18 +31,12 @@ AppSupportURL={{ IssVar("MyAppURL") }}
 AppUpdatesURL={{ IssVar("MyAppURL") }}
 DefaultDirName={autopf}\{{ IssVar("MyAppName") }}
 DisableProgramGroupPage=yes
-;LicenseFile={{ IssVar("MyProjectFolder") }}\LICENSE
-;LicenseFile=D:\a\Prince_of_Unity\Prince_of_Unity\LICENSE
 LicenseFile=..\..\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-;OutputDir=.\{{ IssVar("MyAppOutputDir") }}
-;OutputDir=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppOutputDir") }}
 OutputDir=..\..\{{ IssVar("MyAppOutputDir") }}
 OutputBaseFilename={{ IssVar("MyAppInstallerName") }}
-;SetupIconFile={{ IssVar("MyProjectFolder") }}\{{ IssVar("MyAppIcon") }}
-;SetupIconFile=D:\a\Prince_of_Unity\Prince_of_Unity\{{ IssVar("MyAppIcon") }}
 SetupIconFile=..\..\{{ IssVar("MyAppIcon") }}
 
 Compression=lzma
@@ -57,9 +50,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-;Source: "{{ IssVar("MyProjectFolder") }}\Build\{{ IssVar("MyAppExeName") }}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\Build\{{ IssVar("MyAppExeName") }}"; DestDir: "{app}"; Flags: ignoreversion
-;Source: "{{ IssVar("MyProjectFolder") }}\Build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\..\Build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
