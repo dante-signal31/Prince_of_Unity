@@ -86,14 +86,14 @@ jobs:
           buildsPath: build_linux
           versioning: Semantic
 
-      - name: Debug who am I what are the folder to be removed permissions.
-        run: |
-          whoami
-          ls -lR build_linux/StandaloneLinux64/
+      - name: Debug who am I.
+        run: whoami
+        
+      - name: Debug what are the folder to be removed permissions.
+        run: ls -lR build_linux/StandaloneLinux64/
 
       - name: Remove unused build folder.
         run: |
-#          chmod 755 build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
           rm -rf build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
 
       - name: Upload Build
