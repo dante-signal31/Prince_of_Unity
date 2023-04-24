@@ -88,6 +88,7 @@ jobs:
 
       - name: Remove unused build folder.
         run: |
+          ls -lR build_linux/StandaloneLinux64/
           chmod 755 build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
           rm -rf build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
 
