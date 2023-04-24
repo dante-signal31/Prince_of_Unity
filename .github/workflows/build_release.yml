@@ -45,10 +45,10 @@ jobs:
           versioning: Semantic
 
       - name: Remove unused build folder.
-#        shell: bash
-#        run: rm -rf build_windows/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'
-        shell: cmd
-        run: rmdir .\build_windows\'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame' /s /q
+        shell: bash
+        run: rm -rf build_windows/StandaloneWindows64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'
+#        shell: cmd
+#        run: rmdir .\build_windows\'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame' /s /q
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
