@@ -353,5 +353,5 @@ jobs:
           BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
           CHANNEL: linux
           ITCH_GAME: prince-of-unity
-          ITCH_USER: dante.signal31
+          ITCH_USER: dantesignal31
           PACKAGE: Installers/Linux
