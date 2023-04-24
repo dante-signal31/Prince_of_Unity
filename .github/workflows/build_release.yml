@@ -87,7 +87,7 @@ jobs:
           versioning: Semantic
 
       - name: Remove unused build folder.
-        run: rm -rf Build/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
+        run: rm -rf build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
 
       - name: Upload Build
         uses: actions/upload-artifact@v3
@@ -206,9 +206,6 @@ jobs:
         with:
           name: LinuxBuild
           path: Build
-
-#      - name: Remove unused build folder.
-#        run: rm -rf Build/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
 
       - name: Change executable and folders permissions.
         run: | 
