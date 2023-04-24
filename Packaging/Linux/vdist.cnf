@@ -1,0 +1,23 @@
+[DEFAULT]
+app = Prince_of_Unity
+version = 1.0.17
+; If you want to build locally uncomment next line.
+; source_directory = /home/runner/work/Prince_of_Unity/${app}
+source_directory = Build
+package_install_root = /usr/share/games/Prince_of_Unity
+compile_python = False
+output_folder = Installers/Linux
+after_install = Packaging/Linux/postinst.sh
+after_remove = Packaging/Linux/postuninst.sh
+fpm_args = --maintainer dante.signal31@gmail.com -a native --url
+    https://github.com/dante-signal31/${app} --description
+    "Developed with Unity, this game is a hobbyist black 
+    box demo remake of Jordan Mechner's classic Prince of 
+    Persia (1989)."
+    --license BSD-3 --category games
+    
+[Ubuntu-package]
+profile = ubuntu-lts
+
+;[Fedora-package]
+;profile = fedora37

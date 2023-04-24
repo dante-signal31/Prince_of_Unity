@@ -98,3 +98,6 @@ play with that codebase.
 ## Feedback
 
 Author: Dante Signal31 e-mail: dante.signal31@gmail.com
+
+## SUPPORTERS
+<a href="https://packagecloud.io/"><img height="46" width="158" alt="Private NPM registry and Maven, RPM, DEB, PyPi and RubyGem Repository · packagecloud" src="https://packagecloud.io/images/packagecloud-badge.png" /></a>
