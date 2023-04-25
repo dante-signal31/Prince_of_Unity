@@ -338,7 +338,7 @@ jobs:
           BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
           CHANNEL: windows
           ITCH_GAME: prince-of-unity
-          ITCH_USER: dante.signal31
+          ITCH_USER: dantesignal31
           PACKAGE: Installers/Windows
 
       - name: Download generated Linux installers.
