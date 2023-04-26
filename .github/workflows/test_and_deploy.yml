@@ -344,7 +344,7 @@ jobs:
       - name: Download generated Linux installers.
         uses: actions/download-artifact@v3
         with:
-          name: LinuxPackage
+          name: LinuxPackages
           path: Installers/Linux
 
       - name: Deploy Linux installer to itch.io
