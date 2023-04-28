@@ -340,6 +340,7 @@ jobs:
           ITCH_GAME: prince-of-unity
           ITCH_USER: dantesignal31
           PACKAGE: Installers/Windows
+          VERSION: ${{ needs.build_linux.outputs.build_version }}
 
       - name: Download generated Linux installers.
         uses: actions/download-artifact@v3
