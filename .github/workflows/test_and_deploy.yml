@@ -346,12 +346,47 @@ jobs:
         with:
           name: LinuxPackages
           path: Installers/Linux
+      
+      - name: separate DEB from RPM files.
+        shell: bash
+        run: |
+          mkdir Installers/Linux/DEB
+          mkdir Installers/Linux/RPM
+          mv Installers/Linux/*.deb Installers/Linux/DEB/.
+          mv Installers/Linux/*.rpm Installers/Linux/RPM/.
 
-      - name: Deploy Linux installer to itch.io
+      - name: Deploy Linux DEB installer to itch.io
         uses: manleydev/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
-          CHANNEL: linux
+          CHANNEL: linux-deb
           ITCH_GAME: prince-of-unity
           ITCH_USER: dantesignal31
-          PACKAGE: Installers/Linux
+          PACKAGE: Installers/Linux/DEB
+          VERSION: ${{ needs.build_linux.outputs.build_version }}
+
+      - name: Deploy Linux RPM installer to itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
+          CHANNEL: linux-rpm
+          ITCH_GAME: prince-of-unity
+          ITCH_USER: dantesignal31
+          PACKAGE: Installers/Linux/RPM
+          VERSION: ${{ needs.build_linux.outputs.build_version }}
+
+      - name: Download linux build.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxBuild
+          path: Build
+
+      - name: Deploy Linux raw package to itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
+          CHANNEL: linux-general
+          ITCH_GAME: prince-of-unity
+          ITCH_USER: dantesignal31
+          PACKAGE: Build
+          VERSION: ${{ needs.build_linux.outputs.build_version }}
