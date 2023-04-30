@@ -1,7 +1,7 @@
 ######
 # Script main configuration.
 ######
-# Debian don't like capital letters nor underscores in package names, so lets don't use them.
+# Debian does not like capital letters nor underscores in package names, so lets don't use them.
 app=prince-of-unity
 # Provide version as an script argument.
 version=$1
