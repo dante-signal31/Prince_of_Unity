@@ -323,7 +323,7 @@ jobs:
 
   deploy_to_itchio:
     name: Deploy installers to itch.io.
-    needs: [create_linux_installers, create_windows_installer]
+    needs: [build_linux, create_linux_installers, create_windows_installer]
     runs-on: ubuntu-latest
     steps:
       - name: Download generated Windows installer.
