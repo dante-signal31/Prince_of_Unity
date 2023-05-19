@@ -251,7 +251,61 @@ jobs:
           name: LinuxPackages
           path: ${{ env.output_folder }}
 
+  
+  sign_linux_installers:
+    name: Create linux installers packages.
+    needs: create_linux_installers
+    runs-on: ubuntu-latest
+    env:
+      packages_folder: Installers
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+        
+      - name: Download linux build.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxPackages
+          path: ${{ env.packages_folder }}
+      
+      - name: Add rpm support.
+        run: |
+          sudo apt update
+          sudo apt install rpm
+      
+      - name: Make sure dpkg-sign is installed.
+        run: |
+          sudo apt update
+          sudo apt install dpkg-sig
 
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      
+      - name: Sign DEB package.
+        env:
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          echo $passphrase > password
+          dpkg-sig -k dante.signal31@gmail.com -f password --sign builder ./$packages_folder/$(ls *.deb)
+          dpkg-sig --verify ./$packages_folder/$(ls *.deb)
+          rm password
+      
+      - name: Sign RPM package.
+        run: |
+          sudo rpm --import ./PublicKeys/prince_pub.gpg
+          rpm --define ’’_gpg_name Prince of Unity (GPG key to sign Prince of Unity packages) <dante.signal31@gmail.com>’’ --addsign ./$packages_folder/$(ls *.rpm)
+          rpm --checksig ./Installers/$(ls *.rpm)
+          
+      - name: Upload signed Linux packages.
+        uses: actions/upload-artifact@v3
+        with:
+          name: SignedLinuxPackages
+          path: ${{ env.packages_folder }}
+    
+    
 #  deploy_to_packagecloud:
 #    name: Upload packages to PackageCloud Repository.
 #    needs: create_linux_installers
