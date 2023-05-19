@@ -253,7 +253,7 @@ jobs:
 
   
   sign_linux_installers:
-    name: Create linux installers packages.
+    name: Sign linux installers packages.
     needs: create_linux_installers
     runs-on: ubuntu-latest
     env:
