@@ -287,9 +287,10 @@ jobs:
       - name: Sign DEB package.
         env:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
+        # Fix to dpkg-sig -f error got from https://note.com/twsnmp/n/n867d351733f8 (translate it from japanese)
         run: |
           echo $passphrase > password
-          dpkg-sig -k dante.signal31@gmail.com -f password --sign builder $(ls ./$packages_folder/*.deb)
+          dpkg-sig -k dante.signal31@gmail.com -g "--no-tty --batch --pinentry-mode loopback --passphrase-file=./password" --sign builder $(ls ./$packages_folder/*.deb)
           dpkg-sig --verify $(ls ./$packages_folder/*.deb)
           rm password
       
