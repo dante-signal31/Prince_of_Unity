@@ -289,15 +289,15 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
         run: |
           echo $passphrase > password
-          dpkg-sig -k dante.signal31@gmail.com -f password --sign builder ./$packages_folder/$(ls ./$packages_folder/*.deb)
-          dpkg-sig --verify ./$packages_folder/$(ls *.deb)
+          dpkg-sig -k dante.signal31@gmail.com -f password --sign builder $(ls ./$packages_folder/*.deb)
+          dpkg-sig --verify $(ls ./$packages_folder/*.deb)
           rm password
       
       - name: Sign RPM package.
         run: |
           sudo rpm --import ./PublicKeys/prince_pub.gpg
-          rpm --define ’’_gpg_name Prince of Unity (GPG key to sign Prince of Unity packages) <dante.signal31@gmail.com>’’ --addsign ./$packages_folder/$(ls ./$packages_folder/*.rpm)
-          rpm --checksig ./$packages_folder/$(ls ./$packages_folder/*.rpm)
+          rpm --define ’’_gpg_name Prince of Unity (GPG key to sign Prince of Unity packages) <dante.signal31@gmail.com>’’ --addsign $(ls ./$packages_folder/*.rpm)
+          rpm --checksig $(ls ./$packages_folder/*.rpm)
           
       - name: Upload signed Linux packages.
         uses: actions/upload-artifact@v3
