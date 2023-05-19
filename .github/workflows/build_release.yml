@@ -272,6 +272,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install rpm
+          echo "%_gpg /usr/bin/gpg" > .rpmmacros
       
       - name: Make sure dpkg-sign is installed.
         run: |
@@ -297,7 +298,7 @@ jobs:
       - name: Sign RPM package.
         run: |
           sudo rpm --import ./PublicKeys/prince_pub.gpg
-          rpm --define ’’_gpg_name Prince of Unity (GPG key to sign Prince of Unity packages) <dante.signal31@gmail.com>’’ --addsign $(ls ./$packages_folder/*.rpm)
+          rpm --define "_gpg_name Prince of Unity (GPG key to sign Prince of Unity packages) <dante.signal31@gmail.com>" --addsign $(ls ./$packages_folder/*.rpm)
           rpm --checksig $(ls ./$packages_folder/*.rpm)
           
       - name: Upload signed Linux packages.
