@@ -284,7 +284,7 @@ jobs:
         id: identify_deb_package
         run: |
           echo "deb_package=$(ls ./$packages_folder/*.deb)" >> $GITHUB_ENV
-          echo "signed_deb_package=$deb_package >> $GITHUB_OUTPUT
+          echo "signed_deb_package=$deb_package" >> $GITHUB_OUTPUT
           
       - name: Sign DEB package.
         env:
@@ -336,7 +336,7 @@ jobs:
         id: identify_rpm_package
         run: |
           echo "rpm_package=$(ls ./$packages_folder/*.rpm)" >> $GITHUB_ENV
-          echo "signed_rpm_package=$rpm_package >> $GITHUB_OUTPUT
+          echo "signed_rpm_package=$rpm_package" >> $GITHUB_OUTPUT
           
       - name: Sign RPM package.
         run: |
