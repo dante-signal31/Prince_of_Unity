@@ -340,7 +340,8 @@ jobs:
         id: identify_rpm_package
         run: |
           echo "rpm_package=$(ls ./$packages_folder/*.rpm)" >> $GITHUB_ENV
-          package=$(ls *.deb)
+          cd $packages_folder
+          package=$(ls *.rpm)
           echo "signed_rpm_package=$package" >> $GITHUB_OUTPUT
           echo "Identified package: $package"
           cd ..
