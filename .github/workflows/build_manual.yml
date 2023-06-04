@@ -1,0 +1,50 @@
+name: build_manual
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build_consolidated_content:
+    name: Build release for windows.
+    runs-on: windows-2019
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+      
+      - name: Install multimarkdown support.
+        run: |
+          sudo apt update
+          sudo apt install cmake c++ -y
+          git clone https://github.com/fletcher/MultiMarkdown-6.git mmd_build
+          cd mmd_build
+          git submodule init
+          git submodule update
+          make
+          cd build
+          sudo make install
+          cd ../../
+      
+      - name: Install Latex support.
+        run: |
+          sudo apt install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra -y
+          
+      - name: Clone wiki.
+        uses: actions/checkout@v3
+        with:
+          repository: dante-signal31/Prince_of_Unity.wiki
+          path: ./Manual/wiki
+      
+      - name: Consolidate every md document in one latex file.
+        working-directory: ./Manual
+        run: |
+          mkdir latex
+          multimarkdown manual.mmd -t latex -o latex/manual.tex
+      
+      - name: Convert to PDF.
+        working-directory: ./Manual
+        run: |
+          pdflatext latex/manual.tex 
+      
+      
+      
+      
