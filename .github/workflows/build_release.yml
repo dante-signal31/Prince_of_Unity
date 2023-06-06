@@ -363,7 +363,7 @@ jobs:
 
   sign_windows_installer:
     name: Sign windows installer package.
-    needs: create_windows_installers
+    needs: create_windows_installer
     runs-on: windows-2019
     env:
 #      base64_pfx_certificate: ${{ secrets.PFX_CERTIFICATE }}
