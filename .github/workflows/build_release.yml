@@ -311,7 +311,7 @@ jobs:
     needs: create_linux_installers
     runs-on: ubuntu-latest
     env:
-      gpg_private_key: ${{ secrets.PRIVATE_GPG_KEY }}
+      gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
       gpg_private_key_file: recovered_priv_key.gpg
       packages_folder: Installers
       signed_packages_folder: SignedLinuxRPMPackage/
@@ -335,7 +335,7 @@ jobs:
         uses: dante-signal31/rpmsign@v1.0.3
         with:
           gpg_private_key: ${{ env.gpg_private_key_file }}
-          gpg_private_key_password: ${{ secrets.GPG_KEY_PASSWORD }}
+          gpg_private_key_password: ${{ secrets.GPG_PASSPHRASE }}
           gpg_name: Prince of Unity (GPG key to sign Prince of Unity packages) <dante.signal31@gmail.com>
           rpm_folder: ${{ env.packages_folder }}
           output_folder: ${{ env.signed_packages_folder }}
