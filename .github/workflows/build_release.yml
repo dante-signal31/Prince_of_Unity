@@ -366,10 +366,6 @@ jobs:
     needs: create_windows_installer
     runs-on: windows-2019
     env:
-#      base64_pfx_certificate: ${{ secrets.PFX_CERTIFICATE }}
-#      base64_pfx_certificate_file: recovered_certificate.pfx
-#      pfx_passphrase: ${{ secrets.PFX_PASSPHRASE }}
-#      pfx_thumbprint: ${{ secrets.PFX_THUMBPRINT }}
       package_folder: Installer
     outputs:
       signed_windows_package: ${{ steps.identify_windows_package.outputs.signed_windows_package }}
@@ -382,11 +378,6 @@ jobs:
         with:
           name: WindowsPackage
           path: ${{ env.package_folder }}
-
-#      - name: Create certificate file.
-#        shell: bash
-#        run: |
-#          echo $base64_pfx_certificate > $base64_pfx_certificate_file
       
       - name: Sign windows installer.
         uses: GabrielAcostaEngler/signtool-code-sign@main
@@ -405,8 +396,8 @@ jobs:
         id: identify_windows_package
         shell: bash
         run: |
-          echo "windows_package=$(ls ./$packages_folder/*.exe)" >> $GITHUB_ENV
-          cd $packages_folder
+          echo "windows_package=$(ls ./$package_folder/*.exe)" >> $GITHUB_ENV
+          cd $package_folder
           package=$(ls *.exe)
           echo "signed_windows_package=$package" >> $GITHUB_OUTPUT
           echo "Identified package: $package"
