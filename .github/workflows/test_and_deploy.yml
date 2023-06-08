@@ -537,14 +537,7 @@ jobs:
         with:
           name: SignedLinuxRPMPackage
           path: Installers/Linux/RPM
-      
-#      - name: separate DEB from RPM files.
-#        shell: bash
-#        run: |
-#          mkdir Installers/Linux/DEB
-#          mkdir Installers/Linux/RPM
-#          mv Installers/Linux/*.deb Installers/Linux/DEB/.
-#          mv Installers/Linux/*.rpm Installers/Linux/RPM/.
+    
 
       - name: Deploy Linux DEB installer to itch.io
         uses: manleydev/butler-publish-itchio-action@master
