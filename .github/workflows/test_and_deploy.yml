@@ -605,7 +605,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: LinuxBuild
-          path: release/
+          path: PoU_Linux/
+      
+      - name: Compress Linux build and copy it to release folder.
+        run: |
+          tar czf PoU_Linux.tar.gz PoU_Linux/
+          cp PoU_Linux.tar.gz release/.
 
       - name: Show on log downloaded packages.
         shell: bash
