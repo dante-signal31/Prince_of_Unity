@@ -584,7 +584,7 @@ jobs:
   
   
   deploy_to_github_releases:
-    name: Deploy installers to itch.io.
+    name: Deploy installers to GitHub Releases.
     needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer]
     runs-on: ubuntu-latest
     steps:
