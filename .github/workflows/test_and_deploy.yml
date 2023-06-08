@@ -71,6 +71,7 @@ jobs:
     runs-on: windows-2019
     needs: merge_staging_and_master
     outputs:
+      project_folder: ${{ steps.ProjectFolderFinder.outputs.projectFolder }}
       build_version: ${{ steps.WindowsBuilder.outputs.buildVersion }}
     steps:
       - name: Get source code.
@@ -83,6 +84,14 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
+
+      - name: Store current folder in an environment path.
+        id: ProjectFolderFinder
+        shell: pwsh
+        run: |
+          $base_folder=pwd
+          echo "Project folder: $base_folder"
+          echo "projectFolder=$base_folder" >> $env:GITHUB_OUTPUT
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
@@ -141,6 +150,12 @@ jobs:
           buildsPath: build_linux
           versioning: Semantic
 
+      - name: Debug who am I.
+        run: whoami
+
+      - name: Debug what are the folder to be removed permissions.
+        run: ls -lR build_linux/StandaloneLinux64/
+
       - name: Remove unused build folder.
         # Use sudo or you won't be able to remove the folder because it's root owned.
         run: |
@@ -165,6 +180,10 @@ jobs:
       - name: Get source code.
         uses: actions/checkout@v3
 
+      - name: Show project folder.
+        shell: bash
+        run: echo ${{ needs.build_windows.outputs.project_folder }}
+
       - name: Generate an Inno Setup config file.
         uses: cuchi/jinja2-action@v1.2.0
         with:
@@ -180,6 +199,7 @@ jobs:
             app_installer_name=PoU_setup
             app_icon=Assets\Icons\Running_icon.ico
             app_output_dir=${{ env.windows_installer_folder }}
+            project_folder=${{ needs.build_windows.outputs.project_folder }}
 
       - name: Upload generated configuration.
         uses: actions/upload-artifact@v3
@@ -295,16 +315,180 @@ jobs:
           name: LinuxPackages
           path: ${{ env.output_folder }}
 
-
-  deploy_to_packagecloud:
-    name: Upload packages to PackageCloud Repository.
+  sign_linux_deb_installer:
+    name: Sign linux DEB installer package.
     needs: create_linux_installers
     runs-on: ubuntu-latest
+    env:
+      packages_folder: Installers
+    outputs:
+      signed_deb_package: ${{ steps.identify_deb_package.outputs.signed_deb_package }}
     steps:
-      - name: Retrieve generated packages.
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Download linux build.
         uses: actions/download-artifact@v3
         with:
           name: LinuxPackages
+          path: ${{ env.packages_folder }}
+
+      - name: Make sure dpkg-sign is installed.
+        run: |
+          sudo apt update
+          sudo apt install dpkg-sig
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
+      - name: Identify DEB package to sign.
+        id: identify_deb_package
+        run: |
+          echo "deb_package=$(ls ./$packages_folder/*.deb)" >> $GITHUB_ENV
+          cd $packages_folder
+          package=$(ls *.deb)
+          echo "signed_deb_package=$package" >> $GITHUB_OUTPUT
+          echo "Identified package: $package"
+          cd ..
+
+      - name: Sign DEB package.
+        env:
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+        # Fix to dpkg-sig -f error got from https://note.com/twsnmp/n/n867d351733f8 (translate it from japanese)
+        run: |
+          echo $passphrase > password
+          dpkg-sig -k dante.signal31@gmail.com -g "--no-tty --batch --pinentry-mode loopback --passphrase-file=./password" --sign builder $deb_package
+          dpkg-sig --verify $deb_package
+          rm password
+
+      - name: Upload signed Linux packages.
+        uses: actions/upload-artifact@v3
+        with:
+          name: SignedLinuxDEBPackage
+          path: ${{ env.deb_package }}
+
+  sign_linux_rpm_installer:
+    name: Sign linux RPM installer package.
+    needs: create_linux_installers
+    runs-on: ubuntu-latest
+    env:
+      gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+      gpg_private_key_file: recovered_priv_key.gpg
+      packages_folder: Installers
+      signed_packages_folder: SignedLinuxRPMPackage/
+    outputs:
+      signed_rpm_package: ${{ steps.identify_rpm_package.outputs.signed_rpm_package }}
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Download linux build.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxPackages
+          path: ${{ env.packages_folder }}
+
+      - name: Create private key file.
+        run: |
+          echo $gpg_private_key | base64 -di > $gpg_private_key_file
+
+      - name: Sign RPM package at LinuxPackages folder.
+        uses: dante-signal31/rpmsign@v1.0.3
+        with:
+          gpg_private_key: ${{ env.gpg_private_key_file }}
+          gpg_private_key_password: ${{ secrets.GPG_PASSPHRASE }}
+          gpg_name: Prince of Unity (GPG key to sign Prince of Unity packages) <dante.signal31@gmail.com>
+          rpm_folder: ${{ env.packages_folder }}
+          output_folder: ${{ env.signed_packages_folder }}
+
+      - name: Remove private key file.
+        run: |
+          rm $gpg_private_key_file
+
+      - name: Identify RPM package to sign.
+        id: identify_rpm_package
+        run: |
+          echo "rpm_package=$(ls ./$signed_packages_folder/*.rpm)" >> $GITHUB_ENV
+          cd $signed_packages_folder
+          package=$(ls *.rpm)
+          echo "signed_rpm_package=$package" >> $GITHUB_OUTPUT
+          echo "Identified package: $package"
+          cd ..
+
+      - name: Upload signed Linux packages.
+        uses: actions/upload-artifact@v3
+        with:
+          name: SignedLinuxRPMPackage
+          path: ${{ env.rpm_package }}
+
+
+  sign_windows_installer:
+    name: Sign windows installer package.
+    needs: create_windows_installer
+    runs-on: windows-2019
+    env:
+      package_folder: Installer
+    outputs:
+      signed_windows_package: ${{ steps.identify_windows_package.outputs.signed_windows_package }}
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Download windows build.
+        uses: actions/download-artifact@v3
+        with:
+          name: WindowsPackage
+          path: ${{ env.package_folder }}
+
+      - name: Sign windows installer.
+        uses: GabrielAcostaEngler/signtool-code-sign@main
+        with:
+          # PFX certificate is base64 encoded to be kept as a GitHub secret. This action accepts you to enter
+          # that base64 encoded certificate-
+          certificate: ${{ secrets.PFX_CERTIFICATE }}
+          cert-password: ${{ secrets.PFX_PASSPHRASE }}
+          cert-sha1: ${{ secrets.PFX_THUMBPRINT }}
+          cert-description: 'Prince of Unity <dante.signal31@gmail.com> More info at: https://github.com/dante-signal31/Prince_of_Unity/'
+          folder: ${{ env.package_folder }}
+          recursive: true
+          timestamp-server: 'http://timestamp.digicert.com'
+
+      - name: Identify windows package.
+        id: identify_windows_package
+        shell: bash
+        run: |
+          echo "windows_package=$(ls ./$package_folder/*.exe)" >> $GITHUB_ENV
+          cd $package_folder
+          package=$(ls *.exe)
+          echo "signed_windows_package=$package" >> $GITHUB_OUTPUT
+          echo "Identified package: $package"
+          cd ..
+
+      - name: Upload signed Windows package.
+        uses: actions/upload-artifact@v3
+        with:
+          name: SignedWindowsPackage
+          path: ${{ env.windows_package }}
+
+
+  deploy_to_packagecloud:
+    name: Upload packages to PackageCloud Repository.
+    needs: [sign_linux_deb_installer, sign_linux_rpm_installer]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve generated and signed DEB packages.
+        uses: actions/download-artifact@v3
+        with:
+          name: SignedLinuxDEBPackage
+          path: package_dist/
+
+      - name: Retrieve generated and signed RPM packages.
+        uses: actions/download-artifact@v3
+        with:
+          name: SignedLinuxRPMPackage
           path: package_dist/
 
       - name: Show on log downloaded packages.
@@ -323,13 +507,13 @@ jobs:
 
   deploy_to_itchio:
     name: Deploy installers to itch.io.
-    needs: [build_linux, create_linux_installers, create_windows_installer]
+    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer]
     runs-on: ubuntu-latest
     steps:
-      - name: Download generated Windows installer.
+      - name: Download generated and signed Windows installer.
         uses: actions/download-artifact@v3
         with:
-          name: WindowsPackage
+          name: SignedWindowsPackage
           path: Installers/Windows
 
       - name: Deploy Windows installer to itch.io
@@ -342,19 +526,25 @@ jobs:
           PACKAGE: Installers/Windows
           VERSION: ${{ needs.build_linux.outputs.build_version }}
 
-      - name: Download generated Linux installers.
+      - name: Download generated and signed Linux DEB installers.
         uses: actions/download-artifact@v3
         with:
-          name: LinuxPackages
-          path: Installers/Linux
+          name: SignedLinuxDEBPackage
+          path: Installers/Linux/DEB
+
+      - name: Download generated and signed Linux RPM installers.
+        uses: actions/download-artifact@v3
+        with:
+          name: SignedLinuxRPMPackage
+          path: Installers/Linux/RPM
       
-      - name: separate DEB from RPM files.
-        shell: bash
-        run: |
-          mkdir Installers/Linux/DEB
-          mkdir Installers/Linux/RPM
-          mv Installers/Linux/*.deb Installers/Linux/DEB/.
-          mv Installers/Linux/*.rpm Installers/Linux/RPM/.
+#      - name: separate DEB from RPM files.
+#        shell: bash
+#        run: |
+#          mkdir Installers/Linux/DEB
+#          mkdir Installers/Linux/RPM
+#          mv Installers/Linux/*.deb Installers/Linux/DEB/.
+#          mv Installers/Linux/*.rpm Installers/Linux/RPM/.
 
       - name: Deploy Linux DEB installer to itch.io
         uses: manleydev/butler-publish-itchio-action@master
@@ -391,3 +581,49 @@ jobs:
           ITCH_USER: dantesignal31
           PACKAGE: Build
           VERSION: ${{ needs.build_linux.outputs.build_version }}
+  
+  
+  deploy_to_github_releases:
+    name: Deploy installers to itch.io.
+    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download generated Windows installer.
+        uses: actions/download-artifact@v3
+        with:
+          name: SignedWindowsPackage
+          path: release/
+
+      - name: Download generated and signed Linux DEB installers.
+        uses: actions/download-artifact@v3
+        with:
+          name: SignedLinuxDEBPackage
+          path: release/
+
+      - name: Download generated and signed Linux RPM installers.
+        uses: actions/download-artifact@v3
+        with:
+          name: SignedLinuxRPMPackage
+          path: release/
+
+      - name: Download linux build.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxBuild
+          path: release/
+
+      - name: Show on log downloaded packages.
+        shell: bash
+        run: ls release/
+
+      - name: Get current tag.
+        shell: bash
+        run: echo "CURRENT_TAG=$(ci_scripts/get_version.py -f packaging)" >> $GITHUB_ENV
+
+      - name: Upload packages to GitHub Releases.
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/*
+          tag_name: v${{ needs.build_linux.outputs.build_version }}
