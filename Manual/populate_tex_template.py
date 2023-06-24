@@ -1,5 +1,11 @@
 #!/usr/bin/python3
+
+# This script needs manual version to be passed as an argument.
+# So, to pass 1.0.0 version do: 
+#     ./populate_tex_template.py 1.0.0
+
 import pathlib
+import sys
 
 from jinja2 import Template, TemplateSyntaxError
 
@@ -13,7 +19,7 @@ if __name__ == '__main__':
     with open(file=populated_latex, mode="w") as complete_manual:
         try:
             manual_template = Template(template)
-            complete_manual_content = manual_template.render(contents=content)
+            complete_manual_content = manual_template.render(contents=content, version=sys.argv[1])
         except TemplateSyntaxError as e:
             print(
                 "Jinja2 template syntax error during render of line {}:{} error: {}".
