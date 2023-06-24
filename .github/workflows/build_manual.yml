@@ -1,12 +1,19 @@
 name: build_manual
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch: 
+    inputs:
+      version:
+        description: Version for this manual.
+        required: true
+        type: string
 
 jobs:
-  build_consolidated_content:
-    name: Build release for windows.
-    runs-on: windows-2019
+  build_manual:
+    name: Build usage manual for the game from wiki content.
+    runs-on: ubuntu-latest
+    env:
+      manual_version: ${{ inputs.version }}
     steps:
       - name: Get source code.
         uses: actions/checkout@v3
@@ -47,4 +54,10 @@ jobs:
         run: |
           mkdir output
           mkdir pdf
-          compile_manual.sh
+          ./compile_manual.sh $manual_version
+
+      - name: Upload generated manual.
+        uses: actions/upload-artifact@v3
+        with:
+          name: GameManual
+          path: Manual/pdf/PoU_manual.pdf
