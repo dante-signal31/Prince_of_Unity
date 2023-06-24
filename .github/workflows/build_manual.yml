@@ -14,7 +14,7 @@ jobs:
       - name: Install multimarkdown support.
         run: |
           sudo apt update
-          sudo apt install cmake c++ -y
+          sudo apt install cmake build-essential -y
           git clone https://github.com/fletcher/MultiMarkdown-6.git mmd_build
           cd mmd_build
           git submodule init
@@ -24,9 +24,17 @@ jobs:
           sudo make install
           cd ../../
       
+      - name: Install Pandoc support.
+        run: |
+          sudo apt install pandoc -y
+          
       - name: Install Latex support.
         run: |
           sudo apt install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra python3-pygments -y
+      
+      - name: Install Jinja2 support.
+        run: |
+          sudo apt install python3-jinja2 -y
           
       - name: Clone wiki.
         uses: actions/checkout@v3
@@ -34,17 +42,9 @@ jobs:
           repository: dante-signal31/Prince_of_Unity.wiki
           path: ./Manual/wiki
       
-      - name: Consolidate every md document in one latex file.
+      - name: Run conversion script.
         working-directory: ./Manual
         run: |
-          mkdir latex
-          multimarkdown manual.mmd -t latex -o latex/manual.tex
-      
-      - name: Convert to PDF.
-        working-directory: ./Manual
-        run: |
-          pdflatext latex/manual.tex 
-      
-      
-      
-      
+          mkdir output
+          mkdir pdf
+          compile_manual.sh
