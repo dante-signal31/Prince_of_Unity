@@ -295,7 +295,13 @@ jobs:
           name: LinuxPackages
           path: ${{ env.output_folder }}
 
-
+  build_usage_manual:
+    name: Build usage manual PDF file from repository wiki.
+    needs: build_linux
+    uses: dante-signal31/Prince_of_Unity/.github/workflows/build_manual.yml@staging
+    with:
+      version: ${{ needs.build_linux.outputs.build_version }}
+    
   deploy_to_packagecloud:
     name: Upload packages to PackageCloud Repository.
     needs: create_linux_installers

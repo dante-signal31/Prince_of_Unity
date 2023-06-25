@@ -1,12 +1,20 @@
 name: build_manual
 
 on:
+  workflow_call:
+    inputs:
+      version:
+        description: Version for this manual.
+        required: true
+        type: string
+        
   workflow_dispatch: 
     inputs:
       version:
         description: Version for this manual.
         required: true
         type: string
+
 
 jobs:
   build_manual:
