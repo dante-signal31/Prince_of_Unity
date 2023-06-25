@@ -65,10 +65,7 @@ further versions.
 
 ## Installation
 
-You can find a windows installer at [itch.io project page](https://dantesignal31.itch.io/prince-of-unity).
-
-I'm currently working in a linux installer. When I have it ready I will make it available
-through itch.io too.
+See current [installation instructions](https://github.com/dante-signal31/Prince_of_Unity/wiki/Installation) at this homepage wiki.
 
 If you like the developer way, just clone this repository and run the game from inside Unity, but 
 in this case refer to [developer section](https://github.com/dante-signal31/Prince_of_Unity#developers) at this 

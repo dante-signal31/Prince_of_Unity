@@ -251,7 +251,165 @@ jobs:
           name: LinuxPackages
           path: ${{ env.output_folder }}
 
+  sign_linux_deb_installer:
+    name: Sign linux DEB installer package.
+    needs: create_linux_installers
+    runs-on: ubuntu-latest
+    env:
+      packages_folder: Installers
+    outputs:
+      signed_deb_package: ${{ steps.identify_deb_package.outputs.signed_deb_package }}
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+        
+      - name: Download linux build.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxPackages
+          path: ${{ env.packages_folder }}
+      
+      - name: Make sure dpkg-sign is installed.
+        run: |
+          sudo apt update
+          sudo apt install dpkg-sig
 
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      
+      - name: Identify DEB package to sign.
+        id: identify_deb_package
+        run: |
+          echo "deb_package=$(ls ./$packages_folder/*.deb)" >> $GITHUB_ENV
+          cd $packages_folder
+          package=$(ls *.deb)
+          echo "signed_deb_package=$package" >> $GITHUB_OUTPUT
+          echo "Identified package: $package"
+          cd ..
+          
+      - name: Sign DEB package.
+        env:
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+        # Fix to dpkg-sig -f error got from https://note.com/twsnmp/n/n867d351733f8 (translate it from japanese)
+        run: |
+          echo $passphrase > password
+          dpkg-sig -k dante.signal31@gmail.com -g "--no-tty --batch --pinentry-mode loopback --passphrase-file=./password" --sign builder $deb_package
+          dpkg-sig --verify $deb_package
+          rm password
+              
+      - name: Upload signed Linux packages.
+        uses: actions/upload-artifact@v3
+        with:
+          name: SignedLinuxDEBPackage
+          path: ${{ env.deb_package }}
+    
+  sign_linux_rpm_installer:
+    name: Sign linux RPM installer package.
+    needs: create_linux_installers
+    runs-on: ubuntu-latest
+    env:
+      gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+      gpg_private_key_file: recovered_priv_key.gpg
+      packages_folder: Installers
+      signed_packages_folder: SignedLinuxRPMPackage/
+    outputs:
+      signed_rpm_package: ${{ steps.identify_rpm_package.outputs.signed_rpm_package }}
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Download linux build.
+        uses: actions/download-artifact@v3
+        with:
+          name: LinuxPackages
+          path: ${{ env.packages_folder }}
+      
+      - name: Create private key file.
+        run: |
+          echo $gpg_private_key | base64 -di > $gpg_private_key_file
+
+      - name: Sign RPM package at LinuxPackages folder.
+        uses: dante-signal31/rpmsign@v1.0.3
+        with:
+          gpg_private_key: ${{ env.gpg_private_key_file }}
+          gpg_private_key_password: ${{ secrets.GPG_PASSPHRASE }}
+          gpg_name: Prince of Unity (GPG key to sign Prince of Unity packages) <dante.signal31@gmail.com>
+          rpm_folder: ${{ env.packages_folder }}
+          output_folder: ${{ env.signed_packages_folder }}
+      
+      - name: Remove private key file.
+        run: |
+          rm $gpg_private_key_file
+
+      - name: Identify RPM package to sign.
+        id: identify_rpm_package
+        run: |
+          echo "rpm_package=$(ls ./$signed_packages_folder/*.rpm)" >> $GITHUB_ENV
+          cd $signed_packages_folder
+          package=$(ls *.rpm)
+          echo "signed_rpm_package=$package" >> $GITHUB_OUTPUT
+          echo "Identified package: $package"
+          cd ..
+
+      - name: Upload signed Linux packages.
+        uses: actions/upload-artifact@v3
+        with:
+          name: SignedLinuxRPMPackage
+          path: ${{ env.rpm_package }}
+
+
+  sign_windows_installer:
+    name: Sign windows installer package.
+    needs: create_windows_installer
+    runs-on: windows-2019
+    env:
+      package_folder: Installer
+    outputs:
+      signed_windows_package: ${{ steps.identify_windows_package.outputs.signed_windows_package }}
+    steps:
+      - name: Get source code.
+        uses: actions/checkout@v3
+
+      - name: Download windows build.
+        uses: actions/download-artifact@v3
+        with:
+          name: WindowsPackage
+          path: ${{ env.package_folder }}
+      
+      - name: Sign windows installer.
+        uses: GabrielAcostaEngler/signtool-code-sign@main
+        with:
+          # PFX certificate is base64 encoded to be kept as a GitHub secret. This action accepts you to enter
+          # that base64 encoded certificate-
+          certificate: ${{ secrets.PFX_CERTIFICATE }}
+          cert-password: ${{ secrets.PFX_PASSPHRASE }}
+          cert-sha1: ${{ secrets.PFX_THUMBPRINT }}
+          cert-description: 'Prince of Unity <dante.signal31@gmail.com> More info at: https://github.com/dante-signal31/Prince_of_Unity/'
+          folder: ${{ env.package_folder }}
+          recursive: true
+          timestamp-server: 'http://timestamp.digicert.com'
+
+      - name: Identify windows package.
+        id: identify_windows_package
+        shell: bash
+        run: |
+          echo "windows_package=$(ls ./$package_folder/*.exe)" >> $GITHUB_ENV
+          cd $package_folder
+          package=$(ls *.exe)
+          echo "signed_windows_package=$package" >> $GITHUB_OUTPUT
+          echo "Identified package: $package"
+          cd ..
+          
+      - name: Upload signed Windows package.
+        uses: actions/upload-artifact@v3
+        with:
+          name: SignedWindowsPackage
+          path: ${{ env.windows_package }}
+    
+    
 #  deploy_to_packagecloud:
 #    name: Upload packages to PackageCloud Repository.
 #    needs: create_linux_installers
@@ -279,7 +437,7 @@ jobs:
 
 #  deploy_to_itchio:
 #    name: Deploy installers to itch.io.
-#    needs: [create_linux_installers, create_windows_installer]
+#    needs: [build_linux, create_linux_installers, create_windows_installer]
 #    runs-on: ubuntu-latest
 #    steps:
 #      - name: Download generated Windows installer.

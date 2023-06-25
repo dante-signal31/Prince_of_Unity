@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+base_dest_path=/usr/share/games/Prince_of_Unity
+desktop_launcher=ninja.dlab.Prince_of_Unity.desktop
+
 # Link executable from /usr/games to /usr/share/games/Prince_of_Unity.
-ln -s /usr/share/games/Prince_of_Unity/Prince_of_Unity /usr/games/Prince_of_Unity
+ln -s $base_dest_path/Prince_of_Unity /usr/games/Prince_of_Unity
 
 # Copy desktop entry
-cp /usr/share/games/Prince_of_Unity/ninja.dlab.Prince_of_Unity.desktop /usr/share/applications/ninja.dlab.Prince_of_Unity.desktop
+cp $base_dest_path/$desktop_launcher /usr/share/applications/.
