@@ -582,6 +582,22 @@ jobs:
           ITCH_USER: dantesignal31
           PACKAGE: Build
           VERSION: ${{ needs.build_linux.outputs.build_version }}
+
+      - name: Download generated usage manual.
+        uses: actions/download-artifact@v3
+        with:
+          name: GameManual
+          path: Manual
+
+      - name: Deploy usage manual to itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
+          CHANNEL: Usage-manual
+          ITCH_GAME: prince-of-unity
+          ITCH_USER: dantesignal31
+          PACKAGE: Manual
+          VERSION: ${{ needs.build_linux.outputs.build_version }}
   
   
   deploy_to_github_releases:
@@ -607,6 +623,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: SignedLinuxRPMPackage
+          path: release/
+
+      - name: Download generated usage manual.
+        uses: actions/download-artifact@v3
+        with:
+          name: GameManual
           path: release/
 
       - name: Download linux build.
