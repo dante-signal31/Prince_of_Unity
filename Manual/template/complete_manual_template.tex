@@ -36,7 +36,27 @@
 
 \maketitle
 
+% Blank page after the title to make index start at an odd page.
+\begingroup
+\pagestyle{empty}
+\null
+\newpage
+\endgroup
+
+% Table of contents should use roman numbering.
+\pagenumbering{roman}
+
 \tableofcontents
+
+% Make introduction start at an odd page.
+\null
+\newpage
+\null
+\newpage
+
+% First page starts after the index and we return to arabic numbering.
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 {{ contents }}
 
