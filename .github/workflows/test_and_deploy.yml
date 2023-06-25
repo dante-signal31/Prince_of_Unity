@@ -516,7 +516,7 @@ jobs:
 
   deploy_to_itchio:
     name: Deploy installers to itch.io.
-    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer]
+    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer, build_usage_manual]
     runs-on: ubuntu-latest
     steps:
       - name: Download generated and signed Windows installer.
@@ -602,7 +602,7 @@ jobs:
   
   deploy_to_github_releases:
     name: Deploy installers to GitHub Releases.
-    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer]
+    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer, build_usage_manual]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
