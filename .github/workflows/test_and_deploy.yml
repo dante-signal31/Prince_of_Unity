@@ -370,6 +370,7 @@ jobs:
           name: SignedLinuxDEBPackage
           path: ${{ env.deb_package }}
 
+
   sign_linux_rpm_installer:
     name: Sign linux RPM installer package.
     needs: create_linux_installers
@@ -474,6 +475,14 @@ jobs:
           path: ${{ env.windows_package }}
 
 
+  build_usage_manual:
+    name: Build usage manual PDF file from repository wiki.
+    needs: build_linux
+    uses: dante-signal31/Prince_of_Unity/.github/workflows/build_manual.yml@staging
+    with:
+      version: ${{ needs.build_linux.outputs.build_version }}
+
+
   deploy_to_packagecloud:
     name: Upload packages to PackageCloud Repository.
     needs: [sign_linux_deb_installer, sign_linux_rpm_installer]
@@ -507,7 +516,7 @@ jobs:
 
   deploy_to_itchio:
     name: Deploy installers to itch.io.
-    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer]
+    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer, build_usage_manual]
     runs-on: ubuntu-latest
     steps:
       - name: Download generated and signed Windows installer.
@@ -538,7 +547,6 @@ jobs:
           name: SignedLinuxRPMPackage
           path: Installers/Linux/RPM
     
-
       - name: Deploy Linux DEB installer to itch.io
         uses: manleydev/butler-publish-itchio-action@master
         env:
@@ -574,11 +582,27 @@ jobs:
           ITCH_USER: dantesignal31
           PACKAGE: Build
           VERSION: ${{ needs.build_linux.outputs.build_version }}
+
+      - name: Download generated usage manual.
+        uses: actions/download-artifact@v3
+        with:
+          name: GameManual
+          path: Manual
+
+      - name: Deploy usage manual to itch.io
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_TOKEN }}
+          CHANNEL: Usage-manual
+          ITCH_GAME: prince-of-unity
+          ITCH_USER: dantesignal31
+          PACKAGE: Manual
+          VERSION: ${{ needs.build_linux.outputs.build_version }}
   
   
   deploy_to_github_releases:
     name: Deploy installers to GitHub Releases.
-    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer]
+    needs: [build_linux, sign_linux_deb_installer, sign_linux_rpm_installer, sign_windows_installer, build_usage_manual]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -599,6 +623,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: SignedLinuxRPMPackage
+          path: release/
+
+      - name: Download generated usage manual.
+        uses: actions/download-artifact@v3
+        with:
+          name: GameManual
           path: release/
 
       - name: Download linux build.
