@@ -303,7 +303,7 @@ jobs:
           fpm_args: ${{ env.source_directory }}
           fpm_opts: '-s dir -t deb -C Build -n ${{ env.app }} -p ${{ env.output_folder }} -v ${{ env.version }} --prefix ${{ env.package_install_root }} --description "${{ env.description }}" --after-install ${{ env.after_install }} --after-remove ${{ env.after_remove }} --maintainer ${{ env.maintainer }} -a ${{ env.architecture }} --url ${{ env.url }} --license ${{ env.license }} --category ${{ env.category }}'
 
-      - name: Create DEB package.
+      - name: Create RPM package.
         uses: bpicode/github-action-fpm@master
         with:
           fpm_args: ${{ env.source_directory }}
