@@ -57,7 +57,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Merge staging -> uat
+      - name: Merge staging -> master
         uses: devmasx/merge-branch@master
         with:
           type: now
