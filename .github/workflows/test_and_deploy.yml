@@ -91,7 +91,7 @@ jobs:
         run: |
           $base_folder=pwd
           echo "Project folder: $base_folder"
-          echo "projectFolder=$base_folder" >> $env:GITHUB_OUTPUT
+          echo "projectFolder=$base_folder" >> GITHUB_OUTPUT
 
       - name: Build game for windows.
         uses: game-ci/unity-builder@v2
