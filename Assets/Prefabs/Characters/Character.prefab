@@ -891,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3626297558726316604, guid: 328cea4343c4bf74c9cc39a21f3cfcf9, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Sensor
       objectReference: {fileID: 0}
     - target: {fileID: 7463754286281646920, guid: 328cea4343c4bf74c9cc39a21f3cfcf9, type: 3}
       propertyPath: stateMachine

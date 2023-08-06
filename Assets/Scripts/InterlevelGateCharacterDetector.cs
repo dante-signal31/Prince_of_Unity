@@ -23,12 +23,14 @@ namespace Prince
         
         private void OnTriggerEnter2D(Collider2D col)
         {
+            if (col.gameObject.CompareTag("Sensor")) return;
             InterlevelGateInteractions characterInteractions = col.transform.root.gameObject.GetComponentInChildren<InterlevelGateInteractions>();
             if (characterInteractions != null) PrinceCharacter = characterInteractions;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            if (other.gameObject.CompareTag("Sensor")) return;
             if (other.transform.root.gameObject.GetComponentInChildren<InterlevelGateInteractions>() != null)
             {
                 if (PrinceCharacter != null && 
