@@ -54,7 +54,7 @@ namespace Prince
             {
                 // if (!(_actionPressed || characterStatus.CurrentState == CharacterStatus.States.CrouchWalking)) 
                 if (characterStatus.CurrentState != CharacterStatus.States.CrouchWalking)
-                    inputController.Stop();
+                    inputController.StopMovingRight();
             }
         }
         
@@ -80,7 +80,7 @@ namespace Prince
             {
                 // if (!(_actionPressed || characterStatus.CurrentState == CharacterStatus.States.CrouchWalking))
                 if (characterStatus.CurrentState != CharacterStatus.States.CrouchWalking)
-                    inputController.Stop();
+                    inputController.StopMovingLeft();
             }
         }
 
