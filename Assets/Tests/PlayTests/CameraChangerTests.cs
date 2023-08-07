@@ -27,6 +27,9 @@ namespace Tests.PlayTests
         public IEnumerator Setup()
         {
             yield return TestSceneManager.ReLoadScene(_currentScene);
+            // GitHub Actions tests sometimes give me an error like it can not find LevelCamera.
+            // So I'm adding a waiting time to let level GameObject properly load.
+            yield return new WaitForSeconds(2);
 
             if (_prince == null) _prince = GameObject.Find("Prince");
             if (_enemy == null) _enemy = GameObject.Find("Enemy");
