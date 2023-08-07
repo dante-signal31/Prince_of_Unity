@@ -22,7 +22,7 @@ namespace Prince
         /// <param name="command">Command to add.</param>
         public void PushCommand(Command command)
         {
-            Debug.Log($"(CommandSequence) Registering command: {command.Action}");
+            //Debug.Log($"(CommandSequence) Registering command: {command.Action}");
             CommandQueue.Enqueue(command);
         }
     
@@ -104,7 +104,7 @@ namespace Prince
             WrappedArray<Command> wrappedCommandArray = WrapCommandQueue();
             string jsonString = JsonUtility.ToJson(wrappedCommandArray, true);
             string filePathnameWithExtension = Path.ChangeExtension(filePathname, FileExtension);
-            Debug.Log($"(CommandSequence) Saving commands at {filePathnameWithExtension}");
+            //Debug.Log($"(CommandSequence) Saving commands at {filePathnameWithExtension}");
             File.WriteAllText(filePathnameWithExtension, jsonString);
         }
     

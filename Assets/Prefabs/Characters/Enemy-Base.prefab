@@ -73,7 +73,7 @@ MonoBehaviour:
   stopTime: 0.5
   stopAttackTime: 1
   stopBlockTime: 0.5
-  showLogs: 1
+  showLogs: 0
 --- !u!1001 &391606109120057923
 PrefabInstance:
   m_ObjectHideFlags: 0
