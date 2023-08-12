@@ -3,20 +3,10 @@
 namespace Prince
 {
     /// <summary>
-    /// This component manages all fighting interactions with enemies.
+    /// This component manages stores the fighting profile for this guard.
     /// </summary>
     public class GuardFightingProfile : MonoBehaviour
     {
         public FightingProfile fightingProfile;
-
-        // private void Start()
-        // {
-        //     throw new NotImplementedException();
-        // }
-        //
-        // private void Update()
-        // {
-        //     throw new NotImplementedException();
-        // }
     }
 }
