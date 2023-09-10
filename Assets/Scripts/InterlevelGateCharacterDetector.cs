@@ -46,6 +46,7 @@ namespace Prince
                 gateStatus.CurrentState == InterlevelGateStatus.GateStates.Open)
             {
                 PrinceCharacter.InterlevelGate = characterInteractions;
+                _princeAlreadyNoticedThatGateIsOpen = true;
             }
         }
     }
