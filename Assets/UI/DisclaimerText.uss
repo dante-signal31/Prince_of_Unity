@@ -5,10 +5,13 @@
     font-size: 16px;
     transition-duration: 2s;
     opacity: 1;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .DisclaimerText.DisclaimerTextFadeOut {
     opacity: 0;
     visibility: visible;
     color: rgba(255, 255, 255, 0);
+    font-size: 16px;
 }

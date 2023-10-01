@@ -301,7 +301,7 @@ PrefabInstance:
     - target: {fileID: 3158546719077371896, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e62eb2b09c2622146bcc92cb6e6df2fa, type: 3}
+      objectReference: {fileID: 21300000, guid: c37e8d62d64e8b344b58f72f6cead1b2, type: 3}
     - target: {fileID: 3158546719077371896, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -317,10 +317,10 @@ PrefabInstance:
     - target: {fileID: 6310183615325228153, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 656ccc1d19a90fd4a84c74216b2c9ab7, type: 3}
+      objectReference: {fileID: 21300000, guid: 99d5468bd03a0c34eaefe5a4aec6ed29, type: 3}
     - target: {fileID: 6310183615325228153, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6310183615325228153, guid: 0a17071b561d9b740b3042bc25b58e47, type: 3}
       propertyPath: m_SortingOrder
