@@ -65,7 +65,7 @@ further versions.
 
 ## Installation
 
-See current [installation instructions](https://github.com/dante-signal31/Prince_of_Unity/wiki/Installation) at this homepage wiki.
+See current [installation instructions](https://github.com/dante-signal31/Prince_of_Unity/wiki/1---Installation) at this homepage wiki.
 
 If you like the developer way, just clone this repository and run the game from inside Unity, but 
 in this case refer to [developer section](https://github.com/dante-signal31/Prince_of_Unity#developers) at this 
@@ -73,7 +73,7 @@ page to find out how to run properly the game inside editor.
 
 ## Usage
 
-See current [usage instructions](https://github.com/dante-signal31/Prince_of_Unity/wiki/Usage) at this homepage wiki.
+See current [usage instructions](https://github.com/dante-signal31/Prince_of_Unity/wiki/2---Usage) at this homepage wiki.
 
 Nowadays, the game has support for keyboard and gamepad input.
 
