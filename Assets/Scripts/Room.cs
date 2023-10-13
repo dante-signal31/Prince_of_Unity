@@ -94,7 +94,6 @@ namespace Prince
         
         private void OnDrawGizmosSelected()
         {
-            
             DrawRoomCameraPosition();
             DrawRoomBounds();
         }
