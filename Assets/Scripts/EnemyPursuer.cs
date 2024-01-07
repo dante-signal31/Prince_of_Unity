@@ -212,21 +212,8 @@ public class EnemyPursuer : MonoBehaviour
     
     private void FixedUpdate()
     {
-        switch (characterStatus.CurrentState)
-        {
-            // In some states is useless wasting time calculating because we cannot move yet.
-            // case CharacterStatus.States.Falling:
-            // case CharacterStatus.States.FallStart:
-            // case CharacterStatus.States.Crouch:
-            // case CharacterStatus.States.CrouchFromStand:
-            // case CharacterStatus.States.Landing:
-            //     break;
-            // In every other case get the job done.
-            default:
-                PursuedEnemy = GetEnemyToPursue();
-                NextPursuingCommand = GetNextPursuingCommand(PursuedEnemy);
-                break;
-        }
+        PursuedEnemy = GetEnemyToPursue();
+        NextPursuingCommand = GetNextPursuingCommand(PursuedEnemy);
     }
 
     private void Awake()
