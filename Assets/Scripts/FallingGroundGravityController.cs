@@ -9,8 +9,9 @@ namespace Prince
     /// </summary>
     public class FallingGroundGravityController : GravityController
     {
-        [Header("WIRING:")] [Tooltip("Needed to know current character state.")] [SerializeField]
-        private FallingGroundStatus stateMachineStatus;
+        [Header("WIRING:")] 
+        [Tooltip("Needed to know current character state.")] 
+        [SerializeField] private FallingGroundStatus stateMachineStatus;
 
         private void FixedUpdate()
         {
@@ -28,7 +29,7 @@ namespace Prince
         /// <summary>
         /// Disables gravity for this falling ground.
         /// </summary>
-        protected void DisableGravity()
+        protected override void DisableGravity()
         {
             base.DisableGravity();
             // Rigid body constraints must be set. Otherwise when this component is used with
