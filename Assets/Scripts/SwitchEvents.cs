@@ -26,7 +26,7 @@ namespace Prince
         [Tooltip("Size for starting and ending gizmo.")]
         [SerializeField] private float gizmoSize;
         
-        #if UNITY_EDITOR
+        // #if UNITY_EDITOR
         private List<GameObject> _listeners = new List<GameObject>();
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Prince
         /// Color used to paint gizmos related to this game object.
         /// </summary>
         public Color GizmoColor => gizmoColor;
-        #endif
+        // #endif
 
         private void Awake()
         {
