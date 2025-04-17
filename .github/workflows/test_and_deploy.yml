@@ -112,7 +112,7 @@ jobs:
         run: rm -rf build_windows/StandaloneWindows64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'
 
       - name: Upload Build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: WindowsBuild
           path: build_windows/StandaloneWindows64
@@ -162,7 +162,7 @@ jobs:
           sudo rm -rf build_linux/StandaloneLinux64/'Prince of Unity_BackUpThisFolder_ButDontShipItWithYourGame'/
 
       - name: Upload Build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: LinuxBuild
           path: build_linux/StandaloneLinux64
@@ -202,7 +202,7 @@ jobs:
             project_folder=${{ needs.build_windows.outputs.project_folder }}
 
       - name: Upload generated configuration.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: WindowsInstallerConfiguration
           path: Packaging/Windows/rendered_windows_iss_script.iss
@@ -245,7 +245,7 @@ jobs:
           filepath: Packaging/Windows/rendered_windows_iss_script.iss
 
       - name: Upload Windows package.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: WindowsPackage
           path: ${{ needs.generate_windows_installer_configuration.outputs.windows_installer_folder }}
@@ -310,7 +310,7 @@ jobs:
           fpm_opts: '-s dir -t rpm -C Build -n ${{ env.app }} -p ${{ env.output_folder }} -v ${{ env.version }} --prefix ${{ env.package_install_root }} --description "${{ env.description }}" --after-install ${{ env.after_install }} --after-remove ${{ env.after_remove }} --maintainer ${{ env.maintainer }} -a ${{ env.architecture }} --url ${{ env.url }} --license ${{ env.license }} --category ${{ env.category }}'
 
       - name: Upload Linux packages.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: LinuxPackages
           path: ${{ env.output_folder }}
@@ -365,7 +365,7 @@ jobs:
           rm password
 
       - name: Upload signed Linux packages.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: SignedLinuxDEBPackage
           path: ${{ env.deb_package }}
@@ -420,7 +420,7 @@ jobs:
           cd ..
 
       - name: Upload signed Linux packages.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: SignedLinuxRPMPackage
           path: ${{ env.rpm_package }}
@@ -469,7 +469,7 @@ jobs:
           cd ..
 
       - name: Upload signed Windows package.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: SignedWindowsPackage
           path: ${{ env.windows_package }}
