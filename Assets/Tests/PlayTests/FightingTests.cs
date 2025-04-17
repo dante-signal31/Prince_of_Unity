@@ -170,6 +170,40 @@ namespace Tests.PlayTests
         }
         
         /// <summary>
+        /// Test prince is properly killed when he tries to run against a guard.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator PrinceKilledWhenRunsAgainstGuardTest()
+        {
+            // Setup test.
+            // LogAssert.ignoreFailingMessages = true;
+            _enemy.SetActive(true);
+            _prince.SetActive(true);
+            _prince.transform.SetPositionAndRotation(_startPosition2.transform.position, Quaternion.identity);
+            _prince.GetComponentInChildren<CharacterStatus>().Life = 3;
+            _prince.GetComponentInChildren<CharacterStatus>().HasSword = true;
+            _enemy.transform.SetPositionAndRotation(_startPosition1.transform.position, Quaternion.identity);
+            // I dont want enemy to move or defend by itself.
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.boldness = 0;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.attack = 1;
+            _enemy.GetComponentInChildren<GuardFightingProfile>().fightingProfile.defense = 0;
+            yield return null;
+            float expected_distance = 0.697f;
+            string commandFile = @"Assets\Tests\TestResources\runningStraightToEnemy";
+            Vector2 startPosition = _enemy.transform.position;
+            InputController inputController = _prince.GetComponent<InputController>();
+            yield return null;
+            AccessPrivateHelper.SetPrivateField(inputController, "recordedCommandsFile", commandFile);
+            AccessPrivateHelper.AccessPrivateMethod(inputController, "ReplayRecordedCommands");
+            // Let movements perform.
+            yield return new WaitForSeconds(3);
+            // Assert guard has hit the Prince and he is dead.
+            Assert.IsTrue( _prince.GetComponentInChildren<CharacterStatus>().Life == 0);
+            Assert.IsTrue(_prince.GetComponentInChildren<CharacterStatus>().CurrentState == CharacterStatus.States.Dead);
+            yield return null;
+        }
+        
+        /// <summary>
         /// Test prince is not hit by a guard with an attack profile of 0.
         /// </summary>
         [UnityTest]
