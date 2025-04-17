@@ -94,11 +94,7 @@ namespace Editor
         {
             // Each editor window contains a root VisualElement object
             _root = rootVisualElement;
-
-            // // VisualElements objects can contain other VisualElement following a tree hierarchy.
-            // VisualElement label = new Label("Hello World! From C#");
-            // root.Add(label);
-
+            
             // Instantiate UXML
             VisualElement uiXML = visualTreeAsset.Instantiate();
             _root.Add(uiXML);

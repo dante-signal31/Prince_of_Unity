@@ -53,7 +53,7 @@ namespace Prince
         /// <summary>
         /// Deactivate gravity affection over this character.
         /// </summary>
-        protected void DisableGravity()
+        protected virtual void DisableGravity()
         {
             rigidBody.gravityScale = 0;
             _currentRigidbodyConstraints = rigidBody.constraints;

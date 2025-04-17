@@ -6,7 +6,7 @@ using UnityEngine.Video;
 public class GameEvents : MonoBehaviour
 {
     /// <summary>
-    /// This event is raised by Prince characters to signal an small potion has been taken.
+    /// This event is raised by potions to signal an small potion has been taken.
     /// </summary>
     public class SmallPotionTaken : EventArgs { }
 

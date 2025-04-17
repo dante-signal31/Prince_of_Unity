@@ -71,7 +71,7 @@ namespace Prince
         }
 
         private bool _movementAllowed = true;
-        private bool _attackAllowed = true;
+        // private bool _attackAllowed = true;
         private bool _blockAllowed = true;
         
         private CharacterStatus.States _currentState;
@@ -114,7 +114,7 @@ namespace Prince
                 {
                     this.Log($"(GuardController - {transform.root.name}) We got to hitting range.", showLogs);
                     // Fighting phase.
-                    if (_attackAllowed)
+                    if (StrikeAllowedByMe)
                     {
                         TryToAttackEnemy();
                         return;

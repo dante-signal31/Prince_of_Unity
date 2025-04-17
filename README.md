@@ -80,7 +80,12 @@ Nowadays, the game has support for keyboard and gamepad input.
 ## Developers
 
 If you clone this project and want to run the game from Unity make sure to run it
-from *Disclaimer* scene. Data persistence across scene is got using a game manager that 
+from *Disclaimer* scene. 
+
+I've recorded a video explaining every step involved in cloning repository and importing into Unity. It may be helpful.
+[![Tutorial_about_importing_respository](https://img.youtube.com/vi/ITozyKnQnnw/0.jpg)](https://www.youtube.com/watch?v=ITozyKnQnnw)
+
+Data persistence across scene is got using a game manager that 
 is kept from the very first scene (actually Disclaimer one). That game manager must be unique
 so every other level does not have it as it is expected it will be taken from previous scenes.
 

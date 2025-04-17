@@ -18,14 +18,13 @@ namespace Prince
         /// Reference to detected Prince character while he stays in sensor volume.
         /// </summary>
         public InterlevelGateInteractions PrinceCharacter { get; private set; }
-
-        private bool _princeAlreadyNoticedThatGateIsOpen = false;
+        
         
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.gameObject.CompareTag("Sensor")) return;
-            InterlevelGateInteractions characterInteractions = col.transform.root.gameObject.GetComponentInChildren<InterlevelGateInteractions>();
-            if (characterInteractions != null) PrinceCharacter = characterInteractions;
+            InterlevelGateInteractions interlevelGateInteractions = col.transform.root.gameObject.GetComponentInChildren<InterlevelGateInteractions>();
+            if (characterInteractions != null) PrinceCharacter = interlevelGateInteractions;
         }
 
         private void OnTriggerExit2D(Collider2D other)
@@ -42,11 +41,9 @@ namespace Prince
         private void Update()
         {
             if (PrinceCharacter != null &&
-                !_princeAlreadyNoticedThatGateIsOpen && 
                 gateStatus.CurrentState == InterlevelGateStatus.GateStates.Open)
             {
                 PrinceCharacter.InterlevelGate = characterInteractions;
-                _princeAlreadyNoticedThatGateIsOpen = true;
             }
         }
     }
