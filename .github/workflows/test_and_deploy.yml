@@ -219,13 +219,13 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download windows build.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: WindowsBuild
           path: Build
 
       - name: Download generated windows installer configuration.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: WindowsInstallerConfiguration
           path: Packaging/Windows/
@@ -274,7 +274,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download linux build.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: LinuxBuild
           path: Build
@@ -328,7 +328,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download linux build.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: LinuxPackages
           path: ${{ env.packages_folder }}
@@ -387,7 +387,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download linux build.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: LinuxPackages
           path: ${{ env.packages_folder }}
@@ -439,7 +439,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download windows build.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: WindowsPackage
           path: ${{ env.package_folder }}
@@ -489,13 +489,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Retrieve generated and signed DEB packages.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: SignedLinuxDEBPackage
           path: package_dist/
 
       - name: Retrieve generated and signed RPM packages.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: SignedLinuxRPMPackage
           path: package_dist/
@@ -520,7 +520,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download generated and signed Windows installer.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: SignedWindowsPackage
           path: Installers/Windows
@@ -536,13 +536,13 @@ jobs:
           VERSION: ${{ needs.build_linux.outputs.build_version }}
 
       - name: Download generated and signed Linux DEB installers.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: SignedLinuxDEBPackage
           path: Installers/Linux/DEB
 
       - name: Download generated and signed Linux RPM installers.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: SignedLinuxRPMPackage
           path: Installers/Linux/RPM
@@ -568,7 +568,7 @@ jobs:
           VERSION: ${{ needs.build_linux.outputs.build_version }}
 
       - name: Download linux build.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: LinuxBuild
           path: Build
@@ -584,7 +584,7 @@ jobs:
           VERSION: ${{ needs.build_linux.outputs.build_version }}
 
       - name: Download generated usage manual.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: GameManual
           path: Manual
@@ -608,31 +608,31 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Download generated Windows installer.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: SignedWindowsPackage
           path: release/
 
       - name: Download generated and signed Linux DEB installers.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: SignedLinuxDEBPackage
           path: release/
 
       - name: Download generated and signed Linux RPM installers.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: SignedLinuxRPMPackage
           path: release/
 
       - name: Download generated usage manual.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: GameManual
           path: release/
 
       - name: Download linux build.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: LinuxBuild
           path: PoU_Linux/
