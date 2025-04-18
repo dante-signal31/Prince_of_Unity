@@ -65,7 +65,7 @@ jobs:
           ./compile_manual.sh $manual_version
 
       - name: Upload generated manual.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: GameManual
           path: Manual/pdf/PoU_manual.pdf

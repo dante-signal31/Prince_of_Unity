@@ -315,10 +315,13 @@ jobs:
           name: LinuxPackages
           path: ${{ env.output_folder }}
 
+# dpkg-sign has not been present at Ubuntu repositories since Ubuntu 23.10. I'm
+# looking for an alternative, but until I find it a workaround is using an
+# Ubuntu 22.04 runner while it is still available.
   sign_linux_deb_installer:
     name: Sign linux DEB installer package.
     needs: create_linux_installers
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       packages_folder: Installers
     outputs:
