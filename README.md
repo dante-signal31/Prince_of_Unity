@@ -83,6 +83,7 @@ If you clone this project and want to run the game from Unity make sure to run i
 from *Disclaimer* scene. 
 
 I've recorded a video explaining every step involved in cloning repository and importing into Unity. It may be helpful.
+
 [![Tutorial_about_importing_respository](https://img.youtube.com/vi/ITozyKnQnnw/0.jpg)](https://www.youtube.com/watch?v=ITozyKnQnnw)
 
 Data persistence across scene is got using a game manager that 
@@ -96,6 +97,14 @@ that any new functionality comes with new tests to cover it.
 
 All the codebase is covered with an open source BSD-3 license, so you have plenty of room to 
 play with that codebase. 
+
+## The book
+
+If you want to learn Unity by recreating a legendary video game gem like Prince of Persia, without language being an issue...
+
+... you have the English version of my book at [amazon.com](https://amazon.com/dp/8409716399), where I explain all the Unity elements I used to create Prince of Unity...
+
+... and the Spanish version at [amazon.es](https://amazon.es/dp/840964276X).
 
 ## Feedback
 
