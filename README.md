@@ -106,6 +106,9 @@ If you want to learn Unity by recreating a legendary video game gem like Prince 
 
 ... and the Spanish version at [amazon.es](https://amazon.es/dp/840964276X).
 
+| <a href="https://amazon.com/dp/8409716399"><img src="RawResources/BookCovers/Portada_Libro_eng.png" alt="English book cover" width="200"></a> |<div style="width: 20px;"></div> | <a href="https://amazon.es/dp/840964276X"><img src="RawResources/BookCovers/Portada_Libro.png" alt="Spanish book cover" width="200"></a> |
+| --- | --- |--- |
+
 ## Feedback
 
 Author: Dante Signal31 e-mail: dante.signal31@gmail.com
