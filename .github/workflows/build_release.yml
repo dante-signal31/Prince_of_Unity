@@ -31,7 +31,7 @@ jobs:
           echo "projectFolder=$base_folder" >> $env:GITHUB_OUTPUT
 
       - name: Build game for windows.
-        uses: game-ci/unity-builder@v2
+        uses: game-ci/unity-builder@v4
         id: WindowsBuilder
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -73,7 +73,7 @@ jobs:
             Library-
 
       - name: Build game for linux.
-        uses: game-ci/unity-builder@v2
+        uses: game-ci/unity-builder@v4
         id: LinuxBuilder
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
