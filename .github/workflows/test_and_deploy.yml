@@ -70,7 +70,7 @@ jobs:
 
   build_windows:
     name: Build release for windows.
-    runs-on: windows-2019
+    runs-on: windows-2025
     needs: merge_staging_and_master
     outputs:
       project_folder: ${{ steps.ProjectFolderFinder.outputs.projectFolder }}
@@ -213,7 +213,7 @@ jobs:
   create_windows_installer:
     name: Create windows installer.
     needs: generate_windows_installer_configuration
-    runs-on: windows-2019
+    runs-on: windows-2025
     env:
       output_folder: Installers\Windows
     steps:
@@ -434,7 +434,7 @@ jobs:
   sign_windows_installer:
     name: Sign windows installer package.
     needs: create_windows_installer
-    runs-on: windows-2019
+    runs-on: windows-2025
     env:
       package_folder: Installer
     outputs:
